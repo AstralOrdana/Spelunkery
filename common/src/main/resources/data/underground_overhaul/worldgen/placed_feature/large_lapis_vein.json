@@ -1,5 +1,5 @@
 {
-  "feature": "underhaul:large_lapis_vein",
+  "feature": "underground_overhaul:large_lapis_vein",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

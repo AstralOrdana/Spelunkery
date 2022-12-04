@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "underhaul:raw_emerald"
-  },
-  "result": "minecraft:emerald",
-  "count": 1
-}

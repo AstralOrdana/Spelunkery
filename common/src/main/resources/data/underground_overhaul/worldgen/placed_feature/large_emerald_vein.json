@@ -1,5 +1,5 @@
 {
-  "feature": "underhaul:large_emerald_vein",
+  "feature": "underground_overhaul:large_emerald_vein",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

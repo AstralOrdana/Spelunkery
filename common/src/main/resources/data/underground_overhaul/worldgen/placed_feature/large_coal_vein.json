@@ -1,5 +1,5 @@
 {
-  "feature": "underhaul:large_coal_vein",
+  "feature": "underground_overhaul:large_coal_vein",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

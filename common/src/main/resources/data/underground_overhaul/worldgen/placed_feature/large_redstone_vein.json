@@ -1,5 +1,5 @@
 {
-  "feature": "underhaul:large_redstone_vein",
+  "feature": "underground_overhaul:large_redstone_vein",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

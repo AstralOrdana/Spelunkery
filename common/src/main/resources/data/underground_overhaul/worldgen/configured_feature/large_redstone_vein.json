@@ -5,21 +5,21 @@
       {
         "chance": 0.33,
         "feature": {
-          "feature": "underhaul:large_redstone_x",
+          "feature": "underground_overhaul:large_redstone_x",
           "placement": []
         }
       },
       {
         "chance": 0.33,
         "feature": {
-          "feature": "underhaul:large_redstone_y",
+          "feature": "underground_overhaul:large_redstone_y",
           "placement": []
         }
       },
       {
         "chance": 0.33,
         "feature": {
-          "feature": "underhaul:large_redstone_z",
+          "feature": "underground_overhaul:large_redstone_z",
           "placement": []
         }
       }
