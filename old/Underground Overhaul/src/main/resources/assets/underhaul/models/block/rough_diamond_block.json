@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "underhaul:block/rough_diamond_block"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "underhaul:block/rough_quartz_block"
+      }
+    ]
+  }
+}

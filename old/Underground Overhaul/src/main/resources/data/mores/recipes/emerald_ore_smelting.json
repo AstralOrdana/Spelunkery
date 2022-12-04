@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "mores:emerald_ores"
+  },
+  "result": "underhaul:raw_emerald",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.33,
+        "feature": {
+          "feature": "underhaul:large_redstone_x",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.33,
+        "feature": {
+          "feature": "underhaul:large_redstone_y",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.33,
+        "feature": {
+          "feature": "underhaul:large_redstone_z",
+          "placement": []
+        }
+      }
+    ],
+    "default": {
+      "feature": {
+        "type": "minecraft:no_op",
+        "config": {}
+      },
+      "placement": []
+    }
+  }
+}

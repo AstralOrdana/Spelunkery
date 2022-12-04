@@ -1,0 +1,5 @@
+{
+  "entity.template_mod.mod_entity": "Mod Entity",
+  "item.template_mod.mod_item": "Mod Item",
+  "block.template_mod.mod_block": "Mod Block"
+}

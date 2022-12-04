@@ -1,0 +1,52 @@
+
+modLoader="javafml" #mandatory
+
+loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+
+license="LGPLv3"
+
+[[mods]] #mandatory
+
+modId="underground_overhaul" #mandatory
+
+version = "${version}"
+
+displayName="Underground Overhaul" #mandatory
+
+logoFile="icon.png" #optional
+
+credits="Ordana" #optional
+
+authors="Ordana" #optional
+
+itemIcon="underground_overhaul:rough_diamond" #catalogue icon
+description='''
+An Overhaul to everything Underground
+'''
+
+[[dependencies.underground_overhaul]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+
+    mandatory=true #mandatory
+
+    versionRange="[40,)" #mandatory
+
+    ordering="NONE"
+    side="BOTH"
+# Here's another dependency
+[[dependencies.underground_overhaul]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.underground_overhaul]]
+
+    modId="moonlight"
+    mandatory=true
+    versionRange="[1.19.2-2.0.35,]"
+    ordering="AFTER"
+    side="BOTH"

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "underground_overhaul",
+  "version": "${version}",
+  "name": "Underground Overhaul",
+  "description": "An Overhaul to everything Underground",
+  "authors": [
+    "Ordana"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/underground_overhaul",
+    "sources": "https://github.com/AstralOrdana/underground_overhaul"
+  },
+  "license": "LGPLv3",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ordana.underground_overhaul.fabric.UndergroundOverhaulFabric"
+    ],
+    "modmenu": [
+      "com.ordana.underground_overhaul.integration.fabric.ModMenuCompat"
+    ]
+  },
+  "mixins": [
+    "underground_overhaul.mixins.json",
+    "underground_overhaul-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "moonlight": ">=1.19.2-2.0.35"
+  }
+}
