@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:has_desert_pyramid",
+  "features": [
+    "underground_overhaul:large_lapis_vein"
+  ],
+  "step": "raw_generation"
+}

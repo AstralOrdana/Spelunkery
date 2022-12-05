@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:has_swamp_hut",
+  "features": [
+    "underground_overhaul:large_coal_vein"
+  ],
+  "step": "raw_generation"
+}

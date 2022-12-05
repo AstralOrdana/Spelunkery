@@ -7,6 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.SurfaceRuleData;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -36,37 +38,48 @@ public class NoiseBasedStoneFeature extends Feature<NoneFeatureConfiguration> {
 
     private static final BlockState STONE = Blocks.STONE.defaultBlockState();
     private static final BlockState DEEPSLATE = Blocks.DEEPSLATE.defaultBlockState();
+    private static final BlockState GRAVEL = Blocks.GRAVEL.defaultBlockState();
     private static final BlockState CLAY = Blocks.CLAY.defaultBlockState();
 
     private final List<StoneEntry> entryListStone;
     private final List<StoneEntry> entryListDeepslate;
-    private final List<ResourceKey<Biome>> biomes;
+    private final TagKey<Biome> biomes;
     private final boolean useBiomeFilter;
     private final float chanceOfBlankPatch;
+    private final TagKey<Block> target1;
+    private final TagKey<Block> target2;
+    private final boolean useHeightFilter;
+    private final int surfaceOffset;
+    private final int bottomOffset;
 
-    public NoiseBasedStoneFeature(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> entryListStone, List<StoneEntry> entryListDeepslate, List<ResourceKey<Biome>> biomes, boolean useBiomeFilter, float chanceOfBlankPatch) {
+    public NoiseBasedStoneFeature(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> entryListStone, List<StoneEntry> entryListDeepslate, TagKey<Biome> biomes, boolean useBiomeFilter, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset ,int bottomOffset) {
         super(codec);
         this.entryListDeepslate = entryListDeepslate;
         this.entryListStone = entryListStone;
         this.biomes = biomes;
         this.useBiomeFilter = useBiomeFilter;
         this.chanceOfBlankPatch = chanceOfBlankPatch;
+        this.target1 = target1;
+        this.target2 = target2;
+        this.useHeightFilter = useHeightFilter;
+        this.surfaceOffset = surfaceOffset;
+        this.bottomOffset = bottomOffset;
     }
 
-    public static NoiseBasedStoneFeature featureWithDeepslateFiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, List<ResourceKey<Biome>> biomes, float chanceOfBlankPatch) {
-        return new NoiseBasedStoneFeature(codec, blockListStone, blockListDeepslate, biomes, true, chanceOfBlankPatch);
+    public static NoiseBasedStoneFeature featureWithDeepslateFiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, TagKey<Biome> biomes, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
+        return new NoiseBasedStoneFeature(codec, blockListStone, blockListDeepslate, biomes, true, chanceOfBlankPatch, target1, target2, useHeightFilter, surfaceOffset, bottomOffset);
     }
 
-    public static NoiseBasedStoneFeature featureWithDeepslateUnfiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, float chanceOfBlankPatch) {
-        return new NoiseBasedStoneFeature(codec, blockListStone, blockListDeepslate, null, false, chanceOfBlankPatch);
+    public static NoiseBasedStoneFeature featureWithDeepslateUnfiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
+        return new NoiseBasedStoneFeature(codec, blockListStone, blockListDeepslate, null, false, chanceOfBlankPatch, target1, target2, useHeightFilter, surfaceOffset, bottomOffset);
     }
 
-    public static NoiseBasedStoneFeature featureNoDeepslateFiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, List<ResourceKey<Biome>> biomes, float chanceOfBlankPatch) {
-        return new NoiseBasedStoneFeature(codec, blockListStone, blockListStone, biomes, true, chanceOfBlankPatch);
+    public static NoiseBasedStoneFeature featureNoDeepslateFiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, TagKey<Biome> biomes, float chanceOfBlankPatch, TagKey<Block> target1, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
+        return new NoiseBasedStoneFeature(codec, blockListStone, blockListStone, biomes, true, chanceOfBlankPatch, target1, null, useHeightFilter, surfaceOffset, bottomOffset);
     }
 
-    public static NoiseBasedStoneFeature featureNoDeepslateUniltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, float chanceOfBlankPatch) {
-        return new NoiseBasedStoneFeature(codec, blockListStone, blockListStone, null, false, chanceOfBlankPatch);
+    public static NoiseBasedStoneFeature featureNoDeepslateUnfiltered(Codec<NoneFeatureConfiguration> codec, List<StoneEntry> blockListStone, float chanceOfBlankPatch, TagKey<Block> target1, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
+        return new NoiseBasedStoneFeature(codec, blockListStone, blockListStone, null, false, chanceOfBlankPatch, target1, null, useHeightFilter, surfaceOffset, bottomOffset);
     }
 
     @Override
@@ -116,45 +129,43 @@ public class NoiseBasedStoneFeature extends Feature<NoneFeatureConfiguration> {
                     BlockState currentState = worldGenLevel.getBlockState(currentPos);
 
                     boolean passesBiomeFilter = true;
-                    /*
                     if(this.biomes != null && this.useBiomeFilter){
-                        if(!biomes.contains(featurePlaceContext.level().registryAccess().registryOrThrow(Registry.BIOME_REGISTRY).getKey(worldGenLevel.getBiome(currentPos)))) {
+                        if(!worldGenLevel.getBiome(currentPos).is(biomes)) {
                             passesBiomeFilter = false;
                         }
                     }
-                     */
 
                     if(passesBiomeFilter){
-                        if((worldGenLevel.dimensionType().hasCeiling() || y < worldGenLevel.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - 10) && !isBlankPatch){
-                            if(currentState == DEEPSLATE){
+                        if((worldGenLevel.dimensionType().hasCeiling() || y < worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - surfaceOffset) && !isBlankPatch){
+                            if (!useHeightFilter || (y > (worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - bottomOffset))) {
+                                if (target2 != null && currentState.is(target2)) {
 
-                                boolean shouldPlacePrimaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
-                                boolean shouldPlaceSecondaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
+                                    boolean shouldPlacePrimaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
+                                    boolean shouldPlaceSecondaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
 
-                                if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone){
-                                    worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
-                                } else if (shouldPlaceSecondaryStone){
-                                    worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                    if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
+                                        worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
+                                    } else if (shouldPlaceSecondaryStone) {
+                                        worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                    }
                                 }
-                            } else if(currentState == STONE){
+                                else if (currentState.is(target1)) {
 
-                                boolean shouldPlacePrimaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
-                                boolean shouldPlaceSecondaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
+                                    boolean shouldPlacePrimaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
+                                    boolean shouldPlaceSecondaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
 
-                                if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone){
-                                    worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
-                                } else if (shouldPlaceSecondaryStone){
-                                    worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                    if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
+                                        worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
+                                    } else if (shouldPlaceSecondaryStone) {
+                                        worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                    }
                                 }
                             }
                         }
                     }
-
-
                     if(z < 0 && y < 128){
                         worldGenLevel.setBlock(currentPos, Blocks.BARRIER.defaultBlockState(), 2);
                     }
-
                 }
             }
         }

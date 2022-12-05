@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "underground_overhaul:large_redstone_vein"
+  ],
+  "step": "raw_generation"
+}

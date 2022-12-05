@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#underground_overhaul:has_stone_noise",
+  "features": [
+    "underground_overhaul:noise_stone"
+  ],
+  "step": "raw_generation"
+}

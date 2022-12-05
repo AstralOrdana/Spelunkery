@@ -11,16 +11,22 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
 
     //blocks
-    public static final TagKey<Block> BLOCK = registerBlockTag("block");
+    public static final TagKey<Block> STONE_TARGET = registerBlockTag("stone_target");
+    public static final TagKey<Block> DEEPSLATE_TARGET = registerBlockTag("deepslate_target");
+    public static final TagKey<Block> RIVER_TARGET = registerBlockTag("river_target");
+    //blocks
+    public static final TagKey<Block> OCEAN_TARGET = registerBlockTag("ocean_target");
 
     //items
     public static final TagKey<Item> ITEM = registerItemTag("item");
 
 
     //biomes
-    public static final TagKey<Biome> ICY = registerBiomeTag("icy");
-    public static final TagKey<Biome> HOT = registerBiomeTag("hot");
-    public static final TagKey<Biome> WET = registerBiomeTag("wet");
+    public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");
+    public static final TagKey<Biome> HAS_STONE_NOISE = registerBiomeTag("has_stone_noise");
+    public static final TagKey<Biome> HAS_DIRT_NOISE = registerBiomeTag("has_dirt_noise");
+    public static final TagKey<Biome> HAS_OCEAN_NOISE = registerBiomeTag("has_ocean_noise");
+    public static final TagKey<Biome> HAS_DESERT_NOISE = registerBiomeTag("has_desert_noise");
 
     //entities
     public static final TagKey<EntityType<?>> LIGHT_FREEZE_IMMUNE = registerEntityTag("light_freeze_immune");
