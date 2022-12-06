@@ -1,9 +1,14 @@
 package com.ordana.underground_overhaul;
 
+import com.ordana.underground_overhaul.configs.ClientConfigs;
+import com.ordana.underground_overhaul.configs.CommonConfigs;
 import com.ordana.underground_overhaul.features.util.NoiseBasedStoneFeature;
 import com.ordana.underground_overhaul.features.util.StoneEntry;
 import com.ordana.underground_overhaul.features.util.StonePattern;
+import com.ordana.underground_overhaul.reg.ModBlocks;
 import com.ordana.underground_overhaul.reg.ModFeatures;
+import com.ordana.underground_overhaul.reg.ModItems;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +36,15 @@ public class UndergroundOverhaul {
     }
 
     public static void commonInit() {
+
+        CommonConfigs.init();
+        if(PlatformHelper.getEnv().isClient()){
+            ClientConfigs.init();
+        }
+
         ModFeatures.init();
+        ModBlocks.init();
+        ModItems.init();
     }
 
 }

@@ -60,17 +60,6 @@ public class StonePattern {
         return new StonePattern(noise, -0.3F, 0.3F, -0.1F, 0.1F, 1F);
     }
 
-
-    public static StonePattern river_stripes() {
-        FastNoiseLite noise = new FastNoiseLite(98);
-        noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
-        noise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
-        noise.SetFrequency(0.03F);
-        noise.SetDomainWarpAmp(1.5F);
-        noise.SetFractalOctaves(1);
-        return new StonePattern(noise, -0.2F, 0.2F, -0.05F, 0.05F, 1F);
-    }
-
     public static StonePattern desert_terrain() {
         FastNoiseLite noise = new FastNoiseLite(69);
         noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
@@ -79,6 +68,16 @@ public class StonePattern {
         noise.SetDomainWarpAmp(1.5F);
         noise.SetFractalOctaves(1);
         return new StonePattern(noise, -0.85F, 0.85F, -0.2F, 0.2F, 0.7F);
+    }
+
+    public static StonePattern rock_salt() {
+        FastNoiseLite noise = new FastNoiseLite(80);
+        noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
+        noise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
+        noise.SetFrequency(0.03F);
+        noise.SetDomainWarpAmp(1.5F);
+        noise.SetFractalOctaves(1);
+        return new StonePattern(noise, -0.3F, 0.3F, -0.5F, -0.4F, 0.7F);
     }
 
     public void setSeed(int seed){

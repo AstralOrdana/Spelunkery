@@ -166,6 +166,8 @@ public class NoiseBasedStoneFeature extends Feature<NoneFeatureConfiguration> {
                     if(z < 0 && y < 128){
                         worldGenLevel.setBlock(currentPos, Blocks.BARRIER.defaultBlockState(), 2);
                     }
+
+                    /*
                     int n1=0, n2=1, n3, i, count = 30;
                     for(i = 2; i < count; ++i) {
                         n3 = n1 + n2;
@@ -175,6 +177,8 @@ public class NoiseBasedStoneFeature extends Feature<NoneFeatureConfiguration> {
                         n1=n2;
                         n2=n3;
                     }
+                     */
+
                 }
             }
         }

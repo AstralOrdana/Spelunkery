@@ -1,5 +1,6 @@
-package com.ordana.underground_overhaul;
+package com.ordana.underground_overhaul.configs;
 
+import com.ordana.underground_overhaul.UndergroundOverhaul;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigSpec;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;

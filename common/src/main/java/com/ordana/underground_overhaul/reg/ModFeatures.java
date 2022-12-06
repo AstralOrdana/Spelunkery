@@ -95,19 +95,6 @@ public class ModFeatures {
             )
     );
 
-    public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_RIVER_FEATURE = RegHelper.registerFeature(
-            UndergroundOverhaul.res("noise_river"), () -> NoiseBasedStoneFeature.featureNoDeepslateFiltered(NoneFeatureConfiguration.CODEC,
-                    List.of(
-                            new StoneEntry(Blocks.SAND, Blocks.CLAY, StonePattern.river_stripes()),
-                            new StoneEntry(Blocks.CLAY, Blocks.GRAVEL, StonePattern.river_stripes())
-                    ),
-                    (BiomeTags.IS_RIVER),
-                    0F,
-                    (ModTags.RIVER_TARGET),
-                    true, 0, 2
-            )
-    );
-
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_DESERT_FEATURE = RegHelper.registerFeature(
             UndergroundOverhaul.res("noise_desert"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
                     List.of(
@@ -132,6 +119,18 @@ public class ModFeatures {
             )
     );
 
+    public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_SALT_FEATURE = RegHelper.registerFeature(
+            UndergroundOverhaul.res("noise_salt"), () -> NoiseBasedStoneFeature.featureNoDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+                    List.of(
+                            new StoneEntry(Blocks.STONE, ModBlocks.ROCK_SALT_BLOCK.get(), StonePattern.rock_salt())
+                    ),
+                    (BiomeTags.IS_MOUNTAIN),
+                    0F,
+                    (ModTags.STONE_TARGET),
+                    true, 0, 32
+            )
+    );
+
 
     //configured features
     public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_STONE_CONFIGURED =
@@ -146,10 +145,6 @@ public class ModFeatures {
             RegHelper.registerConfiguredFeature(UndergroundOverhaul.res("noise_dirt"),
                     NOISE_DIRT_FEATURE, () -> FeatureConfiguration.NONE);
 
-    public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_RIVER_CONFIGURED =
-            RegHelper.registerConfiguredFeature(UndergroundOverhaul.res("noise_river"),
-                    NOISE_RIVER_FEATURE, () -> FeatureConfiguration.NONE);
-
     public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_OCEAN_CONFIGURED =
             RegHelper.registerConfiguredFeature(UndergroundOverhaul.res("noise_ocean"),
                     NOISE_OCEAN_FEATURE, () -> FeatureConfiguration.NONE);
@@ -157,6 +152,11 @@ public class ModFeatures {
     public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_DESERT_CONFIGURED =
             RegHelper.registerConfiguredFeature(UndergroundOverhaul.res("noise_desert"),
                     NOISE_DESERT_FEATURE, () -> FeatureConfiguration.NONE);
+
+    public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_SALT_CONFIGURED =
+            RegHelper.registerConfiguredFeature(UndergroundOverhaul.res("noise_salt"),
+                    NOISE_SALT_FEATURE, () -> FeatureConfiguration.NONE);
+
 
     //placed features
     public static final RegSupplier<PlacedFeature> PLACED_NOISE_STONE =
@@ -171,11 +171,12 @@ public class ModFeatures {
     public static final RegSupplier<PlacedFeature> PLACED_NOISE_DIRT =
             RegHelper.registerPlacedFeature(UndergroundOverhaul.res("noise_dirt"), NOISE_DIRT_CONFIGURED, List::of);
 
-    public static final RegSupplier<PlacedFeature> PLACED_NOISE_RIVER =
-            RegHelper.registerPlacedFeature(UndergroundOverhaul.res("noise_river"), NOISE_RIVER_CONFIGURED, List::of);
-
     public static final RegSupplier<PlacedFeature> PLACED_NOISE_DESERT =
             RegHelper.registerPlacedFeature(UndergroundOverhaul.res("noise_desert"), NOISE_DESERT_CONFIGURED, List::of);
+
+    public static final RegSupplier<PlacedFeature> PLACED_NOISE_SALT =
+            RegHelper.registerPlacedFeature(UndergroundOverhaul.res("noise_salt"), NOISE_SALT_CONFIGURED, List::of);
+
 
     public static void init() {
 
@@ -192,11 +193,11 @@ public class ModFeatures {
         ResourceKey<PlacedFeature> noise_dirt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("noise_dirt"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_OVERWORLD, noise_dirt);
 
-        ResourceKey<PlacedFeature> noise_river = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("noise_river"));
-        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_RIVER, noise_river);
-
         ResourceKey<PlacedFeature> noise_desert = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("noise_desert"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_OVERWORLD, noise_desert);
+
+        ResourceKey<PlacedFeature> noise_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("noise_salt"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_OVERWORLD, noise_salt);
 
         //coal vein
         ResourceKey<PlacedFeature> large_coal_vein = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("large_coal_vein"));

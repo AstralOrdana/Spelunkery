@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "top": "underground_overhaul:block/rock_salt",
+    "side": "underground_overhaul:block/rock_salt"
+  }
+}

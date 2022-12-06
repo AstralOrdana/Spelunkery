@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "underground_overhaul:block/rock_salt_brick"
+  }
+}
