@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underground_overhaul:rough_cinnabar"
+    }
+  },
+  "result": {
+    "item": "underground_overhaul:rough_cinnabar_block"
+  }
+}

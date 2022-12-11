@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "all": "underground_overhaul:block/rock_salt_lit"
+    "cross": "underground_overhaul:block/rock_salt_lit"
   }
 }

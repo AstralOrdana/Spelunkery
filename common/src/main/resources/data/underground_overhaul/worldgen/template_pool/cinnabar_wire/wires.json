@@ -1,0 +1,42 @@
+{
+  "name": "underground_overhaul:cinnabar_wire/wires",
+  "fallback": "underground_overhaul:cinnabar_wire/start_pool",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "location": "underground_overhaul:cinnabar_wire/straight",
+        "processors": "underground_overhaul:cinnabar_vein",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 7,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "underground_overhaul:cinnabar_wire/corner",
+        "processors": "underground_overhaul:cinnabar_vein"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "underground_overhaul:cinnabar_wire/cross",
+        "processors": "underground_overhaul:cinnabar_vein"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "underground_overhaul:cinnabar_wire/t_junction",
+        "processors": "underground_overhaul:cinnabar_vein"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "underground_overhaul:rough_cinnabar"
+  },
+  "result": "minecraft:redstone",
+  "count": 3
+}

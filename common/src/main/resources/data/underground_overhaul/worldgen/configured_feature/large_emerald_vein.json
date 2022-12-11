@@ -33,7 +33,7 @@
             ],
             "high_states": [
               {
-                "Name": "minecraft:emerald_block"
+                "Name": "underground_overhaul:rough_emerald_block"
               },
               {
                 "Name": "minecraft:emerald_ore"

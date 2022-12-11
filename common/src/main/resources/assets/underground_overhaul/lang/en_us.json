@@ -1,12 +1,27 @@
 {
   "entity.underground_overhaul.mod_entity": "Mod Entity",
   "item.underground_overhaul.mod_item": "Mod Item",
-  "block.underground_overhaul.rock_salt_block": "Rock Salt",
+
+  "block.underground_overhaul.rock_salt": "Rock Salt",
+  "block.underground_overhaul.salt_lamp": "Salt Lamp",
+
+  "block.underground_overhaul.rock_salt_block": "Rock Salt Block",
   "block.underground_overhaul.rock_salt_slab": "Rock Salt Slab",
   "block.underground_overhaul.rock_salt_stairs": "Rock Salt Stairs",
   "block.underground_overhaul.rock_salt_wall": "Rock Salt Wall",
+
   "block.underground_overhaul.rock_salt_bricks": "Rock Salt Bricks",
   "block.underground_overhaul.rock_salt_brick_slab": "Rock Salt Brick Slab",
   "block.underground_overhaul.rock_salt_brick_stairs": "Rock Salt Brick Stairs",
-  "block.underground_overhaul.rock_salt_brick_wall": "Rock Salt Brick Wall"
+  "block.underground_overhaul.rock_salt_brick_wall": "Rock Salt Brick Wall",
+
+  "block.underground_overhaul.rough_lazurite_block": "Rough Lazurite Block",
+  "block.underground_overhaul.rough_cinnabar_block": "Rough Cinnabar Block",
+  "block.underground_overhaul.rough_diamond_block": "Rough Diamond Block",
+  "block.underground_overhaul.rough_emerald_block": "Rough Emerald Block",
+
+  "item.underground_overhaul.rough_lazurite": "Rough Lazurite",
+  "item.underground_overhaul.rough_cinnabar": "Rough Cinnabar",
+  "item.underground_overhaul.rough_diamond": "Rough Diamond",
+  "item.underground_overhaul.rough_emerald": "Rough Emerald"
 }

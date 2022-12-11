@@ -33,7 +33,7 @@
             ],
             "high_states": [
               {
-                "Name": "minecraft:lapis_block"
+                "Name": "underground_overhaul:rough_lazurite_block"
               },
               {
                 "Name": "minecraft:gold_ore"

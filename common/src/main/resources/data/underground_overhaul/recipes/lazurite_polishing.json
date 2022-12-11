@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "underground_overhaul:rough_lazurite"
+  },
+  "result": "minecraft:lapis_lazuli",
+  "count": 3
+}

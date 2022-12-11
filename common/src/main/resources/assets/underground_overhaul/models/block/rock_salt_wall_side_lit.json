@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_side",
   "textures": {
-    "wall": "underground_overhaul:block/rock_salt_lit"
+    "wall": "underground_overhaul:block/rock_salt_block_lit"
   }
 }

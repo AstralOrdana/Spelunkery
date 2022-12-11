@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#minecraft:is_overworld",
+  "step": "underground_decoration",
+  "spawn_overrides": {},
+  "terrain_adaptation": "bury",
+  "start_pool": "underground_overhaul:cinnabar_wire/start_pool",
+  "size": 7,
+  "start_height": {
+    "absolute": -59
+  },
+  "start_jigsaw_name": "underground_overhaul:cinnabar_wire",
+  "max_distance_from_center": 116,
+  "use_expansion_hack": false
+}

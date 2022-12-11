@@ -14,6 +14,7 @@ public class CommonConfigs {
     public static ConfigSpec SERVER_SPEC;
 
     public static Supplier<Boolean> CREATIVE_TAB;
+    public static Supplier<Boolean> CROSS_SECTION;
     public static Supplier<Integer> INTEGER_CONFIG;
     public static Supplier<Double> DOUBLE_CONFIG;
 
@@ -25,11 +26,12 @@ public class CommonConfigs {
 
         builder.push("general");
         CREATIVE_TAB = builder.define("creative_tab", false);
+        CROSS_SECTION = builder.define("cross_section", false);
         builder.pop();
 
         builder.push("examples");
-        INTEGER_CONFIG = builder.define("rusting_influence_radius", 4, 1, 8);
-        DOUBLE_CONFIG = builder.define("rusting_rate", 0.06, 0, 1);
+        INTEGER_CONFIG = builder.define("integer_config", 4, 1, 8);
+        DOUBLE_CONFIG = builder.define("double_config", 0.06, 0, 1);
         builder.pop();
 
         //fabric specific

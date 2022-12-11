@@ -125,7 +125,7 @@ public class ModFeatures {
                             new StoneEntry(Blocks.STONE, ModBlocks.ROCK_SALT_BLOCK.get(), StonePattern.rock_salt())
                     ),
                     (BiomeTags.IS_MOUNTAIN),
-                    0F,
+                    0.5F,
                     (ModTags.STONE_TARGET),
                     true, 0, 32
             )
