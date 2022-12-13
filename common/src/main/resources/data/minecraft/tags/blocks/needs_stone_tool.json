@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "underground_overhaul:rough_lazurite_block"
+    "underground_overhaul:rough_lazurite_block",
+    "underground_overhaul:nephrite",
+    "underground_overhaul:carved_nephrite"
   ]
 }

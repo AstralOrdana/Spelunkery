@@ -6,7 +6,8 @@
   "client": [
   ],
   "mixins": [
-    "MixinBiomeDefaultFeatures"
+    "MixinBiomeDefaultFeatures",
+    "ExperienceOrbMixin"
   ],
   "injectors": {
     "defaultRequire": 1

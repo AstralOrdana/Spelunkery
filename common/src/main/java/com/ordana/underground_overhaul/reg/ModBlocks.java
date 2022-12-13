@@ -2,6 +2,8 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
+import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
+import com.ordana.underground_overhaul.blocks.nephrite.NephriteSpout;
 import com.ordana.underground_overhaul.blocks.rock_salt.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -112,10 +114,9 @@ public class ModBlocks {
             new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROCK_SALT_STAIRS = regWithItem("rock_salt_stairs", () ->
             new RockSaltStairs(ROCK_SALT_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
-    /*
     public static final Supplier<Block> ROCK_SALT_WALL = regWithItem("rock_salt_wall", () ->
-            new WallBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
-*/
+            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+
 
     public static final Supplier<Block> ROCK_SALT_BRICKS = regWithItem("rock_salt_bricks", () ->
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
@@ -124,14 +125,18 @@ public class ModBlocks {
             new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
     public static final Supplier<Block> ROCK_SALT_BRICK_STAIRS = regWithItem("rock_salt_brick_stairs", () ->
             new RockSaltStairs(ROCK_SALT_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
-    /*
+
     public static final Supplier<Block> ROCK_SALT_BRICK_WALL = regWithItem("rock_salt_brick_wall", () ->
-            new WallBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
-*/
+            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
 
     //nephrite
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)));
+            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> CARVED_NEPHRITE = regWithItem("carved_nephrite", () ->
-            new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)));
+            new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+    public static final Supplier<Block> NEPHRITE_SIPHON = regWithItem("nephrite_siphon", () ->
+            new NephriteSiphonBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+    public static final Supplier<Block> NEPHRITE_SPOUT = regWithItem("nephrite_spout", () ->
+            new NephriteSpout(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+
 }

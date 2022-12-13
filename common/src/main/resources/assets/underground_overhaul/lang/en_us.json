@@ -23,5 +23,8 @@
   "item.underground_overhaul.rough_lazurite": "Rough Lazurite",
   "item.underground_overhaul.rough_cinnabar": "Rough Cinnabar",
   "item.underground_overhaul.rough_diamond": "Rough Diamond",
-  "item.underground_overhaul.rough_emerald": "Rough Emerald"
+  "item.underground_overhaul.rough_emerald": "Rough Emerald",
+
+  "block.underground_overhaul.nephrite": "Nephrite",
+  "block.underground_overhaul.carved_nephrite": "Carved Nephrite"
 }
