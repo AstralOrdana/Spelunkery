@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 12,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:tuff",
+          "probability": 0.8
+        },
+        "state": {
+          "Name": "minecraft:deepslate_gold_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:granite",
+          "probability": 0.8
+        },
+        "state": {
+          "Name": "minecraft:copper_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:andesite",
+          "probability": 0.8
+        },
+        "state": {
+          "Name": "minecraft:iron_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:diorite",
+          "probability": 0.8
+        },
+        "state": {
+          "Name": "minecraft:coal_ore"
+        }
+      }
+    ]
+  }
+}

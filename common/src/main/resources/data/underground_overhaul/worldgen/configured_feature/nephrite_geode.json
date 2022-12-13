@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:geode",
+  "config": {
+    "blocks": {
+      "filling_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:sculk"
+        }
+      },
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "underground_overhaul:nephrite"
+        }
+      },
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:stone"
+        }
+      },
+      "middle_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "underground_overhaul:nephrite"
+        }
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:stone"
+        }
+      },
+      "inner_placements": [
+        {
+          "Name": "minecraft:stone"
+        }
+      ],
+      "cannot_replace": "#minecraft:features_cannot_replace",
+      "invalid_blocks": "#minecraft:geode_invalid_blocks"
+    },
+    "layers": {
+      "filling": 0.2,
+      "inner_layer": 3,
+      "middle_layer": 3.4,
+      "outer_layer": 4
+    },
+    "crack": {
+      "generate_crack_chance": 0,
+      "base_crack_size": 0,
+      "crack_point_offset": 0
+    },
+    "noise_multiplier": 0,
+    "use_potential_placements_chance": 0,
+    "use_alternate_layer0_chance": 0,
+    "placements_require_layer0_alternate": true,
+    "outer_wall_distance": 4,
+    "distribution_points": 4,
+    "min_gen_offset": -16,
+    "max_gen_offset": 16,
+    "invalid_blocks_threshold": 1
+  }
+}

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    //"underground_overhaul:rock_salt_wall",
-    //"underground_overhaul:rock_salt_brick_wall"
+    "underground_overhaul:rock_salt_wall",
+    "underground_overhaul:rock_salt_brick_wall"
   ]
 }

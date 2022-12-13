@@ -3,6 +3,8 @@ package com.ordana.underground_overhaul.blocks.nephrite;
 import com.ordana.underground_overhaul.blocks.entity.CarvedNephriteBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -37,6 +39,8 @@ public class NephriteSiphonBlock extends Block {
             if ((chosenNeighbor.getCharge() + xpOrb.getValue()) < 100) {
                 chosenNeighbor.setCharge(chosenNeighbor.getCharge() + xpOrb.getValue());
                 xpOrb.discard();
+                float f = level.random.nextFloat();
+                level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, f * 0.9F, (f + 1F) / 2 );
             }
         }
 
@@ -44,6 +48,8 @@ public class NephriteSiphonBlock extends Block {
             if ((player.totalExperience > 0 || player.experienceLevel >= 0) && chosenNeighbor.getCharge() < 100) {
                 chosenNeighbor.setCharge(chosenNeighbor.getCharge() + 1);
                 player.giveExperiencePoints(-1);
+                float f = level.random.nextFloat();
+                level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, f * 0.9F, ((f + 1F) / 2) -0.3f );
             }
         }
     }

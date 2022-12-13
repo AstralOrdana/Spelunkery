@@ -26,5 +26,7 @@
   "item.underground_overhaul.rough_emerald": "Rough Emerald",
 
   "block.underground_overhaul.nephrite": "Nephrite",
-  "block.underground_overhaul.carved_nephrite": "Carved Nephrite"
+  "block.underground_overhaul.carved_nephrite": "Carved Nephrite",
+  "block.underground_overhaul.nephrite_siphon": "Nephrite Siphon",
+  "block.underground_overhaul.nephrite_spout": "Nephrite Spout"
 }

@@ -53,22 +53,6 @@ public class CarvedNephriteBlock extends BaseEntityBlock {
         return new CarvedNephriteBlockEntity(pos, state);
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        if (!level.isClientSide) {
-            if (level.getBlockEntity(pos) instanceof CarvedNephriteBlockEntity selfTile) {
-
-                if (player.getMainHandItem().is(Items.DIAMOND)) {
-                    if (selfTile.getCharge() < 100) {
-                        selfTile.setCharge(100);
-                    }
-                }
-                return InteractionResult.SUCCESS;
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {

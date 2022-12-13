@@ -19,12 +19,12 @@ public class RockSaltWall extends WallBlock implements RockSalt {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return super.getShape(state.setValue(ILLUMINATED, false), level, pos, context);
+        return super.getShape(state.setValue(ILLUMINATED, true), level, pos, context);
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return super.getCollisionShape(state.setValue(ILLUMINATED, false), level, pos, context);
+        return super.getCollisionShape(state.setValue(ILLUMINATED, true), level, pos, context);
     }
 
     @Override

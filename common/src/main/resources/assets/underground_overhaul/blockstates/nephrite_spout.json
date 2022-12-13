@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,powered=false": {
+      "model": "minecraft:block/tripwire_hook",
+      "y": 90
+    },
+    "facing=east,powered=true": {
+      "model": "minecraft:block/tripwire_hook_on",
+      "y": 90
+    },
+    "facing=north,powered=false": {
+      "model": "minecraft:block/tripwire_hook"
+    },
+    "facing=north,powered=true": {
+      "model": "minecraft:block/tripwire_hook_on"
+    },
+    "facing=south,powered=false": {
+      "model": "minecraft:block/tripwire_hook",
+      "y": 180
+    },
+    "facing=south,powered=true": {
+      "model": "minecraft:block/tripwire_hook_on",
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "minecraft:block/tripwire_hook",
+      "y": 270
+    },
+    "facing=west,powered=true": {
+      "model": "minecraft:block/tripwire_hook_on",
+      "y": 270
+    }
+  }
+}
