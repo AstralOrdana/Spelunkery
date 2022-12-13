@@ -114,8 +114,10 @@ public class ModBlocks {
             new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROCK_SALT_STAIRS = regWithItem("rock_salt_stairs", () ->
             new RockSaltStairs(ROCK_SALT_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
+
     public static final Supplier<Block> ROCK_SALT_WALL = regWithItem("rock_salt_wall", () ->
-            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+            new WallBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+
 
 
     public static final Supplier<Block> ROCK_SALT_BRICKS = regWithItem("rock_salt_bricks", () ->
@@ -127,7 +129,8 @@ public class ModBlocks {
             new RockSaltStairs(ROCK_SALT_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
 
     public static final Supplier<Block> ROCK_SALT_BRICK_WALL = regWithItem("rock_salt_brick_wall", () ->
-            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+            new WallBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+
 
     //nephrite
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
