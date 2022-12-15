@@ -1,35 +1,31 @@
 package com.ordana.underground_overhaul.blocks.nephrite;
 
-import com.google.common.base.MoreObjects;
 import com.ordana.underground_overhaul.blocks.entity.CarvedNephriteBlockEntity;
+import com.ordana.underground_overhaul.blocks.entity.NephriteSpoutEntity;
+import com.ordana.underground_overhaul.reg.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class NephriteSpout extends Block {
+public class NephriteSpoutBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty POWERED;
     protected static final VoxelShape NORTH_AABB;
@@ -37,14 +33,18 @@ public class NephriteSpout extends Block {
     protected static final VoxelShape WEST_AABB;
     protected static final VoxelShape EAST_AABB;
 
-    public NephriteSpout(Properties properties) {
+    public NephriteSpoutBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false));
     }
 
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState blockState = this.defaultBlockState().setValue(POWERED, false);
+        BlockState blockState = this.defaultBlockState().setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
         LevelReader levelReader = context.getLevel();
         BlockPos blockPos = context.getClickedPos();
         Direction[] directions = context.getNearestLookingDirections();
@@ -83,6 +83,13 @@ public class NephriteSpout extends Block {
         if (state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
             level.setBlock(pos, state.cycle(POWERED), 2);
         }
+    }
+
+    /*
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
+            level.setBlock(pos, state.cycle(POWERED), 2);
+        }
         for (Direction direction : Direction.values()) {
             if (direction.equals(Direction.UP)) continue;
 
@@ -92,13 +99,11 @@ public class NephriteSpout extends Block {
             }
         }
     }
+     */
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED);
     }
-
-
-
 
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -126,23 +131,6 @@ public class NephriteSpout extends Block {
         return direction.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
-
-    public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        if (!(Boolean)state.getValue(POWERED)) {
-            return 0;
-        } else {
-            return state.getValue(FACING) == direction ? 15 : 0;
-        }
-    }
-
-    public boolean isSignalSource(BlockState state) {
-        return true;
-    }
-
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
@@ -151,7 +139,21 @@ public class NephriteSpout extends Block {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new NephriteSpoutEntity(pos, state);
+    }
 
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if (!level.isClientSide) {
+            return createTickerHelper(blockEntityType, ModEntities.NEPHRITE_SPOUT.get(), NephriteSpoutEntity::tickBlock);
+        } else {
+            return super.getTicker(level, state, blockEntityType);
+        }
+    }
 
     static {
         FACING = HorizontalDirectionalBlock.FACING;

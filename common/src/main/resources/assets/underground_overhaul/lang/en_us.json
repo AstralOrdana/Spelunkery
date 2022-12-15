@@ -1,4 +1,10 @@
 {
+  "tooltip.underground_overhaul.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
+  "tooltip.underground_overhaul.nephrite_charm_2": "Hold Crouch for more details.",
+  "tooltip.underground_overhaul.nephrite_charm_3": "  Stores up to 30 Levels",
+  "tooltip.underground_overhaul.nephrite_charm_4": "  Crouch + right-click to store, right click to retrieve",
+  "tooltip.underground_overhaul.nephrite_charm_5": "  Additionally, hold Ctrl to store or retrieve incrementally",
+
   "entity.underground_overhaul.mod_entity": "Mod Entity",
   "item.underground_overhaul.mod_item": "Mod Item",
 
@@ -20,6 +26,7 @@
   "block.underground_overhaul.rough_diamond_block": "Rough Diamond Block",
   "block.underground_overhaul.rough_emerald_block": "Rough Emerald Block",
 
+  "item.underground_overhaul.cinnabar": "Cinnabar",
   "item.underground_overhaul.rough_lazurite": "Rough Lazurite",
   "item.underground_overhaul.rough_cinnabar": "Rough Cinnabar",
   "item.underground_overhaul.rough_diamond": "Rough Diamond",
@@ -28,5 +35,7 @@
   "block.underground_overhaul.nephrite": "Nephrite",
   "block.underground_overhaul.carved_nephrite": "Carved Nephrite",
   "block.underground_overhaul.nephrite_siphon": "Nephrite Siphon",
-  "block.underground_overhaul.nephrite_spout": "Nephrite Spout"
+  "block.underground_overhaul.nephrite_spout": "Nephrite Spout",
+  "block.underground_overhaul.nephrite_diode": "Nephrite Diode",
+  "item.underground_overhaul.nephrite_charm": "Nephrite Charm"
 }

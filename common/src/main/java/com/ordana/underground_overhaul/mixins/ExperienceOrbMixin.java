@@ -19,7 +19,7 @@ public class ExperienceOrbMixin {
         if (siphonPos.isEmpty()) return;
 
 
-        Vec3 vec3 = new Vec3((siphonPos.get().getX() + 0.5) - ((ExperienceOrb) (Object) this).getX(), (siphonPos.get().getY() + 1) - ((ExperienceOrb) (Object) this).getY(), (siphonPos.get().getZ() + 0.5) - ((ExperienceOrb) (Object) this).getZ());
+        Vec3 vec3 = new Vec3((siphonPos.get().getX() + 0.5) - ((ExperienceOrb) (Object) this).getX(), (siphonPos.get().getY() + 0.5) - ((ExperienceOrb) (Object) this).getY(), (siphonPos.get().getZ() + 0.5) - ((ExperienceOrb) (Object) this).getZ());
         double d = vec3.lengthSqr();
         if (d < 64.0D) {
             double e = 1.0D - Math.sqrt(d) / 8.0D;

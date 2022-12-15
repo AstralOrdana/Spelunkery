@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=east,powered=false": {
-      "model": "minecraft:block/tripwire_hook",
+      "model": "underground_overhaul:block/nephrite_spout_closed",
       "y": 90
     },
     "facing=east,powered=true": {
-      "model": "minecraft:block/tripwire_hook_on",
+      "model": "underground_overhaul:block/nephrite_spout_open",
       "y": 90
     },
     "facing=north,powered=false": {
-      "model": "minecraft:block/tripwire_hook"
+      "model": "underground_overhaul:block/nephrite_spout_closed"
     },
     "facing=north,powered=true": {
-      "model": "minecraft:block/tripwire_hook_on"
+      "model": "underground_overhaul:block/nephrite_spout_open"
     },
     "facing=south,powered=false": {
-      "model": "minecraft:block/tripwire_hook",
+      "model": "underground_overhaul:block/nephrite_spout_closed",
       "y": 180
     },
     "facing=south,powered=true": {
-      "model": "minecraft:block/tripwire_hook_on",
+      "model": "underground_overhaul:block/nephrite_spout_open",
       "y": 180
     },
     "facing=west,powered=false": {
-      "model": "minecraft:block/tripwire_hook",
+      "model": "underground_overhaul:block/nephrite_spout_closed",
       "y": 270
     },
     "facing=west,powered=true": {
-      "model": "minecraft:block/tripwire_hook_on",
+      "model": "underground_overhaul:block/nephrite_spout_open",
       "y": 270
     }
   }

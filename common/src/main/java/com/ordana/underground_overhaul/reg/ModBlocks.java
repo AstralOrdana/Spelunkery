@@ -2,8 +2,9 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
+import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
-import com.ordana.underground_overhaul.blocks.nephrite.NephriteSpout;
+import com.ordana.underground_overhaul.blocks.nephrite.NephriteSpoutBlock;
 import com.ordana.underground_overhaul.blocks.rock_salt.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -15,7 +16,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -139,6 +139,7 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE_SIPHON = regWithItem("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE_SPOUT = regWithItem("nephrite_spout", () ->
-            new NephriteSpout(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
-
+            new NephriteSpoutBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+    public static final Supplier<Block> NEPHRITE_DIODE = regWithItem("nephrite_diode", () ->
+            new NephriteDiodeBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
 }

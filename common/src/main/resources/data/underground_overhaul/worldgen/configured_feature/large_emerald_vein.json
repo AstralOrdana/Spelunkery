@@ -21,11 +21,11 @@
             "threshold": 0.5,
             "high_chance": 0.2,
             "default_state": {
-              "Name": "minecraft:calcite"
+              "Name": "minecraft:andesite"
             },
             "low_states": [
               {
-                "Name": "minecraft:calcite"
+                "Name": "minecraft:andesite"
               },
               {
                 "Name": "minecraft:emerald_ore"
