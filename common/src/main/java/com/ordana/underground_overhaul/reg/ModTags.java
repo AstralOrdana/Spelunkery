@@ -14,8 +14,8 @@ public class ModTags {
     public static final TagKey<Block> STONE_TARGET = registerBlockTag("stone_target");
     public static final TagKey<Block> DEEPSLATE_TARGET = registerBlockTag("deepslate_target");
     public static final TagKey<Block> RIVER_TARGET = registerBlockTag("river_target");
-    //blocks
     public static final TagKey<Block> OCEAN_TARGET = registerBlockTag("ocean_target");
+    public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
 
     //items
     public static final TagKey<Item> ITEM = registerItemTag("item");
