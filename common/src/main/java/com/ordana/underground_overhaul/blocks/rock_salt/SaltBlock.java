@@ -2,18 +2,15 @@ package com.ordana.underground_overhaul.blocks.rock_salt;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.math.Vector3f;
 import com.ordana.underground_overhaul.reg.ModTags;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -25,16 +22,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 public class SaltBlock extends Block {
 
@@ -42,6 +39,7 @@ public class SaltBlock extends Block {
     public static final EnumProperty<RedstoneSide> EAST = BlockStateProperties.EAST_REDSTONE;
     public static final EnumProperty<RedstoneSide> SOUTH = BlockStateProperties.SOUTH_REDSTONE;
     public static final EnumProperty<RedstoneSide> WEST = BlockStateProperties.WEST_REDSTONE;
+    //public static final IntegerProperty BURNING = ModBlockProperties.BURNING;
 
 
     public static final Map<Direction, EnumProperty<RedstoneSide>> PROPERTY_BY_DIRECTION = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, NORTH, Direction.EAST, EAST, Direction.SOUTH, SOUTH, Direction.WEST, WEST));
@@ -64,9 +62,20 @@ public class SaltBlock extends Block {
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
         for (BlockState blockstate : this.getStateDefinition().getPossibleStates()) {
-            builder.put(blockstate, this.calculateVoxelShape(blockstate));
+                builder.put(blockstate, this.calculateVoxelShape(blockstate));
         }
         this.SHAPES_CACHE = builder.build();
+
+    }
+
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        if (context instanceof EntityCollisionContext c) {
+            var e = c.getEntity();
+            if (e instanceof LivingEntity livingEntity && livingEntity.isInvertedHealAndHarm()) {
+                return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 24.0D, 16.0D);
+            }
+        }
+        return Shapes.empty();
     }
 
     @Override
@@ -181,9 +190,19 @@ public class SaltBlock extends Block {
             if (redstoneside != RedstoneSide.NONE && !world.getBlockState(mutable.setWithOffset(pos, direction)).is(this)) {
                 mutable.move(Direction.DOWN);
                 BlockState blockstate = world.getBlockState(mutable);
-                BlockPos blockpos = mutable.relative(direction.getOpposite());
-                BlockState blockstate1 = blockstate.updateShape(direction.getOpposite(), world.getBlockState(blockpos), world, mutable, blockpos);
-                updateOrDestroy(blockstate, blockstate1, world, mutable, var1, var2);
+                if (!blockstate.is(Blocks.OBSERVER)) {
+                    BlockPos blockpos = mutable.relative(direction.getOpposite());
+                    BlockState blockstate1 = blockstate.updateShape(direction.getOpposite(), world.getBlockState(blockpos), world, mutable, blockpos);
+                    updateOrDestroy(blockstate, blockstate1, world, mutable, var1, var2);
+                }
+
+                mutable.setWithOffset(pos, direction).move(Direction.UP);
+                BlockState blockstate3 = world.getBlockState(mutable);
+                if (!blockstate3.is(Blocks.OBSERVER)) {
+                    BlockPos pos1 = mutable.relative(direction.getOpposite());
+                    BlockState blockstate2 = blockstate3.updateShape(direction.getOpposite(), world.getBlockState(pos1), world, mutable, pos1);
+                    updateOrDestroy(blockstate3, blockstate2, world, mutable, var1, var2);
+                }
             }
         }
 
@@ -217,11 +236,13 @@ public class SaltBlock extends Block {
     }
 
     private boolean canSurviveOn(BlockGetter world, BlockPos pos, BlockState state) {
-        return state.isFaceSturdy(world, pos, Direction.UP);
+        return state.isFaceSturdy(world, pos, Direction.UP) || state.is(Blocks.HOPPER);
     }
 
-    protected boolean canConnectTo(BlockState state, BlockGetter level, BlockPos pos, @Nullable Direction dir) {
-        return state.is(ModTags.SALT_BLOCKS);
+    @SuppressWarnings("ConstantConditions")
+    protected boolean canConnectTo(BlockState state, BlockGetter world, BlockPos pos, @Nullable Direction dir) {
+        Block b = state.getBlock();
+        return state.is(ModTags.SALT_BLOCKS) || state.is(this);
     }
 
     @Override
@@ -253,6 +274,7 @@ public class SaltBlock extends Block {
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moving) {
         if (!oldState.is(state.getBlock()) && !world.isClientSide) {
             //doesn't ignite immediately
+            world.scheduleTick(pos, this, 2);
 
             for (Direction direction : Direction.Plane.VERTICAL) {
                 world.updateNeighborsAt(pos.relative(direction), this);
@@ -315,7 +337,8 @@ public class SaltBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-
+        InteractionResult lightUp = super.use(state, world, pos, player, hand, hit);
+        if (lightUp.consumesAction()) return lightUp;
         if (player.getAbilities().mayBuild) {
             if (isCross(state) || isDot(state)) {
                 BlockState blockstate = isCross(state) ? this.defaultBlockState() : this.crossState;
@@ -337,6 +360,16 @@ public class SaltBlock extends Block {
                 world.updateNeighborsAtExceptFromFacing(blockpos, newState.getBlock(), direction.getOpposite());
             }
         }
+    }
 
+    public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {
+        return false;
+    }
+
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && ((LivingEntity) entity).isInvertedHealAndHarm()) {
+            entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
+            entity.setRemainingFireTicks(8);
+        }
     }
 }

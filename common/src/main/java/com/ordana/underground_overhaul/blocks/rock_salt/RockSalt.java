@@ -62,6 +62,7 @@ public interface RockSalt {
     default void onEntityStepOn(BlockState state, Entity entity) {
         if (entity instanceof LivingEntity && ((LivingEntity) entity).isInvertedHealAndHarm()) {
             entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
+            entity.setRemainingFireTicks(8);
         }
     }
 

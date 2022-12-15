@@ -6,6 +6,7 @@ import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSpoutBlock;
 import com.ordana.underground_overhaul.blocks.rock_salt.*;
+import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
@@ -13,10 +14,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -107,7 +105,6 @@ public class ModBlocks {
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
                     .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
-
     public static final Supplier<Block> SALT = regWithItem("salt", () ->
             new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()));
 
@@ -115,13 +112,21 @@ public class ModBlocks {
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
     public static final Supplier<Block> ROCK_SALT_SLAB = regWithItem("rock_salt_slab", () ->
-            new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
+            new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get())));
     public static final Supplier<Block> ROCK_SALT_STAIRS = regWithItem("rock_salt_stairs", () ->
-            new RockSaltStairs(ROCK_SALT_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).sound(SoundType.CALCITE)));
+            new RockSaltStairs(ROCK_SALT_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get())));
     public static final Supplier<Block> ROCK_SALT_WALL = regWithItem("rock_salt_wall", () ->
-            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+            new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get())));
 
-
+    public static final Supplier<Block> POLISHED_ROCK_SALT = regWithItem("polished_rock_salt", () ->
+            new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
+                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
+    public static final Supplier<Block> POLISHED_ROCK_SALT_SLAB = regWithItem("polished_rock_salt_slab", () ->
+            new RockSaltSlab(BlockBehaviour.Properties.copy(POLISHED_ROCK_SALT.get())));
+    public static final Supplier<Block> POLISHED_ROCK_SALT_STAIRS = regWithItem("polished_rock_salt_stairs", () ->
+            new RockSaltStairs(POLISHED_ROCK_SALT.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_ROCK_SALT.get())));
+    public static final Supplier<Block> POLISHED_ROCK_SALT_WALL = regWithItem("polished_rock_salt_wall", () ->
+            new RockSaltWall(BlockBehaviour.Properties.copy(POLISHED_ROCK_SALT.get())));
 
     public static final Supplier<Block> ROCK_SALT_BRICKS = regWithItem("rock_salt_bricks", () ->
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
@@ -131,18 +136,27 @@ public class ModBlocks {
     public static final Supplier<Block> ROCK_SALT_BRICK_STAIRS = regWithItem("rock_salt_brick_stairs", () ->
             new RockSaltStairs(ROCK_SALT_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
     public static final Supplier<Block> ROCK_SALT_BRICK_WALL = regWithItem("rock_salt_brick_wall", () ->
-            new RockSaltWall(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).sound(SoundType.CALCITE)));
+            new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+
 
 
     //nephrite
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
             new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+    public static final Supplier<Block> NEPHRITE_SLAB = regWithItem("nephrite_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+    public static final Supplier<Block> NEPHRITE_STAIRS = regWithItem("nephrite_stairs", () ->
+            new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+    public static final Supplier<Block> NEPHRITE_WALL = regWithItem("nephrite_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+
+
     public static final Supplier<Block> CARVED_NEPHRITE = regWithItem("carved_nephrite", () ->
-            new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new CarvedNephriteBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_SIPHON = regWithItem("nephrite_siphon", () ->
-            new NephriteSiphonBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new NephriteSiphonBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_SPOUT = regWithItem("nephrite_spout", () ->
-            new NephriteSpoutBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new NephriteSpoutBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_DIODE = regWithItem("nephrite_diode", () ->
-            new NephriteDiodeBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new NephriteDiodeBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
 }

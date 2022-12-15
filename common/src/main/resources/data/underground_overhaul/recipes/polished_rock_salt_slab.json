@@ -1,8 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "##"
+    "###"
   ],
   "key": {
     "#": {
@@ -10,7 +9,7 @@
     }
   },
   "result": {
-    "item": "underground_overhaul:rock_salt_bricks",
-    "count": 4
+    "item": "underground_overhaul:polished_rock_salt_slab",
+    "count": 6
   }
 }

@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "underground_overhaul:polished_rock_salt"
+      "item": "underground_overhaul:rock_salt_block"
     }
   },
   "result": {
-    "item": "underground_overhaul:rock_salt_bricks",
+    "item": "underground_overhaul:polished_rock_salt",
     "count": 4
   }
 }

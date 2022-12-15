@@ -1,7 +1,6 @@
 {
-  "replace": false,
   "values": [
-    "underground_overhaul:rock_salt",
+    "underground_overhaul:salt",
     "underground_overhaul:rock_salt_block",
     "underground_overhaul:rock_salt_slab",
     "underground_overhaul:rock_salt_stairs",
@@ -13,14 +12,6 @@
     "underground_overhaul:rock_salt_bricks",
     "underground_overhaul:rock_salt_brick_slab",
     "underground_overhaul:rock_salt_brick_stairs",
-    "underground_overhaul:rock_salt_brick_wall",
-    "underground_overhaul:rough_lazurite_block",
-    "underground_overhaul:rough_cinnabar_block",
-    "underground_overhaul:rough_diamond_block",
-    "underground_overhaul:rough_emerald_block",
-    "underground_overhaul:nephrite",
-    "underground_overhaul:carved_nephrite",
-    "underground_overhaul:nephrite_spout",
-    "underground_overhaul:nephrite_siphon"
+    "underground_overhaul:rock_salt_brick_wall"
   ]
 }

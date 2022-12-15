@@ -3,6 +3,6 @@
   "ingredient": {
     "item": "underground_overhaul:rock_salt_block"
   },
-  "result": "underground_overhaul:rock_salt_slab",
-  "count": 2
+  "result": "underground_overhaul:polished_rock_salt_wall",
+  "count": 1
 }
