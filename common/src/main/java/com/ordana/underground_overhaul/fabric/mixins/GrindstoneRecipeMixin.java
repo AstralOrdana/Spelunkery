@@ -1,8 +1,4 @@
-package com.ordana.underground_overhaul.mixins;
-
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.GrindstoneBlock;
+package com.ordana.underground_overhaul.fabric.mixins;
 
 public class GrindstoneRecipeMixin {
 /*

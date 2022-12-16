@@ -144,11 +144,11 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
             new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE_SLAB = regWithItem("nephrite_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+            new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_STAIRS = regWithItem("nephrite_stairs", () ->
-            new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+            new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_WALL = regWithItem("nephrite_wall", () ->
-            new WallBlock(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
+            new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
 
     public static final Supplier<Block> CARVED_NEPHRITE = regWithItem("carved_nephrite", () ->

@@ -1,13 +1,9 @@
-package com.ordana.underground_overhaul.mixins;
+package com.ordana.underground_overhaul.fabric.mixins;
 
-import com.ordana.underground_overhaul.UndergroundOverhaul;
-import com.ordana.underground_overhaul.reg.ModFeatures;
-import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
