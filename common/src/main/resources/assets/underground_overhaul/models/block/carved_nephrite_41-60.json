@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "underground_overhaul:block/carved_nephrite_2"
+    "bottom": "underground_overhaul:block/carved_nephrite_full",
+    "top": "underground_overhaul:block/carved_nephrite_empty",
+    "side": "underground_overhaul:block/carved_nephrite_2"
   }
 }

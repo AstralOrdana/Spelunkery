@@ -34,12 +34,12 @@ public class NephriteCharmItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_1", getStoredXP(stack), "1395").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
         }
         if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-            tooltip.add(Component.translatable("tooltip.underground_overhaul.nephrite_charm_5").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
         }
     }
 

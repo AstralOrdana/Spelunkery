@@ -12,7 +12,7 @@ public class UndergroundOverhaulClient {
     }
 
     public static void setup() {
-        ClientPlatformHelper.registerRenderType(ModBlocks.ROCK_SALT.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
     }
 

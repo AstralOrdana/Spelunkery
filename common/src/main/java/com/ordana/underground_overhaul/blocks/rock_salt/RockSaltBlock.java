@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import org.jetbrains.annotations.Nullable;
 
-public class RockSaltBlock extends Block implements RockSalt{
+public class RockSaltBlock extends Block implements RockSalt {
     public RockSaltBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(ILLUMINATED, false));

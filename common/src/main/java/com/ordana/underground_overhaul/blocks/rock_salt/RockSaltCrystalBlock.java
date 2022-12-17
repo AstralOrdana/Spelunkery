@@ -36,12 +36,12 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
     public RockSaltCrystalBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.UP).setValue(ILLUMINATED, false));
-        this.upAabb = Block.box(3, 0.0D, 3, 13, 7, 13);
-        this.downAabb = Block.box(3, 9, 3, 13, 16.0D, 13);
-        this.northAabb = Block.box(3, 3, 9, 13, 13, 16.0D);
-        this.southAabb = Block.box(3, 3, 0.0D, 13, 13, 7);
-        this.eastAabb = Block.box(0.0D, 3, 3, 7, 13, 13);
-        this.westAabb = Block.box(9, 3, 3, 16.0D, 13, 13);
+        this.upAabb = Block.box(3, 0.0D, 3, 13, 12, 13);
+        this.downAabb = Block.box(3, 4, 3, 13, 16.0D, 13);
+        this.northAabb = Block.box(3, 3, 4, 13, 13, 16.0D);
+        this.southAabb = Block.box(3, 3, 0.0D, 13, 13, 12);
+        this.eastAabb = Block.box(0.0D, 3, 3, 12, 13, 13);
+        this.westAabb = Block.box(4, 3, 3, 16.0D, 13, 13);
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

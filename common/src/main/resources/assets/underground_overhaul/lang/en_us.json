@@ -1,9 +1,26 @@
 {
+  "tooltip.underground_overhaul.hold_crouch": "Hold Crouch for more details",
+
   "tooltip.underground_overhaul.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
-  "tooltip.underground_overhaul.nephrite_charm_2": "Hold Crouch for more details.",
-  "tooltip.underground_overhaul.nephrite_charm_3": "  Stores up to 30 Levels",
-  "tooltip.underground_overhaul.nephrite_charm_4": "  Crouch + right-click to store, right click to retrieve",
-  "tooltip.underground_overhaul.nephrite_charm_5": "  Additionally, hold Ctrl to store or retrieve incrementally",
+  "tooltip.underground_overhaul.nephrite_charm_2": "  Stores up to 30 Levels",
+  "tooltip.underground_overhaul.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
+  "tooltip.underground_overhaul.nephrite_charm_4": "  Additionally, hold Ctrl to store or retrieve incrementally",
+
+  "tooltip.underground_overhaul.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
+  "tooltip.underground_overhaul.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",
+  "tooltip.underground_overhaul.carved_nephrite_3": "  Use with a Nephrite Siphon, Fountain, and Diode",
+
+  "tooltip.underground_overhaul.nephrite_spout_1": "  Drains Charge from Carved Nephrite, converts to XP orbs",
+  "tooltip.underground_overhaul.nephrite_spout_2": "  Will only drain Charge from the Nephrite it is placed on",
+  "tooltip.underground_overhaul.nephrite_spout_3": "  Must be powered by Redstone to activate",
+
+  "tooltip.underground_overhaul.nephrite_siphon_1": "  Drains XP from any player that stands on it",
+  "tooltip.underground_overhaul.nephrite_siphon_2": "  Converts to Charge split among adjacent Carved Nephrite",
+  "tooltip.underground_overhaul.nephrite_siphon_3": "  Will also attract nearby XP orbs and convert them to Charge",
+
+  "tooltip.underground_overhaul.nephrite_diode_1": "  Transfers Charge from Carved Nephrite it's facing to the opposite side",
+  "tooltip.underground_overhaul.nephrite_diode_2": "  Transfers one at a time each time it receives a Redstone signal",
+  "tooltip.underground_overhaul.nephrite_diode_3": "  Can transfer Charge vertically and be pushed by Pistons",
 
   "entity.underground_overhaul.mod_entity": "Mod Entity",
   "item.underground_overhaul.mod_item": "Mod Item",
@@ -41,7 +58,7 @@
   "block.underground_overhaul.nephrite": "Nephrite",
   "block.underground_overhaul.carved_nephrite": "Carved Nephrite",
   "block.underground_overhaul.nephrite_siphon": "Nephrite Siphon",
-  "block.underground_overhaul.nephrite_spout": "Nephrite Spout",
+  "block.underground_overhaul.nephrite_spout": "Nephrite Fountain",
   "block.underground_overhaul.nephrite_diode": "Nephrite Diode",
   "item.underground_overhaul.nephrite_charm": "Nephrite Charm"
 }

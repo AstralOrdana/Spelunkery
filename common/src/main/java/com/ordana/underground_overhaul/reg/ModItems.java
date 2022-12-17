@@ -1,7 +1,7 @@
 package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
-import com.ordana.underground_overhaul.items.NephriteCharmItem;
+import com.ordana.underground_overhaul.items.*;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -32,5 +32,14 @@ public class ModItems {
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
             new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+
+    public static final Supplier<Item> CARVED_NEPHRITE = regItem("carved_nephrite", () ->
+            new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+    public static final Supplier<Item> NEPHRITE_SIPHON = regItem("nephrite_siphon", () ->
+            new NephriteSiphonItem(ModBlocks.NEPHRITE_SIPHON.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+    public static final Supplier<Item> NEPHRITE_SPOUT = regItem("nephrite_spout", () ->
+            new NephriteSpoutItem(ModBlocks.NEPHRITE_SPOUT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+    public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
+            new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 
 }

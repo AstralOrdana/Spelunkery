@@ -1,56 +1,108 @@
 {
   "variants": {
-    "illuminated=true,facing=down": {
-      "model": "underground_overhaul:block/rock_salt_lit",
-      "x": 180
-    },
-    "illuminated=true,facing=east": {
-      "model": "underground_overhaul:block/rock_salt_lit",
-      "x": 90,
-      "y": 90
-    },
-    "illuminated=true,facing=north": {
-      "model": "underground_overhaul:block/rock_salt_lit",
-      "x": 90
-    },
-    "illuminated=true,facing=south": {
-      "model": "underground_overhaul:block/rock_salt_lit",
-      "x": 90,
-      "y": 180
-    },
-    "illuminated=true,facing=up": {
-      "model": "underground_overhaul:block/rock_salt_lit"
-    },
-    "illuminated=true,facing=west": {
-      "model": "underground_overhaul:block/rock_salt_lit",
-      "x": 90,
-      "y": 270
-    },
-    "illuminated=false,facing=down": {
-      "model": "underground_overhaul:block/rock_salt",
-      "x": 180
-    },
-    "illuminated=false,facing=east": {
-      "model": "underground_overhaul:block/rock_salt",
-      "x": 90,
-      "y": 90
-    },
-    "illuminated=false,facing=north": {
-      "model": "underground_overhaul:block/rock_salt",
-      "x": 90
-    },
-    "illuminated=false,facing=south": {
-      "model": "underground_overhaul:block/rock_salt",
-      "x": 90,
-      "y": 180
-    },
-    "illuminated=false,facing=up": {
-      "model": "underground_overhaul:block/rock_salt"
-    },
-    "illuminated=false,facing=west": {
-      "model": "underground_overhaul:block/rock_salt",
-      "x": 90,
-      "y": 270
-    }
+    "illuminated=true,facing=down": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 180
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 180,
+        "y": -90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 180,
+        "y": 180
+      }
+    ],
+    "illuminated=true,facing=east": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "z": 90
+      }
+    ],
+    "illuminated=true,facing=north": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 90
+      }
+    ],
+    "illuminated=true,facing=south": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "illuminated=true,facing=up": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit"
+      }
+    ],
+    "illuminated=true,facing=west": [
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "illuminated=false,facing=down": [
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "x": 180
+      }
+    ],
+    "illuminated=false,facing=east": [
+      {
+        "model": "underground_overhaul:block/rock_salt_east"
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_east",
+        "z": 180
+      }
+    ],
+    "illuminated=false,facing=north": [
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "x": 90
+      }
+    ],
+    "illuminated=false,facing=south": [
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "illuminated=false,facing=up": [
+      {
+        "model": "underground_overhaul:block/rock_salt"
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "y": -90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "y": 180
+      }
+    ],
+    "illuminated=false,facing=west": [
+      {
+        "model": "underground_overhaul:block/rock_salt",
+        "x": 90,
+        "y": 270
+      }
+    ]
   }
 }

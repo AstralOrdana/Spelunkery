@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.Enumeration;
 import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -46,6 +47,27 @@ public class ModBlocks {
     private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
         return (state) -> (Boolean)state.getValue(ModBlockProperties.ILLUMINATED) ? litLevel : 0;
     }
+
+
+/*
+    private static ToIntFunction<BlockState> nephriteLightLevel(BlockState state, int litLevel) {
+        return CarvedNephriteBlock.ChargeState litState = state.getValue(CarvedNephriteBlock.CHARGE);
+
+        switch ((state) -> (Enumeration)state.getValue(CarvedNephriteBlock.CHARGE)) {
+            case EAST:
+            default:
+                return EAST_AABB;
+            case WEST:
+                return WEST_AABB;
+            case SOUTH:
+                return SOUTH_AABB;
+            case NORTH:
+                return NORTH_AABB;
+        }
+    }
+ */
+
+
 
     public static <T extends Block> Supplier<T> regBlock(String name, Supplier<T> block) {
         return RegHelper.registerBlock(UndergroundOverhaul.res(name), block);
@@ -151,12 +173,12 @@ public class ModBlocks {
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
 
-    public static final Supplier<Block> CARVED_NEPHRITE = regWithItem("carved_nephrite", () ->
+    public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
             new CarvedNephriteBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
-    public static final Supplier<Block> NEPHRITE_SIPHON = regWithItem("nephrite_siphon", () ->
+    public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
-    public static final Supplier<Block> NEPHRITE_SPOUT = regWithItem("nephrite_spout", () ->
+    public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
             new NephriteSpoutBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
-    public static final Supplier<Block> NEPHRITE_DIODE = regWithItem("nephrite_diode", () ->
+    public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
 }
