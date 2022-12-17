@@ -1,6 +1,44 @@
 {
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "underground_overhaul:block/rock_salt"
-  }
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "underground_overhaul:block/rock_salt_chunk",
+		"particle": "underground_overhaul:block/rock_salt_chunk"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 5],
+			"to": [12, 12, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-18, 0, 31]},
+			"faces": {
+				"north": {"uv": [8, 0, 12, 6], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 6], "texture": "#0"},
+				"south": {"uv": [0, 0, 4, 6], "texture": "#0"},
+				"west": {"uv": [12, 0, 16, 6], "texture": "#0"},
+				"up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+				"down": {"uv": [10.5, 4, 12, 5.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3, 0, 3],
+			"to": [7, 7, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-23, 0, 29]},
+			"faces": {
+				"north": {"uv": [0, 6, 2, 9.5], "texture": "#0"},
+				"east": {"uv": [2, 1.5, 4, 5], "texture": "#0"},
+				"south": {"uv": [2, 1, 4, 4.5], "texture": "#0"},
+				"west": {"uv": [0, 6, 2, 9.5], "texture": "#0"},
+				"up": {"uv": [2, 6, 4, 8], "texture": "#0"},
+				"down": {"uv": [10.5, 4, 12.5, 6], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [7.5, 4.75, -1],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
 }
