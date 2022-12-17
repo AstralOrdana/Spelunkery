@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "underground_overhaul:block/carved_nephrite_1-20"
+    "all": "underground_overhaul:block/carved_nephrite_1"
   }
 }
