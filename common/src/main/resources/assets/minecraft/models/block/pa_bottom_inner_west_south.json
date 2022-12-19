@@ -1,0 +1,11 @@
+{
+  "parent": "block/nocut_inner_stairs",
+  "textures": {
+    "bottom": "block/pa_default",
+    "top": "block/pa_lne",
+    "north": "block/pa_lne",
+	"south": "block/pa_default",
+	"west": "block/pa_lnw",
+	"east": "block/pa_default"
+  }
+}

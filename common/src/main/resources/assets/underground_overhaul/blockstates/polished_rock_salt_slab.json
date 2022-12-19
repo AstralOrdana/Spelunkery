@@ -4,7 +4,7 @@
       "model": "underground_overhaul:block/polished_rock_salt_slab"
     },
     "type=double,illuminated=false": {
-      "model": "underground_overhaul:block/polished_rock_salt"
+      "model": "underground_overhaul:block/polished_rock_salt_slab_double"
     },
     "type=top,illuminated=false": {
       "model": "underground_overhaul:block/polished_rock_salt_slab_top"
@@ -13,7 +13,7 @@
       "model": "underground_overhaul:block/polished_rock_salt_slab_lit"
     },
     "type=double,illuminated=true": {
-      "model": "underground_overhaul:block/polished_rock_salt_lit"
+      "model": "underground_overhaul:block/polished_rock_salt_slab_double"
     },
     "type=top,illuminated=true": {
       "model": "underground_overhaul:block/polished_rock_salt_slab_top_lit"

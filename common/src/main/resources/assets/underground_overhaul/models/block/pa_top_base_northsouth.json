@@ -2,9 +2,9 @@
   "parent": "block/nocut_stairs",
   "textures": {
     "bottom": "block/pa_default",
-    "top": "block/pa_vert",
-    "north": "block/pa_lne",
-	"south": "block/pa_lnw",
+    "top": "block/pa_lat",
+    "north": "block/pa_lsw",
+	"south": "block/pa_lse",
 	"west": "block/pa_lat",
 	"east": "block/pa_default"
   }
