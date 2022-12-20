@@ -17,6 +17,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -63,6 +64,9 @@ public interface RockSalt {
         if (entity instanceof LivingEntity && ((LivingEntity) entity).isInvertedHealAndHarm()) {
             entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
             entity.setRemainingFireTicks(8);
+        }
+        else if (entity instanceof Slime) {
+            entity.hurt(DamageSource.HOT_FLOOR, 8.0F);
         }
     }
 

@@ -30,7 +30,19 @@ public class CarvedNephriteBlock extends BaseEntityBlock {
     public static final EnumProperty<ChargeState> CHARGE = EnumProperty.create("charge", ChargeState.class);
 
     public CarvedNephriteBlock(Properties properties) {
-        super(properties);
+
+        super(properties.lightLevel((state) ->
+                switch (state.getValue(CarvedNephriteBlock.CHARGE)) {
+                    case EMPTY -> 0;
+                    case ONE_TO_TWENTY -> 1;
+                    case TWENTYONE_TO_FOURTY -> 2;
+                    case FOURTYONE_TO_SIXTY -> 3;
+                    case SIXTYONE_TO_EIGHTY -> 4;
+                    case EIGHTYONE_TO_NINETYNINE -> 5;
+                    case FULL -> 6;
+                }
+        ));
+
         this.registerDefaultState(this.stateDefinition.any().setValue(CHARGE, ChargeState.EMPTY));
     }
 

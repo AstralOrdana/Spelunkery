@@ -60,5 +60,8 @@
   "block.underground_overhaul.nephrite_siphon": "Nephrite Siphon",
   "block.underground_overhaul.nephrite_spout": "Nephrite Fountain",
   "block.underground_overhaul.nephrite_diode": "Nephrite Diode",
-  "item.underground_overhaul.nephrite_charm": "Nephrite Charm"
+  "item.underground_overhaul.nephrite_charm": "Nephrite Charm",
+
+
+  "block.underground_overhaul.glowstick": "Glowstick"
 }

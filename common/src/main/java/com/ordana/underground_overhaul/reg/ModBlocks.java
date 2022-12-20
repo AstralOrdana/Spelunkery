@@ -1,6 +1,7 @@
 package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
+import com.ordana.underground_overhaul.blocks.GlowstickBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
@@ -10,6 +11,7 @@ import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -44,30 +47,13 @@ public class ModBlocks {
         return state.getValue(ModBlockProperties.ILLUMINATED);
     }
 
-    private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
+    private static boolean ifNotEmpty(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return state.getValue(CarvedNephriteBlock.CHARGE) != CarvedNephriteBlock.ChargeState.EMPTY;
+    }
+
+        private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
         return (state) -> (Boolean)state.getValue(ModBlockProperties.ILLUMINATED) ? litLevel : 0;
     }
-
-
-/*
-    private static ToIntFunction<BlockState> nephriteLightLevel(BlockState state, int litLevel) {
-        return CarvedNephriteBlock.ChargeState litState = state.getValue(CarvedNephriteBlock.CHARGE);
-
-        switch ((state) -> (Enumeration)state.getValue(CarvedNephriteBlock.CHARGE)) {
-            case EAST:
-            default:
-                return EAST_AABB;
-            case WEST:
-                return WEST_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case NORTH:
-                return NORTH_AABB;
-        }
-    }
- */
-
-
 
     public static <T extends Block> Supplier<T> regBlock(String name, Supplier<T> block) {
         return RegHelper.registerBlock(UndergroundOverhaul.res(name), block);
@@ -174,11 +160,16 @@ public class ModBlocks {
 
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
-            new CarvedNephriteBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+            new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));
     public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
-            new NephriteSiphonBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
+            new NephriteSiphonBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
-            new NephriteSpoutBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
+            new NephriteSpoutBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
-            new NephriteDiodeBlock(BlockBehaviour.Properties.copy(CARVED_NEPHRITE.get())));
+            new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+
+
+    //mining gear
+    public static final Supplier<Block> GLOWSTICK = regBlock("glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
 }
