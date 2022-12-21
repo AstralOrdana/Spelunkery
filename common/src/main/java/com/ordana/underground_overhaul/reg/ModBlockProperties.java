@@ -10,8 +10,7 @@ import java.util.Locale;
 public class ModBlockProperties {
 
     public static final BooleanProperty ILLUMINATED = BooleanProperty.create("illuminated");
-    public static final BooleanProperty TEST = BooleanProperty.create("test");
-    public static final IntegerProperty CHARGED = IntegerProperty.create("charged", 0, 100);
+    public static final BooleanProperty TOP = BooleanProperty.create("top");
 
 
 

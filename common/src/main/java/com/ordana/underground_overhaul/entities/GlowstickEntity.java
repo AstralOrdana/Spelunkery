@@ -13,9 +13,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -40,14 +42,26 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
         return ModItems.GLOWSTICK.get();
     }
 
+    public static boolean canPlace (Level level, BlockPos pos, BlockState state) {
+        if (state.isAir()) return true;
+        else return false;
+    }
+
     public static void placeGlowstick(Level level, BlockPos pos, BlockHitResult hitResult) {
+
         Direction dir = hitResult.getDirection();
-        BlockState state = level.getBlockState(pos);
+        BlockPos replacePos = pos;
+        if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) replacePos = pos.relative(dir);
+        BlockState replaceState = level.getBlockState(replacePos);
+        if (!replaceState.isAir()) {
+            level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.GLOWSTICK.get())));
+        }
+        else if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) {
+            replacePos = pos.relative(dir);
+            level.setBlockAndUpdate(replacePos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
+        }
+        else level.setBlockAndUpdate(pos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
 
-            if (!(dir == Direction.DOWN)) level.setBlockAndUpdate(pos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
-            else level.setBlockAndUpdate(pos.relative(dir), ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
-
-        //else if (level instanceof ServerLevel) GlowstickBlock.getDrops(ModBlocks.GLOWSTICK.get().defaultBlockState(), (ServerLevel) level, pos, null);
     }
 
     public void tick() {
