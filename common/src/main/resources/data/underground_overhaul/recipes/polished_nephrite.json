@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "underground_overhaul:polished_nephrite"
+      "item": "underground_overhaul:nephrite"
     }
   },
   "result": {
-    "item": "underground_overhaul:carved_nephrite",
+    "item": "underground_overhaul:polished_nephrite",
     "count": 4
   }
 }

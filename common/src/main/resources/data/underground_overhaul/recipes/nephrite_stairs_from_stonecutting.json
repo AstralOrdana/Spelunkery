@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "underground_overhaul:nephrite"
+  },
+  "result": "underground_overhaul:nephrite_stairs",
+  "count": 1
+}

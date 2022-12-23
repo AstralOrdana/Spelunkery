@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S#C"
+  ],
+  "key": {
+    "#": {
+      "item": "underground_overhaul:nephrite"
+    },
+    "C": {
+      "item": "underground_overhaul:carved_nephrite"
+    },
+    "S": {
+      "item": "underground_overhaul:nephrite_siphon"
+    }
+  },
+  "result": {
+    "item": "underground_overhaul:nephrite_spout",
+    "count": 2
+  }
+}

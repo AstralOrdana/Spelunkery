@@ -1,10 +1,19 @@
 package com.ordana.underground_overhaul.blocks;
 
 import com.ordana.underground_overhaul.reg.ModBlockProperties;
+import com.ordana.underground_overhaul.reg.ModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -18,12 +27,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Iterator;
 
 public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     private static final int TICK_DELAY = 1;
@@ -31,14 +39,19 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty WATERLOGGED;
     public static final BooleanProperty TOP;
+    protected static final float AABB_OFFSET = 3.0F;
+    protected static final VoxelShape EAST_AABB;
+    protected static final VoxelShape WEST_AABB;
+    protected static final VoxelShape SOUTH_AABB;
+    protected static final VoxelShape NORTH_AABB;
 
-    protected RopeLadderBlock(Properties properties) {
+    public RopeLadderBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(TOP, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, TOP);
+        builder.add(WATERLOGGED, TOP, FACING);
     }
 
     public boolean canBeReplaced(BlockState state, BlockPlaceContext useContext) {
@@ -84,25 +97,17 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
             level.scheduleTick(currentPos, this, 1);
         }
 
-        return state;
-    }
-
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         return direction.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
+
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        switch(state.getValue(FACING)) {
-            case EAST:
-            default:
-                return EAST_AABB;
-            case WEST:
-                return WEST_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case NORTH:
-                return NORTH_AABB;
-        }
+        return switch (state.getValue(FACING)) {
+            case NORTH -> NORTH_AABB;
+            case SOUTH -> SOUTH_AABB;
+            case WEST -> WEST_AABB;
+            default -> EAST_AABB;
+        };
     }
 
     public BlockState rotate(BlockState state, Rotation rotation) {
@@ -113,66 +118,61 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
-
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockState blockState = state.setValue(TOP, this.isTop(level, pos));
-        if (state != blockState) {
+        if (!state.getValue(TOP) && !level.getBlockState(pos.above()).is(this)) {
+            level.destroyBlock(pos, true);
+        } else if (state != blockState) {
             level.setBlock(pos, blockState, 3);
         }
 
     }
 
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        Direction direction = state.getValue(FACING);
-        BlockPos blockPos = pos.relative(direction.getOpposite());
-        BlockState blockState = level.getBlockState(blockPos);
-        return direction.getAxis().isHorizontal() && blockState.isFaceSturdy(level, blockPos, direction) || level.getBlockState(pos.above()).is(this);
+    private boolean canAttachTo(BlockGetter blockReader, BlockPos pos, Direction direction) {
+        BlockState blockState = blockReader.getBlockState(pos);
+        return blockState.isFaceSturdy(blockReader, pos, direction);
     }
 
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if (context.isAbove(Shapes.block(), pos, true) && !context.isDescending()) {
-            return STABLE_SHAPE;
-        } else {
-            return (Integer)state.getValue(DISTANCE) != 0 && (Boolean)state.getValue(BOTTOM) && context.isAbove(BELOW_BLOCK, pos, true) ? UNSTABLE_SHAPE_BOTTOM : Shapes.empty();
-        }
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        Direction direction = state.getValue(FACING);
+        return this.canAttachTo(level, pos.relative(direction.getOpposite()), direction) || level.getBlockState(pos.above()).is(this);
     }
 
     public FluidState getFluidState(BlockState state) {
-        return (Boolean)state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     private boolean isTop(BlockGetter level, BlockPos pos) {
         return !level.getBlockState(pos.above()).is(this);
     }
 
-    public static int getDistance(BlockGetter level, BlockPos pos) {
-        BlockPos.MutableBlockPos mutableBlockPos = pos.mutable().move(Direction.DOWN);
-        BlockState blockState = level.getBlockState(mutableBlockPos);
-        int i = 7;
-        if (blockState.is(Blocks.SCAFFOLDING)) {
-            i = (Integer)blockState.getValue(DISTANCE);
-        } else if (blockState.isFaceSturdy(level, mutableBlockPos, Direction.UP)) {
-            return 0;
-        }
-
-        Iterator var5 = Direction.Plane.HORIZONTAL.iterator();
-
-        while(var5.hasNext()) {
-            Direction direction = (Direction)var5.next();
-            BlockState blockState2 = level.getBlockState(mutableBlockPos.setWithOffset(pos, direction));
-            if (blockState2.is(Blocks.SCAFFOLDING)) {
-                i = Math.min(i, (Integer)blockState2.getValue(DISTANCE) + 1);
-                if (i == 1) {
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+        if (isTop(level, pos) && player.isCrouching()) {
+            int i = 0;
+            while (i < 7) {
+                BlockState belowState = level.getBlockState(pos.below(i + 1));
+                //BlockPos.MutableBlockPos mutableBlockPos = pos.mutable().move(Direction.DOWN);
+                if (!belowState.is(this)) {
+                    level.destroyBlock(pos.below(i), false);
+                    if (!player.isCreative()) player.addItem(new ItemStack(ModItems.ROPE_LADDER.get()));
                     break;
                 }
-            }
-        }
 
-        return i;
+                else i++;
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        else return InteractionResult.PASS;
     }
 
     static {
         WATERLOGGED = BlockStateProperties.WATERLOGGED;
         TOP = ModBlockProperties.TOP;
+        FACING = HorizontalDirectionalBlock.FACING;
+        EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 3.0D, 16.0D, 16.0D);
+        WEST_AABB = Block.box(13.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        SOUTH_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 3.0D);
+        NORTH_AABB = Block.box(0.0D, 0.0D, 13.0D, 16.0D, 16.0D, 16.0D);
     }
 }

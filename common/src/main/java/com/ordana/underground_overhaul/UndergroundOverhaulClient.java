@@ -18,6 +18,7 @@ public class UndergroundOverhaulClient {
     public static void setup() {
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.ROPE_LADDER.get(), RenderType.cutout());
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "underground_overhaul:block/rope_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "underground_overhaul:block/rope_ladder"
+    },
+    "facing=south": {
+      "model": "underground_overhaul:block/rope_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underground_overhaul:block/rope_ladder",
+      "y": 270
+    }
+  }
+}

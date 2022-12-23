@@ -4,7 +4,7 @@
       "model": "underground_overhaul:block/nephrite_slab"
     },
     "type=double": {
-      "model": "underground_overhaul:block/nephrite_exposed"
+      "model": "underground_overhaul:block/nephrite"
     },
     "type=top,": {
       "model": "underground_overhaul:block/nephrite_slab_top"

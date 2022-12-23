@@ -11,7 +11,7 @@
       "inner_layer_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "underground_overhaul:nephrite"
+          "Name": "underground_overhaul:raw_nephrite"
         }
       },
       "alternate_inner_layer_provider": {
@@ -23,7 +23,7 @@
       "middle_layer_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "underground_overhaul:nephrite"
+          "Name": "underground_overhaul:raw_nephrite"
         }
       },
       "outer_layer_provider": {

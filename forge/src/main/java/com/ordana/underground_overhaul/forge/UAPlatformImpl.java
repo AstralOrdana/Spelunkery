@@ -10,4 +10,5 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public class UAPlatformImpl {
     public static void addFeatureToBiome(GenerationStep.Decoration step, TagKey<Biome> tagKey, ResourceKey<PlacedFeature> feature) {
     }
+
 }

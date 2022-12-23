@@ -2,6 +2,7 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.blocks.GlowstickBlock;
+import com.ordana.underground_overhaul.blocks.RopeLadderBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
@@ -149,14 +150,18 @@ public class ModBlocks {
 
 
     //nephrite
-    public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
+    public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->
             new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+    public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
+            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE_SLAB = regWithItem("nephrite_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_STAIRS = regWithItem("nephrite_stairs", () ->
             new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_WALL = regWithItem("nephrite_wall", () ->
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+    public static final Supplier<Block> POLISHED_NEPHRITE = regWithItem("polished_nephrite", () ->
+            new Block(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
@@ -172,4 +177,6 @@ public class ModBlocks {
     //mining gear
     public static final Supplier<Block> GLOWSTICK = regBlock("glowstick", () ->
             new GlowstickBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
+    public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
+            new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
 }

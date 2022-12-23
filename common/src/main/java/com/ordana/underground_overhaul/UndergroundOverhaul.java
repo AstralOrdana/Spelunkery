@@ -30,7 +30,7 @@ public class UndergroundOverhaul {
         ModBlocks.init();
         ModItems.init();
         ModEntities.init();
-        ModRecipes.init();
+        //ModRecipes.init();
     }
 
 }
