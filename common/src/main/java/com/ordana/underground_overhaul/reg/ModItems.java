@@ -42,12 +42,46 @@ public class ModItems {
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 
-
+    //mining gear
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
             new GlowstickItem(ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ROPE_LADDER = regItem("rope_ladder", () ->
             new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16)));
+
+    //glowsticks
+    public static final Supplier<Item> RED_GLOWSTICK = regItem("red_glowstick", () ->
+            new GlowstickItem(ModBlocks.RED_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> ORANGE_GLOWSTICK = regItem("orange_glowstick", () ->
+            new GlowstickItem(ModBlocks.ORANGE_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> YELLOW_GLOWSTICK = regItem("yellow_glowstick", () ->
+            new GlowstickItem(ModBlocks.YELLOW_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> LIME_GLOWSTICK = regItem("lime_glowstick", () ->
+            new GlowstickItem(ModBlocks.LIME_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> GREEN_GLOWSTICK = regItem("green_glowstick", () ->
+            new GlowstickItem(ModBlocks.GREEN_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> CYAN_GLOWSTICK = regItem("cyan_glowstick", () ->
+            new GlowstickItem(ModBlocks.CYAN_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> LIGHT_BLUE_GLOWSTICK = regItem("light_blue_glowstick", () ->
+            new GlowstickItem(ModBlocks.LIGHT_BLUE_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> BLUE_GLOWSTICK = regItem("blue_glowstick", () ->
+            new GlowstickItem(ModBlocks.BLUE_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> PURPLE_GLOWSTICK = regItem("purple_glowstick", () ->
+            new GlowstickItem(ModBlocks.PURPLE_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> MAGENTA_GLOWSTICK = regItem("magenta_glowstick", () ->
+            new GlowstickItem(ModBlocks.MAGENTA_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> PINK_GLOWSTICK = regItem("pink_glowstick", () ->
+            new GlowstickItem(ModBlocks.PINK_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> BROWN_GLOWSTICK = regItem("brown_glowstick", () ->
+            new GlowstickItem(ModBlocks.BROWN_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> BLACK_GLOWSTICK = regItem("black_glowstick", () ->
+            new GlowstickItem(ModBlocks.BLACK_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> WHITE_GLOWSTICK = regItem("white_glowstick", () ->
+            new GlowstickItem(ModBlocks.WHITE_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> GRAY_GLOWSTICK = regItem("gray_glowstick", () ->
+            new GlowstickItem(ModBlocks.GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> LIGHT_GRAY_GLOWSTICK = regItem("light_gray_glowstick", () ->
+            new GlowstickItem(ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
 }

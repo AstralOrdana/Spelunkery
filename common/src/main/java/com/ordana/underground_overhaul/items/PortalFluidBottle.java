@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -71,7 +72,7 @@ public class PortalFluidBottle extends Item {
         Optional<Vec3> a = Player.findRespawnPositionAndUseSpawnBlock(destination, spawn, 0, true, true);
         if(a.isPresent()){
             BlockState blockState = destination.getBlockState(spawn);
-            if(blockState.is(BlockTags.BEDS)){
+            if(blockState.is(BlockTags.BEDS) || blockState.is(Blocks.RESPAWN_ANCHOR)) {
                 spawn = new BlockPos(a.get());
             }
             else {

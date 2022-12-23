@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "underground_overhaul:item/glowstick"
+    "layer0": "underground_overhaul:item/light_gray_glowstick"
   }
 }

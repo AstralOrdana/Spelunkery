@@ -179,4 +179,40 @@ public class ModBlocks {
             new GlowstickBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
     public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
             new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
+
+    //glowsticks
+    public static final Supplier<Block> RED_GLOWSTICK = regBlock("red_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> ORANGE_GLOWSTICK = regBlock("orange_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> YELLOW_GLOWSTICK = regBlock("yellow_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> LIME_GLOWSTICK = regBlock("lime_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> GREEN_GLOWSTICK = regBlock("green_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> CYAN_GLOWSTICK = regBlock("cyan_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> LIGHT_BLUE_GLOWSTICK = regBlock("light_blue_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> BLUE_GLOWSTICK = regBlock("blue_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> PURPLE_GLOWSTICK = regBlock("purple_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> MAGENTA_GLOWSTICK = regBlock("magenta_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> PINK_GLOWSTICK = regBlock("pink_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> BROWN_GLOWSTICK = regBlock("brown_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> BLACK_GLOWSTICK = regBlock("black_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> WHITE_GLOWSTICK = regBlock("white_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> GRAY_GLOWSTICK = regBlock("gray_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+    public static final Supplier<Block> LIGHT_GRAY_GLOWSTICK = regBlock("light_gray_glowstick", () ->
+            new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
+
+
 }

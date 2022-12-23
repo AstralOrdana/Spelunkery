@@ -73,8 +73,23 @@
   "block.underground_overhaul.nephrite_diode": "Nephrite Diode",
   "item.underground_overhaul.nephrite_charm": "Nephrite Charm",
 
-
   "block.underground_overhaul.glowstick": "Glowstick",
-  "block.underground_overhaul.rope_ladder": "Rope Ladder"
+  "block.underground_overhaul.rope_ladder": "Rope Ladder",
 
+  "block.underground_overhaul.red_glowstick": "Red Glowstick",
+  "block.underground_overhaul.orange_glowstick": "Orange Glowstick",
+  "block.underground_overhaul.yellow_glowstick": "Yellow Glowstick",
+  "block.underground_overhaul.lime_glowstick": "Lime Glowstick",
+  "block.underground_overhaul.green_glowstick": "Green Glowstick",
+  "block.underground_overhaul.cyan_glowstick": "Cyan Glowstick",
+  "block.underground_overhaul.light_blue_glowstick": "Light Blue Glowstick",
+  "block.underground_overhaul.blue_glowstick": "Blue Glowstick",
+  "block.underground_overhaul.purple_glowstick": "Purple Glowstick",
+  "block.underground_overhaul.magenta_glowstick": "Magenta Glowstick",
+  "block.underground_overhaul.pink_glowstick": "Pink Glowstick",
+  "block.underground_overhaul.brown_glowstick": "Brown Glowstick",
+  "block.underground_overhaul.black_glowstick": "Black Glowstick",
+  "block.underground_overhaul.white_glowstick": "White Glowstick",
+  "block.underground_overhaul.gray_glowstick": "Gray Glowstick",
+  "block.underground_overhaul.light_gray_glowstick": "Light Gray Glowstick"
 }

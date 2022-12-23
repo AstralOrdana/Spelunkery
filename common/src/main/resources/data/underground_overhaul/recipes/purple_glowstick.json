@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underground_overhaul:glowstick"
+    },
+    "X": {
+      "item": "minecraft:purple_dye"
+    }
+  },
+  "result": {
+    "item": "underground_overhaul:purple_glowstick",
+    "count": 8
+  }
+}
