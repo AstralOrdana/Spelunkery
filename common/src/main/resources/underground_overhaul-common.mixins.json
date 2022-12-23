@@ -1,13 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.ordana.underground_overhaul.fabric.mixins",
+  "package": "com.ordana.underground_overhaul.mixins",
   "compatibilityLevel": "JAVA_17",
   "client": [
   ],
   "mixins": [
-    "MixinBiomeDefaultFeatures",
-    "ExperienceOrbMixin"
+    "CryingObsidianMixin",
+    "ExperienceOrbMixin",
+    "MixinBiomeDefaultFeatures"
   ],
   "injectors": {
     "defaultRequire": 1

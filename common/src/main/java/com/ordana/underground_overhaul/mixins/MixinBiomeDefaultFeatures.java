@@ -1,4 +1,4 @@
-package com.ordana.underground_overhaul.fabric.mixins;
+package com.ordana.underground_overhaul.mixins;
 
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.CavePlacements;

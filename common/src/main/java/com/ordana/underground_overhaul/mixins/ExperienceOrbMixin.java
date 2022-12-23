@@ -1,4 +1,4 @@
-package com.ordana.underground_overhaul.fabric.mixins;
+package com.ordana.underground_overhaul.mixins;
 
 import com.ordana.underground_overhaul.reg.ModBlocks;
 import net.minecraft.core.BlockPos;

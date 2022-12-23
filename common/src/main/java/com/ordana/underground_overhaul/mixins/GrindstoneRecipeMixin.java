@@ -1,4 +1,4 @@
-package com.ordana.underground_overhaul.fabric.mixins;
+package com.ordana.underground_overhaul.mixins;
 
 public class GrindstoneRecipeMixin {
 /*
