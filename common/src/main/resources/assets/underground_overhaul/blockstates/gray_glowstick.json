@@ -1,28 +1,28 @@
 {
   "variants": {
     "facing=down": {
-      "model": "underground_overhaul:block/glowstick",
+      "model": "underground_overhaul:block/gray_glowstick",
       "x": 180
     },
     "facing=east": {
-      "model": "underground_overhaul:block/glowstick",
+      "model": "underground_overhaul:block/gray_glowstick",
       "x": 90,
       "y": 90
     },
     "facing=north": {
-      "model": "underground_overhaul:block/glowstick",
+      "model": "underground_overhaul:block/gray_glowstick",
       "x": 90
     },
     "facing=south": {
-      "model": "underground_overhaul:block/glowstick",
+      "model": "underground_overhaul:block/gray_glowstick",
       "x": 90,
       "y": 180
     },
     "facing=up": {
-      "model": "underground_overhaul:block/glowstick"
+      "model": "underground_overhaul:block/gray_glowstick"
     },
     "facing=west": {
-      "model": "underground_overhaul:block/glowstick",
+      "model": "underground_overhaul:block/gray_glowstick",
       "x": 90,
       "y": 270
     }

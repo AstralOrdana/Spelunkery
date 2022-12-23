@@ -1,0 +1,7 @@
+{
+  "parent": "underground_overhaul:block/glowstick",
+  "textures": {
+    "1": "underground_overhaul:block/magenta_glowstick",
+    "particle": "underground_overhaul:block/magenta_glowstick"
+  }
+}
