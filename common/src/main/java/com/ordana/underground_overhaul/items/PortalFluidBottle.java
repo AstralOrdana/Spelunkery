@@ -1,33 +1,47 @@
 package com.ordana.underground_overhaul.items;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Optional;
 
-public class PortalFluidBottle extends Item {
+public class PortalFluidBottle extends HoneyBottleItem {
     public PortalFluidBottle(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+        if (!Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+        }
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.portal_fluid_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.portal_fluid_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.portal_fluid_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+        }
     }
 
     public static final FoodProperties PORTAL_FLUID = (new FoodProperties.Builder()).nutrition(0).saturationMod(0F).alwaysEat().build();
@@ -45,12 +59,25 @@ public class PortalFluidBottle extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        if (livingEntity instanceof ServerPlayer) teleportTargetToPlayerSpawn((ServerPlayer) livingEntity);
-        ItemStack itemStack = super.finishUsingItem(stack, level, livingEntity);
-        if (livingEntity instanceof Player player && player.getAbilities().instabuild) {
-            return itemStack;
+        super.finishUsingItem(stack, level, livingEntity);
+        if (livingEntity instanceof ServerPlayer) {
+            ServerPlayer serverPlayer = (ServerPlayer)livingEntity;
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
+            serverPlayer.awardStat(Stats.ITEM_USED.get(this));
+            teleportTargetToPlayerSpawn((ServerPlayer) livingEntity);
         }
-        return new ItemStack(Items.GLASS_BOTTLE);
+
+        if (stack.isEmpty()) {
+            return new ItemStack(Items.GLASS_BOTTLE);
+        } else {
+            if (livingEntity instanceof Player player && !((Player)livingEntity).getAbilities().instabuild) {
+                ItemStack itemStack = new ItemStack(Items.GLASS_BOTTLE);
+                if (!player.getInventory().add(itemStack)) {
+                    player.drop(itemStack, false);
+                }
+            }
+            return stack;
+        }
     }
 
     void teleportTargetToPlayerSpawn(ServerPlayer player){
