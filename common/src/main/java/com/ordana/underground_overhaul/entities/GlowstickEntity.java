@@ -1,6 +1,9 @@
 package com.ordana.underground_overhaul.entities;
 
-import com.ordana.underground_overhaul.blocks.GlowstickBlock;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.ordana.underground_overhaul.items.GlowstickItem;
 import com.ordana.underground_overhaul.reg.ModBlocks;
 import com.ordana.underground_overhaul.reg.ModEntities;
 import com.ordana.underground_overhaul.reg.ModItems;
@@ -8,18 +11,23 @@ import net.mehvahdjukaar.moonlight.api.entity.ImprovedProjectileEntity;
 import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RodBlock;
 import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
@@ -28,7 +36,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.Optional;
+import java.util.function.Supplier;
+
 public class GlowstickEntity extends ImprovedProjectileEntity {
+    private static final EntityDataAccessor<Integer> DATA_GLOWSTICK_COLOR;
+
+
     public GlowstickEntity(EntityType<? extends GlowstickEntity> type, Level world) {
         super(type, world);
     }
@@ -37,9 +51,46 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
         super(ModEntities.GLOWSTICK.get(), thrower, level);
     }
 
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_GLOWSTICK_COLOR, DyeColor.RED.getId());
+    }
+
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putByte("GlowstickColor", (byte)this.getColor().getId());
+    }
+
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (compound.contains("GlowstickColor", 99)) {
+            this.setColor(DyeColor.byId(compound.getInt("GlowstickColor")));
+        }
+    }
+
+    public DyeColor getColor() {
+        return DyeColor.byId(this.entityData.get(DATA_GLOWSTICK_COLOR));
+    }
+
+    public void setColor(DyeColor glowstickColor) {
+        this.entityData.set(DATA_GLOWSTICK_COLOR, glowstickColor.getId());
+    }
+
     @Override
     protected Item getDefaultItem() {
         return ModItems.GLOWSTICK.get();
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        if (id == 3) {
+            ParticleOptions particle = ParticleTypes.GLOW;
+
+            for (int i = 0; i < 8; ++i) {
+                this.level.addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+
     }
 
     public static boolean canPlace (Level level, BlockPos pos, BlockState state) {
@@ -47,21 +98,82 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
         else return false;
     }
 
-    public static void placeGlowstick(Level level, BlockPos pos, BlockHitResult hitResult) {
+    public void placeGlowstick(Level level, BlockPos pos, BlockHitResult hitResult) {
 
         Direction dir = hitResult.getDirection();
         BlockPos replacePos = pos;
+        var glowstickCheck = getGlowstickBlock(this.getColor());
+        var glowstickItem = getGlowstick(this.getColor());
+
+
         if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) replacePos = pos.relative(dir);
         BlockState replaceState = level.getBlockState(replacePos);
         if (!replaceState.isAir()) {
-            level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.GLOWSTICK.get())));
+            if (glowstickItem.isPresent()) level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(glowstickItem.get())));
+            else level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.GLOWSTICK.get())));
         }
+
         else if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) {
             replacePos = pos.relative(dir);
-            level.setBlockAndUpdate(replacePos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
+            if (glowstickCheck.isPresent()) level.setBlockAndUpdate(replacePos, glowstickCheck.get().defaultBlockState().setValue(RodBlock.FACING, dir));
+            else level.setBlockAndUpdate(replacePos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
         }
-        else level.setBlockAndUpdate(pos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
+        else if (glowstickCheck.isPresent()) level.setBlockAndUpdate(pos, glowstickCheck.get().defaultBlockState().setValue(RodBlock.FACING, dir));
+        else level.setBlockAndUpdate(replacePos, ModBlocks.GLOWSTICK.get().defaultBlockState().setValue(RodBlock.FACING, dir));
 
+    }
+
+    Supplier<BiMap<DyeColor, Block>> DYE_TO_BLOCK = Suppliers.memoize(() -> {
+        var builder = ImmutableBiMap.<DyeColor, Block>builder()
+                .put(DyeColor.RED, ModBlocks.RED_GLOWSTICK.get())
+                .put(DyeColor.ORANGE, ModBlocks.ORANGE_GLOWSTICK.get())
+                .put(DyeColor.YELLOW, ModBlocks.YELLOW_GLOWSTICK.get())
+                .put(DyeColor.LIME, ModBlocks.LIME_GLOWSTICK.get())
+                .put(DyeColor.GREEN, ModBlocks.GREEN_GLOWSTICK.get())
+                .put(DyeColor.CYAN, ModBlocks.CYAN_GLOWSTICK.get())
+                .put(DyeColor.LIGHT_BLUE, ModBlocks.LIGHT_BLUE_GLOWSTICK.get())
+                .put(DyeColor.BLUE, ModBlocks.BLUE_GLOWSTICK.get())
+                .put(DyeColor.PURPLE, ModBlocks.PURPLE_GLOWSTICK.get())
+                .put(DyeColor.MAGENTA, ModBlocks.MAGENTA_GLOWSTICK.get())
+                .put(DyeColor.PINK, ModBlocks.PINK_GLOWSTICK.get())
+                .put(DyeColor.BROWN, ModBlocks.BROWN_GLOWSTICK.get())
+                .put(DyeColor.BLACK, ModBlocks.BLACK_GLOWSTICK.get())
+                .put(DyeColor.WHITE, ModBlocks.WHITE_GLOWSTICK.get())
+                .put(DyeColor.GRAY, ModBlocks.GRAY_GLOWSTICK.get())
+                .put(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get());
+        return builder.build();
+    });
+
+    public Optional<Block> getGlowstickBlock(DyeColor color) {
+        return Optional.ofNullable(DYE_TO_BLOCK.get().get(color));
+    }
+
+
+    Supplier<BiMap<Item, DyeColor>> ITEM_TO_DYE = Suppliers.memoize(() -> {
+        var builder = ImmutableBiMap.<Item, DyeColor>builder()
+                .put(ModItems.RED_GLOWSTICK.get(), DyeColor.RED)
+                .put(ModItems.ORANGE_GLOWSTICK.get(), DyeColor.ORANGE)
+                .put(ModItems.YELLOW_GLOWSTICK.get(), DyeColor.YELLOW)
+                .put(ModItems.LIME_GLOWSTICK.get(), DyeColor.LIME)
+                .put(ModItems.GREEN_GLOWSTICK.get(), DyeColor.GREEN)
+                .put(ModItems.CYAN_GLOWSTICK.get(), DyeColor.CYAN)
+                .put(ModItems.LIGHT_BLUE_GLOWSTICK.get(), DyeColor.LIGHT_BLUE)
+                .put(ModItems.BLUE_GLOWSTICK.get(), DyeColor.BLUE)
+                .put(ModItems.PURPLE_GLOWSTICK.get(), DyeColor.PURPLE)
+                .put(ModItems.MAGENTA_GLOWSTICK.get(), DyeColor.MAGENTA)
+                .put(ModItems.PINK_GLOWSTICK.get(), DyeColor.PINK)
+                .put(ModItems.BROWN_GLOWSTICK.get(), DyeColor.BROWN)
+                .put(ModItems.BLACK_GLOWSTICK.get(), DyeColor.BLACK)
+                .put(ModItems.WHITE_GLOWSTICK.get(), DyeColor.WHITE)
+                .put(ModItems.GRAY_GLOWSTICK.get(), DyeColor.GRAY)
+                .put(ModItems.LIGHT_GRAY_GLOWSTICK.get(), DyeColor.LIGHT_GRAY);
+        return builder.build();
+    });
+
+    Supplier<BiMap<DyeColor, Item>> DYE_TO_ITEM = Suppliers.memoize(() -> ITEM_TO_DYE.get().inverse());
+
+    public Optional<Item> getGlowstick(DyeColor color) {
+        return Optional.ofNullable(DYE_TO_ITEM.get().get(color));
     }
 
     public void tick() {
@@ -161,7 +273,7 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
                         this.level.addParticle(ParticleTypes.BUBBLE, posX - velX * 0.25D, pY - velY * 0.25D, posZ - velZ * 0.25D, velX, velY, velZ);
                     }
                 }
-                deceleration = this.waterDeceleration;
+                //deceleration = this.waterDeceleration;
             }
 
             this.setDeltaMovement(this.getDeltaMovement().scale(deceleration));
@@ -211,5 +323,9 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
         if (this.hasReachedEndOfLife()) {
             this.reachedEndOfLife();
         }
+    }
+
+    static {
+        DATA_GLOWSTICK_COLOR = SynchedEntityData.defineId(GlowstickEntity.class, EntityDataSerializers.INT);
     }
 }

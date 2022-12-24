@@ -6,7 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "CryingObsidianMixin",
     "ExperienceOrbMixin",
     "MixinBiomeDefaultFeatures"
   ],

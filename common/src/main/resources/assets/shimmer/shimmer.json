@@ -40,7 +40,7 @@
     { "block": "underground_overhaul:light_gray_glowstick" },
 
     { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true } },
-    { "block": "underground_overhaul:rock_salt_lamp", "state": { "illuminated": true } },
+    { "block": "underground_overhaul:salt_lamp", "state": { "illuminated": true } },
     { "block": "underground_overhaul:carved_nephrite", "state": { "charge": "FULL" } }
   ],
   "LightBlock": [
@@ -64,10 +64,7 @@
     { "block": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 14 },
 
     { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
-    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": true,"hanging": true,"illuminated": true }, "color": "#orange", "radius": 7 },
-    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": true,"hanging": false,"illuminated": true }, "color": "#orange", "radius": 7 },
-    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": false,"hanging": true,"illuminated": true }, "color": "#orange", "radius": 7 },
-    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": false,"hanging": false,"illuminated": true }, "color": "#orange", "radius": 7 }
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "illuminated": true }, "color": "#orange", "radius": 7 }
   ],
   "LightItem": [
     { "item_id": "underground_overhaul:glowstick", "color": "#glow", "radius": 7 },
