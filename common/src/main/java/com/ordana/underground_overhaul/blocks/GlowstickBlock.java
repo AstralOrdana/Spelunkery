@@ -10,10 +10,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LightningRodBlock;
-import net.minecraft.world.level.block.RodBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -22,8 +19,9 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.PushReaction;
 
-public class GlowstickBlock extends RodBlock implements SimpleWaterloggedBlock {
+public class GlowstickBlock extends EndRodBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED;
 
     public GlowstickBlock(Properties properties) {
@@ -73,8 +71,12 @@ public class GlowstickBlock extends RodBlock implements SimpleWaterloggedBlock {
         builder.add(FACING, WATERLOGGED);
     }
 
+    public PushReaction getPistonPushReaction(BlockState state) {
+        return PushReaction.NORMAL;
+    }
+
     public boolean isSignalSource(BlockState state) {
-        return true;
+        return false;
     }
 
     static {

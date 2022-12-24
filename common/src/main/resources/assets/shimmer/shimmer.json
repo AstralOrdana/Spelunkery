@@ -1,0 +1,92 @@
+{
+  "ColorReference": {
+    "glow": { "r": 75, "g": 222, "b": 186, "a": 200 },
+
+    "red": { "r": 192, "g": 53, "b": 69, "a": 200 },
+    "orange": { "r": 255, "g": 155, "b": 41, "a": 200 },
+    "yellow": { "r": 224, "g": 215, "b": 70, "a": 200 },
+    "lime": { "r": 115, "g": 188, "b": 18, "a": 200 },
+    "green": { "r": 114, "g": 157, "b": 18, "a": 200 },
+    "cyan": { "r": 23, "g": 210, "b": 210, "a": 200 },
+    "light_blue": { "r": 110, "g": 189, "b": 224, "a": 200 },
+    "blue": { "r": 90, "g": 132, "b": 208, "a": 200 },
+    "purple": { "r": 154, "g": 49, "b": 208, "a": 200 },
+    "magenta": { "r": 224, "g": 92, "b": 205, "a": 200 },
+    "pink": { "r": 255, "g": 160, "b": 191, "a": 200 },
+    "brown": { "r": 149, "g": 82, "b": 32, "a": 200 },
+    "black": { "r": 56, "g": 55, "b": 81, "a": 200 },
+    "white": { "r": 235, "g": 234, "b": 243, "a": 200 },
+    "gray": { "r": 114, "g": 137, "b": 150, "a": 255 },
+    "light_gray": { "r": 145, "g": 155, "b": 161, "a": 255 }
+  },
+  "Bloom": [
+    { "block": "underground_overhaul:glowstick" },
+
+    { "block": "underground_overhaul:red_glowstick" },
+    { "block": "underground_overhaul:orange_glowstick" },
+    { "block": "underground_overhaul:yellow_glowstick" },
+    { "block": "underground_overhaul:lime_glowstick" },
+    { "block": "underground_overhaul:green_glowstick" },
+    { "block": "underground_overhaul:cyan_glowstick" },
+    { "block": "underground_overhaul:light_blue_glowstick" },
+    { "block": "underground_overhaul:blue_glowstick" },
+    { "block": "underground_overhaul:purple_glowstick" },
+    { "block": "underground_overhaul:magenta_glowstick" },
+    { "block": "underground_overhaul:pink_glowstick" },
+    { "block": "underground_overhaul:brown_glowstick" },
+    { "block": "underground_overhaul:black_glowstick" },
+    { "block": "underground_overhaul:white_glowstick" },
+    { "block": "underground_overhaul:gray_glowstick" },
+    { "block": "underground_overhaul:light_gray_glowstick" },
+
+    { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true } },
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "illuminated": true } },
+    { "block": "underground_overhaul:carved_nephrite", "state": { "charge": "FULL" } }
+  ],
+  "LightBlock": [
+    { "block": "underground_overhaul:glowstick", "color": "#glow", "radius": 14 },
+
+    { "block": "underground_overhaul:red_glowstick", "color": "#red", "radius": 14 },
+    { "block": "underground_overhaul:orange_glowstick", "color": "#orange", "radius": 14 },
+    { "block": "underground_overhaul:yellow_glowstick", "color": "#yellow", "radius": 14 },
+    { "block": "underground_overhaul:lime_glowstick", "color": "#lime", "radius": 14 },
+    { "block": "underground_overhaul:green_glowstick", "color": "#green", "radius": 14 },
+    { "block": "underground_overhaul:cyan_glowstick", "color": "#cyan", "radius": 14 },
+    { "block": "underground_overhaul:light_blue_glowstick", "color": "#light_blue", "radius": 14 },
+    { "block": "underground_overhaul:blue_glowstick", "color": "#blue", "radius": 14 },
+    { "block": "underground_overhaul:purple_glowstick", "color": "#purple", "radius": 14 },
+    { "block": "underground_overhaul:magenta_glowstick", "color": "#magenta", "radius": 14 },
+    { "block": "underground_overhaul:pink_glowstick", "color": "#pink", "radius": 14 },
+    { "block": "underground_overhaul:brown_glowstick", "color": "#brown", "radius": 14 },
+    { "block": "underground_overhaul:black_glowstick", "color": "#black", "radius": 14 },
+    { "block": "underground_overhaul:white_glowstick", "color": "#white", "radius": 14 },
+    { "block": "underground_overhaul:gray_glowstick", "color": "#gray", "radius": 14 },
+    { "block": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 14 },
+
+    { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": true,"hanging": true,"illuminated": true }, "color": "#orange", "radius": 7 },
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": true,"hanging": false,"illuminated": true }, "color": "#orange", "radius": 7 },
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": false,"hanging": true,"illuminated": true }, "color": "#orange", "radius": 7 },
+    { "block": "underground_overhaul:rock_salt_lamp", "state": { "waterlogged": false,"hanging": false,"illuminated": true }, "color": "#orange", "radius": 7 }
+  ],
+  "LightItem": [
+    { "item_id": "underground_overhaul:glowstick", "color": "#glow", "radius": 7 },
+
+    { "item_id": "underground_overhaul:red_glowstick", "color": "#red", "radius": 7 },
+    { "item_id": "underground_overhaul:orange_glowstick", "color": "#orange", "radius": 7 },
+    { "item_id": "underground_overhaul:yellow_glowstick", "color": "#yellow", "radius": 7 },
+    { "item_id": "underground_overhaul:lime_glowstick", "color": "#lime", "radius": 7 },
+    { "item_id": "underground_overhaul:green_glowstick", "color": "#green", "radius": 7 },
+    { "item_id": "underground_overhaul:cyan_glowstick", "color": "#cyan", "radius": 7 },
+    { "item_id": "underground_overhaul:light_blue_glowstick", "color": "#light_blue", "radius": 7 },
+    { "item_id": "underground_overhaul:blue_glowstick", "color": "#blue", "radius": 7 },
+    { "item_id": "underground_overhaul:purple_glowstick", "color": "#purple", "radius": 7 },
+    { "item_id": "underground_overhaul:magenta_glowstick", "color": "#magenta", "radius": 7 },
+    { "item_id": "underground_overhaul:pink_glowstick", "color": "#pink", "radius": 7 },
+    { "item_id": "underground_overhaul:brown_glowstick", "color": "#brown", "radius": 7 },
+    { "item_id": "underground_overhaul:black_glowstick", "color": "#black", "radius": 7 },
+    { "item_id": "underground_overhaul:white_glowstick", "color": "#white", "radius": 7 },
+    { "item_id": "underground_overhaul:gray_glowstick", "color": "#gray", "radius": 7 },
+    { "item_id": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 7 }
+  ]
+}
