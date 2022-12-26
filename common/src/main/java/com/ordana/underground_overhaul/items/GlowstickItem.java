@@ -25,8 +25,11 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 public class GlowstickItem extends BlockItem {
-    public GlowstickItem(Block block, Properties properties) {
+    private final DyeColor color;
+
+    public GlowstickItem(DyeColor color, Block block, Properties properties) {
         super(block, properties);
+        this.color = color;
     }
 
     @Override
@@ -42,8 +45,7 @@ public class GlowstickItem extends BlockItem {
             glowstick.setItem(itemStack);
             glowstick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
 
-            var glowstickCheck = getGlowstick(this);
-            glowstickCheck.ifPresent(glowstick::setColor);
+            glowstick.setColor(this.color);
 
             level.addFreshEntity(glowstick);
         }

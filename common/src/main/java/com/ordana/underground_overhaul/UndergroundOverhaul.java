@@ -28,6 +28,7 @@ public class UndergroundOverhaul {
         ModBlocks.init();
         ModItems.init();
         ModEntities.init();
+        //ModItemProperties.init();
         //ModRecipes.init();
     }
 

@@ -39,4 +39,5 @@ public class UndergroundOverhaulFabric implements ModInitializer {
     public static InteractionResult onRightClickBlock(Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         return ModEvents.onBlockCLicked(player.getItemInHand(hand), player, level, hand, hitResult);
     }
+
 }

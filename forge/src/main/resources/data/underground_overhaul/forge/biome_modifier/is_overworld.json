@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "underground_overhaul:diamond_ore_lava",
+    "underground_overhaul:ore_aquifer",
+    "underground_overhaul:nephrite_geode"
+  ],
+  "step": "raw_generation"
+}

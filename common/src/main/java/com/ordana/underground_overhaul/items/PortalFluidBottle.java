@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PortalFluidBottle extends HoneyBottleItem {
+
     public PortalFluidBottle(Properties properties) {
         super(properties);
     }
@@ -90,6 +91,7 @@ public class PortalFluidBottle extends HoneyBottleItem {
         if (destination == null || !(spawnDimension.equals(serverWorld.dimension()))) {
             Vec3 pos = player.position();
             player.level.playSound(null, pos.x(), pos.y(), pos.z(), SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.PLAYERS, 1f, 1f);
+            player.displayClientMessage(Component.translatable("tooltip.underground_overhaul.portal_fluid_failure").setStyle(Style.EMPTY.applyFormat(ChatFormatting.RED)), true);
             return;
         }
 

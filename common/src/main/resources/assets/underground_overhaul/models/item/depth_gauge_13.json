@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "underground_overhaul:item/depth_gauge/depth_gauge_13"
+  }
+}
