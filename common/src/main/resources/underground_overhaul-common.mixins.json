@@ -7,9 +7,10 @@
   ],
   "mixins": [
     "ExperienceOrbMixin",
+    "InventoryMixin",
     "MixinBiomeDefaultFeatures",
-    "PlayerInventoryMixin",
-    "PlayerMixin"
+    "ServerPlayerMixin",
+    "SlimeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "top=false": {
+      "model": "underground_overhaul:block/tangle_roots_plant"
+    },
+    "top=true": {
+      "model": "underground_overhaul:block/tangle_roots_plant_top"
+    }
+  }
+}

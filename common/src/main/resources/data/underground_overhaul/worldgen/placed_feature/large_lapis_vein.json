@@ -2,6 +2,9 @@
   "feature": "underground_overhaul:large_lapis_vein",
   "placement": [
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 5,
       "noise_factor": 100,

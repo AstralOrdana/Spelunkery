@@ -4,7 +4,8 @@
   "features": [
     "underground_overhaul:diamond_ore_lava",
     "underground_overhaul:ore_aquifer",
-    "underground_overhaul:nephrite_geode"
+    "underground_overhaul:nephrite_geode",
+    "underground_overhaul:tangle_roots_ceiling"
   ],
   "step": "raw_generation"
 }

@@ -2,6 +2,9 @@
   "feature": "underground_overhaul:ore_aquifer",
   "placement": [
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 10,
       "noise_factor": 60,

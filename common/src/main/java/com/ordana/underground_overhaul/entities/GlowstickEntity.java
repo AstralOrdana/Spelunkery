@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
+import com.ordana.underground_overhaul.blocks.GlowstickBlock;
 import com.ordana.underground_overhaul.items.GlowstickItem;
 import com.ordana.underground_overhaul.reg.ModBlocks;
 import com.ordana.underground_overhaul.reg.ModEntities;
@@ -35,6 +36,9 @@ import net.minecraft.world.level.block.RodBlock;
 import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -102,9 +106,8 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
 
     }
 
-    public static boolean canPlace (Level level, BlockPos pos, BlockState state) {
-        if (state.isAir()) return true;
-        else return false;
+    public static boolean canPlace (BlockState state) {
+        return state.isAir() || state.getMaterial().isReplaceable();
     }
 
     public void placeGlowstick(Level level, BlockPos pos, BlockHitResult hitResult) {
@@ -114,17 +117,19 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
         var glowstickCheck = getGlowstickBlock(this.getColor());
 
 
+
         if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) replacePos = pos.relative(dir);
         BlockState replaceState = level.getBlockState(replacePos);
-        if (!replaceState.isAir()) {
+        var waterlogged = replaceState.getFluidState() .is(Fluids.WATER);
+        if (!canPlace(replaceState)) {
             level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(glowstickCheck)));
         }
 
         else if (dir == Direction.NORTH || dir == Direction.WEST || dir == Direction.DOWN) {
             replacePos = pos.relative(dir);
-            level.setBlockAndUpdate(replacePos, glowstickCheck.defaultBlockState().setValue(RodBlock.FACING, dir));
+            level.setBlockAndUpdate(replacePos, glowstickCheck.defaultBlockState().setValue(RodBlock.FACING, dir).setValue(GlowstickBlock.WATERLOGGED, waterlogged));
         }
-        else level.setBlockAndUpdate(pos, glowstickCheck.defaultBlockState().setValue(RodBlock.FACING, dir));
+        else level.setBlockAndUpdate(pos, glowstickCheck.defaultBlockState().setValue(RodBlock.FACING, dir).setValue(GlowstickBlock.WATERLOGGED, waterlogged));
 
     }
 

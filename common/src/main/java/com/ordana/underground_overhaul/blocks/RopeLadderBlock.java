@@ -125,7 +125,6 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
         } else if (state != blockState) {
             level.setBlock(pos, blockState, 3);
         }
-
     }
 
     private boolean canAttachTo(BlockGetter blockReader, BlockPos pos, Direction direction) {

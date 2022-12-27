@@ -51,7 +51,7 @@ public class ModItems {
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16)));
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
-            new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
+            new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
     //glowsticks
     public static final Supplier<Item> RED_GLOWSTICK = regItem("red_glowstick", () ->
