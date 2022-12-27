@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "underground_overhaul:block/tangle_roots"
+    "layer0": "underground_overhaul:item/tangle_roots"
   }
 }
