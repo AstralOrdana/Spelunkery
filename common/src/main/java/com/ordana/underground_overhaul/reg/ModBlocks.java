@@ -1,10 +1,7 @@
 package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
-import com.ordana.underground_overhaul.blocks.GlowstickBlock;
-import com.ordana.underground_overhaul.blocks.RopeLadderBlock;
-import com.ordana.underground_overhaul.blocks.TangleRootsBlock;
-import com.ordana.underground_overhaul.blocks.TangleRootsPlantBlock;
+import com.ordana.underground_overhaul.blocks.*;
 import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
 import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
@@ -180,6 +177,11 @@ public class ModBlocks {
             new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
     public static final Supplier<Block> TANGLE_ROOTS_PLANT = regBlock("tangle_roots_plant", () ->
             new TangleRootsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
+
+    //fungi
+    public static final Supplier<Block> CONK_FUNGUS = regBlock("conk_fungus", () ->
+            new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)));
+
 
 
     //mining gear
