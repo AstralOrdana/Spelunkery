@@ -11,6 +11,7 @@ public class ModBlockProperties {
 
     public static final BooleanProperty ILLUMINATED = BooleanProperty.create("illuminated");
     public static final BooleanProperty TOP = BooleanProperty.create("top");
+    public static final BooleanProperty END = BooleanProperty.create("end");
 
 
 

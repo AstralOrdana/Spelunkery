@@ -27,7 +27,7 @@ public class TangleRootsPlantBlock extends GrowingPlantBodyBlock implements Simp
 
     public TangleRootsPlantBlock(Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false);
-        this.registerDefaultState(this.stateDefinition.any().setValue(TOP, false).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(TOP, true).setValue(WATERLOGGED, false));
     }
 
     private boolean isTop(BlockGetter level, BlockPos pos) {

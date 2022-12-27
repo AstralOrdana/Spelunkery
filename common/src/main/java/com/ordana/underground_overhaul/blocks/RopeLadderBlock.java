@@ -39,6 +39,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty WATERLOGGED;
     public static final BooleanProperty TOP;
+    public static final BooleanProperty END;
     protected static final float AABB_OFFSET = 3.0F;
     protected static final VoxelShape EAST_AABB;
     protected static final VoxelShape WEST_AABB;
@@ -47,11 +48,11 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
 
     public RopeLadderBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(TOP, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(TOP, false).setValue(END, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, TOP, FACING);
+        builder.add(WATERLOGGED, TOP, END, FACING);
     }
 
     public boolean canBeReplaced(BlockState state, BlockPlaceContext useContext) {
@@ -62,7 +63,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos blockPos = context.getClickedPos();
         LevelReader levelReader = context.getLevel();
-        BlockState blockState = this.defaultBlockState().setValue(TOP, this.isTop(levelReader, blockPos)).setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
+        BlockState blockState = this.defaultBlockState().setValue(TOP, this.isTop(levelReader, blockPos)).setValue(END, this.isEnd(levelReader, blockPos)).setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
         Direction[] directions = context.getNearestLookingDirections();
         Direction[] var6 = directions;
         int var7 = directions.length;
@@ -119,7 +120,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockState blockState = state.setValue(TOP, this.isTop(level, pos));
+        BlockState blockState = state.setValue(TOP, this.isTop(level, pos)).setValue(END, this.isEnd(level, pos));
         if (!state.getValue(TOP) && !level.getBlockState(pos.above()).is(this)) {
             level.destroyBlock(pos, true);
         } else if (state != blockState) {
@@ -145,6 +146,10 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
         return !level.getBlockState(pos.above()).is(this);
     }
 
+    private boolean isEnd(BlockGetter level, BlockPos pos) {
+        return !level.getBlockState(pos.below()).is(this) && !this.isTop(level, pos);
+    }
+
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if (isTop(level, pos) && player.isCrouching()) {
@@ -168,6 +173,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     static {
         WATERLOGGED = BlockStateProperties.WATERLOGGED;
         TOP = ModBlockProperties.TOP;
+        END = ModBlockProperties.END;
         FACING = HorizontalDirectionalBlock.FACING;
         EAST_AABB = Block.box(0.0D, 0.0D, 0.0D, 3.0D, 16.0D, 16.0D);
         WEST_AABB = Block.box(13.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);

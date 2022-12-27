@@ -1,6 +1,7 @@
 {
   "tooltip.underground_overhaul.hold_crouch": "Hold Crouch for more details",
   "tooltip.underground_overhaul.throwable": "Throwable!",
+  "tooltip.underground_overhaul.recovery_compass": "Does not drop on death",
 
   "tooltip.underground_overhaul.rope_ladder_1": "  Climbable, can be placed on the sides of blocks",
   "tooltip.underground_overhaul.rope_ladder_2": "  Places downward automatically like scaffolding",

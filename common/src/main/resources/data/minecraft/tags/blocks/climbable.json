@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "underground_overhaul:rope_ladder"
+    "underground_overhaul:rope_ladder",
+    "underground_overhaul:tangle_roots",
+    "underground_overhaul:tangle_roots_plant"
   ]
 }

@@ -9,6 +9,7 @@
     "ExperienceOrbMixin",
     "InventoryMixin",
     "MixinBiomeDefaultFeatures",
+    "RecoveryCompassItemMixin",
     "ServerPlayerMixin",
     "SlimeMixin"
   ],
