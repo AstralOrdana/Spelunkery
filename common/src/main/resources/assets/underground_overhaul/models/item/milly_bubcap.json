@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "underground_overhaul:block/milly_bubcap"
+  }
+}

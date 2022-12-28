@@ -2,16 +2,16 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.blocks.*;
-import com.ordana.underground_overhaul.blocks.nephrite.CarvedNephriteBlock;
-import com.ordana.underground_overhaul.blocks.nephrite.NephriteDiodeBlock;
-import com.ordana.underground_overhaul.blocks.nephrite.NephriteSiphonBlock;
-import com.ordana.underground_overhaul.blocks.nephrite.NephriteSpoutBlock;
+import com.ordana.underground_overhaul.blocks.fungi.ConkMushroomBlock;
+import com.ordana.underground_overhaul.blocks.fungi.MillyBubcapMushroomBlock;
+import com.ordana.underground_overhaul.blocks.fungi.ModMushroomBlock;
+import com.ordana.underground_overhaul.blocks.fungi.FloorAndSidesMushroomBlock;
+import com.ordana.underground_overhaul.blocks.nephrite.*;
 import com.ordana.underground_overhaul.blocks.rock_salt.*;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -19,11 +19,9 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-import java.util.Enumeration;
 import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -150,7 +148,7 @@ public class ModBlocks {
 
     //nephrite
     public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new RawNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE_SLAB = regWithItem("nephrite_slab", () ->
@@ -179,8 +177,18 @@ public class ModBlocks {
             new TangleRootsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
 
     //fungi
-    public static final Supplier<Block> CONK_FUNGUS = regBlock("conk_fungus", () ->
+    public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
             new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)));
+    public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
+    public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())));
+    public static final Supplier<Block> PORTABELLA = regWithItem("portabella", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())));
+    public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)));
+    public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
+            new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
 
 
 

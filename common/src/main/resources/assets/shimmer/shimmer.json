@@ -16,8 +16,9 @@
     "brown": { "r": 149, "g": 82, "b": 32, "a": 200 },
     "black": { "r": 56, "g": 55, "b": 81, "a": 200 },
     "white": { "r": 235, "g": 234, "b": 243, "a": 200 },
-    "gray": { "r": 114, "g": 137, "b": 150, "a": 255 },
-    "light_gray": { "r": 145, "g": 155, "b": 161, "a": 255 }
+    "gray": { "r": 114, "g": 137, "b": 150, "a": 200 },
+    "light_gray": { "r": 145, "g": 155, "b": 161, "a": 200 },
+    "phosphor_blue": { "r": 110, "g": 189, "b": 224, "a": 50 }
   },
   "Bloom": [
     { "block": "underground_overhaul:glowstick" },
@@ -41,7 +42,9 @@
 
     { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true } },
     { "block": "underground_overhaul:salt_lamp", "state": { "illuminated": true } },
-    { "block": "underground_overhaul:carved_nephrite", "state": { "charge": "FULL" } }
+    { "block": "underground_overhaul:carved_nephrite", "state": { "charge": "FULL" } },
+
+    { "block": "underground_overhaul:phosphor_fungus" }
   ],
   "LightBlock": [
     { "block": "underground_overhaul:glowstick", "color": "#glow", "radius": 14 },
@@ -64,7 +67,9 @@
     { "block": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 14 },
 
     { "block": "underground_overhaul:rock_salt_bricks", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
-    { "block": "underground_overhaul:salt_lamp", "state": { "illuminated": true }, "color": "#orange", "radius": 7 }
+    { "block": "underground_overhaul:salt_lamp", "state": { "illuminated": true }, "color": "#orange", "radius": 7 },
+
+    { "block": "underground_overhaul:phosphor_fungus", "color": "#phosphor_blue", "radius": 2 }
   ],
   "LightItem": [
     { "item_id": "underground_overhaul:glowstick", "color": "#glow", "radius": 7 },
@@ -84,6 +89,8 @@
     { "item_id": "underground_overhaul:black_glowstick", "color": "#black", "radius": 7 },
     { "item_id": "underground_overhaul:white_glowstick", "color": "#white", "radius": 7 },
     { "item_id": "underground_overhaul:gray_glowstick", "color": "#gray", "radius": 7 },
-    { "item_id": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 7 }
+    { "item_id": "underground_overhaul:light_gray_glowstick", "color": "#light_gray", "radius": 7 },
+
+    { "item_id": "underground_overhaul:phosphor_fungus", "color": "#phosphor_blue", "radius": 2 }
   ]
 }

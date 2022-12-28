@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "underground_overhaul:inkcap_mushroom"
+    }
+  ],
+  "result": {
+    "item": "minecraft:black_dye"
+  }
+}

@@ -1,25 +1,25 @@
 {
-  "feature": "underground_overhaul:tangle_roots_ceiling",
+  "feature": "underground_overhaul:inkcap",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 15
+      "count": 8
     },
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 1,
-      "noise_factor": 25,
-      "noise_offset": -0.2
+      "noise_to_count_ratio": 5,
+      "noise_factor": 55,
+      "noise_offset": 0
     },
     {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 50
+          "above_bottom": 64
         },
         "max_inclusive": {
           "absolute": 80
@@ -28,8 +28,8 @@
     },
     {
       "type": "minecraft:environment_scan",
-      "direction_of_search": "up",
-      "max_steps": 12,
+      "direction_of_search": "down",
+      "max_steps": 16,
       "target_condition": {
         "type": "minecraft:solid"
       },
@@ -41,7 +41,7 @@
     {
       "type": "minecraft:random_offset",
       "xz_spread": 0,
-      "y_spread": -1
+      "y_spread": 1
     },
     {
       "type": "minecraft:biome"

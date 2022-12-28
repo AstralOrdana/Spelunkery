@@ -1,0 +1,118 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "2"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "3"
+                  }
+                }
+              ],
+              "count": 3.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "4"
+                  }
+                }
+              ],
+              "count": 4.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "5"
+                  }
+                }
+              ],
+              "count": 5.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "6"
+                  }
+                }
+              ],
+              "count": 6.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "7"
+                  }
+                }
+              ],
+              "count": 7.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "block": "underground_overhaul:milly_bubcap",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "caps": "8"
+                  }
+                }
+              ],
+              "count": 8.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "underground_overhaul:milly_bubcap"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

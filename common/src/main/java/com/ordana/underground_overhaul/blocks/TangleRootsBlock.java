@@ -29,6 +29,7 @@ public class TangleRootsBlock extends GrowingPlantHeadBlock implements SimpleWat
         return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 
+
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));

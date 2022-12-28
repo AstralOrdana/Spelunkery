@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "underground_overhaul:block/white_inkcap_mushroom"
+  }
+}

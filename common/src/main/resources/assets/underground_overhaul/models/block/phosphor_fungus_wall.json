@@ -1,0 +1,45 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "underground_overhaul:block/phosphor_fungus_wall",
+		"branch": "underground_overhaul:block/phosphor_fungus_wall"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 2],
+			"to": [4, 16, 18],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [4, 0, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"east": {"uv": [16, 0, 0, 16], "texture": "#branch"},
+				"south": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#branch"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#branch"}
+			}
+		},
+		{
+			"from": [12, 0, 2],
+			"to": [12, 16, 18],
+			"shade": false,
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [12, 0, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"east": {"uv": [16, 0, 0, 16], "texture": "#branch"},
+				"south": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#branch"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#branch"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#branch"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

@@ -2,6 +2,8 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UAPlatform;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
+import com.ordana.underground_overhaul.features.WallMushroomFeature;
+import com.ordana.underground_overhaul.features.WallMushroomFeatureConfig;
 import com.ordana.underground_overhaul.features.util.NoiseBasedStoneFeature;
 import com.ordana.underground_overhaul.features.util.StoneEntry;
 import com.ordana.underground_overhaul.features.util.StonePattern;
@@ -30,6 +32,10 @@ import java.util.function.Supplier;
 public class ModFeatures {
 
     //features
+    public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
+            UndergroundOverhaul.res("wall_mushroom"), () ->
+                    new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
+
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
             UndergroundOverhaul.res("noise_stone"), () -> NoiseBasedStoneFeature.featureWithDeepslateUnfiltered(NoneFeatureConfiguration.CODEC,
                     List.of(
@@ -209,10 +215,6 @@ public class ModFeatures {
         ResourceKey<PlacedFeature> nephrite_geode = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("nephrite_geode"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_OVERWORLD, nephrite_geode);
 
-        ResourceKey<PlacedFeature> tangle_roots_ceiling = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("tangle_roots_ceiling"));
-        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, tangle_roots_ceiling);
-
-
         //coal vein
         ResourceKey<PlacedFeature> large_coal_vein = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("large_coal_vein"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.HAS_SWAMP_HUT, large_coal_vein);
@@ -225,11 +227,27 @@ public class ModFeatures {
         ResourceKey<PlacedFeature> large_lapis_vein = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("large_lapis_vein"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.HAS_DESERT_PYRAMID, large_lapis_vein);
 
-        /*
-        //redstone vein
-        ResourceKey<PlacedFeature> large_redstone_vein = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("large_redstone_vein"));
-        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_OVERWORLD, large_redstone_vein);
-         */
+        //vegetation
+        ResourceKey<PlacedFeature> tangle_roots_ceiling = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("tangle_roots_ceiling"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, tangle_roots_ceiling);
+
+        ResourceKey<PlacedFeature> conk_fungus = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("conk_fungus"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, conk_fungus);
+
+        ResourceKey<PlacedFeature> conk_fungus_surface = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("conk_fungus_surface"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, conk_fungus_surface);
+
+        ResourceKey<PlacedFeature> inkcap = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("inkcap"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, inkcap);
+
+        ResourceKey<PlacedFeature> inkcap_deepslate = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("inkcap_deepslate"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, inkcap_deepslate);
+
+        ResourceKey<PlacedFeature> portabella = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("portabella"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, portabella);
+
+        ResourceKey<PlacedFeature> phosphor_fungus = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("phosphor_fungus"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, phosphor_fungus);
 
     }
 }

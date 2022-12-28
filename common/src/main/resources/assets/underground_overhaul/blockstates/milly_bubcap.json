@@ -1,0 +1,140 @@
+{
+  "variants": {
+    "caps=1": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_1"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_1",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_1",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_1",
+        "y": 270
+      }
+    ],
+    "caps=2": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_2"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_2",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_2",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_2",
+        "y": 270
+      }
+    ],
+    "caps=3": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_3"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_3",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_3",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_3",
+        "y": 270
+      }
+    ],
+    "caps=4": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_4"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_4",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_4",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_4",
+        "y": 270
+      }
+    ],
+    "caps=5": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_5"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_5",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_5",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_5",
+        "y": 270
+      }
+    ],
+    "caps=6": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_6"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_6",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_6",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_6",
+        "y": 270
+      }
+    ],
+    "caps=7": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_7"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_7",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_7",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_7",
+        "y": 270
+      }
+    ],
+    "caps=8": [
+      {
+        "model": "underground_overhaul:block/milly_bubcap_8"
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_8",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_8",
+        "y": 180
+      },
+      {
+        "model": "underground_overhaul:block/milly_bubcap_8",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -11,7 +11,15 @@
       "inner_layer_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "underground_overhaul:raw_nephrite"
+          "Name": "underground_overhaul:raw_nephrite",
+          "Properties": {
+            "north": "true",
+            "south": "true",
+            "east": "true",
+            "west": "true",
+            "up": "true",
+            "down": "true"
+          }
         }
       },
       "alternate_inner_layer_provider": {
@@ -23,7 +31,15 @@
       "middle_layer_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "underground_overhaul:raw_nephrite"
+          "Name": "underground_overhaul:raw_nephrite",
+          "Properties": {
+            "north": "true",
+            "south": "true",
+            "east": "true",
+            "west": "true",
+            "up": "true",
+            "down": "true"
+          }
         }
       },
       "outer_layer_provider": {
@@ -41,10 +57,10 @@
       "invalid_blocks": "#minecraft:geode_invalid_blocks"
     },
     "layers": {
-      "filling": 0.2,
-      "inner_layer": 3,
-      "middle_layer": 3.4,
-      "outer_layer": 4
+      "filling": 0.3,
+      "inner_layer": 2,
+      "middle_layer": 2.4,
+      "outer_layer": 3
     },
     "crack": {
       "generate_crack_chance": 0,
@@ -55,7 +71,7 @@
     "use_potential_placements_chance": 0,
     "use_alternate_layer0_chance": 0,
     "placements_require_layer0_alternate": true,
-    "outer_wall_distance": 4,
+    "outer_wall_distance": 3,
     "distribution_points": 4,
     "min_gen_offset": -16,
     "max_gen_offset": 16,
