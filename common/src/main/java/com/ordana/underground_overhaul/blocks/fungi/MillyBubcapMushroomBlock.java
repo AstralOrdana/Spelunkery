@@ -1,6 +1,7 @@
 package com.ordana.underground_overhaul.blocks.fungi;
 
 import com.ordana.underground_overhaul.reg.ModBlockProperties;
+import com.ordana.underground_overhaul.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -26,7 +27,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableBlock {
-    public static final int MAX_PICKLES = 8;
+    public static final int MAX_CAPS = 8;
     public static final IntegerProperty CAPS;
     protected static final VoxelShape ONE_AABB;
     protected static final VoxelShape TWO_AABB;
@@ -107,7 +108,7 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
                         if (blockPos != pos && random.nextInt(6) == 0 && level.getBlockState(blockPos).isAir()) {
                             BlockState blockState = level.getBlockState(blockPos.below());
                             if (blockState.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
-                                level.setBlock(blockPos, Blocks.SEA_PICKLE.defaultBlockState().setValue(CAPS, random.nextInt(8) + 1), 3);
+                                level.setBlock(blockPos, ModBlocks.MILLY_BUBCAP.get().defaultBlockState().setValue(CAPS, random.nextInt(8) + 1), 3);
                             }
                         }
                     }
