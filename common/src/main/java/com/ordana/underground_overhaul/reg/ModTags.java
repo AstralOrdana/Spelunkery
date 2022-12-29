@@ -18,8 +18,7 @@ public class ModTags {
     public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
 
     //items
-    public static final TagKey<Item> ITEM = registerItemTag("item");
-
+    public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");
@@ -29,7 +28,7 @@ public class ModTags {
     public static final TagKey<Biome> HAS_DESERT_NOISE = registerBiomeTag("has_desert_noise");
 
     //entities
-    public static final TagKey<EntityType<?>> LIGHT_FREEZE_IMMUNE = registerEntityTag("light_freeze_immune");
+    public static final TagKey<EntityType<?>> ENTITY = registerEntityTag("entity");
 
 
     private ModTags() {

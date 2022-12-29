@@ -1,6 +1,7 @@
 package com.ordana.underground_overhaul.mixins;
 
 
+import com.ordana.underground_overhaul.reg.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -25,12 +26,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(Item.class)
-public class RecoveryCompassItemMixin {
+public class KeepOnDeathTooltipMixin {
 
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void recoveryCompassTooltip(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
-        if (stack.is(Items.RECOVERY_COMPASS)) {
-            tooltip.add(Component.translatable("tooltip.underground_overhaul.recovery_compass").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
+        if (stack.is(ModTags.KEEP_ON_DEATH)) {
+            tooltip.add(Component.translatable("tooltip.underground_overhaul.keep_on_death").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
         }
     }
 }
