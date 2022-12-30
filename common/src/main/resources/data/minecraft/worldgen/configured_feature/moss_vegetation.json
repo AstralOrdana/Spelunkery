@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 4,
+          "data": {
+            "Name": "minecraft:flowering_azalea"
+          }
+        },
+        {
+          "weight": 7,
+          "data": {
+            "Name": "minecraft:azalea"
+          }
+        },
+        {
+          "weight": 25,
+          "data": {
+            "Name": "minecraft:moss_carpet"
+          }
+        },
+        {
+          "weight": 50,
+          "data": {
+            "Name": "underground_overhaul:sporophyte"
+          }
+        }
+      ]
+    }
+  }
+}

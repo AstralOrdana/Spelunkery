@@ -172,24 +172,27 @@ public class ModBlocks {
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
-            new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
+            new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> TANGLE_ROOTS_PLANT = regBlock("tangle_roots_plant", () ->
             new TangleRootsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
+    public static final Supplier<Block> SPOROPHYTE = regWithItem("sporophyte", () ->
+            new SporophyteBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+
+
 
     //fungi
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
-            new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)));
+            new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
+            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())));
     public static final Supplier<Block> PORTABELLA = regWithItem("portabella", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
-            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)));
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
-            new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
-
+            new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
 
 
     //mining gear

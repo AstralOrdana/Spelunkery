@@ -3,6 +3,8 @@ package com.ordana.underground_overhaul.reg;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.items.*;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -42,6 +44,11 @@ public class ModItems {
             new NephriteSpoutItem(ModBlocks.NEPHRITE_SPOUT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+
+    //food
+    public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
+
 
     //mining gear
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->

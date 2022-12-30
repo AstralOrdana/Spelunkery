@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "underground_overhaul:portabella"
+  },
+  "result": "underground_overhaul:grilled_portabella",
+  "experience": 0.35,
+  "cookingtime": 100
+}
