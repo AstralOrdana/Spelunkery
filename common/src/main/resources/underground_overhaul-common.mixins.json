@@ -9,7 +9,7 @@
     "ExperienceOrbMixin",
     "InventoryMixin",
     "MixinBiomeDefaultFeatures",
-    "KeepOnDeathTooltipMixin",
+    "TooltipMixin",
     "ServerPlayerMixin",
     "SlimeMixin"
   ],

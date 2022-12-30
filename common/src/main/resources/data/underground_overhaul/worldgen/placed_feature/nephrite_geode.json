@@ -2,8 +2,8 @@
   "feature": "underground_overhaul:nephrite_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 24
+      "type": "minecraft:count",
+      "count": 2
     },
     {
       "type": "minecraft:in_square"

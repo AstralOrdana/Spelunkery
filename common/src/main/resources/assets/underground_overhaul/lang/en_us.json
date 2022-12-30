@@ -11,6 +11,7 @@
   "tooltip.underground_overhaul.portal_fluid_2": "  Cannot teleport between dimensions",
   "tooltip.underground_overhaul.portal_fluid_3": "  Use empty bottle on Crying Obsidian to obtain",
   "tooltip.underground_overhaul.portal_fluid_failure": "Spawnpoint in different Dimension",
+  "tooltip.underground_overhaul.crying_obsidian": "Use empty bottle on to obtain Portal Fluid",
 
   "tooltip.underground_overhaul.depth_gauge_depth": "Current Elevation: Y = %1$s",
 

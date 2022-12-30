@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:geode",
+  "type": "underground_overhaul:update_geode",
   "config": {
     "blocks": {
       "filling_provider": {

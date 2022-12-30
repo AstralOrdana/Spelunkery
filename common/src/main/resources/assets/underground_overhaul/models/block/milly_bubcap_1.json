@@ -1,0 +1,39 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "underground_overhaul:block/milly_bubcap",
+		"particle": "underground_overhaul:block/milly_bubcap"
+	},
+	"elements": [
+		{
+			"name": "Cap 1A",
+			"from": [8, 0, 6.5],
+			"to": [8, 4, 9.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"shade": false,
+			"faces": {
+				"east": {"uv": [3, 12, 6, 16], "texture": "#0"},
+				"west": {"uv": [3, 12, 6, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Cap 1B",
+			"from": [6.5, 0, 8],
+			"to": [9.5, 4, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [3, 12, 6, 16], "texture": "#0"},
+				"south": {"uv": [3, 12, 6, 16], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Cap 1",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

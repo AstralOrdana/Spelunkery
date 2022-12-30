@@ -29,13 +29,13 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 10,
+                "weight": 25,
                 "data": {
                   "Name": "underground_overhaul:inkcap_mushroom"
                 }
               },
               {
-                "weight": 3,
+                "weight": 10,
                 "data": {
                   "Name": "underground_overhaul:white_inkcap_mushroom"
                 }

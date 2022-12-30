@@ -2,6 +2,7 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UAPlatform;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
+import com.ordana.underground_overhaul.features.UpdateGeodeFeature;
 import com.ordana.underground_overhaul.features.WallMushroomFeature;
 import com.ordana.underground_overhaul.features.WallMushroomFeatureConfig;
 import com.ordana.underground_overhaul.features.util.NoiseBasedStoneFeature;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -35,6 +37,10 @@ public class ModFeatures {
     public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
             UndergroundOverhaul.res("wall_mushroom"), () ->
                     new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<GeodeConfiguration>> UPDATE_GEODE_FEATURE = RegHelper.registerFeature(
+            UndergroundOverhaul.res("update_geode"), () ->
+                    new UpdateGeodeFeature(GeodeConfiguration.CODEC));
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
             UndergroundOverhaul.res("noise_stone"), () -> NoiseBasedStoneFeature.featureWithDeepslateUnfiltered(NoneFeatureConfiguration.CODEC,
