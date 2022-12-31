@@ -6,7 +6,8 @@
     "can_be_placed_on": [
       "minecraft:dirt",
       "minecraft:coarse_dirt",
-      "minecraft:oak_planks"
+      "minecraft:oak_planks",
+      "minecraft:oak_log"
     ]
   }
 }

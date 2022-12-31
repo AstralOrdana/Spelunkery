@@ -2,14 +2,8 @@
   "feature": "underground_overhaul:deep_dark_fossil",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 3
-        }
-      }
+      "type": "minecraft:rarity_filter",
+      "chance": 4
     },
     {
       "type": "minecraft:in_square"

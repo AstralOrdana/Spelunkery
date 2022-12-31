@@ -49,19 +49,19 @@
             "type": "minecraft:weighted_state_provider",
             "entries": [
               {
-                "weight": 10,
+                "weight": 1,
                 "data": {
                   "Name": "underground_overhaul:portabella"
                 }
               },
               {
-                "weight": 4,
+                "weight": 5,
                 "data": {
                   "Name": "underground_overhaul:crimini"
                 }
               },
               {
-                "weight": 1,
+                "weight": 25,
                 "data": {
                   "Name": "underground_overhaul:button_mushroom"
                 }
