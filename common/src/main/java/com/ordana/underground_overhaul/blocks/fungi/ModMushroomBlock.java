@@ -1,5 +1,6 @@
 package com.ordana.underground_overhaul.blocks.fungi;
 
+import com.ordana.underground_overhaul.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -24,7 +25,16 @@ public class ModMushroomBlock extends BushBlock {
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+
+
         if (random.nextInt(25) == 0) {
+            if (state.is(ModBlocks.BUTTON_MUSHROOM.get())) {
+                level.setBlock(pos, ModBlocks.CRIMINI.get().defaultBlockState(), 2);
+            }
+            if (state.is(ModBlocks.CRIMINI.get())) {
+                level.setBlock(pos, ModBlocks.PORTABELLA.get().defaultBlockState(), 2);
+            }
+
             int i = 5;
             boolean j = true;
 
@@ -46,9 +56,9 @@ public class ModMushroomBlock extends BushBlock {
 
                 blockPos2 = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
             }
-
-            if (level.isEmptyBlock(blockPos2) && state.canSurvive(level, blockPos2)) {
-                level.setBlock(blockPos2, state, 2);
+            if (level.isEmptyBlock(blockPos2) && state.canSurvive(level, blockPos2) && !state.is(ModBlocks.CRIMINI.get()) && !state.is(ModBlocks.BUTTON_MUSHROOM.get())) {
+                if (state.is(ModBlocks.PORTABELLA.get())) level.setBlock(blockPos2, ModBlocks.BUTTON_MUSHROOM.get().defaultBlockState(), 2);
+                else if (!state.is(ModBlocks.CRIMINI.get()) && !state.is(ModBlocks.BUTTON_MUSHROOM.get())) level.setBlock(blockPos2, state, 2);
             }
         }
 

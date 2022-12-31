@@ -183,12 +183,16 @@ public class ModBlocks {
     //fungi
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
             new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PORTABELLA = regWithItem("portabella", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.copy(INKCAP_MUSHROOM.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CRIMINI = regWithItem("crimini", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUTTON_MUSHROOM = regWithItem("button_mushroom", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
+            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
             new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->

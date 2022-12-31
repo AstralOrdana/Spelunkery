@@ -154,7 +154,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if (isTop(level, pos) && player.isCrouching()) {
             int i = 0;
-            while (i < 7) {
+            while (i < 32) {
                 BlockState belowState = level.getBlockState(pos.below(i + 1));
                 //BlockPos.MutableBlockPos mutableBlockPos = pos.mutable().move(Direction.DOWN);
                 if (!belowState.is(this)) {

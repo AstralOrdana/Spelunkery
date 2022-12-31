@@ -45,6 +45,11 @@ public class PortalFluidBottle extends HoneyBottleItem {
         }
     }
 
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
+
     public static final FoodProperties PORTAL_FLUID = (new FoodProperties.Builder()).nutrition(0).saturationMod(0F).alwaysEat().build();
 
     @Override

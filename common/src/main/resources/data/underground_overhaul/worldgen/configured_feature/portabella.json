@@ -21,7 +21,10 @@
         {
           "weight": 1,
           "data": {
-            "Name": "minecraft:mycelium"
+            "Name": "minecraft:mycelium",
+            "Properties": {
+              "snowy": "false"
+            }
           }
         },
         {
@@ -43,10 +46,27 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "underground_overhaul:portabella"
-            }
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "underground_overhaul:portabella"
+                }
+              },
+              {
+                "weight": 4,
+                "data": {
+                  "Name": "underground_overhaul:crimini"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "underground_overhaul:button_mushroom"
+                }
+              }
+            ]
           }
         }
       },
