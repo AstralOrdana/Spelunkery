@@ -68,9 +68,9 @@ public class ConkMushroomBlock extends FloorAndSidesMushroomBlock {
 
         for(int var8 = 0; var8 < var7; ++var8) {
             Direction direction = var6[var8];
-            if (direction.getAxis().isHorizontal()) {
+            if (blockState != null && direction.getAxis().isHorizontal()) {
                 blockState = blockState.setValue(FACING, direction.getOpposite());
-                if (blockState.canSurvive(levelReader, blockPos)) {
+                if (blockState != null && blockState.canSurvive(levelReader, blockPos)) {
                     return blockState;
                 }
             }

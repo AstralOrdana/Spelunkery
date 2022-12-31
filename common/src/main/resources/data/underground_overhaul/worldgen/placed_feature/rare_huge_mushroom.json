@@ -1,5 +1,5 @@
 {
-  "feature": "underground_overhaul:portabella",
+  "feature": "underground_overhaul:rare_huge_mushroom",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,7 +7,7 @@
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 1,
-          "max_inclusive": 5
+          "max_inclusive": 2
         }
       }
     },
@@ -17,7 +17,7 @@
     {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 5,
-      "noise_factor": 50,
+      "noise_factor": 100,
       "noise_offset": -0.2
     },
     {
@@ -25,7 +25,7 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 55
+          "above_bottom": 5
         },
         "max_inclusive": {
           "absolute": 128

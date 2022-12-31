@@ -1,9 +1,15 @@
 {
-  "feature": "underground_overhaul:nephrite_geode",
+  "feature": "underground_overhaul:deep_dark_fossil",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 4
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 1,
+          "max_inclusive": 3
+        }
+      }
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +19,10 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "above_bottom": 6
+          "above_bottom": 1
         },
         "max_inclusive": {
-          "absolute": 30
+          "absolute": 0
         }
       }
     },
