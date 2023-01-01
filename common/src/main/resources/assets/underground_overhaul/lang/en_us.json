@@ -7,6 +7,9 @@
   "tooltip.underground_overhaul.rope_ladder_2": "  Places downward automatically like scaffolding",
   "tooltip.underground_overhaul.rope_ladder_3": "  Crouch + right-click top ladder to roll up",
 
+  "tooltip.underground_overhaul.wooden_rail_1": "  Using this item on itself places at end of rail",
+  "tooltip.underground_overhaul.wooden_rail_2": "  Can extend above air blocks to cross gaps",
+
   "tooltip.underground_overhaul.portal_fluid_1": "  Drink to return to your spawnpoint or worldspawn",
   "tooltip.underground_overhaul.portal_fluid_2": "  Cannot teleport between dimensions",
   "tooltip.underground_overhaul.portal_fluid_3": "  Use empty bottle on Crying Obsidian to obtain",
@@ -96,6 +99,7 @@
   "block.underground_overhaul.milly_bubcap": "Milly Bubcap",
 
   "block.underground_overhaul.glowstick": "Glowstick",
+  "block.underground_overhaul.wooden_rail": "Wooden Rail",
   "block.underground_overhaul.rope_ladder": "Rope Ladder",
   "item.underground_overhaul.portal_fluid_bottle": "Bottle of Portal Fluid",
   "item.underground_overhaul.depth_gauge": "Depth Gauge",

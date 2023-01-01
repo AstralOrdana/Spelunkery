@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "underground_overhaul:item/nephrite_charm_3"
+  }
+}

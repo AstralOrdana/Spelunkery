@@ -204,6 +204,8 @@ public class ModBlocks {
             new GlowstickBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
     public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
             new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
+    public static final Supplier<Block> WOODEN_RAIL = regBlock("wooden_rail", () ->
+            new WoodenRailBlock(BlockBehaviour.Properties.copy(Blocks.RAIL).strength(1f).sound(SoundType.WOOD).instabreak()));
 
     //glowsticks
     public static final Supplier<Block> RED_GLOWSTICK = regBlock("red_glowstick", () ->

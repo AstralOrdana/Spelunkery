@@ -2,15 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     ".#.",
-    "CXC",
+    "C C",
     ".#."
   ],
   "key": {
     "#": {
       "item": "underground_overhaul:nephrite"
-    },
-    "X": {
-      "item": "minecraft:heart_of_the_sea"
     },
     ".": {
       "item": "minecraft:gold_nugget"

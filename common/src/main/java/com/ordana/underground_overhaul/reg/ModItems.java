@@ -3,8 +3,6 @@ package com.ordana.underground_overhaul.reg;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.items.*;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -56,6 +54,8 @@ public class ModItems {
             new GlowstickItem(null, ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ROPE_LADDER = regItem("rope_ladder", () ->
             new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> WOODEN_RAIL = regItem("wooden_rail", () ->
+            new WoodenRailBlockItem(ModBlocks.WOODEN_RAIL.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TRANSPORTATION))));
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
