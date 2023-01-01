@@ -15,7 +15,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "underground_overhaul:block/polished_rock_salt_wall_side",
+        "model": "underground_overhaul:block/polished_rock_salt_wall_side_north",
         "uvlock": true
       }
     },
@@ -25,8 +25,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "underground_overhaul:block/polished_rock_salt_wall_side",
-        "y": 90,
+        "model": "underground_overhaul:block/polished_rock_salt_wall_side_east",
         "uvlock": true
       }
     },
@@ -36,8 +35,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "underground_overhaul:block/polished_rock_salt_wall_side",
-        "y": 180,
+        "model": "underground_overhaul:block/polished_rock_salt_wall_side_south",
         "uvlock": true
       }
     },
@@ -47,8 +45,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "underground_overhaul:block/polished_rock_salt_wall_side",
-        "y": 270,
+        "model": "underground_overhaul:block/polished_rock_salt_wall_side_west",
         "uvlock": true
       }
     },
