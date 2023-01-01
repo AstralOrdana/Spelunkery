@@ -9,9 +9,14 @@
     "#": {
       "item": "minecraft:slime_ball"
     },
-    "X": {
-      "item": "minecraft:glow_ink_sac"
-    },
+    "X": [
+      {
+        "item": "minecraft:glow_ink_sac"
+      },
+      {
+        "item": "underground_overhaul:phosphor_fungus"
+      }
+    ],
     "/": {
       "item": "minecraft:stick"
     }

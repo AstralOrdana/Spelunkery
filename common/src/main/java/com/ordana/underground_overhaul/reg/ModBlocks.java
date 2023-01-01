@@ -176,7 +176,9 @@ public class ModBlocks {
     public static final Supplier<Block> TANGLE_ROOTS_PLANT = regBlock("tangle_roots_plant", () ->
             new TangleRootsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
     public static final Supplier<Block> SPOROPHYTE = regWithItem("sporophyte", () ->
-            new SporophyteBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.AZALEA_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new SporophyteBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TALL_SPOROPHYTE = regWithItem("tall_sporophyte", () ->
+            new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
 
 
 
@@ -205,7 +207,7 @@ public class ModBlocks {
     public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
             new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
     public static final Supplier<Block> WOODEN_RAIL = regBlock("wooden_rail", () ->
-            new WoodenRailBlock(BlockBehaviour.Properties.copy(Blocks.RAIL).strength(1f).sound(SoundType.WOOD).instabreak()));
+            new WoodenRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.WOOD).instabreak()));
 
     //glowsticks
     public static final Supplier<Block> RED_GLOWSTICK = regBlock("red_glowstick", () ->

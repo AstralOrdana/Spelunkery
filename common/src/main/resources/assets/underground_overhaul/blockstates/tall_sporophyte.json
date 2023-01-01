@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "underground_overhaul:block/tall_sporophyte_bottom"
+    },
+    "half=upper": {
+      "model": "underground_overhaul:block/tall_sporophyte_top"
+    }
+  }
+}

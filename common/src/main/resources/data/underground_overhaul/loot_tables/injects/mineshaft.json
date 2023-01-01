@@ -9,6 +9,25 @@
           "children": [
             {
               "type": "minecraft:item",
+              "name": "underground_overhaul:wooden_rail",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 4,
+                    "max": 16
+                  }
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.25
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
               "name": "underground_overhaul:rope_ladder",
               "functions": [
                 {

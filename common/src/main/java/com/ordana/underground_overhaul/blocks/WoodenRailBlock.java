@@ -1,6 +1,8 @@
 package com.ordana.underground_overhaul.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -10,6 +12,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.EntityCollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WoodenRailBlock extends BaseRailBlock {
     public static final EnumProperty<RailShape> SHAPE;
@@ -65,69 +71,69 @@ public class WoodenRailBlock extends BaseRailBlock {
     public BlockState rotate(BlockState state, Rotation rotation) {
         switch(rotation) {
             case CLOCKWISE_180:
-                switch((RailShape)state.getValue(SHAPE)) {
+                switch(state.getValue(SHAPE)) {
                     case ASCENDING_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_WEST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
                     case ASCENDING_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_EAST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
                     case ASCENDING_NORTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
                     case ASCENDING_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
                     case SOUTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                     case SOUTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case NORTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     case NORTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                 }
             case COUNTERCLOCKWISE_90:
-                switch((RailShape)state.getValue(SHAPE)) {
+                switch(state.getValue(SHAPE)) {
                     case NORTH_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.EAST_WEST);
+                        return state.setValue(SHAPE, RailShape.EAST_WEST);
                     case EAST_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_SOUTH);
+                        return state.setValue(SHAPE, RailShape.NORTH_SOUTH);
                     case ASCENDING_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
                     case ASCENDING_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
                     case ASCENDING_NORTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_WEST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
                     case ASCENDING_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_EAST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
                     case SOUTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case SOUTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     case NORTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                     case NORTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                 }
             case CLOCKWISE_90:
-                switch((RailShape)state.getValue(SHAPE)) {
+                switch(state.getValue(SHAPE)) {
                     case NORTH_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.EAST_WEST);
+                        return state.setValue(SHAPE, RailShape.EAST_WEST);
                     case EAST_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_SOUTH);
+                        return state.setValue(SHAPE, RailShape.NORTH_SOUTH);
                     case ASCENDING_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
                     case ASCENDING_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
                     case ASCENDING_NORTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_EAST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
                     case ASCENDING_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_WEST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
                     case SOUTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                     case SOUTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                     case NORTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case NORTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                 }
             default:
                 return state;
@@ -135,43 +141,43 @@ public class WoodenRailBlock extends BaseRailBlock {
     }
 
     public BlockState mirror(BlockState state, Mirror mirror) {
-        RailShape railShape = (RailShape)state.getValue(SHAPE);
+        RailShape railShape = state.getValue(SHAPE);
         switch(mirror) {
             case LEFT_RIGHT:
                 switch(railShape) {
                     case ASCENDING_NORTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
                     case ASCENDING_SOUTH:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
                     case SOUTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case SOUTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                     case NORTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                     case NORTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     default:
                         return super.mirror(state, mirror);
                 }
             case FRONT_BACK:
                 switch(railShape) {
                     case ASCENDING_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_WEST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
                     case ASCENDING_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.ASCENDING_EAST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
                     case ASCENDING_NORTH:
                     case ASCENDING_SOUTH:
                     default:
                         break;
                     case SOUTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                     case SOUTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     case NORTH_WEST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case NORTH_EAST:
-                        return (BlockState)state.setValue(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                 }
         }
 
@@ -181,6 +187,18 @@ public class WoodenRailBlock extends BaseRailBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SHAPE, WATERLOGGED);
     }
+
+    /*
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Block.box(0.0D, -1.0D, 0.0D, 16.0D, 0D, 16.0D);
+    }
+
+    @Override
+    public VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Block.box(0.0D, 1.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+    }
+     */
 
     static {
         SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;

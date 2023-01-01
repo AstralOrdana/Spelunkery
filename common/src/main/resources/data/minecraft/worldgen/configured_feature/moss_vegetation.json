@@ -27,6 +27,12 @@
           "data": {
             "Name": "underground_overhaul:sporophyte"
           }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "underground_overhaul:tall_sporophyte"
+          }
         }
       ]
     }
