@@ -2,9 +2,9 @@
   "parent": "underground_overhaul:block/nocut_stairs",
   "textures": {
     "bottom": "underground_overhaul:block/saltstairs_default",
-    "top": "underground_overhaul:block/saltstairs_vert",
-    "north": "underground_overhaul:block/saltstairs_lne",
-	"south": "underground_overhaul:block/saltstairs_lnw",
+    "top": "underground_overhaul:block/saltstairs_lat",
+    "north": "underground_overhaul:block/saltstairs_lsw",
+	"south": "underground_overhaul:block/saltstairs_lse",
 	"west": "underground_overhaul:block/saltstairs_lat",
 	"east": "underground_overhaul:block/saltstairs_default"
   }
