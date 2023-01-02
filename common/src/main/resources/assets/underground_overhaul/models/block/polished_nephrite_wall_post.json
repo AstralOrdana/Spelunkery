@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "underground_overhaul:block/polished_nephrite"
+  }
+}

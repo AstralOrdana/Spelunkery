@@ -157,9 +157,24 @@ public class ModBlocks {
             new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_WALL = regWithItem("nephrite_wall", () ->
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+
     public static final Supplier<Block> POLISHED_NEPHRITE = regWithItem("polished_nephrite", () ->
             new Block(BlockBehaviour.Properties.copy(NEPHRITE.get())));
-
+    public static final Supplier<Block> POLISHED_NEPHRITE_SLAB = regWithItem("polished_nephrite_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+    public static final Supplier<Block> POLISHED_NEPHRITE_STAIRS = regWithItem("polished_nephrite_stairs", () ->
+            new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
+    public static final Supplier<Block> POLISHED_NEPHRITE_WALL = regWithItem("polished_nephrite_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+   
+    public static final Supplier<Block> POLISHED_NEPHRITE_BRICKS = regWithItem("polished_nephrite_bricks", () ->
+            new Block(BlockBehaviour.Properties.copy(NEPHRITE.get())));              
+    public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_SLAB = regWithItem("polished_nephrite_brick_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+    public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_STAIRS = regWithItem("polished_nephrite_brick_stairs", () ->
+            new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
+    public static final Supplier<Block> POLISHED_NEPHRITE__BRICK_WALL = regWithItem("polished_nephrite_brick_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
             new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));

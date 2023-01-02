@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "underground_overhaul:block/polished_nephrite_bricks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underground_overhaul:block/polished_nephrite_slab"
+    },
+    "type=double": {
+      "model": "underground_overhaul:block/polished_nephrite"
+    },
+    "type=top,": {
+      "model": "underground_overhaul:block/polished_nephrite_slab_top"
+    }
+  }
+}
