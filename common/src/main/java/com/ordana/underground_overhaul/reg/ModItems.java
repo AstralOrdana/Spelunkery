@@ -47,6 +47,12 @@ public class ModItems {
     //food
     public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
             new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
+    public static final Supplier<Item> PORTABELLA = regItem("portabella", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
+    public static final Supplier<Item> CRIMINI = regItem("crimini", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.CRIMINI)));
+    public static final Supplier<Item> BUTTON_MUSHROOM = regItem("button_mushroom", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
 
 
     //mining gear
