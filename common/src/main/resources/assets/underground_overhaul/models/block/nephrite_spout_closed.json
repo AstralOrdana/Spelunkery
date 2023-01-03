@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "underground_overhaul:block/nephrite_fountain"
+		"3": "underground_overhaul:block/nephrite_fountain",
+		"particle": "underground_overhaul:block/nephrite_fountain"
 	},
 	"elements": [
 		{

@@ -47,7 +47,7 @@ public class NephriteSpoutEntity extends BlockEntity {
         Direction dir = state.getValue(NephriteSpoutBlock.FACING);
         if (level.getBlockEntity(pos.relative(dir.getOpposite())) instanceof CarvedNephriteBlockEntity neighborTile && neighborTile.getCharge() > 0 && level instanceof ServerLevel) {
 
-            var pourVector = new Vec3((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D);
+            var pourVector = new Vec3((double)pos.getX() + 0.5D, (double)pos.getY() + 0.125D, (double)pos.getZ() + 0.5D);
 
             /*
             switch(dir) {
@@ -69,7 +69,7 @@ public class NephriteSpoutEntity extends BlockEntity {
             */
 
             neighborTile.setCharge(neighborTile.getCharge() - 1);
-            ExperienceOrb.award((ServerLevel) level, Vec3.atCenterOf(pos), 1);
+            ExperienceOrb.award((ServerLevel) level, pourVector, 1);
         }
     }
 

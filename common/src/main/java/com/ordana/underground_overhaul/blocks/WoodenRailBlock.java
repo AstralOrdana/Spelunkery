@@ -188,17 +188,10 @@ public class WoodenRailBlock extends BaseRailBlock {
         builder.add(SHAPE, WATERLOGGED);
     }
 
-    /*
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return Block.box(0.0D, -1.0D, 0.0D, 16.0D, 0D, 16.0D);
     }
-
-    @Override
-    public VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return Block.box(0.0D, 1.0D, 0.0D, 16.0D, 2.0D, 16.0D);
-    }
-     */
 
     static {
         SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
