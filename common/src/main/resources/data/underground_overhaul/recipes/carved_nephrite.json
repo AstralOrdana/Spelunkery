@@ -1,20 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XXX",
-    "X#X",
-    "XXX"
+    "##",
+    "##"
   ],
   "key": {
-    "X": {
-      "item": "underground_overhaul:polished_nephrite"
-    },
     "#": {
-      "item": "minecraft:sculk"
+      "item": "underground_overhaul:polished_nephrite"
     }
   },
   "result": {
     "item": "underground_overhaul:carved_nephrite",
-    "count": 8
+    "count": 4
   }
 }

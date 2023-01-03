@@ -9,8 +9,6 @@ import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
-import java.util.Objects;
-
 public class UndergroundOverhaulClient {
     
     public static void init() {
@@ -42,9 +40,9 @@ public class UndergroundOverhaulClient {
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);
         ClientPlatformHelper.registerItemProperty(ModItems.NEPHRITE_CHARM.get(), UndergroundOverhaul.res("charge"),
                 (stack, world, entity, seed) -> {
-                    if (entity != null && stack.getTag().contains("xp")) {
-                        if (stack.getTag().contains("xp")) return ((float) stack.getTag().getInt("xp") / 1395);
-                        else return 0;
+                    if (entity != null) {
+                        assert stack.getTag() != null;
+                        return ((float) stack.getTag().getInt("xp") / 1395);
                     } else {
                         return 0;
                     }

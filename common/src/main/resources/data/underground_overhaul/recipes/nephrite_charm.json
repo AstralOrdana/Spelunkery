@@ -1,15 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "C#C",
-    "# #",
-    "C#C"
+    ".#.",
+    "C C",
+    ".#."
   ],
   "key": {
-    "C": {
-      "item": "underground_overhaul:nephrite_chunk"
-    },
     "#": {
+      "item": "underground_overhaul:nephrite"
+    },
+    ".": {
+      "item": "minecraft:gold_nugget"
+    },
+    "C": {
       "item": "underground_overhaul:carved_nephrite"
     }
   },

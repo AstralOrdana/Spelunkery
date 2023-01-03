@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "underground_overhaul:polished_nephrite"
-  },
-  "result": "underground_overhaul:polished_nephrite_wall",
-  "count": 1
-}

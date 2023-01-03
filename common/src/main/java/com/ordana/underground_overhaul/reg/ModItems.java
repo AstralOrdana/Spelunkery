@@ -21,8 +21,6 @@ public class ModItems {
         return RegHelper.registerItem(UndergroundOverhaul.res(name), itemSup);
     }
 
-    public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
@@ -33,7 +31,6 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND = regItem("rough_diamond", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
             new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
@@ -48,14 +45,14 @@ public class ModItems {
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 
     //food
-    public static final Supplier<Item> BUTTON_MUSHROOM = regItem("button_mushroom", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
-    public static final Supplier<Item> CRIMINI = regItem("crimini", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.CRIMINI)));
-    public static final Supplier<Item> PORTABELLA = regItem("portabella", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
     public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
             new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
+    public static final Supplier<Item> PORTABELLA = regItem("portabella", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
+    public static final Supplier<Item> CRIMINI = regItem("crimini", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.CRIMINI)));
+    public static final Supplier<Item> BUTTON_MUSHROOM = regItem("button_mushroom", () ->
+            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
 
 
     //mining gear
