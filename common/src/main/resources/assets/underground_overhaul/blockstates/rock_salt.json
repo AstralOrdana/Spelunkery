@@ -4,27 +4,13 @@
       {
         "model": "underground_overhaul:block/rock_salt_lit",
         "x": 180
-      },
-      {
-        "model": "underground_overhaul:block/rock_salt_lit",
-        "x": 180,
-        "y": 90
-      },
-      {
-        "model": "underground_overhaul:block/rock_salt_lit",
-        "x": 180,
-        "y": -90
-      },
-      {
-        "model": "underground_overhaul:block/rock_salt_lit",
-        "x": 180,
-        "y": 180
       }
     ],
     "illuminated=true,facing=east": [
       {
         "model": "underground_overhaul:block/rock_salt_lit",
-        "z": 90
+        "x": 90,
+        "y": 90
       }
     ],
     "illuminated=true,facing=north": [
@@ -43,6 +29,18 @@
     "illuminated=true,facing=up": [
       {
         "model": "underground_overhaul:block/rock_salt_lit"
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "y": -90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "y": 90
+      },
+      {
+        "model": "underground_overhaul:block/rock_salt_lit",
+        "y": 180
       }
     ],
     "illuminated=true,facing=west": [
@@ -60,11 +58,9 @@
     ],
     "illuminated=false,facing=east": [
       {
-        "model": "underground_overhaul:block/rock_salt_east"
-      },
-      {
-        "model": "underground_overhaul:block/rock_salt_east",
-        "z": 180
+        "model": "underground_overhaul:block/rock_salt",
+        "x": 90,
+        "y": 90
       }
     ],
     "illuminated=false,facing=north": [

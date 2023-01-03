@@ -1,5 +1,7 @@
 {
   "replace": false,
   "values": [
+    "underground_overhaul:wooden_rail",
+    "underground_overhaul:rope_ladder"
   ]
 }

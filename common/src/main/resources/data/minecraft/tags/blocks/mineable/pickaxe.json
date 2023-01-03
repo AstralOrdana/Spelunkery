@@ -26,6 +26,13 @@
     "underground_overhaul:nephrite_slab",
     "underground_overhaul:nephrite_stairs",
     "underground_overhaul:nephrite_wall",
-    "underground_overhaul:polished_nephrite"
+    "underground_overhaul:polished_nephrite",
+    "underground_overhaul:polished_nephrite_slab",
+    "underground_overhaul:polished_nephrite_stairs",
+    "underground_overhaul:polished_nephrite_wall",
+    "underground_overhaul:polished_nephrite_bricks",
+    "underground_overhaul:polished_nephrite_brick_slab",
+    "underground_overhaul:polished_nephrite_brick_stairs",
+    "underground_overhaul:polished_nephrite_brick_wall"
   ]
 }

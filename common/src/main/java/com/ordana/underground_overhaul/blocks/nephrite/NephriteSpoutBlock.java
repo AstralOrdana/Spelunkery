@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,6 +23,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.EntityCollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
@@ -155,12 +158,22 @@ public class NephriteSpoutBlock extends BaseEntityBlock {
         }
     }
 
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        if (context instanceof EntityCollisionContext c) {
+            var e = c.getEntity();
+            if (e instanceof ExperienceOrb) {
+                return Shapes.empty();
+            }
+        }
+        return getShape(state, level, pos, context);
+    }
+
     static {
         FACING = HorizontalDirectionalBlock.FACING;
         POWERED = BlockStateProperties.POWERED;
-        NORTH_AABB = Block.box(5.0D, 0.0D, 10.0D, 11.0D, 10.0D, 16.0D);
-        SOUTH_AABB = Block.box(5.0D, 0.0D, 0.0D, 11.0D, 10.0D, 6.0D);
-        WEST_AABB = Block.box(10.0D, 0.0D, 5.0D, 16.0D, 10.0D, 11.0D);
-        EAST_AABB = Block.box(0.0D, 0.0D, 5.0D, 6.0D, 10.0D, 11.0D);
+        NORTH_AABB = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 6.0D, 16.0D);
+        SOUTH_AABB = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 6.0D, 16.0D);
+        WEST_AABB = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 6.0D, 14.0D);
+        EAST_AABB = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 6.0D, 14.0D);
     }
 }
