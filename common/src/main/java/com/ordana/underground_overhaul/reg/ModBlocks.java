@@ -93,16 +93,16 @@ public class ModBlocks {
     //rough gem blocks
     public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
-                    .requiresCorrectToolForDrops().strength(5f, 6f)));
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
-                    .requiresCorrectToolForDrops().strength(5f, 6f)));
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regWithItem("rough_emerald_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)
-                    .requiresCorrectToolForDrops().strength(5f, 6f)));
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
-                    .requiresCorrectToolForDrops().strength(5f, 6f)));
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 
     //rock salt
     public static final Supplier<Block> ROCK_SALT = regWithItem("rock_salt", () ->
