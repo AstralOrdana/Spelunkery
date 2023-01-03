@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underground_overhaul:nephrite_chunk"
+    }
+  },
+  "result": {
+    "item": "underground_overhaul:nephrite"
+  }
+}

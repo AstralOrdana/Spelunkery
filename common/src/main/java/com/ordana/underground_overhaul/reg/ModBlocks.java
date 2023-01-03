@@ -185,6 +185,7 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
+
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
             new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)), getTab(CreativeModeTab.TAB_DECORATIONS));
@@ -222,7 +223,7 @@ public class ModBlocks {
     public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
             new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
     public static final Supplier<Block> WOODEN_RAIL = regBlock("wooden_rail", () ->
-            new WoodenRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.7F).sound(SoundType.WOOD).instabreak()));
+            new WoodenRailBlock(BlockBehaviour.Properties.of(Material.DECORATION).noOcclusion().strength(0.7F).sound(SoundType.WOOD).instabreak()));
 
     //glowsticks
     public static final Supplier<Block> RED_GLOWSTICK = regBlock("red_glowstick", () ->

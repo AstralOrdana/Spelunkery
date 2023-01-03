@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "underground_overhaul:nephrite"
+  },
+  "result": "underground_overhaul:polished_nephrite_brick_slab",
+  "count": 2
+}
