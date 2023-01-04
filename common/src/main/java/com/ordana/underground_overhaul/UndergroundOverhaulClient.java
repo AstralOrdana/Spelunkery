@@ -42,7 +42,7 @@ public class UndergroundOverhaulClient {
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);
 
         ClientPlatformHelper.registerItemProperty(ModItems.NEPHRITE_CHARM.get(), UndergroundOverhaul.res("charge"),
-                (stack, world, entity, seed) -> (stack.getOrCreateTag().getInt("xp") / 1395f));
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("xp") / 1395f) : 0);
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
