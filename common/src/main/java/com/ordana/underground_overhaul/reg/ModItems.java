@@ -3,10 +3,7 @@ package com.ordana.underground_overhaul.reg;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
 import com.ordana.underground_overhaul.items.*;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
@@ -49,11 +46,11 @@ public class ModItems {
 
     //food
     public static final Supplier<Item> BUTTON_MUSHROOM = regItem("button_mushroom", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
+            new BlockItem(ModBlocks.BUTTON_MUSHROOM.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
     public static final Supplier<Item> CRIMINI = regItem("crimini", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.CRIMINI)));
+            new BlockItem(ModBlocks.CRIMINI.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.CRIMINI)));
     public static final Supplier<Item> PORTABELLA = regItem("portabella", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
+            new BlockItem(ModBlocks.PORTABELLA.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
     public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
             new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
 

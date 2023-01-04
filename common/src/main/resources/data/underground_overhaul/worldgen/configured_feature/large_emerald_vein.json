@@ -28,7 +28,7 @@
                 "Name": "minecraft:andesite"
               },
               {
-                "Name": "minecraft:emerald_ore"
+                "Name": "underground_overhaul:andesite_emerald_ore"
               }
             ],
             "high_states": [
@@ -36,7 +36,7 @@
                 "Name": "underground_overhaul:rough_emerald_block"
               },
               {
-                "Name": "minecraft:emerald_ore"
+                "Name": "underground_overhaul:andesite_emerald_ore"
               }
             ]
           }

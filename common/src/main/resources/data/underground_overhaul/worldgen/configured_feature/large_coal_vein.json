@@ -1,8 +1,8 @@
 {
   "type": "minecraft:random_patch",
   "config": {
-    "tries": 75,
-    "xz_spread": 8,
+    "tries": 60,
+    "xz_spread": 5,
     "y_spread": 0,
     "feature": {
       "feature": {
@@ -36,7 +36,7 @@
                 "Name": "minecraft:coal_block"
               },
               {
-                "Name": "minecraft:deepslate_diamond_ore"
+                "Name": "underground_overhaul:smooth_basalt_diamond_ore"
               }
             ]
           }

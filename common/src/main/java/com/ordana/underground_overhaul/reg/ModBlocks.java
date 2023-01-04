@@ -12,6 +12,7 @@ import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -51,6 +53,10 @@ public class ModBlocks {
 
         private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
         return (state) -> (Boolean)state.getValue(ModBlockProperties.ILLUMINATED) ? litLevel : 0;
+    }
+
+    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+        return (blockState) -> (Boolean)blockState.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
     public static <T extends Block> Supplier<T> regBlock(String name, Supplier<T> block) {
@@ -91,15 +97,30 @@ public class ModBlocks {
 
 
     //rough gem blocks
+    public static final Supplier<Block> CALCITE_REDSTONE_ORE = regWithItem("calcite_redstone_ore", () ->
+            new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
     public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regWithItem("rough_cinnabar_block", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
-                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
+            new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
+
+    public static final Supplier<Block> SANDSTONE_LAPIS_ORE = regWithItem("sandstone_lapis_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE)
+                    .requiresCorrectToolForDrops().strength(2.5f, 3f), UniformInt.of(2, 5)));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
+
+    public static final Supplier<Block> ANDESITE_EMERALD_ORE = regWithItem("andesite_emerald_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f), UniformInt.of(3, 7)));
     public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regWithItem("rough_emerald_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
+
+    public static final Supplier<Block> SMOOTH_BASALT_DIAMOND_ORE = regWithItem("smooth_basalt_diamond_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.BASALT), UniformInt.of(3, 7)));
     public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));

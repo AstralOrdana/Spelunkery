@@ -9,9 +9,9 @@
     "ExperienceOrbMixin",
     "InventoryMixin",
     "MixinBiomeDefaultFeatures",
-    "TooltipMixin",
     "ServerPlayerMixin",
-    "SlimeMixin"
+    "SlimeMixin",
+    "TooltipMixin"
   ],
   "injectors": {
     "defaultRequire": 1

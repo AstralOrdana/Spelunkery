@@ -1,7 +1,7 @@
 {
   "type": "minecraft:random_patch",
   "config": {
-    "tries": 60,
+    "tries": 40,
     "xz_spread": 2,
     "y_spread": 10,
     "feature": {
@@ -28,7 +28,7 @@
                 "Name": "minecraft:sandstone"
               },
               {
-                "Name": "minecraft:lapis_ore"
+                "Name": "underground_overhaul:sandstone_lapis_ore"
               }
             ],
             "high_states": [
@@ -37,6 +37,9 @@
               },
               {
                 "Name": "minecraft:gold_ore"
+              },
+              {
+                "Name": "underground_overhaul:sandstone_lapis_ore"
               }
             ]
           }

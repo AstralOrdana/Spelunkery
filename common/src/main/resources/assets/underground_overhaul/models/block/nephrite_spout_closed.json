@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "underground_overhaul:block/nephrite_fountain"
+		"3": "underground_overhaul:block/nephrite_fountain",
+		"particle": "underground_overhaul:block/nephrite_fountain"
 	},
 	"elements": [
 		{
@@ -84,8 +85,8 @@
 			}
 		},
 		{
-			"from": [1.9, 2, 0],
-			"to": [1.9, 4, 16],
+			"from": [1.99, 2, 0],
+			"to": [1.99, 4, 16],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 3, 16]},
 			"faces": {
 				"north": {"uv": [0, 4.5, 6, 5.5], "texture": "#3"},
@@ -97,8 +98,8 @@
 			}
 		},
 		{
-			"from": [14, 2, 0],
-			"to": [14, 4, 16],
+			"from": [14.01, 2, 0],
+			"to": [14.01, 4, 16],
 			"rotation": {"angle": 0, "axis": "x", "origin": [7.9, 3, 16]},
 			"faces": {
 				"north": {"uv": [0, 4.5, 6, 5.5], "texture": "#3"},
@@ -110,8 +111,8 @@
 			}
 		},
 		{
-			"from": [2, 2, -0.1],
-			"to": [14, 4, -0.1],
+			"from": [2, 2, -0.01],
+			"to": [14, 4, -0.01],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 3, 16]},
 			"faces": {
 				"north": {"uv": [0, 3.5, 6, 4.5], "texture": "#3"},

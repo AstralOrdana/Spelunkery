@@ -10,10 +10,24 @@
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
             "block": "minecraft:deepslate",
-            "probability": 0.2
+            "probability": 0.45
           },
           "output_state": {
             "Name": "minecraft:calcite"
+          }
+        },
+
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:deepslate",
+            "probability": 0.1
+          },
+          "output_state": {
+            "Name": "underground_overhaul:calcite_redstone_ore"
           }
         },
         {

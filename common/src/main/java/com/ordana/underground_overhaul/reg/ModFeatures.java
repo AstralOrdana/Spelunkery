@@ -2,7 +2,8 @@ package com.ordana.underground_overhaul.reg;
 
 import com.ordana.underground_overhaul.UAPlatform;
 import com.ordana.underground_overhaul.UndergroundOverhaul;
-import com.ordana.underground_overhaul.features.UpdateGeodeFeature;
+import com.ordana.underground_overhaul.features.CrystalFeature;
+import com.ordana.underground_overhaul.features.CrystalFeatureConfig;
 import com.ordana.underground_overhaul.features.WallMushroomFeature;
 import com.ordana.underground_overhaul.features.WallMushroomFeatureConfig;
 import com.ordana.underground_overhaul.features.util.NoiseBasedStoneFeature;
@@ -11,21 +12,14 @@ import com.ordana.underground_overhaul.features.util.StonePattern;
 import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.List;
@@ -38,9 +32,9 @@ public class ModFeatures {
             UndergroundOverhaul.res("wall_mushroom"), () ->
                     new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
 
-    public static final Supplier<Feature<GeodeConfiguration>> UPDATE_GEODE_FEATURE = RegHelper.registerFeature(
-            UndergroundOverhaul.res("update_geode"), () ->
-                    new UpdateGeodeFeature(GeodeConfiguration.CODEC));
+    public static final Supplier<Feature<CrystalFeatureConfig>> CRYSTAL_FEATURE = RegHelper.registerFeature(
+            UndergroundOverhaul.res("crystal"), () ->
+                    new CrystalFeature(CrystalFeatureConfig.CODEC));
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
             UndergroundOverhaul.res("noise_stone"), () -> NoiseBasedStoneFeature.featureWithDeepslateUnfiltered(NoneFeatureConfiguration.CODEC,
@@ -210,6 +204,9 @@ public class ModFeatures {
 
         ResourceKey<PlacedFeature> noise_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("noise_salt"));
         UAPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_OVERWORLD, noise_salt);
+
+        ResourceKey<PlacedFeature> rock_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("rock_salt"));
+        UAPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_MOUNTAIN, rock_salt);
 
         //ores
         ResourceKey<PlacedFeature> ore_aquifer = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, UndergroundOverhaul.res("ore_aquifer"));

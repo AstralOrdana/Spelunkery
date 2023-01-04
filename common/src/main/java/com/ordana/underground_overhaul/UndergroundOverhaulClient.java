@@ -40,15 +40,9 @@ public class UndergroundOverhaulClient {
 
         ClientPlatformHelper.registerItemProperty(ModItems.DEPTH_GAUGE.get(), UndergroundOverhaul.res("depth"),
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);
+
         ClientPlatformHelper.registerItemProperty(ModItems.NEPHRITE_CHARM.get(), UndergroundOverhaul.res("charge"),
-                (stack, world, entity, seed) -> {
-                    if (entity != null && stack.getTag().contains("xp")) {
-                        if (stack.getTag().contains("xp")) return ((float) stack.getTag().getInt("xp") / 1395);
-                        else return 0;
-                    } else {
-                        return 0;
-                    }
-                });
+                (stack, world, entity, seed) -> (stack.getOrCreateTag().getInt("xp") / 1395f));
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
