@@ -1,5 +1,5 @@
 {
-  "parent": "underground_overhaul:block/nocut_inner_stairs",
+  "parent": "underground_overhaul:block/fancy_inner_stairs",
   "textures": {
     "bottom": "underground_overhaul:block/saltstairs_default",
     "top": "underground_overhaul:block/saltstairs_lnw",
