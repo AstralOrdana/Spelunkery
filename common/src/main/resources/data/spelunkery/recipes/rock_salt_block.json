@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rock_salt"
+    }
+  },
+  "result": {
+    "item": "spelunkery:rock_salt_block"
+  }
+}

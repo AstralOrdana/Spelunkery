@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "underground_overhaul:rough_cinnabar",
+              "name": "spelunkery:rough_cinnabar",
               "functions": [
                 {
                   "function": "minecraft:set_count",

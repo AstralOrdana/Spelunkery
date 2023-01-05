@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "top": "spelunkery:block/rock_salt_brick_lit",
+    "bottom": "spelunkery:block/rock_salt_brick_lit",
+    "side": "spelunkery:block/rock_salt_brick_lit"
+  }
+}

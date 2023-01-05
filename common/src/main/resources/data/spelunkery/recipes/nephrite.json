@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:nephrite_chunk"
+    }
+  },
+  "result": {
+    "item": "spelunkery:nephrite"
+  }
+}

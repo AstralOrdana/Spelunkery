@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/nephrite_chunk"
+  }
+}

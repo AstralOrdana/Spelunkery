@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "underground_overhaul:block/sandstone_lapis_ore_bottom",
-    "top": "minecraft:block/sandstone_top",
-    "side": "underground_overhaul:block/sandstone_lapis_ore"
-  }
-}

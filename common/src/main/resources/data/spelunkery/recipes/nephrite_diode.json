@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "SRC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:nephrite"
+    },
+    "S": {
+      "item": "spelunkery:nephrite_siphon"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "spelunkery:carved_nephrite"
+    }
+  },
+  "result": {
+    "item": "spelunkery:nephrite_diode"
+  }
+}

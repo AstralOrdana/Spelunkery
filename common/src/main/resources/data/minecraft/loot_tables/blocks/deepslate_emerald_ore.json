@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "underground_overhaul:rough_emerald",
+              "name": "spelunkery:rough_emerald",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",

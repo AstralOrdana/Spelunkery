@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "spelunkery:block/rock_salt_brick_lit"
+  }
+}

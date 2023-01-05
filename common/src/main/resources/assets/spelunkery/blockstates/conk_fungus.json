@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "facing=east": [
+      {
+        "model": "spelunkery:block/conk_fungus_0",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/conk_fungus_1",
+        "y": 90
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "spelunkery:block/conk_fungus_0"
+      },
+      {
+        "model": "spelunkery:block/conk_fungus_1"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "spelunkery:block/conk_fungus_0",
+        "y": 180
+      },
+      {
+        "model": "spelunkery:block/conk_fungus_1",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "spelunkery:block/conk_fungus_0",
+        "y": 270
+      },
+      {
+        "model": "spelunkery:block/conk_fungus_1",
+        "y": 270
+      }
+    ]
+  }
+}

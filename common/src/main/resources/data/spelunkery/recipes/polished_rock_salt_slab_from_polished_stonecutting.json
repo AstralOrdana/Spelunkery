@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "spelunkery:polished_rock_salt"
+  },
+  "result": "spelunkery:polished_rock_salt_slab",
+  "count": 2
+}

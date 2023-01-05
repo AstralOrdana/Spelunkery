@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "spelunkery:block/nephrite_slab"
+    },
+    "type=double": {
+      "model": "spelunkery:block/nephrite"
+    },
+    "type=top,": {
+      "model": "spelunkery:block/nephrite_slab_top"
+    }
+  }
+}

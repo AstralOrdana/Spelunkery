@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "floor=false,facing=east": {
+      "model": "spelunkery:block/phosphor_fungus_wall",
+      "y": 90
+    },
+    "floor=false,facing=south": {
+      "model": "spelunkery:block/phosphor_fungus_wall",
+      "y": 180
+    },
+    "floor=false,facing=west": {
+      "model": "spelunkery:block/phosphor_fungus_wall",
+      "y": 270
+    },
+    "floor=false,facing=north": {
+      "model": "spelunkery:block/phosphor_fungus_wall",
+      "y": 0
+    },
+    "floor=true,facing=north": {
+      "model": "spelunkery:block/phosphor_fungus"
+    },
+    "floor=true,facing=south": {
+      "model": "spelunkery:block/phosphor_fungus"
+    },
+    "floor=true,facing=east": {
+      "model": "spelunkery:block/phosphor_fungus"
+    },
+    "floor=true,facing=west": {
+      "model": "spelunkery:block/phosphor_fungus"
+    }
+  }
+}

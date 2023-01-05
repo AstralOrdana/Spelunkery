@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ordana.spelunkery.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+  ],
+  "mixins": [
+    "ExperienceOrbMixin",
+    "InventoryMixin",
+    "BiomeDefaultFeaturesMixin",
+    "ServerPlayerMixin",
+    "SlimeMixin",
+    "TooltipMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

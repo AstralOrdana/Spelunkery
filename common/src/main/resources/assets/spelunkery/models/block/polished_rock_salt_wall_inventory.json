@@ -1,0 +1,48 @@
+{   "parent": "block/block",
+	"display": {
+		"gui": {
+			"rotation": [ 30, 135, 0 ],
+			"translation": [ 0, 0, 0],
+			"scale":[ 0.625, 0.625, 0.625 ]
+		},
+		"fixed": {
+			"rotation": [ 0, 90, 0 ],
+			"translation": [ 0, 0, 0 ],
+			"scale": [ 0.5, 0.5, 0.5 ]
+		}
+	},
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "spelunkery:block/polished_rock_salt_wall",
+		"particle": "spelunkery:block/polished_rock_salt_wall"
+	},
+	"elements": [
+		{
+			"name": "Center post",
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"east": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"south": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"west": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"up": {"uv": [7.5, 0, 11.5, 4], "texture": "#0"},
+				"down": {"uv": [7.5, 0, 11.5, 4], "texture": "#0", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Full wall",
+			"from": [5, 0, 0],
+			"to": [11, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 3, 6.5], "texture": "#0", "cullface": "north"},
+				"east": {"uv": [8, 9, 16, 15.5], "texture": "#0"},
+				"south": {"uv": [4, 1.5, 7, 8], "texture": "#0", "cullface": "south"},
+				"west": {"uv": [8, 9, 16, 15.5], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 8], "texture": "#0"},
+				"down": {"uv": [0, 0, 3, 8], "texture": "#0", "cullface": "down"}
+			}
+		}
+	]
+}

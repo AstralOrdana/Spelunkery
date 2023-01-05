@@ -1,0 +1,15 @@
+{
+  "name": "spelunkery:cinnabar_wire/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "spelunkery:cinnabar_wire/cross",
+        "processors": "spelunkery:cinnabar_vein"
+      }
+    }
+  ]
+}

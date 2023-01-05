@@ -1,0 +1,27 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/depth_gauge/depth_gauge_18"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:depth": 0.005 }, "model": "spelunkery:item/depth_gauge_18" },
+    { "predicate": { "spelunkery:depth": 0.027 }, "model": "spelunkery:item/depth_gauge_17" },
+    { "predicate": { "spelunkery:depth": 0.046 }, "model": "spelunkery:item/depth_gauge_16" },
+    { "predicate": { "spelunkery:depth": 0.070 }, "model": "spelunkery:item/depth_gauge_15" },
+    { "predicate": { "spelunkery:depth": 0.099 }, "model": "spelunkery:item/depth_gauge_14" },
+    { "predicate": { "spelunkery:depth": 0.134 }, "model": "spelunkery:item/depth_gauge_13" },
+    { "predicate": { "spelunkery:depth": 0.173 }, "model": "spelunkery:item/depth_gauge_12" },
+    { "predicate": { "spelunkery:depth": 0.217 }, "model": "spelunkery:item/depth_gauge_11" },
+    { "predicate": { "spelunkery:depth": 0.265 }, "model": "spelunkery:item/depth_gauge_10" },
+    { "predicate": { "spelunkery:depth": 0.318 }, "model": "spelunkery:item/depth_gauge_9" },
+    { "predicate": { "spelunkery:depth": 0.376 }, "model": "spelunkery:item/depth_gauge_8" },
+    { "predicate": { "spelunkery:depth": 0.437 }, "model": "spelunkery:item/depth_gauge_7" },
+    { "predicate": { "spelunkery:depth": 0.504 }, "model": "spelunkery:item/depth_gauge_6" },
+    { "predicate": { "spelunkery:depth": 0.573 }, "model": "spelunkery:item/depth_gauge_5" },
+    { "predicate": { "spelunkery:depth": 0.646 }, "model": "spelunkery:item/depth_gauge_4" },
+    { "predicate": { "spelunkery:depth": 0.725 }, "model": "spelunkery:item/depth_gauge_3" },
+    { "predicate": { "spelunkery:depth": 0.807 }, "model": "spelunkery:item/depth_gauge_2" },
+    { "predicate": { "spelunkery:depth": 0.893 }, "model": "spelunkery:item/depth_gauge_1" },
+    { "predicate": { "spelunkery:depth": 0.983 }, "model": "spelunkery:item/depth_gauge_0" }
+  ]
+}

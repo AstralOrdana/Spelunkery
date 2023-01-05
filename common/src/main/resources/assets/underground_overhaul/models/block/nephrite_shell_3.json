@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_single_face",
-  "textures": {
-    "texture": "underground_overhaul:block/raw_nephrite_shell_5"
-  }
-}

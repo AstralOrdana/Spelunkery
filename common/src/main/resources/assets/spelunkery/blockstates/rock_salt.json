@@ -1,0 +1,104 @@
+{
+  "variants": {
+    "illuminated=true,facing=down": [
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "x": 180
+      }
+    ],
+    "illuminated=true,facing=east": [
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "illuminated=true,facing=north": [
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "x": 90
+      }
+    ],
+    "illuminated=true,facing=south": [
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "illuminated=true,facing=up": [
+      {
+        "model": "spelunkery:block/rock_salt_lit"
+      },
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "y": -90
+      },
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "y": 180
+      }
+    ],
+    "illuminated=true,facing=west": [
+      {
+        "model": "spelunkery:block/rock_salt_lit",
+        "x": 90,
+        "y": 270
+      }
+    ],
+    "illuminated=false,facing=down": [
+      {
+        "model": "spelunkery:block/rock_salt",
+        "x": 180
+      }
+    ],
+    "illuminated=false,facing=east": [
+      {
+        "model": "spelunkery:block/rock_salt",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "illuminated=false,facing=north": [
+      {
+        "model": "spelunkery:block/rock_salt",
+        "x": 90
+      }
+    ],
+    "illuminated=false,facing=south": [
+      {
+        "model": "spelunkery:block/rock_salt",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "illuminated=false,facing=up": [
+      {
+        "model": "spelunkery:block/rock_salt"
+      },
+      {
+        "model": "spelunkery:block/rock_salt",
+        "y": -90
+      },
+      {
+        "model": "spelunkery:block/rock_salt",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/rock_salt",
+        "y": 180
+      }
+    ],
+    "illuminated=false,facing=west": [
+      {
+        "model": "spelunkery:block/rock_salt",
+        "x": 90,
+        "y": 270
+      }
+    ]
+  }
+}

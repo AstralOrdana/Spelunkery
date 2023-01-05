@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "underground_overhaul:rock_salt_block"
-  },
-  "result": "underground_overhaul:rock_salt_wall",
-  "count": 1
-}

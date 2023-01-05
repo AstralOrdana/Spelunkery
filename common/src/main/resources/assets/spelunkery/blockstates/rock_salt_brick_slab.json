@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,illuminated=false": {
+      "model": "spelunkery:block/rock_salt_brick_slab"
+    },
+    "type=double,illuminated=false": {
+      "model": "spelunkery:block/rock_salt_bricks"
+    },
+    "type=top,illuminated=false": {
+      "model": "spelunkery:block/rock_salt_brick_slab_top"
+    },
+    "type=bottom,illuminated=true": {
+      "model": "spelunkery:block/rock_salt_brick_slab_lit"
+    },
+    "type=double,illuminated=true": {
+      "model": "spelunkery:block/rock_salt_bricks_lit"
+    },
+    "type=top,illuminated=true": {
+      "model": "spelunkery:block/rock_salt_brick_slab_top_lit"
+    }
+  }
+}

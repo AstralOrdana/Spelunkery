@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:polished_nephrite"
+    }
+  },
+  "result": {
+    "item": "spelunkery:polished_nephrite_bricks",
+    "count": 4
+  }
+}

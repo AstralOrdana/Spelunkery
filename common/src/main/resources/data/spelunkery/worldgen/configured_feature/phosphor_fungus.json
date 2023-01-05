@@ -1,0 +1,12 @@
+{
+  "type": "spelunkery:wall_mushroom",
+  "config": {
+    "block": "spelunkery:phosphor_fungus",
+    "can_place_on_floor": true,
+    "can_be_placed_on": [
+      "minecraft:deepslate",
+      "minecraft:tuff",
+      "minecraft:dripstone_block"
+    ]
+  }
+}

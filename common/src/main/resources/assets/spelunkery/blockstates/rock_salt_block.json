@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "illuminated=false": {
+      "model": "spelunkery:block/rock_salt_block"
+    },
+    "illuminated=true": {
+      "model": "spelunkery:block/rock_salt_block_lit"
+    }
+  }
+}

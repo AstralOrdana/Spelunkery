@@ -1,30 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "underground_overhaul",
+  "id": "spelunkery",
   "version": "${version}",
-  "name": "Underground Overhaul",
+  "name": "Spelunkery",
   "description": "An Overhaul to everything Underground",
   "authors": [
     "Ordana"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/underground_overhaul",
-    "sources": "https://github.com/AstralOrdana/underground_overhaul"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/spelunkery",
+    "sources": "https://github.com/AstralOrdana/spelunkery"
   },
   "license": "LGPLv3",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.ordana.underground_overhaul.fabric.UndergroundOverhaulFabric"
+      "com.ordana.spelunkery.fabric.SpelunkeryFabric"
     ],
     "modmenu": [
-      "com.ordana.underground_overhaul.integration.fabric.ModMenuCompat"
+      "com.ordana.spelunkery.integration.fabric.ModMenuCompat"
     ]
   },
   "mixins": [
-    "underground_overhaul.mixins.json",
-    "underground_overhaul-common.mixins.json"
+    "spelunkery.mixins.json",
+    "spelunkery-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",

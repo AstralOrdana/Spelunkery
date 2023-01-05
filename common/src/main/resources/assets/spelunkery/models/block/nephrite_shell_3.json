@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "spelunkery:block/raw_nephrite_shell_5"
+  }
+}

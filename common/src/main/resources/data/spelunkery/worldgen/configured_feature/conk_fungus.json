@@ -1,0 +1,13 @@
+{
+  "type": "spelunkery:wall_mushroom",
+  "config": {
+    "block": "spelunkery:conk_fungus",
+    "can_place_on_floor": false,
+    "can_be_placed_on": [
+      "minecraft:dirt",
+      "minecraft:coarse_dirt",
+      "minecraft:oak_planks",
+      "minecraft:oak_log"
+    ]
+  }
+}

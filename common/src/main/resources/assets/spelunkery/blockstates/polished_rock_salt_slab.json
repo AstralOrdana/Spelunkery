@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,illuminated=false": {
+      "model": "spelunkery:block/polished_rock_salt_slab"
+    },
+    "type=double,illuminated=false": {
+      "model": "spelunkery:block/polished_rock_salt_slab_double"
+    },
+    "type=top,illuminated=false": {
+      "model": "spelunkery:block/polished_rock_salt_slab_top"
+    },
+    "type=bottom,illuminated=true": {
+      "model": "spelunkery:block/polished_rock_salt_slab_lit"
+    },
+    "type=double,illuminated=true": {
+      "model": "spelunkery:block/polished_rock_salt_slab_double"
+    },
+    "type=top,illuminated=true": {
+      "model": "spelunkery:block/polished_rock_salt_slab_top_lit"
+    }
+  }
+}

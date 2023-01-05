@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#spelunkery:has_desert_noise",
+  "features": [
+    "spelunkery:noise_desert",
+    "spelunkery:large_lapis_vein"
+  ],
+  "step": "raw_generation"
+}

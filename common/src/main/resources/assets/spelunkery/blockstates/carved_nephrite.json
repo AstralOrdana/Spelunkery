@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "charge=full": {
+      "model": "spelunkery:block/carved_nephrite_full"
+    },
+    "charge=one_to_twenty": {
+      "model": "spelunkery:block/carved_nephrite_1-20"
+    },
+    "charge=twentyone_to_fourty": {
+      "model": "spelunkery:block/carved_nephrite_21-40"
+    },
+    "charge=fourtyone_to_sixty": {
+      "model": "spelunkery:block/carved_nephrite_41-60"
+    },
+    "charge=sixtyone_to_eighty": {
+      "model": "spelunkery:block/carved_nephrite_61-80"
+    },
+    "charge=eightyone_to_ninetynine": {
+      "model": "spelunkery:block/carved_nephrite_81-99"
+    },
+    "charge=empty": {
+      "model": "spelunkery:block/carved_nephrite_empty"
+    }
+  }
+}

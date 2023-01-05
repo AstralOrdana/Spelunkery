@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "top": "spelunkery:block/nephrite",
+    "bottom": "spelunkery:block/nephrite",
+    "side": "spelunkery:block/nephrite"
+  }
+}

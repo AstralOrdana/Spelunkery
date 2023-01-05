@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#spelunkery:has_ocean_noise",
+  "features": [
+    "spelunkery:noise_lush"
+  ],
+  "step": "raw_generation"
+}

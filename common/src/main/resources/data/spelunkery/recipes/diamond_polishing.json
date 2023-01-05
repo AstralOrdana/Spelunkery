@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "spelunkery:rough_diamond"
+  },
+  "result": "minecraft:diamond",
+  "count": 1
+}

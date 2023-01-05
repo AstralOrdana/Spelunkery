@@ -7,11 +7,11 @@ license="LGPLv3"
 
 [[mods]] #mandatory
 
-modId="underground_overhaul" #mandatory
+modId="spelunkery" #mandatory
 
 version = "${version}"
 
-displayName="Underground Overhaul" #mandatory
+displayName="Spelunkery" #mandatory
 
 logoFile="icon.png" #optional
 
@@ -19,12 +19,12 @@ credits="Ordana" #optional
 
 authors="Ordana" #optional
 
-itemIcon="underground_overhaul:rough_diamond" #catalogue icon
+itemIcon="spelunkery:rough_diamond" #catalogue icon
 description='''
 An Overhaul to everything Underground
 '''
 
-[[dependencies.underground_overhaul]] #optional
+[[dependencies.spelunkery]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
 
@@ -35,7 +35,7 @@ An Overhaul to everything Underground
     ordering="NONE"
     side="BOTH"
 # Here's another dependency
-[[dependencies.underground_overhaul]]
+[[dependencies.spelunkery]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
@@ -43,7 +43,7 @@ An Overhaul to everything Underground
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.underground_overhaul]]
+[[dependencies.spelunkery]]
 
     modId="moonlight"
     mandatory=true

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:white_inkcap_mushroom"
+    }
+  ],
+  "result": {
+    "item": "minecraft:white_dye"
+  }
+}

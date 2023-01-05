@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "spelunkery:block/tall_sporophyte_bottom"
+    },
+    "half=upper": {
+      "model": "spelunkery:block/tall_sporophyte_top"
+    }
+  }
+}

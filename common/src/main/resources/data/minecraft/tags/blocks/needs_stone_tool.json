@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "underground_overhaul:rough_lazurite_block",
-    "underground_overhaul:sandstone_lapis_ore",
-    "underground_overhaul:nephrite",
-    "underground_overhaul:carved_nephrite",
-    "underground_overhaul:nephrite_spout",
-    "underground_overhaul:nephrite_siphon"
+    "spelunkery:rough_lazurite_block",
+    "spelunkery:sandstone_lapis_ore",
+    "spelunkery:nephrite",
+    "spelunkery:carved_nephrite",
+    "spelunkery:nephrite_spout",
+    "spelunkery:nephrite_siphon"
   ]
 }

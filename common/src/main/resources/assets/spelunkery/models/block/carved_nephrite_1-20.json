@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "spelunkery:block/carved_nephrite_full",
+    "top": "spelunkery:block/carved_nephrite_empty",
+    "side": "spelunkery:block/carved_nephrite_1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rough_diamond"
+    }
+  },
+  "result": {
+    "item": "spelunkery:rough_diamond_block"
+  }
+}

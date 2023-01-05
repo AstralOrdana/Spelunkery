@@ -1,6 +1,0 @@
-{
-    "parent": "underground_overhaul:block/salt_side",
-    "textures": {
-        "line": "underground_overhaul:block/salt_line0"
-    }
-}

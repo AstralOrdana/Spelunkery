@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": { 
-    "top": "underground_overhaul:block/polished_nephrite_bricks",
-    "bottom": "underground_overhaul:block/polished_nephrite_bricks",
-    "side": "underground_overhaul:block/polished_nephrite_bricks"
-  }
-}

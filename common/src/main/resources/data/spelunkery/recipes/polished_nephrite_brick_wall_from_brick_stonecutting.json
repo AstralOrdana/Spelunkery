@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "spelunkery:polished_nephrite_bricks"
+  },
+  "result": "spelunkery:polished_nephrite_brick_wall",
+  "count": 1
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "spelunkery:block/nephrite_diode"
+    },
+    "facing=south": {
+      "model": "spelunkery:block/nephrite_diode",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "spelunkery:block/nephrite_diode",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "spelunkery:block/nephrite_diode",
+      "y": -90
+    },
+    "facing=up": {
+      "model": "spelunkery:block/nephrite_diode",
+      "x": -90
+    },
+    "facing=down": {
+      "model": "spelunkery:block/nephrite_diode",
+      "x": 90
+    }
+  }
+}

@@ -25,13 +25,13 @@
         {
           "weight": 50,
           "data": {
-            "Name": "underground_overhaul:sporophyte"
+            "Name": "spelunkery:sporophyte"
           }
         },
         {
           "weight": 10,
           "data": {
-            "Name": "underground_overhaul:tall_sporophyte"
+            "Name": "spelunkery:tall_sporophyte"
           }
         }
       ]

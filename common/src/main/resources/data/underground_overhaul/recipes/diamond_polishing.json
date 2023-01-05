@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "underground_overhaul:rough_diamond"
-  },
-  "result": "minecraft:diamond",
-  "count": 1
-}

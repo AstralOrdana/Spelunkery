@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_mountain",
+  "features": [
+    "spelunkery:noise_salt",
+    "spelunkery:rock_salt",
+    "spelunkery:large_emerald_vein"
+  ],
+  "step": "raw_generation"
+}

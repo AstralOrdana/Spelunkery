@@ -1,0 +1,67 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "spelunkery:block/milly_bubcap",
+		"particle": "spelunkery:block/milly_bubcap"
+	},
+	"elements": [
+		{
+			"name": "Cap 1A",
+			"from": [10, 0, 4.5],
+			"to": [10, 4, 7.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [10, 0, 6]},
+			"shade": false,
+			"faces": {
+				"east": {"uv": [3, 12, 6, 16], "texture": "#0"},
+				"west": {"uv": [3, 12, 6, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Cap 1B",
+			"from": [8.5, 0, 6],
+			"to": [11.5, 4, 6],
+			"rotation": {"angle": 45, "axis": "y", "origin": [10, 0, 6]},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [3, 12, 6, 16], "texture": "#0"},
+				"south": {"uv": [3, 12, 6, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Cap 1A",
+			"from": [5, 0, 5.5],
+			"to": [5, 5, 8.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7, 0, 7]},
+			"shade": false,
+			"faces": {
+				"east": {"uv": [6, 11, 9, 16], "texture": "#0"},
+				"west": {"uv": [6, 11, 9, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Cap 1B",
+			"from": [3.5, 0, 7],
+			"to": [6.5, 5, 7],
+			"rotation": {"angle": 45, "axis": "y", "origin": [7, 0, 7]},
+			"shade": false,
+			"faces": {
+				"north": {"uv": [6, 11, 9, 16], "texture": "#0"},
+				"south": {"uv": [6, 11, 9, 16], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Cap 1",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [0, 1]
+		},
+		{
+			"name": "Cap 2",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [2, 3]
+		}
+	]
+}

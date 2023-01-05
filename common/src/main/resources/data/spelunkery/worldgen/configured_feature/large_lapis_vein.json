@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 40,
+    "xz_spread": 2,
+    "y_spread": 10,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:noise_threshold_provider",
+            "seed": 420,
+            "noise": {
+              "firstOctave": -3,
+              "amplitudes": [
+                1
+              ]
+            },
+            "scale": 1,
+            "threshold": 0.5,
+            "high_chance": 0.4,
+            "default_state": {
+              "Name": "minecraft:sandstone"
+            },
+            "low_states": [
+              {
+                "Name": "minecraft:sandstone"
+              },
+              {
+                "Name": "spelunkery:sandstone_lapis_ore"
+              }
+            ],
+            "high_states": [
+              {
+                "Name": "spelunkery:rough_lazurite_block"
+              },
+              {
+                "Name": "minecraft:gold_ore"
+              },
+              {
+                "Name": "spelunkery:sandstone_lapis_ore"
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_block_tag",
+            "tag": "minecraft:base_stone_overworld"
+          }
+        }
+      ]
+    }
+  }
+}

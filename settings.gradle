@@ -11,5 +11,5 @@ include("common")
 include("fabric")
 include("forge")
 
-rootProject.name = "underground_overhaul-multi"
+rootProject.name = "spelunkery-multi"
 

@@ -3,7 +3,7 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/underground_overhaul.accesswidener")
+    accessWidenerPath = file("src/main/resources/spelunkery.accesswidener")
 }
 
 dependencies {

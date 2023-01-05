@@ -1,0 +1,42 @@
+{
+  "name": "spelunkery:cinnabar_wire/wires",
+  "fallback": "spelunkery:cinnabar_wire/start_pool",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "location": "spelunkery:cinnabar_wire/straight",
+        "processors": "spelunkery:cinnabar_vein",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 7,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "spelunkery:cinnabar_wire/corner",
+        "processors": "spelunkery:cinnabar_vein"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "spelunkery:cinnabar_wire/cross",
+        "processors": "spelunkery:cinnabar_vein"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "spelunkery:cinnabar_wire/t_junction",
+        "processors": "spelunkery:cinnabar_vein"
+      }
+    }
+  ]
+}

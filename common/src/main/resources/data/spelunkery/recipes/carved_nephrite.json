@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "spelunkery:polished_nephrite"
+    },
+    "#": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "result": {
+    "item": "spelunkery:carved_nephrite",
+    "count": 8
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 60,
+    "xz_spread": 5,
+    "y_spread": 0,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:noise_threshold_provider",
+            "seed": 66666666,
+            "noise": {
+              "firstOctave": -3,
+              "amplitudes": [
+                1
+              ]
+            },
+            "scale": 1,
+            "threshold": 0.2,
+            "high_chance": 0.2,
+            "default_state": {
+              "Name": "minecraft:deepslate_coal_ore"
+            },
+            "low_states": [
+              {
+                "Name": "minecraft:smooth_basalt"
+              },
+              {
+                "Name": "minecraft:deepslate_coal_ore"
+              }
+            ],
+            "high_states": [
+              {
+                "Name": "minecraft:coal_block"
+              },
+              {
+                "Name": "spelunkery:smooth_basalt_diamond_ore"
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_block_tag",
+            "tag": "minecraft:base_stone_overworld"
+          }
+        }
+      ]
+    }
+  }
+}

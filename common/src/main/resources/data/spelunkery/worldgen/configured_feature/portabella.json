@@ -1,0 +1,76 @@
+{
+  "type": "minecraft:vegetation_patch",
+  "config": {
+    "surface": "floor",
+    "depth": 1,
+    "vertical_range": 5,
+    "extra_bottom_block_chance": 0,
+    "extra_edge_column_chance": 0.5,
+    "vegetation_chance": 0.1,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 4
+      }
+    },
+    "replaceable": "#minecraft:base_stone_overworld",
+    "ground_state": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:mycelium",
+            "Properties": {
+              "snowy": "false"
+            }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:coarse_dirt"
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:dirt"
+          }
+        }
+      ]
+    },
+    "vegetation_feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "spelunkery:portabella"
+                }
+              },
+              {
+                "weight": 5,
+                "data": {
+                  "Name": "spelunkery:crimini"
+                }
+              },
+              {
+                "weight": 25,
+                "data": {
+                  "Name": "spelunkery:button_mushroom"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "placement": []
+    }
+  }
+}

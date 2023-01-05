@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,end=true": {
+      "model": "spelunkery:block/rope_ladder_end",
+      "y": 90
+    },
+    "facing=north,end=true": {
+      "model": "spelunkery:block/rope_ladder_end"
+    },
+    "facing=south,end=true": {
+      "model": "spelunkery:block/rope_ladder_end",
+      "y": 180
+    },
+    "facing=west,end=true": {
+      "model": "spelunkery:block/rope_ladder_end",
+      "y": 270
+    },
+    "facing=east,end=false": {
+      "model": "spelunkery:block/rope_ladder",
+      "y": 90
+    },
+    "facing=north,end=false": {
+      "model": "spelunkery:block/rope_ladder"
+    },
+    "facing=south,end=false": {
+      "model": "spelunkery:block/rope_ladder",
+      "y": 180
+    },
+    "facing=west,end=false": {
+      "model": "spelunkery:block/rope_ladder",
+      "y": 270
+    }
+  }
+}

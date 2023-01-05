@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "top": "underground_overhaul:block/rock_salt_block",
-    "bottom": "underground_overhaul:block/rock_salt_block",
-    "side": "underground_overhaul:block/rock_salt_block"
-  }
-}

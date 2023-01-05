@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:phosphor_fungus"
+    }
+  ],
+  "result": {
+    "item": "minecraft:glow_ink_sac"
+  }
+}

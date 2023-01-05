@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "spelunkery:block/rock_salt_block_lit"
+  }
+}

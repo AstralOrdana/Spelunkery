@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "spelunkery:block/smooth_basalt_diamond_ore"
+  }
+}

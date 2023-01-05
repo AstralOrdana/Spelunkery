@@ -15,8 +15,8 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig  "underground_overhaul-common.mixins.json"
-        mixinConfig  "underground_overhaul.mixins.json"
+        mixinConfig  "spelunkery-common.mixins.json"
+        mixinConfig  "spelunkery.mixins.json"
     }
 }
 

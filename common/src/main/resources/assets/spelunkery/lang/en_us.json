@@ -1,0 +1,139 @@
+{
+  "tooltip.spelunkery.hold_crouch": "Hold Crouch for more details",
+  "tooltip.spelunkery.throwable": "Throwable!",
+  "tooltip.spelunkery.keep_on_death": "Does not drop on death",
+
+  "tooltip.spelunkery.rope_ladder_1": "  Climbable, can be placed on the sides of blocks",
+  "tooltip.spelunkery.rope_ladder_2": "  Places downward automatically like scaffolding",
+  "tooltip.spelunkery.rope_ladder_3": "  Crouch + right-click top ladder to roll up",
+
+  "tooltip.spelunkery.wooden_rail_1": "  Using this item on itself places at end of rail",
+  "tooltip.spelunkery.wooden_rail_2": "  Can extend above air blocks to cross gaps",
+
+  "tooltip.spelunkery.portal_fluid_1": "  Drink to return to your spawnpoint or worldspawn",
+  "tooltip.spelunkery.portal_fluid_2": "  Cannot teleport between dimensions",
+  "tooltip.spelunkery.portal_fluid_3": "  Use empty bottle on Crying Obsidian to obtain",
+  "tooltip.spelunkery.portal_fluid_failure": "Spawnpoint in different Dimension",
+  "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Portal Fluid",
+
+  "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
+
+  "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
+  "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
+  "tooltip.spelunkery.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
+  "tooltip.spelunkery.nephrite_charm_4": "  Additionally, hold Ctrl to store or retrieve incrementally",
+
+  "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
+  "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",
+  "tooltip.spelunkery.carved_nephrite_3": "  Use with a Nephrite Siphon, Fountain, and Diode",
+
+  "tooltip.spelunkery.nephrite_spout_1": "  Drains Charge from Carved Nephrite, converts to XP orbs",
+  "tooltip.spelunkery.nephrite_spout_2": "  Will only drain Charge from the Nephrite it is placed on",
+  "tooltip.spelunkery.nephrite_spout_3": "  Must be powered by Redstone to activate",
+
+  "tooltip.spelunkery.nephrite_siphon_1": "  Drains XP from any player that stands on it",
+  "tooltip.spelunkery.nephrite_siphon_2": "  Converts to Charge split among adjacent Carved Nephrite",
+  "tooltip.spelunkery.nephrite_siphon_3": "  Will also attract nearby XP orbs and convert them to Charge",
+
+  "tooltip.spelunkery.nephrite_diode_1": "  Transfers Charge from Carved Nephrite it's facing to the opposite side",
+  "tooltip.spelunkery.nephrite_diode_2": "  Transfers one at a time each time it receives a Redstone signal",
+  "tooltip.spelunkery.nephrite_diode_3": "  Can transfer Charge vertically and be pushed by Pistons",
+
+  "entity.spelunkery.mod_entity": "Mod Entity",
+  "item.spelunkery.mod_item": "Mod Item",
+
+  "block.spelunkery.rock_salt": "Rock Salt",
+  "block.spelunkery.salt_lamp": "Salt Lamp",
+  "block.spelunkery.salt": "Salt",
+
+  "block.spelunkery.rock_salt_block": "Rock Salt Block",
+  "block.spelunkery.rock_salt_slab": "Rock Salt Slab",
+  "block.spelunkery.rock_salt_stairs": "Rock Salt Stairs",
+  "block.spelunkery.rock_salt_wall": "Rock Salt Wall",
+
+  "block.spelunkery.polished_rock_salt": "Polished Rock Salt",
+  "block.spelunkery.polished_rock_salt_slab": "Polished Rock Salt Slab",
+  "block.spelunkery.polished_rock_salt_stairs": "Polished Rock Salt Stairs",
+  "block.spelunkery.polished_rock_salt_wall": "Polished Rock Salt Wall",
+
+  "block.spelunkery.rock_salt_bricks": "Rock Salt Bricks",
+  "block.spelunkery.rock_salt_brick_slab": "Rock Salt Brick Slab",
+  "block.spelunkery.rock_salt_brick_stairs": "Rock Salt Brick Stairs",
+  "block.spelunkery.rock_salt_brick_wall": "Rock Salt Brick Wall",
+
+  "block.spelunkery.rough_lazurite_block": "Rough Lazurite Block",
+  "block.spelunkery.rough_cinnabar_block": "Rough Cinnabar Block",
+  "block.spelunkery.rough_diamond_block": "Rough Diamond Block",
+  "block.spelunkery.rough_emerald_block": "Rough Emerald Block",
+
+  "block.spelunkery.sandstone_lapis_ore": "Sandstone Lapis Ore",
+  "block.spelunkery.calcite_redstone_ore": "Calcite Redstone Ore",
+  "block.spelunkery.smooth_basalt_diamond_ore": "Smooth Basalt Diamond Ore",
+  "block.spelunkery.andesite_emerald_ore": "Andesite Emerald Ore",
+
+  "item.spelunkery.cinnabar": "Cinnabar",
+  "item.spelunkery.rough_lazurite": "Rough Lazurite",
+  "item.spelunkery.rough_cinnabar": "Rough Cinnabar",
+  "item.spelunkery.rough_diamond": "Rough Diamond",
+  "item.spelunkery.rough_emerald": "Rough Emerald",
+
+  "item.spelunkery.nephrite_chunk": "Nephrite Chunk",
+  "block.spelunkery.raw_nephrite": "Raw Nephrite",
+  "block.spelunkery.nephrite": "Nephrite",
+  "block.spelunkery.nephrite_slab": "Nephrite Slab",
+  "block.spelunkery.nephrite_stairs": "Nephrite Stairs",
+  "block.spelunkery.nephrite_wall": "Nephrite Wall",
+
+  "block.spelunkery.polished_nephrite": "Polished Nephrite",
+  "block.spelunkery.polished_nephrite_slab": "Polished Nephrite Slab",
+  "block.spelunkery.polished_nephrite_stairs": "Polished Nephrite Stairs",
+  "block.spelunkery.polished_nephrite_wall": "Polished Nephrite Wall",
+
+  "block.spelunkery.polished_nephrite_bricks": "Polished Nephrite Bricks",
+  "block.spelunkery.polished_nephrite_brick_slab": "Polished Nephrite Brick Slab",
+  "block.spelunkery.polished_nephrite_brick_stairs": "Polished Nephrite Brick Stairs",
+  "block.spelunkery.polished_nephrite_brick_wall": "Polished Nephrite Brick Wall",
+
+  "block.spelunkery.carved_nephrite": "Carved Nephrite",
+  "block.spelunkery.nephrite_siphon": "Nephrite Siphon",
+  "block.spelunkery.nephrite_spout": "Nephrite Fountain",
+  "block.spelunkery.nephrite_diode": "Nephrite Diode",
+  "item.spelunkery.nephrite_charm": "Nephrite Charm",
+
+  "block.spelunkery.tangle_roots": "Tangle Roots",
+  "block.spelunkery.sporophyte": "Sporophyte",
+  "block.spelunkery.tall_sporophyte": "Tall Sporophyte",
+
+  "block.spelunkery.conk_fungus": "Conk Fungus",
+  "block.spelunkery.inkcap_mushroom": "Inkcap Mushroom",
+  "block.spelunkery.white_inkcap_mushroom": "White Inkcap Mushroom",
+  "item.spelunkery.button_mushroom": "Button Mushroom",
+  "item.spelunkery.crimini": "Crimini",
+  "item.spelunkery.portabella": "Portabella",
+  "item.spelunkery.grilled_portabella": "Grilled Portabella",
+  "block.spelunkery.phosphor_fungus": "Phosphor Fungus",
+  "block.spelunkery.milly_bubcap": "Milly Bubcap",
+
+  "block.spelunkery.glowstick": "Glowstick",
+  "block.spelunkery.wooden_rail": "Wooden Rail",
+  "block.spelunkery.rope_ladder": "Rope Ladder",
+  "item.spelunkery.portal_fluid_bottle": "Bottle of Portal Fluid",
+  "item.spelunkery.depth_gauge": "Depth Gauge",
+
+  "block.spelunkery.red_glowstick": "Red Glowstick",
+  "block.spelunkery.orange_glowstick": "Orange Glowstick",
+  "block.spelunkery.yellow_glowstick": "Yellow Glowstick",
+  "block.spelunkery.lime_glowstick": "Lime Glowstick",
+  "block.spelunkery.green_glowstick": "Green Glowstick",
+  "block.spelunkery.cyan_glowstick": "Cyan Glowstick",
+  "block.spelunkery.light_blue_glowstick": "Light Blue Glowstick",
+  "block.spelunkery.blue_glowstick": "Blue Glowstick",
+  "block.spelunkery.purple_glowstick": "Purple Glowstick",
+  "block.spelunkery.magenta_glowstick": "Magenta Glowstick",
+  "block.spelunkery.pink_glowstick": "Pink Glowstick",
+  "block.spelunkery.brown_glowstick": "Brown Glowstick",
+  "block.spelunkery.black_glowstick": "Black Glowstick",
+  "block.spelunkery.white_glowstick": "White Glowstick",
+  "block.spelunkery.gray_glowstick": "Gray Glowstick",
+  "block.spelunkery.light_gray_glowstick": "Light Gray Glowstick"
+}

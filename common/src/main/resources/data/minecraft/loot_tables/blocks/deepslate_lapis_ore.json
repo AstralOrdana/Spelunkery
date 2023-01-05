@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "underground_overhaul:rough_lazurite",
+              "name": "spelunkery:rough_lazurite",
               "functions": [
                 {
                   "function": "minecraft:set_count",

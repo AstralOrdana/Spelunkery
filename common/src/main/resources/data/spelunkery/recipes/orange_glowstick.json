@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:glowstick"
+    },
+    "X": {
+      "item": "minecraft:orange_dye"
+    }
+  },
+  "result": {
+    "item": "spelunkery:orange_glowstick",
+    "count": 8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "top": "spelunkery:block/polished_nephrite",
+    "bottom": "spelunkery:block/polished_nephrite",
+    "side": "spelunkery:block/polished_nephrite"
+  }
+}

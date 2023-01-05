@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "underground_overhaul:block/rock_salt_brick"
-  }
-}

@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "underground_overhaul:rock_salt_wall",
-    "underground_overhaul:polished_rock_salt_wall",
-    "underground_overhaul:rock_salt_brick_wall",
-    "underground_overhaul:nephrite_wall",
-    "underground_overhaul:polished_nephrite_wall",
-    "underground_overhaul:polished_nephrite_brick_wall"
+    "spelunkery:rock_salt_wall",
+    "spelunkery:polished_rock_salt_wall",
+    "spelunkery:rock_salt_brick_wall",
+    "spelunkery:nephrite_wall",
+    "spelunkery:polished_nephrite_wall",
+    "spelunkery:polished_nephrite_brick_wall"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "spelunkery:rough_cinnabar"
+  },
+  "result": "spelunkery:cinnabar",
+  "count": 1
+}

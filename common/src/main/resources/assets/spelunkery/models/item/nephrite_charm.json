@@ -1,0 +1,11 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/nephrite_charm_0"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:charge": 0.33 }, "model": "spelunkery:item/nephrite_charm_1" },
+    { "predicate": { "spelunkery:charge": 0.66 }, "model": "spelunkery:item/nephrite_charm_2" },
+    { "predicate": { "spelunkery:charge": 0.9999 }, "model": "spelunkery:item/nephrite_charm_3" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "spelunkery:block/polished_rock_salt_wall",
+		"particle": "spelunkery:block/polished_rock_salt_wall"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"east": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"south": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"west": {"uv": [3.5, 0, 7.5, 8], "texture": "#0"},
+				"up": {"uv": [7.5, 0, 11.5, 4], "texture": "#0"},
+				"down": {"uv": [7.5, 0, 11.5, 4], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "spelunkery:portabella"
+  },
+  "result": "spelunkery:grilled_portabella",
+  "experience": 0.35,
+  "cookingtime": 100
+}

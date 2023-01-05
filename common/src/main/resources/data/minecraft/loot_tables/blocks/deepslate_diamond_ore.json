@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "underground_overhaul:rough_diamond",
+              "name": "spelunkery:rough_diamond",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",

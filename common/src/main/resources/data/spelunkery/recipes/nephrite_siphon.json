@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#V#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:nephrite"
+    },
+    "V": {
+      "item": "spelunkery:carved_nephrite"
+    }
+  },
+  "result": {
+    "item": "spelunkery:nephrite_siphon",
+    "count": 2
+  }
+}

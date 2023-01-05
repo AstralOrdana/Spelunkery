@@ -1,0 +1,6 @@
+{
+    "parent": "spelunkery:block/salt_side_alt",
+    "textures": {
+        "line": "spelunkery:block/salt_line1"
+    }
+}

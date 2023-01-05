@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "underground_overhaul:block/tangle_roots_plant_top"
-  }
-}

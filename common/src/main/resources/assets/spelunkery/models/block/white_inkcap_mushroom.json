@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "spelunkery:block/white_inkcap_mushroom"
+  }
+}

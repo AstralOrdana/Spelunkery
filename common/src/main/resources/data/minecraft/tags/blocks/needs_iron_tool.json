@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "underground_overhaul:rough_cinnabar_block",
-    "underground_overhaul:rough_diamond_block",
-    "underground_overhaul:rough_emerald_block",
-    "underground_overhaul:calcite_redstone_ore",
-    "underground_overhaul:smooth_basalt_diamond_ore",
-    "underground_overhaul:andesite_emerald_ore"
+    "spelunkery:rough_cinnabar_block",
+    "spelunkery:rough_diamond_block",
+    "spelunkery:rough_emerald_block",
+    "spelunkery:calcite_redstone_ore",
+    "spelunkery:smooth_basalt_diamond_ore",
+    "spelunkery:andesite_emerald_ore"
   ]
 }

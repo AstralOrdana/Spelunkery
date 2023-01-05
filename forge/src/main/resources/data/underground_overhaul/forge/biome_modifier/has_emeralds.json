@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_mountain",
-  "features": [
-    "underground_overhaul:large_emerald_vein"
-  ],
-  "step": "raw_generation"
-}
