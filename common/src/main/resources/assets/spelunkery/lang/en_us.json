@@ -106,13 +106,16 @@
 
   "block.spelunkery.conk_fungus": "Conk Fungus",
   "block.spelunkery.inkcap_mushroom": "Inkcap Mushroom",
-  "block.spelunkery.white_inkcap_mushroom": "White Inkcap Mushroom",
-  "item.spelunkery.button_mushroom": "Button Mushroom",
-  "item.spelunkery.crimini": "Crimini",
-  "item.spelunkery.portabella": "Portabella",
+  "block.spelunkery.white_inkcap_mushroom": "Pale Inkcap Mushroom",
+  "block.spelunkery.button_mushroom": "Button Mushroom",
+  "block.spelunkery.crimini": "Crimini",
+  "block.spelunkery.portabella": "Portabella",
   "item.spelunkery.grilled_portabella": "Grilled Portabella",
   "block.spelunkery.phosphor_fungus": "Phosphor Fungus",
   "block.spelunkery.milly_bubcap": "Milly Bubcap",
+
+  "block.spelunkery.inkcap_mushroom_block": "Inkcap Mushroom Block",
+  "block.spelunkery.white_inkcap_mushroom_block": "Pale Inkcap Mushroom Block",
 
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",

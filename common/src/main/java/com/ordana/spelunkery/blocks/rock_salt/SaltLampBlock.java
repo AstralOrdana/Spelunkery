@@ -21,7 +21,7 @@ public class SaltLampBlock extends LanternBlock implements RockSalt {
 
     public SaltLampBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ILLUMINATED, false).setValue(HANGING, false).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ILLUMINATED, false).setValue(HANGING, true).setValue(WATERLOGGED, false));
     }
 
     @Override

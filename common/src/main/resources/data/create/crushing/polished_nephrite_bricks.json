@@ -1,0 +1,15 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:polished_nephrite_bricks"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:nephrite_chunk",
+      "count": 4
+    }
+  ],
+  "processingTime": 350
+}

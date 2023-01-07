@@ -26,7 +26,6 @@ public class ModMushroomBlock extends BushBlock {
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 
-
         if (random.nextInt(25) == 0) {
             if (state.is(ModBlocks.BUTTON_MUSHROOM.get())) {
                 level.setBlock(pos, ModBlocks.CRIMINI.get().defaultBlockState(), 2);

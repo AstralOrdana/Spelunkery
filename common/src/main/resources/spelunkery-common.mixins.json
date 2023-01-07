@@ -6,9 +6,10 @@
   "client": [
   ],
   "mixins": [
+    "BiomeDefaultFeaturesMixin",
     "ExperienceOrbMixin",
     "InventoryMixin",
-    "BiomeDefaultFeaturesMixin",
+    "MossBlockMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
     "TooltipMixin"

@@ -37,7 +37,6 @@ public class CommonConfigs {
         //fabric specific
         PlatformHelper.getPlatform().ifFabric(() -> {
 
-
         });
 
 

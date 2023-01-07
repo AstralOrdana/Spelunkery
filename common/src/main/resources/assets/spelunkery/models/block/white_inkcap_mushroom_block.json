@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "spelunkery:block/white_inkcap_mushroom_block"
+  }
+}

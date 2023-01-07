@@ -47,7 +47,7 @@
         "config": {
           "features": [
             {
-              "chance": 0.9,
+              "chance": 0.33,
               "feature": {
                 "feature": {
                   "type": "minecraft:simple_block",
@@ -66,6 +66,18 @@
                           "data": {
                             "Name": "minecraft:brown_mushroom"
                           }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:inkcap_mushroom"
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:white_inkcap_mushroom"
+                          }
                         }
                       ]
                     }
@@ -75,9 +87,16 @@
               }
             },
             {
-              "chance": 0.1,
+              "chance": 0.33,
               "feature": {
                 "feature": "minecraft:mushroom_island_vegetation",
+                "placement": []
+              }
+            },
+            {
+              "chance": 0.33,
+              "feature": {
+                "feature": "spelunkery:huge_mushrooms",
                 "placement": []
               }
             }

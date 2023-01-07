@@ -56,8 +56,6 @@ public class ModItems {
 
 
     //mining gear
-    public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
-            new GlowstickItem(null, ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ROPE_LADDER = regItem("rope_ladder", () ->
             new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> WOODEN_RAIL = regItem("wooden_rail", () ->
@@ -66,6 +64,8 @@ public class ModItems {
             new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
             new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
+            new GlowstickItem(null, ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
     //glowsticks
     public static final Supplier<Item> RED_GLOWSTICK = regItem("red_glowstick", () ->

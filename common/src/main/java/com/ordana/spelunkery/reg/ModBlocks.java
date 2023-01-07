@@ -2,16 +2,14 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.*;
-import com.ordana.spelunkery.blocks.fungi.ConkMushroomBlock;
-import com.ordana.spelunkery.blocks.fungi.MillyBubcapMushroomBlock;
-import com.ordana.spelunkery.blocks.fungi.ModMushroomBlock;
-import com.ordana.spelunkery.blocks.fungi.FloorAndSidesMushroomBlock;
+import com.ordana.spelunkery.blocks.fungi.*;
 import com.ordana.spelunkery.blocks.nephrite.*;
 import com.ordana.spelunkery.blocks.rock_salt.*;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -51,7 +49,7 @@ public class ModBlocks {
         return state.getValue(CarvedNephriteBlock.CHARGE) != CarvedNephriteBlock.ChargeState.EMPTY;
     }
 
-        private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
+    private static ToIntFunction<BlockState> createLightLevelFromIlluminatedBlockState(int litLevel) {
         return (state) -> (Boolean)state.getValue(ModBlockProperties.ILLUMINATED) ? litLevel : 0;
     }
 
@@ -128,12 +126,12 @@ public class ModBlocks {
     //rock salt
     public static final Supplier<Block> ROCK_SALT = regWithItem("rock_salt", () ->
             new RockSaltCrystalBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
-                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
+                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
-                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
+                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT = regWithItem("salt", () ->
-            new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()));
+            new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()), getTab(CreativeModeTab.TAB_MATERIALS));
 
     public static final Supplier<Block> ROCK_SALT_BLOCK = regWithItem("rock_salt_block", () ->
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
@@ -187,9 +185,9 @@ public class ModBlocks {
             new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> POLISHED_NEPHRITE_WALL = regWithItem("polished_nephrite_wall", () ->
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
-   
+
     public static final Supplier<Block> POLISHED_NEPHRITE_BRICKS = regWithItem("polished_nephrite_bricks", () ->
-            new Block(BlockBehaviour.Properties.copy(NEPHRITE.get())));              
+            new Block(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_SLAB = regWithItem("polished_nephrite_brick_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_STAIRS = regWithItem("polished_nephrite_brick_stairs", () ->
@@ -229,13 +227,18 @@ public class ModBlocks {
     public static final Supplier<Block> BUTTON_MUSHROOM = regBlock("button_mushroom", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new InkcapMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new InkcapMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_WHITE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
             new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
             new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+
+    public static final Supplier<Block> INKCAP_MUSHROOM_BLOCK = regWithItem("inkcap_mushroom_block", () ->
+            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> WHITE_INKCAP_MUSHROOM_BLOCK = regWithItem("white_inkcap_mushroom_block", () ->
+            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
 
 
     //mining gear

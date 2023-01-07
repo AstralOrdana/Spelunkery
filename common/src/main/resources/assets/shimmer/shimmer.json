@@ -40,8 +40,22 @@
     { "block": "spelunkery:gray_glowstick" },
     { "block": "spelunkery:light_gray_glowstick" },
 
+    { "block": "spelunkery:rock_salt", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_block", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_slab", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_stairs", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_wall", "state": { "illuminated": true } },
     { "block": "spelunkery:rock_salt_bricks", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_brick_slab", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_brick_stairs", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt_brick_wall", "state": { "illuminated": true } },
+    { "block": "spelunkery:polished_rock_salt", "state": { "illuminated": true } },
+    { "block": "spelunkery:polished_rock_salt_slab", "state": { "illuminated": true } },
+    { "block": "spelunkery:polished_rock_salt_stairs", "state": { "illuminated": true } },
+    { "block": "spelunkery:polished_rock_salt_wall", "state": { "illuminated": true } },
     { "block": "spelunkery:salt_lamp", "state": { "illuminated": true } },
+    { "block": "spelunkery:rock_salt", "state": { "illuminated": true } },
+
     { "block": "spelunkery:carved_nephrite", "state": { "charge": "FULL" } },
 
     { "block": "spelunkery:phosphor_fungus" }
@@ -66,8 +80,21 @@
     { "block": "spelunkery:gray_glowstick", "color": "#gray", "radius": 14 },
     { "block": "spelunkery:light_gray_glowstick", "color": "#light_gray", "radius": 14 },
 
+    { "block": "spelunkery:rock_salt", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_block", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_slab", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_stairs", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_wall", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
     { "block": "spelunkery:rock_salt_bricks", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_brick_slab", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_brick_stairs", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:rock_salt_brick_wall", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:polished_rock_salt", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:polished_rock_salt_slab", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:polished_rock_salt_stairs", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
+    { "block": "spelunkery:polished_rock_salt_wall", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
     { "block": "spelunkery:salt_lamp", "state": { "illuminated": true }, "color": "#orange", "radius": 7 },
+    { "block": "spelunkery:rock_salt", "state": { "illuminated": true }, "color": "#orange", "radius": 1 },
 
     { "block": "spelunkery:phosphor_fungus", "color": "#phosphor_blue", "radius": 2 }
   ],

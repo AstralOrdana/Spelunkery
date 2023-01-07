@@ -18,7 +18,25 @@ public class ModLootInjects {
                 LootPool.Builder pool = LootPool.lootPool();
                 String id = "mineshaft";
                 pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
-                ForgeHelper.setPoolName(pool, "UA_" + id);
+                ForgeHelper.setPoolName(pool, "spelunkery_" + id);
+                builderConsumer.accept(pool);
+            }
+        }
+        if (name.equals(new ResourceLocation("minecraft", "chests/stronghold_library"))) {
+            {
+                LootPool.Builder pool = LootPool.lootPool();
+                String id = "stronghold_library";
+                pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
+                ForgeHelper.setPoolName(pool, "spelunkery_" + id);
+                builderConsumer.accept(pool);
+            }
+        }
+        if (name.equals(new ResourceLocation("minecraft", "chests/ancient_city"))) {
+            {
+                LootPool.Builder pool = LootPool.lootPool();
+                String id = "ancient_city";
+                pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
+                ForgeHelper.setPoolName(pool, "spelunkery_" + id);
                 builderConsumer.accept(pool);
             }
         }
