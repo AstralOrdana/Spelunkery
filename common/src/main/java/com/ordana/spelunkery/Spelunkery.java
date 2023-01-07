@@ -28,8 +28,7 @@ public class Spelunkery {
         ModBlocks.init();
         ModItems.init();
         ModEntities.init();
-        //ModItemProperties.init();
-        //ModRecipes.init();
+        ModRecipes.init();
     }
 
 }

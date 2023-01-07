@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "spelunkery:rough_emerald"
-  },
-  "result": "minecraft:emerald",
-  "count": 1
-}

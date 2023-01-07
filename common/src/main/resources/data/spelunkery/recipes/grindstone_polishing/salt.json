@@ -1,0 +1,10 @@
+{
+  "type": "spelunkery:grindstone_polishing",
+  "ingredient": "spelunkery:rock_salt",
+  "result": "minecraft:air",
+  "resultCount": 0,
+  "byproduct": "spelunkery:salt",
+  "byproductMin": 1,
+  "byproductMax": 3,
+  "experience": 120
+}

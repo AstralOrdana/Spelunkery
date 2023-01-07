@@ -23,13 +23,13 @@ public class ModItems {
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE = regItem("rough_lazurite", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_EMERALD = regItem("rough_emerald", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND = regItem("rough_diamond", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->

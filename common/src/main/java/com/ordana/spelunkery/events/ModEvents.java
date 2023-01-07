@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.events;
 
+import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -8,9 +9,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -38,6 +41,7 @@ public class ModEvents {
 
     static {
         EVENTS.add(ModEvents::obsidianDraining);
+        EVENTS.add(ModEvents::polishingRecipe);
     }
 
 
@@ -69,6 +73,75 @@ public class ModEvents {
                     }
                     return InteractionResult.sidedSuccess(level.isClientSide);
 
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    private static InteractionResult polishingRecipe(Item item, ItemStack stack, BlockPos pos, BlockState state,
+                                                      Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+
+        if (state.getBlock() instanceof GrindstoneBlock) {
+            ArrayList<GrindstonePolishingRecipe> recipes = new ArrayList<>(GrindstonePolishingRecipe.getRecipes(level));
+            for (GrindstonePolishingRecipe polishingRecipe : recipes) {
+                if (!recipes.isEmpty()) {
+                    RandomSource random = level.getRandom();
+                    ItemStack ingredient = polishingRecipe.ingredient;
+                    ItemStack result = polishingRecipe.getResultItem();
+                    int resultCount = polishingRecipe.getResultCount();
+                    ItemStack byproduct = polishingRecipe.getByproduct();
+                    int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
+                    int xpAmount = polishingRecipe.getExperience();
+
+                    if (stack.is(ingredient.getItem())) {
+                        ItemStack resultItem = result.copy();
+                        ItemStack byproductItem = byproduct.copy();
+                        if (player.isShiftKeyDown()) {
+                            int ingredientCount = stack.getCount();
+
+                            if (!player.getAbilities().instabuild) {
+                                stack.shrink(ingredientCount);
+                            }
+                            if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount * ingredientCount))) {
+                                player.drop(new ItemStack(resultItem.getItem(), resultCount * ingredientCount), false);
+                            }
+                            if (!player.getInventory().add(new ItemStack(byproductItem.getItem(), byproductCount * ingredientCount))) {
+                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount * ingredientCount), false);
+                            }
+                            if (!(xpAmount == 0)) {
+                                for (int i = 0; i <= ingredientCount; i++) {
+                                    int dropXp = random.nextInt(2);
+                                    if (dropXp < 1) {
+                                        xpAmount = xpAmount + polishingRecipe.getExperience();
+                                    }
+                                }
+                                level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
+                            }
+                        } else {
+                            resultItem.setCount(resultCount);
+                            byproductItem.setCount(byproductCount);
+                            if (!player.getAbilities().instabuild) {
+                                stack.shrink(1);
+                            }
+                            if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount))) {
+                                player.drop(new ItemStack(resultItem.getItem(), resultCount), false);
+                            }
+                            if (!player.getInventory().add(new ItemStack(byproduct.getItem(), byproductCount))) {
+                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
+                            }
+                            if (!(xpAmount == 0)) {
+                                int canDropXp = random.nextInt(2);
+
+                                if (canDropXp < 1) {
+                                    level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
+                                }
+                            }
+                        }
+                        player.swing(hand);
+                        level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
+                        return InteractionResult.sidedSuccess(level.isClientSide);
+                    }
+                }
             }
         }
         return InteractionResult.PASS;

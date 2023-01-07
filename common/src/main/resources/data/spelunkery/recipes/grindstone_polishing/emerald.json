@@ -1,0 +1,10 @@
+{
+  "type": "spelunkery:grindstone_polishing",
+  "ingredient": "spelunkery:rough_emerald",
+  "result": "minecraft:emerald",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 0,
+  "experience": 120
+}

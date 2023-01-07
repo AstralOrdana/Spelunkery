@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "spelunkery:rough_lazurite"
-  },
-  "result": "minecraft:gold_nugget",
-  "count": 2
-}

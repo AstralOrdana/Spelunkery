@@ -16,18 +16,21 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModRecipes {
-    /*
-
     public static void init() {
     }
 
-    public static final Supplier<RecipeSerializer<GrindstonePolishingRecipe>> GRINDSTONE_POLISHING_SERIALIZER = reg(
-            "grindstone_polishing", GrindstonePolishingRecipe::new);
+    public static final Supplier<RecipeType<GrindstonePolishingRecipe>> GRINDSTONE_POLISHING =
+            RegHelper.register(new ResourceLocation(Spelunkery.MOD_ID + ":grindstone_polishing"),()-> {
+        var r =  new RecipeType<GrindstonePolishingRecipe>() {
+            @Override
+            public String toString() {
+                return Spelunkery.MOD_ID + ":grindstone_polishing";
+            }
+        };
+        return r;
+    }, Registry.RECIPE_TYPE);
 
-
-    private static <T extends Recipe<?>> Supplier<RecipeSerializer<T>> reg(String name, Function<ResourceLocation, T> factory) {
-        return RegHelper.registerRecipeSerializer(Spelunkery.res(name), () -> new SimpleRecipeSerializer<>(factory));
-    }
-
-     */
+    public static final Supplier<RecipeSerializer<GrindstonePolishingRecipe>> GRINDSTONE_POLISHING_SERIALIZER =
+            RegHelper.registerRecipeSerializer(new ResourceLocation(Spelunkery.MOD_ID + ":grindstone_polishing"),
+                    GrindstonePolishingRecipe.Serializer::new);
 }

@@ -1,7 +1,11 @@
 {
   "tooltip.spelunkery.hold_crouch": "Hold Crouch for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
+  "tooltip.spelunkery.grindable": "Polish on a Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
+
+  "tooltip.spelunkery.grindstone_1": "  Right-click with rough gems to polish them",
+  "tooltip.spelunkery.grindstone_2": "  Crouch + right-click to polish entire stack",
 
   "tooltip.spelunkery.rope_ladder_1": "  Climbable, can be placed on the sides of blocks",
   "tooltip.spelunkery.rope_ladder_2": "  Places downward automatically like scaffolding",

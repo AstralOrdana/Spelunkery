@@ -1,8 +1,8 @@
 package com.ordana.spelunkery.recipes;
 
 import com.google.gson.JsonObject;
-import com.ordana.spelunkery.reg.ModRecipeTypes;
 import com.ordana.spelunkery.reg.ModRecipes;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -13,55 +13,16 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.Container;
 
 import javax.annotation.Nullable;
-import java.awt.*;
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-public class GrindstonePolishingRecipe implements Recipe {
-
-    public boolean matches(Container container, Level level) {
-        return false;
-    }
-
-    public ItemStack assemble(Container container) {
-        return null;
-    }
-
-    @Override
-    public boolean matches(net.minecraft.world.Container container, Level level) {
-        return false;
-    }
-
-    @Override
-    public ItemStack assemble(net.minecraft.world.Container container) {
-        return null;
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return false;
-    }
-
-    @Override
-    public ItemStack getResultItem() {
-        return null;
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return null;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return null;
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return null;
-    }
-    /*
+@SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class GrindstonePolishingRecipe implements Recipe<Container> {
     public static final String NAME = "grindstone_polishing";
 
     private final ResourceLocation id;
@@ -69,14 +30,20 @@ public class GrindstonePolishingRecipe implements Recipe {
     public final ItemStack ingredient;
     public final ItemStack result;
     private final int resultCount;
+    public final ItemStack byproduct;
+    private final int byproductMin;
+    private final int byproductMax;
     private final int experience;
 
-    public GrindstonePolishingRecipe(ResourceLocation id, String recipeGroup, ItemStack ingredient, ItemStack result, int resultCount, int experience) {
+    public GrindstonePolishingRecipe(ResourceLocation id, String recipeGroup, ItemStack ingredient, ItemStack result, int resultCount, ItemStack byproduct, int byproductMin, int byproductMax, int experience) {
         this.id = id;
         this.recipeGroup = recipeGroup;
         this.ingredient = ingredient;
         this.result = result;
         this.resultCount = resultCount;
+        this.byproduct = byproduct;
+        this.byproductMin = byproductMin;
+        this.byproductMax = byproductMax;
         this.experience = experience;
     }
 
@@ -108,6 +75,18 @@ public class GrindstonePolishingRecipe implements Recipe {
         return this.result.copy();
     }
 
+    public int getByproductMin() {
+        return this.byproductMin;
+    }
+
+    public int getByproductMax() {
+        return this.byproductMax;
+    }
+
+    public ItemStack getByproduct() {
+        return this.byproduct.copy();
+    }
+
     @Override
     public boolean isSpecial() {
         return true;
@@ -124,17 +103,18 @@ public class GrindstonePolishingRecipe implements Recipe {
     }
 
     @Override
-    public RecipeType<?> getType() {
-        return ModRecipeTypes.GRINDSTONE_POLISHING.get();
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipes.GRINDSTONE_POLISHING_SERIALIZER.get();
     }
 
+
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializer.GRINDSTONE_POLISHING_SERIALIZER.get();
+    public RecipeType<?> getType() {
+        return ModRecipes.GRINDSTONE_POLISHING.get();
     }
 
     public static List<GrindstonePolishingRecipe> getRecipes(Level level) {
-        return level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.GRINDSTONE_POLISHNG.get());
+        return level.getRecipeManager().getAllRecipesFor(ModRecipes.GRINDSTONE_POLISHING.get());
     }
 
     public static class Serializer implements RecipeSerializer<GrindstonePolishingRecipe> {
@@ -164,9 +144,21 @@ public class GrindstonePolishingRecipe implements Recipe {
                 result = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + resultItem + " does not exist")));
             }
             int resultCount = GsonHelper.getAsInt(jsonObject, "resultCount", 1);
+
+            ItemStack byproduct;
+            if (jsonObject.get("byproduct").isJsonObject()) {
+                byproduct = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "byproduct"));
+            }
+            else {
+                String byproductItem = GsonHelper.getAsString(jsonObject, "byproduct");
+                ResourceLocation resourcelocation = new ResourceLocation(byproductItem);
+                byproduct = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + byproductItem + " does not exist")));
+            }
+            int byproductMin = GsonHelper.getAsInt(jsonObject, "byproductMin", 1);
+            int byproductMax = GsonHelper.getAsInt(jsonObject, "byproductMax", 1);
             int experience = GsonHelper.getAsInt(jsonObject, "experience", 0);
 
-            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, experience);
+            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience);
         }
 
         @Nullable
@@ -176,9 +168,12 @@ public class GrindstonePolishingRecipe implements Recipe {
             ItemStack ingredient = pBuffer.readItem();
             ItemStack result = pBuffer.readItem();
             int resultCount = pBuffer.readInt();
+            ItemStack byproduct = pBuffer.readItem();
+            int byproductMin = pBuffer.readInt();
+            int byproductMax = pBuffer.readInt();
             int experience = pBuffer.readInt();
 
-            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, experience);
+            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience);
         }
 
         @Override
@@ -187,9 +182,10 @@ public class GrindstonePolishingRecipe implements Recipe {
             pBuffer.writeItem(pRecipe.ingredient);
             pBuffer.writeItem(pRecipe.result);
             pBuffer.writeInt(pRecipe.resultCount);
+            pBuffer.writeItem(pRecipe.byproduct);
+            pBuffer.writeInt(pRecipe.byproductMin);
+            pBuffer.writeInt(pRecipe.byproductMax);
             pBuffer.writeInt(pRecipe.experience);
         }
     }
-
-     */
 }
