@@ -24,8 +24,16 @@ public class ModItems {
             new SaltBlockItem(ModBlocks.SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-    public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+
+
+    public static final Supplier<Item> ROUGH_CINNABAR_BLOCK = regItem("rough_cinnabar_block", () ->
+            new RoughGemBlockItem(ModBlocks.ROUGH_CINNABR_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
+    public static final Supplier<Item> ROUGH_LAZURITE_BLOCK = regItem("rough_lazurite_block", () ->
+            new RoughGemBlockItem(ModBlocks.ROUGH_LAZURITE_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
+    public static final Supplier<Item> ROUGH_EMERALD_BLOCK = regItem("rough_emerald_block", () ->
+            new RoughGemBlockItem(ModBlocks.ROUGH_EMERALD_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
+    public static final Supplier<Item> ROUGH_DIAMOND_BLOCK = regItem("rough_diamond_block", () ->
+            new RoughGemBlockItem(ModBlocks.ROUGH_DIAMOND_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
             new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE = regItem("rough_lazurite", () ->
@@ -34,6 +42,8 @@ public class ModItems {
             new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND = regItem("rough_diamond", () ->
             new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:cinnabar"
+    }
+  },
+  "result": {
+    "item": "spelunkery:cinnabar_block"
+  }
+}

@@ -12,10 +12,10 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 import java.util.function.Supplier;
 
-public class InkcapMushroomBlock extends ModMushroomBlock implements BonemealableBlock {
+public class GrowableMushroomBlock extends ModMushroomBlock implements BonemealableBlock {
     private final Supplier<Holder<? extends ConfiguredFeature<?, ?>>> featureSupplier;
 
-    public InkcapMushroomBlock(Properties properties, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> supplier) {
+    public GrowableMushroomBlock(Properties properties, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> supplier) {
         super(properties);
         this.featureSupplier = supplier;
     }

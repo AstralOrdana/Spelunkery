@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#V#",
+    "RVR",
     "###"
   ],
   "key": {
@@ -10,6 +10,9 @@
     },
     "V": {
       "item": "spelunkery:carved_nephrite"
+    },
+    "R": {
+      "item": "spelunkery:cinnabar"
     }
   },
   "result": {

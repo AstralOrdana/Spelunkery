@@ -1,0 +1,10 @@
+{
+  "type": "spelunkery:grindstone_polishing",
+  "ingredient": "spelunkery:rough_lazurite_block",
+  "result": "minecraft:lapis_block",
+  "resultCount": 3,
+  "byproduct": "minecraft:gold_nugget",
+  "byproductMin": 0,
+  "byproductMax": 18,
+  "experience": 120
+}

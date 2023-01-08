@@ -67,21 +67,23 @@
   "block.spelunkery.rock_salt_brick_stairs": "Rock Salt Brick Stairs",
   "block.spelunkery.rock_salt_brick_wall": "Rock Salt Brick Wall",
 
-  "block.spelunkery.rough_lazurite_block": "Rough Lazurite Block",
-  "block.spelunkery.rough_cinnabar_block": "Rough Cinnabar Block",
-  "block.spelunkery.rough_diamond_block": "Rough Diamond Block",
-  "block.spelunkery.rough_emerald_block": "Rough Emerald Block",
-
   "block.spelunkery.sandstone_lapis_ore": "Sandstone Lapis Ore",
   "block.spelunkery.calcite_redstone_ore": "Calcite Redstone Ore",
   "block.spelunkery.smooth_basalt_diamond_ore": "Smooth Basalt Diamond Ore",
   "block.spelunkery.andesite_emerald_ore": "Andesite Emerald Ore",
 
-  "item.spelunkery.cinnabar": "Cinnabar",
   "item.spelunkery.rough_lazurite": "Rough Lazurite",
   "item.spelunkery.rough_cinnabar": "Rough Cinnabar",
   "item.spelunkery.rough_diamond": "Rough Diamond",
   "item.spelunkery.rough_emerald": "Rough Emerald",
+
+  "block.spelunkery.rough_lazurite_block": "Block of Rough Lazurite",
+  "block.spelunkery.rough_cinnabar_block": "Block of Rough Cinnabar",
+  "block.spelunkery.rough_diamond_block": "Block of Rough Diamond",
+  "block.spelunkery.rough_emerald_block": "Block of Rough Emerald",
+
+  "item.spelunkery.cinnabar": "Cinnabar",
+  "block.spelunkery.cinnabar_block": "Block of Cinnabar",
 
   "item.spelunkery.nephrite_chunk": "Nephrite Chunk",
   "block.spelunkery.raw_nephrite": "Raw Nephrite",
@@ -120,6 +122,7 @@
   "block.spelunkery.phosphor_fungus": "Phosphor Fungus",
   "block.spelunkery.milly_bubcap": "Milly Bubcap",
 
+  "block.spelunkery.portabella_block": "Portabella Block",
   "block.spelunkery.inkcap_mushroom_block": "Inkcap Mushroom Block",
   "block.spelunkery.white_inkcap_mushroom_block": "Pale Inkcap Mushroom Block",
 

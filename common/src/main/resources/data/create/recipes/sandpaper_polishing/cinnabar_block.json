@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_cinnabar_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:cinnabar_block"
+    }
+  ]
+}

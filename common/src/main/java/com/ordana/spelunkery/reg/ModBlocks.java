@@ -9,7 +9,6 @@ import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -95,33 +94,36 @@ public class ModBlocks {
 
 
     //rough gem blocks
-    public static final Supplier<Block> CALCITE_REDSTONE_ORE = regWithItem("calcite_redstone_ore", () ->
+    public static final Supplier<Block> CALCITE_REDSTONE_ORE = regBlock("calcite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
                     .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
+    public static final Supplier<Block> SANDSTONE_LAPIS_ORE = regBlock("sandstone_lapis_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE)
+                    .requiresCorrectToolForDrops().strength(2.5f, 3f), UniformInt.of(2, 5)));
+    public static final Supplier<Block> ANDESITE_EMERALD_ORE = regBlock("andesite_emerald_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f), UniformInt.of(3, 7)));
+    public static final Supplier<Block> SMOOTH_BASALT_DIAMOND_ORE = regBlock("smooth_basalt_diamond_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.BASALT), UniformInt.of(3, 7)));
+
     public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
-
-    public static final Supplier<Block> SANDSTONE_LAPIS_ORE = regWithItem("sandstone_lapis_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE)
-                    .requiresCorrectToolForDrops().strength(2.5f, 3f), UniformInt.of(2, 5)));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
-
-    public static final Supplier<Block> ANDESITE_EMERALD_ORE = regWithItem("andesite_emerald_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f), UniformInt.of(3, 7)));
     public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regWithItem("rough_emerald_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
-
-    public static final Supplier<Block> SMOOTH_BASALT_DIAMOND_ORE = regWithItem("smooth_basalt_diamond_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.BASALT), UniformInt.of(3, 7)));
     public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
+
+    public static final Supplier<Block> CINNABR_BLOCK = regWithItem("cinnabar_block", () ->
+            new PoweredBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_RED)
+                    .requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).isRedstoneConductor(ModBlocks::never)));
+
 
     //rock salt
     public static final Supplier<Block> ROCK_SALT = regBlock("rock_salt", () ->
@@ -221,20 +223,22 @@ public class ModBlocks {
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
             new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PORTABELLA = regBlock("portabella", () ->
-            new ModMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_PORTABELLA::getHolder));
     public static final Supplier<Block> CRIMINI = regBlock("crimini", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> BUTTON_MUSHROOM = regBlock("button_mushroom", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new InkcapMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
-            new InkcapMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_WHITE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_WHITE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
             new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
             new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> PORTABELLA_BLOCK = regWithItem("portabella_block", () ->
+            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> INKCAP_MUSHROOM_BLOCK = regWithItem("inkcap_mushroom_block", () ->
             new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM_BLOCK = regWithItem("white_inkcap_mushroom_block", () ->

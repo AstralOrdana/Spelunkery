@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",
-    "SRC",
+    "CRS",
     "###"
   ],
   "key": {
@@ -13,7 +13,7 @@
       "item": "spelunkery:nephrite_siphon"
     },
     "R": {
-      "item": "minecraft:redstone"
+      "item": "spelunkery:cinnabar"
     },
     "C": {
       "item": "spelunkery:carved_nephrite"
