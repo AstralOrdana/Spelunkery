@@ -7,8 +7,12 @@
   ],
   "results": [
     {
+      "item": "spelunkery:rock_salt",
+      "count": 2
+    },
+    {
       "item": "spelunkery:salt",
-      "count": 4
+      "count": 2
     }
   ],
   "processingTime": 350
