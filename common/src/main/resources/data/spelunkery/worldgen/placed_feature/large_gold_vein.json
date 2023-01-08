@@ -1,5 +1,5 @@
 {
-  "feature": "immersive_weathering:nether_gold_vein",
+  "feature": "spelunkery:large_gold_vein",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
