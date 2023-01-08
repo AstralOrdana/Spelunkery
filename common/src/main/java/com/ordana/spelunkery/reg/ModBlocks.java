@@ -124,14 +124,14 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 
     //rock salt
-    public static final Supplier<Block> ROCK_SALT = regWithItem("rock_salt", () ->
+    public static final Supplier<Block> ROCK_SALT = regBlock("rock_salt", () ->
             new RockSaltCrystalBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
-                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
+                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
                     .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> SALT = regWithItem("salt", () ->
-            new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()), getTab(CreativeModeTab.TAB_MATERIALS));
+    public static final Supplier<Block> SALT = regBlock("salt", () ->
+            new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()));
 
     public static final Supplier<Block> ROCK_SALT_BLOCK = regWithItem("rock_salt_block", () ->
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)

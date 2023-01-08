@@ -18,6 +18,10 @@ public class ModItems {
         return RegHelper.registerItem(Spelunkery.res(name), itemSup);
     }
 
+    public static final Supplier<Item> ROCK_SALT = regItem("rock_salt", () ->
+            new RockSaltBlockItem(ModBlocks.ROCK_SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS))));
+    public static final Supplier<Item> SALT = regItem("salt", () ->
+            new SaltBlockItem(ModBlocks.SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->

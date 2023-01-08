@@ -3,6 +3,8 @@
   "tooltip.spelunkery.throwable": "Throwable!",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
+  "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
+  "tooltip.spelunkery.salt": "Grind Rock Salt to obtain",
 
   "tooltip.spelunkery.grindstone_1": "  Right-click with rough gems to polish them",
   "tooltip.spelunkery.grindstone_2": "  Crouch + right-click to polish entire stack",
