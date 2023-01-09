@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.025,
+        "feature": {
+          "feature": "spelunkery:huge_portabella",
+          "placement": [
+            {
+              "type": "minecraft:block_predicate_filter",
+              "predicate": {
+                "type": "minecraft:would_survive",
+                "state": {
+                  "Name": "minecraft:grass"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "chance": 0.025,
+        "feature": {
+          "feature": "minecraft:huge_brown_mushroom",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.05,
+        "feature": {
+          "feature": "minecraft:huge_red_mushroom",
+          "placement": []
+        }
+      },
+      {
+        "chance": 0.6666667,
+        "feature": "minecraft:dark_oak_checked"
+      },
+      {
+        "chance": 0.2,
+        "feature": "minecraft:birch_checked"
+      },
+      {
+        "chance": 0.1,
+        "feature": "minecraft:fancy_oak_checked"
+      }
+    ],
+    "default": "minecraft:oak_checked"
+  }
+}
