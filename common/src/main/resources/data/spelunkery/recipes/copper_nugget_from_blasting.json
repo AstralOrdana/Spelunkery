@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "group": "copper_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_copper_nugget"
+  },
+  "result": "create:copper_nugget",
+  "experience": 0.1,
+  "cookingtime": 12
+}

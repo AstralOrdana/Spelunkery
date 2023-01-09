@@ -2,9 +2,12 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import static com.ordana.spelunkery.reg.ModCreativeTab.getTab;
@@ -18,6 +21,11 @@ public class ModItems {
         return RegHelper.registerItem(Spelunkery.res(name), itemSup);
     }
 
+    private static boolean isCompatItemEanbled(String requiredMod) {
+        if(Objects.equals(requiredMod, "create")) return requiredMod.equals("create");
+        return PlatformHelper.isModLoaded(requiredMod);
+    }
+
     public static final Supplier<Item> ROCK_SALT = regItem("rock_salt", () ->
             new RockSaltBlockItem(ModBlocks.ROCK_SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS))));
     public static final Supplier<Item> SALT = regItem("salt", () ->
@@ -25,23 +33,23 @@ public class ModItems {
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
+    public static final Supplier<Item> RAW_IRON_NUGGET = regItem("raw_iron_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> RAW_COPPER_NUGGET = regItem("raw_copper_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("create") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
+    public static final Supplier<Item> RAW_GOLD_NUGGET = regItem("raw_gold_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> RAW_ZINC_NUGGET = regItem("raw_zinc_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("create") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
-    public static final Supplier<Item> ROUGH_CINNABAR_BLOCK = regItem("rough_cinnabar_block", () ->
-            new RoughGemBlockItem(ModBlocks.ROUGH_CINNABR_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
-    public static final Supplier<Item> ROUGH_LAZURITE_BLOCK = regItem("rough_lazurite_block", () ->
-            new RoughGemBlockItem(ModBlocks.ROUGH_LAZURITE_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
-    public static final Supplier<Item> ROUGH_EMERALD_BLOCK = regItem("rough_emerald_block", () ->
-            new RoughGemBlockItem(ModBlocks.ROUGH_EMERALD_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
-    public static final Supplier<Item> ROUGH_DIAMOND_BLOCK = regItem("rough_diamond_block", () ->
-            new RoughGemBlockItem(ModBlocks.ROUGH_DIAMOND_BLOCK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS))));
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
-            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE = regItem("rough_lazurite", () ->
-            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_EMERALD = regItem("rough_emerald", () ->
-            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND = regItem("rough_diamond", () ->
-            new RoughGemItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 

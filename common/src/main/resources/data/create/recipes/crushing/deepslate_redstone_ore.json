@@ -1,17 +1,23 @@
 {
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "spelunkery:calcite_redstone_ore"
+      "item": "minecraft:deepslate_redstone_ore"
     }
   ],
   "results": [
     {
-      "item": "minecraft:redstone",
-      "count": 7
+      "item": "spelunkery:rough_cinnabar",
+      "count": 3
     },
     {
-      "item": "minecraft:redstone",
+      "item": "spelunkery:rough_cinnabar",
       "chance": 0.5
     },
     {

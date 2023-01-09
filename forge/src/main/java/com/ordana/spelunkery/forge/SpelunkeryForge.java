@@ -3,9 +3,22 @@ package com.ordana.spelunkery.forge;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraftforge.data.loading.DatagenModLoader;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forgespi.locating.IModFile;
+import net.minecraftforge.resource.PathPackResources;
+
+import java.io.IOException;
 
 @Mod(Spelunkery.MOD_ID)
 public class SpelunkeryForge {
@@ -20,6 +33,38 @@ public class SpelunkeryForge {
         if (PlatformHelper.getEnv().isClient()) {
             SpelunkeryClient.init();
         }
+    }
+
+    public void addPackFinders(AddPackFindersEvent event) {
+
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            registerBuiltinResourcePack(event, Component.literal("Better Vanilla Gems"), "better_vanilla_gems");
+        }
+    }
+
+    private static void registerBuiltinResourcePack(AddPackFindersEvent event, MutableComponent name, String folder) {
+        event.addRepositorySource((consumer, constructor) -> {
+            String path = Spelunkery.res(folder).toString();
+            IModFile file = ModList.get().getModFileById(SpelunkeryForge.MOD_ID).getFile();
+            try (PathPackResources pack = new PathPackResources(
+                    path,
+                    file.findResource("resourcepacks/" + folder));) {
+
+                consumer.accept(constructor.create(
+                        Spelunkery.res(folder).toString(),
+                        name,
+                        false,
+                        () -> pack,
+                        pack.getMetadataSection(PackMetadataSection.SERIALIZER),
+                        Pack.Position.TOP,
+                        PackSource.BUILT_IN,
+                        false));
+
+            } catch (IOException e) {
+                if (!DatagenModLoader.isRunningDataGen())
+                    e.printStackTrace();
+            }
+        });
     }
 }
 

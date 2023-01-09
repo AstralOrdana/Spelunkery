@@ -19,6 +19,7 @@ public class ModTags {
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
+    public static final TagKey<Item> GRINDABLE = registerItemTag("grindable");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

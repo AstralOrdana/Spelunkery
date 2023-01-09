@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create:raw_zinc"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:raw_zinc_nugget",
+    "count": 9
+  }
+}

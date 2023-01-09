@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_gold_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:raw_gold"
+  }
+}

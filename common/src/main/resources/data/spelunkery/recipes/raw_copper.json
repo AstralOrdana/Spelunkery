@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_copper_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:raw_copper"
+  }
+}

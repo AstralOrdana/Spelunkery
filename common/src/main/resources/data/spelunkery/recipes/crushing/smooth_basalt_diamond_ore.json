@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
@@ -7,11 +13,11 @@
   ],
   "results": [
     {
-      "item": "minecraft:diamond",
+      "item": "spelunkery:rough_diamond",
       "count": 2
     },
     {
-      "item": "minecraft:diamond",
+      "item": "spelunkery:rough_diamond",
       "chance": 0.25
     },
     {

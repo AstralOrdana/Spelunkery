@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_copper"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:raw_copper_nugget",
+    "count": 9
+  }
+}

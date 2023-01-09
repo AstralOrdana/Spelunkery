@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "group": "zinc_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_zinc_nugget"
+  },
+  "result": "create:zinc_nugget",
+  "experience": 0.1,
+  "cookingtime": 12
+}

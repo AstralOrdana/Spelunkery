@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -45,6 +46,46 @@ public class CarvedNephriteBlock extends BaseEntityBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateManager) {
         super.createBlockStateDefinition(stateManager);
         stateManager.add(CHARGE);
+    }
+
+
+
+    public boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        if (state.getValue(CHARGE) == ChargeState.EMPTY) return 0;
+        if (state.getValue(CHARGE) == ChargeState.ONE_TO_TWENTY) return 2;
+        if (state.getValue(CHARGE) == ChargeState.TWENTYONE_TO_FOURTY) return 5;
+        if (state.getValue(CHARGE) == ChargeState.FOURTYONE_TO_SIXTY) return 8;
+        if (state.getValue(CHARGE) == ChargeState.SIXTYONE_TO_EIGHTY) return 11;
+        if (state.getValue(CHARGE) == ChargeState.EIGHTYONE_TO_NINETYNINE) return 14;
+        if (state.getValue(CHARGE) == ChargeState.FULL) return 15;
+
+        switch (state.getValue(CarvedNephriteBlock.CHARGE)) {
+            default -> {
+                return 0;
+            }
+            case ONE_TO_TWENTY -> {
+                return 1;
+            }
+            case TWENTYONE_TO_FOURTY -> {
+                return 4;
+            }
+            case FOURTYONE_TO_SIXTY -> {
+                return 7;
+            }
+            case SIXTYONE_TO_EIGHTY -> {
+                return 9;
+            }
+            case EIGHTYONE_TO_NINETYNINE -> {
+                return 12;
+            }
+            case FULL -> {
+                return 15;
+            }
+        }
     }
 
     @Nullable

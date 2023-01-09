@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
@@ -7,11 +13,11 @@
   ],
   "results": [
     {
-      "item": "minecraft:lapis_lazuli",
-      "count": 12
+      "item": "spelunkery:rough_lazurite",
+      "count": 3
     },
     {
-      "item": "minecraft:lapis_lazuli",
+      "item": "spelunkery:rough_lazurite",
       "chance": 0.5
     },
     {
@@ -19,9 +25,9 @@
       "chance": 0.75
     },
     {
-      "item": "minecraft:sandstone",
+      "item": "minecraft:cobblestone",
       "chance": 0.125
     }
   ],
-  "processingTime": 350
+  "processingTime": 250
 }

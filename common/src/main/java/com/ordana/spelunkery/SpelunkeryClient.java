@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 public class SpelunkeryClient {
     
     public static void init() {
-        ClientConfigs.init();
         ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
     }
 

@@ -96,7 +96,7 @@ public class ModBlocks {
     //rough gem blocks
     public static final Supplier<Block> CALCITE_REDSTONE_ORE = regWithItem("calcite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
+                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
     public static final Supplier<Block> SANDSTONE_LAPIS_ORE = regWithItem("sandstone_lapis_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE)
                     .requiresCorrectToolForDrops().strength(2.5f, 3f), UniformInt.of(2, 5)));
@@ -107,16 +107,16 @@ public class ModBlocks {
             new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.BASALT), UniformInt.of(3, 7)));
 
-    public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regBlock("rough_cinnabar_block", () ->
+    public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
-                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9))));
-    public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regBlock("rough_lazurite_block", () ->
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
+    public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
-    public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regBlock("rough_emerald_block", () ->
+    public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regWithItem("rough_emerald_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
-    public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regBlock("rough_diamond_block", () ->
+    public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 

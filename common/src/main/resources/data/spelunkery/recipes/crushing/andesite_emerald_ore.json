@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
@@ -7,10 +13,10 @@
   ],
   "results": [
     {
-      "item": "minecraft:emerald"
+      "item": "spelunkery:rough_emerald"
     },
     {
-      "item": "minecraft:emerald",
+      "item": "spelunkery:rough_emerald",
       "chance": 0.75
     },
     {
@@ -18,7 +24,7 @@
       "chance": 0.75
     },
     {
-      "item": "minecraft:andesite",
+      "item": "minecraft:cobblestone",
       "chance": 0.125
     }
   ],

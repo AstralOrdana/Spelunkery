@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = SpelunkeryForge.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class SpelunkeryForgeClient extends ClientModLoader {
+public class SpelunkeryForgeClient {
 
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {

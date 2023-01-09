@@ -3,6 +3,7 @@ package com.ordana.spelunkery.items;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
+import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.entities.GlowstickEntity;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.ChatFormatting;
@@ -33,7 +34,9 @@ public class GlowstickItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("tooltip.spelunkery.throwable").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
+        if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            tooltip.add(Component.translatable("tooltip.spelunkery.throwable").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
+        }
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {

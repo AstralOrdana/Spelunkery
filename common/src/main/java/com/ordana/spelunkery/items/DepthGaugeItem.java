@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.ordana.spelunkery.configs.ClientConfigs;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -50,7 +51,9 @@ public class DepthGaugeItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("tooltip.spelunkery.depth_gauge_depth", getYLevel(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
+        if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            tooltip.add(Component.translatable("tooltip.spelunkery.depth_gauge_depth", getYLevel(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
+        }
     }
 
     @Override

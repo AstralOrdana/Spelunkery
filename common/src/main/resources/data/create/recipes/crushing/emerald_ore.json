@@ -1,0 +1,38 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:emerald_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rough_emerald"
+    },
+    {
+      "item": "spelunkery:rough_emerald",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:cobblestone",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 350
+}

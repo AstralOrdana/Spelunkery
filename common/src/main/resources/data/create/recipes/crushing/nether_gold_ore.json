@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_gold_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:raw_gold_nugget",
+      "count": 7
+    },
+    {
+      "item": "spelunkery:raw_gold_nugget",
+      "chance": 0.5
+    },
+    {
+      "item": "minecraft:netherrack",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 350
+}

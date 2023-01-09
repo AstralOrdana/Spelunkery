@@ -1,4 +1,6 @@
 {
+  "itemGroup.spelunkery.spelunkery": "Spelunkery",
+
   "tooltip.spelunkery.hold_crouch": "Hold Shift for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
@@ -73,6 +75,11 @@
   "block.spelunkery.calcite_redstone_ore": "Calcite Redstone Ore",
   "block.spelunkery.smooth_basalt_diamond_ore": "Smooth Basalt Diamond Ore",
   "block.spelunkery.andesite_emerald_ore": "Andesite Emerald Ore",
+
+  "item.spelunkery.raw_iron_nugget": "Raw Iron Nugget",
+  "item.spelunkery.raw_copper_nugget": "Raw Copper Nugget",
+  "item.spelunkery.raw_gold_nugget": "Raw Gold Nugget",
+  "item.spelunkery.raw_zinc_nugget": "Raw Zinc Nugget",
 
   "item.spelunkery.rough_lazurite": "Rough Lazurite",
   "item.spelunkery.rough_cinnabar": "Rough Cinnabar",

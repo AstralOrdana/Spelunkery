@@ -1,0 +1,32 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rough_diamond"
+    },
+    {
+      "item": "spelunkery:rough_diamond",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:cobblestone",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 350
+}

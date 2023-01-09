@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_iron"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:raw_iron_nugget",
+    "count": 9
+  }
+}

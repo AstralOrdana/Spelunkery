@@ -1,0 +1,16 @@
+{
+  "values": [
+    "spelunkery:rough_cinnabar",
+    "spelunkery:rough_lazurite",
+    "spelunkery:rough_diamond",
+    "spelunkery:rough_emerald",
+    "spelunkery:rough_cinnabar_block",
+    "spelunkery:rough_lazurite_block",
+    "spelunkery:rough_diamond_block",
+    "spelunkery:rough_emerald_block",
+    {
+      "id": "sullysmod:rough_jade",
+      "required": false
+    }
+  ]
+}

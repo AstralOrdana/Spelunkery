@@ -26,7 +26,7 @@ public class CommonConfigs {
 
         builder.push("general");
         CREATIVE_TAB = builder.define("creative_tab", false);
-        CROSS_SECTION = builder.define("cross_section", false);
+        CROSS_SECTION = builder.define("cross_section_world_mode", false);
         builder.pop();
 
         builder.push("examples");
