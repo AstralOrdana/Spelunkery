@@ -1,4 +1,6 @@
 {
+  "itemGroup.spelunkery.spelunkery": "Spelunkery",
+
   "tooltip.spelunkery.hold_crouch": "Segure Shift para mais detalhes",
   "tooltip.spelunkery.throwable": "Arremessável!",
   "tooltip.spelunkery.grindable": "Polir em uma Rebolo.",
@@ -73,6 +75,11 @@
   "block.spelunkery.calcite_redstone_ore": "Minério de Redstonee de Calcita",
   "block.spelunkery.smooth_basalt_diamond_ore": "Minério de Diamante de Basalto Liso",
   "block.spelunkery.andesite_emerald_ore": "Minério de Esmeralda de Andesito",
+
+  "item.spelunkery.raw_iron_nugget": "Pepita de Ferro Bruto",
+  "item.spelunkery.raw_copper_nugget": "Pepita de Cobre Bruto",
+  "item.spelunkery.raw_gold_nugget": "Pepita de Ouro Bruto",
+  "item.spelunkery.raw_zinc_nugget": "Pepita de Zinco Bruto",
 
   "item.spelunkery.rough_lazurite": "Lazurita Bruta",
   "item.spelunkery.rough_cinnabar": "Cinábrio Bruto",
