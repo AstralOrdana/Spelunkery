@@ -206,6 +206,8 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
+    public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->
+            new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->

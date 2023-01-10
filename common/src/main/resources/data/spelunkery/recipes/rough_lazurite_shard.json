@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_lazurite"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:rough_lazurite_shard",
+    "count": 9
+  }
+}

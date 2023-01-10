@@ -42,6 +42,15 @@ public class ModItems {
     public static final Supplier<Item> RAW_ZINC_NUGGET = regItem("raw_zinc_nugget", () ->
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("create") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
+    public static final Supplier<Item> ROUGH_CINNABAR_SHARD = regItem("rough_cinnabar_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> ROUGH_LAZURITE_SHARD = regItem("rough_lazurite_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> ROUGH_EMERALD_SHARD = regItem("rough_emerald_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> ROUGH_DIAMOND_SHARD = regItem("rough_diamond_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE = regItem("rough_lazurite", () ->
@@ -50,9 +59,18 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND = regItem("rough_diamond", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-    public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
+
+    public static final Supplier<Item> CINNABAR_SHARD = regItem("cinnabar_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> LAPIS_LAZULI_SHARD = regItem("lapis_lazuli_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> EMERALD_SHARD = regItem("emerald_shard", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> DIAMOND_SHARD = regItem("diamond_shard", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
+    public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
             new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));

@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.events;
 
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -94,8 +95,13 @@ public class ModEvents {
                     ItemStack byproduct = polishingRecipe.getByproduct();
                     int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
                     int xpAmount = polishingRecipe.getExperience();
-
                     if (stack.is(ingredient.getItem())) {
+                        if (polishingRecipe.isRequiresDiamondGrindstone() && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get())) {
+                            ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
+                            player.swing(hand);
+                            level.playSound(player, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
+                            return InteractionResult.sidedSuccess(level.isClientSide);
+                        }
                         ItemStack resultItem = result.copy();
                         ItemStack byproductItem = byproduct.copy();
                         if (player.isShiftKeyDown()) {

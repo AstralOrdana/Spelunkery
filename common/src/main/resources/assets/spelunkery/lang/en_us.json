@@ -4,6 +4,7 @@
   "tooltip.spelunkery.hold_crouch": "Hold Shift for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
+  "tooltip.spelunkery.diamond_grindable": "Polish on a Diamond Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
   "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
 
@@ -49,9 +50,6 @@
   "tooltip.spelunkery.nephrite_diode_2": "  Transfers one at a time each time it receives a Redstone signal",
   "tooltip.spelunkery.nephrite_diode_3": "  Can transfer Charge vertically and be pushed by Pistons",
 
-  "entity.spelunkery.mod_entity": "Mod Entity",
-  "item.spelunkery.mod_item": "Mod Item",
-
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
   "block.spelunkery.salt": "Salt",
@@ -81,6 +79,11 @@
   "item.spelunkery.raw_gold_nugget": "Raw Gold Nugget",
   "item.spelunkery.raw_zinc_nugget": "Raw Zinc Nugget",
 
+  "item.spelunkery.rough_lazurite_shard": "Rough Lazurite Shard",
+  "item.spelunkery.rough_cinnabar_shard": "Rough Cinnabar Shard",
+  "item.spelunkery.rough_diamond_shard": "Rough Diamond Shard",
+  "item.spelunkery.rough_emerald_shard": "Rough Emerald Shard",
+
   "item.spelunkery.rough_lazurite": "Rough Lazurite",
   "item.spelunkery.rough_cinnabar": "Rough Cinnabar",
   "item.spelunkery.rough_diamond": "Rough Diamond",
@@ -90,6 +93,11 @@
   "block.spelunkery.rough_cinnabar_block": "Block of Rough Cinnabar",
   "block.spelunkery.rough_diamond_block": "Block of Rough Diamond",
   "block.spelunkery.rough_emerald_block": "Block of Rough Emerald",
+
+  "item.spelunkery.lapis_lazuli_shard": "Lapis Lazuli Shard",
+  "item.spelunkery.cinnabar_shard": "Cinnabar Shard",
+  "item.spelunkery.diamond_shard": "Diamond Shard",
+  "item.spelunkery.emerald_shard": "Emerald Shard",
 
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
@@ -140,6 +148,7 @@
   "block.spelunkery.rope_ladder": "Rope Ladder",
   "item.spelunkery.portal_fluid_bottle": "Bottle o' Portal Fluid",
   "item.spelunkery.depth_gauge": "Depth Gauge",
+  "block.spelunkery.diamond_grindstone": "Diamond Grindstone",
 
   "block.spelunkery.red_glowstick": "Red Glowstick",
   "block.spelunkery.orange_glowstick": "Orange Glowstick",

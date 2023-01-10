@@ -15,9 +15,9 @@ displayName="Spelunkery" #mandatory
 
 logoFile="icon.png" #optional
 
-credits="Ordana" #optional
+credits="Contributors: Bobisnotaperson" #optional
 
-authors="Ordana" #optional
+authors="Ordana, Keybounce" #optional
 
 itemIcon="spelunkery:rough_diamond" #catalogue icon
 description='''

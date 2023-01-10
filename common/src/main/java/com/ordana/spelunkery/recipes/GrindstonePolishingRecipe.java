@@ -34,8 +34,9 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
     private final int byproductMin;
     private final int byproductMax;
     private final int experience;
+    private final boolean requiresDiamondGrindstone;
 
-    public GrindstonePolishingRecipe(ResourceLocation id, String recipeGroup, ItemStack ingredient, ItemStack result, int resultCount, ItemStack byproduct, int byproductMin, int byproductMax, int experience) {
+    public GrindstonePolishingRecipe(ResourceLocation id, String recipeGroup, ItemStack ingredient, ItemStack result, int resultCount, ItemStack byproduct, int byproductMin, int byproductMax, int experience, boolean requiresDiamondGrindstone) {
         this.id = id;
         this.recipeGroup = recipeGroup;
         this.ingredient = ingredient;
@@ -45,6 +46,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
         this.byproductMin = byproductMin;
         this.byproductMax = byproductMax;
         this.experience = experience;
+        this.requiresDiamondGrindstone = requiresDiamondGrindstone;
     }
 
     @Override
@@ -68,6 +70,10 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
 
     public int getResultCount() {
         return this.resultCount;
+    }
+
+    public boolean isRequiresDiamondGrindstone() {
+        return this.requiresDiamondGrindstone;
     }
 
     @Override
@@ -157,8 +163,9 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             int byproductMin = GsonHelper.getAsInt(jsonObject, "byproductMin", 1);
             int byproductMax = GsonHelper.getAsInt(jsonObject, "byproductMax", 1);
             int experience = GsonHelper.getAsInt(jsonObject, "experience", 0);
+            boolean requiresDiamondGrindstone = GsonHelper.getAsBoolean(jsonObject, "requiresDiamondGrindstone", false);
 
-            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience);
+            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience, requiresDiamondGrindstone);
         }
 
         @Nullable
@@ -172,8 +179,9 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             int byproductMin = pBuffer.readInt();
             int byproductMax = pBuffer.readInt();
             int experience = pBuffer.readInt();
+            boolean requiresDiamondGrindstone = pBuffer.readBoolean();
 
-            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience);
+            return new GrindstonePolishingRecipe(pRecipeId, group, ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience, requiresDiamondGrindstone);
         }
 
         @Override
@@ -186,6 +194,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             pBuffer.writeInt(pRecipe.byproductMin);
             pBuffer.writeInt(pRecipe.byproductMax);
             pBuffer.writeInt(pRecipe.experience);
+            pBuffer.writeBoolean(pRecipe.requiresDiamondGrindstone);
         }
     }
 }

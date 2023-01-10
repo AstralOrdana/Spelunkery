@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:cinnabar"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:cinnabar_shard",
+    "count": 9
+  }
+}

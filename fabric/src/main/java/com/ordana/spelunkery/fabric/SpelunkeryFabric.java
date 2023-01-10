@@ -7,6 +7,9 @@ import com.ordana.spelunkery.Spelunkery;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.fabric.FabricSetupCallbacks;
 import net.minecraft.server.MinecraftServer;
@@ -26,6 +29,10 @@ public class SpelunkeryFabric implements ModInitializer {
         ServerLifecycleEvents.SERVER_STARTING.register(s -> currentServer = s);
 
         Spelunkery.commonInit();
+
+        FabricLoader.getInstance().getModContainer(Spelunkery.MOD_ID).ifPresent(modContainer -> {
+            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("better_vanilla_gems"), modContainer, ResourcePackActivationType.NORMAL);
+        });
 
         UseBlockCallback.EVENT.register(SpelunkeryFabric::onRightClickBlock);
         LootTableEvents.MODIFY.register((m, t, r, b, s) -> ModLootInjects.onLootInject(t, r, b::withPool));

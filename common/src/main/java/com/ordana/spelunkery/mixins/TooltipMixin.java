@@ -47,6 +47,9 @@ public class TooltipMixin {
             if (stack.is(ModTags.GRINDABLE)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.grindable").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
             }
+            if (stack.is(ModTags.DIAMOND_GRINDABLE)) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.diamond_grindable").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
+            }
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "spelunkery:grindstone_polishing",
+  "ingredient": "spelunkery:rough_cinnabar_shard",
+  "result": "spelunkery:cinnabar_shard",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 1,
+  "experience": 11
+}
