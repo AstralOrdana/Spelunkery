@@ -2,6 +2,8 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.openmods.utils.EnchantmentUtils;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -28,6 +30,7 @@ public class NephriteCharmItem extends Item {
         super(properties);
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {

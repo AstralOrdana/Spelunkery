@@ -3,6 +3,8 @@ package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -23,6 +25,7 @@ import java.util.List;
 @Mixin(Item.class)
 public class TooltipMixin {
 
+    @Environment(EnvType.CLIENT)
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void recoveryCompassTooltip(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {

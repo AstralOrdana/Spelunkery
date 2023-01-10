@@ -2,6 +2,8 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.blocks.WoodenRailBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -27,6 +29,7 @@ public class WoodenRailBlockItem extends BlockItem {
         super(block, properties);
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
