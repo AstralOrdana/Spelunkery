@@ -1,7 +1,10 @@
 package com.ordana.spelunkery.blocks.rock_salt;
 
+import com.ordana.spelunkery.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -39,12 +42,9 @@ public interface RockSalt {
 
 
     default void onEntityStepOn(BlockState state, Entity entity) {
-        if (entity instanceof LivingEntity && ((LivingEntity) entity).isInvertedHealAndHarm()) {
+        if (entity instanceof LivingEntity && entity.getType().is(ModTags.HURT_BY_SALT)) {
+            if (((LivingEntity) entity).isInvertedHealAndHarm()) entity.setRemainingFireTicks(8);
             entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
-            entity.setRemainingFireTicks(8);
-        }
-        else if (entity instanceof Slime) {
-            entity.hurt(DamageSource.HOT_FLOOR, 8.0F);
         }
     }
 

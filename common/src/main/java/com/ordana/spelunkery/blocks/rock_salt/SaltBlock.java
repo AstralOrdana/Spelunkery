@@ -10,6 +10,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -60,7 +61,7 @@ public class SaltBlock extends Block {
 
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
         for (BlockState blockstate : this.getStateDefinition().getPossibleStates()) {
-                builder.put(blockstate, this.calculateVoxelShape(blockstate));
+            builder.put(blockstate, this.calculateVoxelShape(blockstate));
         }
         this.SHAPES_CACHE = builder.build();
 
@@ -365,9 +366,9 @@ public class SaltBlock extends Block {
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity && ((LivingEntity) entity).isInvertedHealAndHarm()) {
+        if (entity instanceof LivingEntity && entity.getType().is(ModTags.HURT_BY_SALT)) {
+            if (((LivingEntity) entity).isInvertedHealAndHarm()) entity.setRemainingFireTicks(8);
             entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
-            entity.setRemainingFireTicks(8);
         }
     }
 }

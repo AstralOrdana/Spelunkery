@@ -30,7 +30,7 @@ public class ModTags {
     public static final TagKey<Biome> HAS_DESERT_NOISE = registerBiomeTag("has_desert_noise");
 
     //entities
-    public static final TagKey<EntityType<?>> ENTITY = registerEntityTag("entity");
+    public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");
 
 
     private ModTags() {
