@@ -107,7 +107,7 @@ public class ModBlocks {
             new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.BASALT), UniformInt.of(3, 7)));
 
-    public static final Supplier<Block> ROUGH_CINNABR_BLOCK = regWithItem("rough_cinnabar_block", () ->
+    public static final Supplier<Block> ROUGH_CINNABAR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
@@ -120,7 +120,7 @@ public class ModBlocks {
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 
-    public static final Supplier<Block> CINNABR_BLOCK = regWithItem("cinnabar_block", () ->
+    public static final Supplier<Block> CINNABAR_BLOCK = regWithItem("cinnabar_block", () ->
             new PoweredBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).isRedstoneConductor(ModBlocks::never)));
 

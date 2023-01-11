@@ -1,0 +1,13 @@
+{
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_emerald_shard"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:emerald_shard"
+    }
+  ]
+}

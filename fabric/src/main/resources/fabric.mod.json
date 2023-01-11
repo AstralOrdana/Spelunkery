@@ -20,6 +20,12 @@
     "main": [
       "com.ordana.spelunkery.fabric.SpelunkeryFabric"
     ],
+    "client": [
+      "com.ordana.spelunkery.fabric.SpelunkeryFabricClient"
+    ],
+    "emi": [
+      "com.ordana.spelunkery.integration.fabric.EmiIntegration"
+    ],
     "modmenu": [
       "com.ordana.spelunkery.integration.fabric.ModMenuCompat"
     ]
