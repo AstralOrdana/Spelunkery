@@ -2,6 +2,7 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.events.PackProvider;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +25,7 @@ public class Spelunkery {
             ClientConfigs.init();
         }
 
+        PackProvider.INSTANCE.register();
         ModFeatures.init();
         ModBlocks.init();
         ModItems.init();
