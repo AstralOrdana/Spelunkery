@@ -1,0 +1,27 @@
+{
+  "containers": [
+    {
+      "filled": [
+        "spelunkery:portal_fluid_bottle"
+      ],
+      "empty": "minecraft:glass_bottle",
+      "capacity": 1
+    },
+    {
+      "filled": [
+        "minecraft:crying_obsidian"
+      ],
+      "empty": "minecraft:obsidian",
+      "capacity": 1
+    }
+  ],
+  "flowing_texture": "minecraft:block/nether_portal",
+  "food": {
+    "divider": 1,
+    "item": "spelunkery:portal_fluid_bottle"
+  },
+  "luminosity": 5,
+  "from_mod": "spelunkery",
+  "still_texture": "minecraft:block/nether_portal",
+  "translation_key": "item.spelunkery.portal_fluid_bottle"
+}

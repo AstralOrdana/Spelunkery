@@ -6,18 +6,29 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
 public class GrowableMushroomBlock extends ModMushroomBlock implements BonemealableBlock {
+    protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 12.0D, 11.0D);
+    protected static final float AABB_OFFSET = 3.0F;
     private final Supplier<Holder<? extends ConfiguredFeature<?, ?>>> featureSupplier;
 
     public GrowableMushroomBlock(Properties properties, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> supplier) {
         super(properties);
         this.featureSupplier = supplier;
+    }
+
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        Vec3 vec3 = state.getOffset(level, pos);
+        return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {

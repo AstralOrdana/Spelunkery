@@ -73,7 +73,7 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
-            new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+            new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
 
     public static final Supplier<Item> CARVED_NEPHRITE = regItem("carved_nephrite", () ->
             new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));

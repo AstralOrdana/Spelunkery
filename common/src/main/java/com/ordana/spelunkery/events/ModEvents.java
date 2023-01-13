@@ -85,6 +85,12 @@ public class ModEvents {
                                                       Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (state.getBlock() instanceof GrindstoneBlock) {
+            /* Code below modified and adapted from Sully's Mod: https://github.com/Uraneptus/Sullys-Mod/
+            Specific section modified:https://github.com/Uraneptus/Sullys-Mod/blob/1.19.x/src/main/java/com/uraneptus/sullysmod/core/events/SMPlayerEvents.java#L33-L96
+            Significant changes include: addition of byproducts, location of code within mod, particle creation based on ground item.
+            Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LICENSE
+             */
+
             ArrayList<GrindstonePolishingRecipe> recipes = new ArrayList<>(GrindstonePolishingRecipe.getRecipes(level));
             for (GrindstonePolishingRecipe polishingRecipe : recipes) {
                 if (!recipes.isEmpty()) {
@@ -145,7 +151,8 @@ public class ModEvents {
                                 }
                             }
                         }
-                        ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, resultItem), UniformInt.of(3, 5));
+                        if (!resultItem.is(Items.AIR)) ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, resultItem), UniformInt.of(3, 5));
+                        else ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, byproductItem), UniformInt.of(3, 5));
                         player.swing(hand);
                         level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
                         return InteractionResult.sidedSuccess(level.isClientSide);

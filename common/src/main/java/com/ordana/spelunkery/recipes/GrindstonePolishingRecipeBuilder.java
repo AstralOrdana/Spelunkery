@@ -1,5 +1,12 @@
 package com.ordana.spelunkery.recipes;
 
+/* Code below modified and adapted from Sully's Mod: https://github.com/Uraneptus/Sullys-Mod/
+Specific section modified:https://github.com/Uraneptus/Sullys-Mod/blob/8860f86d897e23ed1997f8dd2022260c9db2e422/src/main/java/com/uraneptus/sullysmod/core/data/server/builder/GrindstonePolishingRecipeBuilder.java
+Significant changes include: addition of byproducts, diamond grinding tier.
+Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LICENSE
+ */
+
+
 import com.google.gson.JsonObject;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModRecipes;

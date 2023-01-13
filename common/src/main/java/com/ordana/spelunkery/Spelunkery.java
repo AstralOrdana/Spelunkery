@@ -6,6 +6,7 @@ import com.ordana.spelunkery.events.PackProvider;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

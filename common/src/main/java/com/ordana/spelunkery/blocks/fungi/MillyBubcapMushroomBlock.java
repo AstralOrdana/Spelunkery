@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -66,11 +67,12 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        Vec3 vec3 = state.getOffset(level, pos);
         return switch (state.getValue(CAPS)) {
-            default -> ONE_AABB;
-            case 2 -> TWO_AABB;
-            case 3 -> THREE_AABB;
-            case 4, 5, 6, 7, 8 -> FOUR_AABB;
+            default -> ONE_AABB.move(vec3.x, vec3.y, vec3.z);
+            case 2 -> TWO_AABB.move(vec3.x, vec3.y, vec3.z);
+            case 3 -> THREE_AABB.move(vec3.x, vec3.y, vec3.z);
+            case 4, 5, 6, 7, 8 -> FOUR_AABB.move(vec3.x, vec3.y, vec3.z);
         };
     }
 
