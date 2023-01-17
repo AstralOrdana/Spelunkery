@@ -6,5 +6,5 @@
   "byproduct": "spelunkery:salt",
   "byproductMin": 1,
   "byproductMax": 3,
-  "experience": 60
+  "experience": 1
 }

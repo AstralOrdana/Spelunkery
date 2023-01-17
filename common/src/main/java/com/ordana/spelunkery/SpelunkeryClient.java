@@ -1,12 +1,18 @@
 package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.items.MagneticCompassItem;
+import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CompassItem;
+import net.minecraft.world.item.Items;
 
 public class SpelunkeryClient {
     
@@ -49,6 +55,12 @@ public class SpelunkeryClient {
 
         ClientPlatformHelper.registerItemProperty(ModItems.NEPHRITE_CHARM.get(), Spelunkery.res("charge"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("xp") / 1395f) : 0);
+
+        ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
+                new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> {
+                    return MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel);
+                })));
+
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {

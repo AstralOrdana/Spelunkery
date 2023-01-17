@@ -13,6 +13,7 @@ import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
@@ -21,15 +22,15 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.MushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.carver.*;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePl
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
@@ -48,6 +50,30 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ModFeatures {
+
+    private static <WC extends CarverConfiguration> Holder<ConfiguredWorldCarver<WC>> register(String id, ConfiguredWorldCarver<WC> carver) {
+        return BuiltinRegistries.registerExact(BuiltinRegistries.CONFIGURED_CARVER, id, carver);
+    }
+
+    public static final Holder<ConfiguredWorldCarver<CanyonCarverConfiguration>> CREVICE =
+            register("crevice", WorldCarver.CANYON.configured(
+                    new CanyonCarverConfiguration(
+                            0.0125f,
+                            UniformHeight.of(VerticalAnchor.absolute(40), VerticalAnchor.absolute(180)),
+                            UniformFloat.of(6.0F, 10.0f),
+                            VerticalAnchor.aboveBottom(8),
+                            CarverDebugSettings.of(false, Blocks.OAK_BUTTON.defaultBlockState()),
+                            Registry.BLOCK.getOrCreateTag(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
+                            UniformFloat.of(-0.125F, 0.125F),
+                            new CanyonCarverConfiguration.CanyonShapeConfiguration(
+                                    UniformFloat.of(0.5F, 1.0F),
+                                    UniformFloat.of(0.0F, 1.0F),
+                                    6,
+                                    UniformFloat.of(0.25F, 1.0F),
+                                    0,
+                                    5
+                            )
+                    )));
 
     public static final RegSupplier<ConfiguredFeature<VegetationPatchConfiguration, Feature<VegetationPatchConfiguration>>> SPORE_MOSS_PATCH_BONEMEAL =
             RegHelper.registerConfiguredFeature(Spelunkery.res("spore_moss_patch_bonemeal"), () -> Feature.VEGETATION_PATCH,
@@ -104,8 +130,8 @@ public class ModFeatures {
                     ),
                     List.of(
                             new StoneEntry(Blocks.TUFF, Blocks.DEEPSLATE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.TUFF, Blocks.DEEPSLATE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.TUFF, Blocks.DEEPSLATE, StonePattern.sedimentaryStone())
+                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.DEEPSLATE, StonePattern.sedimentaryStone()),
+                            new StoneEntry(Blocks.BLACKSTONE, Blocks.DEEPSLATE, StonePattern.sedimentaryStone())
                     ),
                     0.25F,
                     (ModTags.STONE_TARGET),

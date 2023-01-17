@@ -70,87 +70,90 @@ public class NoiseBasedStoneFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
-        RandomSource random = featurePlaceContext.random();
-        BlockPos originPos = featurePlaceContext.origin();
-        WorldGenLevel worldGenLevel = featurePlaceContext.level();
-        ChunkGenerator chunkGenerator = featurePlaceContext.chunkGenerator();
 
-        FastNoiseLite cellNoise = new FastNoiseLite();
-        cellNoise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
-        cellNoise.SetCellularReturnType(FastNoiseLite.CellularReturnType.CellValue);
-        cellNoise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
-        cellNoise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
-        cellNoise.SetFrequency(0.01F);
-        cellNoise.SetFractalOctaves(1);
+        if (CommonConfigs.STONE_STRIPE_FEATURES.get()) {
+            RandomSource random = featurePlaceContext.random();
+            BlockPos originPos = featurePlaceContext.origin();
+            WorldGenLevel worldGenLevel = featurePlaceContext.level();
+            ChunkGenerator chunkGenerator = featurePlaceContext.chunkGenerator();
 
-        FastNoiseLite cellBufferNoise = new FastNoiseLite();
-        cellBufferNoise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
-        cellBufferNoise.SetCellularReturnType(FastNoiseLite.CellularReturnType.Distance2Div);
-        cellBufferNoise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
-        cellBufferNoise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
-        cellBufferNoise.SetFrequency(0.01F);
-        cellBufferNoise.SetFractalOctaves(1);
+            FastNoiseLite cellNoise = new FastNoiseLite();
+            cellNoise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
+            cellNoise.SetCellularReturnType(FastNoiseLite.CellularReturnType.CellValue);
+            cellNoise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
+            cellNoise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
+            cellNoise.SetFrequency(0.01F);
+            cellNoise.SetFractalOctaves(1);
 
-        FastNoiseLite noise = new FastNoiseLite();
-        noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
-        noise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
-        noise.SetFrequency(0.03F);
-        noise.SetDomainWarpAmp(1.5F);
-        noise.SetFractalOctaves(1);
+            FastNoiseLite cellBufferNoise = new FastNoiseLite();
+            cellBufferNoise.SetNoiseType(FastNoiseLite.NoiseType.Cellular);
+            cellBufferNoise.SetCellularReturnType(FastNoiseLite.CellularReturnType.Distance2Div);
+            cellBufferNoise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
+            cellBufferNoise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
+            cellBufferNoise.SetFrequency(0.01F);
+            cellBufferNoise.SetFractalOctaves(1);
 
-        for (int x = (int) (Math.floor(originPos.getX() / 16F) * 16); x < (int) (Math.floor(originPos.getX() / 16F) * 16) + 16; x++) {
-            for (int z = (int) (Math.floor(originPos.getZ() / 16F) * 16); z < (int) (Math.floor(originPos.getZ() / 16F) * 16) + 16; z++) {
-                for (int y = chunkGenerator.getMinY(); y < chunkGenerator.getGenDepth() + chunkGenerator.getMinY(); y++) {
+            FastNoiseLite noise = new FastNoiseLite();
+            noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
+            noise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
+            noise.SetFrequency(0.03F);
+            noise.SetDomainWarpAmp(1.5F);
+            noise.SetFractalOctaves(1);
 
-                    float domainWarpValue = noise.GetNoise(x, y, z) * 5F;
-                    float cellValue = cellNoise.GetNoise(x + domainWarpValue, y + domainWarpValue, z + domainWarpValue);
-                    cellValue = (cellValue * 0.5F + 0.5F);
-                    int stoneIndex = Mth.floor((cellValue) * this.entryListStone.size());
+            for (int x = (int) (Math.floor(originPos.getX() / 16F) * 16); x < (int) (Math.floor(originPos.getX() / 16F) * 16) + 16; x++) {
+                for (int z = (int) (Math.floor(originPos.getZ() / 16F) * 16); z < (int) (Math.floor(originPos.getZ() / 16F) * 16) + 16; z++) {
+                    for (int y = chunkGenerator.getMinY(); y < chunkGenerator.getGenDepth() + chunkGenerator.getMinY(); y++) {
 
-                    float seed = cellValue * 1000000;
-                    Random patchRandom = new Random((long) seed);
-                    boolean isBlankPatch = (patchRandom.nextFloat() < this.chanceOfBlankPatch) || cellBufferNoise.GetNoise(x + domainWarpValue, y + domainWarpValue, z + domainWarpValue) > -0.1;
+                        float domainWarpValue = noise.GetNoise(x, y, z) * 5F;
+                        float cellValue = cellNoise.GetNoise(x + domainWarpValue, y + domainWarpValue, z + domainWarpValue);
+                        cellValue = (cellValue * 0.5F + 0.5F);
+                        int stoneIndex = Mth.floor((cellValue) * this.entryListStone.size());
 
-                    BlockPos currentPos = new BlockPos(x, y, z);
-                    BlockState currentState = worldGenLevel.getBlockState(currentPos);
+                        float seed = cellValue * 1000000;
+                        Random patchRandom = new Random((long) seed);
+                        boolean isBlankPatch = (patchRandom.nextFloat() < this.chanceOfBlankPatch) || cellBufferNoise.GetNoise(x + domainWarpValue, y + domainWarpValue, z + domainWarpValue) > -0.1;
 
-                    boolean passesBiomeFilter = true;
-                    if(this.biomes != null && this.useBiomeFilter){
-                        if(!worldGenLevel.getBiome(currentPos).is(biomes)) {
-                            passesBiomeFilter = false;
+                        BlockPos currentPos = new BlockPos(x, y, z);
+                        BlockState currentState = worldGenLevel.getBlockState(currentPos);
+
+                        boolean passesBiomeFilter = true;
+                        if (this.biomes != null && this.useBiomeFilter) {
+                            if (!worldGenLevel.getBiome(currentPos).is(biomes)) {
+                                passesBiomeFilter = false;
+                            }
                         }
-                    }
 
-                    if(passesBiomeFilter){
-                        if((worldGenLevel.dimensionType().hasCeiling() || y < worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - surfaceOffset) && !isBlankPatch){
-                            if (!useHeightFilter || (y > (worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - bottomOffset))) {
-                                if (target2 != null && currentState.is(target2)) {
+                        if (passesBiomeFilter) {
+                            if ((worldGenLevel.dimensionType().hasCeiling() || y < worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - surfaceOffset) && !isBlankPatch) {
+                                if (!useHeightFilter || (y > (worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - bottomOffset))) {
+                                    if (target2 != null && currentState.is(target2)) {
 
-                                    boolean shouldPlacePrimaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
-                                    boolean shouldPlaceSecondaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
+                                        boolean shouldPlacePrimaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
+                                        boolean shouldPlaceSecondaryStone = this.entryListDeepslate.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
 
-                                    if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
-                                        worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
-                                    } else if (shouldPlaceSecondaryStone) {
-                                        worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
-                                    }
-                                }
-                                else if (currentState.is(target1)) {
+                                        if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
+                                            worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
+                                        } else if (shouldPlaceSecondaryStone) {
+                                            worldGenLevel.setBlock(currentPos, this.entryListDeepslate.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                        }
+                                    } else if (currentState.is(target1)) {
 
-                                    boolean shouldPlacePrimaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
-                                    boolean shouldPlaceSecondaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
+                                        boolean shouldPlacePrimaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlacePrimaryStone(currentPos);
+                                        boolean shouldPlaceSecondaryStone = this.entryListStone.get(stoneIndex).getStonePattern().shouldPlaceSecondaryStone(currentPos);
 
-                                    if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
-                                        worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
-                                    } else if (shouldPlaceSecondaryStone) {
-                                        worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                        if (shouldPlacePrimaryStone && !shouldPlaceSecondaryStone) {
+                                            worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getPrimaryStoneState(), Block.UPDATE_CLIENTS);
+                                        } else if (shouldPlaceSecondaryStone) {
+                                            worldGenLevel.setBlock(currentPos, this.entryListStone.get(stoneIndex).getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                    if (CommonConfigs.CROSS_SECTION.get()) {
-                        if(z < 0 && y < 128) worldGenLevel.setBlock(currentPos, Blocks.BARRIER.defaultBlockState(), 2);
+                        if (CommonConfigs.CROSS_SECTION.get()) {
+                            if (z < 0 && y < 128)
+                                worldGenLevel.setBlock(currentPos, Blocks.BARRIER.defaultBlockState(), 2);
+                        }
                     }
                 }
             }

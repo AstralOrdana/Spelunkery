@@ -6,6 +6,6 @@
   "byproduct": "minecraft:air",
   "byproductMin": 0,
   "byproductMax": 0,
-  "experience": 11,
+  "experience": 1,
   "requiresDiamondGrindstone": true
 }

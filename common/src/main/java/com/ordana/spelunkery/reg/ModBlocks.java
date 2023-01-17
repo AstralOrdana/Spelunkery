@@ -209,6 +209,9 @@ public class ModBlocks {
     public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->
             new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> MAGNETITE = regWithItem("magnetite", () ->
+            new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
+
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
             new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)), getTab(CreativeModeTab.TAB_DECORATIONS));

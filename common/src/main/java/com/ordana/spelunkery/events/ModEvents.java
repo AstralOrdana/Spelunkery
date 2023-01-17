@@ -1,10 +1,13 @@
 package com.ordana.spelunkery.events;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,10 +24,12 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 
 public class ModEvents {
@@ -112,6 +117,9 @@ public class ModEvents {
                         ItemStack byproductItem = byproduct.copy();
                         if (player.isShiftKeyDown()) {
                             int ingredientCount = stack.getCount();
+                            for (int b = 0; b <= ingredientCount; b++) {
+                                byproductCount = byproductCount + random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
+                            }
 
                             if (!player.getAbilities().instabuild) {
                                 stack.shrink(ingredientCount);
@@ -119,15 +127,12 @@ public class ModEvents {
                             if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount * ingredientCount))) {
                                 player.drop(new ItemStack(resultItem.getItem(), resultCount * ingredientCount), false);
                             }
-                            if (!player.getInventory().add(new ItemStack(byproductItem.getItem(), byproductCount * ingredientCount))) {
-                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount * ingredientCount), false);
+                            if (!player.getInventory().add(new ItemStack(byproductItem.getItem(), byproductCount))) {
+                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
                             }
                             if (!(xpAmount == 0)) {
                                 for (int i = 0; i <= ingredientCount; i++) {
-                                    int dropXp = random.nextInt(2);
-                                    if (dropXp < 1) {
-                                        xpAmount = xpAmount + polishingRecipe.getExperience();
-                                    }
+                                    xpAmount = xpAmount + polishingRecipe.getExperience();
                                 }
                                 level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
                             }
@@ -144,11 +149,7 @@ public class ModEvents {
                                 player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
                             }
                             if (!(xpAmount == 0)) {
-                                int canDropXp = random.nextInt(2);
-
-                                if (canDropXp < 1) {
-                                    level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
-                                }
+                                level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
                             }
                         }
                         if (!resultItem.is(Items.AIR)) ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, resultItem), UniformInt.of(3, 5));

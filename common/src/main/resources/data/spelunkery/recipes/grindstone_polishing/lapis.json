@@ -3,8 +3,8 @@
   "ingredient": "spelunkery:rough_lazurite",
   "result": "minecraft:lapis_lazuli",
   "resultCount": 3,
-  "byproduct": "minecraft:gold_nugget",
+  "byproduct": "spelunkery:raw_gold_nugget",
   "byproductMin": 0,
   "byproductMax": 2,
-  "experience": 120
+  "experience": 9
 }

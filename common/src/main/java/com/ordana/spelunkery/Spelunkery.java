@@ -28,6 +28,7 @@ public class Spelunkery {
 
         PackProvider.INSTANCE.register();
         ModFeatures.init();
+        ModGameEvents.init();
         ModBlocks.init();
         ModItems.init();
         ModEntities.init();

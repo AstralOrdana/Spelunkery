@@ -2,6 +2,7 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
+import com.ordana.spelunkery.blocks.entity.MagnetiteBlockEntity;
 import com.ordana.spelunkery.blocks.entity.NephriteSpoutEntity;
 import com.ordana.spelunkery.entities.GlowstickEntity;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
@@ -28,6 +29,11 @@ public class ModEntities {
     public static final Supplier<BlockEntityType<NephriteSpoutEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
             Spelunkery.res("nephrite_spout"),
             () -> PlatformHelper.newBlockEntityType(NephriteSpoutEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
+
+    public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
+            Spelunkery.res("magnetite"),
+            () -> PlatformHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.MAGNETITE.get()));
+
 
     public static Supplier<EntityType<GlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(
             Spelunkery.res("glowstick"),

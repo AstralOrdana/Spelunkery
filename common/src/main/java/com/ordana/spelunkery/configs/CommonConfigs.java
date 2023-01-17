@@ -15,7 +15,10 @@ public class CommonConfigs {
 
     public static Supplier<Boolean> CREATIVE_TAB;
     public static Supplier<Boolean> CROSS_SECTION;
-    public static Supplier<Integer> INTEGER_CONFIG;
+    public static Supplier<Boolean> STONE_STRIPE_FEATURES;
+    public static Supplier<Integer> MAGNET_RANGE;
+
+
     public static Supplier<Double> DOUBLE_CONFIG;
 
 
@@ -27,10 +30,11 @@ public class CommonConfigs {
         builder.push("general");
         CREATIVE_TAB = builder.define("creative_tab", false);
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
+        STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
+        MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
         builder.pop();
 
         builder.push("examples");
-        INTEGER_CONFIG = builder.define("integer_config", 4, 1, 8);
         DOUBLE_CONFIG = builder.define("double_config", 0.06, 0, 1);
         builder.pop();
 

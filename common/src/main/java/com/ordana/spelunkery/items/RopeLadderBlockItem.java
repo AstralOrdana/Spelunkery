@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.ordana.spelunkery.blocks.RopeLadderBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -67,10 +68,10 @@ public class RopeLadderBlockItem extends BlockItem {
                     break;
                 }
 
-                blockState = level.getBlockState(mutableBlockPos);
-                if (!blockState.is(this.getBlock())) {
-                    if (blockState.canBeReplaced(context)) {
-                        return BlockPlaceContext.at(context, mutableBlockPos, direction);
+                BlockState belowState = level.getBlockState(mutableBlockPos);
+                if (!belowState.is(this.getBlock())) {
+                    if (belowState.canBeReplaced(context)) {
+                        return BlockPlaceContext.at(context, mutableBlockPos, blockState.getValue(RopeLadderBlock.FACING));
                     }
                     break;
                 }
