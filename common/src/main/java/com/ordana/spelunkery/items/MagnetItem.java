@@ -1,7 +1,12 @@
 package com.ordana.spelunkery.items;
 
+import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -13,6 +18,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +32,22 @@ public class MagnetItem extends Item {
     }
 
     @Override
+    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+        if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            CompoundTag compoundTag = stack.getOrCreateTag();
+            if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
+            if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
+            if (!Screen.hasShiftDown()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+            }
+            if (Screen.hasShiftDown()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_3", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            }
+        }
+    }
+
+    @Override
     public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         toggleMagnet(player, stack, level);
@@ -35,8 +57,8 @@ public class MagnetItem extends Item {
     public static void toggleMagnet(Player player, ItemStack stack, Level level) {
         if(!player.level.isClientSide && stack.getItem() instanceof MagnetItem){
             boolean active = stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
-            if (active) level.playSound(player, player.getOnPos(), SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1.0f, 1.5f);
-            if (!active) level.playSound(player, player.getOnPos(), SoundEvents.BEACON_DEACTIVATE, SoundSource.BLOCKS, 1.0f, 1.5f);
+            var beaconSound = active ? SoundEvents.BEACON_DEACTIVATE : SoundEvents.BEACON_ACTIVATE;
+            level.playSound(null, player.blockPosition(), beaconSound, SoundSource.BLOCKS, 1.0f, 2.0f);
             stack.getOrCreateTag().putBoolean("active", !active);
         }
     }
@@ -46,6 +68,10 @@ public class MagnetItem extends Item {
         return stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
     }
 
+    public int getMagnetRange() {
+        return CommonConfigs.MAGNET_RANGE.get();
+    }
+
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if(entity.isSpectator())
@@ -53,7 +79,7 @@ public class MagnetItem extends Item {
 
         CompoundTag tag = stack.getOrCreateTag();
         if(tag.contains("active") && tag.getBoolean("active")){
-            int r = CommonConfigs.MAGNET_RANGE.get();
+            int r = getMagnetRange();
             AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
 
             List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:compass"
+  },
+  "addition": {
+    "item": "spelunkery:magnetite_chunk"
+  },
+  "result": {
+    "item": "spelunkery:magnetic_compass"
+  }
+}

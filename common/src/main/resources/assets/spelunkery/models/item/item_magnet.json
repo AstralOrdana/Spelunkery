@@ -1,0 +1,9 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/item_magnet"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:active": 0.5 }, "model": "spelunkery:item/item_magnet_active" }
+  ]
+}

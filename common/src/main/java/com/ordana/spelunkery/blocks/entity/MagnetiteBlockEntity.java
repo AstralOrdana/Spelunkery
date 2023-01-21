@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.entity;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.events.ModEvents;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.reg.ModEntities;
@@ -45,19 +46,14 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
         if (ModGameEvents.COMPASS_PING_EVENT.get() == eventMessage.gameEvent()) {
             Entity entity = eventMessage.context().sourceEntity();
 
-            if (entity instanceof Player player) {
-                var inventory = player.getInventory();
-                ItemStack compass = player.getItemInHand(player.getUsedItemHand());
-                MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                if (entity instanceof Player player) {
+                    var inventory = player.getInventory();
 
-                /*
-                for (int i = 0; i < inventory.getContainerSize(); i++) {
-                    inventory.pickSlot(i);
-                    inventory.findSlotMatchingItem(Items.COMPASS.getDefaultInstance());
+                    for (int i = 0; i < inventory.getContainerSize(); i++) {
+                        ItemStack compass = inventory.getItem(i);
+                        if (compass.is(ModItems.MAGNETIC_COMPASS.get())) MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                    }
                 }
-                entity.getAllSlots().forEach(ItemStack.isSame(new ItemStack(Items.COMPASS), new ItemStack(Items.COMPASS)));
-                 */
-            }
         }
         return false;
     }

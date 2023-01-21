@@ -6,6 +6,8 @@ import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
+import net.minecraft.world.level.levelgen.NoiseChunk;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -31,6 +33,8 @@ public class ModItems {
     public static final Supplier<Item> SALT = regItem("salt", () ->
             new SaltBlockItem(ModBlocks.SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> MAGNETITE_CHUNK = regItem("magnetite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> RAW_IRON_NUGGET = regItem("raw_iron_nugget", () ->
@@ -105,7 +109,7 @@ public class ModItems {
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
             new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ITEM_MAGNET = regItem("item_magnet", () ->
-            new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+            new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> MAGNETIC_COMPASS = regItem("magnetic_compass", () ->
             new MagneticCompassItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->

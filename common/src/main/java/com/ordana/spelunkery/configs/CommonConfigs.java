@@ -17,6 +17,7 @@ public class CommonConfigs {
     public static Supplier<Boolean> CROSS_SECTION;
     public static Supplier<Boolean> STONE_STRIPE_FEATURES;
     public static Supplier<Integer> MAGNET_RANGE;
+    public static Supplier<Integer> MAGNETITE_RANGE;
 
 
     public static Supplier<Double> DOUBLE_CONFIG;
@@ -32,6 +33,7 @@ public class CommonConfigs {
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
+        MAGNETITE_RANGE = builder.define("magnet_range", 128, 1, 512);
         builder.pop();
 
         builder.push("examples");

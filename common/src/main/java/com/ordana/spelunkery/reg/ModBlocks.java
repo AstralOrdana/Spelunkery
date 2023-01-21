@@ -210,7 +210,7 @@ public class ModBlocks {
             new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
 
     public static final Supplier<Block> MAGNETITE = regWithItem("magnetite", () ->
-            new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
+            new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->

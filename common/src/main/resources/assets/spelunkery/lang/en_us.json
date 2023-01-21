@@ -29,6 +29,16 @@
 
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
+  "tooltip.spelunkery.magnetic_compass_1": "Your compass is being drawn toward %1$s, %2$s",
+  "tooltip.spelunkery.magnetic_compass_2": "  Always points toward Magnetic North",
+  "tooltip.spelunkery.magnetic_compass_3": "  Unless there is a strong interference in the magnetic field",
+  "tooltip.spelunkery.magnetic_compass_4": "  Crouch + right-click to reset",
+
+  "tooltip.spelunkery.item_magnet_1": "Active",
+  "tooltip.spelunkery.item_magnet_2": "Inactive",
+  "tooltip.spelunkery.item_magnet_3": "  Draws items toward the player from %1$s blocks away when active",
+  "tooltip.spelunkery.item_magnet_4": "  Right-click to toggle between active and inactive",
+
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
   "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
   "tooltip.spelunkery.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
@@ -101,6 +111,11 @@
 
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
+
+  "item.spelunkery.magnetite_chunk": "Magnetite Chunk",
+  "block.spelunkery.magnetite": "Magnetite",
+  "item.spelunkery.item_magnet": "Item Magnet",
+  "item.spelunkery.magnetic_compass": "Magnetic Compass",
 
   "item.spelunkery.nephrite_chunk": "Nephrite Chunk",
   "block.spelunkery.raw_nephrite": "Raw Nephrite",

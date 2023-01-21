@@ -60,10 +60,6 @@ public class PackProvider extends DynServerResourcesProvider {
         );
 
         var splashingRecipes = List.of(
-                "crushed_copper_ore",
-                "crushed_gold_ore",
-                "crushed_iron_ore",
-                "crushed_zinc_ore",
                 "gravel",
                 "red_sand",
                 "soul_sand"

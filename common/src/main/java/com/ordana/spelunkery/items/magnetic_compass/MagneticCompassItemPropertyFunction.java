@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.util.Mth;
@@ -38,7 +39,7 @@ public class MagneticCompassItemPropertyFunction implements ClampedItemPropertyF
     private float getCompassRotation(ItemStack itemStack, ClientLevel clientLevel, int i, Entity entity) {
         GlobalPos globalPos = this.compassTarget.getPos(clientLevel, itemStack, entity);
         long l = clientLevel.getGameTime();
-        return !this.isValidCompassTargetPos(entity, globalPos) ? this.getRandomlySpinningRotation(i, l) : this.getRotationTowardsNorth(entity, l);
+        return !this.isValidCompassTargetPos(entity, globalPos) ? this.getRandomlySpinningRotation(i, l) : this.getRotationTowardsCompassTarget(entity, l, globalPos.pos());
 
 /*
         if (!this.isValidCompassTargetPos(entity, globalPos)) {
