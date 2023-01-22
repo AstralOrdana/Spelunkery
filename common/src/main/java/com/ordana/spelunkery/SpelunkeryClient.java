@@ -59,10 +59,7 @@ public class SpelunkeryClient {
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("xp") / 1395f) : 0);
 
         ClientPlatformHelper.registerItemProperty(ModItems.ITEM_MAGNET.get(), Spelunkery.res("active"),
-                (stack, world, entity, seed) -> {
-                    assert stack.getTag() != null;
-                    return stack.getTag().getBoolean("active") ? 0.5f : 0;
-                });
+                (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
 
         ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> {

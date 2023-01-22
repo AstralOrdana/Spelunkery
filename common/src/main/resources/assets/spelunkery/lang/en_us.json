@@ -39,6 +39,14 @@
   "tooltip.spelunkery.item_magnet_3": "  Draws items toward the player from %1$s blocks away when active",
   "tooltip.spelunkery.item_magnet_4": "  Right-click to toggle between active and inactive",
 
+  "tooltip.spelunkery.obsidian_hammer_and_chisel": "Mining level: Diamond",
+  "tooltip.spelunkery.flint_hammer_and_chisel": "Mining level: Stone",
+
+  "tooltip.spelunkery.hammer_and_chisel_1": "  Right click blocks to break them and drop themselves",
+  "tooltip.spelunkery.hammer_and_chisel_2": "  Can only break blocks in their mining level and below",
+  "tooltip.spelunkery.hammer_and_chisel_3": "  Can only break blocks that are mineable by pickaxe",
+  "tooltip.spelunkery.hammer_and_chisel_4": "  Crouch + right-click to convert Brick blocks to Chiseled form",
+
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
   "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
   "tooltip.spelunkery.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
