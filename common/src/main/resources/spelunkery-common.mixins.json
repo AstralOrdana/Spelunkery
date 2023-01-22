@@ -6,11 +6,13 @@
   "client": [
   ],
   "mixins": [
+    "BaseFireBlockMixin",
     "BiomeDefaultFeaturesMixin",
     "ExperienceOrbMixin",
     "IceMixin",
     "InventoryMixin",
     "MossBlockMixin",
+    "NetherPortalSoundMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
     "TooltipMixin"

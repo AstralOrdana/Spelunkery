@@ -1,12 +1,14 @@
 package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.reg.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
@@ -17,14 +19,22 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -50,6 +60,60 @@ public class PortalFluidBottle extends HoneyBottleItem {
             }
         }
     }
+
+    private static boolean inPortalDimension(Level level) {
+        return level.dimension() == Level.OVERWORLD || level.dimension() == Level.NETHER;
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Player player = context.getPlayer();
+        ItemStack stack = context.getItemInHand();
+            if (inPortalDimension(level)) {
+                Optional<PortalShape> optional = PortalShape.findEmptyPortalShape(level, pos.relative(context.getClickedFace()), Direction.Axis.X);
+                if (optional.isPresent()) {
+                    optional.get().createPortalBlocks();
+                    level.playSound(null, pos, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, Items.GLASS_BOTTLE.getDefaultInstance());
+                    player.setItemInHand(context.getHand(), itemStack2);
+
+                    //if (!player.getAbilities().instabuild) stack.shrink(1);
+
+                    return InteractionResult.SUCCESS;
+                }
+            }
+        return InteractionResult.PASS;
+    }
+
+    private static boolean isPortal(Level level, BlockPos pos, Direction direction) {
+        if (!inPortalDimension(level)) {
+            return false;
+        } else {
+            BlockPos.MutableBlockPos mutableBlockPos = pos.mutable();
+            boolean bl = false;
+            Direction[] var5 = Direction.values();
+            int var6 = var5.length;
+
+            for(int var7 = 0; var7 < var6; ++var7) {
+                Direction direction2 = var5[var7];
+                if (level.getBlockState(mutableBlockPos.set(pos).move(direction2)).is(Blocks.OBSIDIAN)) {
+                    bl = true;
+                    break;
+                }
+            }
+
+            if (!bl) {
+                return false;
+            } else {
+                Direction.Axis axis = direction.getAxis().isHorizontal() ? direction.getCounterClockWise().getAxis() : Direction.Plane.HORIZONTAL.getRandomAxis(level.random);
+                return PortalShape.findEmptyPortalShape(level, pos, axis).isPresent();
+            }
+        }
+    }
+
 
     @Override
     public boolean isFoil(ItemStack stack) {

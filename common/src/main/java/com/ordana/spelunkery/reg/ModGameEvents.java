@@ -1,25 +1,11 @@
 package com.ordana.spelunkery.reg;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.Util;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 import java.util.function.Supplier;
 
 public class ModGameEvents {
@@ -27,7 +13,7 @@ public class ModGameEvents {
     }
 
     public static final Supplier<GameEvent> COMPASS_PING_EVENT = RegHelper.register(Spelunkery.res("compass_ping"),
-            () -> new GameEvent("compass_ping", 128), Registry.GAME_EVENT);
+            () -> new GameEvent("compass_ping", CommonConfigs.MAGNETITE_RANGE.get()), Registry.GAME_EVENT);
 
     /*
 

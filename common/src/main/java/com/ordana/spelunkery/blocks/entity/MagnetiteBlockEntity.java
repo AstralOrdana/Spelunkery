@@ -9,6 +9,8 @@ import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -51,7 +53,10 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
 
                     for (int i = 0; i < inventory.getContainerSize(); i++) {
                         ItemStack compass = inventory.getItem(i);
-                        if (compass.is(ModItems.MAGNETIC_COMPASS.get())) MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                        if (compass.is(ModItems.MAGNETIC_COMPASS.get())) {
+                            MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                            level.playSound(null, entity.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.BLOCKS, 0.7f, 1.0f);
+                        }
                     }
                 }
         }

@@ -106,6 +106,10 @@ public class ModItems {
             new WoodenRailBlockItem(ModBlocks.WOODEN_RAIL.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TRANSPORTATION))));
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
+    public static final Supplier<Item> FLINT_HAMMER_AND_CHISEL = regItem("flint_hammer_and_chisel", () ->
+            new HammerAndChiselItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(128)));
+    public static final Supplier<Item> OBSIDIAN_HAMMER_AND_CHISEL = regItem("obsidian_hammer_and_chisel", () ->
+            new HammerAndChiselItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(1024)));
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
             new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ITEM_MAGNET = regItem("item_magnet", () ->

@@ -152,6 +152,7 @@
   "block.spelunkery.portabella": "Portabella",
   "item.spelunkery.grilled_portabella": "Grilled Portabella",
   "block.spelunkery.phosphor_fungus": "Phosphor Fungus",
+  "block.spelunkery.mushgloom": "Mushgloom",
   "block.spelunkery.milly_bubcap": "Milly Bubcap",
 
 
@@ -161,6 +162,7 @@
   "block.spelunkery.potted_crimini": "Potted Crimini",
   "block.spelunkery.potted_portabella": "Potted Portabella",
   "block.spelunkery.potted_phosphor_fungus": "Potted Phosphor Fungus",
+  "block.spelunkery.potted_mushgloom": "Potted Mushgloom",
   "block.spelunkery.potted_milly_bubcap": "Potted Milly Bubcap",
   "block.spelunkery.potted_sporophyte": "Potted Sporophyte",
 
@@ -173,6 +175,9 @@
   "block.spelunkery.rope_ladder": "Rope Ladder",
   "item.spelunkery.portal_fluid_bottle": "Bottle o' Portal Fluid",
   "item.spelunkery.depth_gauge": "Depth Gauge",
+  "item.spelunkery.flint_hammer_and_chisel": "Flint Hammer and Chisel",
+  "item.spelunkery.obsidian_hammer_and_chisel": "Obsidian Hammer and Chisel",
+
   "block.spelunkery.diamond_grindstone": "Diamond Grindstone",
 
   "block.spelunkery.red_glowstick": "Red Glowstick",

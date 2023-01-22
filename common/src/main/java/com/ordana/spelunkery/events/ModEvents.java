@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.events;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
@@ -68,7 +69,7 @@ public class ModEvents {
                                                   Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (item == Items.GLASS_BOTTLE) {
-            if (state.getBlock() instanceof CryingObsidianBlock) {
+            if (state.getBlock() instanceof CryingObsidianBlock && !CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
                 level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                     if (player instanceof ServerPlayer serverPlayer) {
@@ -79,6 +80,20 @@ public class ModEvents {
                         CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger( serverPlayer, pos, stack);
                     }
                     return InteractionResult.sidedSuccess(level.isClientSide);
+
+            }
+
+            if (state.getBlock() instanceof RespawnAnchorBlock && state.getValue(RespawnAnchorBlock.CHARGE) > 0 && CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
+                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
+                    player.setItemInHand(hand, itemStack2);
+                    //if (!player.getAbilities().instabuild) stack.shrink(1);
+                    level.setBlockAndUpdate(pos, state.setValue(RespawnAnchorBlock.CHARGE, state.getValue(RespawnAnchorBlock.CHARGE) - 1));
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
 
             }
         }

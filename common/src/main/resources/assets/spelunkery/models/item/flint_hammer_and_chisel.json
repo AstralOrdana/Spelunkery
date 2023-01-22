@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "spelunkery:item/lime_glowstick"
+    "layer0": "spelunkery:item/flint_hammer_and_chisel"
   }
 }

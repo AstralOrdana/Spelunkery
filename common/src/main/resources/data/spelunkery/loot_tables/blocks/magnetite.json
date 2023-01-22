@@ -32,11 +32,6 @@
               "name": "spelunkery:magnetite_chunk",
               "functions": [
                 {
-                  "function": "minecraft:set_count",
-                  "count": 4,
-                  "add": false
-                },
-                {
                   "function": "minecraft:explosion_decay"
                 }
               ]

@@ -7,6 +7,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -14,6 +15,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -21,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -77,17 +80,23 @@ public class MagnetItem extends Item {
         if(entity.isSpectator())
             return;
 
-        CompoundTag tag = stack.getOrCreateTag();
-        if(tag.contains("active") && tag.getBoolean("active")){
-            int r = getMagnetRange();
-            AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
+        if (entity instanceof ServerPlayer) {
+            CompoundTag tag = stack.getOrCreateTag();
+            if (tag.contains("active") && tag.getBoolean("active")) {
+                int r = getMagnetRange();
+                AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
 
-            List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
-                    item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
-                            (item.getThrower() == null || !item.getThrower().equals(entity.getUUID()) || !item.hasPickUpDelay()) &&
-                            !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
-            );
-            items.forEach(item -> item.setPos(entity.getX(), entity.getY(), entity.getZ()));
+                List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
+                        item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
+                                (item.getThrower() == null || !item.getThrower().equals(entity.getUUID()) || !item.hasPickUpDelay()) &&
+                                !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
+                );
+
+                items.forEach(item -> item.setDeltaMovement(item.getDeltaMovement().add(
+                        new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).normalize().scale(((1.0D - Math.sqrt(
+                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D) * (1.0D - Math.sqrt(
+                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D)) * 0.1D))));
+            }
         }
     }
 }

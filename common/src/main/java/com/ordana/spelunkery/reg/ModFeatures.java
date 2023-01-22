@@ -344,6 +344,9 @@ public class ModFeatures {
         ResourceKey<PlacedFeature> phosphor_fungus = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("phosphor_fungus"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, phosphor_fungus);
 
+        ResourceKey<PlacedFeature> mushgloom = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("mushgloom"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, mushgloom);
+
         ResourceKey<PlacedFeature> rare_huge_mushroom = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("rare_huge_mushroom"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, rare_huge_mushroom);
 
