@@ -14,6 +14,9 @@
   "tooltip.spelunkery.grindstone_1": "  Right-click with rough gems to polish them",
   "tooltip.spelunkery.grindstone_2": "  Crouch + right-click to polish entire stack",
 
+  "tooltip.spelunkery.salt_bucket_1": "Currently holding %1$s piles worth of Salt",
+  "tooltip.spelunkery.salt_bucket_2": "Boil a Water Bucket in a furnace to obtain",
+
   "tooltip.spelunkery.rope_ladder_1": "  Climbable, can be placed on the sides of blocks",
   "tooltip.spelunkery.rope_ladder_2": "  Places downward automatically like scaffolding",
   "tooltip.spelunkery.rope_ladder_3": "  Crouch + right-click top ladder to roll up",
@@ -71,6 +74,7 @@
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
   "block.spelunkery.salt": "Salt",
+  "item.spelunkery.salt_bucket": "Salt Bucket",
 
   "block.spelunkery.rock_salt_block": "Rock Salt Block",
   "block.spelunkery.rock_salt_slab": "Rock Salt Slab",

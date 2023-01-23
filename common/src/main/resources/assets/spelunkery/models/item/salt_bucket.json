@@ -1,0 +1,16 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/salt_bucket/salt_bucket_1"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:salt": 0.005 }, "model": "spelunkery:item/salt_bucket/salt_bucket_1" },
+    { "predicate": { "spelunkery:salt": 0.125 }, "model": "spelunkery:item/salt_bucket/salt_bucket_2" },
+    { "predicate": { "spelunkery:salt": 0.25 }, "model": "spelunkery:item/salt_bucket/salt_bucket_3" },
+    { "predicate": { "spelunkery:salt": 0.375 }, "model": "spelunkery:item/salt_bucket/salt_bucket_4" },
+    { "predicate": { "spelunkery:salt": 0.5 }, "model": "spelunkery:item/salt_bucket/salt_bucket_5" },
+    { "predicate": { "spelunkery:salt": 0.625 }, "model": "spelunkery:item/salt_bucket/salt_bucket_6" },
+    { "predicate": { "spelunkery:salt": 0.75 }, "model": "spelunkery:item/salt_bucket/salt_bucket_7" },
+    { "predicate": { "spelunkery:salt": 0.875 }, "model": "spelunkery:item/salt_bucket/salt_bucket_8" }
+  ]
+}

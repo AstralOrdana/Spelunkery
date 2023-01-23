@@ -65,6 +65,9 @@ public class SpelunkeryClient {
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> {
                     return MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel);
                 })));
+
+        ClientPlatformHelper.registerItemProperty(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {

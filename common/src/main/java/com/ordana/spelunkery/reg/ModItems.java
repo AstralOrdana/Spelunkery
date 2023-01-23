@@ -96,7 +96,7 @@ public class ModItems {
     public static final Supplier<Item> PORTABELLA = regItem("portabella", () ->
             new BlockItem(ModBlocks.PORTABELLA.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.PORTABELLA)));
     public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
-            new Item( new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
 
 
     //mining gear
@@ -116,6 +116,8 @@ public class ModItems {
             new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> MAGNETIC_COMPASS = regItem("magnetic_compass", () ->
             new MagneticCompassItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> SALT_BUCKET = regItem("salt_bucket", () ->
+            new SaltBucketItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).craftRemainder(Items.BUCKET)));
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
             new GlowstickItem(null, ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
