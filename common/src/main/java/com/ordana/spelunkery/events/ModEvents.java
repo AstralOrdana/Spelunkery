@@ -69,7 +69,7 @@ public class ModEvents {
                                                   Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (item == Items.GLASS_BOTTLE) {
-            if (state.getBlock() instanceof CryingObsidianBlock && !CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
+            if (state.getBlock() instanceof CryingObsidianBlock && CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
                 level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                     if (player instanceof ServerPlayer serverPlayer) {

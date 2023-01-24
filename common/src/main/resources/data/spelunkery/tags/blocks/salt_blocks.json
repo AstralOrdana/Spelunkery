@@ -1,6 +1,7 @@
 {
   "values": [
     "spelunkery:salt",
+    "spelunkery:salt_block",
     "spelunkery:rock_salt_block",
     "spelunkery:rock_salt_slab",
     "spelunkery:rock_salt_stairs",

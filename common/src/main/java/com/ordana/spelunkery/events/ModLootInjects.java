@@ -33,44 +33,5 @@ public class ModLootInjects {
                 }
             }
         }
-
-        if (name.equals(new ResourceLocation("minecraft", "blocks/deepslate_iron_ore"))) {
-            {
-                LootPool.Builder pool = LootPool.lootPool();
-                String id = "deepslate_iron";
-                pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
-                ForgeHelper.setPoolName(pool, "spelunkery_" + id);
-                builderConsumer.accept(pool);
-            }
-        }
-        if (name.equals(new ResourceLocation("minecraft", "blocks/deepslate_gold_ore"))) {
-            {
-                LootPool.Builder pool = LootPool.lootPool();
-                String id = "deepslate_gold";
-                pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
-                ForgeHelper.setPoolName(pool, "spelunkery_" + id);
-                builderConsumer.accept(pool);
-            }
-        }
-        if (PlatformHelper.isModLoaded("create")) {
-            if (name.equals(new ResourceLocation("minecraft", "blocks/deepslate_copper_ore"))) {
-                {
-                    LootPool.Builder pool = LootPool.lootPool();
-                    String id = "deepslate_copper";
-                    pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
-                    ForgeHelper.setPoolName(pool, "spelunkery_" + id);
-                    builderConsumer.accept(pool);
-                }
-            }
-            if (name.equals(new ResourceLocation("create", "blocks/deepslate_zinc_ore"))) {
-                {
-                    LootPool.Builder pool = LootPool.lootPool();
-                    String id = "deepslate_zinc";
-                    pool.add(LootTableReference.lootTableReference(Spelunkery.res("injects/" + id)));
-                    ForgeHelper.setPoolName(pool, "spelunkery_" + id);
-                    builderConsumer.accept(pool);
-                }
-            }
-        }
     }
 }

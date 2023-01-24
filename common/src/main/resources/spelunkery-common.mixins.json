@@ -12,6 +12,7 @@
     "IceMixin",
     "InventoryMixin",
     "MossBlockMixin",
+    "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",
     "ServerPlayerMixin",
     "SlimeMixin",

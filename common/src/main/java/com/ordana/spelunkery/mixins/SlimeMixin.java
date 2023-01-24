@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.mixins;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -22,8 +23,10 @@ public class SlimeMixin extends Mob {
 
     @Inject(method = "checkSlimeSpawnRules", at = @At("HEAD"), cancellable = true)
     private static void caveSlimeSpawns(EntityType<Slime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random, CallbackInfoReturnable<Boolean> cir) {
-        if (pos.getY() < 60 && random.nextInt(124) > (pos.getY() + 64)) {
-            cir.setReturnValue(checkMobSpawnRules(slime, level, spawnType, pos, random));
+        if (CommonConfigs.INCREASED_SLIME_SPAWN_RATE.get()) {
+            if (pos.getY() < 60 && random.nextInt(124) > (pos.getY() + 64)) {
+                cir.setReturnValue(checkMobSpawnRules(slime, level, spawnType, pos, random));
+            }
         }
     }
 }

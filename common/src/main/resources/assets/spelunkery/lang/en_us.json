@@ -25,8 +25,8 @@
   "tooltip.spelunkery.wooden_rail_2": "  Can extend above air blocks to cross gaps",
 
   "tooltip.spelunkery.portal_fluid_1": "  Drink to return to your spawnpoint or worldspawn",
-  "tooltip.spelunkery.portal_fluid_2": "  Cannot teleport between dimensions",
-  "tooltip.spelunkery.portal_fluid_3": "  Use empty bottle on Crying Obsidian to obtain",
+  "tooltip.spelunkery.portal_fluid_2": "  Can be used to ignite Nether Portals",
+  "tooltip.spelunkery.portal_fluid_3": "  Use empty bottle on Crying Obsidian or Respawn Anchor to obtain",
   "tooltip.spelunkery.portal_fluid_failure": "Spawnpoint in different Dimension",
   "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Portal Fluid",
 
@@ -74,6 +74,7 @@
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
   "block.spelunkery.salt": "Salt",
+  "block.spelunkery.salt_block": "Block of Salt",
   "item.spelunkery.salt_bucket": "Salt Bucket",
 
   "block.spelunkery.rock_salt_block": "Rock Salt Block",

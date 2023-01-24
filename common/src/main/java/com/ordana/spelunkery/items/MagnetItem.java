@@ -80,7 +80,6 @@ public class MagnetItem extends Item {
         if(entity.isSpectator())
             return;
 
-        if (entity instanceof ServerPlayer) {
             CompoundTag tag = stack.getOrCreateTag();
             if (tag.contains("active") && tag.getBoolean("active")) {
                 int r = getMagnetRange();
@@ -93,10 +92,10 @@ public class MagnetItem extends Item {
                 );
 
                 items.forEach(item -> item.setDeltaMovement(item.getDeltaMovement().add(
-                        new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).normalize().scale(((1.0D - Math.sqrt(
-                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D) * (1.0D - Math.sqrt(
+                        new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).normalize().scale(((1.4D - Math.sqrt(
+                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D) * (1.4D - Math.sqrt(
                                 new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D)) * 0.1D))));
             }
-        }
+
     }
 }

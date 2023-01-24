@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.mixins;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.sounds.SoundEvents;
@@ -25,7 +26,9 @@ public abstract class NetherPortalSoundMixin {
 
     @Inject(method = "getSoundType", at = @At("TAIL"), cancellable = true)
     private void getSoundGroupMixin(CallbackInfoReturnable<SoundType> cir){
-        String blockId = Registry.BLOCK.getKey(this.asBlock()).getPath();
-        if (blockId.equals("nether_portal")) cir.setReturnValue(NETHER_PORTAL);
+        if (CommonConfigs.PORTAL_DESTRUCTION_SOUND.get()) {
+            String blockId = Registry.BLOCK.getKey(this.asBlock()).getPath();
+            if (blockId.equals("nether_portal")) cir.setReturnValue(NETHER_PORTAL);
+        }
     }
 }

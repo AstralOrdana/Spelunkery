@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spelunkery:block/salt_block"
+      },
+      {
+        "model": "spelunkery:block/salt_block",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/salt_block",
+        "y": 180
+      },
+      {
+        "model": "spelunkery:block/salt_block",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -134,6 +134,8 @@ public class ModBlocks {
                     .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
             new SaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK).instabreak()));
+    public static final Supplier<Block> SALT_BLOCK = regWithItem("salt_block", () ->
+            new SaltBlockBlock(14606046, BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.SAND)));
 
     public static final Supplier<Block> ROCK_SALT_BLOCK = regWithItem("rock_salt_block", () ->
             new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
