@@ -21,6 +21,8 @@ public class SpelunkeryClient {
     }
 
     public static void setup() {
+
+
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.WOODEN_RAIL.get(), RenderType.cutout());
@@ -68,6 +70,8 @@ public class SpelunkeryClient {
 
         ClientPlatformHelper.registerItemProperty(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);
+
+
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {

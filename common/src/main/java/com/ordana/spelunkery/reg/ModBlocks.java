@@ -1,14 +1,19 @@
 package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.SpelunkeryPlatform;
 import com.ordana.spelunkery.blocks.*;
 import com.ordana.spelunkery.blocks.fungi.*;
 import com.ordana.spelunkery.blocks.nephrite.*;
 import com.ordana.spelunkery.blocks.rock_salt.*;
+import com.ordana.spelunkery.fluids.ModLiquidBlock;
+import com.ordana.spelunkery.fluids.PortalFluidBlock;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,8 +23,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.*;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -315,5 +319,11 @@ public class ModBlocks {
     public static final Supplier<Block> LIGHT_GRAY_GLOWSTICK = regBlock("light_gray_glowstick", () ->
             new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
 
+    public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->
+            new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON), CauldronInteraction.WATER));
+
+    //fluids
+    public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
+            new PortalFluidBlock(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable()));
 
 }

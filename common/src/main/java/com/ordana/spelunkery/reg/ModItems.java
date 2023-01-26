@@ -5,9 +5,6 @@ import com.ordana.spelunkery.items.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseChunk;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -104,8 +101,6 @@ public class ModItems {
             new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> WOODEN_RAIL = regItem("wooden_rail", () ->
             new WoodenRailBlockItem(ModBlocks.WOODEN_RAIL.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TRANSPORTATION))));
-    public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
-            new PortalFluidBottle(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottle.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
     public static final Supplier<Item> FLINT_HAMMER_AND_CHISEL = regItem("flint_hammer_and_chisel", () ->
             new HammerAndChiselItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(128)));
     public static final Supplier<Item> OBSIDIAN_HAMMER_AND_CHISEL = regItem("obsidian_hammer_and_chisel", () ->
@@ -116,6 +111,11 @@ public class ModItems {
             new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> MAGNETIC_COMPASS = regItem("magnetic_compass", () ->
             new MagneticCompassItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
+            new PortalFluidBottleitem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottleitem.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
+
+    public static final Supplier<Item> PORTAL_FLUID_BUCKET = regItem("portal_fluid_bucket", () ->
+            new PortalFluidBucketItem(ModFluids.PORTAL_FLUID.get(), (new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1))));
     public static final Supplier<Item> SALT_BUCKET = regItem("salt_bucket", () ->
             new SaltBucketItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).craftRemainder(Items.BUCKET)));
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->

@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.events;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlocks;
@@ -49,6 +50,7 @@ public class ModEvents {
 
     static {
         EVENTS.add(ModEvents::obsidianDraining);
+        EVENTS.add(ModEvents::portalCauldronLogic);
         EVENTS.add(ModEvents::polishingRecipe);
     }
 
@@ -64,22 +66,54 @@ public class ModEvents {
         }
         return InteractionResult.PASS;
     }
+    private static InteractionResult portalCauldronLogic(Item item, ItemStack stack, BlockPos pos, BlockState state,
+                                                         Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        if (item == Items.GLASS_BOTTLE) {
+            if (state.getBlock() instanceof PortalFluidCauldronBlock) {
+                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
+                    player.setItemInHand(hand, itemStack2);
+                    if (state.getValue(LayeredCauldronBlock.LEVEL) > 1) level.setBlockAndUpdate(pos, ModBlocks.PORTAL_CAULDRON.get().defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) - 1));
+                    else level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
+
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
+            }
+        }
+        else if (item == Items.BUCKET) {
+            if (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) == 3) {
+                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BUCKET.get().getDefaultInstance());
+                    player.setItemInHand(hand, itemStack2);
+                    level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
+
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        return InteractionResult.PASS;
+    }
 
     private static InteractionResult obsidianDraining(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                  Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+                                                      Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (item == Items.GLASS_BOTTLE) {
             if (state.getBlock() instanceof CryingObsidianBlock && CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
                 level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
-                    if (player instanceof ServerPlayer serverPlayer) {
-                        ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
-                        player.setItemInHand(hand, itemStack2);
-                        //if (!player.getAbilities().instabuild) stack.shrink(1);
-                        level.setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
-                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger( serverPlayer, pos, stack);
-                    }
-                    return InteractionResult.sidedSuccess(level.isClientSide);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
+                    player.setItemInHand(hand, itemStack2);
+                    //if (!player.getAbilities().instabuild) stack.shrink(1);
+                    level.setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger( serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
 
             }
 
@@ -102,7 +136,7 @@ public class ModEvents {
 
 
     private static InteractionResult polishingRecipe(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                      Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+                                                     Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (state.getBlock() instanceof GrindstoneBlock) {
             /* Code below modified and adapted from Sully's Mod: https://github.com/Uraneptus/Sullys-Mod/

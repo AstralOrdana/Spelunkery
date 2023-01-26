@@ -41,4 +41,5 @@ public class ModMenuCompat implements ModMenuApi {
         }
 
     }
+
 }

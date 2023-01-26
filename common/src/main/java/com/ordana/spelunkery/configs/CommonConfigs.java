@@ -46,7 +46,7 @@ public class CommonConfigs {
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
-        CROSS_SECTION = builder.define("increased_slime_spawn_rate", true);
+        INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
         builder.pop();

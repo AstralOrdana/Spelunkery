@@ -1,4 +1,10 @@
 {
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "type": "minecraft:block",
   "pools": [
     {
@@ -66,7 +72,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "minecraft:deepslate_zinc_ore",
+              "name": "create:deepslate_zinc_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -85,7 +91,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:raw_zinc",
+              "name": "create:raw_zinc",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",
