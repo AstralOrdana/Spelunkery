@@ -25,16 +25,14 @@ public class PortalFluidBlock extends ModLiquidBlock {
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        this.tickCounter++;
-        if (this.tickCounter == 1) level.playSound(null, entity.blockPosition(), SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 1.0f, 1.0f);
-        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions() && this.tickCounter == 250) {
-            this.setTickCounter(0);
-            if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
-            else  {
-                LevelHelper.teleportToWorldspawn(level, entity);
-                level.playSound(null, entity.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1.0f, 1.0f);
+        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+            if (entity.isInWater()) {
+                if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
+                else {
+                    LevelHelper.teleportToWorldspawn(level, entity);
+                    level.playSound(null, entity.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
             }
-
         }
     }
 

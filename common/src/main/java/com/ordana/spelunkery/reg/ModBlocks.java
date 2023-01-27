@@ -320,10 +320,10 @@ public class ModBlocks {
             new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
 
     public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->
-            new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON), CauldronInteraction.WATER));
+            new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((blockStatex) -> 5), CauldronInteraction.WATER));
 
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
-            new PortalFluidBlock(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable()));
+            new PortalFluidBlock(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
 
 }

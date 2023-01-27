@@ -16,11 +16,19 @@ public class ModLiquidBlock extends LiquidBlock {
     private static final Field FORGE_BLOCK_SUPPLIER = PlatformHelper.findField(LiquidBlock.class, "supplier");
     private static final Field FLUID = PlatformHelper.findField(LiquidBlock.class, "fluid");
     private static final Field STATE_CACHE = PlatformHelper.findField(LiquidBlock.class, "stateCache");
+    private static final Field INIT = PlatformHelper.findField(LiquidBlock.class, "fluidStateCacheInitialized");
 
 
     public ModLiquidBlock(Supplier<? extends FlowingFluid> supplier, Properties arg) {
         super(PlatformHelper.getPlatform().isFabric() ? supplier.get() : Fluids.WATER, arg);
 
+        if (INIT != null) {
+            INIT.setAccessible(true);
+            try {
+                INIT.set(this, false);
+            } catch (Exception ignored) {
+            }
+        }
         if (FLUID != null) {
             FLUID.setAccessible(true);
             try {

@@ -16,7 +16,8 @@
     "NetherPortalSoundMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
-    "TooltipMixin"
+    "TooltipMixin",
+    "WaterCauldronBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

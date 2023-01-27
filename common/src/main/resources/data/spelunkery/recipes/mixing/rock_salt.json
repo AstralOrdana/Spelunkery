@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "spelunkery:salt"
+    },
+    {
+      "fluid": "minecraft:water",
+      "nbt": {},
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rock_salt"
+    }
+  ],
+  "heatRequirement": "heated"
+}

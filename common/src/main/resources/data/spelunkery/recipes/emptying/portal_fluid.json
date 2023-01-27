@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "spelunkery:portal_fluid_bottle"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "spelunkery:portal_fluid",
+      "amount": 250
+    }
+  ]
+}

@@ -15,13 +15,16 @@
       "capacity": 1
     }
   ],
-  "flowing_texture": "minecraft:block/nether_portal",
+  "equivalent_fluids": [
+    "spelunkery:portal_fluid"
+  ],
+  "flowing_texture": "spelunkery:block/portal_fluid_flow",
   "food": {
     "divider": 1,
     "item": "spelunkery:portal_fluid_bottle"
   },
   "luminosity": 5,
   "from_mod": "spelunkery",
-  "still_texture": "minecraft:block/nether_portal",
-  "translation_key": "item.spelunkery.portal_fluid_bottle"
+  "still_texture": "spelunkery:block/portal_fluid",
+  "translation_key": "block.spelunkery.portal_fluid"
 }

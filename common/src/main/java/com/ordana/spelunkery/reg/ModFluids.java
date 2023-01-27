@@ -20,8 +20,8 @@ public class ModFluids {
     }
 
     public static final Supplier<FlowingFluid> FLOWING_PORTAL_FLUID = RegHelper.registerFluid(Spelunkery.res("flowing_portal_fluid"), () ->
-            new PortalFluid.Flowing(ModFlowingFluid.properties().canDrown(true), ModBlocks.PORTAL_FLUID));
+            new PortalFluid.Flowing(ModFlowingFluid.properties().supportsBoating(true).lightLevel(5), ModBlocks.PORTAL_FLUID));
     public static final Supplier<FlowingFluid> PORTAL_FLUID = RegHelper.registerFluid(Spelunkery.res("portal_fluid"), () ->
-            new PortalFluid.Source(ModFlowingFluid.properties().canDrown(true), ModBlocks.PORTAL_FLUID));
+            new PortalFluid.Source(ModFlowingFluid.properties().supportsBoating(true).lightLevel(5), ModBlocks.PORTAL_FLUID));
 
 }

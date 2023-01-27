@@ -129,23 +129,10 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        //super.finishUsingItem(stack, level, livingEntity);
         if (livingEntity instanceof Player player) {
-/*
-            ItemStack itemStack = new ItemStack(Items.GLASS_BOTTLE);
-            if (!player.getInventory().add(itemStack)) {
-                player.drop(Items.GLASS_BOTTLE.getDefaultInstance(), false);
-            }
-            !((Player)livingEntity).getAbilities().instabuild
-
- */
             ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, Items.GLASS_BOTTLE.getDefaultInstance());
             player.setItemInHand(player.getUsedItemHand(), itemStack2);
 
-        }
-
-        if (stack.isEmpty()) {
-            return new ItemStack(Items.GLASS_BOTTLE);
         }
         if (livingEntity instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
