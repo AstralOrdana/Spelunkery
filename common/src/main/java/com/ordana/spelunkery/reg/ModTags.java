@@ -17,6 +17,7 @@ public class ModTags {
     public static final TagKey<Block> OCEAN_TARGET = registerBlockTag("ocean_target");
     public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
     public static final TagKey<Block> CHISELABLE = registerBlockTag("chiselable");
+    public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");

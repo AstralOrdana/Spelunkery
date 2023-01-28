@@ -6,8 +6,6 @@ import com.ordana.spelunkery.blocks.*;
 import com.ordana.spelunkery.blocks.fungi.*;
 import com.ordana.spelunkery.blocks.nephrite.*;
 import com.ordana.spelunkery.blocks.rock_salt.*;
-import com.ordana.spelunkery.fluids.ModLiquidBlock;
-import com.ordana.spelunkery.fluids.PortalFluidBlock;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -324,6 +322,6 @@ public class ModBlocks {
 
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
-            new PortalFluidBlock(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
+            SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
 
 }

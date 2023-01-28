@@ -1,6 +1,9 @@
 package com.ordana.spelunkery.forge;
 
 import com.ordana.spelunkery.SpelunkeryClient;
+import com.ordana.spelunkery.reg.ModFluids;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.loading.ClientModLoader;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,6 +15,8 @@ public class SpelunkeryForgeClient {
 
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
         event.enqueueWork(SpelunkeryClient::setup);
     }
 }

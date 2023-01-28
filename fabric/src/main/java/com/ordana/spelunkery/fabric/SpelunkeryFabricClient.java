@@ -17,6 +17,8 @@ public class SpelunkeryFabricClient implements ClientModInitializer {
     public static void initClient() {
         SpelunkeryClient.init();
         SpelunkeryClient.setup();
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), ModFluids.PORTAL_FLUID.get(), ModFluids.FLOWING_PORTAL_FLUID.get());
     }
 
     @Override

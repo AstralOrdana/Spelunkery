@@ -23,6 +23,7 @@ public class PackProvider extends DynServerResourcesProvider {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
         this.dynamicPack.generateDebugResources = true;
         this.dynamicPack.addNamespaces("create");
+        this.dynamicPack.addNamespaces("minecraft");
     }
 
     @Override
@@ -164,14 +165,31 @@ public class PackProvider extends DynServerResourcesProvider {
             }
         }
 
+        var vanillaCreateMetalLoot = List.of(
+                "deepslate_copper_ore"
+        );
+
+        for (var loot : vanillaCreateMetalLoot) {
+            ResourceLocation target = new ResourceLocation("minecraft", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/create/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
 
         var createMetalLoot = List.of(
-                "deepslate_copper_ore",
                 "deepslate_zinc_ore"
         );
 
         for (var loot : createMetalLoot) {
-            ResourceLocation target = new ResourceLocation("minecraft", loot);
+            ResourceLocation target = new ResourceLocation("create", loot);
             ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/create/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {

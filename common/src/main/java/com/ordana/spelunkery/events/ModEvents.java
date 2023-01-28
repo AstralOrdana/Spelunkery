@@ -6,6 +6,7 @@ import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.reg.ModTags;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -51,9 +52,9 @@ public class ModEvents {
     static {
         EVENTS.add(ModEvents::obsidianDraining);
         EVENTS.add(ModEvents::portalCauldronLogic);
+        EVENTS.add(ModEvents::saltBoiling);
         EVENTS.add(ModEvents::polishingRecipe);
     }
-
 
     public static InteractionResult onBlockCLicked(ItemStack stack, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         if (stack.isEmpty()) return InteractionResult.PASS;
@@ -94,6 +95,26 @@ public class ModEvents {
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    private static InteractionResult saltBoiling(Item item, ItemStack stack, BlockPos pos, BlockState state,
+                                                         Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        if (item == ModItems.SALT) {
+            if (state.is(Blocks.WATER_CAULDRON) && level.getBlockState(pos.below()).is(ModTags.CAN_BOIL_WATER)) {
+                level.playSound(player, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.ROCK_SALT.get().getDefaultInstance());
+                    player.setItemInHand(hand, itemStack2);
+                    if (state.getValue(LayeredCauldronBlock.LEVEL) > 1) level.setBlockAndUpdate(pos, ModBlocks.PORTAL_CAULDRON.get().defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) - 1));
+                    else level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
+
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
             }
         }
         return InteractionResult.PASS;

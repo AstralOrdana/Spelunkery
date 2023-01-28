@@ -20,4 +20,9 @@ public class SpelunkeryPlatform {
     public static void addFeatureToBiome(GenerationStep.Decoration step, TagKey<Biome> tagKey, ResourceKey<PlacedFeature> feature) {
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
+        throw new AssertionError();
+    }
 }

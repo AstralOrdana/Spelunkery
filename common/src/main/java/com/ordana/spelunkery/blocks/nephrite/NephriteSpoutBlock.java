@@ -72,7 +72,7 @@ public class NephriteSpoutBlock extends BaseEntityBlock {
             boolean bl = state.getValue(POWERED);
             if (bl != level.hasNeighborSignal(pos)) {
                 if (bl) {
-                    level.scheduleTick(pos, this, 4);
+                    level.scheduleTick(pos, this, 1);
                 } else {
                     level.setBlock(pos, state.cycle(POWERED), 2);
                 }

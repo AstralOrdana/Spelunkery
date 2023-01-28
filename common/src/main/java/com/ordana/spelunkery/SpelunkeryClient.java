@@ -22,7 +22,8 @@ public class SpelunkeryClient {
 
     public static void setup() {
 
-
+        ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModBlocks.WOODEN_RAIL.get(), RenderType.cutout());

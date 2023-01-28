@@ -10,11 +10,16 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.function.Supplier;
 
 public class SpelunkeryPlatformImpl {
     public static void addFeatureToBiome(GenerationStep.Decoration step, TagKey<Biome> tagKey, ResourceKey<PlacedFeature> feature) {
         BiomeModifications.addFeature(BiomeSelectors.tag(tagKey), step, feature);
+    }
+
+    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
+        return new PortalFluidBlock(flowingFluid.get(), properties);
     }
 }

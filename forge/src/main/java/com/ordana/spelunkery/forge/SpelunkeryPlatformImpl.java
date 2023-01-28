@@ -15,4 +15,8 @@ import java.util.function.Supplier;
 public class SpelunkeryPlatformImpl {
     public static void addFeatureToBiome(GenerationStep.Decoration step, TagKey<Biome> tagKey, ResourceKey<PlacedFeature> feature) {
     }
+
+    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
+        return new PortalFluidBlock(flowingFluid, properties);
+    }
 }

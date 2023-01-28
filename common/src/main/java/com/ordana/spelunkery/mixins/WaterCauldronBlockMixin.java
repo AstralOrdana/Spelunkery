@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.tags.BlockTags;
@@ -35,7 +36,7 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
         if (entity instanceof ItemEntity item && state.is(Blocks.WATER_CAULDRON) && this.isEntityInsideContent(state, pos, entity)) {
             ItemStack itemStack2 = item.getItem();
-            if (itemStack2.is(ModItems.SALT.get()) && (level.getBlockState(pos.below()).is(BlockTags.FIRE) || level.getBlockState(pos.below()).is(BlockTags.CAMPFIRES))) {
+            if (itemStack2.is(ModItems.SALT.get()) && level.getBlockState(pos.below()).is(ModTags.CAN_BOIL_WATER)) {
                 int count = itemStack2.getCount();
                 ItemStack itemStack = new ItemStack(ModItems.ROCK_SALT.get());
                 itemStack.setCount(count);
