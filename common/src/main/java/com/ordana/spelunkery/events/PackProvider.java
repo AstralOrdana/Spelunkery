@@ -22,8 +22,9 @@ public class PackProvider extends DynServerResourcesProvider {
     public PackProvider() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
         this.dynamicPack.generateDebugResources = true;
-        this.dynamicPack.addNamespaces("create");
+        this.dynamicPack.addNamespaces("spelunkery");
         this.dynamicPack.addNamespaces("minecraft");
+        this.dynamicPack.addNamespaces("create");
     }
 
     @Override
@@ -54,7 +55,49 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var recipe : crushingMetalRecipes) {
             ResourceLocation target = new ResourceLocation("create", "crushing/" + recipe);
-            ResourceLocation source = new ResourceLocation("spelunkery", "recipes/overrides/crushing/" + recipe + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/" + recipe + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.RECIPES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
+        var crushingSpelunkeryMetalRecipes = List.of(
+                "lazurite"
+        );
+
+        for (var recipe : crushingSpelunkeryMetalRecipes) {
+            ResourceLocation target = new ResourceLocation("spelunkery", "crushing/" + recipe);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/" + recipe + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.RECIPES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
+        var splashingRecipes = List.of(
+                "gravel",
+                "red_sand",
+                "soul_sand"
+        );
+
+        for (var recipe : splashingRecipes) {
+            ResourceLocation target = new ResourceLocation("create", "splashing/" + recipe);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/splashing/" + recipe + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -81,7 +124,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var recipe : crushingGemRecipes) {
             ResourceLocation target = new ResourceLocation("create", "crushing/" + recipe);
-            ResourceLocation source = new ResourceLocation("spelunkery", "recipes/overrides/crushing/" + recipe + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/" + recipe + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -95,20 +138,21 @@ public class PackProvider extends DynServerResourcesProvider {
         }
 
 
-        var splashingRecipes = List.of(
-                "gravel",
-                "red_sand",
-                "soul_sand"
+        var crushingSpelunkeryGemRecipes = List.of(
+                "smooth_basalt_diamond_ore",
+                "andesite_emerald_ore",
+                "sandstone_lapis_ore",
+                "calcite_redstone_ore"
         );
 
-        for (var recipe : splashingRecipes) {
-            ResourceLocation target = new ResourceLocation("create", "splashing/" + recipe);
-            ResourceLocation source = new ResourceLocation("spelunkery", "recipes/overrides/splashing/" + recipe + ".json");
+        for (var recipe : crushingSpelunkeryGemRecipes) {
+            ResourceLocation target = new ResourceLocation("spelunkery", "crushing/" + recipe);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/" + recipe + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
-                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
                     dynamicPack.addJson(target, bsElement, ResType.RECIPES);
                 }
 
@@ -130,7 +174,29 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var loot : vanillaGemLoot) {
             ResourceLocation target = new ResourceLocation("minecraft", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/" + loot + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var spelunkeryGemLoot = List.of(
+                "smooth_basalt_diamond_ore",
+                "andesite_emerald_ore",
+                "sandstone_lapis_ore",
+                "calcite_redstone_ore"
+        );
+
+        for (var loot : spelunkeryGemLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -152,7 +218,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var loot : vanillaMetalLoot) {
             ResourceLocation target = new ResourceLocation("minecraft", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/" + loot + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -171,7 +237,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var loot : vanillaCreateMetalLoot) {
             ResourceLocation target = new ResourceLocation("minecraft", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/create/" + loot + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/create/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -190,7 +256,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var loot : createMetalLoot) {
             ResourceLocation target = new ResourceLocation("create", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/create/" + loot + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/create/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -210,7 +276,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var loot : piglins) {
             ResourceLocation target = new ResourceLocation("minecraft", "gameplay/" + loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "loot_tables/overrides/" + loot + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -232,7 +298,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var gen : vanillaMossWorldgen) {
             ResourceLocation target = new ResourceLocation("minecraft", "worldgen/configured_feature/" + gen + ".json");
-            ResourceLocation source = new ResourceLocation("spelunkery", "worldgen/overrides/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/" + gen + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -251,7 +317,7 @@ public class PackProvider extends DynServerResourcesProvider {
 
         for (var gen : hugePortabellas) {
             ResourceLocation target = new ResourceLocation("minecraft", "worldgen/configured_feature/" + gen + ".json");
-            ResourceLocation source = new ResourceLocation("spelunkery", "worldgen/overrides/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/" + gen + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);

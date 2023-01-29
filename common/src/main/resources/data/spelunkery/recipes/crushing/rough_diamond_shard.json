@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rough_diamond_shard",
+      "count": 4
+    },
+    {
+      "item": "spelunkery:rough_diamond_shard",
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 350
+}

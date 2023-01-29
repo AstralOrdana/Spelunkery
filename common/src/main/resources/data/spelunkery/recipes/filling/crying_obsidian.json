@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "fluid": "spelunkery:portal_fluid",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:crying_obsidian"
+    }
+  ]
+}

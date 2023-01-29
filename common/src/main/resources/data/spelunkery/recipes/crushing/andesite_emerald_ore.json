@@ -13,10 +13,10 @@
   ],
   "results": [
     {
-      "item": "spelunkery:rough_emerald"
+      "item": "minecraft:emerald"
     },
     {
-      "item": "spelunkery:rough_emerald",
+      "item": "minecraft:emerald",
       "chance": 0.75
     },
     {

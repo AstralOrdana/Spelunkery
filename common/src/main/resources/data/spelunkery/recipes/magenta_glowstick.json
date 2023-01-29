@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "glowsticks",
   "pattern": [
     "###",
     "#X#",
@@ -7,7 +8,7 @@
   ],
   "key": {
     "#": {
-      "item": "spelunkery:glowstick"
+      "tag": "spelunkery:glowsticks"
     },
     "X": {
       "item": "minecraft:magenta_dye"

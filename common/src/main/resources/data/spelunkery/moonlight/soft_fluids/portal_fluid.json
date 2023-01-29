@@ -19,10 +19,6 @@
     "spelunkery:portal_fluid"
   ],
   "flowing_texture": "spelunkery:block/portal_fluid_flow",
-  "food": {
-    "divider": 1,
-    "item": "spelunkery:portal_fluid_bottle"
-  },
   "luminosity": 5,
   "from_mod": "spelunkery",
   "still_texture": "spelunkery:block/portal_fluid",

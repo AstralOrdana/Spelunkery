@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_lazurite"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:blue_dye",
+      "count": 6
+    },
+    {
+      "item": "spelunkery:raw_gold_nugget",
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 350
+}

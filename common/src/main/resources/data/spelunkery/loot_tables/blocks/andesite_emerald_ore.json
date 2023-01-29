@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "spelunkery:rough_emerald",
+              "name": "minecraft:emerald",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",

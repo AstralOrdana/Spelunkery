@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:salt"
+    },
+    "X": {
+      "item": "minecraft:rotten_flesh"
+    }
+  },
+  "result": {
+    "item": "minecraft:leather"
+  }
+}

@@ -19,10 +19,10 @@ public class PortalFluidBlock extends LiquidBlock {
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
+        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions() && !pos.equals(level.getSharedSpawnPos())) {
             if (entity.isInWater()) {
                 if (entity instanceof ServerPlayer player) {
-                    if (!player.isSecondaryUseActive() || Screen.hasControlDown()) LevelHelper.teleportToSpawnPosition(player);
+                    if (!player.isSecondaryUseActive() || !Screen.hasControlDown()) LevelHelper.teleportToSpawnPosition(player);
                 }
                 else {
                     LevelHelper.teleportToWorldspawn(level, entity);

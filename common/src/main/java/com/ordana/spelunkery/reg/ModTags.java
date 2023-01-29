@@ -23,6 +23,7 @@ public class ModTags {
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
     public static final TagKey<Item> GRINDABLE = registerItemTag("grindable");
     public static final TagKey<Item> DIAMOND_GRINDABLE = registerItemTag("diamond_grindable");
+    public static final TagKey<Item> GLOWSTICKS = registerItemTag("glowsticks");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

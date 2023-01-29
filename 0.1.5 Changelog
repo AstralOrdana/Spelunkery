@@ -1,0 +1,60 @@
+
+
+    SPELUNKERY 0.1.5 CHANGELOG:
+    **New Features:**
+    - Added Magnetite
+    - Added Magnetite Chunks
+    - Added Item Magnets
+    - Added Magnetic Compass
+    - Added alternate Lodestone recipe using Cinnabar and Magnetite
+    - Added Flint Hammer and Chisel
+    - Added Obsidian Hammer and Chisel
+    - Portal fluid can now be found in ruined portal chests
+    - Portal fluid can now be used to ignite nether portals
+    - Portal Fluid now works between dimensions
+    - Added a liquid form of Portal Fluid
+    - Added Bucket of Portal Fluid
+    - Added Portal Fluid Cauldron
+    - Added Mushgloom
+    - Added Bucket of Salt
+    - Added Block of Salt
+    - Rock Salt can now be obtained by throwing Salt into a Water Cauldron above Fire
+    - Added crafting recipe for leather by combining rotten flesh with salt
+    - Glowsticks can now be redyed any color
+
+    **Create Mod Compat Recipes:**
+    - Rough Cinnabar crushing for redstone
+    - Lazurite crushing for blue dye
+    - Cinnabar, Diamond, and Emerald crushing for respective rough shards
+    - Salt from boiling water
+    - Rock Salt from boiling water and Salt
+    - Portal Fluid draining and filling bottles, buckets and obsidian
+    - Portal Fluid from mixing crying obsidian while heated
+
+    **New Config Options:**
+    - Enable/disable stone stripes
+    - Enable/disable portal fluid bottles from Crying Obsidian
+    - Enable/disable portal fluid bottles from Respawn Anchor
+    - Enable/disable nether portal lighting with flint and steel
+    - Enable/disable nether portal ignition and destruction sound effects
+    - Enable/disable nether portal destruction causing frame to partially become crying obsidian
+    - Enable/disable Crying Obsidian included in piglins' barter loot
+    - Enable/disable Raw Gemstones dropping from ores
+    - Enable/disable Rough Nuggets dropping from deepslate metal ores
+    - Enable/disable Sporophytes
+    - Enable/disable Dark Forest huge Portabellas
+    - Enable/disable Increased Slime spawn rate
+    - Configurable Range for the Item Magnet
+    - Configurable Range for the Magnetic Compass
+
+    **Fixes:**
+    - Fixed Nephrite Fountain closing delay
+    - Fixed improper placement of rope ladders
+    - Updated wooden rail mechanics
+    - Updated various textures
+    - Changed orientation of glowstick held item models
+    - Fixed XP always being kept when you die
+    - Limited biomes Dirt Stripes can appear in
+    - Slightly modified salt generation shapes
+    - Bulk polishing now drops a more properly randomized amount of byproduct
+    - Grindstone polishing in general has more balanced XP rewards across the board
