@@ -22,7 +22,11 @@
     - Added crafting recipe for leather by combining rotten flesh with salt
     - Glowsticks can now be redyed any color
 
-    **Create Mod Compat Recipes:**
+    **Mod Compat Recipes:**
+    - Botania Block Chiseling w/ Hammer and Chisel
+    - Quark Block Chiseling w/ Hammer and Chisel
+    - Malum Block Chiseling w/ Hammer and Chisel
+    - Portal fluid Magma Block and Blue Ice generators with Immersive Weathering installed
     - Rough Cinnabar crushing for redstone
     - Lazurite crushing for blue dye
     - Cinnabar, Diamond, and Emerald crushing for respective rough shards

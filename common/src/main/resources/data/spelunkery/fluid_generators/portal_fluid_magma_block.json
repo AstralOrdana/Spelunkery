@@ -1,14 +1,18 @@
 {
   "type": "target_self",
-  "fluid": "minecraft:water",
+  "fluid": "spelunkery:portal_fluid",
+  "fluid_type": "still",
   "priority": 1,
   "generate": {
     "Name": "minecraft:magma_block"
   },
   "adjacent_blocks": {
-    "sides": [
+    "any": [
       {
-        "fluids": "#spelunkery:portal_fluid",
+        "fluids": [
+          "minecraft:water",
+          "minecraft:flowing_water"
+        ],
         "predicate_type": "immersive_weathering:fluid_match"
       }
     ]

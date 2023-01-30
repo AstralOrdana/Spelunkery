@@ -1,14 +1,18 @@
 {
   "type": "target_self",
-  "fluid": "minecraft:lava",
+  "fluid": "spelunkery:portal_fluid",
+  "fluid_type": "still",
   "priority": 1,
   "generate": {
     "Name": "minecraft:blue_ice"
   },
   "adjacent_blocks": {
-    "sides": [
+    "any": [
       {
-        "fluids": "#spelunkery:portal_fluid",
+        "fluids": [
+          "minecraft:lava",
+          "minecraft:flowing_lava"
+        ],
         "predicate_type": "immersive_weathering:fluid_match"
       }
     ]

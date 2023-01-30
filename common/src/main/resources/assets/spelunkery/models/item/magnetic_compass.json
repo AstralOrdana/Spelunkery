@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "minecraft:item/compass_16"
+        "layer0": "spelunkery:item/magnetic_compass/magnetic_compass_16"
     },
     "overrides": [
         { "predicate": { "spelunkery:angle": 0.000000 }, "model": "spelunkery:item/magnetic_compass" },

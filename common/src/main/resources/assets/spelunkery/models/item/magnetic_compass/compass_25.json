@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:item/compass_25"
+    "layer0": "spelunkery:item/magnetic_compass/magnetic_compass_25"
   }
 }
