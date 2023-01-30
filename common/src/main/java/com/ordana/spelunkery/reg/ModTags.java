@@ -7,6 +7,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 public class ModTags {
 
@@ -35,6 +36,8 @@ public class ModTags {
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");
 
+    //fluids
+    public static final TagKey<Fluid> PORTAL_FLUID = registerFluidTag("portal_fluid");
 
     private ModTags() {
     }
@@ -53,5 +56,9 @@ public class ModTags {
 
     private static TagKey<EntityType<?>> registerEntityTag(String id) {
         return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, Spelunkery.res(id));
+    }
+
+    private static TagKey<Fluid> registerFluidTag(String id) {
+        return TagKey.create(Registry.FLUID_REGISTRY, Spelunkery.res(id));
     }
 }

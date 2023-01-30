@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.fluids;
 
+import com.mojang.math.Vector3f;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
@@ -44,9 +45,14 @@ public class PortalFluid extends ModFlowingFluid {
 
     @Override
     public ModFluidRenderProperties createRenderProperties() {
-        return new ModFluidRenderProperties(
+        return new PortalFluidRenderer(
                 Spelunkery.res("block/portal_fluid"),
-                Spelunkery.res("block/portal_fluid_flow"));
+                Spelunkery.res("block/portal_fluid_flow"),
+                -1,
+                Spelunkery.res("block/portal_fluid"),
+                Spelunkery.res("block/portal_fluid"),
+                new Vector3f(133, 0, 0));
+
     }
 
     public Fluid getFlowing() {
@@ -59,6 +65,21 @@ public class PortalFluid extends ModFlowingFluid {
 
     public Item getBucket() {
         return ModItems.PORTAL_FLUID_BUCKET.get();
+    }
+
+    protected ParticleOptions getDripParticle() {
+        return ParticleTypes.DRIPPING_OBSIDIAN_TEAR;
+    }
+
+    public void animateTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
+        if (!state.isSource() && !(Boolean)state.getValue(FALLING)) {
+            if (random.nextInt(64) == 0) {
+                level.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_AMBIENT, SoundSource.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
+            }
+        } else if (random.nextInt(10) == 0) {
+            level.addParticle(ParticleTypes.FALLING_OBSIDIAN_TEAR, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + random.nextDouble(), (double)pos.getZ() + random.nextDouble(), 0.0D, 0.0D, 0.0D);
+        }
+
     }
 
     @Override
@@ -116,7 +137,7 @@ public class PortalFluid extends ModFlowingFluid {
         }
 
         public int getAmount(FluidState state) {
-            return 5;
+            return 8;
         }
 
         public boolean isSource(FluidState state) {

@@ -23,7 +23,7 @@ public class NetherPortalBlockMixin {
 
     @Inject(method = "updateShape", at = @At("HEAD"))
     public void bringToTears(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir) {
-        if (CommonConfigs.PORTAL_DESTRUCTION_CRYING_OBSIDIAN.get()) {
+        if (CommonConfigs.PORTAL_DESTRUCTION_CRYING_OBSIDIAN.get() && !level.isClientSide()) {
             Direction.Axis axis2 = state.getValue(NetherPortalBlock.AXIS);
             RandomSource random = level.getRandom();
             for (Direction cryDir : Direction.values()) {
