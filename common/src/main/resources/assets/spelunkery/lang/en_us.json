@@ -7,6 +7,8 @@
   "tooltip.spelunkery.diamond_grindable": "Polish on a Diamond Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
   "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
+  "tooltip.spelunkery.rhymes_with_tears_0": "Rhymes with \"FEARS\"",
+  "tooltip.spelunkery.rhymes_with_tears_1": "Rhymes with \"SCARES\"",
 
   "tooltip.spelunkery.salt_1": "Grind Rock Salt to obtain",
   "tooltip.spelunkery.salt_2": "Unpassable to the undead",
@@ -27,8 +29,12 @@
   "tooltip.spelunkery.portal_fluid_1": "  Drink to return to your spawnpoint or worldspawn",
   "tooltip.spelunkery.portal_fluid_2": "  Can be used to ignite Nether Portals",
   "tooltip.spelunkery.portal_fluid_3": "  Use empty bottle on Crying Obsidian or Respawn Anchor to obtain",
-  "tooltip.spelunkery.portal_fluid_failure": "Spawnpoint in different Dimension",
-  "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Portal Fluid",
+
+  "tooltip.spelunkery.portal_fluid_bucket_1": "  Contact with this fluid teleports players to their spawnpoint",
+  "tooltip.spelunkery.portal_fluid_bucket_2": "  Any other entity will be teleported to worldspawn",
+  "tooltip.spelunkery.portal_fluid_bucket_3": "  Obtain by filling a cauldron with Dimensional Tear Bottles",
+
+  "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Dimensional Tears",
 
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
@@ -186,10 +192,10 @@
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",
   "block.spelunkery.rope_ladder": "Rope Ladder",
-  "item.spelunkery.portal_fluid_bottle": "Bottle o' Portal Fluid",
-  "item.spelunkery.portal_fluid_bucket": "Bucket of Portal Fluid",
-  "block.spelunkery.portal_fluid": "Portal Fluid",
-  "fluid.spelunkery.portal_fluid": "Portal Fluid",
+  "item.spelunkery.portal_fluid_bottle": "Bottle o' Dimensional Tears",
+  "item.spelunkery.portal_fluid_bucket": "Bucket of Dimensional Tears",
+  "block.spelunkery.portal_fluid": "Dimensional Tears",
+  "fluid.spelunkery.portal_fluid": "Dimensional Tears",
   "item.spelunkery.depth_gauge": "Depth Gauge",
   "item.spelunkery.flint_hammer_and_chisel": "Flint Hammer and Chisel",
   "item.spelunkery.obsidian_hammer_and_chisel": "Obsidian Hammer and Chisel",

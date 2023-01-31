@@ -1,18 +1,25 @@
 package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
+import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
+import dev.architectury.injectables.annotations.PlatformOnly;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -21,10 +28,67 @@ import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class PortalFluidBucketItem extends BucketItem {
     public PortalFluidBucketItem(Fluid fluid, Properties properties) {
         super(fluid, properties);
     }
+
+    //Override
+    @PlatformOnly(PlatformOnly.FORGE)
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
+
+    //Override
+    @PlatformOnly(PlatformOnly.FABRIC)
+    public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
+        return false;
+    }
+
+    private int tickCounter = 0;
+
+    public int setTickCounter(int tick) {
+        return tickCounter = tick;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level levelIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.inventoryTick(stack, levelIn, entityIn, itemSlot, isSelected);
+        tickCounter++;
+        if (tickCounter >= 200) {
+            setBoolean(stack, !getBoolean(stack));
+            setTickCounter(0);
+        }
+    }
+
+    public void setBoolean(ItemStack stack, boolean tears) {
+        stack.getOrCreateTag().putBoolean("bool", tears);
+    }
+
+    public boolean getBoolean(ItemStack stack) {
+        return stack.getOrCreateTag().getBoolean("bool");
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+        if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+            else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+            if (!Screen.hasShiftDown()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+            }
+            if (Screen.hasShiftDown()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            }
+        }
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();

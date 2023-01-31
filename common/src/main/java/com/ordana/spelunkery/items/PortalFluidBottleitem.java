@@ -7,6 +7,7 @@ import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
+import dev.architectury.injectables.annotations.PlatformOnly;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -24,9 +25,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -53,10 +56,41 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
         super(properties);
     }
 
+    //Override
+    @PlatformOnly(PlatformOnly.FORGE)
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
+    }
+
+    //Override
+    @PlatformOnly(PlatformOnly.FABRIC)
+    public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
+        return false;
+    }
+
+    private int tickCounter = 0;
+
+    public int setTickCounter(int tick) {
+        return tickCounter = tick;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level levelIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.inventoryTick(stack, levelIn, entityIn, itemSlot, isSelected);
+        tickCounter++;
+        if (tickCounter >= 200) {
+            setBoolean(stack, !getBoolean(stack));
+            setTickCounter(0);
+        }
+    }
+
     @Environment(EnvType.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+
+            if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+            else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             if (!Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
             }
@@ -66,6 +100,14 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             }
         }
+    }
+
+    public void setBoolean(ItemStack stack, boolean tears) {
+        stack.getOrCreateTag().putBoolean("bool", tears);
+    }
+
+    public boolean getBoolean(ItemStack stack) {
+        return stack.getOrCreateTag().getBoolean("bool");
     }
 
     private static boolean inPortalDimension(Level level) {
