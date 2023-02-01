@@ -9,6 +9,7 @@
     {
       "id": "sullysmod:rough_jade",
       "required": false
-    }
+    },
+    "spelunkery:rough_jade_shard"
   ]
 }

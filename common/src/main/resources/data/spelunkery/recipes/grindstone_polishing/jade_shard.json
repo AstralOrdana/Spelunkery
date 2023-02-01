@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "spelunkery:grindstone_polishing",
+  "ingredient": "spelunkery:rough_jade_shard",
+  "result": "spelunkery:jade_shard",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 1,
+  "experience": 1
+}

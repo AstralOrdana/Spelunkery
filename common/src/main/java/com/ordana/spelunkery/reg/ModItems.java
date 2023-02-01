@@ -22,6 +22,7 @@ public class ModItems {
 
     private static boolean isCompatItemEanbled(String requiredMod) {
         if(Objects.equals(requiredMod, "create")) return requiredMod.equals("create");
+        if(Objects.equals(requiredMod, "sullysmod")) return requiredMod.equals("sullysmod");
         return PlatformHelper.isModLoaded(requiredMod);
     }
 
@@ -51,6 +52,9 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_DIAMOND_SHARD = regItem("rough_diamond_shard", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> ROUGH_JADE_SHARD = regItem("rough_jade_shard", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("sullysmod") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
+
 
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
@@ -69,6 +73,8 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> DIAMOND_SHARD = regItem("diamond_shard", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> JADE_SHARD = regItem("jade_shard", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("sullysmod") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));

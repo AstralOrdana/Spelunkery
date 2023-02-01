@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.FrostWalkerEnchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -96,9 +97,9 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
                     Entry<Enchantment, Integer> entry = (Entry)var4.next();
                     Enchantment enchantment = entry.getKey();
                     Integer integer = entry.getValue();
-                    if (!enchantment.isCurse()) {
+                    //if (!enchantment.isCurse()) {
                         i += enchantment.getMinCost(integer);
-                    }
+                    //}
                 }
 
                 return i;
@@ -172,7 +173,7 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
                 itemStack3 = bl4 ? itemStack : itemStack2;
             }
 
-            this.resultSlots.setItem(0, this.removeNonCurses(itemStack3, m, i));
+            this.resultSlots.setItem(0, this.removeEnchants(itemStack3, m, i));
         }
 
         this.broadcastChanges();
@@ -193,13 +194,13 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
 
                 entry = (Entry)var5.next();
                 enchantment = (Enchantment)entry.getKey();
-            } while(enchantment.isCurse() && EnchantmentHelper.getItemEnchantmentLevel(enchantment, itemStack) != 0);
+            } while(/*enchantment.isCurse() &&*/ EnchantmentHelper.getItemEnchantmentLevel(enchantment, itemStack) != 0);
 
             itemStack.enchant(enchantment, (Integer)entry.getValue());
         }
     }
 
-    private ItemStack removeNonCurses(ItemStack stack, int damage, int count) {
+    private ItemStack removeEnchants(ItemStack stack, int damage, int count) {
         ItemStack itemStack = stack.copy();
         itemStack.removeTagKey("Enchantments");
         itemStack.removeTagKey("StoredEnchantments");
@@ -210,7 +211,7 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
         }
 
         itemStack.setCount(count);
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((entry) -> entry.getKey().isCurse()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((entry) -> !entry.getKey().isCurse() && entry.getKey().isCurse()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         EnchantmentHelper.setEnchantments(map, itemStack);
         itemStack.setRepairCost(0);
         if (itemStack.is(Items.ENCHANTED_BOOK) && map.size() == 0) {

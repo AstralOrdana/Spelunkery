@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:jade_shard"
+    }
+  },
+  "result": {
+    "item": "sullysmod:polished_jade"
+  }
+}

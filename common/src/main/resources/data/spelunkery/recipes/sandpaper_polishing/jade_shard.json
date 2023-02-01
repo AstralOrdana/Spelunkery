@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "sullysmod",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_jade_shard"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:jade_shard"
+    }
+  ]
+}

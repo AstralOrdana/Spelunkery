@@ -25,6 +25,7 @@ public class PackProvider extends DynServerResourcesProvider {
         this.dynamicPack.addNamespaces("spelunkery");
         this.dynamicPack.addNamespaces("minecraft");
         this.dynamicPack.addNamespaces("create");
+        this.dynamicPack.addNamespaces("sullysmod");
     }
 
     @Override
@@ -180,6 +181,25 @@ public class PackProvider extends DynServerResourcesProvider {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
                 if (CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var sullysGemLoot = List.of(
+                "deepslate_jade_ore"
+        );
+
+        for (var loot : sullysGemLoot) {
+            ResourceLocation target = new ResourceLocation("sullysmod", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/sullysmod/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("sullysmod")) {
                     dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
                 }
 

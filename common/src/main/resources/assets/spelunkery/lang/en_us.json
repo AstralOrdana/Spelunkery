@@ -38,7 +38,8 @@
 
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
-  "tooltip.spelunkery.magnetic_compass_1": "Your compass is being drawn toward %1$s, %2$s",
+  "tooltip.spelunkery.magnetite_pos": "Your compass is being drawn toward %1$s, %2$s",
+  "tooltip.spelunkery.player_pos": "Current Location: %1$s, %2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  Always points toward Magnetic North",
   "tooltip.spelunkery.magnetic_compass_3": "  Unless there is a strong interference in the magnetic field",
   "tooltip.spelunkery.magnetic_compass_4": "  Crouch + right-click to reset",
@@ -112,6 +113,7 @@
   "item.spelunkery.rough_cinnabar_shard": "Rough Cinnabar Shard",
   "item.spelunkery.rough_diamond_shard": "Rough Diamond Shard",
   "item.spelunkery.rough_emerald_shard": "Rough Emerald Shard",
+  "item.spelunkery.rough_jade_shard": "Rough Jade Shard",
 
   "item.spelunkery.rough_lazurite": "Rough Lazurite",
   "item.spelunkery.rough_cinnabar": "Rough Cinnabar",
@@ -127,6 +129,7 @@
   "item.spelunkery.cinnabar_shard": "Cinnabar Shard",
   "item.spelunkery.diamond_shard": "Diamond Shard",
   "item.spelunkery.emerald_shard": "Emerald Shard",
+  "item.spelunkery.jade_shard": "Polished Jade Shard",
 
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",

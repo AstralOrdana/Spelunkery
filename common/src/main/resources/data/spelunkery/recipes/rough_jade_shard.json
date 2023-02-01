@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sullysmod:rough_jade"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:rough_jade_shard",
+    "count": 9
+  }
+}

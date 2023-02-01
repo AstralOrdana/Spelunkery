@@ -23,7 +23,7 @@ https://github.com/Majrusz/MajruszLibrary
         SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-package com.mlib;
+package com.ordana.spelunkery.utils;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;

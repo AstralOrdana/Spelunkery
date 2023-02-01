@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
-import com.ordana.spelunkery.openmods.utils.EnchantmentUtils;
+import com.ordana.spelunkery.utils.EnchantmentUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -57,63 +58,47 @@ public class NephriteCharmItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
         int storedXP = getStoredXP(stack);
         if (level instanceof ServerLevel) {
-            if (player.isCrouching()) { //input vs output mode, crouching is input
+            if (player.isCrouching()) {
                 if (storedXP < 1395 && storedXP >= 0)
                     if (player.totalExperience > 0 || (player.totalExperience == 0 && player.experienceLevel > 0)) {
 
-
-                        if (Screen.hasControlDown()) { //incremental xp mode
+                        /*
+                        if (Screen.hasControlDown()) {
                             player.giveExperiencePoints(-1);
                             setStoredXP(stack, storedXP + 1);
                         }
-                        else { //input all mode
+                         */
 
-
+                        //else {
                             int totalXp = EnchantmentUtils.getPlayerXP(player);
-
-                            /*
-                            if (Configuration.CONFIG.storeUntilPreviousLevel.get()) {
-                                int xpForCurrentLevel = EnchantmentUtils.getExperienceForLevel(player.experienceLevel);
-
-                                xpToStore = EnchantmentUtils.getPlayerXP(player) - xpForCurrentLevel;
-
-                                if (xpToStore == 0 && player.experienceLevel > 0) //player has exactly x > 0 levels (xp bar looks empty)
-                                    xpToStore = xpForCurrentLevel - EnchantmentUtils.getExperienceForLevel(player.experienceLevel - 1);
-                            }
-                             */
 
                             if (totalXp == 0)
                                 return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
-                            int actuallyStored = addXP(stack, totalXp); //store as much XP as possible
+                            int actuallyStored = addXP(stack, totalXp);
 
                             if (actuallyStored > 0) {
-                                int previousLevel = player.experienceLevel;
-
-                                //MinecraftForge.EVENT_BUS.post(new PlayerXpEvent.XpChange(player, -actuallyStored));
-                                EnchantmentUtils.addPlayerXP(player, -actuallyStored); //negative value removes xp
-                                /*
-                                if (previousLevel != player.experienceLevel)
-                                    MinecraftForge.EVENT_BUS.post(new PlayerXpEvent.LevelChange(player, player.experienceLevel));
-                                 */
+                                EnchantmentUtils.addPlayerXP(player, -actuallyStored);
                             }
-                        }
+                        //}
 
                         float f = level.random.nextFloat();
                         level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, f * 0.9F, ((f + 1F) / 2) - 0.3f);
                         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
                     }
             }
-            else if (!player.isCrouching()) { //input vs output mode, not crouching is output
+
+            else if (!player.isCrouching()) {
                 if (storedXP > 0 && storedXP <= 1395) {
-                    if (Screen.hasControlDown()) {
+                    /*if (Screen.hasControlDown()) {
                         ExperienceOrb.award((ServerLevel) level, player.position(), 1);
                         setStoredXP(stack, storedXP - 1);
                     }
-                    else {
+                     */
+                    //else {
                         ExperienceOrb.award((ServerLevel) level, player.position(), storedXP);
                         setStoredXP(stack, 0);
-                    }
+                    //}
                     return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
                 }
             }

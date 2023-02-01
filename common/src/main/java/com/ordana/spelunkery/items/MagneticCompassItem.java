@@ -3,7 +3,6 @@ package com.ordana.spelunkery.items;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
-import com.ordana.spelunkery.events.ModEvents;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import dev.architectury.injectables.annotations.PlatformOnly;
@@ -18,17 +17,14 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.behavior.PoiCompetitorScan;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -51,9 +47,10 @@ public class MagneticCompassItem extends Item implements Vanishable {
     public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             CompoundTag compoundTag = stack.getOrCreateTag();
+            tooltip.add(Component.translatable("tooltip.spelunkery.player_pos", getPlayerX(stack), getPlayerZ(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             if (compoundTag.contains("magnetitePos")) {
                 BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
-                tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_1", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             }
             if (!Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
@@ -64,6 +61,22 @@ public class MagneticCompassItem extends Item implements Vanishable {
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             }
         }
+    }
+
+    public void setPlayerX(ItemStack stack, int amount) {
+        stack.getOrCreateTag().putInt("ex", amount);
+    }
+
+    public int getPlayerX(ItemStack stack) {
+        return stack.getOrCreateTag().getInt("ex");
+    }
+
+    public void setPlayerZ(ItemStack stack, int amount) {
+        stack.getOrCreateTag().putInt("zed", amount);
+    }
+
+    public int getPlayerZ(ItemStack stack) {
+        return stack.getOrCreateTag().getInt("zed");
     }
 
     //Override
@@ -82,8 +95,14 @@ public class MagneticCompassItem extends Item implements Vanishable {
     public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         CompoundTag compoundTag = stack.getOrCreateTag();
-        if (!compoundTag.contains("magnetitePos")) level.gameEvent(player, ModGameEvents.COMPASS_PING_EVENT.get(), player.blockPosition());
-        if (player.isSecondaryUseActive()) compoundTag.remove("magnetitePos");
+        if (compoundTag.contains("magnetitePos")) {
+            BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
+            player.displayClientMessage(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)), true);
+        } else player.displayClientMessage(Component.translatable("tooltip.spelunkery.player_pos", getPlayerX(stack), getPlayerZ(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)), true);
+        if (player.isSecondaryUseActive()) {
+            compoundTag.remove("magnetitePos");
+            level.gameEvent(player, ModGameEvents.COMPASS_PING_EVENT.get(), player.blockPosition());
+        }
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
     }
 
@@ -97,7 +116,13 @@ public class MagneticCompassItem extends Item implements Vanishable {
     }
 
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
+            if (entity instanceof ServerPlayer player){
+                this.setPlayerX(stack, player.getBlockX());
+                this.setPlayerZ(stack, player.getBlockZ());
+
+            }
+
             CompoundTag compoundTag = stack.getOrCreateTag();
             tickCounter++;
             if (tickCounter == 100) {

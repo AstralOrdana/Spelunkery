@@ -53,8 +53,8 @@ public class CommonConfigs {
 
         builder.push("nether_portals");
         FlINT_AND_STEEL_PORTAL_LIGHTING = builder.define("flint_and_steel_portal_lighting", true);
-        CRYING_OBSIDIAN_PORTAL_FLUID = builder.define("crying_obsidian_portal_fluid", true);
-        RESPAWN_ANCHOR_PORTAL_FLUID = builder.define("respawn_anchor_portal_fluid", true);
+        CRYING_OBSIDIAN_PORTAL_FLUID = builder.define("crying_obsidian_dimensional_tears", true);
+        RESPAWN_ANCHOR_PORTAL_FLUID = builder.define("respawn_anchor_dimensional_tears", true);
         PORTAL_DESTRUCTION_CRYING_OBSIDIAN = builder.define("portal_destruction_crying_obsidian", true);
         PIGLINS_GIVE_CRYING_OBSIDIAN = builder.define("piglins_give_crying_obsidian", true);
         PORTAL_CREATION_SOUND = builder.define("portal_creation_sound", true);
