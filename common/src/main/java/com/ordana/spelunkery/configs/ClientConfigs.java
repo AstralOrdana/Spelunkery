@@ -9,11 +9,11 @@ import java.util.function.Supplier;
 
 public class ClientConfigs {
 
-    public static ConfigSpec CLIENT_SPEC;
+    public static final ConfigSpec CLIENT_SPEC;
 
-    public static Supplier<Boolean> ENABLE_TOOLTIPS;
+    public static final Supplier<Boolean> ENABLE_TOOLTIPS;
 
-    public static void init() {
+    static {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("client"), ConfigType.CLIENT);
 
         builder.push("general");
@@ -27,8 +27,8 @@ public class ClientConfigs {
         CLIENT_SPEC.loadFromFile();
     }
 
-    static {
-        Spelunkery.commonInit();
+    public static void bump() {
+        // Literally just a way to ensure for the class to be loaded
     }
 
 }
