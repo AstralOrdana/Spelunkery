@@ -81,4 +81,8 @@ public class CommonConfigs {
         SERVER_SPEC = builder.buildAndRegister();
         SERVER_SPEC.loadFromFile();
     }
+
+    static {
+        Spelunkery.commonInit();
+    }
 }

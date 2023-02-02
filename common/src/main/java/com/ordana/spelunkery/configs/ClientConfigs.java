@@ -27,4 +27,8 @@ public class ClientConfigs {
         CLIENT_SPEC.loadFromFile();
     }
 
+    static {
+        Spelunkery.commonInit();
+    }
+
 }
