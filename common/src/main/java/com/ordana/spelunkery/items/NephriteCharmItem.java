@@ -42,7 +42,6 @@ public class NephriteCharmItem extends Item {
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             }
         }
     }

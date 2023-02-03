@@ -60,7 +60,6 @@
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
   "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
   "tooltip.spelunkery.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
-  "tooltip.spelunkery.nephrite_charm_4": "  Additionally, hold Ctrl to store or retrieve incrementally",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",
@@ -109,6 +108,7 @@
   "item.spelunkery.raw_gold_nugget": "Raw Gold Nugget",
   "item.spelunkery.raw_zinc_nugget": "Raw Zinc Nugget",
 
+  "item.spelunkery.coal_lump": "Lump of Coal",
   "item.spelunkery.rough_lazurite_shard": "Rough Lazurite Shard",
   "item.spelunkery.rough_cinnabar_shard": "Rough Cinnabar Shard",
   "item.spelunkery.rough_diamond_shard": "Rough Diamond Shard",

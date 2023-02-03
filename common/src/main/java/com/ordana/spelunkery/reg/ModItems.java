@@ -2,8 +2,11 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
+import net.mehvahdjukaar.moonlight.api.item.FuelItem;
+import net.mehvahdjukaar.moonlight.api.item.WoodBasedItem;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.*;
 
 import java.util.Objects;
@@ -44,6 +47,8 @@ public class ModItems {
     public static final Supplier<Item> RAW_ZINC_NUGGET = regItem("raw_zinc_nugget", () ->
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("create") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
+    public static final Supplier<Item> COAL_LUMP = regItem("coal_lump", () ->
+            new FuelItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS)), () -> 200));
     public static final Supplier<Item> ROUGH_CINNABAR_SHARD = regItem("rough_cinnabar_shard", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE_SHARD = regItem("rough_lazurite_shard", () ->

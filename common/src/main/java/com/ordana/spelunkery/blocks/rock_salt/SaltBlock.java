@@ -5,6 +5,8 @@ import com.google.common.collect.Maps;
 import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -65,6 +67,14 @@ public class SaltBlock extends Block {
         }
         this.SHAPES_CACHE = builder.build();
 
+    }
+
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (level.isRainingAt(pos.above())) {
+            BlockState belowState = level.getBlockState(pos.below());
+            level.destroyBlock(pos, false);
+            if (belowState.is(Blocks.GRASS_BLOCK) || belowState.is(Blocks.MYCELIUM)) level.setBlock(pos.below(), Blocks.COARSE_DIRT.defaultBlockState(), 3);
+        }
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
