@@ -9,7 +9,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.CauldronBlock;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -55,7 +56,7 @@ public class PortalFluidBucketItem extends BucketItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level levelIn, Entity entityIn, int itemSlot, boolean isSelected) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level levelIn, @NotNull Entity entityIn, int itemSlot, boolean isSelected) {
         super.inventoryTick(stack, levelIn, entityIn, itemSlot, isSelected);
         tickCounter++;
         if (tickCounter >= 200) {
@@ -64,32 +65,32 @@ public class PortalFluidBucketItem extends BucketItem {
         }
     }
 
-    public void setBoolean(ItemStack stack, boolean tears) {
+    public void setBoolean(@NotNull ItemStack stack, boolean tears) {
         stack.getOrCreateTag().putBoolean("bool", tears);
     }
 
-    public boolean getBoolean(ItemStack stack) {
+    public boolean getBoolean(@NotNull ItemStack stack) {
         return stack.getOrCreateTag().getBoolean("bool");
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (!Screen.hasShiftDown()) {
-                tooltip.add(TranslationUtils.CROUCH.component());
-            }
-            if (Screen.hasShiftDown()) {
+            if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            } else {
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
         }
     }
 
     @Override
+    @NotNull
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();

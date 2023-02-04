@@ -6,7 +6,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RailShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -32,14 +33,13 @@ public class WoodenRailBlockItem extends BlockItem {
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (!Screen.hasShiftDown()) {
-                tooltip.add(TranslationUtils.CROUCH.component());
-            }
-            if (Screen.hasShiftDown()) {
+            if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.wooden_rail_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.wooden_rail_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            } else {
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
         }
     }

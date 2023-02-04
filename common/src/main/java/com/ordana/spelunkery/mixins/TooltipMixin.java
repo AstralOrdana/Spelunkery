@@ -9,7 +9,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.Item;
@@ -41,12 +41,11 @@ public class TooltipMixin {
                 tooltip.add(Component.translatable("tooltip.spelunkery.crying_obsidian").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             }
             if (stack.is(Items.GRINDSTONE) || stack.is(ModBlocks.DIAMOND_GRINDSTONE.get().asItem())) {
-                if (!Screen.hasShiftDown()) {
-                    tooltip.add(TranslationUtils.CROUCH.component());
-                }
-                if (Screen.hasShiftDown()) {
+                if (Minecraft.getInstance().options.keyShift.isDown()) {
                     tooltip.add(TranslationUtils.GRINDSTONE_1.component());
                     tooltip.add(TranslationUtils.GRINDSTONE_2.component());
+                } else {
+                    tooltip.add(TranslationUtils.CROUCH.component());
                 }
             }
             if (stack.is(ModTags.GRINDABLE)) {

@@ -5,7 +5,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.BlockItem;
@@ -26,13 +26,12 @@ public class CarvedNephriteItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (!Screen.hasShiftDown()) {
-                tooltip.add(TranslationUtils.CROUCH.component());
-            }
-            if (Screen.hasShiftDown()) {
+            if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            } else {
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
         }
     }
