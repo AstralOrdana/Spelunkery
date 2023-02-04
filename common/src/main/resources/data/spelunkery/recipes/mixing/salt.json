@@ -11,6 +11,9 @@
       "fluid": "minecraft:water",
       "nbt": {},
       "amount": 1000
+    },
+    {
+      "item": "minecraft:pointed_dripstone"
     }
   ],
   "results": [

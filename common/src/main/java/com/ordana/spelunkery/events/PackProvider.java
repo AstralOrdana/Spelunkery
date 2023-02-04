@@ -167,8 +167,9 @@ public class PackProvider extends DynServerResourcesProvider {
                 "deepslate_emerald_ore",
                 "deepslate_lapis_ore",
                 "deepslate_redstone_ore",
+                "deepslate_coal_ore",
                 "diamond_ore",
-                "emerald_ore",
+                "emerald_ore",  
                 "lapis_ore",
                 "redstone_ore"
         );
@@ -289,6 +290,26 @@ public class PackProvider extends DynServerResourcesProvider {
             }
         }
 
+
+        var sculkShearsDrops = List.of(
+                "sculk",
+                "sculk_vein"
+        );
+
+        for (var loot : sculkShearsDrops) {
+            ResourceLocation target = new ResourceLocation("minecraft", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (CommonConfigs.SCULK_SHEARING.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
 
         var piglins = List.of(
                 "piglin_bartering"

@@ -1,0 +1,224 @@
+{
+  "itemGroup.spelunkery.spelunkery": "Spelunkery",
+
+  "tooltip.spelunkery.hold_crouch": "Maintenir %1$s pour plus de details",
+  "tooltip.spelunkery.throwable": "Peut être lancé !",
+  "tooltip.spelunkery.grindable": "Polir sur une meule",
+  "tooltip.spelunkery.diamond_grindable": "Polir sur une Meule Diamantée",
+  "tooltip.spelunkery.keep_on_death": "Se garde à travers la mort",
+  "tooltip.spelunkery.rock_salt": "Peut être broyé sur une meule",
+  "tooltip.spelunkery.rhymes_with_tears_0": "Rime avec \"LAME\"",
+  "tooltip.spelunkery.rhymes_with_tears_1": "Rime avec \"ARME\"",
+
+  "tooltip.spelunkery.salt_1": "Moudre de l'Évaporite pour obtenir",
+  "tooltip.spelunkery.salt_2": "Infranchissable pour les non-vivants",
+
+  "tooltip.spelunkery.grindstone_1": "  %1$s avec une gemme brute pour la polire",
+  "tooltip.spelunkery.grindstone_2": "  %1$s + %2$s pour polir le stack entier",
+
+  "tooltip.spelunkery.salt_bucket_1": "Contient actuellement un équivalent de %1$s piles de Sel",
+  "tooltip.spelunkery.salt_bucket_2": "Bouillir un Sceau d'Eau pour obtenir",
+
+  "tooltip.spelunkery.rope_ladder_1": "  Peut être escaladée, peut être placée sur le côté d'un block",
+  "tooltip.spelunkery.rope_ladder_2": "  Se place verticalement automatiquement (comme des échafaudages)",
+  "tooltip.spelunkery.rope_ladder_3": "  %1$s + %2$s sur l'échelle du haut pour enrouler",
+
+  "tooltip.spelunkery.wooden_rail_1": "  Utiliser sur d'autres rails similaires pour les prolonger",
+  "tooltip.spelunkery.wooden_rail_2": "  Peut s'étendre à travers l'air pour traverser des creux",
+
+  "tooltip.spelunkery.portal_fluid_1": "  Boire pour retourner à votre point de spawn",
+  "tooltip.spelunkery.portal_fluid_2": "  Peut être utilisé pour allumer un Portail du Nether",
+  "tooltip.spelunkery.portal_fluid_3": "  Utiliser une Fiole sur de l'Obsidienne Pleureuse ou une Ancre de Réapparition pour obtenir",
+
+  "tooltip.spelunkery.portal_fluid_bucket_1": "  Contacte avec ce liquide téléporte les joueurs jusqu'à leur Point de Spawn",
+  "tooltip.spelunkery.portal_fluid_bucket_2": "  Toute autre entité sera téléportée au Point de Spawn du monde",
+  "tooltip.spelunkery.portal_fluid_bucket_3": "  Obtenu en remplissant un Chaudron avec des Fioles de Larme Dimensionnelle",
+
+  "tooltip.spelunkery.crying_obsidian": "Utiliser une Fiole vide pour obtenir un extrait de Larme Dimensionnelle",
+
+  "tooltip.spelunkery.depth_gauge_depth": "Altitude actuelle: Y = %1$s",
+
+  "tooltip.spelunkery.magnetite_pos": "Votre boussole est attirée vers la position %1$s, %2$s",
+  "tooltip.spelunkery.player_pos": "Position actuelle: %1$s, %2$s",
+  "tooltip.spelunkery.magnetic_compass_2": "  Pointe toujours vers le Nord magnétique",
+  "tooltip.spelunkery.magnetic_compass_3": "  Sauf s'il est présente une forte interférence dans le champ magnétique",
+  "tooltip.spelunkery.magnetic_compass_4": "  %1$s + %2$s pour réinitialiser",
+
+  "tooltip.spelunkery.item_magnet_1": "Actif",
+  "tooltip.spelunkery.item_magnet_2": "Inactif",
+  "tooltip.spelunkery.item_magnet_3": "  Attire les items à proximité vers le joueur dans un rayon de %1$s blocks quand activf",
+  "tooltip.spelunkery.item_magnet_4": "  %1$s pour alterner entre actif et inactif",
+
+  "tooltip.spelunkery.obsidian_hammer_and_chisel": "Niveau de minage: Diamant",
+  "tooltip.spelunkery.flint_hammer_and_chisel": "Niveau de minage: Pierre",
+
+  "tooltip.spelunkery.hammer_and_chisel_1": "  Utiliser sur des blocks pour les casser et récupérer",
+  "tooltip.spelunkery.hammer_and_chisel_2": "  Peut seulement casser des blocks au correspondant niveau de minage",
+  "tooltip.spelunkery.hammer_and_chisel_3": "  Peut seulement casser des blocks pouvant être cassés avec une pioche",
+  "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s + %2$s to convert Brick blocks to Chiseled form",
+
+  "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Points d'Expérience stockés",
+  "tooltip.spelunkery.nephrite_charm_2": "  Peut stocker jusqu'à 30 Niveaux",
+  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + %2$s pour stocker, %2$s pour récupérer",
+
+  "tooltip.spelunkery.carved_nephrite_1": "  Peut stocker des Points d'Expérience sous la forme de 'Charge'",
+  "tooltip.spelunkery.carved_nephrite_2": "  Chaque block peut contenir 100 Charges (~7 niveaux depuis le niveau 0)",
+  "tooltip.spelunkery.carved_nephrite_3": "  Use with a Nephrite Siphon, Fountain, and Diode",
+
+  "tooltip.spelunkery.nephrite_spout_1": "  Draine les Charges de blocks Néphrite Sculptée, pour créer des orbes d'expérience",
+  "tooltip.spelunkery.nephrite_spout_2": "  Ne draine que les Charges de la Néphrite sur laquelle il est placée",
+  "tooltip.spelunkery.nephrite_spout_3": "  Doit être alimenté en Redstone pour s'activer",
+
+  "tooltip.spelunkery.nephrite_siphon_1": "  Draine l'expérience de tout joueur se tenant dessus",
+  "tooltip.spelunkery.nephrite_siphon_2": "  Convertis en Charges réparties entre les blocks de Néphrites Sculptée adjacents",
+  "tooltip.spelunkery.nephrite_siphon_3": "  Attire également les orbes d'expérience à proximité pour les convertir",
+
+  "tooltip.spelunkery.nephrite_diode_1": "  Transfère les Charges de Nephrite Sculptée à laquelle elle fait face de l'autre côté",
+  "tooltip.spelunkery.nephrite_diode_2": "  Transfère une Charge à chaque fois qu'elle reçoit un signal de Redstone",
+  "tooltip.spelunkery.nephrite_diode_3": "  Peut transférer des Charges verticalement et être poussée par des Pistons",
+
+  "block.spelunkery.rock_salt": "Évaporite",
+  "block.spelunkery.salt_lamp": "Lampe saline",
+  "block.spelunkery.salt": "Sel",
+  "block.spelunkery.salt_block": "Block de sel",
+  "item.spelunkery.salt_bucket": "Sceau de sel",
+
+  "block.spelunkery.rock_salt_block": "Block d'Évaporite'",
+  "block.spelunkery.rock_salt_slab": "Dalle d'Évaporite",
+  "block.spelunkery.rock_salt_stairs": "Escalier d'Évaporite",
+  "block.spelunkery.rock_salt_wall": "Mur d'Évaporite",
+
+  "block.spelunkery.polished_rock_salt": "Block d'Évaporite polie",
+  "block.spelunkery.polished_rock_salt_slab": "Dalle d'Évaporite polie",
+  "block.spelunkery.polished_rock_salt_stairs": "Escalier d'Évaporite polie",
+  "block.spelunkery.polished_rock_salt_wall": "Mur d'Évaporite polie",
+
+  "block.spelunkery.rock_salt_bricks": "Briques d'Évaporite",
+  "block.spelunkery.rock_salt_brick_slab": "Dalle de briques d'Évaporite",
+  "block.spelunkery.rock_salt_brick_stairs": "Escalier de briques d'Évaporite",
+  "block.spelunkery.rock_salt_brick_wall": "Mur de briques d'Évaporite",
+
+  "block.spelunkery.sandstone_lapis_ore": "Minerai de lapis-lazuli de Grès",
+  "block.spelunkery.calcite_redstone_ore": "Minerais de redstone de calcite",
+  "block.spelunkery.smooth_basalt_diamond_ore": "Minerai de diamant de basalte lisse",
+  "block.spelunkery.andesite_emerald_ore": "Minerai d'émeraude d'andésite",
+
+  "item.spelunkery.raw_iron_nugget": "Pépite de fer brut",
+  "item.spelunkery.raw_copper_nugget": "Pépite de cuivre brut",
+  "item.spelunkery.raw_gold_nugget": "Pépite d'or brut",
+  "item.spelunkery.raw_zinc_nugget": "Pépite de zinc brut",
+
+  "item.spelunkery.rough_lazurite_shard": "Fragment de lazulite brute",
+  "item.spelunkery.rough_cinnabar_shard": "Fragment de cinabre brut",
+  "item.spelunkery.rough_diamond_shard": "Fragment de diamant brut",
+  "item.spelunkery.rough_emerald_shard": "Fragment d'émeraude brute",
+  "item.spelunkery.rough_jade_shard": "Fragment de jade brut",
+
+  "item.spelunkery.rough_lazurite": "Lazulite brute",
+  "item.spelunkery.rough_cinnabar": "Cinabre brut",
+  "item.spelunkery.rough_diamond": "Diamant brut",
+  "item.spelunkery.rough_emerald": "Émeraude brute",
+
+  "item.spelunkery.coal_lump": "Fragment de charbon",
+  "block.spelunkery.rough_lazurite_block": "Block de lazulite brute",
+  "block.spelunkery.rough_cinnabar_block": "Block de cinabre brut",
+  "block.spelunkery.rough_diamond_block": "Block de diamant brut",
+  "block.spelunkery.rough_emerald_block": "Block d'émeraude brute",
+
+  "item.spelunkery.lapis_lazuli_shard": "Fragment de lapis-lazuli",
+  "item.spelunkery.cinnabar_shard": "Fragment de cinabre",
+  "item.spelunkery.diamond_shard": "Fragment de diamant",
+  "item.spelunkery.emerald_shard": "Fragment d'émeraude",
+  "item.spelunkery.jade_shard": "Fragment de jade poli",
+
+  "item.spelunkery.cinnabar": "Cinabre",
+  "block.spelunkery.cinnabar_block": "Block de Cinabre",
+
+  "item.spelunkery.magnetite_chunk": "Tesson de magnétite",
+  "block.spelunkery.magnetite": "Magnétite",
+  "item.spelunkery.item_magnet": "Aimant à items",
+  "item.spelunkery.magnetic_compass": "Boussole magnétique",
+
+  "item.spelunkery.nephrite_chunk": "Tesson de néphrite",
+  "block.spelunkery.raw_nephrite": "Néphrite brute",
+  "block.spelunkery.nephrite": "Néphrite",
+  "block.spelunkery.nephrite_slab": "Dalle en néphrite",
+  "block.spelunkery.nephrite_stairs": "Escalier en néphrite",
+  "block.spelunkery.nephrite_wall": "Mur en néphrite",
+
+  "block.spelunkery.polished_nephrite": "Néphrite polie",
+  "block.spelunkery.polished_nephrite_slab": "Dalle en néphrite polie",
+  "block.spelunkery.polished_nephrite_stairs": "Escalier en néphrite polie",
+  "block.spelunkery.polished_nephrite_wall": "Mur en néphrite polie",
+
+  "block.spelunkery.polished_nephrite_bricks": "Briques de néphrite polie",
+  "block.spelunkery.polished_nephrite_brick_slab": "Dalle en briques de néphrite polie",
+  "block.spelunkery.polished_nephrite_brick_stairs": "Escalier en briques de néphrite polie",
+  "block.spelunkery.polished_nephrite_brick_wall": "Mur en briques de néphrite polie",
+
+  "block.spelunkery.carved_nephrite": "Néphrite sculptée",
+  "block.spelunkery.nephrite_siphon": "Siphon de néphrite",
+  "block.spelunkery.nephrite_spout": "Fontaine de néphrite",
+  "block.spelunkery.nephrite_diode": "Valve de néphrite",
+  "item.spelunkery.nephrite_charm": "Amulette de néphrite",
+
+  "block.spelunkery.tangle_roots": "Racines entortillées",
+  "block.spelunkery.sporophyte": "Sporophyte",
+  "block.spelunkery.tall_sporophyte": "Grand sporophyte",
+
+  "block.spelunkery.conk_fungus": "Champignon polypore",
+  "block.spelunkery.inkcap_mushroom": "Champignon coprin",
+  "block.spelunkery.white_inkcap_mushroom": "Champignon coprin pale",
+  "block.spelunkery.button_mushroom": "Champignon de Paris",
+  "block.spelunkery.crimini": "Champignon cremini",
+  "block.spelunkery.portabella": "Champignon portabella",
+  "item.spelunkery.grilled_portabella": "Portabella grillé",
+  "block.spelunkery.phosphor_fungus": "Champignon phosphorescent",
+  "block.spelunkery.mushgloom": "Champiluant",
+  "block.spelunkery.milly_bubcap": "Champignon coprin chevelu",
+
+
+  "block.spelunkery.potted_inkcap_mushroom": "Coprin en pot",
+  "block.spelunkery.potted_white_inkcap_mushroom": "Coprin pale en pot",
+  "block.spelunkery.potted_button_mushroom": "Champignon de Paris en pot",
+  "block.spelunkery.potted_crimini": "Cremini en pot",
+  "block.spelunkery.potted_portabella": "Portabella en pot",
+  "block.spelunkery.potted_phosphor_fungus": "Champignon phosphorescent en pot",
+  "block.spelunkery.potted_mushgloom": "Champiluant en pot",
+  "block.spelunkery.potted_milly_bubcap": "Coprin chevelu en pot",
+  "block.spelunkery.potted_sporophyte": "Sporophyte en pot",
+
+  "block.spelunkery.portabella_block": "Block de portabella",
+  "block.spelunkery.inkcap_mushroom_block": "Block de champignon coprin",
+  "block.spelunkery.white_inkcap_mushroom_block": "Block de champignon coprin pale",
+
+  "block.spelunkery.glowstick": "Bâton luminescent",
+  "block.spelunkery.wooden_rail": "Rails de bois",
+  "block.spelunkery.rope_ladder": "Échelle de corde",
+  "item.spelunkery.portal_fluid_bottle": "Fiole de larme dimensionnelle",
+  "item.spelunkery.portal_fluid_bucket": "Sceau de larmes dimensionnelles",
+  "block.spelunkery.portal_fluid": "Larmes dimensionnelles",
+  "fluid.spelunkery.portal_fluid": "Larmes dimensionnelles",
+  "item.spelunkery.depth_gauge": "Altimètre",
+  "item.spelunkery.flint_hammer_and_chisel": "Marteau et burin en silex",
+  "item.spelunkery.obsidian_hammer_and_chisel": "Marteau et burin en obsidienne",
+
+  "block.spelunkery.diamond_grindstone": "Meule en obsidienne",
+
+  "block.spelunkery.red_glowstick": "Bâton luminescent rouge",
+  "block.spelunkery.orange_glowstick": "Bâton luminescent orange",
+  "block.spelunkery.yellow_glowstick": "Bâton luminescent jaune",
+  "block.spelunkery.lime_glowstick": "Bâton luminescent vert clair",
+  "block.spelunkery.green_glowstick": "Bâton luminescent vert",
+  "block.spelunkery.cyan_glowstick": "Bâton luminescent cyan",
+  "block.spelunkery.light_blue_glowstick": "Bâton luminescent bleu clair",
+  "block.spelunkery.blue_glowstick": "Bâton luminescent bleu",
+  "block.spelunkery.purple_glowstick": "Bâton luminescent violet",
+  "block.spelunkery.magenta_glowstick": "Bâton luminescent magenta",
+  "block.spelunkery.pink_glowstick": "Bâton luminescent rose",
+  "block.spelunkery.brown_glowstick": "Bâton luminescent marron",
+  "block.spelunkery.black_glowstick": "Bâton luminescent noir",
+  "block.spelunkery.white_glowstick": "Bâton luminescent blanc",
+  "block.spelunkery.gray_glowstick": "Bâton luminescent gris",
+  "block.spelunkery.light_gray_glowstick": "Bâton luminescent gris clair"
+}

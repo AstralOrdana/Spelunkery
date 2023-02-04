@@ -2,12 +2,12 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -15,7 +15,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -41,7 +40,7 @@ public class MagnetItem extends Item {
             if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
             if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_3", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -77,25 +76,25 @@ public class MagnetItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if(entity.isSpectator())
+        if(entity.isSpectator()) {
             return;
+        }
 
-            CompoundTag tag = stack.getOrCreateTag();
-            if (tag.contains("active") && tag.getBoolean("active")) {
-                int r = getMagnetRange();
-                AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
+        CompoundTag tag = stack.getOrCreateTag();
+        if (tag.contains("active") && tag.getBoolean("active")) {
+            int r = getMagnetRange();
+            AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
 
-                List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
-                        item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
-                                (item.getThrower() == null || !item.getThrower().equals(entity.getUUID()) || !item.hasPickUpDelay()) &&
-                                !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
-                );
+            List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
+                    item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
+                            (item.getThrower() == null || !item.getThrower().equals(entity.getUUID()) || !item.hasPickUpDelay()) &&
+                            !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
+            );
 
-                items.forEach(item -> item.setDeltaMovement(item.getDeltaMovement().add(
-                        new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).normalize().scale(((1.4D - Math.sqrt(
-                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D) * (1.4D - Math.sqrt(
-                                new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D)) * 0.1D))));
-            }
-
+            items.forEach(item -> item.setDeltaMovement(item.getDeltaMovement().add(
+                    new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).normalize().scale(((1.4D - Math.sqrt(
+                            new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D) * (1.4D - Math.sqrt(
+                            new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D)) * 0.1D))));
+        }
     }
 }

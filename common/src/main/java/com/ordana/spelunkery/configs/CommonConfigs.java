@@ -11,34 +11,36 @@ import java.util.function.Supplier;
 public class CommonConfigs {
 
 
-    public static ConfigSpec SERVER_SPEC;
+    public static final ConfigSpec SERVER_SPEC;
 
-    public static Supplier<Boolean> CREATIVE_TAB;
-    public static Supplier<Boolean> CROSS_SECTION;
-    public static Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
-    public static Supplier<Boolean> ENABLE_ROUGH_GEMS;
-    public static Supplier<Boolean> ENABLE_RAW_NUGGETS;
+    public static final Supplier<Boolean> CREATIVE_TAB;
+    public static final Supplier<Boolean> CROSS_SECTION;
+    public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
+    public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
+    public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
+    public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
+    public static final Supplier<Boolean> SCULK_SHEARING;
 
-    public static Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
-    public static Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
-    public static Supplier<Boolean> FlINT_AND_STEEL_PORTAL_LIGHTING;
-    public static Supplier<Boolean> PORTAL_DESTRUCTION_CRYING_OBSIDIAN;
-    public static Supplier<Boolean> PIGLINS_GIVE_CRYING_OBSIDIAN;
-    public static Supplier<Boolean> PORTAL_CREATION_SOUND;
-    public static Supplier<Boolean> PORTAL_DESTRUCTION_SOUND;
+    public static final Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
+    public static final Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
+    public static final Supplier<Boolean> FlINT_AND_STEEL_PORTAL_LIGHTING;
+    public static final Supplier<Boolean> PORTAL_DESTRUCTION_CRYING_OBSIDIAN;
+    public static final Supplier<Boolean> PIGLINS_GIVE_CRYING_OBSIDIAN;
+    public static final Supplier<Boolean> PORTAL_CREATION_SOUND;
+    public static final Supplier<Boolean> PORTAL_DESTRUCTION_SOUND;
 
-    public static Supplier<Boolean> STONE_STRIPE_FEATURES;
-    public static Supplier<Boolean> ENABLE_SPOROPHYTES;
-    public static Supplier<Boolean> DARK_FOREST_PORTABELLAS;
+    public static final Supplier<Boolean> STONE_STRIPE_FEATURES;
+    public static final Supplier<Boolean> ENABLE_SPOROPHYTES;
+    public static final Supplier<Boolean> DARK_FOREST_PORTABELLAS;
 
-    public static Supplier<Integer> MAGNET_RANGE;
-    public static Supplier<Integer> MAGNETITE_RANGE;
+    public static final Supplier<Integer> MAGNET_RANGE;
+    public static final Supplier<Integer> MAGNETITE_RANGE;
 
 
     public static Supplier<Double> DOUBLE_CONFIG;
 
 
-    public static void init() {
+    static {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("common"), ConfigType.COMMON);
 
         builder.setSynced();
@@ -48,7 +50,9 @@ public class CommonConfigs {
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
         INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
+        ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
+        SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
         builder.pop();
 
         builder.push("nether_portals");
@@ -80,5 +84,9 @@ public class CommonConfigs {
 
         SERVER_SPEC = builder.buildAndRegister();
         SERVER_SPEC.loadFromFile();
+    }
+
+    public static void bump() {
+        // Literally just a way to ensure for the class to be loaded
     }
 }

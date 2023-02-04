@@ -68,7 +68,6 @@ public class RoughCinnabarBlock extends Block {
         if (state.getValue(LIT)) {
             level.setBlock(pos, state.setValue(LIT, false), 3);
         }
-
     }
 
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
