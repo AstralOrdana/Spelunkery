@@ -61,7 +61,6 @@
   "tooltip.spelunkery.nephrite_charm_1": "已存储%1$s/%2$s点经验",
   "tooltip.spelunkery.nephrite_charm_2": "  至多可存储30级经验",
   "tooltip.spelunkery.nephrite_charm_3": "  点按%2$s来取出经验，按住%1$s并点按%2$s则可存储经验",
-  "tooltip.spelunkery.nephrite_charm_4": "  此外，按住Ctrl键可渐进地存取经验",
 
   "tooltip.spelunkery.carved_nephrite_1": "  以“能量”的形式存储经验值",
   "tooltip.spelunkery.carved_nephrite_2": "  每一块可存储100点能量（约等于玩家7级时所拥有的经验值）",
@@ -110,6 +109,7 @@
   "item.spelunkery.raw_gold_nugget": "粗金粒",
   "item.spelunkery.raw_zinc_nugget": "粗锌粒",
 
+  "item.spelunkery.coal_lump": "煤炭小块",
   "item.spelunkery.rough_lazurite_shard": "待加工青金石碎片",
   "item.spelunkery.rough_cinnabar_shard": "待加工朱砂碎片",
   "item.spelunkery.rough_diamond_shard": "待加工钻石碎片",
