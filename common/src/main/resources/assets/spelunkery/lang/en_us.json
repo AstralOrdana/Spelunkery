@@ -1,27 +1,28 @@
 {
   "itemGroup.spelunkery.spelunkery": "Spelunkery",
 
-  "tooltip.spelunkery.hold_crouch": "Hold Shift for more details",
+  "tooltip.spelunkery.hold_crouch": "Hold %1$s for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
   "tooltip.spelunkery.diamond_grindable": "Polish on a Diamond Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
   "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
+
   "tooltip.spelunkery.rhymes_with_tears_0": "Rhymes with \"FEARS\"",
   "tooltip.spelunkery.rhymes_with_tears_1": "Rhymes with \"SCARES\"",
 
   "tooltip.spelunkery.salt_1": "Grind Rock Salt to obtain",
   "tooltip.spelunkery.salt_2": "Unpassable to the undead",
 
-  "tooltip.spelunkery.grindstone_1": "  Right-click with rough gems to polish them",
-  "tooltip.spelunkery.grindstone_2": "  Crouch + right-click to polish entire stack",
+  "tooltip.spelunkery.grindstone_1": "  %1$s with rough gems to polish them",
+  "tooltip.spelunkery.grindstone_2": "  %1$s + %2$s to polish entire stack",
 
   "tooltip.spelunkery.salt_bucket_1": "Currently holding %1$s piles worth of Salt",
   "tooltip.spelunkery.salt_bucket_2": "Boil a Water Bucket in a furnace to obtain",
 
   "tooltip.spelunkery.rope_ladder_1": "  Climbable, can be placed on the sides of blocks",
   "tooltip.spelunkery.rope_ladder_2": "  Places downward automatically like scaffolding",
-  "tooltip.spelunkery.rope_ladder_3": "  Crouch + right-click top ladder to roll up",
+  "tooltip.spelunkery.rope_ladder_3": "  %1$s + %2$s top ladder to roll up",
 
   "tooltip.spelunkery.wooden_rail_1": "  Using this item on itself places at end of rail",
   "tooltip.spelunkery.wooden_rail_2": "  Can extend above air blocks to cross gaps",
@@ -42,24 +43,24 @@
   "tooltip.spelunkery.player_pos": "Current Location: %1$s, %2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  Always points toward Magnetic North",
   "tooltip.spelunkery.magnetic_compass_3": "  Unless there is a strong interference in the magnetic field",
-  "tooltip.spelunkery.magnetic_compass_4": "  Crouch + right-click to reset",
+  "tooltip.spelunkery.magnetic_compass_4": "  %1$s + %2$s to reset",
 
   "tooltip.spelunkery.item_magnet_1": "Active",
   "tooltip.spelunkery.item_magnet_2": "Inactive",
   "tooltip.spelunkery.item_magnet_3": "  Draws items toward the player from %1$s blocks away when active",
-  "tooltip.spelunkery.item_magnet_4": "  Right-click to toggle between active and inactive",
+  "tooltip.spelunkery.item_magnet_4": "  %1$s to toggle between active and inactive",
 
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "Mining level: Diamond",
   "tooltip.spelunkery.flint_hammer_and_chisel": "Mining level: Stone",
 
-  "tooltip.spelunkery.hammer_and_chisel_1": "  Right click blocks to break them and drop themselves",
+  "tooltip.spelunkery.hammer_and_chisel_1": "  Use on blocks to break them and drop themselves",
   "tooltip.spelunkery.hammer_and_chisel_2": "  Can only break blocks in their mining level and below",
   "tooltip.spelunkery.hammer_and_chisel_3": "  Can only break blocks that are mineable by pickaxe",
-  "tooltip.spelunkery.hammer_and_chisel_4": "  Crouch + right-click to convert Brick blocks to Chiseled form",
+  "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s + %2$s to convert Brick blocks to Chiseled form",
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
   "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
-  "tooltip.spelunkery.nephrite_charm_3": "  Crouch + right-click to store, right click to retrieve",
+  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + %2$s to store, right click to retrieve",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",

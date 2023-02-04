@@ -2,6 +2,7 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.utils.EnchantmentUtils;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -14,7 +15,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -37,11 +37,11 @@ public class NephriteCharmItem extends Item {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_1", getStoredXP(stack), "1395").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(TranslationUtils.NEPHRITE_CHARM_3.component());
             }
         }
     }

@@ -5,6 +5,7 @@ import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModGameEvents;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -53,12 +54,12 @@ public class MagneticCompassItem extends Item implements Vanishable {
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             }
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(TranslationUtils.MAGNETIC_COMPASS_4.component());
             }
         }
     }
@@ -115,6 +116,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
         return tickCounter = tick;
     }
 
+    @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (!level.isClientSide()) {
             if (entity instanceof ServerPlayer player){
@@ -142,6 +144,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
         }
     }
 
+    @Override
     public boolean isFoil(ItemStack stack) {
         return isMagnetiteNearby(stack) || super.isFoil(stack);
     }

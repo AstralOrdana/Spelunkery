@@ -2,6 +2,7 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.blocks.WoodenRailBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -34,7 +35,7 @@ public class WoodenRailBlockItem extends BlockItem {
     public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.wooden_rail_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -43,6 +44,7 @@ public class WoodenRailBlockItem extends BlockItem {
         }
     }
 
+    @Override
     @Nullable
     public BlockPlaceContext updatePlacementContext(BlockPlaceContext context) {
         BlockPos blockPos = context.getClickedPos().below();
@@ -90,6 +92,7 @@ public class WoodenRailBlockItem extends BlockItem {
         }
     }
 
+    @Override
     protected boolean mustSurvive() {
         return false;
     }

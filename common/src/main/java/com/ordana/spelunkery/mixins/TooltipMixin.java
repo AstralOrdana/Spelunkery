@@ -5,6 +5,7 @@ import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -21,7 +22,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 @Mixin(Item.class)
@@ -42,11 +42,11 @@ public class TooltipMixin {
             }
             if (stack.is(Items.GRINDSTONE) || stack.is(ModBlocks.DIAMOND_GRINDSTONE.get().asItem())) {
                 if (!Screen.hasShiftDown()) {
-                    tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                    tooltip.add(TranslationUtils.CROUCH.component());
                 }
                 if (Screen.hasShiftDown()) {
-                    tooltip.add(Component.translatable("tooltip.spelunkery.grindstone_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                    tooltip.add(Component.translatable("tooltip.spelunkery.grindstone_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                    tooltip.add(TranslationUtils.GRINDSTONE_1.component());
+                    tooltip.add(TranslationUtils.GRINDSTONE_2.component());
                 }
             }
             if (stack.is(ModTags.GRINDABLE)) {

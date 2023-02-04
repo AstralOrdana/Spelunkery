@@ -1,7 +1,7 @@
 {
   "itemGroup.spelunkery.spelunkery": "Spelunkery",
 
-  "tooltip.spelunkery.hold_crouch": "Segure Shift para mais detalhes",
+  "tooltip.spelunkery.hold_crouch": "Segure %1$s para mais detalhes",
   "tooltip.spelunkery.throwable": "Arremessável!",
   "tooltip.spelunkery.grindable": "Polir em uma Rebolo.",
   "tooltip.spelunkery.keep_on_death": "Não dropa ao morrer",
@@ -10,12 +10,12 @@
   "tooltip.spelunkery.salt_1": "  Moer Sal-Gema para obter",
   "tooltip.spelunkery.salt_2": "  Impassável por Mortos-Vivos",
 
-  "tooltip.spelunkery.grindstone_1": "  Botão-Direito em gemas brutas para poli-las",
-  "tooltip.spelunkery.grindstone_2": "  Agache-se + Botão-Direito para polir todo o pack",
+  "tooltip.spelunkery.grindstone_1": "  %1$s em gemas brutas para poli-las",
+  "tooltip.spelunkery.grindstone_2": "  %1$s + %2$s para polir todo o pack",
 
   "tooltip.spelunkery.rope_ladder_1": "  Escalável, pode ser colocado nas laterais dos blocos",
   "tooltip.spelunkery.rope_ladder_2": "  Posiciona para baixo automaticamente como um andaime",
-  "tooltip.spelunkery.rope_ladder_3": "  Agache-se + Botão-Direito na escada superior para puxar para cima",
+  "tooltip.spelunkery.rope_ladder_3": "  %1$s + %2$s na escada superior para puxar para cima",
 
   "tooltip.spelunkery.wooden_rail_1": "  Usar este item nele mesmo, coloca-o no final do trilho",
   "tooltip.spelunkery.wooden_rail_2": "  Pode estender-se encima dos blocos de ar para criar pontes",
@@ -23,15 +23,13 @@
   "tooltip.spelunkery.portal_fluid_1": "  Beba para retornar ao seu ponto de spawn ou spawn do mundo",
   "tooltip.spelunkery.portal_fluid_2": "  Não pode se teletransportar entre as dimensões",
   "tooltip.spelunkery.portal_fluid_3": "  Use um Frasco vazio em um Obsidiana Chorona para obtern",
-  "tooltip.spelunkery.portal_fluid_failure": "Ponto de spawn em Dimensões Diferentes",
   "tooltip.spelunkery.crying_obsidian": "Use um Frasco vazio para obter o Fluido do Portal",
 
   "tooltip.spelunkery.depth_gauge_depth": "Elevação Atual: Y = %1$s",
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Pontos de experiência armazenados",
   "tooltip.spelunkery.nephrite_charm_2": "  Armazena até 30 níveis",
-  "tooltip.spelunkery.nephrite_charm_3": "  Agache-se + Botão-Direitoo para armazenar, clique Botão-Direitoo para recuperar",
-  "tooltip.spelunkery.nephrite_charm_4": "  Além disso, segure Ctrl para armazenar ou recuperar de forma incremental",
+  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + %2$s para armazenar, clique Botão-Direitoo para recuperar",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",
@@ -48,9 +46,6 @@
   "tooltip.spelunkery.nephrite_diode_1": "  Transfere a carga da Nefrita Esculpida que está voltada para o lado oposto",
   "tooltip.spelunkery.nephrite_diode_2": "  Transfere uma de cada vez, cada vez que recebe um sinal Redstone",
   "tooltip.spelunkery.nephrite_diode_3": "  Pode transferir carga verticalmente e ser empurrado por pistões",
-
-  "entity.spelunkery.mod_entity": "Entidade Mod",
-  "item.spelunkery.mod_item": "Item Mod",
 
   "block.spelunkery.rock_salt": "Sal-Gema",
   "block.spelunkery.salt_lamp": "Lâmpada de Sal",
@@ -107,7 +102,7 @@
   "block.spelunkery.polished_nephrite_wall": "Muro de Nefrita Polida",
 
   "block.spelunkery.polished_nephrite_bricks": "Tijolos de Nefrita Polida",
-  "block.spelunkery.polished_nephrite_brick_slab": "Laje de Tijolos de Nefrita Polida"",
+  "block.spelunkery.polished_nephrite_brick_slab": "Laje de Tijolos de Nefrita Polida",
   "block.spelunkery.polished_nephrite_brick_stairs": "Escadas de Tijolos de Nefrita Polida",
   "block.spelunkery.polished_nephrite_brick_wall": "Muro de Tijolos de Nefrita Polida",
 

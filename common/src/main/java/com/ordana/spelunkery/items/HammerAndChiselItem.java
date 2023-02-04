@@ -6,13 +6,13 @@ import com.google.common.collect.ImmutableBiMap;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -28,8 +28,6 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -38,7 +36,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.portal.PortalShape;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -57,13 +54,13 @@ public class HammerAndChiselItem extends Item implements Vanishable {
             if (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get())) tooltip.add(Component.translatable("tooltip.spelunkery.flint_hammer_and_chisel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             if (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get())) tooltip.add(Component.translatable("tooltip.spelunkery.obsidian_hammer_and_chisel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(TranslationUtils.HAMMER_AND_CHISEL_4.component());
             }
         }
     }

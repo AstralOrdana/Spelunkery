@@ -2,6 +2,7 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.blocks.RopeLadderBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -33,7 +35,7 @@ public class RopeLadderBlockItem extends BlockItem {
     public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (!Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hold_crouch").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GOLD)));
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
             if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.rope_ladder_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -43,8 +45,9 @@ public class RopeLadderBlockItem extends BlockItem {
         }
     }
 
+    @Override
     @Nullable
-    public BlockPlaceContext updatePlacementContext(BlockPlaceContext context) {
+    public BlockPlaceContext updatePlacementContext(@NotNull BlockPlaceContext context) {
         BlockPos blockPos = context.getClickedPos();
         Level level = context.getLevel();
         BlockState blockState = level.getBlockState(blockPos);
@@ -86,6 +89,7 @@ public class RopeLadderBlockItem extends BlockItem {
         }
     }
 
+    @Override
     protected boolean mustSurvive() {
         return false;
     }
