@@ -13,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
  */
 enum Components {
     SNEAK   (Component.keybind("key.sneak")),
-    USE     (Component.keybind("key.use")),
     ;
 
     final Component val;
@@ -43,18 +42,13 @@ public enum TranslationUtils {
     DIAMOND_GRINDABLE   ("tooltip.spelunkery.diamond_grindable", Styles.ITALIC_GRAY.val),
     DEATH_KEEP          ("tooltip.spelunkery.keep_on_death",
             Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)),
-    GRINDSTONE_1        ("tooltip.spelunkery.grindstone_1", Styles.GRAY.val, Components.USE.val),
-    GRINDSTONE_2        ("tooltip.spelunkery.grindstone_2", Styles.GRAY.val,
-            Components.SNEAK.val, Components.USE.val),
-    ROPE_LADDER_3       ("tooltip.spelunkery.rope_ladder_3", Styles.GRAY.val,
-            Components.SNEAK.val, Components.USE.val),
-    MAGNETIC_COMPASS_4  ("tooltip.spelunkery.magnetic_compass_4", Styles.GRAY.val,
-            Components.SNEAK.val, Components.USE.val),
-    ITEM_MAGNET_4       ("tooltip.spelunkery.item_magnet_4", Styles.GRAY.val, Components.USE.val),
-    HAMMER_AND_CHISEL_4 ("tooltip.spelunkery.hammer_and_chisel_4", Styles.GRAY.val,
-            Components.SNEAK.val, Components.USE.val),
-    NEPHRITE_CHARM_3    ("tooltip.spelunkery.nephrite_charm_3", Styles.GRAY.val,
-            Components.SNEAK.val, Components.USE.val),
+    GRINDSTONE_1        ("tooltip.spelunkery.grindstone_1", Styles.GRAY.val),
+    GRINDSTONE_2        ("tooltip.spelunkery.grindstone_2", Styles.GRAY.val, Components.SNEAK.val),
+    ROPE_LADDER_3       ("tooltip.spelunkery.rope_ladder_3", Styles.GRAY.val, Components.SNEAK.val),
+    MAGNETIC_COMPASS_4  ("tooltip.spelunkery.magnetic_compass_4", Styles.GRAY.val, Components.SNEAK.val),
+    ITEM_MAGNET_4       ("tooltip.spelunkery.item_magnet_4", Styles.GRAY.val),
+    HAMMER_AND_CHISEL_4 ("tooltip.spelunkery.hammer_and_chisel_4", Styles.GRAY.val, Components.SNEAK.val),
+    NEPHRITE_CHARM_3    ("tooltip.spelunkery.nephrite_charm_3", Styles.GRAY.val, Components.SNEAK.val),
     ;
 
     private final MutableComponent component;
