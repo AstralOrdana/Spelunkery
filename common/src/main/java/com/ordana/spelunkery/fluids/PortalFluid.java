@@ -2,39 +2,24 @@ package com.ordana.spelunkery.fluids;
 
 import com.mojang.math.Vector3f;
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;
 import net.mehvahdjukaar.moonlight.api.fluids.ModFlowingFluid;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.*;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
-import javax.sound.sampled.Port;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class PortalFluid extends ModFlowingFluid {
@@ -55,45 +40,50 @@ public class PortalFluid extends ModFlowingFluid {
 
     }
 
+    @NotNull
     public Fluid getFlowing() {
         return ModFluids.FLOWING_PORTAL_FLUID.get();
     }
 
+    @NotNull
     public Fluid getSource() {
         return ModFluids.PORTAL_FLUID.get();
     }
 
+    @NotNull
     public Item getBucket() {
         return ModItems.PORTAL_FLUID_BUCKET.get();
     }
 
+    @Override
     protected ParticleOptions getDripParticle() {
         return ParticleTypes.DRIPPING_OBSIDIAN_TEAR;
     }
 
-    public void animateTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
-        if (!state.isSource() && !(Boolean)state.getValue(FALLING)) {
+    @Override
+    public void animateTick(@NotNull Level level, @NotNull BlockPos pos, @NotNull FluidState state, @NotNull RandomSource random) {
+        if (!state.isSource() && !(boolean)state.getValue(FALLING)) {
             if (random.nextInt(64) == 0) {
-                level.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_AMBIENT, SoundSource.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
+                level.playLocalSound(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_AMBIENT, SoundSource.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
             }
         } else if (random.nextInt(10) == 0) {
-            level.addParticle(ParticleTypes.FALLING_OBSIDIAN_TEAR, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + random.nextDouble(), (double)pos.getZ() + random.nextDouble(), 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.FALLING_OBSIDIAN_TEAR, pos.getX() + random.nextDouble(), pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble(), 0.0D, 0.0D, 0.0D);
         }
 
     }
 
     @Override
-    protected int getSlopeFindDistance(LevelReader level) {
+    protected int getSlopeFindDistance(@NotNull LevelReader level) {
         return 4;
     }
 
     @Override
-    protected int getDropOff(LevelReader level) {
+    protected int getDropOff(@NotNull LevelReader level) {
         return 1;
     }
 
     @Override
-    public int getTickDelay(LevelReader level) {
+    public int getTickDelay(@NotNull LevelReader level) {
         return 5;
     }
 
@@ -103,12 +93,12 @@ public class PortalFluid extends ModFlowingFluid {
     }
 
     @Override
-    public boolean isSource(FluidState state) {
+    public boolean isSource(@NotNull FluidState state) {
         return false;
     }
 
     @Override
-    public int getAmount(FluidState state) {
+    public int getAmount(@NotNull FluidState state) {
         return 0;
     }
 
@@ -117,16 +107,19 @@ public class PortalFluid extends ModFlowingFluid {
             super(properties, block);
         }
 
+        @Override
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
             super.createFluidStateDefinition(builder);
             builder.add(LEVEL);
         }
 
-        public int getAmount(FluidState state) {
+        @Override
+        public int getAmount(@NotNull FluidState state) {
             return state.getValue(LEVEL);
         }
 
-        public boolean isSource(FluidState state) {
+        @Override
+        public boolean isSource(@NotNull FluidState state) {
             return false;
         }
     }
@@ -136,11 +129,13 @@ public class PortalFluid extends ModFlowingFluid {
             super(properties, block);
         }
 
-        public int getAmount(FluidState state) {
+        @Override
+        public int getAmount(@NotNull FluidState state) {
             return 8;
         }
 
-        public boolean isSource(FluidState state) {
+        @Override
+        public boolean isSource(@NotNull FluidState state) {
             return true;
         }
     }

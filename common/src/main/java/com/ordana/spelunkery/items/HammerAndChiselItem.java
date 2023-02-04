@@ -11,7 +11,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -36,6 +36,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -49,28 +50,37 @@ public class HammerAndChiselItem extends Item implements Vanishable {
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level,
+                                @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get())) tooltip.add(Component.translatable("tooltip.spelunkery.flint_hammer_and_chisel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get())) tooltip.add(Component.translatable("tooltip.spelunkery.obsidian_hammer_and_chisel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (!Screen.hasShiftDown()) {
-                tooltip.add(TranslationUtils.CROUCH.component());
-            }
-            if (Screen.hasShiftDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            if (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()))
+                tooltip.add(Component.translatable("tooltip.spelunkery.flint_hammer_and_chisel")
+                        .setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+            if (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get()))
+                tooltip.add(Component.translatable("tooltip.spelunkery.obsidian_hammer_and_chisel")
+                        .setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+
+            if (Minecraft.getInstance().options.keyShift.isDown()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1")
+                        .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_2")
+                        .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_3")
+                        .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(TranslationUtils.HAMMER_AND_CHISEL_4.component());
+            } else {
+                tooltip.add(TranslationUtils.CROUCH.component());
             }
         }
     }
 
     @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
+    public boolean isValidRepairItem(ItemStack stack, @NotNull ItemStack repairCandidate) {
         return (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.OBSIDIAN)) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.FLINT));
     }
 
     @Override
+    @NotNull
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();

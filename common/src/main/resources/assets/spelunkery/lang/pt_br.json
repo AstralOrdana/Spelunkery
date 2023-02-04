@@ -10,12 +10,12 @@
   "tooltip.spelunkery.salt_1": "  Moer Sal-Gema para obter",
   "tooltip.spelunkery.salt_2": "  Impassável por Mortos-Vivos",
 
-  "tooltip.spelunkery.grindstone_1": "  %1$s em gemas brutas para poli-las",
-  "tooltip.spelunkery.grindstone_2": "  %1$s + %2$s para polir todo o pack",
+  "tooltip.spelunkery.grindstone_1": "  Interagir com em gemas brutas para poli-las",
+  "tooltip.spelunkery.grindstone_2": "  %1$s e usar para polir todo o pack",
 
   "tooltip.spelunkery.rope_ladder_1": "  Escalável, pode ser colocado nas laterais dos blocos",
   "tooltip.spelunkery.rope_ladder_2": "  Posiciona para baixo automaticamente como um andaime",
-  "tooltip.spelunkery.rope_ladder_3": "  %1$s + %2$s na escada superior para puxar para cima",
+  "tooltip.spelunkery.rope_ladder_3": "  %1$s e interagir com na escada superior para puxar para cima",
 
   "tooltip.spelunkery.wooden_rail_1": "  Usar este item nele mesmo, coloca-o no final do trilho",
   "tooltip.spelunkery.wooden_rail_2": "  Pode estender-se encima dos blocos de ar para criar pontes",
@@ -29,7 +29,7 @@
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Pontos de experiência armazenados",
   "tooltip.spelunkery.nephrite_charm_2": "  Armazena até 30 níveis",
-  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + %2$s para armazenar, clique Botão-Direitoo para recuperar",
+  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + usar para armazenar, clique Botão-Direitoo para recuperar",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",

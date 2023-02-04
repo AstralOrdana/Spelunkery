@@ -13,15 +13,15 @@
   "tooltip.spelunkery.salt_1": "Moudre de l'Évaporite pour obtenir",
   "tooltip.spelunkery.salt_2": "Infranchissable pour les non-vivants",
 
-  "tooltip.spelunkery.grindstone_1": "  %1$s avec une gemme brute pour la polire",
-  "tooltip.spelunkery.grindstone_2": "  %1$s + %2$s pour polir le stack entier",
+  "tooltip.spelunkery.grindstone_1": "  Interagir avec une gemme brute pour la polire",
+  "tooltip.spelunkery.grindstone_2": "  %1$s et utiliser pour polir le stack entier",
 
   "tooltip.spelunkery.salt_bucket_1": "Contient actuellement un équivalent de %1$s piles de Sel",
   "tooltip.spelunkery.salt_bucket_2": "Bouillir un Sceau d'Eau pour obtenir",
 
   "tooltip.spelunkery.rope_ladder_1": "  Peut être escaladée, peut être placée sur le côté d'un block",
   "tooltip.spelunkery.rope_ladder_2": "  Se place verticalement automatiquement (comme des échafaudages)",
-  "tooltip.spelunkery.rope_ladder_3": "  %1$s + %2$s sur l'échelle du haut pour enrouler",
+  "tooltip.spelunkery.rope_ladder_3": "  Interagir avec l'échelle du haut en maintenant %1$s pour enrouler",
 
   "tooltip.spelunkery.wooden_rail_1": "  Utiliser sur d'autres rails similaires pour les prolonger",
   "tooltip.spelunkery.wooden_rail_2": "  Peut s'étendre à travers l'air pour traverser des creux",
@@ -42,12 +42,12 @@
   "tooltip.spelunkery.player_pos": "Position actuelle: %1$s, %2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  Pointe toujours vers le Nord magnétique",
   "tooltip.spelunkery.magnetic_compass_3": "  Sauf s'il est présente une forte interférence dans le champ magnétique",
-  "tooltip.spelunkery.magnetic_compass_4": "  %1$s + %2$s pour réinitialiser",
+  "tooltip.spelunkery.magnetic_compass_4": "  Utiliser en maintenant %1$s pour réinitialiser",
 
   "tooltip.spelunkery.item_magnet_1": "Actif",
   "tooltip.spelunkery.item_magnet_2": "Inactif",
   "tooltip.spelunkery.item_magnet_3": "  Attire les items à proximité vers le joueur dans un rayon de %1$s blocks quand activf",
-  "tooltip.spelunkery.item_magnet_4": "  %1$s pour alterner entre actif et inactif",
+  "tooltip.spelunkery.item_magnet_4": "  Utiliser pour alterner entre actif et inactif",
 
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "Niveau de minage: Diamant",
   "tooltip.spelunkery.flint_hammer_and_chisel": "Niveau de minage: Pierre",
@@ -55,11 +55,11 @@
   "tooltip.spelunkery.hammer_and_chisel_1": "  Utiliser sur des blocks pour les casser et récupérer",
   "tooltip.spelunkery.hammer_and_chisel_2": "  Peut seulement casser des blocks au correspondant niveau de minage",
   "tooltip.spelunkery.hammer_and_chisel_3": "  Peut seulement casser des blocks pouvant être cassés avec une pioche",
-  "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s + %2$s to convert Brick blocks to Chiseled form",
+  "tooltip.spelunkery.hammer_and_chisel_4": "  Utiliser en maintenant %1$s pour convertir des blocks de briques en leur forme sculptée",
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Points d'Expérience stockés",
   "tooltip.spelunkery.nephrite_charm_2": "  Peut stocker jusqu'à 30 Niveaux",
-  "tooltip.spelunkery.nephrite_charm_3": "  %1$s + %2$s pour stocker, %2$s pour récupérer",
+  "tooltip.spelunkery.nephrite_charm_3": "  Utiliser en maintenant %1$s pour stocker, utiliser pour récupérer",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Peut stocker des Points d'Expérience sous la forme de 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Chaque block peut contenir 100 Charges (~7 niveaux depuis le niveau 0)",
