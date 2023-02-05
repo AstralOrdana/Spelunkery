@@ -12,7 +12,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     //modImplementation("curse.maven:selene-499980:4378793")
 
-    modImplementation("net.mehvahdjukaar:moonlight:${project.moonlight_version}")
+    //modImplementation("net.mehvahdjukaar:moonlight:${project.moonlight_version}")
+    modImplementation("curse.maven:selene-499980:4378793")
     //you could try to use the forge/fabric one here insead but no guaranteed
 }
 
