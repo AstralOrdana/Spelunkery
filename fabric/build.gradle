@@ -29,7 +29,7 @@ dependencies {
 
     //modImplementation("curse.maven:create-fabric-624165:4125637")
 
-    modImplementation("curse.maven:selene-499980:4377795")
+    modImplementation("curse.maven:selene-499980:4378793")
 
     modImplementation("curse.maven:yacl-667299:3987709")
 
