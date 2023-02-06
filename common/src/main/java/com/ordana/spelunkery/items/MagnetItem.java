@@ -5,6 +5,7 @@ import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -39,7 +40,8 @@ public class MagnetItem extends Item {
             CompoundTag compoundTag = stack.getOrCreateTag();
             if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
             if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
-            if (Minecraft.getInstance().options.keyShift.isDown()) {
+            if (Screen.hasShiftDown()) {
+            // if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_3", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {

@@ -10,6 +10,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -79,7 +80,7 @@ public class PortalFluidBucketItem extends BucketItem {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (Minecraft.getInstance().options.keyShift.isDown()) {
+            if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_bucket_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

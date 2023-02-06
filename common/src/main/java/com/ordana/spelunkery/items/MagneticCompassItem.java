@@ -9,6 +9,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
@@ -53,7 +54,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
                 BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             }
-            if (Minecraft.getInstance().options.keyShift.isDown()) {
+            if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(TranslationUtils.MAGNETIC_COMPASS_4.component());

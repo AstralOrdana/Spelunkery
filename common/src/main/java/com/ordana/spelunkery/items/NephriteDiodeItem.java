@@ -6,6 +6,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.BlockItem;
@@ -27,7 +28,7 @@ public class NephriteDiodeItem extends BlockItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (Minecraft.getInstance().options.keyShift.isDown()) {
+            if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_diode_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_diode_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_diode_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

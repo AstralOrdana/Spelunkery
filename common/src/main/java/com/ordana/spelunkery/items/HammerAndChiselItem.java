@@ -12,6 +12,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -60,7 +61,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                 tooltip.add(Component.translatable("tooltip.spelunkery.obsidian_hammer_and_chisel")
                         .setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
 
-            if (Minecraft.getInstance().options.keyShift.isDown()) {
+            if (Screen.hasShiftDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1")
                         .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_2")
