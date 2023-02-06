@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "group": "silver_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_silver_nugget"
+  },
+  "result": "oreganized:silver_nugget",
+  "experience": 0.1,
+  "cookingtime": 12
+}

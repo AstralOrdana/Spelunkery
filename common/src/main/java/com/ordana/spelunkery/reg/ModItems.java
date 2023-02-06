@@ -26,6 +26,7 @@ public class ModItems {
     private static boolean isCompatItemEanbled(String requiredMod) {
         if(Objects.equals(requiredMod, "create")) return requiredMod.equals("create");
         if(Objects.equals(requiredMod, "sullysmod")) return requiredMod.equals("sullysmod");
+        if(Objects.equals(requiredMod, "oreganized")) return requiredMod.equals("oreganized");
         return PlatformHelper.isModLoaded(requiredMod);
     }
 
@@ -46,6 +47,10 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> RAW_ZINC_NUGGET = regItem("raw_zinc_nugget", () ->
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("create") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
+    public static final Supplier<Item> RAW_LEAD_NUGGET = regItem("raw_lead_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("oreganized") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
+    public static final Supplier<Item> RAW_SILVER_NUGGET = regItem("raw_silver_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("oreganized") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
     public static final Supplier<Item> COAL_LUMP = regItem("coal_lump", () ->
             new FuelItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS)), () -> 200));

@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "group": "lead_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_lead_nugget"
+  },
+  "result": "oreganized:lead_nugget",
+  "experience": 0.1,
+  "cookingtime": 23
+}

@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "oreganized:glance"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crushed_lead_ore",
+      "chance": 0.8
+    },
+    {
+      "item": "spelunkery:raw_lead_nugget",
+      "chance": 0.8
+    }
+  ],
+  "processingTime": 250
+}

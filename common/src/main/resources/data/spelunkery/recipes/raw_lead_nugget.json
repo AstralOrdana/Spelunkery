@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "oreganized:raw_lead"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:raw_lead_nugget",
+    "count": 9
+  }
+}

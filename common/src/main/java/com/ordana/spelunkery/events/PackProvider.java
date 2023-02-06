@@ -22,10 +22,12 @@ public class PackProvider extends DynServerResourcesProvider {
     public PackProvider() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
         this.dynamicPack.generateDebugResources = true;
-        this.dynamicPack.addNamespaces("spelunkery");
-        this.dynamicPack.addNamespaces("minecraft");
-        this.dynamicPack.addNamespaces("create");
-        this.dynamicPack.addNamespaces("sullysmod");
+        this.dynamicPack.addNamespaces(
+                "spelunkery",
+                "minecraft",
+                "create",
+                "sullysmod",
+                "oreganized");
     }
 
     @Override
@@ -41,7 +43,7 @@ public class PackProvider extends DynServerResourcesProvider {
     @Override
     public void regenerateDynamicAssets(ResourceManager manager) {
 
-        var crushingMetalRecipes = List.of(
+        var createCrushingMetalRecipes = List.of(
                 "asurine",
                 "asurine_recycling",
                 "crimsite",
@@ -54,7 +56,7 @@ public class PackProvider extends DynServerResourcesProvider {
                 "veridium_recycling"
         );
 
-        for (var recipe : crushingMetalRecipes) {
+        for (var recipe : createCrushingMetalRecipes) {
             ResourceLocation target = new ResourceLocation("create", "crushing/" + recipe);
             ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/" + recipe + ".json");
 
@@ -62,6 +64,26 @@ public class PackProvider extends DynServerResourcesProvider {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
                 if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.RECIPES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var oreganizedCrushingMetalRecipes = List.of(
+                "glance",
+                "glance_recycling"
+        );
+
+        for (var recipe : oreganizedCrushingMetalRecipes) {
+            ResourceLocation target = new ResourceLocation("oreganized", "create/crushing" + recipe);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/recipes/crushing/oreganized" + recipe + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("oreganized") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
                     dynamicPack.addJson(target, bsElement, ResType.RECIPES);
                 }
 
@@ -169,7 +191,7 @@ public class PackProvider extends DynServerResourcesProvider {
                 "deepslate_redstone_ore",
                 "deepslate_coal_ore",
                 "diamond_ore",
-                "emerald_ore",  
+                "emerald_ore",
                 "lapis_ore",
                 "redstone_ore"
         );
@@ -223,6 +245,27 @@ public class PackProvider extends DynServerResourcesProvider {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
                 if (CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
+        var oreganizedMetalLoot = List.of(
+                "deepslate_lead_ore",
+                "deepslate_silver_ore"
+        );
+
+        for (var loot : oreganizedMetalLoot) {
+            ResourceLocation target = new ResourceLocation("oreganized", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/oreganized/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("oreganized") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
                     dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
                 }
 
