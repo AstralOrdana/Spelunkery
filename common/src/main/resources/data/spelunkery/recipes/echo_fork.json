@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "I#I",
+    " X "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:echo_shard"
+    },
+    "#": {
+      "item": "minecraft:sculk_vein"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "spelunkery:echo_fork"
+  }
+}

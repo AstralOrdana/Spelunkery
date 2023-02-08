@@ -65,7 +65,6 @@ public class ModItems {
     public static final Supplier<Item> ROUGH_JADE_SHARD = regItem("rough_jade_shard", () ->
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("sullysmod") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
 
-
     public static final Supplier<Item> ROUGH_CINNABAR = regItem("rough_cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> ROUGH_LAZURITE = regItem("rough_lazurite", () ->
@@ -123,10 +122,10 @@ public class ModItems {
             new HammerAndChiselItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(1024)));
     public static final Supplier<Item> DEPTH_GAUGE = regItem("depth_gauge", () ->
             new DepthGaugeItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
-    public static final Supplier<Item> ITEM_MAGNET = regItem("item_magnet", () ->
-            new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> MAGNETIC_COMPASS = regItem("magnetic_compass", () ->
             new MagneticCompassItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+    public static final Supplier<Item> ITEM_MAGNET = regItem("item_magnet", () ->
+            new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottleitem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottleitem.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
 
@@ -134,6 +133,8 @@ public class ModItems {
             new PortalFluidBucketItem(ModFluids.PORTAL_FLUID.get(), (new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1))));
     public static final Supplier<Item> SALT_BUCKET = regItem("salt_bucket", () ->
             new SaltBucketItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final Supplier<Item> ECHO_FORK = regItem("echo_fork", () ->
+            new EchoForkItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
             new GlowstickItem(null, ModBlocks.GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 

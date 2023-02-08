@@ -33,11 +33,12 @@ public class CommonConfigs {
     public static final Supplier<Boolean> ENABLE_SPOROPHYTES;
     public static final Supplier<Boolean> DARK_FOREST_PORTABELLAS;
 
+    public static final Supplier<Integer> ECHO_FORK_RANGE;
+    public static final Supplier<Integer> ECHO_DURRATION;
+    public static final Supplier<Integer> ECHO_COOLDOWN;
+
     public static final Supplier<Integer> MAGNET_RANGE;
     public static final Supplier<Integer> MAGNETITE_RANGE;
-
-
-    public static Supplier<Double> DOUBLE_CONFIG;
 
 
     static {
@@ -55,6 +56,17 @@ public class CommonConfigs {
         SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
         builder.pop();
 
+        builder.push("echo_fork");
+        ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 128);
+        ECHO_COOLDOWN = builder.define("echo_fork_range", 600, 1, 72000);
+        ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
+        builder.pop();
+
+        builder.push("magnets");
+        MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
+        MAGNETITE_RANGE = builder.define("magnetite_range", 128, 1, 512);
+        builder.pop();
+
         builder.push("nether_portals");
         FlINT_AND_STEEL_PORTAL_LIGHTING = builder.define("flint_and_steel_portal_lighting", true);
         CRYING_OBSIDIAN_PORTAL_FLUID = builder.define("crying_obsidian_dimensional_tears", true);
@@ -69,11 +81,6 @@ public class CommonConfigs {
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         ENABLE_SPOROPHYTES = builder.define("enable_sporophytes", true);
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
-        builder.pop();
-
-        builder.push("magnets");
-        MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
-        MAGNETITE_RANGE = builder.define("magnetite_range", 128, 1, 512);
         builder.pop();
 
         //fabric specific

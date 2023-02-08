@@ -9,6 +9,16 @@
           "children": [
             {
               "type": "minecraft:item",
+              "name": "spelunkery:echo_fork",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.125
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
               "name": "spelunkery:nephrite_chunk",
               "functions": [
                 {
@@ -51,7 +61,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:random_chance",
-                  "chance": 0.1
+                  "chance": 0.2
                 }
               ]
             }

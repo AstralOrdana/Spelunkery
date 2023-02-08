@@ -39,6 +39,9 @@
 
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
+  "tooltip.spelunkery.echo_fork_1": "  Highlights living entities within %1$s blocks for %2$s ticks",
+  "tooltip.spelunkery.echo_fork_2": "  Cooldown of %1$s ticks",
+
   "tooltip.spelunkery.magnetite_pos": "Your compass is being drawn toward %1$s, %2$s",
   "tooltip.spelunkery.player_pos": "Current Location: %1$s, %2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  Always points toward Magnetic North",
@@ -164,6 +167,7 @@
   "block.spelunkery.nephrite_spout": "Nephrite Fountain",
   "block.spelunkery.nephrite_diode": "Nephrite Diode",
   "item.spelunkery.nephrite_charm": "Nephrite Charm",
+  "item.spelunkery.echo_fork": "Echo Fork",
 
   "block.spelunkery.tangle_roots": "Tangle Roots",
   "block.spelunkery.sporophyte": "Sporophyte",
