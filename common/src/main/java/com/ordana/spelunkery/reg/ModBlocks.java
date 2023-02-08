@@ -242,9 +242,9 @@ public class ModBlocks {
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
             new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_WHITE_INKCAP_MUSHROOM::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
-            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MUSHGLOOM = regWithItem("mushgloom", () ->
-            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 1)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
             new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
 
@@ -259,9 +259,9 @@ public class ModBlocks {
     public static final Supplier<Block> POTTED_WHITE_INKCAP_MUSHROOM = regBlock("potted_white_inkcap_mushroom", () ->
             new FlowerPotBlock(WHITE_INKCAP_MUSHROOM.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
     public static final Supplier<Block> POTTED_PHOSPHOR_FUNGUS = regBlock("potted_phosphor_fungus", () ->
-            new FlowerPotBlock(PHOSPHOR_FUNGUS.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
+            new FlowerPotBlock(PHOSPHOR_FUNGUS.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get()).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> POTTED_MUSHGLOOM = regBlock("potted_mushgloom", () ->
-            new FlowerPotBlock(MUSHGLOOM.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
+            new FlowerPotBlock(MUSHGLOOM.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get()).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> POTTED_MILLY_BUBCAP = regBlock("potted_milly_bubcap", () ->
             new FlowerPotBlock(MILLY_BUBCAP.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
     public static final Supplier<Block> POTTED_SPOROPHYTE = regBlock("potted_sporophyte", () ->

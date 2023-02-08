@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "modid": "create",
+        "type": "forge:mod_loaded"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:copper_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:copper_ingot"
+  }
+}

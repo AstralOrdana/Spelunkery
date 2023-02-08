@@ -276,6 +276,7 @@ public class PackProvider extends DynServerResourcesProvider {
         var vanillaMetalLoot = List.of(
                 "deepslate_gold_ore",
                 "deepslate_iron_ore",
+                "deepslate_copper_ore",
                 "nether_gold_ore"
         );
 
@@ -294,24 +295,6 @@ public class PackProvider extends DynServerResourcesProvider {
             }
         }
 
-        var vanillaCreateMetalLoot = List.of(
-                "deepslate_copper_ore"
-        );
-
-        for (var loot : vanillaCreateMetalLoot) {
-            ResourceLocation target = new ResourceLocation("minecraft", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/create/" + loot + ".json");
-
-            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
-                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
-
-                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
-                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
-                }
-
-            } catch (Exception ignored) {
-            }
-        }
 
         var createMetalLoot = List.of(
                 "deepslate_zinc_ore"

@@ -64,6 +64,7 @@ public class EchoForkItem extends Item {
     public void tollFork(Player player, ItemStack stack, Level level) {
         if(!player.level.isClientSide && stack.getItem() instanceof EchoForkItem){
             level.playSound(null, player.blockPosition(), SoundEvents.SCULK_CLICKING, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(null, player.blockPosition(), SoundEvents.BELL_RESONATE, SoundSource.BLOCKS, 1.0f, 1.0f);
 
             AABB area = (new AABB(player.blockPosition())).inflate(CommonConfigs.ECHO_FORK_RANGE.get());
             List<LivingEntity> entities = level.getEntities(EntityTypeTest.forClass(LivingEntity.class), area,
