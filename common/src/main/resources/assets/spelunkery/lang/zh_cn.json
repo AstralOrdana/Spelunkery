@@ -14,15 +14,15 @@
   "tooltip.spelunkery.salt_1": "磨碎岩盐即可获得",
   "tooltip.spelunkery.salt_2": "亡灵们不可逾越的鸿沟",
 
-  "tooltip.spelunkery.grindstone_1": "  手持待加工宝石点按%1$s来进行打磨",
-  "tooltip.spelunkery.grindstone_2": "  按住%1$s并点按%2$s则可打磨整组宝石",
+  "tooltip.spelunkery.grindstone_1": "  手持待加工宝石对砂轮点按使用键来进行打磨",
+  "tooltip.spelunkery.grindstone_2": "  同时按住%1$s则可打磨整组宝石",
 
   "tooltip.spelunkery.salt_bucket_1": "当前盛有%1$s份宝石",
   "tooltip.spelunkery.salt_bucket_2": "在熔炉中烧煮水桶即可获得",
 
   "tooltip.spelunkery.rope_ladder_1": "  可供攀爬，可放置于方块四侧",
   "tooltip.spelunkery.rope_ladder_2": "  手持绳梯对已放置的绳梯按下使用键可自动将其向下延伸放置",
-  "tooltip.spelunkery.rope_ladder_3": "  按住%1$s并对最顶部的绳梯点按%2$s来卷绕整条绳梯，卷起的绳梯将自动收入物品栏",
+  "tooltip.spelunkery.rope_ladder_3": "  按住%1$s并对最顶部的绳梯点按使用键来卷绕整条绳梯，卷起的绳梯将自动收入物品栏",
 
   "tooltip.spelunkery.wooden_rail_1": "  手持木轨对已放置的木轨按下使用键可自动将其向前延伸放置",
   "tooltip.spelunkery.wooden_rail_2": "  若下方为空气方块，放置不受影响。可借此搭建跨过间隙的轨道",
@@ -38,17 +38,21 @@
   "tooltip.spelunkery.crying_obsidian": "手持玻璃瓶右击来获取维度之泪",
 
   "tooltip.spelunkery.depth_gauge_depth": "当前海拔：Y = %1$s",
+  
+  "tooltip.spelunkery.echo_fork_1": "  在%2$s秒内高亮显示%1$s格范围中的所有生物实体",
+  "tooltip.spelunkery.echo_fork_2": "  冷却时间：%1$s秒",
+  "tooltip.spelunkery.echo_fork_3": "  按住%1$s并点按使用键可清除发光效果",
 
   "tooltip.spelunkery.magnetite_pos": "你的指南针正在受到位于%1$s，%2$s的磁场干扰",
   "tooltip.spelunkery.player_pos": "当前位置：%1$s，%2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  永远指向磁北",
   "tooltip.spelunkery.magnetic_compass_3": "  强磁场会对指针的指向造成干扰",
-  "tooltip.spelunkery.magnetic_compass_4": "  按住%1$s并点按%2$s以重置",
+  "tooltip.spelunkery.magnetic_compass_4": "  按住%1$s并点按使用键以重置",
 
   "tooltip.spelunkery.item_magnet_1": "已激活",
   "tooltip.spelunkery.item_magnet_2": "未激活",
   "tooltip.spelunkery.item_magnet_3": "  激活后，将半径%1$s格 内的物品自动吸向玩家",
-  "tooltip.spelunkery.item_magnet_4": "  手持并点按%1$s来切换激活状态",
+  "tooltip.spelunkery.item_magnet_4": "  手持并点按使用键来切换激活状态",
 
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "挖掘等级：钻石",
   "tooltip.spelunkery.flint_hammer_and_chisel": "挖掘等级：石头",
@@ -56,11 +60,11 @@
   "tooltip.spelunkery.hammer_and_chisel_1": "  对方块使用可将其精准凿落",
   "tooltip.spelunkery.hammer_and_chisel_2": "  仅对挖掘等级相吻合或更低的方块有效",
   "tooltip.spelunkery.hammer_and_chisel_3": "  仅对适合用镐进行开采的方块有效",
-  "tooltip.spelunkery.hammer_and_chisel_4": "  按住%1$s并点按%2$s可将砖类方块变为对应的錾制形式",
+  "tooltip.spelunkery.hammer_and_chisel_4": "  按住%1$s并点按使用键可将砖类方块变为对应的錾制形式",
 
   "tooltip.spelunkery.nephrite_charm_1": "已存储%1$s/%2$s点经验",
   "tooltip.spelunkery.nephrite_charm_2": "  至多可存储30级经验",
-  "tooltip.spelunkery.nephrite_charm_3": "  点按%2$s来取出经验，按住%1$s并点按%2$s则可存储经验",
+  "tooltip.spelunkery.nephrite_charm_3": "  点按使用键来取出经验，同时按住%1$s则可存储经验",
 
   "tooltip.spelunkery.carved_nephrite_1": "  以“能量”的形式存储经验值",
   "tooltip.spelunkery.carved_nephrite_2": "  每一块可存储100点能量（约等于玩家7级时所拥有的经验值）",
@@ -108,6 +112,10 @@
   "item.spelunkery.raw_copper_nugget": "粗铜粒",
   "item.spelunkery.raw_gold_nugget": "粗金粒",
   "item.spelunkery.raw_zinc_nugget": "粗锌粒",
+  "item.spelunkery.raw_lead_nugget": "粗铅粒",
+  "item.spelunkery.raw_silver_nugget": "粗银粒",
+  
+  "item.spelunkery.copper_nugget": "铜粒",
 
   "item.spelunkery.coal_lump": "煤炭小块",
   "item.spelunkery.rough_lazurite_shard": "待加工青金石碎片",
@@ -162,6 +170,7 @@
   "block.spelunkery.nephrite_spout": "软玉喷流口",
   "block.spelunkery.nephrite_diode": "软玉二极管",
   "item.spelunkery.nephrite_charm": "软玉灵符",
+  "item.spelunkery.echo_fork": "回声叉",
 
   "block.spelunkery.tangle_roots": "缠根",
   "block.spelunkery.sporophyte": "孢子体",
