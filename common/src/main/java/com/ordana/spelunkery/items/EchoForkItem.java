@@ -44,8 +44,8 @@ public class EchoForkItem extends Item {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (Screen.hasShiftDown()) {
             // if (Minecraft.getInstance().options.keyShift.isDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_1", CommonConfigs.ECHO_FORK_RANGE.get(), CommonConfigs.ECHO_DURRATION.get()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_2", CommonConfigs.ECHO_COOLDOWN.get()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_1", CommonConfigs.ECHO_FORK_RANGE.get(), CommonConfigs.ECHO_DURRATION.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_2", CommonConfigs.ECHO_COOLDOWN.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {
                 tooltip.add(TranslationUtils.CROUCH.component());
             }
@@ -56,13 +56,16 @@ public class EchoForkItem extends Item {
     @NotNull
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        tollFork(player, stack, level);
-        player.getCooldowns().addCooldown(this, CommonConfigs.ECHO_COOLDOWN.get());
+        if (player.isSecondaryUseActive()) removeGlow(player, stack, level);
+        else {
+            tollFork(player, stack, level);
+            player.getCooldowns().addCooldown(this, CommonConfigs.ECHO_COOLDOWN.get());
+        }
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
     }
 
     public void tollFork(Player player, ItemStack stack, Level level) {
-        if(!player.level.isClientSide && stack.getItem() instanceof EchoForkItem){
+        if (!player.level.isClientSide && stack.getItem() instanceof EchoForkItem) {
             level.playSound(null, player.blockPosition(), SoundEvents.SCULK_CLICKING, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.playSound(null, player.blockPosition(), SoundEvents.BELL_RESONATE, SoundSource.BLOCKS, 1.0f, 1.0f);
 
@@ -72,6 +75,19 @@ public class EchoForkItem extends Item {
             );
 
             entities.forEach(item -> item.addEffect(new MobEffectInstance(MobEffects.GLOWING, CommonConfigs.ECHO_DURRATION.get(), 0, true, false, true)));
+        }
+    }
+
+    public void removeGlow(Player player, ItemStack stack, Level level) {
+        if (!player.level.isClientSide && stack.getItem() instanceof EchoForkItem) {
+            level.playSound(null, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.BLOCKS, 1.0f, 2.0f);
+
+            AABB area = (new AABB(player.blockPosition())).inflate(CommonConfigs.ECHO_FORK_RANGE.get() + 4);
+            List<LivingEntity> entities = level.getEntities(EntityTypeTest.forClass(LivingEntity.class), area,
+                    LivingEntity::isAlive
+            );
+
+            entities.forEach(item -> item.removeEffect(MobEffects.GLOWING));
         }
     }
 }
