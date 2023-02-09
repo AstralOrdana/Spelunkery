@@ -40,8 +40,8 @@
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
   "tooltip.spelunkery.echo_fork_1": "  Highlights living entities within %1$s blocks for %2$s seconds",
-  "tooltip.spelunkery.echo_fork_2": "  %1$s and use to clear Glowing effect",
-  "tooltip.spelunkery.echo_fork_3": "  Cooldown: %1$s seconds",
+  "tooltip.spelunkery.echo_fork_2": "  Cooldown: %1$s seconds",
+  "tooltip.spelunkery.echo_fork_3": "  %1$s and use to clear Glowing effect",
 
   "tooltip.spelunkery.magnetite_pos": "Your compass is being drawn toward %1$s, %2$s",
   "tooltip.spelunkery.player_pos": "Current Location: %1$s, %2$s",

@@ -49,6 +49,7 @@ public enum TranslationUtils {
     ITEM_MAGNET_4       ("tooltip.spelunkery.item_magnet_4", Styles.GRAY.val),
     HAMMER_AND_CHISEL_4 ("tooltip.spelunkery.hammer_and_chisel_4", Styles.GRAY.val, Components.SNEAK.val),
     NEPHRITE_CHARM_3    ("tooltip.spelunkery.nephrite_charm_3", Styles.GRAY.val, Components.SNEAK.val),
+    ECHO_FORK_3         ("tooltip.spelunkery.echo_fork_3", Styles.GRAY.val, Components.SNEAK.val),
     ;
 
     private final MutableComponent component;

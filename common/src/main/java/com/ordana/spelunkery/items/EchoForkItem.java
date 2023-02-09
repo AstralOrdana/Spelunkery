@@ -45,8 +45,8 @@ public class EchoForkItem extends Item {
             if (Screen.hasShiftDown()) {
             // if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_1", CommonConfigs.ECHO_FORK_RANGE.get(), CommonConfigs.ECHO_DURRATION.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_3", CommonConfigs.ECHO_COOLDOWN.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_2", CommonConfigs.ECHO_COOLDOWN.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(TranslationUtils.ECHO_FORK_3.component());
             } else {
                 tooltip.add(TranslationUtils.CROUCH.component());
             }
