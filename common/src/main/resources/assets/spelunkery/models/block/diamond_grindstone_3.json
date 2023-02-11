@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "spelunkery:block/diamond_grindstone",
+		"1": "spelunkery:block/diamond_grindstone_3",
 		"2": "minecraft:block/spruce_planks",
-		"particle": "spelunkery:block/diamond_grindstone"
+		"particle": "spelunkery:block/diamond_grindstone_3"
 	},
 	"elements": [
 		{

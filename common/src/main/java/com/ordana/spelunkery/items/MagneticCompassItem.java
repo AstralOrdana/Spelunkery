@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
@@ -54,7 +55,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
                 BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             }
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetic_compass_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(TranslationUtils.MAGNETIC_COMPASS_4.component());

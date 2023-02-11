@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.ordana.spelunkery.reg.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -94,7 +95,7 @@ public class DiamondGrindstoneBlock extends GrindstoneBlock {
 
     public DiamondGrindstoneBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL).setValue(ModBlockProperties.DEPLETION, 0));
     }
 
     public RenderShape getRenderShape(BlockState state) {
@@ -169,7 +170,7 @@ public class DiamondGrindstoneBlock extends GrindstoneBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{FACING, FACE});
+        builder.add(FACING, FACE, ModBlockProperties.DEPLETION);
     }
 
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type) {

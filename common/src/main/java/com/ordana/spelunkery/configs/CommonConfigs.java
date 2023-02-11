@@ -16,6 +16,7 @@ public class CommonConfigs {
     public static final Supplier<Boolean> CREATIVE_TAB;
     public static final Supplier<Boolean> CROSS_SECTION;
     public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
+    public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
     public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
@@ -50,6 +51,7 @@ public class CommonConfigs {
         CREATIVE_TAB = builder.define("creative_tab", false);
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
         INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
+        DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 1, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
@@ -58,7 +60,7 @@ public class CommonConfigs {
 
         builder.push("echo_fork");
         ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 128);
-        ECHO_COOLDOWN = builder.define("echo_fork_range", 600, 1, 72000);
+        ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
         builder.pop();
 

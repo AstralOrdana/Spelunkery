@@ -2,3 +2,6 @@ accessWidener   v2  named
 
 #Ore Veinifier
 accessible class net/minecraft/world/level/levelgen/OreVeinifier$VeinType
+
+#Get Key
+accessible field net/minecraft/client/KeyMapping key Lcom/mojang/blaze3d/platform/InputConstants$Key;

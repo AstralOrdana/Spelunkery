@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.mixins;
 
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
@@ -42,7 +43,7 @@ public class TooltipMixin {
                 tooltip.add(Component.translatable("tooltip.spelunkery.crying_obsidian").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             }
             if (stack.is(Items.GRINDSTONE) || stack.is(ModBlocks.DIAMOND_GRINDSTONE.get().asItem())) {
-                if (Screen.hasShiftDown()) {
+                if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                     tooltip.add(TranslationUtils.GRINDSTONE_1.component());
                     tooltip.add(TranslationUtils.GRINDSTONE_2.component());
                 } else {

@@ -1,10 +1,4 @@
 {
-  "conditions": [
-    {
-      "modid": "create",
-      "type": "forge:mod_loaded"
-    }
-  ],
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",

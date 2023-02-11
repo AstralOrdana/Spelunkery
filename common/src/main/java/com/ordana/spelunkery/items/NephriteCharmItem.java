@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.utils.EnchantmentUtils;
 import com.ordana.spelunkery.utils.TranslationUtils;
@@ -37,7 +38,7 @@ public class NephriteCharmItem extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_1", getStoredXP(stack), "1395").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(TranslationUtils.NEPHRITE_CHARM_3.component());
             } else {

@@ -25,6 +25,8 @@ public class ModTags {
     public static final TagKey<Item> GRINDABLE = registerItemTag("grindable");
     public static final TagKey<Item> DIAMOND_GRINDABLE = registerItemTag("diamond_grindable");
     public static final TagKey<Item> GLOWSTICKS = registerItemTag("glowsticks");
+    public static final TagKey<Item> ANVIL_REPAIR_ITEM = registerItemTag("anvil_repair_item");
+    public static final TagKey<Item> GRINDSTONE_REPAIR_ITEM = registerItemTag("grindstone_repair_item");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.blocks.WoodenRailBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.utils.TranslationUtils;
@@ -36,7 +37,7 @@ public class WoodenRailBlockItem extends BlockItem {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.wooden_rail_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.wooden_rail_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {

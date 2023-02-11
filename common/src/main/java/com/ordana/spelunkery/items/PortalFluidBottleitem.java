@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.utils.LevelHelper;
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.ClientConfigs;
@@ -83,7 +84,7 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
 
             if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

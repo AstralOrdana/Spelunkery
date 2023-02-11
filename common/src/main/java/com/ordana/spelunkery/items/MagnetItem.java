@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.utils.TranslationUtils;
@@ -40,7 +41,7 @@ public class MagnetItem extends Item {
             CompoundTag compoundTag = stack.getOrCreateTag();
             if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
             if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
             // if (Minecraft.getInstance().options.keyShift.isDown()) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_3", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

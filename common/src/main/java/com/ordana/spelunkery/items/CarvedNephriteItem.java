@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
@@ -27,7 +28,7 @@ public class CarvedNephriteItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            if (Screen.hasShiftDown()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.carved_nephrite_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

@@ -1,9 +1,11 @@
 package com.ordana.spelunkery.events;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.blocks.DiamondGrindstoneBlock;
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
+import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
@@ -11,11 +13,13 @@ import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -54,6 +58,7 @@ public class ModEvents {
         EVENTS.add(ModEvents::portalCauldronLogic);
         EVENTS.add(ModEvents::saltBoiling);
         EVENTS.add(ModEvents::polishingRecipe);
+        EVENTS.add(ModEvents::anvilRepairing);
     }
 
     public static InteractionResult onBlockCLicked(ItemStack stack, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
@@ -178,15 +183,19 @@ public class ModEvents {
                     int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
                     int xpAmount = polishingRecipe.getExperience();
                     if (stack.is(ingredient.getItem())) {
-                        if (polishingRecipe.isRequiresDiamondGrindstone() && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get())) {
+                        ItemStack resultItem = result.copy();
+                        ItemStack byproductItem = byproduct.copy();
+                        if (player.isShiftKeyDown() && stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
+                            level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) - 1));
+                            if (!player.getAbilities().instabuild) stack.shrink(1);
+                        }
+                        else if (state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) == 3 && polishingRecipe.isRequiresDiamondGrindstone() || (polishingRecipe.isRequiresDiamondGrindstone() && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get()))) {
                             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
                             player.swing(hand);
                             level.playSound(player, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
                             return InteractionResult.sidedSuccess(level.isClientSide);
                         }
-                        ItemStack resultItem = result.copy();
-                        ItemStack byproductItem = byproduct.copy();
-                        if (player.isShiftKeyDown()) {
+                        else if (player.isShiftKeyDown()) {
                             int ingredientCount = stack.getCount();
                             for (int b = 0; b <= ingredientCount; b++) {
                                 byproductCount = byproductCount + random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
@@ -227,9 +236,32 @@ public class ModEvents {
                         else ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, byproductItem), UniformInt.of(3, 5));
                         player.swing(hand);
                         level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
+                        if (random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get()) == 1) {
+                            if (polishingRecipe.isRequiresDiamondGrindstone() && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) < 3) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+                        }
                         return InteractionResult.sidedSuccess(level.isClientSide);
                     }
                 }
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
+    private static InteractionResult anvilRepairing(Item item, ItemStack stack, BlockPos pos, BlockState state,
+                                                 Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        if (stack.is(ModTags.ANVIL_REPAIR_ITEM)) {
+            if (state.is(BlockTags.ANVIL) && !state.is(Blocks.ANVIL)) {
+                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, state), UniformInt.of(3, 5));
+                if (player instanceof ServerPlayer serverPlayer) {
+                    if (!player.getAbilities().instabuild) stack.shrink(1);
+                    if (state.is(Blocks.CHIPPED_ANVIL)) level.setBlockAndUpdate(pos, Blocks.ANVIL.defaultBlockState().getBlock().withPropertiesOf(state));
+                    else if (state.is(Blocks.DAMAGED_ANVIL)) level.setBlockAndUpdate(pos, Blocks.CHIPPED_ANVIL.defaultBlockState().getBlock().withPropertiesOf(state));
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
             }
         }
         return InteractionResult.PASS;

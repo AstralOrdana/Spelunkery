@@ -1,55 +1,223 @@
 {
   "variants": {
-    "face=ceiling,facing=east": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=ceiling,facing=east,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 180,
       "y": 270
     },
-    "face=ceiling,facing=north": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=ceiling,facing=north,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 180,
       "y": 180
     },
-    "face=ceiling,facing=south": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=ceiling,facing=south,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 180
     },
-    "face=ceiling,facing=west": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=ceiling,facing=west,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 180,
       "y": 90
     },
-    "face=floor,facing=east": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=floor,facing=east,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "y": 90
     },
-    "face=floor,facing=north": {
-      "model": "spelunkery:block/diamond_grindstone"
+    "face=floor,facing=north,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0"
     },
-    "face=floor,facing=south": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=floor,facing=south,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "y": 180
     },
-    "face=floor,facing=west": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=floor,facing=west,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "y": 270
     },
-    "face=wall,facing=east": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=wall,facing=east,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 90,
       "y": 90
     },
-    "face=wall,facing=north": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=wall,facing=north,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 90
     },
-    "face=wall,facing=south": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=wall,facing=south,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
       "x": 90,
       "y": 180
     },
-    "face=wall,facing=west": {
-      "model": "spelunkery:block/diamond_grindstone",
+    "face=wall,facing=west,depletion=0": {
+      "model": "spelunkery:block/diamond_grindstone_0",
+      "x": 90,
+      "y": 270
+    },
+
+
+
+    "face=ceiling,facing=east,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=north,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=south,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 180
+    },
+    "face=ceiling,facing=west,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 180,
+      "y": 90
+    },
+    "face=floor,facing=east,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "y": 90
+    },
+    "face=floor,facing=north,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1"
+    },
+    "face=floor,facing=south,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "y": 180
+    },
+    "face=floor,facing=west,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "y": 270
+    },
+    "face=wall,facing=east,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=north,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 90
+    },
+    "face=wall,facing=south,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west,depletion=1": {
+      "model": "spelunkery:block/diamond_grindstone_1",
+      "x": 90,
+      "y": 270
+    },
+
+
+
+    "face=ceiling,facing=east,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=north,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=south,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 180
+    },
+    "face=ceiling,facing=west,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 180,
+      "y": 90
+    },
+    "face=floor,facing=east,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "y": 90
+    },
+    "face=floor,facing=north,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2"
+    },
+    "face=floor,facing=south,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "y": 180
+    },
+    "face=floor,facing=west,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "y": 270
+    },
+    "face=wall,facing=east,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=north,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 90
+    },
+    "face=wall,facing=south,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west,depletion=2": {
+      "model": "spelunkery:block/diamond_grindstone_2",
+      "x": 90,
+      "y": 270
+    },
+
+
+
+    "face=ceiling,facing=east,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=north,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=south,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 180
+    },
+    "face=ceiling,facing=west,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 180,
+      "y": 90
+    },
+    "face=floor,facing=east,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "y": 90
+    },
+    "face=floor,facing=north,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3"
+    },
+    "face=floor,facing=south,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "y": 180
+    },
+    "face=floor,facing=west,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "y": 270
+    },
+    "face=wall,facing=east,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=north,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 90
+    },
+    "face=wall,facing=south,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west,depletion=3": {
+      "model": "spelunkery:block/diamond_grindstone_3",
       "x": 90,
       "y": 270
     }
