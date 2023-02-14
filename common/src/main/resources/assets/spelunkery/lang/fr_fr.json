@@ -38,6 +38,10 @@
 
   "tooltip.spelunkery.depth_gauge_depth": "Altitude actuelle: Y = %1$s",
 
+  "tooltip.spelunkery.echo_fork_1": "  Surbriller les entités vivantes dans rayon de %1$s blocks pour %2$s secondes",
+  "tooltip.spelunkery.echo_fork_2": "  Délai: %1$s secondes",
+  "tooltip.spelunkery.echo_fork_3": "  Utiliser en maintenant %1$s pour se retirer l'effet de surbrillance",
+
   "tooltip.spelunkery.magnetite_pos": "Votre boussole est attirée vers la position %1$s, %2$s",
   "tooltip.spelunkery.player_pos": "Position actuelle: %1$s, %2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  Pointe toujours vers le Nord magnétique",
@@ -107,6 +111,10 @@
   "item.spelunkery.raw_copper_nugget": "Pépite de cuivre brut",
   "item.spelunkery.raw_gold_nugget": "Pépite d'or brut",
   "item.spelunkery.raw_zinc_nugget": "Pépite de zinc brut",
+  "item.spelunkery.raw_lead_nugget": "Pépite de plomb brut",
+  "item.spelunkery.raw_silver_nugget": "Pépite d'argent brut",
+
+  "item.spelunkery.copper_nugget": "Pépite de cuivre",
 
   "item.spelunkery.rough_lazurite_shard": "Fragment de lazulite brute",
   "item.spelunkery.rough_cinnabar_shard": "Fragment de cinabre brut",
@@ -120,6 +128,7 @@
   "item.spelunkery.rough_emerald": "Émeraude brute",
 
   "item.spelunkery.coal_lump": "Fragment de charbon",
+
   "block.spelunkery.rough_lazurite_block": "Block de lazulite brute",
   "block.spelunkery.rough_cinnabar_block": "Block de cinabre brut",
   "block.spelunkery.rough_diamond_block": "Block de diamant brut",
@@ -161,6 +170,7 @@
   "block.spelunkery.nephrite_spout": "Fontaine de néphrite",
   "block.spelunkery.nephrite_diode": "Valve de néphrite",
   "item.spelunkery.nephrite_charm": "Amulette de néphrite",
+  "item.spelunkery.echo_fork": "Echo Fork",
 
   "block.spelunkery.tangle_roots": "Racines entortillées",
   "block.spelunkery.sporophyte": "Sporophyte",
@@ -176,7 +186,6 @@
   "block.spelunkery.phosphor_fungus": "Champignon phosphorescent",
   "block.spelunkery.mushgloom": "Champiluant",
   "block.spelunkery.milly_bubcap": "Champignon coprin chevelu",
-
 
   "block.spelunkery.potted_inkcap_mushroom": "Coprin en pot",
   "block.spelunkery.potted_white_inkcap_mushroom": "Coprin pale en pot",
@@ -203,7 +212,7 @@
   "item.spelunkery.flint_hammer_and_chisel": "Marteau et burin en silex",
   "item.spelunkery.obsidian_hammer_and_chisel": "Marteau et burin en obsidienne",
 
-  "block.spelunkery.diamond_grindstone": "Meule en obsidienne",
+  "block.spelunkery.diamond_grindstone": "Meule à diamant",
 
   "block.spelunkery.red_glowstick": "Bâton luminescent rouge",
   "block.spelunkery.orange_glowstick": "Bâton luminescent orange",
