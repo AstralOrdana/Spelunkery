@@ -73,7 +73,7 @@ public abstract class SlimeMixin extends Mob {
                     if (random.nextInt(3) <= this.getSize()) this.spawnAtLocation(Items.SLIME_BALL);
                 }
 
-                if (random.nextInt(CommonConfigs.SLIME_GROWTH_CHANCE.get()) == 1 && this.getSize() < CommonConfigs.SLIME_GROWTH_MAX.get() && CommonConfigs.SLIME_GROWTH.get()) this.setSize(this.getSize() + 1, false);
+                if (random.nextInt(CommonConfigs.SLIME_GROWTH_CHANCE.get()) == 1 && this.getSize() <= CommonConfigs.SLIME_GROWTH_MAX.get() && CommonConfigs.SLIME_GROWTH.get()) this.setSize(this.getSize() + 1, false);
             }
         }
     }
