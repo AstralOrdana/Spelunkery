@@ -33,6 +33,9 @@ public class TooltipMixin {
     @Inject(method = "appendHoverText", at = @At("HEAD"))
     private void recoveryCompassTooltip(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            if (stack.is(Items.REDSTONE)) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.redstone").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED)));
+            }
             if (stack.is(ModTags.KEEP_ON_DEATH)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.keep_on_death").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
             }

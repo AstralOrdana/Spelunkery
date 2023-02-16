@@ -19,6 +19,7 @@ public class ModTags {
     public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
     public static final TagKey<Block> CHISELABLE = registerBlockTag("chiselable");
     public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
+    public static final TagKey<Block> BLAST_MINER_IMMUNE = registerBlockTag("blast_miner_immune");
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
@@ -27,6 +28,7 @@ public class ModTags {
     public static final TagKey<Item> GLOWSTICKS = registerItemTag("glowsticks");
     public static final TagKey<Item> ANVIL_REPAIR_ITEM = registerItemTag("anvil_repair_item");
     public static final TagKey<Item> GRINDSTONE_REPAIR_ITEM = registerItemTag("grindstone_repair_item");
+    public static final TagKey<Item> SLIME_FOOD = registerItemTag("slime_food");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

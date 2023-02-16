@@ -25,7 +25,6 @@
     "minecraft:savanna",
     "minecraft:jungle",
     "minecraft:badlands",
-    "minecraft:desert",
     "minecraft:wooded_badlands",
     "minecraft:jagged_peaks",
     "minecraft:stony_peaks",
@@ -39,9 +38,6 @@
     "minecraft:bamboo_jungle",
     "minecraft:eroded_badlands",
     "minecraft:windswept_savanna",
-    "minecraft:frozen_peaks",
-    "minecraft:dripstone_caves",
-    "minecraft:lush_caves",
-    "minecraft:deep_dark"
+    "minecraft:frozen_peaks"
   ]
 }

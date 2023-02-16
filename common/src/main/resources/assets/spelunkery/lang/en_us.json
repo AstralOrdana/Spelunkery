@@ -36,6 +36,7 @@
   "tooltip.spelunkery.portal_fluid_bucket_3": "  Obtain by filling a cauldron with Dimensional Tear Bottles",
 
   "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Dimensional Tears",
+  "tooltip.spelunkery.redstone": "Can be obtained by polishing Rough Cinnabar on a Grindstone",
 
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
 
@@ -209,11 +210,14 @@
   "item.spelunkery.portal_fluid_bucket": "Bucket of Dimensional Tears",
   "block.spelunkery.portal_fluid": "Dimensional Tears",
   "fluid.spelunkery.portal_fluid": "Dimensional Tears",
+  "fluid_type.spelunkery.portal_fluid": "Dimensional Tears",
   "item.spelunkery.depth_gauge": "Depth Gauge",
   "item.spelunkery.flint_hammer_and_chisel": "Flint Hammer and Chisel",
   "item.spelunkery.obsidian_hammer_and_chisel": "Obsidian Hammer and Chisel",
 
   "block.spelunkery.diamond_grindstone": "Diamond Grindstone",
+
+  "block.spelunkery.compression_blast_miner": "Compression Blast Miner",
 
   "block.spelunkery.red_glowstick": "Red Glowstick",
   "block.spelunkery.orange_glowstick": "Orange Glowstick",

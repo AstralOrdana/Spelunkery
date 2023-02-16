@@ -112,7 +112,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                 if (player instanceof ServerPlayer serverPlayer) {
                     if (!player.isCreative()) stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(hand));
                     level.destroyBlock(pos, false, player);
-                    level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), state.getBlock().getCloneItemStack(level, pos, state)));
+                    Block.popResourceFromFace(level, pos, context.getClickedFace(), state.getBlock().getCloneItemStack(level, pos, state));
 
                     player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
@@ -185,6 +185,8 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                 .put(Blocks.CUT_RED_SANDSTONE, Blocks.CHISELED_RED_SANDSTONE)
                 .put(Blocks.POLISHED_BLACKSTONE, Blocks.CHISELED_POLISHED_BLACKSTONE);
         addOptional(builder, "minecraft:prismarine_bricks", "immersive_weathering:chiseled_prismarine_bricks");
+        addOptional(builder, "oreganized:glance_bricks", "oreganized:chiseled_glance");
+        addOptional(builder, "sullysmod:polished_jade_bricks", "sullysmod:polished_chiseled_jade");
         for (var chiselable : botaniaChiselables) addOptional(builder, "botania:" + chiselable, "botania:chiseled_" + chiselable);
         for (var chiselable : malumChiselables) addOptional(builder, "malum:" + chiselable, "malum:chiseled_" + chiselable);
         for (var chiselable : quarkChiselables) addOptional(builder, "quark:" + chiselable, "quark:chiseled_" + chiselable);

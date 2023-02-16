@@ -52,30 +52,6 @@ import java.util.function.Supplier;
 
 public class ModFeatures {
 
-    /*
-    public static final RegSupplier<ConfiguredWorldCarver<CanyonCarverConfiguration>> CREVICE =
-            RegHelper.register(Spelunkery.res("crevice"), () -> new ConfiguredWorldCarver(WorldCarver.CANYON,
-                            new CanyonCarverConfiguration(
-                                    0.0125f,
-                                    UniformHeight.of(VerticalAnchor.absolute(40), VerticalAnchor.absolute(180)),
-                                    UniformFloat.of(6.0F, 10.0f),
-                                    VerticalAnchor.aboveBottom(8),
-                                    CarverDebugSettings.of(false, Blocks.OAK_BUTTON.defaultBlockState()),
-                                    Registry.BLOCK.getOrCreateTag(BlockTags.OVERWORLD_CARVER_REPLACEABLES),
-                                    UniformFloat.of(-0.125F, 0.125F),
-                                    new CanyonCarverConfiguration.CanyonShapeConfiguration(
-                                            UniformFloat.of(0.5F, 1.0F),
-                                            UniformFloat.of(0.0F, 1.0F),
-                                            6,
-                                            UniformFloat.of(0.25F, 1.0F),
-                                            0,
-                                            5
-                                    )
-                            )),
-                    BuiltinRegistries.CONFIGURED_CARVER);
-
-     */
-
     public static final RegSupplier<ConfiguredFeature<VegetationPatchConfiguration, Feature<VegetationPatchConfiguration>>> SPORE_MOSS_PATCH_BONEMEAL =
             RegHelper.registerConfiguredFeature(Spelunkery.res("spore_moss_patch_bonemeal"), () -> Feature.VEGETATION_PATCH,
                     () -> new VegetationPatchConfiguration(
@@ -126,7 +102,7 @@ public class ModFeatures {
             Spelunkery.res("noise_stone"), () -> NoiseBasedStoneFeature.featureWithDeepslateUnfiltered(NoneFeatureConfiguration.CODEC,
                     List.of(
                             new StoneEntry(Blocks.GRANITE, Blocks.STONE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.STONE, Blocks.DIORITE, StonePattern.sedimentaryStone()),
+                            new StoneEntry(Blocks.DIORITE, Blocks.STONE, StonePattern.sedimentaryStone()),
                             new StoneEntry(Blocks.ANDESITE, Blocks.STONE, StonePattern.sedimentaryStone())
                     ),
                     List.of(
@@ -190,18 +166,16 @@ public class ModFeatures {
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_DESERT_FEATURE = RegHelper.registerFeature(
             Spelunkery.res("noise_desert"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
                     List.of(
+                            new StoneEntry(Blocks.STONE, Blocks.SANDSTONE, StonePattern.desert_terrain()),
                             new StoneEntry(Blocks.SANDSTONE, Blocks.SAND, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SANDSTONE, Blocks.PACKED_MUD, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SAND, Blocks.SANDSTONE, StonePattern.desert_terrain()),
                             new StoneEntry(Blocks.SMOOTH_SANDSTONE, Blocks.SAND, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SMOOTH_SANDSTONE, Blocks.PACKED_MUD, StonePattern.desert_terrain())
+                            new StoneEntry(Blocks.SAND, Blocks.SANDSTONE, StonePattern.desert_terrain())
                     ),
                     List.of(
-                            new StoneEntry(Blocks.SANDSTONE, Blocks.TUFF, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SANDSTONE, Blocks.MUD, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.TUFF, Blocks.SAND, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SANDSTONE, Blocks.TUFF, StonePattern.desert_terrain()),
-                            new StoneEntry(Blocks.SANDSTONE, Blocks.MUD, StonePattern.desert_terrain())
+                            new StoneEntry(Blocks.DEEPSLATE, Blocks.SANDSTONE, StonePattern.desert_terrain()),
+                            new StoneEntry(Blocks.SANDSTONE, Blocks.SAND, StonePattern.desert_terrain()),
+                            new StoneEntry(Blocks.SMOOTH_SANDSTONE, Blocks.TUFF, StonePattern.desert_terrain()),
+                            new StoneEntry(Blocks.SAND, Blocks.SANDSTONE, StonePattern.desert_terrain())
                     ),
                     (ModTags.HAS_DESERT_NOISE),
                     0F,

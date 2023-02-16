@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "spelunkery:compression_blast_miner",
     "spelunkery:rock_salt",
     "spelunkery:rock_salt_block",
     "spelunkery:rock_salt_slab",

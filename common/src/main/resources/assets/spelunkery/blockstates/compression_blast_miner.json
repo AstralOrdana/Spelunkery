@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=north,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed"
+    },
+    "facing=south,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed",
+      "y": 180
+    },
+    "facing=east,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed",
+      "y": 90
+    },
+    "facing=west,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed",
+      "y": -90
+    },
+    "facing=up,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed",
+      "x": -90
+    },
+    "facing=down,primed=true": {
+      "model": "spelunkery:block/compression_blast_miner_primed",
+      "x": 90
+    },
+    "facing=north,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner"
+    },
+    "facing=south,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner",
+      "y": 180
+    },
+    "facing=east,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner",
+      "y": 90
+    },
+    "facing=west,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner",
+      "y": -90
+    },
+    "facing=up,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner",
+      "x": -90
+    },
+    "facing=down,primed=false": {
+      "model": "spelunkery:block/compression_blast_miner",
+      "x": 90
+    }
+  }
+}

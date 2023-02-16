@@ -15,12 +15,17 @@ public class CommonConfigs {
 
     public static final Supplier<Boolean> CREATIVE_TAB;
     public static final Supplier<Boolean> CROSS_SECTION;
-    public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
     public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
     public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
     public static final Supplier<Boolean> SCULK_SHEARING;
+
+    public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
+    public static final Supplier<Integer> SLIME_EAT_COOLDOWN;
+    public static final Supplier<Boolean> SLIME_GROWTH;
+    public static final Supplier<Integer> SLIME_GROWTH_CHANCE;
+    public static final Supplier<Integer> SLIME_GROWTH_MAX;
 
     public static final Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
     public static final Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
@@ -50,12 +55,19 @@ public class CommonConfigs {
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
-        INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 1, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
         SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
+        builder.pop();
+
+        builder.push("slimes");
+        INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
+        SLIME_EAT_COOLDOWN = builder.define("slime_eat_cooldown", 150, 1, 2400);
+        SLIME_GROWTH = builder.define("enable_slime_growth", true);
+        SLIME_GROWTH_CHANCE = builder.define("slime_growth_chance", 10, 1, 127);
+        SLIME_GROWTH_MAX = builder.define("slime_growth_max", 5, 1, 127);
         builder.pop();
 
         builder.push("echo_fork");
