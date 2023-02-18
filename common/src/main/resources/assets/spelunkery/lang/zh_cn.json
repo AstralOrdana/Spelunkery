@@ -36,6 +36,7 @@
   "tooltip.spelunkery.portal_fluid_bucket_3": "  使用瓶装维度之泪灌满炼药锅并用桶盛装即可获得",
 
   "tooltip.spelunkery.crying_obsidian": "手持玻璃瓶右击来获取维度之泪",
+  "tooltip.spelunkery.redstone": "使用砂轮打磨待加工朱砂来获取",
 
   "tooltip.spelunkery.depth_gauge_depth": "当前海拔：Y = %1$s",
   
@@ -209,11 +210,14 @@
   "item.spelunkery.portal_fluid_bucket": "桶装维度之泪",
   "block.spelunkery.portal_fluid": "维度之泪",
   "fluid.spelunkery.portal_fluid": "维度之泪",
+  "fluid_type.spelunkery.portal_fluid": "维度之泪",
   "item.spelunkery.depth_gauge": "深度计",
   "item.spelunkery.flint_hammer_and_chisel": "燧石锤和凿",
   "item.spelunkery.obsidian_hammer_and_chisel": "黑曜石锤和凿",
 
   "block.spelunkery.diamond_grindstone": "钻石砂轮",
+  
+  "block.spelunkery.compression_blast_miner": "压缩爆破采矿机",
 
   "block.spelunkery.red_glowstick": "红色荧光棒",
   "block.spelunkery.orange_glowstick": "橙色荧光棒",
