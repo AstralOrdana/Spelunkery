@@ -35,6 +35,7 @@
   "tooltip.spelunkery.portal_fluid_bucket_3": "  Obtenu en remplissant un Chaudron avec des Fioles de Larme Dimensionnelle",
 
   "tooltip.spelunkery.crying_obsidian": "Utiliser une Fiole vide pour obtenir un extrait de Larme Dimensionnelle",
+  "tooltip.spelunkery.redstone": "Peut être obtenue en polissant du Cinabre brut sur une Meule",
 
   "tooltip.spelunkery.depth_gauge_depth": "Altitude actuelle: Y = %1$s",
 
@@ -208,11 +209,14 @@
   "item.spelunkery.portal_fluid_bucket": "Sceau de larmes dimensionnelles",
   "block.spelunkery.portal_fluid": "Larmes dimensionnelles",
   "fluid.spelunkery.portal_fluid": "Larmes dimensionnelles",
+  "fluid_type.spelunkery.portal_fluid": "Larmes dimensionnelles",
   "item.spelunkery.depth_gauge": "Altimètre",
   "item.spelunkery.flint_hammer_and_chisel": "Marteau et burin en silex",
   "item.spelunkery.obsidian_hammer_and_chisel": "Marteau et burin en obsidienne",
 
   "block.spelunkery.diamond_grindstone": "Meule à diamant",
+
+  "block.spelunkery.compression_blast_miner": "Mineur à explosion compressée",
 
   "block.spelunkery.red_glowstick": "Bâton luminescent rouge",
   "block.spelunkery.orange_glowstick": "Bâton luminescent orange",
