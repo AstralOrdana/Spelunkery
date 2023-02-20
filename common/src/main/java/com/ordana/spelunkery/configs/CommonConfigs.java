@@ -19,7 +19,7 @@ public class CommonConfigs {
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
     public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
-    public static final Supplier<Boolean> SCULK_SHEARING;
+    public static final Supplier<Boolean> ENABLE_MORES;
 
     public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
     public static final Supplier<Integer> SLIME_EAT_COOLDOWN;
@@ -42,6 +42,7 @@ public class CommonConfigs {
     public static final Supplier<Integer> ECHO_FORK_RANGE;
     public static final Supplier<Integer> ECHO_DURRATION;
     public static final Supplier<Integer> ECHO_COOLDOWN;
+    public static final Supplier<Boolean> SCULK_SHEARING;
 
     public static final Supplier<Integer> MAGNET_RANGE;
     public static final Supplier<Integer> MAGNETITE_RANGE;
@@ -59,7 +60,7 @@ public class CommonConfigs {
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
-        SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
+        ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();
 
         builder.push("slimes");
@@ -71,6 +72,7 @@ public class CommonConfigs {
         builder.pop();
 
         builder.push("echo_fork");
+        SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
         ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 128);
         ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);

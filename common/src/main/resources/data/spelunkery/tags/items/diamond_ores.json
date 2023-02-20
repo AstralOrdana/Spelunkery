@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:andesite_diamond_ore",
+    "spelunkery:diorite_diamond_ore",
+    "spelunkery:granite_diamond_ore",
+    "spelunkery:tuff_diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:diamond_ore"
+  ]
+}

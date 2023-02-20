@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:granite_copper_ore",
+    "spelunkery:diorite_copper_ore",
+    "spelunkery:andesite_copper_ore",
+    "spelunkery:tuff_copper_ore"
+  ]
+}

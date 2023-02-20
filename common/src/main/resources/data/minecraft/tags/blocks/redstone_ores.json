@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:granite_redstone_ore",
+    "spelunkery:diorite_redstone_ore",
+    "spelunkery:andesite_redstone_ore",
+    "spelunkery:tuff_redstone_ore"
+  ]
+}

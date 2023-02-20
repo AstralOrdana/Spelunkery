@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spelunkery:block/diorite_lapis_ore"
+      }
+    ]
+  }
+}

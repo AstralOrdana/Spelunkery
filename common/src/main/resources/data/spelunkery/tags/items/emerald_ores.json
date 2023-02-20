@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:andesite_emerald_ore",
+    "spelunkery:diorite_emerald_ore",
+    "spelunkery:granite_emerald_ore",
+    "spelunkery:tuff_emerald_ore",
+    "minecraft:deepslate_emerald_ore",
+    "minecraft:emerald_ore"
+  ]
+}

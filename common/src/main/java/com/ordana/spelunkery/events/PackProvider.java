@@ -188,7 +188,6 @@ public class PackProvider extends DynServerResourcesProvider {
                 "deepslate_emerald_ore",
                 "deepslate_lapis_ore",
                 "deepslate_redstone_ore",
-                "deepslate_coal_ore",
                 "diamond_ore",
                 "emerald_ore",
                 "lapis_ore",
@@ -210,18 +209,33 @@ public class PackProvider extends DynServerResourcesProvider {
             }
         }
 
-        var sullysGemLoot = List.of(
-                "deepslate_jade_ore"
+        var moresGemLoot = List.of(
+                "andesite_diamond_ore",
+                "andesite_emerald_ore",
+                "andesite_lapis_ore",
+                "andesite_redstone_ore",
+                "granite_diamond_ore",
+                "granite_emerald_ore",
+                "granite_lapis_ore",
+                "granite_redstone_ore",
+                "diorite_diamond_ore",
+                "diorite_emerald_ore",
+                "diorite_lapis_ore",
+                "diorite_redstone_ore",
+                "tuff_diamond_ore",
+                "tuff_emerald_ore",
+                "tuff_lapis_ore",
+                "tuff_redstone_ore"
         );
 
-        for (var loot : sullysGemLoot) {
-            ResourceLocation target = new ResourceLocation("sullysmod", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/sullysmod/" + loot + ".json");
+        for (var loot : moresGemLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/mores/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
-                if (PlatformHelper.isModLoaded("sullysmod")) {
+                if (CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
                     dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
                 }
 
@@ -252,6 +266,92 @@ public class PackProvider extends DynServerResourcesProvider {
         }
 
 
+        var vanillaMetalLoot = List.of(
+                "deepslate_gold_ore",
+                "deepslate_iron_ore",
+                "deepslate_copper_ore",
+                "nether_gold_ore",
+                "deepslate_coal_ore"
+        );
+
+        for (var loot : vanillaMetalLoot) {
+            ResourceLocation target = new ResourceLocation("minecraft", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var moresMetalLoot = List.of(
+                "tuff_coal_ore",
+                "tuff_copper_ore",
+                "tuff_gold_ore",
+                "tuff_iron_ore"
+        );
+
+        for (var loot : moresMetalLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/mores/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
+
+        var sullysGemLoot = List.of(
+                "deepslate_jade_ore"
+        );
+
+        for (var loot : sullysGemLoot) {
+            ResourceLocation target = new ResourceLocation("sullysmod", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/sullysmod/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("sullysmod")) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var moresSullysGemLoot = List.of(
+                "tuff_jade_ore"
+        );
+
+        for (var loot : moresSullysGemLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/mores/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("sullysmod") && CommonConfigs.ENABLE_ROUGH_GEMS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
         var oreganizedMetalLoot = List.of(
                 "deepslate_lead_ore",
                 "deepslate_silver_ore"
@@ -273,21 +373,19 @@ public class PackProvider extends DynServerResourcesProvider {
         }
 
 
-        var vanillaMetalLoot = List.of(
-                "deepslate_gold_ore",
-                "deepslate_iron_ore",
-                "deepslate_copper_ore",
-                "nether_gold_ore"
+        var moresOreganizedMetalLoot = List.of(
+                "tuff_lead_ore",
+                "tuff_silver_ore"
         );
 
-        for (var loot : vanillaMetalLoot) {
-            ResourceLocation target = new ResourceLocation("minecraft", loot);
-            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/" + loot + ".json");
+        for (var loot : moresOreganizedMetalLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/mores/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
 
-                if (CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                if (PlatformHelper.isModLoaded("oreganized") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
                     dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
                 }
 
@@ -303,6 +401,26 @@ public class PackProvider extends DynServerResourcesProvider {
         for (var loot : createMetalLoot) {
             ResourceLocation target = new ResourceLocation("create", loot);
             ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/create/" + loot + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.BLOCK_LOOT_TABLES);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+
+        var moresCreateMetalLoot = List.of(
+                "tuff_zinc_ore"
+        );
+
+        for (var loot : moresCreateMetalLoot) {
+            ResourceLocation target = new ResourceLocation("spelunkery", loot);
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/loot_tables/mores/" + loot + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -393,6 +511,100 @@ public class PackProvider extends DynServerResourcesProvider {
                 }
 
             } catch (Exception ignored) {
+            }
+        }
+
+        var moresWorldgen = List.of(
+                "ore_coal",
+                "ore_coal_buried",
+                "ore_copper_large",
+                "ore_copper_small",
+                "ore_diamond_buried",
+                "ore_diamond_large",
+                "ore_diamond_small",
+                "ore_emerald",
+                "ore_gold",
+                "ore_gold_buried",
+                "ore_iron",
+                "ore_iron_small",
+                "ore_lapis",
+                "ore_lapis_buried",
+                "ore_redstone"
+        );
+
+        for (var gen : moresWorldgen) {
+            ResourceLocation target = new ResourceLocation("minecraft", "worldgen/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/" + gen + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (CommonConfigs.ENABLE_MORES.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.GENERIC);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var moresCreateWorldgen = List.of(
+                "zinc_ore"
+        );
+
+        for (var gen : moresCreateWorldgen) {
+            ResourceLocation target = new ResourceLocation("create", "worldgen/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/create/" + gen + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("create") && CommonConfigs.ENABLE_MORES.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.GENERIC);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var moresOreganizedWorldgen = List.of(
+                "lead_ore",
+                "lead_ore_extra",
+                "silver_ore",
+                "silver_ore_low"
+        );
+
+        for (var gen : moresOreganizedWorldgen) {
+            ResourceLocation target = new ResourceLocation("oreganized", "worldgen/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/oreganized/" + gen + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("oreganized") && CommonConfigs.ENABLE_MORES.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.GENERIC);
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        var moresSullysmodWorldgen = List.of(
+                "jade_ore"
+        );
+
+        for (var gen : moresSullysmodWorldgen) {
+            ResourceLocation target = new ResourceLocation("sullysmod", "worldgen/configured_feature/" + gen + ".json");
+            ResourceLocation source = new ResourceLocation("spelunkery", "overrides/worldgen/configured_feature/sullysmod/" + gen + ".json");
+
+            try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+
+                if (PlatformHelper.isModLoaded("sullysmod") && CommonConfigs.ENABLE_MORES.get()) {
+                    dynamicPack.addJson(target, bsElement, ResType.GENERIC);
+                }
+
+            } catch (Exception ignored) {
+                throw new RuntimeException(ignored);
             }
         }
     }

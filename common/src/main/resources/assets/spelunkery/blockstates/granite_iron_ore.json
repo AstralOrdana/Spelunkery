@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spelunkery:block/granite_iron_ore"
+      }
+    ]
+  }
+}

@@ -6,6 +6,27 @@
     "spelunkery:nephrite",
     "spelunkery:carved_nephrite",
     "spelunkery:nephrite_spout",
-    "spelunkery:nephrite_siphon"
+    "spelunkery:nephrite_siphon",
+
+    "spelunkery:granite_iron_ore",
+    "spelunkery:diorite_iron_ore",
+    "spelunkery:andesite_iron_ore",
+    "spelunkery:tuff_iron_ore",
+    "spelunkery:granite_copper_ore",
+    "spelunkery:diorite_copper_ore",
+    "spelunkery:andesite_copper_ore",
+    "spelunkery:tuff_copper_ore",
+    "spelunkery:granite_lapis_ore",
+    "spelunkery:diorite_lapis_ore",
+    "spelunkery:andesite_lapis_ore",
+    "spelunkery:tuff_lapis_ore",
+    "spelunkery:granite_coal_ore",
+    "spelunkery:diorite_coal_ore",
+    "spelunkery:andesite_coal_ore",
+    "spelunkery:tuff_coal_ore",
+    "spelunkery:granite_lead_ore",
+    "spelunkery:diorite_lead_ore",
+    "spelunkery:andesite_lead_ore",
+    "spelunkery:tuff_lead_ore"
   ]
 }
