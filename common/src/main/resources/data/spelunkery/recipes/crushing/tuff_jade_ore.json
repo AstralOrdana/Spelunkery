@@ -1,0 +1,37 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sullysmod"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:tuff_jade_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "sullysmod:rough_jade",
+      "count": 7
+    },
+    {
+      "item": "sullysmod:rough_jade",
+      "chance": 0.25
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:tuff",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 350
+}

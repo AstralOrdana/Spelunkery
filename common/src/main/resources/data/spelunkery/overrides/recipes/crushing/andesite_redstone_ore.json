@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:andesite_redstone_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rough_cinnabar",
+      "count": 2
+    },
+    {
+      "item": "spelunkery:rough_cinnabar",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:andesite",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 250
+}

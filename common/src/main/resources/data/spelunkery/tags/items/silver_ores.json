@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:granite_silver_ore",
+    "spelunkery:diorite_silver_ore",
+    "spelunkery:andesite_silver_ore",
+    "spelunkery:tuff_silver_ore"
+  ]
+}

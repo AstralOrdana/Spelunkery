@@ -17,7 +17,7 @@ public class CommonConfigs {
     public static final Supplier<Boolean> CROSS_SECTION;
     public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
-    public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
+    //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
     public static final Supplier<Boolean> ENABLE_MORES;
 
@@ -58,7 +58,7 @@ public class CommonConfigs {
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 1, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
-        ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
+        //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
         ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();

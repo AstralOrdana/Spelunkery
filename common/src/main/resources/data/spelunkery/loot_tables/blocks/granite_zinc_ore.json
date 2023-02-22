@@ -35,7 +35,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "create:raw_zinc",
+              "name": "minecraft:stone",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",

@@ -1,0 +1,36 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:andesite_lead_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crushed_lead_ore"
+    },
+    {
+      "item": "create:crushed_lead_ore",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:andesite",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 250
+}

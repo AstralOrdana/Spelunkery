@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "spelunkery:jade_ores"
+  },
+  "result": "sullysmod:polished_jade",
+  "experience": 0.7,
+  "cookingtime": 200
+}

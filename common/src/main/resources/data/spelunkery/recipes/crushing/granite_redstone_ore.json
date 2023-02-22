@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:granite_redstone_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:redstone",
+      "count": 5
+    },
+    {
+      "item": "minecraft:redstone",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:granite",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 250
+}

@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "modid": "oreganized",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "spelunkery:silver_ores"
+  },
+  "result": "oreganized:silver_ingot",
+  "experience": 0.7,
+  "cookingtime": 200
+}

@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:tuff_diamond_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:rough_diamond",
+      "count": 2
+    },
+    {
+      "item": "spelunkery:rough_diamond",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:tuff",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 350
+}

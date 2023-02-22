@@ -1,0 +1,32 @@
+{
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:andesite_zinc_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:crushed_zinc_ore"
+    },
+    {
+      "item": "create:crushed_zinc_ore",
+      "chance": 0.75
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "item": "minecraft:andesite",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 250
+}

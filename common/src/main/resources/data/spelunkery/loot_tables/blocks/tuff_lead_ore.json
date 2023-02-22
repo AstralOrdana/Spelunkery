@@ -35,7 +35,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "oreganized:raw_lead",
+              "name": "minecraft:stone",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",
