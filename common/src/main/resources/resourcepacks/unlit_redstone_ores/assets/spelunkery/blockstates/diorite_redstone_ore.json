@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": [
+      { "model": "spelunkery:block/diorite_redstone_ore_off" }
+    ],
+    "lit=true": [
+      { "model": "spelunkery:block/diorite_redstone_ore" }
+    ]
+  }
+}

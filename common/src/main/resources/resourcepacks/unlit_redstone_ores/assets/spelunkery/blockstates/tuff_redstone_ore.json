@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": [
+      { "model": "spelunkery:block/tuff_redstone_ore_off" }
+    ],
+    "lit=true": [
+      { "model": "spelunkery:block/tuff_redstone_ore" }
+    ]
+  }
+}

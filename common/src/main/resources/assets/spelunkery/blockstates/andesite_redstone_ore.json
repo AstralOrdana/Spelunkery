@@ -1,10 +1,9 @@
 {
   "variants": {
-    "lit=false": [
-      { "model": "spelunkery:block/andesite_redstone_ore_off" }
-    ],
-    "lit=true": [
-      { "model": "spelunkery:block/andesite_redstone_ore" }
+    "": [
+      {
+        "model": "spelunkery:block/andesite_redstone_ore"
+      }
     ]
   }
 }

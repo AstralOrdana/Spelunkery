@@ -31,7 +31,10 @@ public class SpelunkeryFabric implements ModInitializer {
         Spelunkery.commonInit();
 
         FabricLoader.getInstance().getModContainer(Spelunkery.MOD_ID).ifPresent(modContainer -> {
-            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("better_vanilla_gems"), modContainer, ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("better_vanilla_gems"), modContainer, "Better Vanilla Gems", ResourcePackActivationType.DEFAULT_ENABLED);
+            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("unlit_redstone_ores"), modContainer, "Unlit Redstone Ores", ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("emissive_ores"), modContainer, "Emissive Ores", ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(Spelunkery.res("emissive_better_vanilla_ores"), modContainer, "Emissive Better Vanilla Ores", ResourcePackActivationType.NORMAL);
         });
 
         UseBlockCallback.EVENT.register(SpelunkeryFabric::onRightClickBlock);

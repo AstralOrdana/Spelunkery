@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": [
+      { "model": "spelunkery:block/granite_redstone_ore_off" }
+    ],
+    "lit=true": [
+      { "model": "spelunkery:block/granite_redstone_ore" }
+    ]
+  }
+}
