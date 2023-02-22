@@ -49,7 +49,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
     public HammerAndChiselItem(Properties properties) {
         super(properties);
     }
-    
+
     @Environment(EnvType.CLIENT)
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level,
