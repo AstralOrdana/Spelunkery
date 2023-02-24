@@ -78,4 +78,8 @@ public class LevelHelper {
     public static Vec3 vec3(BlockPos blockPosition) {
         return new Vec3(blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5);
     }
+
+    public static BlockPos blockPos(Vec3 vec3) {
+        return new BlockPos(vec3.x, vec3.y, vec3.z);
+    }
 }

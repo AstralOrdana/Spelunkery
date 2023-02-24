@@ -55,7 +55,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Inject(method = "dealDamage", at = @At("HEAD"), cancellable = true)
     public void damage(LivingEntity livingEntity, CallbackInfo ci) {
-        if (livingEntity.hasEffect(MobEffects.REGENERATION)) ci.cancel();
+        if ((livingEntity.hasEffect(MobEffects.REGENERATION) && CommonConfigs.SLIMES_FRIENDLY_REGEN.get()) || CommonConfigs.SLIMES_ALWAYS_FRIENDLY.get()) ci.cancel();
     }
 
 

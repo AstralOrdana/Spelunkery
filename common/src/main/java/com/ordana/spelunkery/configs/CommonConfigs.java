@@ -19,13 +19,23 @@ public class CommonConfigs {
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
     //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
-    public static final Supplier<Boolean> ENABLE_MORES;
 
     public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
+    public static final Supplier<Boolean> SLIME_CAULDRONS;
+    public static final Supplier<Boolean> SLIMES_FRIENDLY_REGEN;
+    public static final Supplier<Boolean> SLIMES_ALWAYS_FRIENDLY;
     public static final Supplier<Integer> SLIME_EAT_COOLDOWN;
     public static final Supplier<Boolean> SLIME_GROWTH;
     public static final Supplier<Integer> SLIME_GROWTH_CHANCE;
     public static final Supplier<Integer> SLIME_GROWTH_MAX;
+
+    public static final Supplier<Integer> HAMMER_CHISEL_CHARGE_TIME;
+    public static final Supplier<Integer> ECHO_FORK_RANGE;
+    public static final Supplier<Integer> ECHO_DURRATION;
+    public static final Supplier<Integer> ECHO_COOLDOWN;
+    public static final Supplier<Boolean> SCULK_SHEARING;
+    public static final Supplier<Integer> MAGNET_RANGE;
+    public static final Supplier<Integer> MAGNETITE_RANGE;
 
     public static final Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
     public static final Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
@@ -38,14 +48,8 @@ public class CommonConfigs {
     public static final Supplier<Boolean> STONE_STRIPE_FEATURES;
     public static final Supplier<Boolean> ENABLE_SPOROPHYTES;
     public static final Supplier<Boolean> DARK_FOREST_PORTABELLAS;
+    public static final Supplier<Boolean> ENABLE_MORES;
 
-    public static final Supplier<Integer> ECHO_FORK_RANGE;
-    public static final Supplier<Integer> ECHO_DURRATION;
-    public static final Supplier<Integer> ECHO_COOLDOWN;
-    public static final Supplier<Boolean> SCULK_SHEARING;
-
-    public static final Supplier<Integer> MAGNET_RANGE;
-    public static final Supplier<Integer> MAGNETITE_RANGE;
 
 
     static {
@@ -60,25 +64,25 @@ public class CommonConfigs {
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
-        ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();
 
         builder.push("slimes");
         INCREASED_SLIME_SPAWN_RATE = builder.define("increased_slime_spawn_rate", true);
+        SLIME_CAULDRONS = builder.define("slime_cauldrons", true);
+        SLIMES_FRIENDLY_REGEN = builder.define("slimes_friendly_if_regen", true);
+        SLIMES_ALWAYS_FRIENDLY = builder.define("slimes_always_friendly", false);
         SLIME_EAT_COOLDOWN = builder.define("slime_eat_cooldown", 150, 1, 2400);
         SLIME_GROWTH = builder.define("enable_slime_growth", true);
         SLIME_GROWTH_CHANCE = builder.define("slime_growth_chance", 10, 1, 127);
         SLIME_GROWTH_MAX = builder.define("slime_growth_max", 5, 1, 127);
         builder.pop();
 
-        builder.push("echo_fork");
+        builder.push("utilities");
+        HAMMER_CHISEL_CHARGE_TIME = builder.define("hammer_chisel_charge_time", 20, 1, 128);
         SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
         ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 128);
         ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
-        builder.pop();
-
-        builder.push("magnets");
         MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
         MAGNETITE_RANGE = builder.define("magnetite_range", 128, 1, 512);
         builder.pop();
@@ -97,6 +101,7 @@ public class CommonConfigs {
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         ENABLE_SPOROPHYTES = builder.define("enable_sporophytes", true);
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
+        ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();
 
         //fabric specific

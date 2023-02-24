@@ -5,16 +5,20 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.utils.LevelHelper;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -30,14 +34,22 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -76,52 +88,67 @@ public class HammerAndChiselItem extends Item implements Vanishable {
         }
     }
 
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
+    }
+
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        ItemStack itemStack = player.getItemInHand(usedHand);
+        player.startUsingItem(usedHand);
+        return InteractionResultHolder.consume(itemStack);
+    }
+
     @Override
     public boolean isValidRepairItem(ItemStack stack, @NotNull ItemStack repairCandidate) {
         return (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.OBSIDIAN)) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.FLINT));
     }
 
-    @Override
-    @NotNull
-    public InteractionResult useOn(UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Player player = context.getPlayer();
-        ItemStack stack = context.getItemInHand();
-        BlockState state = level.getBlockState(pos);
-        InteractionHand hand = context.getHand();
-        if (player.isSecondaryUseActive()) {
-            var chiseled = getChiseled(state);
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
+        if (livingEntity instanceof Player) {
+            Player player = (Player) livingEntity;
+            int i = this.getUseDuration(stack) - timeCharged;
+            if (i >= CommonConfigs.HAMMER_CHISEL_CHARGE_TIME.get()) {
+                var hit = Utils.rayTrace(player, level, ClipContext.Block.COLLIDER, ClipContext.Fluid.ANY);
 
-            if (chiseled.isPresent()) {
-                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
-                level.playSound(player, pos, state.getBlock().getSoundType(state).getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, state), UniformInt.of(3, 5));
-                if (player instanceof ServerPlayer serverPlayer) {
-                    if (!player.isCreative()) stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(hand));
-                    level.setBlockAndUpdate(pos, chiseled.get());
-                    player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                if (hit instanceof BlockHitResult blockHit) {
+                    BlockPos pos = blockHit.getBlockPos();
+                    Direction dir = blockHit.getDirection();
+                    BlockState state = level.getBlockState(pos);
+
+                    var chiseled = getChiseled(state);
+                    if (chiseled.isPresent() && player.isSecondaryUseActive()) {
+                        level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
+                        level.playSound(player, pos, state.getBlock().getSoundType(state).getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                        ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, state), UniformInt.of(3, 5));
+                        if (player instanceof ServerPlayer serverPlayer) {
+                            if (!player.isCreative())
+                                stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(player.getUsedItemHand()));
+                            level.setBlockAndUpdate(pos, chiseled.get());
+                            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+                            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                        }
+                    }
+                    else if (state.is(ModTags.CHISELABLE)) {
+                        if (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get())
+                                || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL))) {
+                            if (player instanceof ServerPlayer serverPlayer) {
+                                if (!player.isCreative())
+                                    stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(player.getUsedItemHand()));
+                                level.destroyBlock(pos, false, player);
+                                Block.popResourceFromFace(level, pos, dir, state.getBlock().getCloneItemStack(level, pos, state));
+
+                                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+                                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                            }
+                        }
+                    }
                 }
-                return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
-        if (state.is(ModTags.CHISELABLE)) {
-            if (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get())
-                    || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && !state.is(BlockTags.NEEDS_IRON_TOOL) && !state.is(BlockTags.NEEDS_DIAMOND_TOOL))) {
-                if (player instanceof ServerPlayer serverPlayer) {
-                    if (!player.isCreative()) stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(hand));
-                    level.destroyBlock(pos, false, player);
-                    Block.popResourceFromFace(level, pos, context.getClickedFace(), state.getBlock().getCloneItemStack(level, pos, state));
-
-                    player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
-        }
-
-        return InteractionResult.PASS;
     }
 
     public static void addOptional(ImmutableBiMap.Builder<Block, Block> map,
@@ -132,8 +159,6 @@ public class HammerAndChiselItem extends Item implements Vanishable {
             map.put(o1.get(), o2.get());
         }
     }
-
-
 
     public static final Supplier<BiMap<Block, Block>> CHISELED_BLOCKS = Suppliers.memoize(() -> {
         var botaniaChiselables = List.of(
