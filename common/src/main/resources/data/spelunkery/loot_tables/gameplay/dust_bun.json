@@ -1,0 +1,40 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:stick"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:string"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:feather"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:raw_gold_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:raw_iron_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:raw_copper_nugget"
+        }
+      ]
+    }
+  ]
+}

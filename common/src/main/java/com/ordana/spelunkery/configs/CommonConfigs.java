@@ -60,7 +60,7 @@ public class CommonConfigs {
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
         CROSS_SECTION = builder.define("cross_section_world_mode", false);
-        DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 1, 128);
+        DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 0, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);

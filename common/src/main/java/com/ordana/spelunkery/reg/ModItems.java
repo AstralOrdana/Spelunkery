@@ -103,6 +103,9 @@ public class ModItems {
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 
+    public static final Supplier<Item> COMPRESSION_BLAST_MINER = regItem("compression_blast_miner", () ->
+            new CompressionBlastMinerItem(ModBlocks.COMPRESSION_BLAST_MINER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+
     //food
     public static final Supplier<Item> BUTTON_MUSHROOM = regItem("button_mushroom", () ->
             new BlockItem(ModBlocks.BUTTON_MUSHROOM.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS)).food(ModFoods.BUTTON_MUSHROOM)));
@@ -113,6 +116,9 @@ public class ModItems {
     public static final Supplier<Item> GRILLED_PORTABELLA = regItem("grilled_portabella", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_FOOD)).food(ModFoods.GRILLED_PORTABELLA)));
 
+
+    public static final Supplier<Item> DUST_BUN = regItem("dust_bun", () ->
+            new DustBunItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MISC)).stacksTo(16)));
 
     //mining gear
     public static final Supplier<Item> ROPE_LADDER = regItem("rope_ladder", () ->

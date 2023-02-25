@@ -346,7 +346,7 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
-    public static final Supplier<Block> COMPRESSION_BLAST_MINER = regWithItem("compression_blast_miner", () ->
+    public static final Supplier<Block> COMPRESSION_BLAST_MINER = regBlock("compression_blast_miner", () ->
             new CompressionBlastMiner(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.NETHERITE_BLOCK)));
 
     public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->

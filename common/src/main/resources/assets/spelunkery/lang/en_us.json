@@ -58,14 +58,18 @@
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "Mining level: Diamond",
   "tooltip.spelunkery.flint_hammer_and_chisel": "Mining level: Stone",
 
-  "tooltip.spelunkery.hammer_and_chisel_1": "  Use on blocks to break them and drop themselves",
-  "tooltip.spelunkery.hammer_and_chisel_2": "  Can only break blocks in their mining level and below",
-  "tooltip.spelunkery.hammer_and_chisel_3": "  Can only break blocks that are mineable by pickaxe",
+  "tooltip.spelunkery.hammer_and_chisel_1": "  Hold Use and then release on blocks to break them",
+  "tooltip.spelunkery.hammer_and_chisel_2": "  Can only break Pickaxe blocks in their mining level and below",
+  "tooltip.spelunkery.hammer_and_chisel_3": "  Blocks drop as if mined using Silk Touch",
   "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s and use to convert Brick blocks to Chiseled form",
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Experience Points stored",
   "tooltip.spelunkery.nephrite_charm_2": "  Stores up to 30 Levels",
   "tooltip.spelunkery.nephrite_charm_3": "  Use while holding %1$s to store, use to retrieve",
+
+  "tooltip.spelunkery.cbm_1": "  Places directionally like an Observer",
+  "tooltip.spelunkery.cbm_2": "  Right click to prime with TNT, power to cause explosion",
+  "tooltip.spelunkery.cbm_3": "  Explosion can break nearly any block, including Bedrock",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Can store Experience Points in the form of 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Each block stores 100 Charge (~7 levels from 0)",
