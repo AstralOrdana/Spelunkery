@@ -1,30 +1,19 @@
 package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.configs.CommonConfigs;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
-import net.minecraft.data.loot.PiglinBarterLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
@@ -43,14 +32,12 @@ public class DustBunItem extends Item {
         if (level instanceof ServerLevel) {
             if (player.isSecondaryUseActive()) {
                 int bunCount = stack.getCount();
-                for (int i = 0; i <= bunCount; i++) {
-                    stack.shrink(bunCount);
-                    LootTable lootTable = level.getServer().getLootTables().get(BuiltInLootTables.WOODLAND_MANSION);
+                for (int i = 0; i < bunCount; i++) {
+                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("oreganized"));
 
                     LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
                             .withRandom(level.random)
                             .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                            .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
                             .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 
                     var l = lootTable.getRandomItems(builder.create(LootContextParamSets.GIFT));
@@ -60,15 +47,14 @@ public class DustBunItem extends Item {
                         if (!player.getInventory().add(new ItemStack(bunStack.getItem()))) {
                             player.drop(new ItemStack(bunStack.getItem()), false);
                         }
-                        return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
+                        stack.shrink(1);
                     }
                 }
+                return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
             } else {
-                stack.shrink(1);
-                LootTable lootTable = level.getServer().getLootTables().get(BuiltInLootTables.WOODLAND_MANSION);
+                LootTable lootTable = level.getServer().getLootTables().get(Spelunkery.res("gameplay/dust_bun"));
                 LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
                         .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
-                        .withParameter(LootContextParams.BLOCK_STATE, Blocks.CHAIN.defaultBlockState())
                         .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 
                 var l = lootTable.getRandomItems(builder.create(LootContextParamSets.GIFT));
@@ -78,6 +64,7 @@ public class DustBunItem extends Item {
                     if (!player.getInventory().add(new ItemStack(bunStack.getItem()))) {
                         player.drop(new ItemStack(bunStack.getItem()), false);
                     }
+                    stack.shrink(1);
                     return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
                 }
             }

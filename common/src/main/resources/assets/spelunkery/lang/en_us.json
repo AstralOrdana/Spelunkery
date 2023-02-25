@@ -243,7 +243,6 @@
   "block.spelunkery.mushgloom": "Mushgloom",
   "block.spelunkery.milly_bubcap": "Milly Bubcap",
 
-
   "block.spelunkery.potted_inkcap_mushroom": "Potted Inkcap Mushroom",
   "block.spelunkery.potted_white_inkcap_mushroom": "Potted Pale Inkcap Mushroom",
   "block.spelunkery.potted_button_mushroom": "Potted Button Mushroom",
@@ -257,6 +256,8 @@
   "block.spelunkery.portabella_block": "Portabella Block",
   "block.spelunkery.inkcap_mushroom_block": "Inkcap Mushroom Block",
   "block.spelunkery.white_inkcap_mushroom_block": "Pale Inkcap Mushroom Block",
+
+  "item.spelunkery.dust_bun": "Dust Bun",
 
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",
