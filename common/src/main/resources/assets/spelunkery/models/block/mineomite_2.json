@@ -1,0 +1,71 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "spelunkery:block/mineomite",
+		"particle": "spelunkery:block/mineomite"
+	},
+	"elements": [
+		{
+			"from": [7, 14, 8],
+			"to": [9, 17, 8],
+			"faces": {
+				"north": {"uv": [8, 0, 10, 3], "texture": "#1"},
+				"east": {"uv": [8, 0, 8, 3], "texture": "#1"},
+				"south": {"uv": [8, 0, 10, 3], "texture": "#1"},
+				"west": {"uv": [8, 0, 8, 3], "texture": "#1"},
+				"up": {"uv": [4, 0, 6, 0], "texture": "#1"},
+				"down": {"uv": [4, 4, 6, 4], "texture": "#1"}
+			}
+		},
+		{
+			"from": [13, 14, 7],
+			"to": [13, 17, 9],
+			"faces": {
+				"north": {"uv": [8, 0, 8, 3], "texture": "#1"},
+				"east": {"uv": [8, 0, 10, 3], "texture": "#1"},
+				"south": {"uv": [8, 0, 8, 3], "texture": "#1"},
+				"west": {"uv": [8, 0, 10, 3], "texture": "#1"},
+				"up": {"uv": [4, 0, 4, 2], "texture": "#1"},
+				"down": {"uv": [4, 4, 4, 6], "texture": "#1"}
+			}
+		},
+		{
+			"from": [6, 0, 6],
+			"to": [10, 14, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"east": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"south": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"west": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"up": {"uv": [4, 0, 8, 4], "texture": "#1"},
+				"down": {"uv": [4, 4, 8, 8], "texture": "#1"}
+			}
+		},
+		{
+			"from": [11, 0, 6],
+			"to": [15, 14, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"east": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"south": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"west": {"uv": [0, 0, 4, 14], "texture": "#1"},
+				"up": {"uv": [4, 0, 8, 4], "texture": "#1"},
+				"down": {"uv": [4, 4, 8, 8], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "fuses",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1]
+		},
+		{
+			"name": "sticks",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [2, 3]
+		}
+	]
+}

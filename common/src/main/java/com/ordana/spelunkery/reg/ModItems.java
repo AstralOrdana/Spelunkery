@@ -103,6 +103,8 @@ public class ModItems {
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 
+    public static final Supplier<Item> MINEOMITE = regItem("mineomite", () ->
+            new MineomiteItem(ModBlocks.MINEOMITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> COMPRESSION_BLAST_MINER = regItem("compression_blast_miner", () ->
             new CompressionBlastMinerItem(ModBlocks.COMPRESSION_BLAST_MINER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
 

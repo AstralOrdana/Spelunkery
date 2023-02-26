@@ -262,6 +262,9 @@ public class ModBlocks {
             new PoweredBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).isRedstoneConductor(ModBlocks::never)));
 
+    public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->
+            new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(Blocks.GRINDSTONE)), getTab(CreativeModeTab.TAB_DECORATIONS));
+
 
     //rock salt
     public static final Supplier<Block> ROCK_SALT = regBlock("rock_salt", () ->
@@ -348,9 +351,8 @@ public class ModBlocks {
 
     public static final Supplier<Block> COMPRESSION_BLAST_MINER = regBlock("compression_blast_miner", () ->
             new CompressionBlastMiner(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.NETHERITE_BLOCK)));
-
-    public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->
-            new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())), getTab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> MINEOMITE = regBlock("mineomite", () ->
+            new MineomiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT).sound(SoundType.CANDLE)));
 
     public static final Supplier<Block> MAGNETITE = regWithItem("magnetite", () ->
             new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
