@@ -9,13 +9,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "spelunkery:portal_fluid_bottle",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.25
-                }
-              ]
+              "name": "spelunkery:portal_fluid_bottle"
             }
           ]
         }

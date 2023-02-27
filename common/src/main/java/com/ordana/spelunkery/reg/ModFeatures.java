@@ -137,10 +137,12 @@ public class ModFeatures {
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_OCEAN_FEATURE = RegHelper.registerFeature(
             Spelunkery.res("noise_ocean"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
                     List.of(
-                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.SMOOTH_BASALT, StonePattern.dottedClay())
+                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.SMOOTH_BASALT, StonePattern.dottedClay()),
+                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.PRISMARINE, StonePattern.dottedClay())
                     ),
                     List.of(
-                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.BASALT, StonePattern.dottedClay())
+                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.BASALT, StonePattern.dottedClay()),
+                            new StoneEntry(Blocks.PRISMARINE, Blocks.BASALT, StonePattern.dottedClay())
                     ),
                     (ModTags.HAS_OCEAN_NOISE),
                     0F,
@@ -281,6 +283,8 @@ public class ModFeatures {
         ResourceKey<PlacedFeature> magnetite_geode = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("magnetite_geode"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_OVERWORLD, magnetite_geode);
 
+        ResourceKey<PlacedFeature> quartz_geode = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("quartz_geode"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_NETHER, quartz_geode);
 
         //veins
         ResourceKey<PlacedFeature> large_gold_vein = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("large_gold_vein"));

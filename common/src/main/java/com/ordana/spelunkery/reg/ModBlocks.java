@@ -257,6 +257,9 @@ public class ModBlocks {
     public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
+    public static final Supplier<Block> ROUGH_QUARTZ_BLOCK = regWithItem("rough_quartz_block", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.QUARTZ)
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 
     public static final Supplier<Block> CINNABAR_BLOCK = regWithItem("cinnabar_block", () ->
             new PoweredBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_RED)

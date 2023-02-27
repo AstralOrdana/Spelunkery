@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "spelunkery:block/rough_quartz_block_top",
+    "side": "spelunkery:block/rough_quartz_block"
+  }
+}

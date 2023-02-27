@@ -85,14 +85,11 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
 
     @Override
     public void handleEntityEvent(byte id) {
-        if (id == 3) {
-            ParticleOptions particle = ParticleTypes.GLOW;
+        ParticleOptions particle = ParticleTypes.GLOW;
 
-            for (int i = 0; i < 8; ++i) {
-                this.level.addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
-            }
+        for (int i = 0; i < 8; ++i) {
+            this.level.addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }
-
     }
 
     public static boolean canPlace (BlockState state) {
@@ -149,6 +146,7 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
     }
 
     public void tick() {
+        level.addParticle(ParticleTypes.GLOW, this.position().x, this.position().y + 0.5, this.position().z, 0.0D, 0.0D, 0.0D);
         //base tick stuff
         this.baseTick();
 

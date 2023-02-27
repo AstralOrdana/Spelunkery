@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "glowsticks",
+  "pattern": [
+    "#C#",
+    "XXX",
+    "#C#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:paper"
+    },
+    "X": {
+      "item": "minecraft:gunpowder"
+    },
+    "C": {
+      "item": "minecraft:clay"
+    }
+  },
+  "result": {
+    "item": "spelunkery:mineomite",
+    "count": 3
+  }
+}

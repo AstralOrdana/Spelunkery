@@ -4,6 +4,7 @@
     "spelunkery:granite_diamond_ore",
     "spelunkery:diorite_diamond_ore",
     "spelunkery:andesite_diamond_ore",
-    "spelunkery:tuff_diamond_ore"
+    "spelunkery:tuff_diamond_ore",
+    "spelunkery:smooth_basalt_diamond_ore"
   ]
 }

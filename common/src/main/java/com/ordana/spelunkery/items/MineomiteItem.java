@@ -1,13 +1,8 @@
 package com.ordana.spelunkery.items;
 
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
 import com.ordana.spelunkery.configs.ClientConfigs;
-import com.ordana.spelunkery.entities.GlowstickEntity;
 import com.ordana.spelunkery.entities.MineomiteEntity;
-import com.ordana.spelunkery.entities.PrimedMineomiteEntity;
-import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.entities.ThrownPrimedMineomiteEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -23,8 +18,6 @@ import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 
 public class MineomiteItem extends BlockItem {
 
@@ -48,7 +41,7 @@ public class MineomiteItem extends BlockItem {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 0.5F, 1F);
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TNT_PRIMED, SoundSource.NEUTRAL, 0.5F, 1F);
                 if (!player.isCreative()) offStack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(player.getUsedItemHand()));
-                PrimedMineomiteEntity mineomiteEntity = new PrimedMineomiteEntity(level, player);
+                ThrownPrimedMineomiteEntity mineomiteEntity = new ThrownPrimedMineomiteEntity(level, player);
                 mineomiteEntity.setItem(itemStack);
                 mineomiteEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                 level.addFreshEntity(mineomiteEntity);

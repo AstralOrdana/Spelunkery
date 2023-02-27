@@ -1,6 +1,7 @@
 package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.reg.ModBlocks;
@@ -9,6 +10,7 @@ import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.entity.TntRenderer;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CompassItem;
@@ -79,7 +81,8 @@ public class SpelunkeryClient {
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
-        event.register(ModEntities.PRIMED_MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
+        event.register(ModEntities.THROWN_PRIMED_MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
+        event.register(ModEntities.PRIMED_MINEOMITE.get(), PrimedMineomiteEntityRenderer::new);
     }
 
 }

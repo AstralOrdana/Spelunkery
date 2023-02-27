@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": [
+    "spelunkery:large_gold_vein",
+    "spelunkery:quartz_geode"
+  ],
+  "step": "underground_ores"
+}
