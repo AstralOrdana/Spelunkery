@@ -13,15 +13,17 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class WallMushroomFeatureConfig implements FeatureConfiguration {
 
-    public static final Codec<WallMushroomFeatureConfig> CODEC = RecordCodecBuilder.create((instance) -> {
-        return instance.group(Registry.BLOCK.byNameCodec().fieldOf("block").flatXmap(WallMushroomFeatureConfig::apply, DataResult::success).orElse((FloorAndSidesMushroomBlock) ModBlocks.CONK_FUNGUS.get()).forGetter((wallMushroomFeatureConfig) -> {
-            return wallMushroomFeatureConfig.placeBlock;
-        }), Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter((wallMushroomFeatureConfig) -> {
-            return wallMushroomFeatureConfig.canPlaceOnFloor;
-        }), RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("can_be_placed_on").forGetter((wallMushroomFeatureConfig) -> {
-            return wallMushroomFeatureConfig.canBePlacedOn;
-        })).apply(instance, WallMushroomFeatureConfig::new);
-    });
+    public static final Codec<WallMushroomFeatureConfig> CODEC = RecordCodecBuilder.create((instance)
+            -> instance.group(Registry.BLOCK.byNameCodec().fieldOf("block").flatXmap(WallMushroomFeatureConfig::apply, DataResult::success).orElse((FloorAndSidesMushroomBlock) ModBlocks.CONK_FUNGUS.get()).forGetter((wallMushroomFeatureConfig)
+                            -> wallMushroomFeatureConfig.placeBlock),
+
+                    Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter((wallMushroomFeatureConfig)
+                            -> wallMushroomFeatureConfig.canPlaceOnFloor),
+
+                    RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("can_be_placed_on").forGetter((wallMushroomFeatureConfig)
+                            -> wallMushroomFeatureConfig.canBePlacedOn))
+
+            .apply(instance, WallMushroomFeatureConfig::new));
 
     public final FloorAndSidesMushroomBlock placeBlock;
     public final boolean canPlaceOnFloor;

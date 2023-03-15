@@ -2,51 +2,33 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.SpelunkeryPlatform;
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.features.CrystalFeature;
-import com.ordana.spelunkery.features.CrystalFeatureConfig;
-import com.ordana.spelunkery.features.WallMushroomFeature;
-import com.ordana.spelunkery.features.WallMushroomFeatureConfig;
-import com.ordana.spelunkery.features.util.NoiseBasedStoneFeature;
+import com.ordana.spelunkery.features.*;
 import com.ordana.spelunkery.features.util.StoneEntry;
 import com.ordana.spelunkery.features.util.StonePattern;
 import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.world.level.block.MushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.carver.*;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.HugeRedMushroomFeature;
-import net.minecraft.world.level.levelgen.feature.VegetationPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
-import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
-import java.lang.module.Configuration;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -99,7 +81,7 @@ public class ModFeatures {
                     new CrystalFeature(CrystalFeatureConfig.CODEC));
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_stone"), () -> NoiseBasedStoneFeature.featureWithDeepslateUnfiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_stone"), () -> BlockStripeFeature.featureWithDeepslateUnfiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(Blocks.GRANITE, Blocks.STONE, StonePattern.sedimentaryStone()),
                             new StoneEntry(Blocks.DIORITE, Blocks.STONE, StonePattern.sedimentaryStone()),
@@ -119,7 +101,7 @@ public class ModFeatures {
     );
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_LUSH_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_lush"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_lush"), () -> BlockStripeFeature.featureWithDeepslateFiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(Blocks.CLAY, Blocks.CALCITE, StonePattern.dottedClay())
                     ),
@@ -135,7 +117,7 @@ public class ModFeatures {
     );
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_OCEAN_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_ocean"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_ocean"), () -> BlockStripeFeature.featureWithDeepslateFiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.SMOOTH_BASALT, StonePattern.dottedClay()),
                             new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.PRISMARINE, StonePattern.dottedClay())
@@ -153,7 +135,7 @@ public class ModFeatures {
     );
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_DIRT_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_dirt"), () -> NoiseBasedStoneFeature.featureNoDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_dirt"), () -> BlockStripeFeature.featureNoDeepslateFiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(Blocks.DIRT, Blocks.COARSE_DIRT, StonePattern.dirtStripes()),
                             new StoneEntry(Blocks.COARSE_DIRT, Blocks.GRAVEL, StonePattern.dirtStripes())
@@ -166,7 +148,7 @@ public class ModFeatures {
     );
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_DESERT_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_desert"), () -> NoiseBasedStoneFeature.featureWithDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_desert"), () -> BlockStripeFeature.featureWithDeepslateFiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(Blocks.STONE, Blocks.SANDSTONE, StonePattern.desert_terrain()),
                             new StoneEntry(Blocks.SANDSTONE, Blocks.SAND, StonePattern.desert_terrain()),
@@ -188,7 +170,7 @@ public class ModFeatures {
     );
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_SALT_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("noise_salt"), () -> NoiseBasedStoneFeature.featureNoDeepslateFiltered(NoneFeatureConfiguration.CODEC,
+            Spelunkery.res("noise_salt"), () -> BlockStripeFeature.featureNoDeepslateFiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
                             new StoneEntry(ModBlocks.ROCK_SALT_BLOCK.get(), Blocks.STONE, StonePattern.dottedClay())
                     ),
@@ -330,6 +312,15 @@ public class ModFeatures {
 
         ResourceKey<PlacedFeature> deep_dark_fossil = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("deep_dark_fossil"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.HAS_ANCIENT_CITY, deep_dark_fossil);
+
+        ResourceKey<PlacedFeature> portal_fluid_pool = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("portal_fluid_pool"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.SURFACE_STRUCTURES, BiomeTags.HAS_END_CITY, portal_fluid_pool);
+
+        ResourceKey<PlacedFeature> portal_fluid_spring = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("portal_fluid_spring"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.SURFACE_STRUCTURES, BiomeTags.HAS_END_CITY, portal_fluid_spring);
+
+        ResourceKey<PlacedFeature> obsidian_patch = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("obsidian_patch"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.HAS_END_CITY, obsidian_patch);
 
     }
 

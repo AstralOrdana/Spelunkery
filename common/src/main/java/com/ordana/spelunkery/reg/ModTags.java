@@ -5,6 +5,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
@@ -20,6 +21,7 @@ public class ModTags {
     public static final TagKey<Block> CHISELABLE = registerBlockTag("chiselable");
     public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
     public static final TagKey<Block> BLAST_MINER_IMMUNE = registerBlockTag("blast_miner_immune");
+    public static final TagKey<Block> BASE_STONE_END = registerBlockTag("base_stone_end");
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
@@ -43,6 +45,9 @@ public class ModTags {
     //fluids
     public static final TagKey<Fluid> PORTAL_FLUID = registerFluidTag("portal_fluid");
 
+    //enchants
+    public static final TagKey<Enchantment> STANDARD = registerEnchantTag("standard");
+
     private ModTags() {
     }
 
@@ -64,5 +69,9 @@ public class ModTags {
 
     private static TagKey<Fluid> registerFluidTag(String id) {
         return TagKey.create(Registry.FLUID_REGISTRY, Spelunkery.res(id));
+    }
+
+    private static TagKey<Enchantment> registerEnchantTag(String id) {
+        return TagKey.create(Registry.ENCHANTMENT_REGISTRY, Spelunkery.res(id));
     }
 }

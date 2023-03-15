@@ -8,7 +8,7 @@ public class StoneEntry {
     private final Block secondaryStoneType;
     private StonePattern stonePattern;
 
-    public StoneEntry(Block primaryStoneType, Block secondaryStoneType, StonePattern stonePattern){
+    public StoneEntry(Block primaryStoneType, Block secondaryStoneType, StonePattern stonePattern) {
         this.primaryStoneType = primaryStoneType;
         this.secondaryStoneType = secondaryStoneType;
         this.stonePattern = stonePattern;

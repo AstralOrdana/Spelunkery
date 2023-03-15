@@ -100,4 +100,5 @@ public class StonePattern {
         float value = this.noise.GetNoise(x, y, z);
         return value < secondaryMax && value > secondaryMin;
     }
+
 }

@@ -9,10 +9,21 @@
         }
       },
       "inner_layer_provider": {
-        "type": "minecraft:simple_state_provider",
-        "state": {
-          "Name": "minecraft:nether_quartz_ore"
-        }
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "weight": 5,
+            "data": {
+              "Name": "minecraft:netherrack"
+            }
+          },
+          {
+            "weight": 1,
+            "data": {
+              "Name": "minecraft:nether_quartz_ore"
+            }
+          }
+        ]
       },
       "alternate_inner_layer_provider": {
         "type": "minecraft:simple_state_provider",
@@ -43,7 +54,11 @@
           }
         ]
       },
-      "inner_placements": [],
+      "inner_placements": [
+        {
+          "Name": "minecraft:tuff"
+        }
+      ],
       "cannot_replace": "#minecraft:features_cannot_replace",
       "invalid_blocks": "#minecraft:geode_invalid_blocks"
     },

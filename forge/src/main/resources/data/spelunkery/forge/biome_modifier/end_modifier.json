@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:has_end_city",
+  "features": [
+    "spelunkery:obsidian_patch"
+  ],
+  "step": "raw_generation"
+}

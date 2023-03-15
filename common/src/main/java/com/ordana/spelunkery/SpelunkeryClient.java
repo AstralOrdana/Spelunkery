@@ -23,6 +23,7 @@ public class SpelunkeryClient {
     }
 
     public static void setup() {
+        ClientPlatformHelper.registerRenderType(ModBlocks.SUPPORT_WEDGE_BLOCK.get(), RenderType.cutout());
 
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());

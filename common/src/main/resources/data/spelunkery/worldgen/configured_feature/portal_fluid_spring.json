@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:spring_feature",
+  "config": {
+    "state": {
+      "Name": "spelunkery:portal_fluid",
+      "Properties": {
+        "falling": "true"
+      }
+    },
+    "rock_count": 4,
+    "hole_count": 1,
+    "requires_block_below": false,
+    "valid_blocks": [
+      "minecraft:end_stone",
+      "minecraft:obsidian",
+      "minecraft:crying_obsidian"
+    ]
+  }
+}

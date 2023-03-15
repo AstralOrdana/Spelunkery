@@ -5,6 +5,8 @@ import com.ordana.spelunkery.entities.MineomiteEntity;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.utils.LevelHelper;
+import com.ordana.spelunkery.utils.ModParticleUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -51,8 +53,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED;
+    public static final BooleanProperty PRIMED;
     public static final IntegerProperty STICKS;
     protected static final VoxelShape ONE_AABB;
     protected static final VoxelShape TWO_AABB;
@@ -84,36 +89,50 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
 
     public MineomiteBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(((this.stateDefinition.any()).setValue(FACING, Direction.UP)).setValue(WATERLOGGED, false).setValue(STICKS, 1));
+        this.registerDefaultState(((this.stateDefinition.any()).setValue(FACING, Direction.UP)).setValue(WATERLOGGED, false).setValue(STICKS, 1).setValue(PRIMED, false));
     }
 
     public static int getSticks(Level level, BlockPos pos) {
         return level.getBlockState(pos).getValue(STICKS);
     }
+    
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (state.getValue(PRIMED)) {
+            ModParticleUtils.spawnMineomiteParticles(level, pos, level.getBlockState(pos), ParticleTypes.FIREWORK, state.getValue(FACING), UniformInt.of(10, 15));
+            //ParticleUtils.spawnParticlesAlongAxis(state.getValue(FACING).getAxis(), level, pos, 0.125D, ParticleTypes.FIREWORK, UniformInt.of(1, 2));
+        }
+    }
+
+
 
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (!oldState.is(state.getBlock())) {
             if (level.hasNeighborSignal(pos)) {
-                explode(level, pos);
-                level.removeBlock(pos, false);
+                level.setBlock(pos, state.setValue(PRIMED, true), 3);
+                level.scheduleTick(pos, this, 60);
             }
         }
     }
 
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         if (level.hasNeighborSignal(pos)) {
-            explode(level, pos);
-            level.removeBlock(pos, false);
+            level.setBlock(pos, state.setValue(PRIMED, true), 3);
+            level.scheduleTick(pos, this, 60);
         }
     }
 
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
         if (!level.isClientSide) {
 
+            /*
             PrimedMineomiteEntity primedTnt = new PrimedMineomiteEntity(level, 2, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, explosion.getSourceMob());
             int i = primedTnt.getFuse();
             primedTnt.setFuse((short)(level.random.nextInt(i / 4) + i / 8));
             level.addFreshEntity(primedTnt);
+             */
+
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2, Explosion.BlockInteraction.BREAK);
+
         }
     }
 
@@ -123,9 +142,10 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
 
     private static void explode(Level level, BlockPos pos, @Nullable LivingEntity entity) {
         if (!level.isClientSide) {
-            PrimedMineomiteEntity primedTnt = new PrimedMineomiteEntity(level, level.getBlockState(pos).getValue(STICKS), (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, entity);
-            level.addFreshEntity(primedTnt);
-            level.playSound(null, primedTnt.getX(), primedTnt.getY(), primedTnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            float f = level.getBlockState(pos).getValue(STICKS) * 2;
+            level.explode(entity, pos.getX(), pos.getY(), pos.getZ(), f, Explosion.BlockInteraction.BREAK);
+
+            level.playSound(null, pos, SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(entity, GameEvent.PRIME_FUSE, pos);
         }
     }
@@ -142,8 +162,8 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
         if (!itemStack.is(Items.FLINT_AND_STEEL) && !itemStack.is(Items.FIRE_CHARGE)) {
             return super.use(state, level, pos, player, hand, hit);
         } else {
-            explode(level, pos, player);
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
+            level.setBlock(pos, state.setValue(PRIMED, true), 3);
+            level.scheduleTick(pos, this, 60);
             Item item = itemStack.getItem();
             if (!player.isCreative()) {
                 if (itemStack.is(Items.FLINT_AND_STEEL)) {
@@ -165,8 +185,8 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
             BlockPos blockPos = hit.getBlockPos();
             Entity entity = projectile.getOwner();
             if (projectile.isOnFire() && projectile.mayInteract(level, blockPos)) {
-                explode(level, blockPos, entity instanceof LivingEntity ? (LivingEntity)entity : null);
-                level.removeBlock(blockPos, false);
+                level.setBlock(blockPos, state.setValue(PRIMED, true), 3);
+                level.scheduleTick(blockPos, this, 60);
             }
         }
     }
@@ -248,6 +268,10 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (state.getValue(PRIMED)) {
+            explode(level, pos);
+            level.removeBlock(pos, false);
+        }
         this.updateNeighbours(state, level, pos);
     }
 
@@ -258,11 +282,11 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, WATERLOGGED, STICKS);
+        builder.add(FACING, WATERLOGGED, STICKS, PRIMED);
     }
 
     public PushReaction getPistonPushReaction(BlockState state) {
-        return PushReaction.NORMAL;
+        return PushReaction.DESTROY;
     }
 
     public boolean isSignalSource(BlockState state) {
@@ -271,6 +295,7 @@ public class MineomiteBlock extends EndRodBlock implements SimpleWaterloggedBloc
 
     static {
         WATERLOGGED = BlockStateProperties.WATERLOGGED;
+        PRIMED = ModBlockProperties.PRIMED;
         STICKS = ModBlockProperties.STICKS;
         ONE_AABB_X = Shapes.or(Block.box(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D));
         TWO_AABB_X = Shapes.or(Block.box(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D), Block.box(0.0D, 6.0D, 11.0D, 16.0D, 10.0D, 15.0D));
