@@ -1,0 +1,165 @@
+{
+  "type": "spelunkery:block_stripe",
+  "config": {
+    "first_target": [
+      "minecraft:stone"
+    ],
+    "first_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:granite"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:stone"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:diorite"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:stone"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:andesite"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:stone"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      }
+    ],
+    "use_second_target": true,
+    "second_target": [
+      "minecraft:deepslate"
+    ],
+    "second_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.4,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.4
+        }
+      }
+    ],
+    "use_biome_filter": false,
+    "biomes": [
+      "minecraft:forest"
+    ],
+    "plank_patch_chance": 0.25,
+    "use_height_filter": false,
+    "surface_offset": 0,
+    "bottom_offset": 0
+  }
+}

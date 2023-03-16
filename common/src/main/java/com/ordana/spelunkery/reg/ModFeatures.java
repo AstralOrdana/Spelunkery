@@ -80,17 +80,24 @@ public class ModFeatures {
             Spelunkery.res("crystal"), () ->
                     new CrystalFeature(CrystalFeatureConfig.CODEC));
 
-    public static final Supplier<Feature<NoneFeatureConfiguration>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
+    public static final Supplier<Feature<BlockStripeFeatureConfig>> BLOCK_STRIPE_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("block_stripe"), () ->
+                    new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
+
+
+
+/*
+    public static final Supplier<Feature<BlockStripeFeatureConfig>> NOISE_STONE_FEATURE = RegHelper.registerFeature(
             Spelunkery.res("noise_stone"), () -> BlockStripeFeature.featureWithDeepslateUnfiltered(BlockStripeFeatureConfig.CODEC,
                     List.of(
-                            new StoneEntry(Blocks.GRANITE, Blocks.STONE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.DIORITE, Blocks.STONE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.ANDESITE, Blocks.STONE, StonePattern.sedimentaryStone())
+                            new StoneEntry(BlockStateProvider.simple(Blocks.GRANITE), BlockStateProvider.simple(Blocks.STONE), StonePattern.sedimentaryStone()),
+                            new StoneEntry(BlockStateProvider.simple(Blocks.DIORITE), BlockStateProvider.simple(Blocks.STONE), StonePattern.sedimentaryStone()),
+                            new StoneEntry(BlockStateProvider.simple(Blocks.ANDESITE), BlockStateProvider.simple(Blocks.STONE), StonePattern.sedimentaryStone())
                     ),
                     List.of(
-                            new StoneEntry(Blocks.TUFF, Blocks.DEEPSLATE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.SMOOTH_BASALT, Blocks.DEEPSLATE, StonePattern.sedimentaryStone()),
-                            new StoneEntry(Blocks.TUFF  , Blocks.DEEPSLATE, StonePattern.sedimentaryStone())
+                            new StoneEntry(BlockStateProvider.simple(Blocks.TUFF), BlockStateProvider.simple(Blocks.DEEPSLATE), StonePattern.sedimentaryStone()),
+                            new StoneEntry(BlockStateProvider.simple(Blocks.SMOOTH_BASALT), BlockStateProvider.simple(Blocks.DEEPSLATE), StonePattern.sedimentaryStone()),
+                            new StoneEntry(BlockStateProvider.simple(Blocks.TUFF), BlockStateProvider.simple(Blocks.DEEPSLATE), StonePattern.sedimentaryStone())
                     ),
                     0.25F,
                     (ModTags.STONE_TARGET),
@@ -182,6 +189,7 @@ public class ModFeatures {
     );
 
 
+
     //configured features
     public static final RegSupplier<ConfiguredFeature<NoneFeatureConfiguration, Feature<NoneFeatureConfiguration>>> NOISE_STONE_CONFIGURED =
             RegHelper.registerConfiguredFeature(Spelunkery.res("noise_stone"),
@@ -227,13 +235,16 @@ public class ModFeatures {
     public static final RegSupplier<PlacedFeature> PLACED_NOISE_SALT =
             RegHelper.registerPlacedFeature(Spelunkery.res("noise_salt"), NOISE_SALT_CONFIGURED, List::of);
 
+ */
 
     public static void init() {
+        //block stripes
 
         //stone generation
         ResourceKey<PlacedFeature> noise_stone = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("noise_stone"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_STONE_NOISE, noise_stone);
 
+        /*
         ResourceKey<PlacedFeature> noise_lush = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("noise_lush"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_LUSH_NOISE, noise_lush);
 
@@ -251,6 +262,8 @@ public class ModFeatures {
 
         ResourceKey<PlacedFeature> rock_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("rock_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_MOUNTAIN, rock_salt);
+
+         */
 
         //ores
         ResourceKey<PlacedFeature> ore_aquifer = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("ore_aquifer"));

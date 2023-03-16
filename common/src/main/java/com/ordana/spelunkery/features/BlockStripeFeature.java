@@ -6,6 +6,7 @@ import com.ordana.spelunkery.features.util.FastNoiseLite;
 import com.ordana.spelunkery.features.util.StoneEntry;
 import com.ordana.spelunkery.features.util.StonePattern;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -19,62 +20,27 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
 
-    private final List<StoneEntry> entryListStone;
-    private final List<StoneEntry> entryListDeepslate;
-    private final TagKey<Biome> biomes;
-    private final boolean useBiomeFilter;
-    private final float chanceOfBlankPatch;
-    private final TagKey<Block> target1;
-    private final TagKey<Block> target2;
-    private final boolean useHeightFilter;
-    private final int surfaceOffset;
-    private final int bottomOffset;
-
-    public BlockStripeFeature(Codec<BlockStripeFeatureConfig> codec, List<StoneEntry> entryListStone, List<StoneEntry> entryListDeepslate, TagKey<Biome> biomes, boolean useBiomeFilter, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset , int bottomOffset) {
+    public BlockStripeFeature(Codec<BlockStripeFeatureConfig> codec) {
         super(codec);
-        this.entryListDeepslate = entryListDeepslate;
-        this.entryListStone = entryListStone;
-        this.biomes = biomes;
-        this.useBiomeFilter = useBiomeFilter;
-        this.chanceOfBlankPatch = chanceOfBlankPatch;
-        this.target1 = target1;
-        this.target2 = target2;
-        this.useHeightFilter = useHeightFilter;
-        this.surfaceOffset = surfaceOffset;
-        this.bottomOffset = bottomOffset;
-    }
-
-    public static BlockStripeFeature featureWithDeepslateFiltered(Codec<BlockStripeFeatureConfig> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, TagKey<Biome> biomes, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
-        return new BlockStripeFeature(codec, blockListStone, blockListDeepslate, biomes, true, chanceOfBlankPatch, target1, target2, useHeightFilter, surfaceOffset, bottomOffset);
-    }
-
-    public static BlockStripeFeature featureWithDeepslateUnfiltered(Codec<BlockStripeFeatureConfig> codec, List<StoneEntry> blockListStone, List<StoneEntry> blockListDeepslate, float chanceOfBlankPatch, TagKey<Block> target1, TagKey<Block> target2, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
-        return new BlockStripeFeature(codec, blockListStone, blockListDeepslate, null, false, chanceOfBlankPatch, target1, target2, useHeightFilter, surfaceOffset, bottomOffset);
-    }
-
-    public static BlockStripeFeature featureNoDeepslateFiltered(Codec<BlockStripeFeatureConfig> codec, List<StoneEntry> blockListStone, TagKey<Biome> biomes, float chanceOfBlankPatch, TagKey<Block> target1, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
-        return new BlockStripeFeature(codec, blockListStone, blockListStone, biomes, true, chanceOfBlankPatch, target1, null, useHeightFilter, surfaceOffset, bottomOffset);
-    }
-
-    public static BlockStripeFeature featureNoDeepslateUnfiltered(Codec<BlockStripeFeatureConfig> codec, List<StoneEntry> blockListStone, float chanceOfBlankPatch, TagKey<Block> target1, boolean useHeightFilter, int surfaceOffset, int bottomOffset) {
-        return new BlockStripeFeature(codec, blockListStone, blockListStone, null, false, chanceOfBlankPatch, target1, null, useHeightFilter, surfaceOffset, bottomOffset);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<BlockStripeFeatureConfig> featurePlaceContext) {
+    public boolean place(FeaturePlaceContext<BlockStripeFeatureConfig> context) {
 
         if (CommonConfigs.STONE_STRIPE_FEATURES.get()) {
-            RandomSource random = featurePlaceContext.random();
-            BlockPos originPos = featurePlaceContext.origin();
-            WorldGenLevel worldGenLevel = featurePlaceContext.level();
-            ChunkGenerator chunkGenerator = featurePlaceContext.chunkGenerator();
+            BlockStripeFeatureConfig config = context.config();
+
+            RandomSource random = context.random();
+            BlockPos originPos = context.origin();
+            WorldGenLevel worldGenLevel = context.level();
+            ChunkGenerator chunkGenerator = context.chunkGenerator();
 
             ChunkAccess cachedChunk = worldGenLevel.getChunk(originPos);
 
@@ -102,7 +68,7 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
             noise.SetFrequency(0.03F);
             noise.SetDomainWarpAmp(5F);
 
-            FastNoiseLite.Vector3 domainWarpedVector = new FastNoiseLite.Vector3(originPos.getX(), originPos.getY(), originPos.getZ());
+            FastNoiseLite.Vector3 domainWarpedVector = new FastNoiseLite.Vector3(0, 0, 0);
 
             noise.SetFractalOctaves(1);
             var getX = (originPos.getX() & ~15);
@@ -111,7 +77,13 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
             for (int x = getX; x < getX + 16; x++) {
                 for (int z = getZ; z < getZ + 16; z++) {
                     var heightmap = worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
-                    for (int y = chunkGenerator.getMinY(); y < heightmap - surfaceOffset; y++) {
+                    for (int y = chunkGenerator.getMinY(); y < heightmap - config.surfaceOffset; y++) {
+
+                        BlockPos currentPos = new BlockPos(x, y, z);
+                        BlockState currentState = cachedChunk.getBlockState(currentPos);
+
+                        boolean isTarget1 = currentState.is(config.firstTarget);
+                        boolean isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
 
                         domainWarpedVector.x = x;
                         domainWarpedVector.y = y;
@@ -119,38 +91,39 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                         noise.DomainWarp(domainWarpedVector);
                         float cellValue = cellNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z);
                         cellValue = (cellValue * 0.5F + 0.5F);
-                        int stoneIndex = Mth.floor((cellValue) * this.entryListStone.size());
+                        int stoneIndex = Mth.floor((cellValue) * config.firstTargetPlacer.size());
 
                         float seed = cellValue * 1000000;
                         Random patchRandom = new Random((long) seed);
-                        boolean isBlankPatch = (patchRandom.nextFloat() < this.chanceOfBlankPatch) || cellBufferNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z) > -0.1;
+                        boolean isBlankPatch = (patchRandom.nextFloat() < config.blankPatchChance) || cellBufferNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z) > -0.1;
 
-                        BlockPos currentPos = new BlockPos(x, y, z);
-                        BlockState currentState = cachedChunk.getBlockState(currentPos);
 
                         boolean passesBiomeFilter = true;
-                        if (this.biomes != null && this.useBiomeFilter) {
-                            if (!worldGenLevel.getBiome(currentPos).is(biomes)) {
+                        if (config.biomes != null && config.useBiomeFilter) {
+                            var biome = worldGenLevel.getBiome(currentPos);
+                            if (config.biomes.contains(biome)) {
                                 passesBiomeFilter = false;
                             }
                         }
 
                         if (passesBiomeFilter) {
                             if (!isBlankPatch) {
-                                if (!useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - bottomOffset))) {
+                                if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - config.bottomOffset))) {
 
                                     List<StoneEntry> patternList = null;
-                                    if (target2 != null && currentState.is(target2)) patternList = this.entryListDeepslate;
-                                    else if (currentState.is(target1)) patternList = this.entryListStone;
+                                    if (isTarget1) patternList = config.firstTargetPlacer;
+                                    else if (isTarget2) patternList = config.secondTargetPlacer;
+
+
 
                                     if (patternList != null) {
                                         StoneEntry stoneEntry = patternList.get(stoneIndex);
                                         StonePattern stonePattern = stoneEntry.getStonePattern();
 
                                         if (stonePattern.shouldPlaceSecondaryStone(currentPos)) {
-                                            worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(), Block.UPDATE_CLIENTS);
+                                            worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
                                         } else if (stonePattern.shouldPlacePrimaryStone(currentPos)) {
-                                            worldGenLevel.setBlock(currentPos, stoneEntry.getPrimaryStoneState(), Block.UPDATE_CLIENTS);
+                                            worldGenLevel.setBlock(currentPos, stoneEntry.getPrimaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
                                         }
                                     }
 
