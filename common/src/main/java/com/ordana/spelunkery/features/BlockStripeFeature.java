@@ -66,7 +66,7 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
             noise.SetDomainWarpType(FastNoiseLite.DomainWarpType.OpenSimplex2);
             noise.SetRotationType3D(FastNoiseLite.RotationType3D.ImproveXZPlanes);
             noise.SetFrequency(0.03F);
-            noise.SetDomainWarpAmp(5F);
+            noise.SetDomainWarpAmp(1.5F);
 
             FastNoiseLite.Vector3 domainWarpedVector = new FastNoiseLite.Vector3(0, 0, 0);
 
@@ -83,7 +83,8 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                         BlockState currentState = cachedChunk.getBlockState(currentPos);
 
                         boolean isTarget1 = currentState.is(config.firstTarget);
-                        boolean isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
+                        boolean isTarget2 = false;
+                        if (config.secondTarget != null && config.secondTargetPlacer != null) isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
 
                         domainWarpedVector.x = x;
                         domainWarpedVector.y = y;
@@ -108,7 +109,7 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
 
                         if (passesBiomeFilter) {
                             if (!isBlankPatch) {
-                                if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z) - config.bottomOffset))) {
+                                if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - config.bottomOffset))) {
 
                                     List<StoneEntry> patternList = null;
                                     if (isTarget1) patternList = config.firstTargetPlacer;

@@ -1,0 +1,109 @@
+{
+  "type": "spelunkery:block_stripe",
+  "config": {
+    "first_target": "#spelunkery:ocean_target",
+    "first_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.5,
+          "primary_max": 0.5,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:prismarine"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.5,
+          "primary_max": 0.5,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      }
+    ],
+    "use_second_target": true,
+    "second_target": "#spelunkery:deepslate_target",
+    "second_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:basalt",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.5,
+          "primary_max": 0.5,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:basalt",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:prismarine"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 76,
+          "primary_min": -0.5,
+          "primary_max": 0.5,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      }
+    ],
+    "use_biome_filter": true,
+    "biomes": "#spelunkery:has_ocean_noise",
+    "blank_patch_chance": 0.33
+  }
+}

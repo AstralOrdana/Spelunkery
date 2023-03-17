@@ -1,0 +1,61 @@
+{
+  "type": "spelunkery:block_stripe",
+  "config": {
+    "first_target": "#spelunkery:stone_target",
+    "first_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:coarse_dirt"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:dirt"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 77,
+          "primary_min": -0.4,
+          "primary_max": 0.4,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:gravel"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:coarse_dirt"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 77,
+          "primary_min": -0.4,
+          "primary_max": 0.4,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 0.3
+        }
+      }
+    ],
+    "use_second_target": false,
+    "second_target": "#spelunkery:deepslate_target",
+    "second_target_placer": [],
+    "use_biome_filter": true,
+    "biomes": "#spelunkery:has_salt_noise",
+    "blank_patch_chance": 0,
+    "use_height_filter": true,
+    "surface_offset": 0,
+    "bottom_offset": 25
+  }
+}

@@ -251,6 +251,11 @@ public class PackProvider extends DynServerResourcesProvider {
                 "piglin_bartering"
         );
 
+        var vanillaWorldgenSculk = List.of(
+                "sculk_patch_ancient_city",
+                "sculk_patch_deep_dark"
+        );
+
         var vanillaWorldgenMoss = List.of(
                 "moss_patch",
                 "moss_patch_bonemeal",
@@ -439,6 +444,14 @@ public class PackProvider extends DynServerResourcesProvider {
 
 
         //worldgen
+        if (CommonConfigs.BETTER_SCULK_PATCHES.get()) {
+
+            //use improved sculk patch feature
+            overrideDataFileGeneric(manager, vanillaWorldgenSculk,
+                    "minecraft", "worldgen/placed_feature/",
+                    "overrides/worldgen/placed_feature/", ResType.GENERIC);
+        }
+
         if (CommonConfigs.ENABLE_SPOROPHYTES.get()) {
 
             //make sporophytes generate instead of tall grass in lush caves

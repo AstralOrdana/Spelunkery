@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#spelunkery:has_stone_noise",
+  "biomes": "#spelunkery:has_dirt_noise",
   "features": [
     "spelunkery:noise_dirt"
   ],

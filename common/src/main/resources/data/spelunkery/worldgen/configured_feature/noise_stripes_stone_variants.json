@@ -1,25 +1,23 @@
 {
   "type": "spelunkery:block_stripe",
   "config": {
-    "first_target": [
-      "minecraft:stone"
-    ],
+    "first_target": "#spelunkery:stone_target",
     "first_target_placer": [
       {
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:granite"
+            "Name": "minecraft:stone"
           }
         },
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:stone"
+            "Name": "minecraft:granite"
           }
         },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -29,19 +27,19 @@
       },
       {
         "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:stone"
+          }
+        },
+        "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
             "Name": "minecraft:diorite"
           }
         },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:stone"
-          }
-        },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -53,17 +51,17 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:andesite"
+            "Name": "minecraft:stone"
           }
         },
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:stone"
+            "Name": "minecraft:andesite"
           }
         },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -73,28 +71,26 @@
       }
     ],
     "use_second_target": true,
-    "second_target": [
-      "minecraft:deepslate"
-    ],
+    "second_target": "#spelunkery:deepslate_target",
     "second_target_placer": [
       {
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:tuff"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
             "Name": "minecraft:deepslate",
             "Properties": {
               "axis": "y"
             }
           }
         },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -106,20 +102,20 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:tuff"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:smooth_basalt",
+            "Name": "minecraft:deepslate",
             "Properties": {
               "axis": "y"
             }
           }
         },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:smooth_basalt"
+          }
+        },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -131,20 +127,20 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:tuff"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
             "Name": "minecraft:deepslate",
             "Properties": {
               "axis": "y"
             }
           }
         },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
         "stone_pattern": {
-          "noise_seed": 76,
+          "noise_seed": 88,
           "primary_min": -0.4,
           "primary_max": 0,
           "secondary_min": 0,
@@ -153,11 +149,9 @@
         }
       }
     ],
-    "use_biome_filter": false,
-    "biomes": [
-      "minecraft:forest"
-    ],
-    "plank_patch_chance": 0.25,
+    "use_biome_filter": true,
+    "biomes": "#spelunkery:has_stone_noise",
+    "blank_patch_chance": 0.25,
     "use_height_filter": false,
     "surface_offset": 0,
     "bottom_offset": 0

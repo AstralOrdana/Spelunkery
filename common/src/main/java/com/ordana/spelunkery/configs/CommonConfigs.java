@@ -47,6 +47,7 @@ public class CommonConfigs {
 
     public static final Supplier<Boolean> STONE_STRIPE_FEATURES;
     public static final Supplier<Boolean> ENABLE_SPOROPHYTES;
+    public static final Supplier<Boolean> BETTER_SCULK_PATCHES;
     public static final Supplier<Boolean> DARK_FOREST_PORTABELLAS;
     public static final Supplier<Boolean> ENABLE_MORES;
 
@@ -100,6 +101,7 @@ public class CommonConfigs {
         builder.push("worldgen");
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         ENABLE_SPOROPHYTES = builder.define("enable_sporophytes", true);
+        BETTER_SCULK_PATCHES = builder.define("better_sculk_patches", true);
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
         ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();

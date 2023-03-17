@@ -23,9 +23,9 @@ public class BlockStripeFeatureConfig implements FeatureConfiguration {
                             -> blockStripeFeatureConfig.firstTargetPlacer),
                     Codec.BOOL.fieldOf("use_second_target").orElse(false).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.useSecondTarget),
-                    RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("second_target").forGetter((blockStripeFeatureConfig)
+                    RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("second_target").orElse(null).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.secondTarget),
-                    Codec.list(StoneEntry.CODEC).fieldOf("second_target_placer").forGetter((blockStripeFeatureConfig)
+                    Codec.list(StoneEntry.CODEC).fieldOf("second_target_placer").orElse(null).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.secondTargetPlacer),
 
                     Codec.BOOL.fieldOf("use_biome_filter").orElse(false).forGetter((blockStripeFeatureConfig)

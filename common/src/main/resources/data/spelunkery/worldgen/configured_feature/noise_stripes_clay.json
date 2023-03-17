@@ -1,0 +1,58 @@
+{
+  "type": "spelunkery:block_stripe",
+  "config": {
+    "first_target": "#spelunkery:stone_target",
+    "first_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:calcite"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:clay"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 99,
+          "primary_min": -0.3,
+          "primary_max": 0.3,
+          "secondary_min": -0.2,
+          "secondary_max": 0.2,
+          "vertical_scale": 1
+        }
+      }
+    ],
+    "use_second_target": true,
+    "second_target": "#spelunkery:deepslate_target",
+    "second_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:clay"
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:tuff"
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 99,
+          "primary_min": -0.3,
+          "primary_max": 0.3,
+          "secondary_min": -0.1,
+          "secondary_max": 0.1,
+          "vertical_scale": 1
+        }
+      }
+    ],
+    "use_biome_filter": true,
+    "biomes": "#spelunkery:has_lush_noise"
+  }
+}

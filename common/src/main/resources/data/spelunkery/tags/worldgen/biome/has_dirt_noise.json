@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:plains",
+    "minecraft:forest",
     "minecraft:mushroom_fields",
     "minecraft:swamp",
     "minecraft:mangrove_swamp",
@@ -9,9 +11,7 @@
     "minecraft:snowy_taiga",
     "minecraft:windswept_forest",
     "minecraft:taiga",
-    "minecraft:plains",
     "minecraft:meadow",
-    "minecraft:forest",
     "minecraft:old_growth_spruce_taiga",
     "minecraft:flower_forest",
     "minecraft:birch_forest",
