@@ -3,10 +3,14 @@
 
   "tooltip.spelunkery.hold_crouch": "Hold %1$s for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
+  "tooltip.spelunkery.slime_food": "Favorite food of Slimes",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
   "tooltip.spelunkery.diamond_grindable": "Polish on a Diamond Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
   "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
+  "tooltip.spelunkery.flint_and_steel": "Not strong enough to Tear open a portal",
+  "tooltip.spelunkery.sculk": "Mine with Shears to obtain Sculk Veins",
+  "tooltip.spelunkery.sculk_veins": "Mine Sculk with Shears to obtain",
 
   "tooltip.spelunkery.rhymes_with_tears_0": "Rhymes with \"FEARS\"",
   "tooltip.spelunkery.rhymes_with_tears_1": "Rhymes with \"SCARES\"",
@@ -292,5 +296,8 @@
   "block.spelunkery.black_glowstick": "Black Glowstick",
   "block.spelunkery.white_glowstick": "White Glowstick",
   "block.spelunkery.gray_glowstick": "Gray Glowstick",
-  "block.spelunkery.light_gray_glowstick": "Light Gray Glowstick"
+  "block.spelunkery.light_gray_glowstick": "Light Gray Glowstick",
+
+  "death.attack.stonecutter": "%1$s was sawed in half",
+  "death.attack.stonecutter.player": "%1$s was sawed in half whilst fighting %2$s"
 }

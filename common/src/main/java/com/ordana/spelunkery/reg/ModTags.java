@@ -39,6 +39,8 @@ public class ModTags {
     public static final TagKey<Biome> HAS_OCEAN_NOISE = registerBiomeTag("has_ocean_noise");
     public static final TagKey<Biome> HAS_DESERT_NOISE = registerBiomeTag("has_desert_noise");
     public static final TagKey<Biome> HAS_SALT_NOISE = registerBiomeTag("has_salt_noise");
+    public static final TagKey<Biome> HAS_ICE_NOISE = registerBiomeTag("has_ice_noise");
+    public static final TagKey<Biome> HAS_SCULK_NOISE = registerBiomeTag("has_sculk_noise");
 
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");

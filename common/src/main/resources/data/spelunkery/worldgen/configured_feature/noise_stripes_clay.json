@@ -17,11 +17,11 @@
           }
         },
         "stone_pattern": {
-          "noise_seed": 99,
-          "primary_min": -0.3,
-          "primary_max": 0.3,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
+          "noise_seed": 9,
+          "primary_min": -0.1,
+          "primary_max": 0.1,
+          "secondary_min": -0.3,
+          "secondary_max": 0.3,
           "vertical_scale": 1
         }
       }

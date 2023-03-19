@@ -153,7 +153,7 @@
     "biomes": "#spelunkery:has_stone_noise",
     "blank_patch_chance": 0.25,
     "use_height_filter": false,
-    "surface_offset": 0,
+    "surface_offset": 25,
     "bottom_offset": 0
   }
 }

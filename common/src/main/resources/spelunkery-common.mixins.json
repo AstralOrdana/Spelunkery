@@ -16,6 +16,7 @@
     "NetherPortalSoundMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
+    "StonecutterBlockMixin",
     "TooltipMixin",
     "WaterCauldronBlockMixin"
   ],

@@ -17,12 +17,12 @@
           }
         },
         "stone_pattern": {
-          "noise_seed": 77,
-          "primary_min": -0.4,
-          "primary_max": 0.4,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.3
+          "noise_seed": 37,
+          "primary_min": -0.1,
+          "primary_max": 0.1,
+          "secondary_min": -0.4,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.5
         }
       },
       {
@@ -39,12 +39,12 @@
           }
         },
         "stone_pattern": {
-          "noise_seed": 77,
-          "primary_min": -0.4,
-          "primary_max": 0.4,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.3
+          "noise_seed": 37,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.4,
+          "secondary_max": 0.4,
+          "vertical_scale": 0.5
         }
       }
     ],
@@ -53,9 +53,7 @@
     "second_target_placer": [],
     "use_biome_filter": true,
     "biomes": "#spelunkery:has_salt_noise",
-    "blank_patch_chance": 0,
     "use_height_filter": true,
-    "surface_offset": 0,
     "bottom_offset": 25
   }
 }
