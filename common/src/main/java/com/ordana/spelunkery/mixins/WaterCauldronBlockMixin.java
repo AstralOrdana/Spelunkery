@@ -52,7 +52,7 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
                 item.setItem(itemStack);
                 LayeredCauldronBlock.lowerFillLevel(state, level, pos);
             }
-            if (itemStack2.is(Items.SLIME_BALL) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
+            if (itemStack2.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
                 item.remove(Entity.RemovalReason.DISCARDED);
                 Slime slime = EntityType.SLIME.create(level);
                 if (slime != null) {

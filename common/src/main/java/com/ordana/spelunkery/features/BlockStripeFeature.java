@@ -79,12 +79,17 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                     var heightmap = worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
                     for (int y = chunkGenerator.getMinY(); y < heightmap - config.surfaceOffset; y++) {
 
+
                         BlockPos currentPos = new BlockPos(x, y, z);
                         BlockState currentState = cachedChunk.getBlockState(currentPos);
+
+
 
                         boolean isTarget1 = currentState.is(config.firstTarget);
                         boolean isTarget2 = false;
                         if (config.secondTarget != null && config.secondTargetPlacer != null) isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
+                        if (!isTarget1 && !isTarget2) continue;
+
 
                         domainWarpedVector.x = x;
                         domainWarpedVector.y = y;
@@ -102,12 +107,17 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                         boolean passesBiomeFilter = true;
                         if (config.biomes != null && config.useBiomeFilter) {
                             var biome = worldGenLevel.getBiome(currentPos);
-                            if (config.biomes.contains(biome)) {
+                            if (!config.biomes.contains(biome)) {
                                 passesBiomeFilter = false;
                             }
                         }
 
-                        if (passesBiomeFilter) {
+
+                        if (CommonConfigs.CROSS_SECTION.get()) {
+                            if (z < 0 && y < 128)
+                                cachedChunk.setBlockState(currentPos, Blocks.BARRIER.defaultBlockState(), false);
+                        }
+                        else if (passesBiomeFilter) {
                             if (!isBlankPatch) {
                                 if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - config.bottomOffset))) {
 
@@ -121,19 +131,15 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                                         StoneEntry stoneEntry = patternList.get(stoneIndex);
                                         StonePattern stonePattern = stoneEntry.getStonePattern();
 
-                                        if (stonePattern.shouldPlaceSecondaryStone(currentPos)) {
-                                            worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
-                                        } else if (stonePattern.shouldPlacePrimaryStone(currentPos)) {
+                                        if (stonePattern.shouldPlacePrimaryStone(currentPos)) {
                                             worldGenLevel.setBlock(currentPos, stoneEntry.getPrimaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
+                                        } else if (stonePattern.shouldPlaceSecondaryStone(currentPos)) {
+                                            worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
                                         }
                                     }
 
                                 }
                             }
-                        }
-                        if (CommonConfigs.CROSS_SECTION.get()) {
-                            if (z < 0 && y < 128)
-                                cachedChunk.setBlockState(currentPos, Blocks.BARRIER.defaultBlockState(), false);
                         }
                     }
                 }

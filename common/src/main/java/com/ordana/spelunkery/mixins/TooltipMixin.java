@@ -31,8 +31,18 @@ public class TooltipMixin {
 
     @Environment(EnvType.CLIENT)
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void recoveryCompassTooltip(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
+    private void vanillaItemTooltips(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            if (stack.is(ModTags.SLIME_FOOD)) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.slime_food").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN)));
+            }
+            if (stack.is(Items.FLINT_AND_STEEL) && !CommonConfigs.FlINT_AND_STEEL_PORTAL_LIGHTING.get()) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.flint_and_steel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
+            }
+            if (CommonConfigs.SCULK_SHEARING.get()) {
+                if (stack.is(Items.SCULK)) tooltip.add(Component.translatable("tooltip.spelunkery.sculk").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
+                if (stack.is(Items.SCULK_VEIN)) tooltip.add(Component.translatable("tooltip.spelunkery.sculk_vein").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
+            }
             if (stack.is(Items.REDSTONE)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.redstone").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED)));
             }

@@ -7,21 +7,21 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:stone"
+            "Name": "minecraft:blue_ice"
           }
         },
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "spelunkery:rock_salt_block"
+            "Name": "minecraft:packed_ice"
           }
         },
         "stone_pattern": {
-          "noise_seed": 97,
-          "primary_min": -0.1,
-          "primary_max": 0.1,
-          "secondary_min": -0.3,
-          "secondary_max": 0.3,
+          "noise_seed": 55,
+          "primary_min": -0.3,
+          "primary_max": -0.2,
+          "secondary_min": -0.4,
+          "secondary_max": 0.6,
           "vertical_scale": 1
         }
       }
@@ -30,10 +30,10 @@
     "second_target": "#spelunkery:deepslate_target",
     "second_target_placer": [],
     "use_biome_filter": true,
-    "biomes": "#spelunkery:has_salt_noise",
-    "blank_patch_chance": 0.5,
+    "biomes": "#spelunkery:has_ice_noise",
+    "blank_patch_chance": 0.25,
     "use_height_filter": true,
     "surface_offset": 0,
-    "bottom_offset": 25
+    "bottom_offset": 30
   }
 }

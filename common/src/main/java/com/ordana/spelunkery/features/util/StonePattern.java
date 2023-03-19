@@ -18,13 +18,13 @@ public class StonePattern {
 
             Codec.INT.fieldOf("noise_seed").forGetter((stonePattern)
                     -> stonePattern.noiseSeed),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("primary_min").orElse(0.0f).forGetter((stonePattern)
+            Codec.floatRange(-1.0F, 1.0F).fieldOf("primary_min").orElse(0.0f).forGetter((stonePattern)
                     -> stonePattern.primaryMin),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("primary_max").orElse(0.0f).forGetter((stonePattern)
+            Codec.floatRange(-1.0F, 1.0F).fieldOf("primary_max").orElse(0.0f).forGetter((stonePattern)
                     -> stonePattern.primaryMax),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("secondary_min").orElse(0.0f).forGetter((stonePattern)
+            Codec.floatRange(-1.0F, 1.0F).fieldOf("secondary_min").orElse(0.0f).forGetter((stonePattern)
                     -> stonePattern.secondaryMin),
-            Codec.floatRange(0.0F, 1.0F).fieldOf("secondary_max").orElse(0.0f).forGetter((stonePattern)
+            Codec.floatRange(-1.0F, 1.0F).fieldOf("secondary_max").orElse(0.0f).forGetter((stonePattern)
                     -> stonePattern.secondaryMax),
             Codec.floatRange(0.0F, 1.0F).fieldOf("vertical_scale").orElse(0.0f).forGetter((stonePattern)
                     -> stonePattern.verticalScale)
