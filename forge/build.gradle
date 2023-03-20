@@ -113,6 +113,7 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
 
+    modImplementation("curse.maven:more-minecarts-440845:4271044")
 
     implementation 'org.jetbrains:annotations:22.0.0'
 

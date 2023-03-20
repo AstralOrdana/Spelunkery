@@ -2,7 +2,8 @@
   "type": "forge:add_features",
   "biomes": "#minecraft:has_ancient_city",
   "features": [
-    "spelunkery:deep_dark_fossil"
+    "spelunkery:deep_dark_fossil",
+    "spelunkery:noise_sculk"
   ],
   "step": "underground_ores"
 }
