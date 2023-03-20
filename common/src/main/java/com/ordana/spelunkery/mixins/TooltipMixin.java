@@ -41,7 +41,7 @@ public class TooltipMixin {
             }
             if (CommonConfigs.SCULK_SHEARING.get()) {
                 if (stack.is(Items.SCULK)) tooltip.add(Component.translatable("tooltip.spelunkery.sculk").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
-                if (stack.is(Items.SCULK_VEIN)) tooltip.add(Component.translatable("tooltip.spelunkery.sculk_vein").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
+                if (stack.is(Items.SCULK_VEIN)) tooltip.add(Component.translatable("tooltip.spelunkery.sculk_veins").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
             }
             if (stack.is(Items.REDSTONE)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.redstone").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED)));

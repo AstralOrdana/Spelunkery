@@ -1,3 +1,6 @@
 {
-  "parent": "spelunkery:block/mineomite_1"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/mineomite"
+  }
 }
