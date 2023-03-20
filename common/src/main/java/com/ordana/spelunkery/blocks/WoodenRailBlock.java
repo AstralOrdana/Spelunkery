@@ -1,13 +1,10 @@
 package com.ordana.spelunkery.blocks;
 
-import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,18 +19,16 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-public class WoodenRailBlock extends BaseRailBlock {
+public class WoodenRailBlock extends RailBlock {
     public static final EnumProperty<RailShape> SHAPE;
     public static final int STABILITY_MAX_DISTANCE = 7;
     public static final IntegerProperty DISTANCE;
     public static final BooleanProperty BOTTOM;
 
     public WoodenRailBlock(Properties properties) {
-        super(true, properties);
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false).setValue(BOTTOM, true).setValue(DISTANCE, 0));
     }
 
@@ -294,7 +289,7 @@ public class WoodenRailBlock extends BaseRailBlock {
     }
 
     static {
-        SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
+        SHAPE = BlockStateProperties.RAIL_SHAPE;
         DISTANCE = BlockStateProperties.STABILITY_DISTANCE;
         BOTTOM = BlockStateProperties.BOTTOM;
     }

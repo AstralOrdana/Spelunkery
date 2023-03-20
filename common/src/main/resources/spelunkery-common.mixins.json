@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "AbstractMinecartMixin",
     "BaseFireBlockMixin",
     "BiomeDefaultFeaturesMixin",
     "ExperienceOrbMixin",
