@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:diamond_grindstone"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.diamond_grindstone.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.diamond_grindstone.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:rough_diamond",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diamond_grindstone"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

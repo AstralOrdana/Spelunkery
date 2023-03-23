@@ -13,7 +13,7 @@ dependencies {
     //modImplementation("curse.maven:selene-499980:4378793")
 
     //modImplementation("net.mehvahdjukaar:moonlight:${project.moonlight_version}")
-    modImplementation("curse.maven:selene-499980:4393343")
+    modImplementation("curse.maven:selene-499980:4452344")
     //you could try to use the forge/fabric one here insead but no guaranteed
 }
 

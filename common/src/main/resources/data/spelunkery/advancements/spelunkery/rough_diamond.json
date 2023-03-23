@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:rough_diamond"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.rough_diamond.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.rough_diamond.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:rough_diamond"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

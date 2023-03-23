@@ -53,18 +53,20 @@ public abstract class AbstractMinecartMixin extends Entity {
             if (this.getHurtTime() == 0) {
                 this.setHurtDir(-this.getHurtDir());
                 this.setHurtTime(10);
-                this.setDamage(20.0F);
+                this.setDamage(random.nextInt(5 ,10));
                 this.markHurt();
             }
         }
     }
 
 
+    /*
     @Inject(method = "getBlockSpeedFactor", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     public void slowRails(CallbackInfoReturnable<Float> cir) {
         BlockState blockState = this.level.getBlockState(this.blockPosition());
-        if (blockState.is(ModBlocks.WOODEN_RAIL.get())) cir.setReturnValue(0.5f);
+        if (blockState.is(ModBlocks.WOODEN_RAIL.get())) cir.setReturnValue(0.8f);
     }
+     */
 
 
 

@@ -4,6 +4,8 @@ import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.events.PackProvider;
 import com.ordana.spelunkery.reg.*;
+import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
+import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +41,14 @@ public class Spelunkery {
         ModItems.init();
         ModEntities.init();
         ModRecipes.init();
+
+        MoonlightEventsHelper.addListener(Spelunkery::compassLogic, IDropItemOnDeathEvent.class);
+    }
+
+    private static void compassLogic(IDropItemOnDeathEvent event) {
+        if (event.getItemStack().is(ModTags.KEEP_ON_DEATH)) {
+            event.setCanceled(true);
+        }
     }
 
 }
