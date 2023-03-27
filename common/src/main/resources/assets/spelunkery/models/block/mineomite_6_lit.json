@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "spelunkery:block/mineomite",
+		"1": "spelunkery:block/mineomite_lit",
 		"particle": "spelunkery:block/mineomite"
 	},
 	"elements": [
@@ -66,8 +66,8 @@
 			}
 		},
 		{
-			"from": [11, 14, 3],
-			"to": [15, 18, 3],
+			"from": [1, 14, 3],
+			"to": [5, 18, 3],
 			"faces": {
 				"north": {"uv": [8, 0, 12, 4], "texture": "#1"},
 				"east": {"uv": [8, 0, 8, 3], "texture": "#1"},
@@ -90,8 +90,8 @@
 			}
 		},
 		{
-			"from": [11, 0, 1],
-			"to": [15, 14, 5],
+			"from": [1, 0, 1],
+			"to": [5, 14, 5],
 			"faces": {
 				"north": {"uv": [0, 0, 4, 14], "texture": "#1"},
 				"east": {"uv": [0, 0, 4, 14], "texture": "#1"},

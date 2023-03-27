@@ -1,245 +1,488 @@
 {
   "variants": {
-    "facing=down,sticks=1": {
+    "facing=down,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=1": {
+    "facing=east,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=1": {
+    "facing=north,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1",
       "x": 90
     },
-    "facing=south,sticks=1": {
+    "facing=south,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=1": {
+    "facing=up,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1"
     },
-    "facing=west,sticks=1": {
+    "facing=west,sticks=1,primed=false": {
       "model": "spelunkery:block/mineomite_1_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=2": {
+    "facing=down,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=2": {
+    "facing=east,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=2": {
+    "facing=north,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2",
       "x": 90
     },
-    "facing=south,sticks=2": {
+    "facing=south,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=2": {
+    "facing=up,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2"
     },
-    "facing=west,sticks=2": {
+    "facing=west,sticks=2,primed=false": {
       "model": "spelunkery:block/mineomite_2_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=3": {
+    "facing=down,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=3": {
+    "facing=east,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=3": {
+    "facing=north,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3",
       "x": 90
     },
-    "facing=south,sticks=3": {
+    "facing=south,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=3": {
+    "facing=up,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3"
     },
-    "facing=west,sticks=3": {
+    "facing=west,sticks=3,primed=false": {
       "model": "spelunkery:block/mineomite_3_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=4": {
+    "facing=down,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=4": {
+    "facing=east,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=4": {
+    "facing=north,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4",
       "x": 90
     },
-    "facing=south,sticks=4": {
+    "facing=south,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=4": {
+    "facing=up,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4"
     },
-    "facing=west,sticks=4": {
+    "facing=west,sticks=4,primed=false": {
       "model": "spelunkery:block/mineomite_4_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=5": {
+    "facing=down,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=5": {
+    "facing=east,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=5": {
+    "facing=north,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5",
       "x": 90
     },
-    "facing=south,sticks=5": {
+    "facing=south,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=5": {
+    "facing=up,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5"
     },
-    "facing=west,sticks=5": {
+    "facing=west,sticks=5,primed=false": {
       "model": "spelunkery:block/mineomite_5_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=6": {
+    "facing=down,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=6": {
+    "facing=east,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=6": {
+    "facing=north,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6",
       "x": 90
     },
-    "facing=south,sticks=6": {
+    "facing=south,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=6": {
+    "facing=up,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6"
     },
-    "facing=west,sticks=6": {
+    "facing=west,sticks=6,primed=false": {
       "model": "spelunkery:block/mineomite_6_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=7": {
+    "facing=down,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=7": {
+    "facing=east,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=7": {
+    "facing=north,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7",
       "x": 90
     },
-    "facing=south,sticks=7": {
+    "facing=south,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=7": {
+    "facing=up,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7"
     },
-    "facing=west,sticks=7": {
+    "facing=west,sticks=7,primed=false": {
       "model": "spelunkery:block/mineomite_7_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=8": {
+    "facing=down,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=8": {
+    "facing=east,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=8": {
+    "facing=north,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8",
       "x": 90
     },
-    "facing=south,sticks=8": {
+    "facing=south,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=8": {
+    "facing=up,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8"
     },
-    "facing=west,sticks=8": {
+    "facing=west,sticks=8,primed=false": {
       "model": "spelunkery:block/mineomite_8_alt",
       "x": 90,
       "y": 270
     },
-    "facing=down,sticks=9": {
+    "facing=down,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9_alt",
       "x": 180,
       "y": 180
     },
-    "facing=east,sticks=9": {
+    "facing=east,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9",
       "x": 90,
       "y": 90
     },
-    "facing=north,sticks=9": {
+    "facing=north,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9",
       "x": 90
     },
-    "facing=south,sticks=9": {
+    "facing=south,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9_alt",
       "x": 90,
       "y": 180
     },
-    "facing=up,sticks=9": {
+    "facing=up,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9"
     },
-    "facing=west,sticks=9": {
+    "facing=west,sticks=9,primed=false": {
       "model": "spelunkery:block/mineomite_9_alt",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_lit",
+      "x": 90
+    },
+    "facing=south,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_lit"
+    },
+    "facing=west,sticks=1,primed=true": {
+      "model": "spelunkery:block/mineomite_1_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_lit",
+      "x": 90
+    },
+    "facing=south,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_lit"
+    },
+    "facing=west,sticks=2,primed=true": {
+      "model": "spelunkery:block/mineomite_2_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_lit",
+      "x": 90
+    },
+    "facing=south,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_lit"
+    },
+    "facing=west,sticks=3,primed=true": {
+      "model": "spelunkery:block/mineomite_3_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_lit",
+      "x": 90
+    },
+    "facing=south,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_lit"
+    },
+    "facing=west,sticks=4,primed=true": {
+      "model": "spelunkery:block/mineomite_4_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_lit",
+      "x": 90
+    },
+    "facing=south,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_lit"
+    },
+    "facing=west,sticks=5,primed=true": {
+      "model": "spelunkery:block/mineomite_5_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_lit",
+      "x": 90
+    },
+    "facing=south,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_lit"
+    },
+    "facing=west,sticks=6,primed=true": {
+      "model": "spelunkery:block/mineomite_6_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_lit",
+      "x": 90
+    },
+    "facing=south,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_lit"
+    },
+    "facing=west,sticks=7,primed=true": {
+      "model": "spelunkery:block/mineomite_7_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_lit",
+      "x": 90
+    },
+    "facing=south,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_lit"
+    },
+    "facing=west,sticks=8,primed=true": {
+      "model": "spelunkery:block/mineomite_8_alt_lit",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_alt_lit",
+      "x": 180,
+      "y": 180
+    },
+    "facing=east,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_lit",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_lit",
+      "x": 90
+    },
+    "facing=south,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_alt_lit",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_lit"
+    },
+    "facing=west,sticks=9,primed=true": {
+      "model": "spelunkery:block/mineomite_9_alt_lit",
       "x": 90,
       "y": 270
     }

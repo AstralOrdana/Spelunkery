@@ -3,7 +3,7 @@
 	"textures": {
 		"3": "spelunkery:block/nephrite_diode_back",
 		"4": "spelunkery:block/nephrite_diode_front",
-		"5": "spelunkery:block/nephrite_diode_side",
+		"5": "spelunkery:block/nephrite_diode_side_active",
 		"particle": "spelunkery:block/nephrite_diode_front"
 	},
 	"elements": [

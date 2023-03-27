@@ -9,7 +9,26 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "spelunkery:wooden_rail",
+              "name": "spelunkery:dust_bun",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 1,
+                    "max": 6
+                  }
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.233
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "spelunkery:mineomite",
               "functions": [
                 {
                   "function": "minecraft:set_count",

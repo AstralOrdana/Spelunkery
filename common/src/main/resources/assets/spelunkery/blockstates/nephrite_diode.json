@@ -1,26 +1,49 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,powered=false": {
       "model": "spelunkery:block/nephrite_diode"
     },
-    "facing=south": {
+    "facing=south,powered=false": {
       "model": "spelunkery:block/nephrite_diode",
       "y": 180
     },
-    "facing=east": {
+    "facing=east,powered=false": {
       "model": "spelunkery:block/nephrite_diode",
       "y": 90
     },
-    "facing=west": {
+    "facing=west,powered=false": {
       "model": "spelunkery:block/nephrite_diode",
       "y": -90
     },
-    "facing=up": {
+    "facing=up,powered=false": {
       "model": "spelunkery:block/nephrite_diode",
       "x": -90
     },
-    "facing=down": {
+    "facing=down,powered=false": {
       "model": "spelunkery:block/nephrite_diode",
+      "x": 90
+    },
+    "facing=north,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active"
+    },
+    "facing=south,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active",
+      "y": 180
+    },
+    "facing=east,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active",
+      "y": 90
+    },
+    "facing=west,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active",
+      "y": -90
+    },
+    "facing=up,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active",
+      "x": -90
+    },
+    "facing=down,powered=true": {
+      "model": "spelunkery:block/nephrite_diode_active",
       "x": 90
     }
   }

@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "spelunkery:block/mineomite",
+		"1": "spelunkery:block/mineomite_lit",
 		"particle": "spelunkery:block/mineomite"
 	},
 	"elements": [

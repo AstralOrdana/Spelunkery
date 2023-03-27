@@ -1,16 +1,27 @@
 package com.ordana.spelunkery.items;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.utils.TranslationUtils;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -19,43 +30,39 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class DustBunItem extends Item {
     public DustBunItem(Properties properties) {
         super(properties);
     }
 
     @Override
+    public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+        if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
+            if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
+                tooltip.add(Component.translatable("tooltip.spelunkery.dust_bun_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+            } else {
+                tooltip.add(TranslationUtils.CROUCH.component());
+            }
+        }
+    }
+
+    @Override
     @NotNull
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+
         ItemStack stack = player.getItemInHand(hand);
-        BlockPos pos = player.blockPosition();
         if (level instanceof ServerLevel) {
-            if (player.isSecondaryUseActive()) {
-                int bunCount = stack.getCount();
-                for (int i = 0; i < bunCount; i++) {
-                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("oreganized"));
+            LootTable lootTable = level.getServer().getLootTables().get(Spelunkery.res("gameplay/dust_bun"));
+            LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
+                    .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 
-                    LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
-                            .withRandom(level.random)
-                            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                            .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+            int bunCount = 1;
+            if (player.isSecondaryUseActive()) bunCount = stack.getCount();
 
-                    var l = lootTable.getRandomItems(builder.create(LootContextParamSets.GIFT));
-                    ItemStack bunStack = l.iterator().next();
-
-                    if (bunStack != null) {
-                        if (!player.getInventory().add(new ItemStack(bunStack.getItem()))) {
-                            player.drop(new ItemStack(bunStack.getItem()), false);
-                        }
-                        stack.shrink(1);
-                    }
-                }
-                return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
-            } else {
-                LootTable lootTable = level.getServer().getLootTables().get(Spelunkery.res("gameplay/dust_bun"));
-                LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
-                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
-                        .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+            for (int i = 0; i < bunCount; i++) {
 
                 var l = lootTable.getRandomItems(builder.create(LootContextParamSets.GIFT));
                 ItemStack bunStack = l.iterator().next();
@@ -65,10 +72,14 @@ public class DustBunItem extends Item {
                         player.drop(new ItemStack(bunStack.getItem()), false);
                     }
                     stack.shrink(1);
-                    return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
                 }
+
             }
+            level.playSound(null, player.blockPosition(), SoundEvents.LEASH_KNOT_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+            return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
         }
+
         return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
     }
 }
+
