@@ -21,16 +21,17 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WoodenRailBlock extends RailBlock {
+public class WoodenRailBlock extends BaseRailBlock {
     public static final EnumProperty<RailShape> SHAPE;
     public static final int STABILITY_MAX_DISTANCE = 7;
     public static final IntegerProperty DISTANCE;
     public static final BooleanProperty BOTTOM;
 
-    public WoodenRailBlock(Properties properties) {
-        super(properties);
+    public WoodenRailBlock(boolean bl, Properties properties) {
+        super(bl, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false).setValue(BOTTOM, true).setValue(DISTANCE, 0));
     }
+
 
     private static boolean isBottom(BlockGetter level, BlockPos pos) {
         return canSupportRigidBlock(level, pos.below());
