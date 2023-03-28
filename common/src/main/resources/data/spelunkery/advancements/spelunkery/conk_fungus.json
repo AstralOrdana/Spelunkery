@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:conk_fungus"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.conk_fungus.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.conk_fungus.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:conk_fungus"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

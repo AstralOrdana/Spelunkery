@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:depth_gauge"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.depth_gauge.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.depth_gauge.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "spelunkery:depth_gauge"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "spelunkery:rough_diamond",
+  "parent": "spelunkery:spelunkery/diamond_grindstone",
   "criteria": {
     "diamond": {
       "trigger": "minecraft:inventory_changed",

@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:coal_lump"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.coal_lump.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.coal_lump.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/mine_stone",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:coal_lump"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

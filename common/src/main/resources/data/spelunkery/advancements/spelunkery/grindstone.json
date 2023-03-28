@@ -1,0 +1,53 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:grindstone"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.grindstone.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.grindstone.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:spelunkery/rough_gem",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "spelunkery:rough_lazurite",
+            "spelunkery:rough_cinnabar",
+            "spelunkery:rough_emerald",
+            "spelunkery:rough_diamond",
+            "spelunkery:rough_lazurite_shard",
+            "spelunkery:rough_cinnabar_shard",
+            "spelunkery:rough_emerald_shard",
+            "spelunkery:rough_diamond_shard",
+            "spelunkery:rough_lazurite_block",
+            "spelunkery:rough_cinnabar_block",
+            "spelunkery:rough_emerald_block",
+            "spelunkery:rough_diamond_block"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "minecraft:grindstone"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

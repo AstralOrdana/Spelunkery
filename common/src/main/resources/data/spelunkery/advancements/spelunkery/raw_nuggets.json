@@ -1,0 +1,47 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:raw_iron_nugget"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.raw_nuggets.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.raw_nuggets.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:raw_iron_nugget"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:raw_gold_nugget"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:raw_copper_nugget"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:red_mushroom"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.every_fungus.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.every_fungus.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:spelunkery/conk_fungus",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:red_mushroom"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:brown_mushroom"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:crimson_fungus"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:warped_fungus"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:conk_fungus"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:milly_bubcap"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:inkcap_mushroom"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:white_inkcap_mushroom"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:phosphor_fungus"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:mushgloom"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:button_mushroom"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:crimini"
+            ]
+          },
+          {
+            "items": [
+              "spelunkery:portabella"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

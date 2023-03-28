@@ -1,6 +1,5 @@
 package com.ordana.spelunkery;
 
-import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
@@ -10,11 +9,6 @@ import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.client.renderer.entity.TntRenderer;
-import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CompassItem;
-import net.minecraft.world.item.Items;
 
 public class SpelunkeryClient {
     
@@ -23,7 +17,6 @@ public class SpelunkeryClient {
     }
 
     public static void setup() {
-        ClientPlatformHelper.registerRenderType(ModBlocks.SUPPORT_WEDGE_BLOCK.get(), RenderType.cutout());
 
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());

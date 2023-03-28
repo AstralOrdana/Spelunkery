@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:slime_block"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.summon_slime.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.summon_slime.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:slime_block"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "minecraft:water_cauldron"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

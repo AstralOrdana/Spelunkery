@@ -138,7 +138,7 @@ public class ModEvents {
                     player.setItemInHand(hand, itemStack2);
                     //if (!player.getAbilities().instabuild) stack.shrink(1);
                     level.setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger( serverPlayer, pos, stack);
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
@@ -186,6 +186,7 @@ public class ModEvents {
                         ItemStack resultItem = result.copy();
                         ItemStack byproductItem = byproduct.copy();
                         if (player.isShiftKeyDown() && stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
+                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                             level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) - 1));
                             if (!player.getAbilities().instabuild) stack.shrink(1);
                         }
@@ -196,6 +197,7 @@ public class ModEvents {
                             return InteractionResult.sidedSuccess(level.isClientSide);
                         }
                         else if (player.isShiftKeyDown()) {
+                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                             int ingredientCount = stack.getCount();
                             for (int b = 0; b <= ingredientCount; b++) {
                                 byproductCount = byproductCount + random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
@@ -217,6 +219,7 @@ public class ModEvents {
                                 level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
                             }
                         } else {
+                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                             resultItem.setCount(resultCount);
                             byproductItem.setCount(byproductCount);
                             if (!player.getAbilities().instabuild) {

@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:beetroot"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.feed_slime.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.feed_slime.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:spelunkery/summon_slime",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:beetroot",
+            "minecraft:chicken"
+          ]
+        },
+        "entity": {
+          "type": "minecraft:slime"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

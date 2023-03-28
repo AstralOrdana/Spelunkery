@@ -2,7 +2,9 @@ package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModTags;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
@@ -81,6 +83,7 @@ public abstract class SlimeMixin extends Mob {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(ModTags.SLIME_FOOD)) {
+            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, this);
             player.playSound(SoundEvents.SLIME_SQUISH, 1.0F, 1.0F);
             player.playSound(SoundEvents.FOX_EAT, 1.0F, 1.0F);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);

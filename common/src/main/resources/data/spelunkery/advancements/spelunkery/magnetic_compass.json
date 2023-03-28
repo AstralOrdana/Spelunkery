@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:magnetic_compass"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.magnetic_compass.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.magnetic_compass.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:spelunkery/magnetite",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:magnetic_compass"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

@@ -105,10 +105,6 @@ public class ModBlocks {
         return RegHelper.registerItem(Spelunkery.res(name), () -> new BlockItem(blockSup.get(), properties));
     }
 
-
-    public static final Supplier<Block> SUPPORT_WEDGE_BLOCK = regWithItem("support_wedge_block", () ->
-            new SupportWedgeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
-
     //rough gem blocks
     public static final Supplier<Block> CALCITE_REDSTONE_ORE = regWithItem("calcite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)

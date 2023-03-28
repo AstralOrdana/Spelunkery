@@ -256,6 +256,20 @@ public class PackProvider extends DynServerResourcesProvider {
                 "sculk_patch_deep_dark"
         );
 
+
+        var vanillaWorldgenStones = List.of(
+                "ore_andesite_upper",
+                "ore_andesite_lower",
+                "ore_granite_upper",
+                "ore_granite_lower",
+                "ore_diorite_upper",
+                "ore_diorite_lower",
+                "ore_tuff",
+                "ore_dirt",
+                "ore_gravel",
+                "ore_clay"
+        );
+
         var vanillaWorldgenMoss = List.of(
                 "moss_patch",
                 "moss_patch_bonemeal",
@@ -448,6 +462,14 @@ public class PackProvider extends DynServerResourcesProvider {
 
             //use improved sculk patch feature
             overrideDataFileGeneric(manager, vanillaWorldgenSculk,
+                    "minecraft", "worldgen/placed_feature/",
+                    "overrides/worldgen/placed_feature/", ResType.GENERIC);
+        }
+
+        if (CommonConfigs.STONE_STRIPE_FEATURES.get()) {
+
+            //disable vanilla stone patches
+            overrideDataFileGeneric(manager, vanillaWorldgenStones,
                     "minecraft", "worldgen/placed_feature/",
                     "overrides/worldgen/placed_feature/", ResType.GENERIC);
         }

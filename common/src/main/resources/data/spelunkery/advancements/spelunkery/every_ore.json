@@ -1,0 +1,713 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:granite_lapis_ore"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.every_ore.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.every_ore.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "spelunkery:spelunkery/raw_nuggets",
+  "criteria": {
+    "nether_quartz_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:nether_quartz_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "nether_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:nether_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "sandstone_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:sandstone_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "calcite_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:calcite_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "smooth_basalt_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:smooth_basalt_diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_coal_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_coal_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_iron_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_gold_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_gold_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_copper_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_copper_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_redstone_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_redstone_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_lapis_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_lapis_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_emerald_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_emerald_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "deepslate_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:deepslate_diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "andesite_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:andesite_diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "diorite_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:diorite_diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "granite_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:granite_diamond_ore"
+            ]
+          }
+        ]
+      }
+    },
+    "tuff_diamond_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:tuff_diamond_ore"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+
+    ["nether_quartz_ore"],
+    ["nether_gold_ore"],
+    ["sandstone_lapis_ore"],
+    ["calcite_redstone_ore"],
+    ["smooth_basalt_diamond_ore"],
+    ["coal_ore"],
+    ["deepslate_coal_ore"],
+    ["andesite_coal_ore"],
+    ["diorite_coal_ore"],
+    ["granite_coal_ore"],
+    ["tuff_coal_ore"],
+    ["iron_ore"],
+    ["deepslate_iron_ore"],
+    ["andesite_iron_ore"],
+    ["diorite_iron_ore"],
+    ["granite_iron_ore"],
+    ["tuff_iron_ore"],
+    ["gold_ore"],
+    ["deepslate_gold_ore"],
+    ["andesite_gold_ore"],
+    ["diorite_gold_ore"],
+    ["granite_gold_ore"],
+    ["tuff_gold_ore"],
+    ["copper_ore"],
+    ["deepslate_copper_ore"],
+    ["andesite_copper_ore"],
+    ["diorite_copper_ore"],
+    ["granite_copper_ore"],
+    ["tuff_copper_ore"],
+    ["redstone_ore"],
+    ["deepslate_redstone_ore"],
+    ["andesite_redstone_ore"],
+    ["diorite_redstone_ore"],
+    ["granite_redstone_ore"],
+    ["tuff_redstone_ore"],
+    ["lapis_ore"],
+    ["deepslate_lapis_ore"],
+    ["andesite_lapis_ore"],
+    ["diorite_lapis_ore"],
+    ["granite_lapis_ore"],
+    ["tuff_lapis_ore"],
+    ["emerald_ore"],
+    ["deepslate_emerald_ore"],
+    ["andesite_emerald_ore"],
+    ["diorite_emerald_ore"],
+    ["granite_emerald_ore"],
+    ["tuff_emerald_ore"],
+    ["diamond_ore"],
+    ["deepslate_diamond_ore"],
+    ["andesite_diamond_ore"],
+    ["diorite_diamond_ore"],
+    ["granite_diamond_ore"],
+    ["tuff_diamond_ore"]
+
+  ]
+}

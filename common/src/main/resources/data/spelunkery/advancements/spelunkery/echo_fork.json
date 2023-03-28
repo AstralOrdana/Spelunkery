@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:echo_fork"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.echo_fork.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.echo_fork.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/avoid_vibration",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "spelunkery:echo_fork"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

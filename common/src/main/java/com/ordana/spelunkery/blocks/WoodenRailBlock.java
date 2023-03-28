@@ -290,7 +290,7 @@ public class WoodenRailBlock extends BaseRailBlock {
     }
 
     static {
-        SHAPE = BlockStateProperties.RAIL_SHAPE;
+        SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
         DISTANCE = BlockStateProperties.STABILITY_DISTANCE;
         BOTTOM = BlockStateProperties.BOTTOM;
     }

@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:portal_fluid_bottle"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.purple_drink.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.purple_drink.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:nether/charge_respawn_anchor",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "spelunkery:portal_fluid_bottle"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

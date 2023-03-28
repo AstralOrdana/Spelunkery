@@ -3,9 +3,11 @@ package com.ordana.spelunkery.mixins;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.cauldron.CauldronInteraction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -53,9 +55,10 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
                 LayeredCauldronBlock.lowerFillLevel(state, level, pos);
             }
             if (itemStack2.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
-                item.remove(Entity.RemovalReason.DISCARDED);
                 Slime slime = EntityType.SLIME.create(level);
                 if (slime != null) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) item.getThrowingEntity(), pos, itemStack2);
+                    item.remove(Entity.RemovalReason.DISCARDED);
                     slime.moveTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                     level.addFreshEntity(slime);
                     level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());

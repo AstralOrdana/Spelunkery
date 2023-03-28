@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:rough_lazurite"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.rough_gem.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.rough_gem.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:rough_lazurite",
+              "spelunkery:rough_cinnabar",
+              "spelunkery:rough_emerald",
+              "spelunkery:rough_diamond"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

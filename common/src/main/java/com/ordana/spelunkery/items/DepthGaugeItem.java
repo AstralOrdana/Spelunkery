@@ -3,6 +3,7 @@ package com.ordana.spelunkery.items;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
@@ -60,6 +61,7 @@ public class DepthGaugeItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.displayClientMessage(Component.translatable("tooltip.spelunkery.depth_gauge_depth", getYLevel(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)), true);
+        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.USING_ITEM.trigger(serverPlayer, stack);
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
     }
 

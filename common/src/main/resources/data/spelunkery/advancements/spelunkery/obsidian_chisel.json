@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "spelunkery:obsidian_hammer_and_chisel"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.obsidian_chisel.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.obsidian_chisel.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/form_obsidian",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:obsidian_hammer_and_chisel"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}
