@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:has_ancient_city",
+  "biomes": "#spelunkery:has_sculk_noise",
   "features": [
     "spelunkery:deep_dark_fossil",
     "spelunkery:noise_sculk"

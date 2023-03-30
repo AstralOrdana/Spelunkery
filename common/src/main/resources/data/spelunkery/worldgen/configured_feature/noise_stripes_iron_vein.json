@@ -1,0 +1,242 @@
+{
+  "type": "spelunkery:block_stripe",
+  "config": {
+    "first_target": "#spelunkery:deepslate_target",
+    "first_target_placer": [
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "weight": 50,
+              "data": {
+                "Name": "minecraft:tuff"
+              }
+            },
+            {
+              "weight": 20,
+              "data": {
+                "Name": "minecraft:deepslate",
+                "Properties": {
+                  "axis": "y"
+                }
+              }
+            },
+            {
+              "weight": 10,
+              "data": {
+                "Name": "minecraft:deepslate_iron_ore"
+              }
+            },
+            {
+              "weight": 2,
+              "data": {
+                "Name": "minecraft:raw_iron_block"
+              }
+            },
+            {
+              "weight": 1,
+              "data": {
+                "Name": "spelunkery:magnetite"
+              }
+            }
+          ]
+        },
+        "stone_pattern": {
+          "noise_seed": 73,
+          "primary_min": -0.3,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0.3,
+          "vertical_scale": 1
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      },
+      {
+        "primary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "secondary_stone_type": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:deepslate",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        "stone_pattern": {
+          "noise_seed": 88,
+          "primary_min": 0,
+          "primary_max": 0,
+          "secondary_min": 0,
+          "secondary_max": 0,
+          "vertical_scale": 0.4
+        }
+      }
+    ],
+    "use_second_target": false,
+    "second_target": "#spelunkery:deepslate_target",
+    "second_target_placer": [],
+    "use_biome_filter": true,
+    "biomes": "#spelunkery:has_stone_noise",
+    "blank_patch_chance": 0.85,
+    "use_height_filter": false,
+    "surface_offset": 60,
+    "bottom_offset": 0
+  }
+}

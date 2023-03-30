@@ -36,17 +36,17 @@ public class SculkGrowthFeature extends Feature<NoneFeatureConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
         this.sculkShapeNoise = new FastNoiseLite(0);
-        this.sculkShapeNoise.SetFrequency(1/12F);
+        this.sculkShapeNoise.SetFrequency(1/6F);
         this.sculkShapeNoise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2S);
         this.worldGenLevel = featurePlaceContext.level();
         BlockPos blockPos = featurePlaceContext.origin();
         this.random = featurePlaceContext.random();
         this.catalystCount = 0;
 
-        for(int x = -16; x < 16; x++){
-            for(int y = -16; y < 16; y++){
-                for(int z = -16; z < 16; z++){
-                    float dist = Mth.sqrt((float) blockPos.offset(x, y, z).distSqr(blockPos)) / 16F;
+        for(int x = -8; x < 8; x++){
+            for(int y = -8; y < 8; y++){
+                for(int z = -8; z < 8; z++){
+                    float dist = Mth.sqrt((float) blockPos.offset(x, y, z).distSqr(blockPos)) / 8F;
                     BlockPos blockPos1 = blockPos.offset(x, y, z);
                     int worldX = blockPos1.getX();
                     int worldY = blockPos1.getY();

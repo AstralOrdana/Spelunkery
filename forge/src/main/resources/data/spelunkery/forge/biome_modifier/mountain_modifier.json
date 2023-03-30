@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:is_mountain",
+  "biomes": "#spelunkery:has_salt_noise",
   "features": [
     "spelunkery:noise_salt",
     "spelunkery:rock_salt",

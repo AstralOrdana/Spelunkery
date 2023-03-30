@@ -1,0 +1,29 @@
+
+
+    SPELUNKERY 0.2.0 CHANGELOG:
+    **New Features:**
+    - Stone stripe generation performance time has been massively improved
+    - Stone stripe configured features are now data driven
+    - Many new and updated textures for blocks and items
+    - Added Mine-o-mite
+    - Added Dust Buns
+    - Added Rough Quartz Blocks
+    - The Stonecutter now deals damage to entities that walk on it (unique death message)
+    - Wooden Rails now have a rattling effect as minecarts roll along it
+    - Sticks can now be crafted from Tangle Roots
+    - Added a massive amount of advancements relating to most features of the mod
+
+    *Worldgen changes:
+    - Added Obsidian stripes and patches to the outer End
+    - Added pools of Dimensional Tears to the outer End
+    - Added Prismarine stripes to oceans
+    - Added Ice stripes to frozen biomes
+    - Implemented improved sculk patch feature by Trainguy
+    - Added Sculk stripes to the deep dark
+    - Added Nether Quartz Geodes to the nether
+
+    **Fixes:**
+    - Many minor fixes
+    - Fixed Nether gold vein generation
+    - reduced volume of magnetic compass ping
+    - Vanilla stones ore patches will be enabled when the stone stripes are disabled

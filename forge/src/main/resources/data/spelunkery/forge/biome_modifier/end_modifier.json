@@ -1,8 +1,9 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:has_end_city",
+  "biomes": "#spelunkery:has_end_noise",
   "features": [
-    "spelunkery:obsidian_patch"
+    "spelunkery:obsidian_patch",
+    "spelunkery:noise_end"
   ],
   "step": "raw_generation"
 }

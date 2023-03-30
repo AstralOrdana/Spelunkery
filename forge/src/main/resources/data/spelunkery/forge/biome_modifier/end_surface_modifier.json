@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:has_end_city",
+  "biomes": "#spelunkery:has_end_noise",
   "features": [
     "spelunkery:portal_fluid_pool",
     "spelunkery:portal_fluid_spring"
