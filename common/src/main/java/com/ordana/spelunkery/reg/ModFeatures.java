@@ -135,7 +135,7 @@ public class ModFeatures {
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_OVERWORLD, nephrite_geode);
 
         ResourceKey<PlacedFeature> magnetite_geode = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("magnetite_geode"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_OVERWORLD, magnetite_geode);
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_NETHER, magnetite_geode);
 
         ResourceKey<PlacedFeature> quartz_geode = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("quartz_geode"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_NETHER, quartz_geode);

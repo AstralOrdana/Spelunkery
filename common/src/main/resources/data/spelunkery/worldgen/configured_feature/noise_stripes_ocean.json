@@ -40,10 +40,10 @@
         },
         "stone_pattern": {
           "noise_seed": 76,
-          "primary_min": -0.5,
-          "primary_max": 0.5,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.5,
+          "secondary_max": 0.5,
           "vertical_scale": 0.3
         }
       }
@@ -69,10 +69,10 @@
         },
         "stone_pattern": {
           "noise_seed": 76,
-          "primary_min": -0.5,
-          "primary_max": 0.5,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.5,
+          "secondary_max": 0.5,
           "vertical_scale": 0.3
         }
       },
@@ -94,10 +94,10 @@
         },
         "stone_pattern": {
           "noise_seed": 76,
-          "primary_min": -0.5,
-          "primary_max": 0.5,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.5,
+          "secondary_max": 0.5,
           "vertical_scale": 0.3
         }
       }

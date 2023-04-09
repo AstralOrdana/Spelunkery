@@ -30,7 +30,7 @@
   "advancements.spelunkery.magnetic_compass.title": "True North? Due North",
   "advancements.spelunkery.magnetic_compass.description": "Create a Magnetic Compass",
   "advancements.spelunkery.magnetite.title": "*lodes your stone*",
-  "advancements.spelunkery.magnetite.description": "Find and obtain a chunk of Magnetite",
+  "advancements.spelunkery.magnetite.description": "Find and obtain a Raw Magnetite",
   "advancements.spelunkery.nephrite_charm.title": "How Charming",
   "advancements.spelunkery.nephrite_charm.description": "Obtain a Nephrite Charm",
   "advancements.spelunkery.nephrite_chunk.title": "Rock of Envy",
@@ -125,6 +125,9 @@
   "tooltip.spelunkery.nephrite_diode_1": "  Transfers Charge from Carved Nephrite it's facing to the opposite side",
   "tooltip.spelunkery.nephrite_diode_2": "  Transfers one at a time each time it receives a Redstone signal",
   "tooltip.spelunkery.nephrite_diode_3": "  Can transfer Charge vertically and be pushed by Pistons",
+  "tooltip.spelunkery.mineomite_1": "  Can be stacked up to nine in a single block",
+  "tooltip.spelunkery.mineomite_2": "  Will explode after being primed, explosion size relative to stick count",
+  "tooltip.spelunkery.mineomite_3": "  If holding Flint and Steel when thrown, explodes on contact",
 
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
@@ -239,8 +242,8 @@
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
 
-  "item.spelunkery.magnetite_chunk": "Magnetite Chunk",
-  "block.spelunkery.magnetite": "Magnetite",
+  "item.spelunkery.magnetite_chunk": "Raw Magnetite",
+  "block.spelunkery.magnetite": "Block of Raw Magnetite",
   "item.spelunkery.item_magnet": "Item Magnet",
   "item.spelunkery.magnetic_compass": "Magnetic Compass",
 
