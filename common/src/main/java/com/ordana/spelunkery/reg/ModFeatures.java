@@ -71,7 +71,18 @@ public class ModFeatures {
                             new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                             new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build());
 
+    public static final RegSupplier<ConfiguredFeature<HugeConkFungusFeatureConfig, Feature<HugeConkFungusFeatureConfig>>> HUGE_CONK_FUNGUS =
+            RegHelper.registerConfiguredFeature(Spelunkery.res("huge_conk_fungus_bonemeal"), () -> ModFeature.HUGE_CONK,
+                    () -> new HugeConkFungusFeatureConfig(
+                            BlockStateProvider.simple(ModBlocks.CONK_FUNGUS_BLOCK.get().defaultBlockState()),
+                            2,
+                            0));
+
     //features
+    public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("huge_conk_feature"), () ->
+                    new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
+
     public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
             Spelunkery.res("wall_mushroom"), () ->
                     new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));

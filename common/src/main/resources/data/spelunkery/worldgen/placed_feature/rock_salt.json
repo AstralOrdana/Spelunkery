@@ -7,13 +7,13 @@
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 1,
-          "max_inclusive": 16
+          "max_inclusive": 8
         }
       }
     },
     {
       "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 5,
+      "noise_to_count_ratio": 2,
       "noise_factor": 55,
       "noise_offset": 0
     },
@@ -22,7 +22,7 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 10
+          "absolute": 30
         },
         "max_inclusive": {
           "absolute": 100

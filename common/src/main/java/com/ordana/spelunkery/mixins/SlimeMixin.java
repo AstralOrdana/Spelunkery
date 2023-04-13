@@ -6,6 +6,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -47,7 +48,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Inject(method = "checkSlimeSpawnRules", at = @At("HEAD"), cancellable = true)
     private static void caveSlimeSpawns(EntityType<Slime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random, CallbackInfoReturnable<Boolean> cir) {
-        if (CommonConfigs.INCREASED_SLIME_SPAWN_RATE.get()) {
+        if (CommonConfigs.INCREASED_SLIME_SPAWN_RATE.get() && level.getBiome(pos).is(BiomeTags.IS_OVERWORLD)) {
             if (pos.getY() < 60 && random.nextInt(124) > (pos.getY() + 64)) {
                 cir.setReturnValue(checkMobSpawnRules(slime, level, spawnType, pos, random));
             }

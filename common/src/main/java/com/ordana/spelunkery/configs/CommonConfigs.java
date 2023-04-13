@@ -14,7 +14,8 @@ public class CommonConfigs {
     public static final ConfigSpec SERVER_SPEC;
 
     public static final Supplier<Boolean> CREATIVE_TAB;
-    public static final Supplier<Boolean> CROSS_SECTION;
+    //public static final Supplier<Boolean> CROSS_SECTION;
+    public static final Supplier<Boolean> STONECUTTER_DAMAGE;
     public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
     //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
@@ -60,7 +61,7 @@ public class CommonConfigs {
 
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
-        CROSS_SECTION = builder.define("cross_section_world_mode", false);
+        STONECUTTER_DAMAGE = builder.define("stonecutter_damage", true);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 0, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
@@ -85,7 +86,7 @@ public class CommonConfigs {
         ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
         MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
-        MAGNETITE_RANGE = builder.define("magnetite_range", 128, 1, 512);
+        MAGNETITE_RANGE = builder.define("magnetite_range", 64, 1, 512);
         builder.pop();
 
         builder.push("nether_portals");

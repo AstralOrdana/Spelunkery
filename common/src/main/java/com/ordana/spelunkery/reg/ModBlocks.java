@@ -11,7 +11,6 @@ import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -372,7 +371,7 @@ public class ModBlocks {
 
     //fungi
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
-            new ConkMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new ConkFungusBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS), ModFeatures.HUGE_CONK_FUNGUS::getHolder), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PORTABELLA = regBlock("portabella", () ->
             new GrowableMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always), ModFeatures.HUGE_PORTABELLA::getHolder));
     public static final Supplier<Block> CRIMINI = regBlock("crimini", () ->
@@ -409,6 +408,8 @@ public class ModBlocks {
     public static final Supplier<Block> POTTED_SPOROPHYTE = regBlock("potted_sporophyte", () ->
             new FlowerPotBlock(SPOROPHYTE.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
 
+    public static final Supplier<Block> CONK_FUNGUS_BLOCK = regWithItem("conk_fungus_block", () ->
+            new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.STEM)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PORTABELLA_BLOCK = regWithItem("portabella_block", () ->
             new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> INKCAP_MUSHROOM_BLOCK = regWithItem("inkcap_mushroom_block", () ->

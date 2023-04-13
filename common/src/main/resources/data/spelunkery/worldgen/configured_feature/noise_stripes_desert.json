@@ -29,7 +29,7 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sand"
+            "Name": "minecraft:packed_mud"
           }
         },
         "secondary_stone_type": {
@@ -51,7 +51,7 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sand"
+            "Name": "minecraft:packed_mud"
           }
         },
         "secondary_stone_type": {
@@ -79,7 +79,7 @@
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sand"
+            "Name": "minecraft:packed_mud"
           }
         },
         "stone_pattern": {
@@ -124,7 +124,7 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sand"
+            "Name": "minecraft:mud"
           }
         },
         "secondary_stone_type": {
@@ -174,7 +174,7 @@
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sand"
+            "Name": "minecraft:mud"
           }
         },
         "stone_pattern": {

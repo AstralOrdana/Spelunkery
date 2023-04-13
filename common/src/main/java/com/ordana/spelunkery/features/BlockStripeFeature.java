@@ -113,11 +113,13 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                         }
 
 
+                        /*
                         if (CommonConfigs.CROSS_SECTION.get()) {
                             if (z < 0 && y < 128)
                                 cachedChunk.setBlockState(currentPos, Blocks.BARRIER.defaultBlockState(), false);
                         }
-                        else if (passesBiomeFilter) {
+                         */
+                        if (passesBiomeFilter) {
                             if (!isBlankPatch) {
                                 if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - config.bottomOffset))) {
 

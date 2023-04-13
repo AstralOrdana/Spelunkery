@@ -34,7 +34,7 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
 
     @Override
     public int getListenerRadius() {
-        return 128;
+        return 64;
     }
 
     @Override

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "spelunkery:block/conk_fungus_block_top",
+    "side": "spelunkery:block/conk_fungus_block_side",
+    "bottom": "spelunkery:block/conk_fungus_block_bottom"
+  }
+}
