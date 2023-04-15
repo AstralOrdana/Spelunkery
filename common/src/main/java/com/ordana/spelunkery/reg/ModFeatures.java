@@ -7,19 +7,25 @@ import com.ordana.spelunkery.features.util.StoneEntry;
 import com.ordana.spelunkery.features.util.StonePattern;
 import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CaveVines;
 import net.minecraft.world.level.block.HugeMushroomBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.RandomSelectorFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
@@ -28,11 +34,34 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 import java.util.List;
 import java.util.function.Supplier;
 
 public class ModFeatures {
+
+    //features
+    public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("huge_conk"), () ->
+                    new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("wall_mushroom"), () ->
+                    new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<CrystalFeatureConfig>> CRYSTAL_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("crystal"), () ->
+                    new CrystalFeature(CrystalFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<BlockStripeFeatureConfig>> BLOCK_STRIPE_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("block_stripe"), () ->
+                    new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<NoneFeatureConfiguration>> SCULK_PATCH_FEATURE = RegHelper.registerFeature(
+            Spelunkery.res("sculk_patch"), () ->
+                    new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
+
 
     public static final RegSupplier<ConfiguredFeature<VegetationPatchConfiguration, Feature<VegetationPatchConfiguration>>> SPORE_MOSS_PATCH_BONEMEAL =
             RegHelper.registerConfiguredFeature(Spelunkery.res("spore_moss_patch_bonemeal"), () -> Feature.VEGETATION_PATCH,
@@ -71,33 +100,6 @@ public class ModFeatures {
                             new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                             new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build());
 
-    public static final RegSupplier<ConfiguredFeature<HugeConkFungusFeatureConfig, Feature<HugeConkFungusFeatureConfig>>> HUGE_CONK_FUNGUS =
-            RegHelper.registerConfiguredFeature(Spelunkery.res("huge_conk_fungus_bonemeal"), () -> ModFeature.HUGE_CONK,
-                    () -> new HugeConkFungusFeatureConfig(
-                            BlockStateProvider.simple(ModBlocks.CONK_FUNGUS_BLOCK.get().defaultBlockState()),
-                            2,
-                            0));
-
-    //features
-    public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("huge_conk_feature"), () ->
-                    new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("wall_mushroom"), () ->
-                    new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<CrystalFeatureConfig>> CRYSTAL_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("crystal"), () ->
-                    new CrystalFeature(CrystalFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<BlockStripeFeatureConfig>> BLOCK_STRIPE_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("block_stripe"), () ->
-                    new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<NoneFeatureConfiguration>> SCULK_PATCH_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("sculk_patch"), () ->
-                    new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
 
 
     public static void init() {

@@ -9,6 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -35,13 +36,19 @@ public class HugeConkFungusFeature extends Feature<HugeConkFungusFeatureConfig> 
             set.add(blockPosx.immutable());
             level.setBlock(blockPosx, blockState, 19);
         };
+
+        BiConsumer<BlockPos, BlockState> blockSetter2 = (blockPosx, blockState) -> {
+            set.add(blockPosx.immutable());
+            level.setBlock(blockPosx, blockState.setValue(PipeBlock.NORTH, false).setValue(PipeBlock.SOUTH, false).setValue(PipeBlock.EAST, false).setValue(PipeBlock.WEST, false), 19);
+        };
+
         int radius = random.nextInt(2) + (config.radius);
 
         int i = 0;
         if (config.largeChance > 0) i = random.nextInt(0, config.largeChance);
         boolean large = i == 1;
 
-        this.placeLeavesRow(level, blockSetter, random, config, blockPos, radius - 1, 0, large);
+        this.placeLeavesRow(level, blockSetter2, random, config, blockPos, radius - 1, 0, large);
         this.placeLeavesRow(level, blockSetter, random, config, blockPos, radius, -1, large);
 
         //this.placeLeavesRow(level, blockSetter, random, config, blockPos, radius, 0, large);
@@ -94,13 +101,6 @@ public class HugeConkFungusFeature extends Feature<HugeConkFungusFeatureConfig> 
     public static boolean validTreePos(LevelSimulatedReader level, BlockPos pos) {
         return isAirOrLeaves(level, pos) || isReplaceablePlant(level, pos) || isBlockWater(level, pos);
     }
-
-    /*
-    protected boolean shouldSkipLocationSigned(RandomSource random, int localX, int localY, int localZ, int range, boolean large) {
-        return localY == 0 && large && (localX == -range || localX >= range) && (localZ == -range || localZ >= range) || this.shouldSkipLocationSignedOg(random, localX, localY, localZ, range, large);
-    }
-
-     */
 
     protected boolean shouldSkipLocation(RandomSource random, int localX, int localY, int localZ, int range, boolean large) {
         {

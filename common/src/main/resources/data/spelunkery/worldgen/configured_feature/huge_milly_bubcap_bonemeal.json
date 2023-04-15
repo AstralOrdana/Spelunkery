@@ -1,0 +1,133 @@
+{
+  "type": "minecraft:vegetation_patch",
+  "config": {
+    "surface": "floor",
+    "depth": 1,
+    "vertical_range": 5,
+    "extra_bottom_block_chance": 0,
+    "extra_edge_column_chance": 0.75,
+    "vegetation_chance": 0.6,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 5
+      }
+    },
+    "replaceable": "#minecraft:moss_replaceable",
+    "ground_state": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:mycelium",
+            "Properties": {
+              "snowy": "false"
+            }
+          }
+        },
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:coarse_dirt"
+          }
+        }
+      ]
+    },
+    "vegetation_feature": {
+      "feature": {
+        "type": "minecraft:random_selector",
+        "config": {
+          "features": [
+            {
+              "chance": 0.5,
+              "feature": {
+                "feature": {
+                  "type": "minecraft:simple_block",
+                  "config": {
+                    "to_place": {
+                      "type": "minecraft:weighted_state_provider",
+                      "entries": [
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:milly_bubcap",
+                            "Properties": {
+                              "caps": "1"
+                            }
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:milly_bubcap",
+                            "Properties": {
+                              "caps": "2"
+                            }
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:milly_bubcap",
+                            "Properties": {
+                              "caps": "3"
+                            }
+                          }
+                        },
+                        {
+                          "weight": 1,
+                          "data": {
+                            "Name": "spelunkery:milly_bubcap",
+                            "Properties": {
+                              "caps": "4"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "placement": []
+              }
+            }
+          ],
+          "default": {
+            "feature": {
+              "type": "minecraft:huge_brown_mushroom",
+              "config": {
+                "cap_provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "spelunkery:milly_bubcap_block",
+                    "Properties": {
+                      "down": "false"
+                    }
+                  }
+                },
+                "stem_provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "minecraft:mushroom_stem",
+                    "Properties": {
+                      "down": "false",
+                      "east": "true",
+                      "north": "true",
+                      "south": "true",
+                      "up": "true",
+                      "west": "true"
+                    }
+                  }
+                },
+                "foliage_radius": 1
+              }
+            },
+            "placement": []
+          }
+        }
+      },
+      "placement": []
+    }
+  }
+}

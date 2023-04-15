@@ -2,7 +2,8 @@
   "type": "forge:add_features",
   "biomes": "#spelunkery:has_stone_noise",
   "features": [
-    "spelunkery:noise_stone"
+    "spelunkery:noise_stone",
+    "spelunkery:noise_iron"
   ],
   "step": "raw_generation"
 }

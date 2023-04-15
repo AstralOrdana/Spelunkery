@@ -3,7 +3,8 @@
   "biomes": "#spelunkery:has_nether_noise",
   "features": [
     "spelunkery:large_gold_vein",
-    "spelunkery:quartz_geode"
+    "spelunkery:quartz_geode",
+    "spelunkery:magnetite_geode"
   ],
   "step": "underground_ores"
 }

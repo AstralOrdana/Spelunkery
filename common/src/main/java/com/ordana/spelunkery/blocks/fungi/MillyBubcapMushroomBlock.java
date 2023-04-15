@@ -1,9 +1,13 @@
 package com.ordana.spelunkery.blocks.fungi;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -12,7 +16,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -81,6 +88,17 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
         builder.add(CAPS);
     }
 
+    public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
+        if (((BuiltinRegistries.CONFIGURED_FEATURE.getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_milly_bubcap_bonemeal.json"))).get())
+                .value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
+            return true;
+        } else {
+            level.setBlock(pos, state, 3);
+            return false;
+        }
+    }
+
     public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
@@ -91,39 +109,35 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
 
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
 
-            int j = 1;
-            int l = 0;
-            int m = pos.getX() - 2;
-            int n = 0;
+        if (state.getValue(CAPS) == 8) this.growMushroom(level, pos, state, random);
+        int j = 1;
+        int l = 0;
+        int m = pos.getX() - 2;
+        int n = 0;
+        for(int o = 0; o < 5; ++o) {
+            for(int p = 0; p < j; ++p) {
+                int q = 2 + pos.getY() - 1;
 
-            for(int o = 0; o < 5; ++o) {
-                for(int p = 0; p < j; ++p) {
-                    int q = 2 + pos.getY() - 1;
-
-                    for(int r = q - 2; r < q; ++r) {
-                        BlockPos blockPos = new BlockPos(m + o, r, pos.getZ() - n + p);
-                        if (blockPos != pos && random.nextInt(6) == 0 && level.getBlockState(blockPos).isAir()) {
-                            BlockState blockState = level.getBlockState(blockPos.below());
-                            if (blockState.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
-                                level.setBlock(blockPos, ModBlocks.MILLY_BUBCAP.get().defaultBlockState().setValue(CAPS, random.nextInt(8) + 1), 3);
-                            }
+                for(int r = q - 2; r < q; ++r) {
+                    BlockPos blockPos = new BlockPos(m + o, r, pos.getZ() - n + p);
+                    if (blockPos != pos && random.nextInt(6) == 0 && level.getBlockState(blockPos).isAir()) {
+                        BlockState blockState = level.getBlockState(blockPos.below());
+                        if (blockState.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
+                            level.setBlock(blockPos, ModBlocks.MILLY_BUBCAP.get().defaultBlockState().setValue(CAPS, random.nextInt(8) + 1), 3);
                         }
                     }
                 }
-
-                if (l < 2) {
-                    j += 2;
-                    ++n;
-                } else {
-                    j -= 2;
-                    --n;
-                }
-
-                ++l;
             }
-
-            level.setBlock(pos, state.setValue(CAPS, 8), 2);
-
+            if (l < 2) {
+                j += 2;
+                ++n;
+            } else {
+                j -= 2;
+                --n;
+            }
+            ++l;
+        }
+        level.setBlock(pos, state.setValue(CAPS, 8), 2);
 
     }
 

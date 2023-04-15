@@ -19,9 +19,9 @@ import java.util.function.Supplier;
 public class GrowableMushroomBlock extends ModMushroomBlock implements BonemealableBlock {
     protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 12.0D, 11.0D);
     protected static final float AABB_OFFSET = 3.0F;
-    private final Supplier<Holder<? extends ConfiguredFeature<?, ?>>> featureSupplier;
+    private final Supplier<Holder<ConfiguredFeature<?, ?>>> featureSupplier;
 
-    public GrowableMushroomBlock(Properties properties, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> supplier) {
+    public GrowableMushroomBlock(Properties properties, Supplier<Holder<ConfiguredFeature<?, ?>>> supplier) {
         super(properties);
         this.featureSupplier = supplier;
     }

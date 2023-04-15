@@ -2,10 +2,14 @@ package com.ordana.spelunkery.blocks.fungi;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -27,12 +31,10 @@ import java.util.function.Supplier;
 public class ConkFungusBlock extends FloorAndSidesMushroomBlock implements BonemealableBlock {
     public static final DirectionProperty FACING;
     private static final Map<Direction, VoxelShape> SHAPES;
-    private final Supplier<Holder<? extends ConfiguredFeature<?, ?>>> featureSupplier;
 
-    public ConkFungusBlock(Properties properties, Supplier<Holder<? extends ConfiguredFeature<?, ?>>> supplier) {
+    public ConkFungusBlock(Properties properties) {
         super(properties);
-        this.featureSupplier = supplier;
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FLOOR, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
 
@@ -88,8 +90,9 @@ public class ConkFungusBlock extends FloorAndSidesMushroomBlock implements Bonem
 
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
-        level.removeBlock(pos, false);
-        if (((ConfiguredFeature)((Holder)this.featureSupplier.get()).value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
+        if (((BuiltinRegistries.CONFIGURED_FEATURE.getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_conk_fungus_bonemeal.json"))).get())
+                .value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
             return true;
         } else {
             level.setBlock(pos, state, 3);
