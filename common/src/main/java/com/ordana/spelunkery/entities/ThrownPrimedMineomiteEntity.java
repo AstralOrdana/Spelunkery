@@ -55,8 +55,7 @@ public class ThrownPrimedMineomiteEntity extends ImprovedProjectileEntity {
     @Override
     public void reachedEndOfLife() {
         this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1.5F, 1f);
-
-        if (!this.level.isClientSide) {
+        if (!this.level.isClientSide && !this.isInWater()) {
             this.createExplosion();
             this.level.broadcastEntityEvent(this, (byte) 10);
         }
@@ -66,8 +65,8 @@ public class ThrownPrimedMineomiteEntity extends ImprovedProjectileEntity {
 
     private void createExplosion() {
 
-        boolean breaks = this.getOwner() instanceof Player ||
-                PlatformHelper.isMobGriefingOn(this.level, this.getOwner());
+        boolean breaks = (this.getOwner() instanceof Player ||
+                PlatformHelper.isMobGriefingOn(this.level, this.getOwner()));
 
         this.level.explode(null, this.getX(), this.getY(), this.getZ(),
                 3.5F, breaks ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE);

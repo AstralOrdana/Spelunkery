@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.*;
 
 import java.util.Objects;
@@ -377,15 +376,15 @@ public class ModBlocks {
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
             new ConkFungusBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PORTABELLA = regBlock("portabella", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always), () -> BuiltinRegistries.CONFIGURED_FEATURE.getHolder(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_portabella_bonemeal.json"))).get()));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> CRIMINI = regBlock("crimini", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> BUTTON_MUSHROOM = regBlock("button_mushroom", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), () -> BuiltinRegistries.CONFIGURED_FEATURE.getHolder(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_inkcap_mushroom_bonemeal.json"))).get()), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always), () -> BuiltinRegistries.CONFIGURED_FEATURE.getHolder(ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_white_inkcap_mushroom_bonemeal.json"))).get()), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
             new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MUSHGLOOM = regWithItem("mushgloom", () ->

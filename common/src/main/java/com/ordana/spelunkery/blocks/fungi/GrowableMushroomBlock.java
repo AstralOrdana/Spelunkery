@@ -1,7 +1,11 @@
 package com.ordana.spelunkery.blocks.fungi;
 
+import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
@@ -14,16 +18,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.function.Supplier;
-
 public class GrowableMushroomBlock extends ModMushroomBlock implements BonemealableBlock {
     protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 12.0D, 11.0D);
     protected static final float AABB_OFFSET = 3.0F;
-    private final Supplier<Holder<ConfiguredFeature<?, ?>>> featureSupplier;
 
-    public GrowableMushroomBlock(Properties properties, Supplier<Holder<ConfiguredFeature<?, ?>>> supplier) {
+    public GrowableMushroomBlock(Properties properties) {
         super(properties);
-        this.featureSupplier = supplier;
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -33,12 +33,25 @@ public class GrowableMushroomBlock extends ModMushroomBlock implements Bonemeala
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
         level.removeBlock(pos, false);
-        if (((ConfiguredFeature)((Holder)this.featureSupplier.get()).value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
-            return true;
-        } else {
-            level.setBlock(pos, state, 3);
-            return false;
+        Holder<ConfiguredFeature<?, ?>> feature = null;
+
+        if (state.is(ModBlocks.INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_inkcap_mushroom_bonemeal"))).get());
+        if (state.is(ModBlocks.WHITE_INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_white_inkcap_mushroom_bonemeal"))).get());
+        if (state.is(ModBlocks.PORTABELLA.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_portabella_bonemeal"))).get());
+
+
+        if (feature != null) {
+            if ((feature.value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
+                return true;
+            } else {
+                level.setBlock(pos, state, 3);
+                return false;
+            }
         }
+        else return false;
     }
 
     @Override

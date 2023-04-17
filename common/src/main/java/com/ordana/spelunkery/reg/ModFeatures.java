@@ -78,30 +78,6 @@ public class ModFeatures {
                             CaveSurface.FLOOR, ConstantInt.of(1), 0.0f, 5, 0.6f,
                             UniformInt.of(1, 2), 0.75f));
 
-    public static final RegSupplier<ConfiguredFeature<HugeMushroomFeatureConfiguration, Feature<HugeMushroomFeatureConfiguration>>> HUGE_INKCAP_MUSHROOM =
-            RegHelper.registerConfiguredFeature(Spelunkery.res("huge_inkcap_mushroom_bonemeal"), () -> Feature.HUGE_RED_MUSHROOM,
-                    () -> new HugeMushroomFeatureConfiguration(
-                            BlockStateProvider.simple(ModBlocks.INKCAP_MUSHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
-                            BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 1));
-
-    public static final RegSupplier<ConfiguredFeature<HugeMushroomFeatureConfiguration, Feature<HugeMushroomFeatureConfiguration>>> HUGE_WHITE_INKCAP_MUSHROOM =
-            RegHelper.registerConfiguredFeature(Spelunkery.res("huge_white_inkcap_mushroom_bonemeal"), () -> Feature.HUGE_RED_MUSHROOM,
-                    () -> new HugeMushroomFeatureConfiguration(
-                            BlockStateProvider.simple(ModBlocks.WHITE_INKCAP_MUSHROOM_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
-                            BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)), 1));
-
-
-    public static final RegSupplier<ConfiguredFeature<TreeConfiguration, Feature<TreeConfiguration>>> HUGE_PORTABELLA =
-            RegHelper.registerConfiguredFeature(Spelunkery.res("huge_portabella_bonemeal"), () -> Feature.TREE,
-                    () -> (new TreeConfiguration.TreeConfigurationBuilder(
-                            BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
-                            new ForkingTrunkPlacer(5, 2, 2),
-                            BlockStateProvider.simple(ModBlocks.PORTABELLA_BLOCK.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
-                            new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                            new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build());
-
-
-
     public static void init() {
 
         //stone generation

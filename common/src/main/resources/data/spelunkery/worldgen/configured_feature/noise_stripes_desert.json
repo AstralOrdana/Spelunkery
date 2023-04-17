@@ -7,28 +7,6 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sandstone"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:stone"
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
             "Name": "minecraft:packed_mud"
           }
         },
@@ -39,56 +17,12 @@
           }
         },
         "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:packed_mud"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:smooth_sandstone"
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:sandstone"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:packed_mud"
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
+          "noise_seed": 66,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.7,
+          "secondary_max": 0.7,
+          "vertical_scale": 0.4
         }
       }
     ],
@@ -99,91 +33,22 @@
         "primary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:sandstone"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:deepslate",
-            "Properties": {
-              "axis": "y"
-            }
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:mud"
-          }
-        },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:sandstone"
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
             "Name": "minecraft:tuff"
           }
         },
         "secondary_stone_type": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:smooth_sandstone"
-          }
-        },
-        "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
-        }
-      },
-      {
-        "primary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
             "Name": "minecraft:sandstone"
           }
         },
-        "secondary_stone_type": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:mud"
-          }
-        },
         "stone_pattern": {
-          "noise_seed": 69,
-          "primary_min": -0.85,
-          "primary_max": 0.85,
-          "secondary_min": -0.2,
-          "secondary_max": 0.2,
-          "vertical_scale": 0.7
+          "noise_seed": 66,
+          "primary_min": -0.2,
+          "primary_max": 0.2,
+          "secondary_min": -0.7,
+          "secondary_max": 0.7,
+          "vertical_scale": 0.4
         }
       }
     ],

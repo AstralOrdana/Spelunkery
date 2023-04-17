@@ -89,8 +89,8 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
     }
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
-        if (((BuiltinRegistries.CONFIGURED_FEATURE.getHolder(
-                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_milly_bubcap_bonemeal.json"))).get())
+        if (((level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_milly_bubcap_bonemeal"))).get())
                 .value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
             return true;
         } else {

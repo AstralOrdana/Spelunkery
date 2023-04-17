@@ -51,6 +51,8 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("oreganized") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
     public static final Supplier<Item> RAW_SILVER_NUGGET = regItem("raw_silver_nugget", () ->
             new Item(new Item.Properties().tab(getTab(isCompatItemEanbled("oreganized") ? getTab(CreativeModeTab.TAB_MATERIALS) : null))));
+    public static final Supplier<Item> RAW_MAGNETITE_NUGGET = regItem("raw_magnetite_nugget", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> COPPER_NUGGET = regItem("copper_nugget", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));

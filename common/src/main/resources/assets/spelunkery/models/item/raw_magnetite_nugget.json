@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/raw_magnetite_nugget"
+  }
+}
