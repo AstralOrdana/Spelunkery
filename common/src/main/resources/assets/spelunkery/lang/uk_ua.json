@@ -125,6 +125,29 @@
   "tooltip.spelunkery.nephrite_diode_1": "  Переносить заряд із різьбленого нефриту в протилежний бік",
   "tooltip.spelunkery.nephrite_diode_2": "  Передає по одному заряду кожного разу, коли отримує сигнал редстоуну",
   "tooltip.spelunkery.nephrite_diode_3": "  Може пересуватися поршнями і передавати заряд вертикально",
+  "tooltip.spelunkery.mineomite_1": "  Можна складати до дев'яти в одному блоці",
+  "tooltip.spelunkery.mineomite_2": "  Вибухне після запалення. Величина вибуху залежитиме від кількості шашок",
+  "tooltip.spelunkery.mineomite_3": "  Тримаючи в іншій руці кресало, шашка буде підпалюватися і вибухатиме після контакту з поверхнею",
+
+  "tag.spelunkery.glowsticks": "Сяючі палички",
+  "tag.spelunkery.grindable": "Шліфуюються",
+  "tag.spelunkery.diamond_grindable": "Шліфуються (Діамант.)",
+  "tag.spelunkery.diamond_ores": "Діамантові руди",
+  "tag.spelunkery.copper_ores": "Мідні руди",
+  "tag.spelunkery.redstone_ores": "Рудстоунові руди",
+  "tag.spelunkery.lapis_ores": "Лазуритові руди",
+  "tag.spelunkery.gold_ores": "Золоті руди",
+  "tag.spelunkery.iron_ores": "Залізні руди",
+  "tag.spelunkery.coal_ores": "Вугільні руди",
+  "tag.spelunkery.emerald_ores": "Смарагдові руди",
+  "tag.spelunkery.jade_ores": "Нефритові руди",
+  "tag.spelunkery.lead_ores": "Свинцеві руди",
+  "tag.spelunkery.zinc_ores": "Цинкові руди",
+  "tag.spelunkery.silver_ores": "Срібні руди",
+  "tag.spelunkery.slime_food": "Їжа слимаків",
+  "tag.spelunkery.keep_on_death": "Зберігаються після смерті",
+  "tag.spelunkery.anvil_repair_item": "Ремонтники ковадла",
+  "tag.spelunkery.grindstone_repair_item": "Ремонтники точил",
 
   "block.spelunkery.rock_salt": "Кам'яна сіль",
   "block.spelunkery.salt_lamp": "Сольова лампа",
@@ -209,6 +232,7 @@
   "item.spelunkery.raw_zinc_nugget": "Необроблений цинковий самородок",
   "item.spelunkery.raw_lead_nugget": "Необроблений свинцевий самородок",
   "item.spelunkery.raw_silver_nugget": "Необроблений срібний самородок",
+  "item.spelunkery.raw_magnetite_nugget": "Необроблений самородок магнітного залізняка",
 
   "item.spelunkery.copper_nugget": "Мідний самородок",
 
@@ -293,9 +317,11 @@
   "block.spelunkery.potted_milly_bubcap": "Опеньок у горщику",
   "block.spelunkery.potted_sporophyte": "Спорофіт у горщику",
 
+  "block.spelunkery.conk_fungus_block": "Блок трутовика",
   "block.spelunkery.portabella_block": "Блок темної печериці",
   "block.spelunkery.inkcap_mushroom_block": "Блок гнойовика чорнильного",
   "block.spelunkery.white_inkcap_mushroom_block": "Блок гнойовика білого",
+  "block.spelunkery.milly_bubcap_block": "Блок опенька",
 
   "item.spelunkery.dust_bun": "Кулька пилу",
 
