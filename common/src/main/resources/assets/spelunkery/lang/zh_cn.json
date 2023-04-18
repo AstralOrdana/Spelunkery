@@ -1,87 +1,153 @@
 {
   "itemGroup.spelunkery.spelunkery": "洞穴探险",
 
+  "advancements.spelunkery.carved_nephrite.title": "吝啬的，绿色的，经验机器",
+  "advancements.spelunkery.carved_nephrite.description": "制作一些雕花软玉",
+  "advancements.spelunkery.coal_lump.title": "有人不太乖哦",
+  "advancements.spelunkery.coal_lump.description": "获取一小块煤炭",
+  "advancements.spelunkery.compression_blast_miner.title": "我二话不说就开始干，嘭！嘭！",
+  "advancements.spelunkery.compression_blast_miner.description": "制造一个压缩爆破采矿机",
+  "advancements.spelunkery.conk_fungus.title": "金生水，水生木，木生……菌",
+  "advancements.spelunkery.conk_fungus.description": "获取一朵木生菌",
+  "advancements.spelunkery.depth_gauge.title": "很有深意，哥们儿",
+  "advancements.spelunkery.depth_gauge.description": "合成并使用深度计",
+  "advancements.spelunkery.diamond_grindstone.title": "钻石迷人眼",
+  "advancements.spelunkery.diamond_grindstone.description": "打造一个钻石砂轮",
+  "advancements.spelunkery.echo_fork.title": "天外幽声",
+  "advancements.spelunkery.echo_fork.description": "获取并使用回响叉",
+  "advancements.spelunkery.every_fungus.title": "真菌狂热",
+  "advancements.spelunkery.every_fungus.description": "收集所有种类的真菌",
+  "advancements.spelunkery.every_ore.title": "集岩者",
+  "advancements.spelunkery.every_ore.description": "收集游戏中所有种类的岩石",
+  "advancements.spelunkery.feed_slime.title": "史莱姆牧场主",
+  "advancements.spelunkery.feed_slime.description": "把一颗甜菜或生鸡肉喂给史莱姆",
+  "advancements.spelunkery.glowstick.title": "遍地光芒",
+  "advancements.spelunkery.glowstick.description": "合成一支荧光棒",
+  "advancements.spelunkery.grindstone.title": "刻苦钻研，潜心琢磨",
+  "advancements.spelunkery.grindstone.description": "打磨任意一块待加工宝石",
+  "advancements.spelunkery.item_magnet.title": "奇异吸子",
+  "advancements.spelunkery.item_magnet.description": "合成一块物品磁铁",
+  "advancements.spelunkery.magnetic_compass.title": "地理北极？地磁北极！",
+  "advancements.spelunkery.magnetic_compass.description": "打造一个地磁指北针",
+  "advancements.spelunkery.magnetite.title": "*给石头附磁*",
+  "advancements.spelunkery.magnetite.description": "寻找并获得粗磁铁",
+  "advancements.spelunkery.nephrite_charm.title": "灵气十足",
+  "advancements.spelunkery.nephrite_charm.description": "获得一块软玉灵符",
+  "advancements.spelunkery.nephrite_chunk.title": "嫉妒之石",
+  "advancements.spelunkery.nephrite_chunk.description": "开采软玉，获得软玉碎块",
+  "advancements.spelunkery.obsidian_chisel.title": "小锤四十",
+  "advancements.spelunkery.obsidian_chisel.description": "制作黑曜石锤和凿",
+  "advancements.spelunkery.purple_drink.title": "紫色的水水",
+  "advancements.spelunkery.purple_drink.description": "喝下一瓶维度之泪",
+  "advancements.spelunkery.raw_nuggets.title": "三重惊喜",
+  "advancements.spelunkery.raw_nuggets.description": "收集所有种类的粗金属粒",
+  "advancements.spelunkery.rock_salt.title": "咸得胃疼",
+  "advancements.spelunkery.rock_salt.description": "获取岩盐",
+  "advancements.spelunkery.rough_diamond.title": "未经雕琢的宝钻",
+  "advancements.spelunkery.rough_diamond.description": "开采钻石矿石，获取待加工钻石",
+  "advancements.spelunkery.rough_gem.title": "历尽了磨砺啊，兄弟",
+  "advancements.spelunkery.rough_gem.description": "开采宝石矿石，获取一块待加工宝石",
+  "advancements.spelunkery.soulbound.title": "灵魂绑定",
+  "advancements.spelunkery.soulbound.description": "获取一个追溯指针，然后死掉",
+  "advancements.spelunkery.summon_slime.title": "它  活  了  ！",
+  "advancements.spelunkery.summon_slime.description": "往盛满水的炼药锅中投入一个黏液块来创造生命",
+  "advancements.spelunkery.true_north.title": "世界之巅",
+  "advancements.spelunkery.true_north.description": "跟随地磁指北针前往北极",
+  "advancements.spelunkery.wooden_rail.title": "摇摇晃晃的轨道",
+  "advancements.spelunkery.wooden_rail.description": "制造木轨（小心点，别把它弄散架了）",
+
   "tooltip.spelunkery.hold_crouch": "按住%1$s获取更多细节信息",
   "tooltip.spelunkery.throwable": "可投掷！",
+  "tooltip.spelunkery.slime_food": "史莱姆的最爱",
   "tooltip.spelunkery.grindable": "使用砂轮打磨",
   "tooltip.spelunkery.diamond_grindable": "使用钻石砂轮打磨",
   "tooltip.spelunkery.keep_on_death": "不会在死亡时掉落",
   "tooltip.spelunkery.rock_salt": "可使用砂轮来磨碎",
-  
-  "tooltip.spelunkery.rhymes_with_tears_0": "和“畏”字押韵",
-  "tooltip.spelunkery.rhymes_with_tears_1": "和“威”字押韵",
-
+  "tooltip.spelunkery.flint_and_steel": "微小的力量并不足以撕开通往另一个维度的裂隙",
+  "tooltip.spelunkery.sculk": "使用剪刀采掘来获取幽匿脉络",
+  "tooltip.spelunkery.sculk_veins": "使用剪刀采掘幽匿块来获取",
+  "tooltip.spelunkery.dust_bun": "手持右击来扯开",
   "tooltip.spelunkery.salt_1": "磨碎岩盐即可获得",
   "tooltip.spelunkery.salt_2": "亡灵们不可逾越的鸿沟",
-
   "tooltip.spelunkery.grindstone_1": "  手持待加工宝石对砂轮点按使用键来进行打磨",
   "tooltip.spelunkery.grindstone_2": "  同时按住%1$s则可打磨整组宝石",
-
   "tooltip.spelunkery.salt_bucket_1": "当前盛有%1$s份宝石",
   "tooltip.spelunkery.salt_bucket_2": "在熔炉中烧煮水桶即可获得",
-
   "tooltip.spelunkery.rope_ladder_1": "  可供攀爬，可放置于方块四侧",
   "tooltip.spelunkery.rope_ladder_2": "  手持绳梯对已放置的绳梯按下使用键可自动将其向下延伸放置",
   "tooltip.spelunkery.rope_ladder_3": "  按住%1$s并对最顶部的绳梯点按使用键来卷绕整条绳梯，卷起的绳梯将自动收入物品栏",
-
   "tooltip.spelunkery.wooden_rail_1": "  手持木轨对已放置的木轨按下使用键可自动将其向前延伸放置",
   "tooltip.spelunkery.wooden_rail_2": "  若下方为空气方块，放置不受影响。可借此搭建跨过间隙的轨道",
-
+  "tooltip.spelunkery.rhymes_with_tears_0": "和“畏”字押韵",
+  "tooltip.spelunkery.rhymes_with_tears_1": "和“威”字押韵",
   "tooltip.spelunkery.portal_fluid_1": "  饮用后立即传送至重生点或世界出生点",
   "tooltip.spelunkery.portal_fluid_2": "  可用以激活下界传送门",
   "tooltip.spelunkery.portal_fluid_3": "  手持玻璃瓶右击哭泣的黑曜石或重生锚即可获得",
-
   "tooltip.spelunkery.portal_fluid_bucket_1": "  接触到这种流体的玩家将立即被传送至其重生点",
   "tooltip.spelunkery.portal_fluid_bucket_2": "  其它实体则会被传送至世界出生点",
   "tooltip.spelunkery.portal_fluid_bucket_3": "  使用瓶装维度之泪灌满炼药锅并用桶盛装即可获得",
-
   "tooltip.spelunkery.crying_obsidian": "手持玻璃瓶右击来获取维度之泪",
   "tooltip.spelunkery.redstone": "使用砂轮打磨待加工朱砂来获取",
-
   "tooltip.spelunkery.depth_gauge_depth": "当前海拔：Y = %1$s",
-  
   "tooltip.spelunkery.echo_fork_1": "  在%2$s秒内高亮显示%1$s格范围中的所有生物实体",
   "tooltip.spelunkery.echo_fork_2": "  冷却时间：%1$s秒",
   "tooltip.spelunkery.echo_fork_3": "  按住%1$s并点按使用键可清除发光效果",
-
   "tooltip.spelunkery.magnetite_pos": "你的指南针正在受到位于%1$s，%2$s的磁场干扰",
   "tooltip.spelunkery.player_pos": "当前位置：%1$s，%2$s",
   "tooltip.spelunkery.magnetic_compass_2": "  永远指向磁北",
   "tooltip.spelunkery.magnetic_compass_3": "  强磁场会对指针的指向造成干扰",
   "tooltip.spelunkery.magnetic_compass_4": "  按住%1$s并点按使用键以重置",
-
   "tooltip.spelunkery.item_magnet_1": "已激活",
   "tooltip.spelunkery.item_magnet_2": "未激活",
   "tooltip.spelunkery.item_magnet_3": "  激活后，将半径%1$s格 内的物品自动吸向玩家",
   "tooltip.spelunkery.item_magnet_4": "  手持并点按使用键来切换激活状态",
-
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "挖掘等级：钻石",
   "tooltip.spelunkery.flint_hammer_and_chisel": "挖掘等级：石头",
-
   "tooltip.spelunkery.hammer_and_chisel_1": "  对方块使用可将其精准凿落",
   "tooltip.spelunkery.hammer_and_chisel_2": "  仅对挖掘等级相吻合或更低的方块有效",
   "tooltip.spelunkery.hammer_and_chisel_3": "  仅对适合用镐进行开采的方块有效",
   "tooltip.spelunkery.hammer_and_chisel_4": "  按住%1$s并点按使用键可将砖类方块变为对应的錾制形式",
-
+  "tooltip.spelunkery.cbm_1": "  与侦测器类似，放置时需注意朝向",
+  "tooltip.spelunkery.cbm_2": "  手持TNT右击来装填炸药，用红石信号充能引爆后将破坏前方1格内的方块",
+  "tooltip.spelunkery.cbm_3": "  爆炸可摧毁包括基岩在内几乎任何种类的方块",
   "tooltip.spelunkery.nephrite_charm_1": "已存储%1$s/%2$s点经验",
   "tooltip.spelunkery.nephrite_charm_2": "  至多可存储30级经验",
   "tooltip.spelunkery.nephrite_charm_3": "  点按使用键来取出经验，同时按住%1$s则可存储经验",
-
   "tooltip.spelunkery.carved_nephrite_1": "  以“能量”的形式存储经验值",
   "tooltip.spelunkery.carved_nephrite_2": "  每一块可存储100点能量（约等于玩家7级时所拥有的经验值）",
   "tooltip.spelunkery.carved_nephrite_3": "  可借助软玉虹吸台、软玉喷流口和软玉二极管来进行交互",
-
   "tooltip.spelunkery.nephrite_spout_1": "  从雕花软玉中汲取能量并转化为经验",
   "tooltip.spelunkery.nephrite_spout_2": "  仅可转化所依附的雕花软玉中存储的能量",
   "tooltip.spelunkery.nephrite_spout_3": "  使用红石信号充能方可运作",
-
   "tooltip.spelunkery.nephrite_siphon_1": "  玩家站立在上方时汲取其经验",
   "tooltip.spelunkery.nephrite_siphon_2": "  经验将被转化为能量并自动分发给相邻的雕花软玉",
   "tooltip.spelunkery.nephrite_siphon_3": "  也能吸引并转化附近的经验球",
-
   "tooltip.spelunkery.nephrite_diode_1": "  依箭头方向将一块雕花软玉中的能量转移至另一块",
   "tooltip.spelunkery.nephrite_diode_2": "  每次接收到红石信号将转移1点能量",
   "tooltip.spelunkery.nephrite_diode_3": "  可竖直转移，可被活塞推动",
+  "tooltip.spelunkery.mineomite_1": "  单个方块空间内可放置9根",
+  "tooltip.spelunkery.mineomite_2": "  激活片刻后将产生爆炸，强度取决于炸药根数",
+  "tooltip.spelunkery.mineomite_3": "  副手持握打火石时掷出的炸药会在着落时立即爆炸",
+
+  "tag.spelunkery.glowsticks": "荧光棒",
+  "tag.spelunkery.grindable": "可打磨物品",
+  "tag.spelunkery.diamond_grindable": "钻石类可打磨物品",
+  "tag.spelunkery.diamond_ores": "钻石矿石",
+  "tag.spelunkery.copper_ores": "铜矿石",
+  "tag.spelunkery.redstone_ores": "红石矿石",
+  "tag.spelunkery.lapis_ores": "青金石矿石",
+  "tag.spelunkery.gold_ores": "金矿石",
+  "tag.spelunkery.iron_ores": "铁矿石",
+  "tag.spelunkery.coal_ores": "煤炭矿石",
+  "tag.spelunkery.emerald_ores": "绿宝石矿石",
+  "tag.spelunkery.jade_ores": "玉矿石",
+  "tag.spelunkery.lead_ores": "铅矿石",
+  "tag.spelunkery.zinc_ores": "锌矿石",
+  "tag.spelunkery.silver_ores": "银矿石",
+  "tag.spelunkery.slime_food": "史莱姆饲料",
+  "tag.spelunkery.keep_on_death": "死亡不掉落物品",
+  "tag.spelunkery.anvil_repair_item": "铁砧修补材料",
+  "tag.spelunkery.grindstone_repair_item": "砂轮修补材料",
 
   "block.spelunkery.rock_salt": "岩盐",
   "block.spelunkery.salt_lamp": "盐灯",
@@ -166,6 +232,7 @@
   "item.spelunkery.raw_zinc_nugget": "粗锌粒",
   "item.spelunkery.raw_lead_nugget": "粗铅粒",
   "item.spelunkery.raw_silver_nugget": "粗银粒",
+  "item.spelunkery.raw_magnetite_nugget": "粗磁铁粒",
   
   "item.spelunkery.copper_nugget": "铜粒",
 
@@ -185,6 +252,7 @@
   "block.spelunkery.rough_cinnabar_block": "待加工朱砂块",
   "block.spelunkery.rough_diamond_block": "待加工钻石块",
   "block.spelunkery.rough_emerald_block": "待加工绿宝石块",
+  "block.spelunkery.rough_quartz_block": "待加工石英块",
 
   "item.spelunkery.lapis_lazuli_shard": "青金石碎片",
   "item.spelunkery.cinnabar_shard": "朱砂碎片",
@@ -195,8 +263,8 @@
   "item.spelunkery.cinnabar": "朱砂",
   "block.spelunkery.cinnabar_block": "朱砂块",
 
-  "item.spelunkery.magnetite_chunk": "磁铁碎块",
-  "block.spelunkery.magnetite": "磁铁矿",
+  "item.spelunkery.magnetite_chunk": "粗磁铁",
+  "block.spelunkery.magnetite": "粗磁铁块",
   "item.spelunkery.item_magnet": "物品磁铁",
   "item.spelunkery.magnetic_compass": "地磁指北针",
 
@@ -222,7 +290,7 @@
   "block.spelunkery.nephrite_spout": "软玉喷流口",
   "block.spelunkery.nephrite_diode": "软玉二极管",
   "item.spelunkery.nephrite_charm": "软玉灵符",
-  "item.spelunkery.echo_fork": "回声叉",
+  "item.spelunkery.echo_fork": "回响叉",
 
   "block.spelunkery.tangle_roots": "缠根",
   "block.spelunkery.sporophyte": "孢子体",
@@ -239,7 +307,6 @@
   "block.spelunkery.mushgloom": "幽光蘑菇",
   "block.spelunkery.milly_bubcap": "米莉小盖菇",
 
-
   "block.spelunkery.potted_inkcap_mushroom": "墨盖菇盆栽",
   "block.spelunkery.potted_white_inkcap_mushroom": "白色墨盖菇盆栽",
   "block.spelunkery.potted_button_mushroom": "口蘑盆栽",
@@ -250,9 +317,13 @@
   "block.spelunkery.potted_milly_bubcap": "米莉小盖菇盆栽",
   "block.spelunkery.potted_sporophyte": "孢子体盆栽",
 
+  "block.spelunkery.conk_fungus_block": "木生菌块",
   "block.spelunkery.portabella_block": "大褐菇块",
   "block.spelunkery.inkcap_mushroom_block": "墨盖菇块",
   "block.spelunkery.white_inkcap_mushroom_block": "白色墨盖菇块",
+  "block.spelunkery.milly_bubcap_block": "米莉小盖菇块",
+
+  "item.spelunkery.dust_bun": "尘絮团",
 
   "block.spelunkery.glowstick": "荧光棒",
   "block.spelunkery.wooden_rail": "木轨",
@@ -267,7 +338,8 @@
   "item.spelunkery.obsidian_hammer_and_chisel": "黑曜石锤和凿",
 
   "block.spelunkery.diamond_grindstone": "钻石砂轮",
-  
+
+  "block.spelunkery.mineomite": "采矿炸药",
   "block.spelunkery.compression_blast_miner": "压缩爆破采矿机",
 
   "block.spelunkery.red_glowstick": "红色荧光棒",
@@ -285,5 +357,8 @@
   "block.spelunkery.black_glowstick": "黑色荧光棒",
   "block.spelunkery.white_glowstick": "白色荧光棒",
   "block.spelunkery.gray_glowstick": "灰色荧光棒",
-  "block.spelunkery.light_gray_glowstick": "淡灰色荧光棒"
+  "block.spelunkery.light_gray_glowstick": "淡灰色荧光棒",
+
+  "death.attack.stonecutter": "%1$s被锯成了两半",
+  "death.attack.stonecutter.player": "%1$s在与%2$s的战斗中被锯成了两半"
 }
