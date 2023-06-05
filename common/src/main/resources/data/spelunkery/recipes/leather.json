@@ -6,9 +6,14 @@
     " # "
   ],
   "key": {
-    "#": {
-      "item": "spelunkery:salt"
-    },
+    "#": [
+      {
+        "item": "spelunkery:salt"
+      },
+      {
+        "item": "spelunkery:saltpeter"
+      }
+    ],
     "X": {
       "item": "minecraft:rotten_flesh"
     }

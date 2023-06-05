@@ -10,6 +10,9 @@ import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,6 +51,15 @@ public class Spelunkery {
     }
 
     private static void compassLogic(IDropItemOnDeathEvent event) {
+        if (event.getItemStack().is(Items.DRAGON_EGG)) {
+            if (event.getPlayer() instanceof ServerPlayer serverPlayer && serverPlayer.getBlockY() < -64) {
+                ItemStack itemStack = event.getItemStack();
+                ItemStack itemStack2 = ItemUtils.createFilledResult(itemStack, serverPlayer, ModItems.EGGPLANT.get().getDefaultInstance());
+                itemStack.shrink(1);
+                serverPlayer.addItem(itemStack2);
+                event.setCanceled(true);
+            }
+        }
         if (event.getItemStack().is(ModTags.KEEP_ON_DEATH)) {
             if (event.getPlayer() instanceof ServerPlayer serverPlayer) CriteriaTriggers.USING_ITEM.trigger(serverPlayer, event.getItemStack());
             event.setCanceled(true);

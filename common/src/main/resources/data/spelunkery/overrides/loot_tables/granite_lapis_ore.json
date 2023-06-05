@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "spelunkery:diorite_lapis_ore",
+              "name": "spelunkery:granite_lapis_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

@@ -11,10 +11,7 @@ import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -312,6 +309,8 @@ public class ModBlocks {
             new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get())));
 
 
+    public static final Supplier<Block> SULFUR_GEYSER = regWithItem("sulfur_geyser", () ->
+            new SulfurGeyserBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SAND)));
 
     //nephrite
     public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->
@@ -348,7 +347,7 @@ public class ModBlocks {
     public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
-            new NephriteSpoutBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
+            new NephriteFountainBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 

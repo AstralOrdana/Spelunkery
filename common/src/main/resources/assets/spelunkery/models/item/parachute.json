@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/parachute"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:used": 0.1 }, "model": "spelunkery:item/parachute" },
+    { "predicate": { "spelunkery:active": 0.1 }, "model": "spelunkery:item/parachute" },
+    { "predicate": { "spelunkery:used": 0.4 }, "model": "spelunkery:item/parachute_used" },
+    { "predicate": { "spelunkery:active": 0.4 }, "model": "spelunkery:item/parachute_active" }
+  ]
+}

@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -39,12 +40,11 @@ public class MagnetItem extends Item {
     public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             CompoundTag compoundTag = stack.getOrCreateTag();
-            if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
-            if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
+            if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.active").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
+            if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
-            // if (Minecraft.getInstance().options.keyShift.isDown()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_3", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_4").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {
                 tooltip.add(TranslationUtils.CROUCH.component());
             }
@@ -83,6 +83,7 @@ public class MagnetItem extends Item {
             return;
         }
 
+
         CompoundTag tag = stack.getOrCreateTag();
         if (tag.contains("active") && tag.getBoolean("active")) {
             int r = getMagnetRange();
@@ -100,4 +101,5 @@ public class MagnetItem extends Item {
                             new Vec3((entity.position().x) - item.getX(), (entity.position().y) - item.getY(), (entity.position().z) - item.getZ()).lengthSqr()) / 8.0D)) * 0.1D))));
         }
     }
+
 }

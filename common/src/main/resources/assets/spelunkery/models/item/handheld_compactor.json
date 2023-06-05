@@ -1,0 +1,9 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "spelunkery:item/handheld_compactor"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:active": 0.5 }, "model": "spelunkery:item/handheld_compactor_active" }
+  ]
+}

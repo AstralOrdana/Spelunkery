@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:iron_nugget",
+    "minecraft:gold_nugget",
+    "spelunkery:copper_nugget",
+
+    "spelunkery:raw_iron_nugget",
+    "spelunkery:raw_gold_nugget",
+    "spelunkery:raw_copper_nugget",
+    "spelunkery:raw_magnetite_nugget",
+
+    "spelunkery:cinnabar_shard",
+    "spelunkery:lapis_lazuli_shard",
+    "spelunkery:emerald_shard",
+    "spelunkery:diamond_shard",
+
+    "spelunkery:rough_cinnabar_shard",
+    "spelunkery:rough_lazurite_shard",
+    "spelunkery:rough_emerald_shard",
+    "spelunkery:rough_diamond_shard"
+  ]
+}

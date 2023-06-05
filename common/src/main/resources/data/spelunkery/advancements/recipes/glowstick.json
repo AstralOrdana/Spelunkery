@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "spelunkery:red_glowstick",
+      "spelunkery:orange_glowstick",
+      "spelunkery:yellow_glowstick",
+      "spelunkery:lime_glowstick",
+      "spelunkery:green_glowstick",
+      "spelunkery:cyan_glowstick",
+      "spelunkery:light_blue_glowstick",
+      "spelunkery:blue_glowstick",
+      "spelunkery:purple_glowstick",
+      "spelunkery:magenta_glowstick",
+      "spelunkery:pink_glowstick",
+      "spelunkery:brown_glowstick",
+      "spelunkery:black_glowstick",
+      "spelunkery:gray_glowstick",
+      "spelunkery:light_gray_glowstick",
+      "spelunkery:white_glowstick"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:glowstick"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

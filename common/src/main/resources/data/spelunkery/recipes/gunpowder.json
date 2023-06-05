@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    },
+    {
+      "item": "spelunkery:saltpeter"
+    },
+    {
+      "item": "spelunkery:sulfur"
+    }
+  ],
+  "result": {
+    "item": "minecraft:gunpowder",
+    "count": 3
+  }
+}

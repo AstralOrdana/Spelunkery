@@ -16,10 +16,13 @@ public class CommonConfigs {
     public static final Supplier<Boolean> CREATIVE_TAB;
     //public static final Supplier<Boolean> CROSS_SECTION;
     public static final Supplier<Boolean> STONECUTTER_DAMAGE;
+    public static final Supplier<Boolean> DISABLE_DIAMOND_GRINDSTONE_DEPLETION;
     public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
+    public static final Supplier<Integer> PARACHUTE_DELAY;
     public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
-    //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
     public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
+    public static final Supplier<Boolean> ORE_STONE_DROPS;
+    //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
 
     public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
     public static final Supplier<Boolean> SLIME_CAULDRONS;
@@ -62,10 +65,13 @@ public class CommonConfigs {
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
         STONECUTTER_DAMAGE = builder.define("stonecutter_damage", true);
+        DISABLE_DIAMOND_GRINDSTONE_DEPLETION = builder.define("disable_diamond_grindstone_depletion", false);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 0, 128);
+        PARACHUTE_DELAY = builder.define("parachute_delay", 10, 0, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
-        //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
+        ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
+        //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         builder.pop();
 
         builder.push("slimes");

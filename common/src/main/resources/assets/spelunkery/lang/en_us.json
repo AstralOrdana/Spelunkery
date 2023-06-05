@@ -64,6 +64,8 @@
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",
   "tooltip.spelunkery.rock_salt": "Can be ground on a Grindstone",
   "tooltip.spelunkery.flint_and_steel": "Not strong enough to Tear open a portal",
+  "tooltip.spelunkery.active": "Active",
+  "tooltip.spelunkery.inactive": "Inactive",
   "tooltip.spelunkery.sculk": "Mine with Shears to obtain Sculk Veins",
   "tooltip.spelunkery.sculk_veins": "Mine Sculk with Shears to obtain",
   "tooltip.spelunkery.dust_bun_1": "Interact to break open",
@@ -97,16 +99,19 @@
   "tooltip.spelunkery.magnetic_compass_2": "  Always points toward Magnetic North",
   "tooltip.spelunkery.magnetic_compass_3": "  Unless there is a strong interference in the magnetic field",
   "tooltip.spelunkery.magnetic_compass_4": "  %1$s and use to reset",
-  "tooltip.spelunkery.item_magnet_1": "Active",
-  "tooltip.spelunkery.item_magnet_2": "Inactive",
-  "tooltip.spelunkery.item_magnet_3": "  Draws items toward the player from %1$s blocks away when active",
-  "tooltip.spelunkery.item_magnet_4": "  Use to toggle between active and inactive",
+  "tooltip.spelunkery.item_magnet_1": "  Draws items toward the player from %1$s blocks away when active",
+  "tooltip.spelunkery.item_magnet_2": "  Use to toggle between active and inactive",
+  "tooltip.spelunkery.handheld_compactor_1": "  Automatically compacts shards and nuggets into ingots and gems",
+  "tooltip.spelunkery.handheld_compactor_2": "  Use to toggle between active and inactive",
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "Mining level: Diamond",
   "tooltip.spelunkery.flint_hammer_and_chisel": "Mining level: Stone",
   "tooltip.spelunkery.hammer_and_chisel_1": "  Hold Use and then release on blocks to break them",
   "tooltip.spelunkery.hammer_and_chisel_2": "  Can only break Pickaxe blocks in their mining level and below",
   "tooltip.spelunkery.hammer_and_chisel_3": "  Blocks drop as if mined using Silk Touch",
   "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s and use to convert Brick blocks to Chiseled form",
+  "tooltip.spelunkery.parachute_1": "  Automatically deploys when falling from a lethal height",
+  "tooltip.spelunkery.parachute_2": "  Use while falling to manually deploy",
+  "tooltip.spelunkery.parachute_3": "  Hold right click and shift for three seconds to re-fold once used",
   "tooltip.spelunkery.cbm_1": "  Places directionally like an Observer",
   "tooltip.spelunkery.cbm_2": "  Right click to prime with TNT, power to cause explosion",
   "tooltip.spelunkery.cbm_3": "  Explosion can break nearly any block, including Bedrock",
@@ -131,6 +136,7 @@
 
   "tag.spelunkery.glowsticks": "Glowsticks",
   "tag.spelunkery.grindable": "Grindables",
+  "tag.spelunkery.nuggets": "Nuggets",
   "tag.spelunkery.diamond_grindable": "Diamond Grindables",
   "tag.spelunkery.diamond_ores": "Diamond Ores",
   "tag.spelunkery.copper_ores": "Copper Ores",
@@ -263,10 +269,14 @@
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
 
+  "item.spelunkery.sulfur": "Sulfur",
+  "item.spelunkery.saltpeter": "Saltpeter",
+
   "item.spelunkery.magnetite_chunk": "Raw Magnetite",
   "block.spelunkery.magnetite": "Block of Raw Magnetite",
   "item.spelunkery.item_magnet": "Item Magnet",
   "item.spelunkery.magnetic_compass": "Magnetic Compass",
+  "item.spelunkery.handheld_compactor": "Handheld Compactor",
 
   "item.spelunkery.nephrite_chunk": "Nephrite Chunk",
   "block.spelunkery.raw_nephrite": "Raw Nephrite",
@@ -336,6 +346,7 @@
   "item.spelunkery.depth_gauge": "Depth Gauge",
   "item.spelunkery.flint_hammer_and_chisel": "Flint Hammer and Chisel",
   "item.spelunkery.obsidian_hammer_and_chisel": "Obsidian Hammer and Chisel",
+  "item.spelunkery.parachute": "Parachute",
 
   "block.spelunkery.diamond_grindstone": "Diamond Grindstone",
 
@@ -360,5 +371,7 @@
   "block.spelunkery.light_gray_glowstick": "Light Gray Glowstick",
 
   "death.attack.stonecutter": "%1$s was sawed in half",
-  "death.attack.stonecutter.player": "%1$s was sawed in half whilst fighting %2$s"
+  "death.attack.stonecutter.player": "%1$s was sawed in half whilst fighting %2$s",
+
+  "item.spelunkery.eggplant": "Eggplant"
 }

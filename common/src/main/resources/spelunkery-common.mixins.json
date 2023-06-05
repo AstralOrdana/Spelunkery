@@ -10,6 +10,7 @@
     "BaseFireBlockMixin",
     "ExperienceOrbMixin",
     "IceMixin",
+    "ItemFrameMixin",
     "MossBlockMixin",
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",

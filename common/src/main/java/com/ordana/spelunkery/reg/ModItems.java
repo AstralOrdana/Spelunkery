@@ -3,10 +3,8 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
 import net.mehvahdjukaar.moonlight.api.item.FuelItem;
-import net.mehvahdjukaar.moonlight.api.item.WoodBasedItem;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.*;
 
 import java.util.Objects;
@@ -93,8 +91,10 @@ public class ModItems {
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
-    public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
-            new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
+    public static final Supplier<Item> SULFUR = regItem("sulfur", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
+    public static final Supplier<Item> SALTPETER = regItem("saltpeter", () ->
+            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> CARVED_NEPHRITE = regItem("carved_nephrite", () ->
             new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
@@ -104,6 +104,10 @@ public class ModItems {
             new NephriteSpoutItem(ModBlocks.NEPHRITE_SPOUT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
+
+
+    public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
+            new NephriteCharmItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
 
     public static final Supplier<Item> MINEOMITE = regItem("mineomite", () ->
             new MineomiteItem(ModBlocks.MINEOMITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
@@ -129,6 +133,8 @@ public class ModItems {
             new RopeLadderBlockItem(ModBlocks.ROPE_LADDER.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> WOODEN_RAIL = regItem("wooden_rail", () ->
             new WoodenRailBlockItem(ModBlocks.WOODEN_RAIL.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TRANSPORTATION))));
+    public static final Supplier<Item> PARACHUTE = regItem("parachute", () ->
+            new ParachuteItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(16)));
     public static final Supplier<Item> FLINT_HAMMER_AND_CHISEL = regItem("flint_hammer_and_chisel", () ->
             new HammerAndChiselItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).durability(128)));
     public static final Supplier<Item> OBSIDIAN_HAMMER_AND_CHISEL = regItem("obsidian_hammer_and_chisel", () ->
@@ -139,6 +145,8 @@ public class ModItems {
             new MagneticCompassItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> ITEM_MAGNET = regItem("item_magnet", () ->
             new MagnetItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
+    public static final Supplier<Item> HANDHELD_COMPACTOR = regItem("handheld_compactor", () ->
+            new HandheldCompactorItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> PORTAL_FLUID_BOTTLE = regItem("portal_fluid_bottle", () ->
             new PortalFluidBottleitem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).food(PortalFluidBottleitem.PORTAL_FLUID).stacksTo(16).rarity(Rarity.UNCOMMON)));
 
@@ -184,5 +192,8 @@ public class ModItems {
             new GlowstickItem(DyeColor.GRAY, ModBlocks.GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
     public static final Supplier<Item> LIGHT_GRAY_GLOWSTICK = regItem("light_gray_glowstick", () ->
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
+
+    public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->
+            new EggplantItem(new Item.Properties().tab(getTab(null)).stacksTo(1).rarity(Rarity.EPIC)));
 
 }

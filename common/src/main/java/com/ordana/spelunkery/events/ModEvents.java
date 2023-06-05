@@ -4,6 +4,8 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.DiamondGrindstoneBlock;
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.items.MagneticCompassItem;
+import com.ordana.spelunkery.items.PortalFluidBottleitem;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
@@ -148,9 +150,16 @@ public class ModEvents {
                 level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
-                    player.setItemInHand(hand, itemStack2);
-                    //if (!player.getAbilities().instabuild) stack.shrink(1);
+
+                    ItemStack itemStack2 = new ItemStack(ModItems.PORTAL_FLUID_BOTTLE.get());
+                    PortalFluidBottleitem.addLocationTags(level.dimension(), pos, itemStack2.getOrCreateTag());
+
+                    if (!player.getInventory().add(itemStack2)) {
+                        player.drop(itemStack2, false);
+                    }
+
+                    stack.shrink(1);
+
                     level.setBlockAndUpdate(pos, state.setValue(RespawnAnchorBlock.CHARGE, state.getValue(RespawnAnchorBlock.CHARGE) - 1));
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
@@ -239,7 +248,7 @@ public class ModEvents {
                         else ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, byproductItem), UniformInt.of(3, 5));
                         player.swing(hand);
                         level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
-                        if (random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get()) == 1) {
+                        if (random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get()) == 1 && !CommonConfigs.DISABLE_DIAMOND_GRINDSTONE_DEPLETION.get()) {
                             if (polishingRecipe.isRequiresDiamondGrindstone() && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) < 3) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
                         }
                         return InteractionResult.sidedSuccess(level.isClientSide);

@@ -27,6 +27,11 @@ package com.ordana.spelunkery.utils;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -36,6 +41,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import java.awt.*;
+import java.util.Objects;
 import java.util.Optional;
 
 public class LevelHelper {
@@ -67,6 +74,12 @@ public class LevelHelper {
         player.level.playSound(null, player.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1f, 1f);
 
         player.teleportTo(serverLevel, spawnPosition.x, spawnPosition.y, spawnPosition.z, player.getYRot(), player.getXRot());
+    }
+
+    public static void teleportToAnchorPosition(ServerPlayer player, GlobalPos pos) {
+
+        player.level.playSound(null, player.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1f, 1f);
+        player.teleportTo(Objects.requireNonNull(player.server.getLevel(pos.dimension())), pos.pos().getX() + 0.5, pos.pos().getY() + 1, pos.pos().getZ() + 0.5, player.getYRot(), player.getXRot());
     }
 
     public static void teleportToWorldspawn(Level level, Entity entity) {

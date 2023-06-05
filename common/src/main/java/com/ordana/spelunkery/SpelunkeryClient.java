@@ -61,14 +61,20 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerItemProperty(ModItems.ITEM_MAGNET.get(), Spelunkery.res("active"),
                 (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
 
+        ClientPlatformHelper.registerItemProperty(ModItems.HANDHELD_COMPACTOR.get(), Spelunkery.res("active"),
+                (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
+
         ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
-                new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> {
-                    return MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel);
-                })));
+                new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel))));
 
         ClientPlatformHelper.registerItemProperty(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);
 
+        ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("active"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("active") ? 0.5f : 0) : 0);
+
+        ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
     }
 
@@ -77,6 +83,7 @@ public class SpelunkeryClient {
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.THROWN_PRIMED_MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.PRIMED_MINEOMITE.get(), PrimedMineomiteEntityRenderer::new);
+        event.register(ModEntities.EGGPLANT.get(), context -> new ThrownItemRenderer<>(context, 1, false));
     }
 
 }

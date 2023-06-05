@@ -3,11 +3,8 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.blocks.entity.MagnetiteBlockEntity;
-import com.ordana.spelunkery.blocks.entity.NephriteSpoutEntity;
-import com.ordana.spelunkery.entities.GlowstickEntity;
-import com.ordana.spelunkery.entities.MineomiteEntity;
-import com.ordana.spelunkery.entities.PrimedMineomiteEntity;
-import com.ordana.spelunkery.entities.ThrownPrimedMineomiteEntity;
+import com.ordana.spelunkery.blocks.entity.NephriteFountainEntity;
+import com.ordana.spelunkery.entities.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.entity.Entity;
@@ -29,9 +26,9 @@ public class ModEntities {
             Spelunkery.res("carved_nephrite"),
             () -> PlatformHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
 
-    public static final Supplier<BlockEntityType<NephriteSpoutEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
+    public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
             Spelunkery.res("nephrite_spout"),
-            () -> PlatformHelper.newBlockEntityType(NephriteSpoutEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
+            () -> PlatformHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
 
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
             Spelunkery.res("magnetite"),
@@ -52,4 +49,7 @@ public class ModEntities {
             Spelunkery.res("primed_mineomite"),
             PrimedMineomiteEntity::new, MobCategory.MISC, 0.98F, 0.98F, 10, 20);
 
+    public static Supplier<EntityType<EggplantEntity>> EGGPLANT = RegHelper.registerEntityType(
+            Spelunkery.res("eggplant"),
+            EggplantEntity::new, MobCategory.MISC, 0.7F, 0.7F, 10, 20);
 }

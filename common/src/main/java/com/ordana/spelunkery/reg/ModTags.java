@@ -31,6 +31,8 @@ public class ModTags {
     public static final TagKey<Item> ANVIL_REPAIR_ITEM = registerItemTag("anvil_repair_item");
     public static final TagKey<Item> GRINDSTONE_REPAIR_ITEM = registerItemTag("grindstone_repair_item");
     public static final TagKey<Item> SLIME_FOOD = registerItemTag("slime_food");
+    public static final TagKey<Item> NUGGETS = registerItemTag("nuggets");
+    public static final TagKey<Item> PARACHUE_REPAIR = registerItemTag("parachute_repair");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

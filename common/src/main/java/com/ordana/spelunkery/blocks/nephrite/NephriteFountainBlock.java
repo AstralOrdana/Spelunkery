@@ -1,12 +1,27 @@
 package com.ordana.spelunkery.blocks.nephrite;
 
-import com.ordana.spelunkery.blocks.entity.NephriteSpoutEntity;
+import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
+import com.ordana.spelunkery.blocks.entity.NephriteFountainEntity;
+import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
+import com.ordana.spelunkery.reg.ModItems;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,23 +36,26 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class NephriteSpoutBlock extends BaseEntityBlock {
+public class NephriteFountainBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING;
     public static final BooleanProperty POWERED;
+    public static final BooleanProperty OPEN;
     protected static final VoxelShape NORTH_AABB;
     protected static final VoxelShape SOUTH_AABB;
     protected static final VoxelShape WEST_AABB;
     protected static final VoxelShape EAST_AABB;
 
-    public NephriteSpoutBlock(Properties properties) {
+    public NephriteFountainBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(OPEN, false));
     }
 
     public RenderShape getRenderShape(BlockState state) {
@@ -85,41 +103,55 @@ public class NephriteSpoutBlock extends BaseEntityBlock {
         if (state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
             level.setBlock(pos, state.cycle(POWERED), 2);
         }
+        if (state.getValue(OPEN)) {
+            level.setBlock(pos, state.cycle(OPEN), 2);
+        }
     }
 
-    /*
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(POWERED) && !level.hasNeighborSignal(pos)) {
-            level.setBlock(pos, state.cycle(POWERED), 2);
-        }
-        for (Direction direction : Direction.values()) {
-            if (direction.equals(Direction.UP)) continue;
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        ItemStack stack = player.getItemInHand(hand);
+        Direction dir = state.getValue(NephriteFountainBlock.FACING);
+        if (stack.is(Items.GLASS_BOTTLE) && level.getBlockEntity(pos.relative(dir.getOpposite())) instanceof CarvedNephriteBlockEntity neighborTile && neighborTile.getCharge() >= 7 && level instanceof ServerLevel && player instanceof ServerPlayer serverPlayer) {
 
-            while (level.getBlockEntity(pos.relative(direction)) instanceof CarvedNephriteBlockEntity neighborTile && neighborTile.getCharge() > 0) {
-                neighborTile.setCharge(neighborTile.getCharge() - 1);
-                this.popExperience(level, pos.relative(direction.getOpposite()), 1);
+            level.setBlock(pos, state.cycle(OPEN), 2);
+            level.scheduleTick(pos, this, 4);
+
+            neighborTile.setCharge(neighborTile.getCharge() - 7);
+            level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+            level.playSound(null, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+            if (stack.getCount() > 1) {
+                ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, Items.EXPERIENCE_BOTTLE.getDefaultInstance());
+                player.setItemInHand(hand, itemStack2);
             }
+            else {
+                ItemStack itemStack2 = new ItemStack(Items.EXPERIENCE_BOTTLE);
+                if (!player.getInventory().add(itemStack2)) {
+                    player.drop(itemStack2, false);
+                }
+                stack.shrink(1);
+            }
+
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+            return InteractionResult.CONSUME;
         }
+        else return InteractionResult.FAIL;
     }
-     */
+
+
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED);
+        builder.add(FACING, POWERED, OPEN);
     }
 
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        switch(state.getValue(FACING)) {
-            case EAST:
-            default:
-                return EAST_AABB;
-            case WEST:
-                return WEST_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case NORTH:
-                return NORTH_AABB;
-        }
+        return switch (state.getValue(FACING)) {
+            default -> EAST_AABB;
+            case WEST -> WEST_AABB;
+            case SOUTH -> SOUTH_AABB;
+            case NORTH -> NORTH_AABB;
+        };
     }
 
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
@@ -144,14 +176,14 @@ public class NephriteSpoutBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new NephriteSpoutEntity(pos, state);
+        return new NephriteFountainEntity(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if (!level.isClientSide) {
-            return createTickerHelper(blockEntityType, ModEntities.NEPHRITE_SPOUT.get(), NephriteSpoutEntity::tickBlock);
+            return createTickerHelper(blockEntityType, ModEntities.NEPHRITE_SPOUT.get(), NephriteFountainEntity::tickBlock);
         } else {
             return super.getTicker(level, state, blockEntityType);
         }
@@ -170,6 +202,7 @@ public class NephriteSpoutBlock extends BaseEntityBlock {
     static {
         FACING = HorizontalDirectionalBlock.FACING;
         POWERED = BlockStateProperties.POWERED;
+        OPEN = ModBlockProperties.OPEN;
         NORTH_AABB = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 6.0D, 16.0D);
         SOUTH_AABB = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 6.0D, 16.0D);
         WEST_AABB = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 6.0D, 14.0D);
