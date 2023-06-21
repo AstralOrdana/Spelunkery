@@ -23,19 +23,15 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_version}"
 
-    modImplementation("dev.emi:emi:${emi_version}") {
-        transitive = false
-    }
+    modLocalRuntime "dev.emi:emi-fabric:${rootProject.emi_version}"
 
     //modImplementation("curse.maven:create-fabric-624165:4125637")
 
-    modImplementation("curse.maven:selene-499980:4452344")
+    modImplementation("curse.maven:selene-499980:4569959")
 
-    modImplementation("curse.maven:yacl-667299:3987709")
+    //modImplementation("curse.maven:yacl-667299:4361292")
 
-    modImplementation("curse.maven:modmenu-308702:3920481") {
-        exclude module: "fabric-api"
-    }
+    modImplementation("maven.modrinth:modmenu:4.2.0-beta.2")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
@@ -103,10 +99,18 @@ publishing {
         maven {
             url = "https://maven.shedaniel.me"
         }
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content {
+                includeGroup "maven.modrinth"
+            }
+        }
     }
 }
 
 repositories {
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases" }
+    maven { url "https://api.modrinth.com/maven" }
 }

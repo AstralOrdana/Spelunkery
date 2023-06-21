@@ -25,6 +25,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -49,7 +50,7 @@ public abstract class SlimeMixin extends Mob {
     @Inject(method = "checkSlimeSpawnRules", at = @At("HEAD"), cancellable = true)
     private static void caveSlimeSpawns(EntityType<Slime> slime, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random, CallbackInfoReturnable<Boolean> cir) {
         if (CommonConfigs.INCREASED_SLIME_SPAWN_RATE.get() && level.getBiome(pos).is(BiomeTags.IS_OVERWORLD)) {
-            if (pos.getY() < 60 && random.nextInt(124) > (pos.getY() + 64)) {
+            if (pos.getY() < 60 && random.nextInt(124) > (pos.getY() + 64) && (level.getLightEmission(pos) == 0 || level.getBlockState(pos).is(Blocks.DEEPSLATE))) {
                 cir.setReturnValue(checkMobSpawnRules(slime, level, spawnType, pos, random));
             }
         }

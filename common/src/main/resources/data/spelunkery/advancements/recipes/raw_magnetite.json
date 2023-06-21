@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "spelunkery:iron_from_magnetite",
+      "spelunkery:iron_from_magnetite_blasting",
+      "spelunkery:magnetic_compass",
+      "spelunkery:lodestone",
+      "spelunkery:item_magnet",
+      "spelunkery:handheld_compactor",
+      "spelunkery:raw_magnetite_nugget",
+      "spelunkery:raw_magnetite_block"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:magnetite_chunk"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

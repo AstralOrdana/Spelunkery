@@ -59,6 +59,7 @@
   "tooltip.spelunkery.hold_crouch": "Hold %1$s for more details",
   "tooltip.spelunkery.throwable": "Throwable!",
   "tooltip.spelunkery.slime_food": "Favorite food of Slimes",
+  "tooltip.spelunkery.wip_items": "WIP ITEM-- NOT CURRENTLY OBTAINABLE",
   "tooltip.spelunkery.grindable": "Polish on a Grindstone",
   "tooltip.spelunkery.diamond_grindable": "Polish on a Diamond Grindstone",
   "tooltip.spelunkery.keep_on_death": "Does not drop on death",

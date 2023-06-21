@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:saltpeter",
+    "spelunkery:sulfur",
+    "spelunkery:sulfur_geyser",
+    "spelunkery:parachute"
+  ]
+}

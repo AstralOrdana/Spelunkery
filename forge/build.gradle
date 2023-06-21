@@ -86,6 +86,10 @@ publishing {
             url = "https://www.cursemaven.com"
             allowInsecureProtocol = true
         }
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/releases"
+        }
     }
 }
 
@@ -97,6 +101,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 repositories{
+    maven { url "https://maven.terraformersmc.com/releases" }
     // Built mods
     flatDir {
         dirs dev_mods_dir
@@ -112,17 +117,16 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
-
-    modImplementation("curse.maven:more-minecarts-440845:4271044")
-
     implementation 'org.jetbrains:annotations:22.0.0'
 
     //modImplementation("net.mehvahdjukaar:moonlight:${rootProject.moonlight_version}-forge")
-    modImplementation("curse.maven:selene-499980:4452343")
+    modImplementation("curse.maven:selene-499980:4569958")
     //modImplementation("curse.maven:create-328085:4371809")
     //modImplementation("curse.maven:flywheel-486392:4341471")
     //modImplementation("curse.maven:jei-238222:4354615")
     //modImplementation("net.mehvahdjukaar:moonlight-forge:${project.moonlight_version}")
     //modImplementation ("curse.maven:jei-238222:3884337")
     //modImplementation ("curse.maven:configured-457570:4011355")
+
+    modLocalRuntime "dev.emi:emi-forge:${rootProject.emi_version}"
 }

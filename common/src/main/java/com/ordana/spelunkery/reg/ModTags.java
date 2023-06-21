@@ -33,6 +33,7 @@ public class ModTags {
     public static final TagKey<Item> SLIME_FOOD = registerItemTag("slime_food");
     public static final TagKey<Item> NUGGETS = registerItemTag("nuggets");
     public static final TagKey<Item> PARACHUE_REPAIR = registerItemTag("parachute_repair");
+    public static final TagKey<Item> WIP_ITEMS = registerItemTag("wip_items");
 
     //biomes
     public static final TagKey<Biome> HAS_LUSH_NOISE = registerBiomeTag("has_lush_noise");

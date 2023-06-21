@@ -33,9 +33,10 @@ public class Spelunkery {
         }
         initiated = true;
 
-        CommonConfigs.bump();
+        CommonConfigs.init();
+
         if(PlatformHelper.getEnv().isClient()){
-            ClientConfigs.bump();
+            ClientConfigs.init();
         }
 
         ModGameEvents.init();

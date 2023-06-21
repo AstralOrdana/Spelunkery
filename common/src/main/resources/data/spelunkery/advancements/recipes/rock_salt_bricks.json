@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "spelunkery:rock_salt_brick_slab",
+      "spelunkery:rock_salt_brick_slab_from_brick_stonecutting",
+      "spelunkery:rock_salt_brick_stairs",
+      "spelunkery:rock_salt_brick_stairs_from_brick_stonecutting",
+      "spelunkery:rock_salt_brick_wall",
+      "spelunkery:rock_salt_brick_wall_from_brick_stonecutting"
+          ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:polished_rock_salt"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

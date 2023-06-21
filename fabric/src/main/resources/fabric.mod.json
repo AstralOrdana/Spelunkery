@@ -31,7 +31,7 @@
       "com.ordana.spelunkery.fabric.SpelunkeryFabricClient"
     ],
     "emi": [
-      "com.ordana.spelunkery.integration.fabric.EmiIntegration"
+      "com.ordana.spelunkery.integrations.EmiIntegration"
     ],
     "modmenu": [
       "com.ordana.spelunkery.integration.fabric.ModMenuCompat"

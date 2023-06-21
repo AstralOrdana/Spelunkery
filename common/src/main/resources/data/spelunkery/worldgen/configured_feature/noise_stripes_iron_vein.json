@@ -17,13 +17,13 @@
           "type": "minecraft:weighted_state_provider",
           "entries": [
             {
-              "weight": 50,
+              "weight": 500,
               "data": {
                 "Name": "minecraft:tuff"
               }
             },
             {
-              "weight": 20,
+              "weight": 200,
               "data": {
                 "Name": "minecraft:deepslate",
                 "Properties": {
@@ -32,13 +32,13 @@
               }
             },
             {
-              "weight": 10,
+              "weight": 50,
               "data": {
                 "Name": "minecraft:deepslate_iron_ore"
               }
             },
             {
-              "weight": 2,
+              "weight": 10,
               "data": {
                 "Name": "minecraft:raw_iron_block"
               }

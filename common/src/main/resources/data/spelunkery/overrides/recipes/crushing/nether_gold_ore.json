@@ -6,6 +6,7 @@
     }
   ],
   "type": "create:crushing",
+  "processingTime": 350,
   "ingredients": [
     {
       "item": "minecraft:nether_gold_ore"
@@ -13,17 +14,16 @@
   ],
   "results": [
     {
-      "item": "spelunkery:raw_gold_nugget",
-      "count": 7
+      "count": 18,
+      "item": "spelunkery:raw_gold_nugget"
     },
     {
-      "item": "spelunkery:raw_gold_nugget",
-      "chance": 0.5
+      "chance": 0.75,
+      "item": "create:experience_nugget"
     },
     {
-      "item": "minecraft:netherrack",
-      "chance": 0.125
+      "chance": 0.125,
+      "item": "minecraft:netherrack"
     }
-  ],
-  "processingTime": 350
+  ]
 }

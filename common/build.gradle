@@ -13,8 +13,10 @@ dependencies {
     //modImplementation("curse.maven:selene-499980:4378793")
 
     //modImplementation("net.mehvahdjukaar:moonlight:${project.moonlight_version}")
-    modImplementation("curse.maven:selene-499980:4452344")
+    modImplementation("curse.maven:selene-499980:4569959")
     //you could try to use the forge/fabric one here insead but no guaranteed
+
+    modImplementation "dev.emi:emi-xplat-intermediary:${rootProject.emi_version}:api"
 }
 
 publishing {
@@ -27,5 +29,13 @@ publishing {
 
     repositories {
         // Add repositories to publish to here.
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/releases"
+        }
     }
+}
+
+repositories {
+    maven { url "https://maven.terraformersmc.com/releases" }
 }

@@ -11,53 +11,53 @@ import java.util.function.Supplier;
 public class CommonConfigs {
 
 
-    public static final ConfigSpec SERVER_SPEC;
+    public static ConfigSpec SERVER_SPEC;
 
-    public static final Supplier<Boolean> CREATIVE_TAB;
-    //public static final Supplier<Boolean> CROSS_SECTION;
-    public static final Supplier<Boolean> STONECUTTER_DAMAGE;
-    public static final Supplier<Boolean> DISABLE_DIAMOND_GRINDSTONE_DEPLETION;
-    public static final Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
-    public static final Supplier<Integer> PARACHUTE_DELAY;
-    public static final Supplier<Boolean> ENABLE_ROUGH_GEMS;
-    public static final Supplier<Boolean> ENABLE_RAW_NUGGETS;
-    public static final Supplier<Boolean> ORE_STONE_DROPS;
-    //public static final Supplier<Boolean> ENABLE_GEM_SHARDS;
+    public static Supplier<Boolean> CREATIVE_TAB;
+    //public static Supplier<Boolean> CROSS_SECTION;
+    public static Supplier<Boolean> STONECUTTER_DAMAGE;
+    public static Supplier<Boolean> DISABLE_DIAMOND_GRINDSTONE_DEPLETION;
+    public static Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
+    public static Supplier<Integer> PARACHUTE_DELAY;
+    public static Supplier<Boolean> ENABLE_ROUGH_GEMS;
+    public static Supplier<Boolean> ENABLE_RAW_NUGGETS;
+    public static Supplier<Boolean> ORE_STONE_DROPS;
+    //public static Supplier<Boolean> ENABLE_GEM_SHARDS;
 
-    public static final Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
-    public static final Supplier<Boolean> SLIME_CAULDRONS;
-    public static final Supplier<Boolean> SLIMES_FRIENDLY_REGEN;
-    public static final Supplier<Boolean> SLIMES_ALWAYS_FRIENDLY;
-    public static final Supplier<Integer> SLIME_EAT_COOLDOWN;
-    public static final Supplier<Boolean> SLIME_GROWTH;
-    public static final Supplier<Integer> SLIME_GROWTH_CHANCE;
-    public static final Supplier<Integer> SLIME_GROWTH_MAX;
+    public static Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
+    public static Supplier<Boolean> SLIME_CAULDRONS;
+    public static Supplier<Boolean> SLIMES_FRIENDLY_REGEN;
+    public static Supplier<Boolean> SLIMES_ALWAYS_FRIENDLY;
+    public static Supplier<Integer> SLIME_EAT_COOLDOWN;
+    public static Supplier<Boolean> SLIME_GROWTH;
+    public static Supplier<Integer> SLIME_GROWTH_CHANCE;
+    public static Supplier<Integer> SLIME_GROWTH_MAX;
 
-    public static final Supplier<Integer> HAMMER_CHISEL_CHARGE_TIME;
-    public static final Supplier<Integer> ECHO_FORK_RANGE;
-    public static final Supplier<Integer> ECHO_DURRATION;
-    public static final Supplier<Integer> ECHO_COOLDOWN;
-    public static final Supplier<Boolean> SCULK_SHEARING;
-    public static final Supplier<Integer> MAGNET_RANGE;
-    public static final Supplier<Integer> MAGNETITE_RANGE;
+    public static Supplier<Integer> HAMMER_CHISEL_CHARGE_TIME;
+    public static Supplier<Integer> ECHO_FORK_RANGE;
+    public static Supplier<Integer> ECHO_DURRATION;
+    public static Supplier<Integer> ECHO_COOLDOWN;
+    public static Supplier<Boolean> SCULK_SHEARING;
+    public static Supplier<Integer> MAGNET_RANGE;
+    public static Supplier<Integer> MAGNETITE_RANGE;
 
-    public static final Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
-    public static final Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
-    public static final Supplier<Boolean> FlINT_AND_STEEL_PORTAL_LIGHTING;
-    public static final Supplier<Boolean> PORTAL_DESTRUCTION_CRYING_OBSIDIAN;
-    public static final Supplier<Boolean> PIGLINS_GIVE_CRYING_OBSIDIAN;
-    public static final Supplier<Boolean> PORTAL_CREATION_SOUND;
-    public static final Supplier<Boolean> PORTAL_DESTRUCTION_SOUND;
+    public static Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
+    public static Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
+    public static Supplier<Boolean> FlINT_AND_STEEL_PORTAL_LIGHTING;
+    public static Supplier<Boolean> PORTAL_DESTRUCTION_CRYING_OBSIDIAN;
+    public static Supplier<Boolean> PIGLINS_GIVE_CRYING_OBSIDIAN;
+    public static Supplier<Boolean> PORTAL_CREATION_SOUND;
+    public static Supplier<Boolean> PORTAL_DESTRUCTION_SOUND;
 
-    public static final Supplier<Boolean> STONE_STRIPE_FEATURES;
-    public static final Supplier<Boolean> ENABLE_SPOROPHYTES;
-    public static final Supplier<Boolean> BETTER_SCULK_PATCHES;
-    public static final Supplier<Boolean> DARK_FOREST_PORTABELLAS;
-    public static final Supplier<Boolean> ENABLE_MORES;
+    public static Supplier<Boolean> STONE_STRIPE_FEATURES;
+    public static Supplier<Boolean> ENABLE_SPOROPHYTES;
+    public static Supplier<Boolean> BETTER_SCULK_PATCHES;
+    public static Supplier<Boolean> DARK_FOREST_PORTABELLAS;
+    public static Supplier<Boolean> ENABLE_MORES;
 
 
 
-    static {
+    public static void init() {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("common"), ConfigType.COMMON);
 
         builder.setSynced();
@@ -121,9 +121,5 @@ public class CommonConfigs {
 
         SERVER_SPEC = builder.buildAndRegister();
         SERVER_SPEC.loadFromFile();
-    }
-
-    public static void bump() {
-        // Literally just a way to ensure for the class to be loaded
     }
 }
