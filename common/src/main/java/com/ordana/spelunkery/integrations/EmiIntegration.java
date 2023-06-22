@@ -41,7 +41,7 @@ public class EmiIntegration implements EmiPlugin {
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
                 .id(new ResourceLocation("spelunkery", "/rock_salt_boiling"))
-                .leftInput(EmiStack.of(ModItems.ROUGH_CINNABAR_SHARD.get()))
+                .leftInput(EmiStack.of(ModItems.SALT.get()))
                 .rightInput(EmiStack.of(Blocks.WATER_CAULDRON), false)
                 .output(EmiStack.of(ModItems.ROCK_SALT.get()))
                 .output(EmiStack.of(Blocks.CAULDRON))

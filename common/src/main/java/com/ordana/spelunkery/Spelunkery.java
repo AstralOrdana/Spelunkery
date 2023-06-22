@@ -55,9 +55,8 @@ public class Spelunkery {
         if (event.getItemStack().is(Items.DRAGON_EGG)) {
             if (event.getPlayer() instanceof ServerPlayer serverPlayer && serverPlayer.getBlockY() < -64) {
                 ItemStack itemStack = event.getItemStack();
-                ItemStack itemStack2 = ItemUtils.createFilledResult(itemStack, serverPlayer, ModItems.EGGPLANT.get().getDefaultInstance());
                 itemStack.shrink(1);
-                serverPlayer.addItem(itemStack2);
+                event.setReturnItemStack(new ItemStack(ModItems.EGGPLANT.get()));
                 event.setCanceled(true);
             }
         }

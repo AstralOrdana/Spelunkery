@@ -83,6 +83,7 @@
   "tooltip.spelunkery.wooden_rail_2": "  Can extend above air blocks to cross gaps",
   "tooltip.spelunkery.rhymes_with_tears_0": "Rhymes with \"FEARS\"",
   "tooltip.spelunkery.rhymes_with_tears_1": "Rhymes with \"SCARES\"",
+  "tooltip.spelunkery.portal_fluid_pos": "  Linked to: %1$s, %2$s, %3$s",
   "tooltip.spelunkery.portal_fluid_1": "  Drink to return to your spawnpoint or worldspawn",
   "tooltip.spelunkery.portal_fluid_2": "  Can be used to ignite Nether Portals",
   "tooltip.spelunkery.portal_fluid_3": "  Use empty bottle on Crying Obsidian or Respawn Anchor to obtain",
