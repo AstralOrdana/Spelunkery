@@ -3,6 +3,7 @@ package com.ordana.spelunkery.blocks.rock_salt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -35,7 +36,7 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
 
     public RockSaltCrystalBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.UP).setValue(ILLUMINATED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(LIGHT, 0).setValue(FACING, Direction.UP).setValue(ILLUMINATED, false));
         this.upAabb = Block.box(3, 0.0D, 3, 13, 12, 13);
         this.downAabb = Block.box(3, 4, 3, 13, 16.0D, 13);
         this.northAabb = Block.box(3, 3, 4, 13, 13, 16.0D);
@@ -66,25 +67,27 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
+        int i = getDistanceAt(neighborState) - 1;
+        if (i != 1 || state.getValue(LIGHT) != i) {
+            level.scheduleTick(currentPos, this, 1);
+        }
 
         return direction == state.getValue(FACING).getOpposite() && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
+        var light = context.getLevel().getLightEmission(context.getClickedPos());
+        boolean bl = light > 0;
         LevelAccessor levelAccessor = context.getLevel();
         BlockPos blockPos = context.getClickedPos();
-        return this.defaultBlockState().setValue(ILLUMINATED, this.neighborIsBright(context.getClickedPos(), context.getLevel())).setValue(WATERLOGGED, levelAccessor.getFluidState(blockPos).getType() == Fluids.WATER).setValue(FACING, context.getClickedFace());
-    }
-
-    @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean isMoving) {
-        RockSalt.super.neighborChanged(state, level, pos, block, neighborPos, isMoving);
+        BlockState blockState = this.defaultBlockState().setValue(LIGHT, light).setValue(ILLUMINATED, bl).setValue(WATERLOGGED, levelAccessor.getFluidState(blockPos).getType() == Fluids.WATER).setValue(FACING, context.getClickedFace());
+        return updateDistance(blockState, context.getLevel(), context.getClickedPos());
     }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        RockSalt.super.tick(state, level, pos, random);
+        level.setBlock(pos, updateDistance(state, level, pos), 3);
     }
 
     public BlockState rotate(BlockState state, Rotation rotation) {
@@ -100,7 +103,7 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, FACING, ILLUMINATED);
+        builder.add(WATERLOGGED, FACING, ILLUMINATED, LIGHT);
     }
 
     public PushReaction getPistonPushReaction(BlockState state) {
@@ -111,6 +114,31 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         onEntityStepOn(state, entity);
         super.stepOn(world, pos, state, entity);
+    }
+
+
+    private static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
+        int i = 0;
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+        Direction[] var5 = Direction.values();
+
+        for (Direction direction : var5) {
+            mutableBlockPos.setWithOffset(pos, direction);
+            i = Math.max(i, getDistanceAt(level.getBlockState(mutableBlockPos)) - 1);
+            if (i == 16) {
+                break;
+            }
+        }
+
+        return state.setValue(LIGHT, i).setValue(ILLUMINATED, i > 0);
+    }
+
+    private static int getDistanceAt(BlockState neighbor) {
+        if (neighbor.getLightEmission() > 1) {
+            return neighbor.getLightEmission();
+        } else {
+            return neighbor.hasProperty(ILLUMINATED) ? neighbor.getValue(LIGHT) : 0;
+        }
     }
 
     static {

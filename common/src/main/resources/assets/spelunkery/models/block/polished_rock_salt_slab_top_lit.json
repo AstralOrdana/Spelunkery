@@ -3,6 +3,6 @@
   "textures": {
     "top": "spelunkery:block/polished_rock_salt_lit",
     "bottom": "spelunkery:block/polished_rock_salt_lit",
-    "side": "spelunkery:block/polished_rock_salt_slab"
+    "side": "spelunkery:block/polished_rock_salt_slab_lit"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "parent": "spelunkery:block/fancy_stairs",
+  "textures": {
+    "bottom": "spelunkery:block/saltstairs_default_lit",
+    "top": "spelunkery:block/saltstairs_vert_lit",
+    "north": "spelunkery:block/saltstairs_lsw_lit",
+	"south": "spelunkery:block/saltstairs_lse_lit",
+	"west": "spelunkery:block/saltstairs_lat_lit",
+	"east": "spelunkery:block/saltstairs_default_lit"
+  }
+}

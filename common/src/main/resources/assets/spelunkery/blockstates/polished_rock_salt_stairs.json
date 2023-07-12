@@ -1,206 +1,416 @@
 {
   "variants": {
-    "facing=east,half=bottom,shape=inner_left": {
+    "illuminated=false,facing=east,half=bottom,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_bottom_inner_east_north",
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=bottom,shape=inner_right": {
+    "illuminated=false,facing=east,half=bottom,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_bottom_inner_south_east"
     },
-    "facing=east,half=bottom,shape=outer_left": {
+    "illuminated=false,facing=east,half=bottom,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_bottom_outer_east_north",
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=bottom,shape=outer_right": {
+    "illuminated=false,facing=east,half=bottom,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_bottom_outer_south_east"
     },
-    "facing=east,half=bottom,shape=straight": {
+    "illuminated=false,facing=east,half=bottom,shape=straight": {
       "model": "spelunkery:block/saltstairs_bottom_base_eastwest"
     },
-    "facing=east,half=top,shape=inner_left": {
+    "illuminated=false,facing=east,half=top,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_top_inner_east_north",
       "x": 180,
       "uvlock": true
     },
-    "facing=east,half=top,shape=inner_right": {
+    "illuminated=false,facing=east,half=top,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_top_inner_south_east",
       "x": 180,
       "y": 90,
       "uvlock": true
     },
-    "facing=east,half=top,shape=outer_left": {
+    "illuminated=false,facing=east,half=top,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_top_outer_east_north",
       "x": 180,
       "uvlock": true
     },
-    "facing=east,half=top,shape=outer_right": {
+    "illuminated=false,facing=east,half=top,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_top_outer_south_east",
       "x": 180,
       "y": 90,
       "uvlock": true
     },
-    "facing=east,half=top,shape=straight": {
+    "illuminated=false,facing=east,half=top,shape=straight": {
       "model": "spelunkery:block/saltstairs_top_base_eastwest",
       "x": 180,
       "uvlock": true
     },
-    "facing=north,half=bottom,shape=inner_left": {
+    "illuminated=false,facing=north,half=bottom,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_bottom_inner_north_west",
       "y": 180,
       "uvlock": true
     },
-    "facing=north,half=bottom,shape=inner_right": {
+    "illuminated=false,facing=north,half=bottom,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_bottom_inner_east_north",
       "y": 270,
       "uvlock": true
     },
-    "facing=north,half=bottom,shape=outer_left": {
+    "illuminated=false,facing=north,half=bottom,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_bottom_outer_north_west",
       "y": 180,
       "uvlock": true
     },
-    "facing=north,half=bottom,shape=outer_right": {
+    "illuminated=false,facing=north,half=bottom,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_bottom_outer_east_north",
       "y": 270,
       "uvlock": true
     },
-    "facing=north,half=bottom,shape=straight": {
+    "illuminated=false,facing=north,half=bottom,shape=straight": {
       "model": "spelunkery:block/saltstairs_bottom_base_northsouth",
       "y": 270,
       "uvlock": true
     },
-    "facing=north,half=top,shape=inner_left": {
+    "illuminated=false,facing=north,half=top,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_top_inner_north_west",
       "x": 180,
       "y": 270,
       "uvlock": true
     },
-    "facing=north,half=top,shape=inner_right": {
+    "illuminated=false,facing=north,half=top,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_top_inner_east_north",
       "x": 180,
       "uvlock": true
     },
-    "facing=north,half=top,shape=outer_left": {
+    "illuminated=false,facing=north,half=top,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_top_outer_north_west",
       "x": 180,
       "y": 270,
       "uvlock": true
     },
-    "facing=north,half=top,shape=outer_right": {
+    "illuminated=false,facing=north,half=top,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_top_outer_east_north",
       "x": 180,
       "uvlock": true
     },
-    "facing=north,half=top,shape=straight": {
+    "illuminated=false,facing=north,half=top,shape=straight": {
       "model": "spelunkery:block/saltstairs_top_base_northsouth",
       "x": 180,
       "y": 270,
       "uvlock": true
     },
-    "facing=south,half=bottom,shape=inner_left": {
+    "illuminated=false,facing=south,half=bottom,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_bottom_inner_south_east"
     },
-    "facing=south,half=bottom,shape=inner_right": {
+    "illuminated=false,facing=south,half=bottom,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_bottom_inner_west_south",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=bottom,shape=outer_left": {
+    "illuminated=false,facing=south,half=bottom,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_bottom_outer_south_east"
     },
-    "facing=south,half=bottom,shape=outer_right": {
+    "illuminated=false,facing=south,half=bottom,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_bottom_outer_west_south",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=bottom,shape=straight": {
+    "illuminated=false,facing=south,half=bottom,shape=straight": {
       "model": "spelunkery:block/saltstairs_bottom_base_northsouth",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=top,shape=inner_left": {
+    "illuminated=false,facing=south,half=top,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_top_inner_south_east",
       "x": 180,
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=top,shape=inner_right": {
+    "illuminated=false,facing=south,half=top,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_top_inner_west_south",
       "x": 180,
       "y": 180,
       "uvlock": true
     },
-    "facing=south,half=top,shape=outer_left": {
+    "illuminated=false,facing=south,half=top,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_top_outer_south_east",
       "x": 180,
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=top,shape=outer_right": {
+    "illuminated=false,facing=south,half=top,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_top_outer_west_south",
       "x": 180,
       "y": 180,
       "uvlock": true
     },
-    "facing=south,half=top,shape=straight": {
+    "illuminated=false,facing=south,half=top,shape=straight": {
       "model": "spelunkery:block/saltstairs_top_base_northsouth",
       "x": 180,
       "y": 90,
       "uvlock": true
     },
-    "facing=west,half=bottom,shape=inner_left": {
+    "illuminated=false,facing=west,half=bottom,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_bottom_inner_west_south",
       "y": 90,
       "uvlock": true
     },
-    "facing=west,half=bottom,shape=inner_right": {
+    "illuminated=false,facing=west,half=bottom,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_bottom_inner_north_west",
       "y": 180,
       "uvlock": true
     },
-    "facing=west,half=bottom,shape=outer_left": {
+    "illuminated=false,facing=west,half=bottom,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_bottom_outer_west_south",
       "y": 90,
       "uvlock": true
     },
-    "facing=west,half=bottom,shape=outer_right": {
+    "illuminated=false,facing=west,half=bottom,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_bottom_outer_north_west",
       "y": 180,
       "uvlock": true
     },
-    "facing=west,half=bottom,shape=straight": {
+    "illuminated=false,facing=west,half=bottom,shape=straight": {
       "model": "spelunkery:block/saltstairs_bottom_base_eastwest",
       "y": 180,
       "uvlock": true
     },
-    "facing=west,half=top,shape=inner_left": {
+    "illuminated=false,facing=west,half=top,shape=inner_left": {
       "model": "spelunkery:block/saltstairs_top_inner_west_south",
       "x": 180,
       "y": 180,
       "uvlock": true
     },
-    "facing=west,half=top,shape=inner_right": {
+    "illuminated=false,facing=west,half=top,shape=inner_right": {
       "model": "spelunkery:block/saltstairs_top_inner_north_west",
       "x": 180,
       "y": 270,
       "uvlock": true
     },
-    "facing=west,half=top,shape=outer_left": {
+    "illuminated=false,facing=west,half=top,shape=outer_left": {
       "model": "spelunkery:block/saltstairs_top_outer_west_south",
       "x": 180,
       "y": 180,
       "uvlock": true
     },
-    "facing=west,half=top,shape=outer_right": {
+    "illuminated=false,facing=west,half=top,shape=outer_right": {
       "model": "spelunkery:block/saltstairs_top_outer_north_west",
       "x": 180,
       "y": 270,
       "uvlock": true
     },
-    "facing=west,half=top,shape=straight": {
+    "illuminated=false,facing=west,half=top,shape=straight": {
       "model": "spelunkery:block/saltstairs_top_base_eastwest",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+
+
+
+
+
+    "illuminated=true,facing=east,half=bottom,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_east_north_lit",
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=bottom,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_south_east_lit"
+    },
+    "illuminated=true,facing=east,half=bottom,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_east_north_lit",
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=bottom,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_south_east_lit"
+    },
+    "illuminated=true,facing=east,half=bottom,shape=straight": {
+      "model": "spelunkery:block/saltstairs_bottom_base_eastwest_lit"
+    },
+    "illuminated=true,facing=east,half=top,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_top_inner_east_north_lit",
+      "x": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=top,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_top_inner_south_east_lit",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=top,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_top_outer_east_north_lit",
+      "x": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=top,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_top_outer_south_east_lit",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=east,half=top,shape=straight": {
+      "model": "spelunkery:block/saltstairs_top_base_eastwest_lit",
+      "x": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=bottom,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_north_west_lit",
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=bottom,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_east_north_lit",
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=bottom,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_north_west_lit",
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=bottom,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_east_north_lit",
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=bottom,shape=straight": {
+      "model": "spelunkery:block/saltstairs_bottom_base_northsouth_lit",
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=top,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_top_inner_north_west_lit",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=top,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_top_inner_east_north_lit",
+      "x": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=top,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_top_outer_north_west_lit",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=top,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_top_outer_east_north_lit",
+      "x": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=north,half=top,shape=straight": {
+      "model": "spelunkery:block/saltstairs_top_base_northsouth_lit",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=bottom,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_south_east_lit"
+    },
+    "illuminated=true,facing=south,half=bottom,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_west_south_lit",
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=bottom,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_south_east_lit"
+    },
+    "illuminated=true,facing=south,half=bottom,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_west_south_lit",
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=bottom,shape=straight": {
+      "model": "spelunkery:block/saltstairs_bottom_base_northsouth_lit",
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=top,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_top_inner_south_east_lit",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=top,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_top_inner_west_south_lit",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=top,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_top_outer_south_east_lit",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=top,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_top_outer_west_south_lit",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=south,half=top,shape=straight": {
+      "model": "spelunkery:block/saltstairs_top_base_northsouth_lit",
+      "x": 180,
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=bottom,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_west_south_lit",
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=bottom,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_bottom_inner_north_west_lit",
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=bottom,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_west_south_lit",
+      "y": 90,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=bottom,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_bottom_outer_north_west_lit",
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=bottom,shape=straight": {
+      "model": "spelunkery:block/saltstairs_bottom_base_eastwest_lit",
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=top,shape=inner_left": {
+      "model": "spelunkery:block/saltstairs_top_inner_west_south_lit",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=top,shape=inner_right": {
+      "model": "spelunkery:block/saltstairs_top_inner_north_west_lit",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=top,shape=outer_left": {
+      "model": "spelunkery:block/saltstairs_top_outer_west_south_lit",
+      "x": 180,
+      "y": 180,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=top,shape=outer_right": {
+      "model": "spelunkery:block/saltstairs_top_outer_north_west_lit",
+      "x": 180,
+      "y": 270,
+      "uvlock": true
+    },
+    "illuminated=true,facing=west,half=top,shape=straight": {
+      "model": "spelunkery:block/saltstairs_top_base_eastwest_lit",
       "x": 180,
       "y": 180,
       "uvlock": true

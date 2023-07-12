@@ -15,7 +15,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side",
+        "model": "spelunkery:block/rock_salt_brick_wall_side_north",
         "uvlock": true
       }
     },
@@ -25,9 +25,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side",
-        "y": 90,
-        "uvlock": true
+        "model": "spelunkery:block/rock_salt_brick_wall_side_east"
       }
     },
     {
@@ -36,8 +34,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side",
-        "y": 180,
+        "model": "spelunkery:block/rock_salt_brick_wall_side_south",
         "uvlock": true
       }
     },
@@ -47,9 +44,7 @@
         "illuminated": "false"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side",
-        "y": 270,
-        "uvlock": true
+        "model": "spelunkery:block/rock_salt_brick_wall_side_west"
       }
     },
     {
@@ -110,7 +105,7 @@
         "illuminated": "true"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side_lit",
+        "model": "spelunkery:block/rock_salt_brick_wall_side_north_lit",
         "uvlock": true
       }
     },
@@ -120,9 +115,7 @@
         "illuminated": "true"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side_lit",
-        "y": 90,
-        "uvlock": true
+        "model": "spelunkery:block/rock_salt_brick_wall_side_east_lit"
       }
     },
     {
@@ -131,8 +124,7 @@
         "illuminated": "true"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side_lit",
-        "y": 180,
+        "model": "spelunkery:block/rock_salt_brick_wall_side_south_lit",
         "uvlock": true
       }
     },
@@ -142,9 +134,7 @@
         "illuminated": "true"
       },
       "apply": {
-        "model": "spelunkery:block/rock_salt_brick_wall_side_lit",
-        "y": 270,
-        "uvlock": true
+        "model": "spelunkery:block/rock_salt_brick_wall_side_west_lit"
       }
     },
     {

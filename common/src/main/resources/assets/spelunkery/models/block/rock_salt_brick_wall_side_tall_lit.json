@@ -1,6 +1,22 @@
 {
-  "parent": "minecraft:block/template_wall_side_tall",
+  "credit": "Made with Blockbench",
+  "texture_size": [32, 32],
   "textures": {
-    "wall": "spelunkery:block/rock_salt_brick_lit"
-  }
+    "0": "spelunkery:block/rock_salt_brick_wall_lit",
+    "particle": "spelunkery:block/rock_salt_brick_wall_lit"
+  },
+  "elements": [
+    {
+      "from": [5, 0, 0],
+      "to": [11, 16, 8],
+      "faces": {
+        "north": {"uv": [4, 0, 7, 8], "texture": "#0", "cullface": "north"},
+        "east": {"uv": [0, 8, 4, 16], "texture": "#0"},
+        "south": {"uv": [0, 0, 3, 8], "texture": "#0"},
+        "west": {"uv": [4, 8, 8, 16], "texture": "#0"},
+        "up": {"uv": [0, 4, 3, 8], "texture": "#0", "cullface": "up"},
+        "down": {"uv": [0, 0, 3, 4], "texture": "#0", "cullface": "down"}
+      }
+    }
+  ]
 }

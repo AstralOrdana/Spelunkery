@@ -13,7 +13,7 @@
       "model": "spelunkery:block/polished_rock_salt_slab_lit"
     },
     "type=double,illuminated=true": {
-      "model": "spelunkery:block/polished_rock_salt_slab_double"
+      "model": "spelunkery:block/polished_rock_salt_slab_double_lit"
     },
     "type=top,illuminated=true": {
       "model": "spelunkery:block/polished_rock_salt_slab_top_lit"
