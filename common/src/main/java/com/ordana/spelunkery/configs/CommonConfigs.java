@@ -41,6 +41,7 @@ public class CommonConfigs {
     public static Supplier<Integer> MAGNET_RANGE;
     public static Supplier<Integer> MAGNETITE_RANGE;
 
+    public static Supplier<Boolean> PORTAL_FLUID_DRINKING;
     public static Supplier<Boolean> RESPAWN_ANCHOR_PORTAL_FLUID;
     public static Supplier<Boolean> CRYING_OBSIDIAN_PORTAL_FLUID;
     public static Supplier<Boolean> FlINT_AND_STEEL_PORTAL_LIGHTING;
@@ -96,6 +97,7 @@ public class CommonConfigs {
         builder.pop();
 
         builder.push("nether_portals");
+        PORTAL_FLUID_DRINKING = builder.define("portal_fluid_drinking", true);
         FlINT_AND_STEEL_PORTAL_LIGHTING = builder.define("flint_and_steel_portal_lighting", true);
         CRYING_OBSIDIAN_PORTAL_FLUID = builder.define("crying_obsidian_dimensional_tears", true);
         RESPAWN_ANCHOR_PORTAL_FLUID = builder.define("respawn_anchor_dimensional_tears", true);

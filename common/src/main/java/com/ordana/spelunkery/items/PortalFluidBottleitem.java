@@ -96,7 +96,7 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
 
             if (getBoolean(stack)) tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_0").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             else tooltip.add(Component.translatable("tooltip.spelunkery.rhymes_with_tears_1", getBoolean(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            if (compoundTag.contains("anchorPos")) {
+            if (compoundTag.contains("anchorPos") && CommonConfigs.PORTAL_FLUID_DRINKING.get()) {
                 BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("anchorPos"));
                 tooltip.add(Component.translatable("tooltip.spelunkery.portal_fluid_pos", blockPos.getX(), blockPos.getY(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.LIGHT_PURPLE)));
             }
@@ -188,7 +188,7 @@ public class PortalFluidBottleitem extends HoneyBottleItem {
             player.setItemInHand(player.getUsedItemHand(), itemStack2);
 
         }
-        if (livingEntity instanceof ServerPlayer serverPlayer) {
+        if (livingEntity instanceof ServerPlayer serverPlayer && CommonConfigs.PORTAL_FLUID_DRINKING.get()) {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
 
