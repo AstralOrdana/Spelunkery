@@ -81,4 +81,12 @@ public class RockSaltStairs extends StairBlock implements RockSalt {
         }
     }
 
+    public boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return (state.getValue(LIGHT));
+    }
+
 }

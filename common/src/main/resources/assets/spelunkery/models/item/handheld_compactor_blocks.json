@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "spelunkery:item/handheld_compactor_active"
+    "layer0": "spelunkery:item/handheld_compactor_blocks"
   }
 }

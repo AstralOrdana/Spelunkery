@@ -145,5 +145,13 @@ public class RockSaltCrystalBlock extends Block implements SimpleWaterloggedBloc
         WATERLOGGED = BlockStateProperties.WATERLOGGED;
         FACING = BlockStateProperties.FACING;
     }
+
+    public boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return (state.getValue(LIGHT));
+    }
 }
 

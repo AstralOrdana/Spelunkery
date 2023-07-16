@@ -48,9 +48,9 @@ public class HandheldCompactorItem extends Item {
             switch (getMode(stack)) {
 
                 case DISABLED -> tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
-                case NUGGETS_TO_INGOTS -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_nuggets_to_ingots").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
-                case INGOTS_TO_BLOCKS -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_ingots_to_blocks").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_BLUE, ChatFormatting.ITALIC)));
-                case ALL -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_all").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GOLD, ChatFormatting.ITALIC)));
+                case NUGGETS_TO_INGOTS -> tooltip.add(Component.translatable("tooltip.spelunkery.handheld_compactor_nuggets_to_ingots").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GREEN, ChatFormatting.ITALIC)));
+                case INGOTS_TO_BLOCKS -> tooltip.add(Component.translatable("tooltip.spelunkery.handheld_compactor_ingots_to_blocks").setStyle(Style.EMPTY.applyFormats(ChatFormatting.BLUE, ChatFormatting.ITALIC)));
+                case ALL -> tooltip.add(Component.translatable("tooltip.spelunkery.handheld_compactor_all").setStyle(Style.EMPTY.applyFormats(ChatFormatting.YELLOW, ChatFormatting.ITALIC)));
 
             }
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
@@ -76,7 +76,7 @@ public class HandheldCompactorItem extends Item {
 
             setMode(stack, CompressionMode.VALUES[(getMode.ordinal() + 1) % CompressionMode.VALUES.length]);
 
-            boolean deactivate = getMode == CompressionMode.DISABLED;
+            boolean deactivate = getMode == CompressionMode.ALL;
             var beaconSound = deactivate ? SoundEvents.BEACON_DEACTIVATE : SoundEvents.BEACON_ACTIVATE;
             level.playSound(null, player.blockPosition(), beaconSound, SoundSource.BLOCKS, 1.0f, 2.0f);
 
@@ -105,7 +105,7 @@ public class HandheldCompactorItem extends Item {
                 if (foundItem.getCount() >= 9) {
 
                     var compressNugget = getCompressedNugget(foundItem);
-                    var compressIngot = getCompressedNugget(foundItem);
+                    var compressIngot = getCompressedIngot(foundItem);
 
                     if (compressNugget.isPresent() && (getMode(stack) == CompressionMode.NUGGETS_TO_INGOTS || getMode(stack) == CompressionMode.ALL)) {
                         ItemStack newStack = compressNugget.get();
@@ -221,19 +221,19 @@ public class HandheldCompactorItem extends Item {
         stack.getOrCreateTag().putString("Mode", mode.name());
     }
 
-    private static CompressionMode getMode(ItemStack stack) {
+    public static CompressionMode getMode(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
         if (tag.contains("Mode")) return CompressionMode.valueOf(tag.getString("Mode").toUpperCase(Locale.ROOT));
         else return CompressionMode.DISABLED;
     }
 
 
-    enum CompressionMode {
+    public enum CompressionMode {
 
         DISABLED,
         NUGGETS_TO_INGOTS,
         INGOTS_TO_BLOCKS,
         ALL;
-        static CompressionMode[] VALUES = CompressionMode.values();
+        public static CompressionMode[] VALUES = CompressionMode.values();
     }
 }

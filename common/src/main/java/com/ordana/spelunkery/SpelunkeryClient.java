@@ -1,6 +1,7 @@
 package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
+import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.reg.ModBlocks;
@@ -10,8 +11,10 @@ import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
+import java.util.Locale;
+
 public class SpelunkeryClient {
-    
+
     public static void init() {
         ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
     }
@@ -61,8 +64,8 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerItemProperty(ModItems.ITEM_MAGNET.get(), Spelunkery.res("active"),
                 (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
 
-        ClientPlatformHelper.registerItemProperty(ModItems.HANDHELD_COMPACTOR.get(), Spelunkery.res("active"),
-                (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
+        ClientPlatformHelper.registerItemProperty(ModItems.HANDHELD_COMPACTOR.get(), Spelunkery.res("Mode"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (HandheldCompactorItem.CompressionMode.VALUES[(HandheldCompactorItem.getMode(stack).ordinal())].ordinal() / 4f) : 0f);
 
         ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel))));

@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.rock_salt;
 
+import com.ordana.spelunkery.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
@@ -8,6 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
