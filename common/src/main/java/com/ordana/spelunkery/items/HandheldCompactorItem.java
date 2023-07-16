@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -43,9 +44,15 @@ public class HandheldCompactorItem extends Item {
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            CompoundTag compoundTag = stack.getOrCreateTag();
-            if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.active").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
-            if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
+
+            switch (getMode(stack)) {
+
+                case DISABLED -> tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
+                case NUGGETS_TO_INGOTS -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_nuggets_to_ingots").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
+                case INGOTS_TO_BLOCKS -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_ingots_to_blocks").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_BLUE, ChatFormatting.ITALIC)));
+                case ALL -> tooltip.add(Component.translatable("tooltip.spelunkery.compactor_all").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GOLD, ChatFormatting.ITALIC)));
+
+            }
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.handheld_compactor_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.handheld_compactor_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -64,17 +71,21 @@ public class HandheldCompactorItem extends Item {
     }
 
     public static void toggleCompactor(Player player, ItemStack stack, Level level) {
-        if(!player.level.isClientSide && stack.getItem() instanceof HandheldCompactorItem){
-            boolean active = stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
-            var beaconSound = active ? SoundEvents.BEACON_DEACTIVATE : SoundEvents.BEACON_ACTIVATE;
+        if(!player.level.isClientSide && stack.getItem() instanceof HandheldCompactorItem) {
+            var getMode = getMode(stack);
+
+            setMode(stack, CompressionMode.VALUES[(getMode.ordinal() + 1) % CompressionMode.VALUES.length]);
+
+            boolean deactivate = getMode == CompressionMode.DISABLED;
+            var beaconSound = deactivate ? SoundEvents.BEACON_DEACTIVATE : SoundEvents.BEACON_ACTIVATE;
             level.playSound(null, player.blockPosition(), beaconSound, SoundSource.BLOCKS, 1.0f, 2.0f);
-            stack.getOrCreateTag().putBoolean("active", !active);
+
         }
     }
 
     @Override
     public boolean isFoil(ItemStack stack){
-        return stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
+        return getMode(stack) != CompressionMode.DISABLED;
     }
 
 
@@ -84,8 +95,7 @@ public class HandheldCompactorItem extends Item {
             return;
         }
 
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("active") && tag.getBoolean("active") && entity instanceof Player player) {
+        if (getMode(stack) != CompressionMode.DISABLED && entity instanceof Player player) {
 
             var inventory = player.getInventory();
 
@@ -94,9 +104,17 @@ public class HandheldCompactorItem extends Item {
 
                 if (foundItem.getCount() >= 9) {
 
-                    var compressed = getCompressedNugget(foundItem);
-                    if (compressed.isPresent()) {
-                        ItemStack newStack = compressed.get();
+                    var compressNugget = getCompressedNugget(foundItem);
+                    var compressIngot = getCompressedNugget(foundItem);
+
+                    if (compressNugget.isPresent() && (getMode(stack) == CompressionMode.NUGGETS_TO_INGOTS || getMode(stack) == CompressionMode.ALL)) {
+                        ItemStack newStack = compressNugget.get();
+
+                        if (!player.getInventory().add(newStack)) player.drop(newStack, false);
+                        foundItem.shrink(9);
+                    }
+                    if (compressIngot.isPresent() && (getMode(stack) == CompressionMode.INGOTS_TO_BLOCKS || getMode(stack) == CompressionMode.ALL)) {
+                        ItemStack newStack = compressIngot.get();
 
                         if (!player.getInventory().add(newStack)) player.drop(newStack, false);
                         foundItem.shrink(9);
@@ -197,5 +215,25 @@ public class HandheldCompactorItem extends Item {
     public static Optional<ItemStack> getCompressedIngot(ItemStack stack) {
         return Optional.ofNullable(INGOT_COMPACTING.get().get(stack.getItem()))
                 .map(item -> item.asItem().getDefaultInstance());
+    }
+
+    private static void setMode(ItemStack stack, CompressionMode mode) {
+        stack.getOrCreateTag().putString("Mode", mode.name());
+    }
+
+    private static CompressionMode getMode(ItemStack stack) {
+        CompoundTag tag = stack.getOrCreateTag();
+        if (tag.contains("Mode")) return CompressionMode.valueOf(tag.getString("Mode").toUpperCase(Locale.ROOT));
+        else return CompressionMode.DISABLED;
+    }
+
+
+    enum CompressionMode {
+
+        DISABLED,
+        NUGGETS_TO_INGOTS,
+        INGOTS_TO_BLOCKS,
+        ALL;
+        static CompressionMode[] VALUES = CompressionMode.values();
     }
 }
