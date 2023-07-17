@@ -4,8 +4,8 @@
     "layer0": "spelunkery:item/handheld_compactor"
   },
   "overrides": [
-    { "predicate": { "spelunkery:Mode": 0.25 }, "model": "spelunkery:item/handheld_compactor_nuggets" },
-    { "predicate": { "spelunkery:Mode": 0.50 }, "model": "spelunkery:item/handheld_compactor_blocks" },
-    { "predicate": { "spelunkery:Mode": 0.75 }, "model": "spelunkery:item/handheld_compactor_all" }
+    { "predicate": { "spelunkery:mode": 0.25 }, "model": "spelunkery:item/handheld_compactor_nuggets" },
+    { "predicate": { "spelunkery:mode": 0.50 }, "model": "spelunkery:item/handheld_compactor_blocks" },
+    { "predicate": { "spelunkery:mode": 0.75 }, "model": "spelunkery:item/handheld_compactor_all" }
   ]
 }

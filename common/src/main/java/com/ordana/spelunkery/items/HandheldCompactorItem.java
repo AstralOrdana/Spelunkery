@@ -66,7 +66,11 @@ public class HandheldCompactorItem extends Item {
     @NotNull
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        toggleCompactor(player, stack, level);
+        if (player.isCrouching() && getMode(stack) != CompressionMode.DISABLED) {
+            level.playSound(null, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.BLOCKS, 1.0f, 2.0f);
+            setMode(stack, CompressionMode.DISABLED);
+        }
+        else toggleCompactor(player, stack, level);
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
     }
 
@@ -91,38 +95,40 @@ public class HandheldCompactorItem extends Item {
 
     @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, Entity entity, int slotId, boolean isSelected) {
-        if(entity.isSpectator()) {
+        var mode = getMode(stack);
+
+        if (entity.isSpectator() || mode == CompressionMode.DISABLED || !(entity instanceof Player player)) {
             return;
         }
 
-        if (getMode(stack) != CompressionMode.DISABLED && entity instanceof Player player) {
+        var inventory = player.getInventory();
 
-            var inventory = player.getInventory();
+        for (int i = 0; i < inventory.getContainerSize(); i++) {
+            ItemStack foundItem = inventory.getItem(i);
 
-            for (int i = 0; i < inventory.getContainerSize(); i++) {
-                ItemStack foundItem = inventory.getItem(i);
-
-                if (foundItem.getCount() >= 9) {
-
-                    var compressNugget = getCompressedNugget(foundItem);
-                    var compressIngot = getCompressedIngot(foundItem);
-
-                    if (compressNugget.isPresent() && (getMode(stack) == CompressionMode.NUGGETS_TO_INGOTS || getMode(stack) == CompressionMode.ALL)) {
-                        ItemStack newStack = compressNugget.get();
-
-                        if (!player.getInventory().add(newStack)) player.drop(newStack, false);
-                        foundItem.shrink(9);
-                    }
-                    if (compressIngot.isPresent() && (getMode(stack) == CompressionMode.INGOTS_TO_BLOCKS || getMode(stack) == CompressionMode.ALL)) {
-                        ItemStack newStack = compressIngot.get();
-
-                        if (!player.getInventory().add(newStack)) player.drop(newStack, false);
-                        foundItem.shrink(9);
-                    }
-                }
+            if (foundItem.getCount() < 9) {
+                continue;
             }
 
+            doCompacting(getCompressedNugget(foundItem), foundItem, player, mode, CompressionMode.NUGGETS_TO_INGOTS);
+            doCompacting(getCompressedIngot(foundItem), foundItem, player, mode, CompressionMode.INGOTS_TO_BLOCKS);
+
         }
+
+    }
+
+    private static void doCompacting(Optional<ItemStack> compressionType, ItemStack sourceItem, Player player, CompressionMode currentMode, CompressionMode targetMode) {
+        if (compressionType.isEmpty() || currentMode != targetMode && currentMode != CompressionMode.ALL) {
+            return;
+        }
+
+        ItemStack newStack = compressionType.get();
+
+        if (!player.getInventory().add(newStack)) {
+            player.drop(newStack, false);
+        }
+
+        sourceItem.shrink(9);
     }
 
     public static void addOptional(ImmutableBiMap.Builder<Item, Item> map,
@@ -218,12 +224,12 @@ public class HandheldCompactorItem extends Item {
     }
 
     private static void setMode(ItemStack stack, CompressionMode mode) {
-        stack.getOrCreateTag().putString("Mode", mode.name());
+        stack.getOrCreateTag().putString("mode", mode.name());
     }
 
     public static CompressionMode getMode(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("Mode")) return CompressionMode.valueOf(tag.getString("Mode").toUpperCase(Locale.ROOT));
+        if (tag.contains("mode")) return CompressionMode.valueOf(tag.getString("mode").toUpperCase(Locale.ROOT));
         else return CompressionMode.DISABLED;
     }
 

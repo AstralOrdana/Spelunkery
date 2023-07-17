@@ -1,15 +1,22 @@
 package com.ordana.spelunkery.items;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.TranslationUtils;
+import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
+import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
+import net.mehvahdjukaar.moonlight.api.misc.DualWeildState;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
+import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -18,10 +25,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -31,9 +40,12 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -43,7 +55,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ParachuteItem extends Item {
+public class ParachuteItem extends Item implements IFirstPersonAnimationProvider, IThirdPersonAnimationProvider {
     public ParachuteItem(Properties properties) {
         super(properties);
     }
@@ -73,10 +85,6 @@ public class ParachuteItem extends Item {
     @Override
     public boolean isValidRepairItem(ItemStack stack, @NotNull ItemStack repairCandidate) {
         return repairCandidate.is(ModTags.PARACHUE_REPAIR);
-    }
-
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
     }
 
     @Override
@@ -119,6 +127,46 @@ public class ParachuteItem extends Item {
         return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
     }
 
+    private boolean sound1 = false;
+    private boolean sound2 = false;
+    private boolean sound3 = false;
+    private boolean sound4 = false;
+
+    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
+        if (!level.isClientSide) {
+            SoundEvent soundEvent = SoundEvents.LEASH_KNOT_PLACE;
+            SoundEvent soundEvent2 = SoundEvents.CROSSBOW_LOADING_MIDDLE;
+            float f = (float)(stack.getUseDuration() - remainingUseDuration) / 20;
+            if (f < 0.2F) {
+                this.sound1 = false;
+                this.sound2 = false;
+                this.sound3 = false;
+                this.sound4 = false;
+            }
+
+            if (f >= 0.5F && !this.sound1) {
+                this.sound1 = true;
+                level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 0.2F);
+            }
+
+            if (f >= 1.5F && soundEvent2 != null && !this.sound2) {
+                this.sound2 = true;
+                level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 1.0F);
+            }
+
+            if (f >= 2.5F && soundEvent2 != null && !this.sound3) {
+                this.sound3 = true;
+                level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 1.5F);
+            }
+
+            if (f >= 3.0F && soundEvent2 != null && !this.sound4) {
+                this.sound4 = true;
+                level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 2.0F);
+            }
+        }
+
+    }
+
     public int getUseDuration(ItemStack stack) {
         return 72000;
     }
@@ -126,7 +174,7 @@ public class ParachuteItem extends Item {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if (livingEntity instanceof Player) {
             int i = this.getUseDuration(stack) - timeCharged;
-            if (i >= 20) {
+            if (i >= 70) {
                 setUsed(stack, false);
             }
         }
@@ -168,5 +216,88 @@ public class ParachuteItem extends Item {
             }
         }
     }
+
+
+
+    //stolen from Supplementaries slingshot
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        //need to use NONE for custom one
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public <T extends LivingEntity> boolean poseLeftArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
+        if (entity.getUseItemRemainingTicks() > 0 &&
+                entity.getUseItem().getItem() == this &&
+                entity.getTicksUsingItem() < 60) {
+            //twoHanded.setTwoHanded(true);
+            model.leftArm.yRot = MthUtils.wrapRad(0.1F + model.head.yRot);
+            model.leftArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
+            return true;
+        }
+        return false;
+    }
+
+    //TODO: finish this
+    @Override
+    public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
+        if (entity.getUseItemRemainingTicks() > 0 && entity.getUseItem().getItem() == this && entity.getTicksUsingItem() < 60) {
+            //twoHanded.setTwoHanded(true);
+            model.rightArm.yRot = MthUtils.wrapRad(-0.1F + model.head.yRot);
+            //model.leftArm.yRot = 0.1F + model.head.yRot + 0.4F;
+            model.rightArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
+            //model.leftArm.xRot = (-(float) Math.PI / 2F) + model.head.xRot;
+
+            /*
+            model.leftArm.xRot = model.rightArm.xRot;
+            float f = (float) SlingshotItem.getChargeDuration(entity.getUseItem());
+            float f1 = MathHelper.clamp((float) entity.getTicksUsingItem(), 0.0F, f);
+            float f2 = f1 / f;
+
+            model.leftArm.yRot = (float) (0.1F + model.head.yRot + MathHelper.lerp(f2, ClientConfigs.general.TEST1.get(), ClientConfigs.general.TEST2.get()) * (float) (true ? 1 : -1));
+            */
+            //if(ClientConfigs.general.TEST3.get()<0)
+            // model.leftArm.xRot = (float) (1f*ClientConfigs.general.TEST3.get());//MathHelper.lerp(f2, model.leftArm.xRot, (-(float) Math.PI / 2F));
+
+            //animateCrossbowCharge(model.leftArm, model.leftArm, entity, mainHand == HandSide.RIGHT);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+        //is using item
+        if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand) {
+            //bow anim
+
+            float timeLeft = (float) stack.getUseDuration() - ((float) entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
+            float f12 = 1f;
+
+            float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
+            float f18 = f12 - 0.1F;
+            float f20 = f15 * f18;
+            matrixStack.translate(0, f20 * 0.004F, 0);
+
+            matrixStack.translate(0, 0, f12 * 0.04F);
+            matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
+            //matrixStack.mulPose(Vector3f.YN.rotationDegrees((float)k * 45.0F));
+        }
+    }
+
+
+    public static void animateCrossbowCharge(ModelPart offHand, ModelPart mainHand, LivingEntity entity, boolean right) {
+
+        //mainHand.xRot = -0.97079635F;
+        offHand.xRot = mainHand.xRot;
+        float f = (float) CrossbowItem.getChargeDuration(entity.getUseItem());
+        float f1 = Mth.clamp((float) entity.getTicksUsingItem(), 0.0F, f);
+        float f2 = f1 / f;
+        offHand.yRot = Mth.lerp(f2, 0.4F, 0.85F) * (float) (right ? 1 : -1);
+        offHand.xRot = Mth.lerp(f2, offHand.xRot, (-(float) Math.PI / 2F));
+    }
 }
+
 
