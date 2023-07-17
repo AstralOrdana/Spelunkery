@@ -7,7 +7,6 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
-import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -28,7 +27,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

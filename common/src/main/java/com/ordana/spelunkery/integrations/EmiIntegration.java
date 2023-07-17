@@ -1,6 +1,5 @@
 package com.ordana.spelunkery.integrations;
 
-import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
@@ -14,7 +13,6 @@ import dev.emi.emi.api.stack.EmiStack;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;

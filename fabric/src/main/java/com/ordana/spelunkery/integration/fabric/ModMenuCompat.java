@@ -1,11 +1,11 @@
 package com.ordana.spelunkery.integration.fabric;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import com.ordana.spelunkery.configs.ClientConfigs;
 import net.mehvahdjukaar.moonlight.api.platform.configs.fabric.FabricConfigListScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;

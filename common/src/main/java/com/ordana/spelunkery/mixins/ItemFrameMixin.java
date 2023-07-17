@@ -3,7 +3,6 @@ package com.ordana.spelunkery.mixins;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.decoration.ItemFrame;

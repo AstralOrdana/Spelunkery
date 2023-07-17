@@ -1,10 +1,5 @@
 package com.ordana.spelunkery.blocks;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
@@ -18,9 +13,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.FrostWalkerEnchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class DiamondGrindstoneMenu extends AbstractContainerMenu {
     public static final int MAX_NAME_LENGTH = 35;

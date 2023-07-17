@@ -6,7 +6,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.levelgen.feature.*;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 public class WallMushroomFeature extends Feature<WallMushroomFeatureConfig> {
     public WallMushroomFeature(Codec<WallMushroomFeatureConfig> codec) {

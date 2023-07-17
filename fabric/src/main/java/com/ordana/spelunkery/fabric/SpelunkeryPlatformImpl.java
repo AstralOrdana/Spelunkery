@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
 
 import java.util.function.Supplier;
 

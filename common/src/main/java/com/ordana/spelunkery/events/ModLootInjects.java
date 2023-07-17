@@ -3,7 +3,6 @@ package com.ordana.spelunkery.events;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTables;

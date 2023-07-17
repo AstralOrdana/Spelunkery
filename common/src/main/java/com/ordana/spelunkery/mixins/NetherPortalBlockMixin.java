@@ -1,13 +1,9 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;

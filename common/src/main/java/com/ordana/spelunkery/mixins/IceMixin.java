@@ -1,21 +1,15 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.reg.ModTags;
-import net.mehvahdjukaar.moonlight.api.block.WaterBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.IceBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.WaterFluid;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.minecraft.util.RandomSource;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;

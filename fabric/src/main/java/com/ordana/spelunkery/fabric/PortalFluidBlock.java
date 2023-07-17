@@ -1,7 +1,6 @@
 package com.ordana.spelunkery.fabric;
 
 import com.ordana.spelunkery.utils.LevelHelper;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

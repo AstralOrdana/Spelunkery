@@ -6,14 +6,10 @@ import com.ordana.spelunkery.features.util.FastNoiseLite;
 import com.ordana.spelunkery.features.util.StoneEntry;
 import com.ordana.spelunkery.features.util.StonePattern;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -23,7 +19,6 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 
 public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
 

@@ -1,20 +1,15 @@
 package com.ordana.spelunkery.events;
 
-import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.DiamondGrindstoneBlock;
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.PortalFluidBottleitem;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
-import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,16 +24,17 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 
 public class ModEvents {

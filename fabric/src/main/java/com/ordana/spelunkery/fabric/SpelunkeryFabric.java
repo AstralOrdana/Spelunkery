@@ -1,9 +1,9 @@
 package com.ordana.spelunkery.fabric;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.events.ModEvents;
 import com.ordana.spelunkery.events.ModLootInjects;
 import net.fabricmc.api.ModInitializer;
-import com.ordana.spelunkery.Spelunkery;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;

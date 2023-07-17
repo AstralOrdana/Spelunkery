@@ -4,7 +4,7 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.fluids.PortalFluid;
 import net.mehvahdjukaar.moonlight.api.fluids.ModFlowingFluid;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.world.level.material.*;
+import net.minecraft.world.level.material.FlowingFluid;
 
 import java.util.function.Supplier;
 

@@ -11,8 +11,6 @@ import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
-import java.util.Locale;
-
 public class SpelunkeryClient {
 
     public static void init() {

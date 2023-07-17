@@ -17,7 +17,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.*;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
