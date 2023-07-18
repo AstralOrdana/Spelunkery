@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "S S",
+    " S "
+  ],
+  "key": {
+    "C": {
+      "tag": "spelunkery:parachute_repair"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "spelunkery:parachute"
+  }
+}
