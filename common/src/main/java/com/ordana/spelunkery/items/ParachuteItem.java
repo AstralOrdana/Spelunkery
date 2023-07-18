@@ -143,7 +143,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
                 level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 1.5F);
             }
 
-            if (f >= 3.0F && soundEvent2 != null && !this.sound4) {
+            if (f >= 3.5F && soundEvent2 != null && !this.sound4) {
                 this.sound4 = true;
                 level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 2.0F);
             }
@@ -215,7 +215,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     public <T extends LivingEntity> boolean poseLeftArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
-                entity.getTicksUsingItem() < 60) {
+                entity.getTicksUsingItem() < 70) {
             //twoHanded.setTwoHanded(true);
             model.leftArm.yRot = MthUtils.wrapRad(0.1F + model.head.yRot);
             model.leftArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
@@ -227,25 +227,12 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     //TODO: finish this
     @Override
     public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
-        if (entity.getUseItemRemainingTicks() > 0 && entity.getUseItem().getItem() == this && entity.getTicksUsingItem() < 60) {
+        if (entity.getUseItemRemainingTicks() > 0 &&
+                entity.getUseItem().getItem() == this &&
+                entity.getTicksUsingItem() < 70) {
             //twoHanded.setTwoHanded(true);
             model.rightArm.yRot = MthUtils.wrapRad(-0.1F + model.head.yRot);
-            //model.leftArm.yRot = 0.1F + model.head.yRot + 0.4F;
             model.rightArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
-            //model.leftArm.xRot = (-(float) Math.PI / 2F) + model.head.xRot;
-
-            /*
-            model.leftArm.xRot = model.rightArm.xRot;
-            float f = (float) SlingshotItem.getChargeDuration(entity.getUseItem());
-            float f1 = MathHelper.clamp((float) entity.getTicksUsingItem(), 0.0F, f);
-            float f2 = f1 / f;
-
-            model.leftArm.yRot = (float) (0.1F + model.head.yRot + MathHelper.lerp(f2, ClientConfigs.general.TEST1.get(), ClientConfigs.general.TEST2.get()) * (float) (true ? 1 : -1));
-            */
-            //if(ClientConfigs.general.TEST3.get()<0)
-            // model.leftArm.xRot = (float) (1f*ClientConfigs.general.TEST3.get());//MathHelper.lerp(f2, model.leftArm.xRot, (-(float) Math.PI / 2F));
-
-            //animateCrossbowCharge(model.leftArm, model.leftArm, entity, mainHand == HandSide.RIGHT);
             return true;
         }
         return false;
@@ -254,7 +241,8 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     @Override
     public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
-        if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand) {
+        if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand &&
+                entity.getTicksUsingItem() < 75) {
             //bow anim
 
             float timeLeft = (float) stack.getUseDuration() - ((float) entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
@@ -263,24 +251,12 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
             float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
             float f18 = f12 - 0.1F;
             float f20 = f15 * f18;
-            matrixStack.translate(0, f20 * 0.004F, 0);
+            matrixStack.translate(0, f20 * 0.007F, 0);
 
             matrixStack.translate(0, 0, f12 * 0.04F);
             matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
             //matrixStack.mulPose(Vector3f.YN.rotationDegrees((float)k * 45.0F));
         }
-    }
-
-
-    public static void animateCrossbowCharge(ModelPart offHand, ModelPart mainHand, LivingEntity entity, boolean right) {
-
-        //mainHand.xRot = -0.97079635F;
-        offHand.xRot = mainHand.xRot;
-        float f = (float) CrossbowItem.getChargeDuration(entity.getUseItem());
-        float f1 = Mth.clamp((float) entity.getTicksUsingItem(), 0.0F, f);
-        float f2 = f1 / f;
-        offHand.yRot = Mth.lerp(f2, 0.4F, 0.85F) * (float) (right ? 1 : -1);
-        offHand.xRot = Mth.lerp(f2, offHand.xRot, (-(float) Math.PI / 2F));
     }
 }
 
