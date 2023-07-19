@@ -40,8 +40,9 @@ public class SpelunkeryFabric implements ModInitializer {
         UseBlockCallback.EVENT.register(SpelunkeryFabric::onRightClickBlock);
         LootTableEvents.MODIFY.register((m, t, r, b, s) -> ModLootInjects.onLootInject(t, r, b::withPool));
 
-        if(PlatformHelper.getEnv().isClient()){
+        if(PlatformHelper.getEnv().isClient()) {
             FabricSetupCallbacks.CLIENT_SETUP.add(SpelunkeryFabricClient::initClient);
+            ClientEventsFabric.init();
         }
     }
 

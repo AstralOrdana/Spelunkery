@@ -1,12 +1,43 @@
 {
   "pools": [
     {
-      "rolls": 1,
+      "rolls": 2,
       "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
+            {
+              "type": "minecraft:item",
+              "name": "spelunkery:parachute",
+              "functions": [
+                {
+                  "function": "minecraft:set_nbt",
+                  "tag": "{used:1b}",
+                  "conditions": [
+                    {
+                      "condition": "minecraft:random_chance",
+                      "chance": 0.75
+                    }
+                  ]
+                },
+                {
+                  "function": "minecraft:set_damage",
+                  "damage": {
+                    "type": "minecraft:uniform",
+                    "min": 0.2,
+                    "max": 0.8
+                  },
+                  "add": false
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            },
             {
               "type": "minecraft:item",
               "name": "spelunkery:dust_bun",

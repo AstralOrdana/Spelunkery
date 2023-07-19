@@ -7,15 +7,23 @@ import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyF
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModItems;
+import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceLocation;
 
 public class SpelunkeryClient {
 
+    public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute_3D");
+
     public static void init() {
         ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
+        ClientPlatformHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
     }
+
+    private static boolean finishedSetup = false;
 
     public static void setup() {
 
@@ -77,7 +85,23 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
+        ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);
+
+        finishedSetup = true;
     }
+
+    @EventCalled
+    private static void registerSpecialModels(ClientPlatformHelper.SpecialModelEvent event) {
+        event.register(PARACHUTE_3D_MODEL);
+    }
+
+    public static void checkIfFailed() {
+        if(!finishedSetup){
+            throw new RuntimeException("Failed to run client setup. This is likely due to the mod integration code being outdated, crashing with other mods new versions. Terminating");
+        }
+    }
+
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));

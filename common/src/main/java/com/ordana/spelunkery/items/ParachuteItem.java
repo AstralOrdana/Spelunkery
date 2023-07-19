@@ -4,8 +4,11 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.utils.IParachuteEntity;
 import com.ordana.spelunkery.utils.TranslationUtils;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.misc.DualWeildState;
@@ -44,6 +47,20 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         super(properties);
     }
 
+    public static ItemStack getParachute(LivingEntity entity) {
+        if (!(entity instanceof Player) && entity instanceof IParachuteEntity e) return e.getParachute();
+        if (entity instanceof Player p) {
+            for (var s : p.getInventory().items) {
+                if (s.getItem() == ModItems.PARACHUTE.get()) return s;
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    static public void set3DModel(ItemStack stack, boolean model) {
+        stack.getOrCreateTag().putBoolean("model", model);
+    }
+
     public void setUsed(ItemStack stack, boolean used) {
         stack.getOrCreateTag().putBoolean("used", used);
     }
@@ -56,7 +73,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         stack.getOrCreateTag().putBoolean("active", active);
     }
 
-    public boolean getActive(ItemStack stack) {
+    public static boolean getActive(ItemStack stack) {
         return stack.getOrCreateTag().getBoolean("active");
     }
 
@@ -74,7 +91,6 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            tooltip.add(Component.translatable("tooltip.spelunkery.wip_items").setStyle(Style.EMPTY.applyFormat(ChatFormatting.RED)));
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.parachute_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.parachute_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -114,7 +130,6 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     private boolean sound1 = false;
     private boolean sound2 = false;
     private boolean sound3 = false;
-    private boolean sound4 = false;
 
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
         if (!level.isClientSide) {
@@ -125,7 +140,6 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
                 this.sound1 = false;
                 this.sound2 = false;
                 this.sound3 = false;
-                this.sound4 = false;
             }
 
             if (f >= 0.5F && !this.sound1) {
@@ -140,13 +154,9 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
 
             if (f >= 2.5F && soundEvent2 != null && !this.sound3) {
                 this.sound3 = true;
-                level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 1.5F);
-            }
-
-            if (f >= 3.5F && soundEvent2 != null && !this.sound4) {
-                this.sound4 = true;
                 level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), soundEvent, SoundSource.PLAYERS, 0.5F, 2.0F);
             }
+            if (f > 2.5f) livingEntity.releaseUsingItem();
         }
 
     }
@@ -158,7 +168,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if (livingEntity instanceof Player) {
             int i = this.getUseDuration(stack) - timeCharged;
-            if (i >= 70) {
+            if (i >= 50) {
                 setUsed(stack, false);
             }
         }
@@ -215,7 +225,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     public <T extends LivingEntity> boolean poseLeftArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
-                entity.getTicksUsingItem() < 70) {
+                entity.getTicksUsingItem() < 50) {
             //twoHanded.setTwoHanded(true);
             model.leftArm.yRot = MthUtils.wrapRad(0.1F + model.head.yRot);
             model.leftArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
@@ -229,7 +239,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
-                entity.getTicksUsingItem() < 70) {
+                entity.getTicksUsingItem() < 50) {
             //twoHanded.setTwoHanded(true);
             model.rightArm.yRot = MthUtils.wrapRad(-0.1F + model.head.yRot);
             model.rightArm.xRot = MthUtils.wrapRad((-(float) Math.PI / 2F) + model.head.xRot);
@@ -242,7 +252,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
         if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand &&
-                entity.getTicksUsingItem() < 75) {
+                entity.getTicksUsingItem() < 60) {
             //bow anim
 
             float timeLeft = (float) stack.getUseDuration() - ((float) entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
