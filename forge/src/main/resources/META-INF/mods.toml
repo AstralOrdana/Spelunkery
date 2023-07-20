@@ -39,7 +39,7 @@ An Overhaul to everything Underground
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.19.2,1.20)"
+    versionRange="[1.20,1.21)"
     ordering="NONE"
     side="BOTH"
 
@@ -47,6 +47,6 @@ An Overhaul to everything Underground
 
     modId="moonlight"
     mandatory=true
-    versionRange="[1.19.2-2.0.35,]"
-    ordering="AFTER"
+    versionRange="[1.20-2.7.0,]"
+    ordering="NONE"
     side="BOTH"

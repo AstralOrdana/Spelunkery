@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.fabric;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.events.ModEvents;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -29,7 +30,7 @@ public class SpelunkeryFabric implements ModInitializer {
         if(PlatHelper.getPhysicalSide().isClient()) {
             //MLFabricSetupCallbacks.CLIENT_SETUP.add(SpelunkeryClient::init);
             ClientEventsFabric.init();
-            SpelunkeryFabricClient.initClient();
+            SpelunkeryClient.init();
         }
 
     }

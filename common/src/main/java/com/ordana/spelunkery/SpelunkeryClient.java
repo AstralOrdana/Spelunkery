@@ -6,9 +6,11 @@ import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
+import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -19,6 +21,7 @@ public class SpelunkeryClient {
     public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute");
 
     public static void init() {
+        ClientHelper.addClientSetup(SpelunkeryClient::setup);
         ClientHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
         ClientHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
     }
@@ -26,8 +29,9 @@ public class SpelunkeryClient {
     private static boolean finishedSetup = false;
 
     public static void setup() {
-
-        /*
+        ClientHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
+        ClientHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
+        
         ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
@@ -60,7 +64,6 @@ public class SpelunkeryClient {
         ClientHelper.registerRenderType(ModBlocks.POTTED_BUTTON_MUSHROOM.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.POTTED_SPOROPHYTE.get(), RenderType.cutout());
 
-         */
 
         //ClientHelper.registerRenderType(ModBlocks.NEPHRITE_SPOUT.get(), RenderType.cutout());
 

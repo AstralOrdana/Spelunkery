@@ -28,7 +28,6 @@
       "com.ordana.spelunkery.fabric.SpelunkeryFabric"
     ],
     "client": [
-      "com.ordana.spelunkery.fabric.SpelunkeryFabricClient"
     ],
     "emi": [
       "com.ordana.spelunkery.integrations.EmiIntegration"

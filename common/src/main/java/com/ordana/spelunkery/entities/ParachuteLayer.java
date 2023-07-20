@@ -1,10 +1,12 @@
 package com.ordana.spelunkery.entities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.items.ParachuteItem;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.utils.IParachuteEntity;
 import net.mehvahdjukaar.moonlight.api.client.util.RotHlpr;
+import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -34,21 +36,28 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
             return; //failsafe for mods that change the renderer for some reason
         ParachuteMode mode = parachuteMode;
         ItemStack myParachute = livingEntity.getParachute();
-        ItemStack parachute = new ItemStack(ModItems.PARACHUTE.get());
-        ParachuteItem.set3DModel(parachute, true);
         if (mode == ParachuteMode.HIDDEN ||
                 !ParachuteItem.getActive(myParachute)) return;
 
-
-        if (!parachute.isEmpty()) {
+        //dont change nbt here in render code
+        if (!myParachute.isEmpty()) {
 
             poseStack.pushPose();
 
             poseStack.translate(0, -2, 0);
             poseStack.mulPose(RotHlpr.X180);
 
-            itemRenderer.renderStatic(livingEntity, parachute, ItemDisplayContext.HEAD, false,
-                    poseStack, buffer, livingEntity.level, packedLight, OverlayTexture.NO_OVERLAY, 0);
+            var model = ClientHelper.getModel(Minecraft.getInstance().getModelManager(), SpelunkeryClient.PARACHUTE_3D_MODEL);
+            float ticks = livingEntity.getParachuteTicks() + partialTick;
+            int timeToOpen = 20;
+            if(ticks<timeToOpen) {
+                float x = ticks / timeToOpen;
+                float scaleH = 1 - (x - 1) * (x - 1);
+                float scaleW = x * x;
+                poseStack.scale(scaleW, scaleH, scaleW);
+            }
+            itemRenderer.render(ModItems.PARACHUTE.get().getDefaultInstance(), ItemDisplayContext.HEAD,
+                    false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
             poseStack.popPose();
         }

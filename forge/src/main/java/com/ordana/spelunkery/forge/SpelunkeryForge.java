@@ -26,50 +26,12 @@ public class SpelunkeryForge {
     public static final String MOD_ID = Spelunkery.MOD_ID;
 
     public SpelunkeryForge() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        bus.register(this);
-
         Spelunkery.commonInit();
 
-        if (PlatHelper.getEnv().isClient()) {
+        if (PlatHelper.getPhysicalSide().isClient()) {
             SpelunkeryClient.init();
         }
     }
 
-    @SubscribeEvent
-    public void addPackFinders(AddPackFindersEvent event) {
-
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            registerBuiltinResourcePack(event, Component.literal("Better Vanilla Gems"), "better_vanilla_gems");
-            registerBuiltinResourcePack(event, Component.literal("Unlit Redstone Ores"), "unlit_redstone_ores");
-            registerBuiltinResourcePack(event, Component.literal("Emissive Ores"), "emissive_ores");
-            registerBuiltinResourcePack(event, Component.literal("Emissive Better Vanilla Ores"), "emissive_better_vanilla_ores");
-        }
-    }
-
-    private static void registerBuiltinResourcePack(AddPackFindersEvent event, MutableComponent name, String folder) {
-        event.addRepositorySource((consumer, constructor) -> {
-            String path = Spelunkery.res(folder).toString();
-            IModFile file = ModList.get().getModFileById(Spelunkery.MOD_ID).getFile();
-            try (PathPackResources pack = new PathPackResources(
-                    path,
-                    file.findResource("resourcepacks/" + folder));) {
-
-                consumer.accept(constructor.create(
-                        Spelunkery.res(folder).toString(),
-                        name,
-                        false,
-                        () -> pack,
-                        pack.getMetadataSection(PackMetadataSection.SERIALIZER),
-                        Pack.Position.TOP,
-                        PackSource.BUILT_IN,
-                        false));
-
-            } catch (IOException e) {
-                if (!DatagenModLoader.isRunningDataGen())
-                    e.printStackTrace();
-            }
-        });
-    }
 }
 

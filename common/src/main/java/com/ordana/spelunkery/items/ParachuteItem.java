@@ -57,10 +57,6 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         return ItemStack.EMPTY;
     }
 
-    static public void set3DModel(ItemStack stack, boolean model) {
-        stack.getOrCreateTag().putBoolean("model", model);
-    }
-
     public void setUsed(ItemStack stack, boolean used) {
         stack.getOrCreateTag().putBoolean("used", used);
     }

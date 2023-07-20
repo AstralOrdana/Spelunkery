@@ -2,12 +2,14 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.events.ModLootInjects;
 import com.ordana.spelunkery.events.PackProvider;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -38,12 +40,14 @@ public class Spelunkery {
 
         if(PlatHelper.getPhysicalSide().isClient()){
             ClientConfigs.init();
+
+            ClientHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), Component.literal("Better Vanilla Gems"), true);
+            ClientHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), Component.literal("Unlit Redstone Ores"), true);
+            ClientHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), Component.literal("Emissive Ores"), false);
+            ClientHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), Component.literal("Emissive Better Vanilla Ores"), false);
+
         }
 
-        ClientHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), Component.literal("Better Vanilla Gems"), true);
-        ClientHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), Component.literal("Unlit Redstone Ores"), true);
-        ClientHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), Component.literal("Emissive Ores"), false);
-        ClientHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), Component.literal("Emissive Better Vanilla Ores"), false);
 
         ModGameEvents.init();
         PackProvider.INSTANCE.register();
@@ -57,6 +61,8 @@ public class Spelunkery {
         ModCreativeTabs.setup();
 
         MoonlightEventsHelper.addListener(Spelunkery::compassLogic, IDropItemOnDeathEvent.class);
+
+        RegHelper.addLootTableInjects(ModLootInjects::onLootInject);
     }
 
     private static void compassLogic(IDropItemOnDeathEvent event) {

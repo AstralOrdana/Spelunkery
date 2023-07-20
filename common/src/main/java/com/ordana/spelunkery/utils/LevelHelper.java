@@ -57,7 +57,7 @@ public class LevelHelper {
         if (exactSpawnPosition == null) {
             serverLevel = player.server.getLevel(Level.OVERWORLD);
             assert serverLevel != null;
-            exactSpawnPosition = vec3(serverLevel.getSharedSpawnPos());
+            exactSpawnPosition = Vec3.atCenterOf(serverLevel.getSharedSpawnPos());
         }
         return new Pair<>(exactSpawnPosition, serverLevel);
     }
@@ -78,12 +78,9 @@ public class LevelHelper {
     }
 
     public static void teleportToWorldspawn(Level level, Entity entity) {
-        Vec3 spawnPosition = vec3(level.getSharedSpawnPos());
+        Vec3 spawnPosition = Vec3.atCenterOf(level.getSharedSpawnPos());
 
         entity.teleportTo(spawnPosition.x, spawnPosition.y, spawnPosition.z);
     }
     
-    public static Vec3 vec3(BlockPos blockPosition) {
-        return new Vec3(blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5);
-    }
 }
