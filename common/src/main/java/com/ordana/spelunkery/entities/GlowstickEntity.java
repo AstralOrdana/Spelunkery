@@ -93,7 +93,7 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
     }
 
     public static boolean canPlace (BlockState state) {
-        return state.isAir() || state.getMaterial().isReplaceable();
+        return state.isAir() || state.canBeReplaced();
     }
 
     public void placeGlowstick(Level level, BlockPos pos, BlockHitResult hitResult) {
@@ -214,7 +214,7 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
                 //get correct land pos
                 if (!noPhysics) {
                     newPos = blockHitResult.getLocation();
-                    BlockPos newBlockPos = new BlockPos(newPos.x, newPos.y, newPos.z);
+                    BlockPos newBlockPos = BlockPos.containing(newPos);
                     placeGlowstick(level, newBlockPos, (BlockHitResult) blockHitResult);
                     this.remove(RemovalReason.DISCARDED);
                 }

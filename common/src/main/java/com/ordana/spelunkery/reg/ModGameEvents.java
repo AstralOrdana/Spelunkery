@@ -3,7 +3,7 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.function.Supplier;
@@ -13,7 +13,7 @@ public class ModGameEvents {
     }
 
     public static final Supplier<GameEvent> COMPASS_PING_EVENT = RegHelper.register(Spelunkery.res("compass_ping"),
-            () -> new GameEvent("compass_ping", CommonConfigs.MAGNETITE_RANGE.get()), Registry.GAME_EVENT);
+            () -> new GameEvent("compass_ping", CommonConfigs.MAGNETITE_RANGE.get()), Registries.GAME_EVENT);
 
     /*
 

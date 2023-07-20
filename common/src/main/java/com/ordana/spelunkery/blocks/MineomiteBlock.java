@@ -118,7 +118,7 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
             level.addFreshEntity(primedTnt);
              */
 
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2, Explosion.BlockInteraction.BREAK);
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2, Level.ExplosionInteraction.TNT);
 
         }
     }
@@ -130,7 +130,7 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
     private static void explode(Level level, BlockPos pos, @Nullable LivingEntity entity) {
         if (!level.isClientSide) {
             float f = level.getBlockState(pos).getValue(STICKS);
-            level.explode(entity, pos.getX(), pos.getY(), pos.getZ(), f, Explosion.BlockInteraction.BREAK);
+            level.explode(entity, pos.getX(), pos.getY(), pos.getZ(), f, Level.ExplosionInteraction.TNT);
             level.gameEvent(entity, GameEvent.PRIME_FUSE, pos);
         }
     }

@@ -5,7 +5,7 @@ import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -88,8 +88,8 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
     }
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
-        if (((level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
-                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_milly_bubcap_bonemeal"))).get())
+        if (((level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_milly_bubcap_bonemeal"))).get())
                 .value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
             return true;
         } else {
@@ -98,7 +98,7 @@ public class MillyBubcapMushroomBlock extends BushBlock implements BonemealableB
         }
     }
 
-    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 

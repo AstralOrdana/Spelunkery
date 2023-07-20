@@ -129,7 +129,7 @@ public class ModEvents {
 
         if (item == Items.GLASS_BOTTLE) {
             if (state.getBlock() instanceof CryingObsidianBlock && CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
@@ -142,8 +142,10 @@ public class ModEvents {
 
             }
 
+
+
             if (state.getBlock() instanceof RespawnAnchorBlock && state.getValue(RespawnAnchorBlock.CHARGE) > 0 && CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
 
@@ -182,7 +184,7 @@ public class ModEvents {
                 if (!recipes.isEmpty()) {
                     RandomSource random = level.getRandom();
                     ItemStack ingredient = polishingRecipe.ingredient;
-                    ItemStack result = polishingRecipe.getResultItem();
+                    ItemStack result = polishingRecipe.getResultItem(level.registryAccess());
                     int resultCount = polishingRecipe.getResultCount();
                     ItemStack byproduct = polishingRecipe.getByproduct();
                     int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());

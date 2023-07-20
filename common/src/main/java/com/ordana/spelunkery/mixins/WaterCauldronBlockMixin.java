@@ -29,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Mixin(LayeredCauldronBlock.class)
 public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
@@ -53,7 +54,7 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
             if (itemStack2.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
                 Slime slime = EntityType.SLIME.create(serverLevel);
                 if (slime != null) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) item.getThrowingEntity(), pos, itemStack2);
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) Objects.requireNonNull(item.getOwner()), pos, itemStack2);
                     item.remove(Entity.RemovalReason.DISCARDED);
                     slime.moveTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                     serverLevel.addFreshEntity(slime);

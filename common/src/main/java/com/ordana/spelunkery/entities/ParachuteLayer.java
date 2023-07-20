@@ -1,19 +1,19 @@
 package com.ordana.spelunkery.entities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 import com.ordana.spelunkery.items.ParachuteItem;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.utils.IParachuteEntity;
+import net.mehvahdjukaar.moonlight.api.client.util.RotHlpr;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 
@@ -45,47 +45,13 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
             poseStack.pushPose();
 
             poseStack.translate(0, -2, 0);
-            poseStack.mulPose(Vector3f.XN.rotationDegrees(180));
-            //this.getParentModel().body.translateAndRotate(poseStack);
+            poseStack.mulPose(RotHlpr.X180);
 
-
-            /*
-            {
-                double offset = 0;
-
-                {
-                    o += 3 / 16f + offset;
-                    poseStack.translate(0, 0.1, o);
-                    if (flipped) poseStack.scale(-1, 1, -1);
-
-                }
-            }
-
-             */
-
-            itemRenderer.renderStatic(livingEntity, parachute, ItemTransforms.TransformType.HEAD, false,
+            itemRenderer.renderStatic(livingEntity, parachute, ItemDisplayContext.HEAD, false,
                     poseStack, buffer, livingEntity.level, packedLight, OverlayTexture.NO_OVERLAY, 0);
 
             poseStack.popPose();
         }
-
-
-        /*
-        if (!(livingEntity instanceof IParachuteEntity))
-            return; //failsafe for mods that change the renderer for some reason
-        ParachuteMode mode = parachuteMode;
-        ItemStack parachute;
-        parachute = livingEntity.getParachute();
-
-        if (mode == ParachuteMode.HIDDEN || !ParachuteItem.getActive(parachute) || livingEntity.getMainHandItem() == parachute || livingEntity.getOffhandItem() == parachute) return;
-
-        if (!parachute.isEmpty()) {
-            itemRenderer.renderStatic(livingEntity, parachute, ItemTransforms.TransformType.HEAD, false,
-                    poseStack, buffer, livingEntity.level, packedLight, OverlayTexture.NO_OVERLAY, 0);
-
-            poseStack.popPose();
-        }
-         */
     }
 
     public enum ParachuteMode {

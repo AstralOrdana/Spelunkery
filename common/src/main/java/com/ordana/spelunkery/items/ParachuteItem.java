@@ -10,7 +10,6 @@ import com.ordana.spelunkery.utils.IParachuteEntity;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
-import net.mehvahdjukaar.moonlight.api.misc.DualWeildState;
 import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -223,7 +222,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     }
 
     @Override
-    public <T extends LivingEntity> boolean poseLeftArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
+    public <T extends LivingEntity> boolean poseLeftArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
                 entity.getTicksUsingItem() < 50) {
@@ -235,9 +234,9 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         return false;
     }
 
-    //TODO: finish this
+
     @Override
-    public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
+    public <T extends LivingEntity> boolean poseRightArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
                 entity.getTicksUsingItem() < 50) {

@@ -3,7 +3,7 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -23,7 +23,7 @@ public class ModRecipes {
             }
         };
         return r;
-    }, Registry.RECIPE_TYPE);
+    }, Registries.RECIPE_TYPE);
 
     public static final Supplier<RecipeSerializer<GrindstonePolishingRecipe>> GRINDSTONE_POLISHING_SERIALIZER =
             RegHelper.registerRecipeSerializer(new ResourceLocation(Spelunkery.MOD_ID + ":grindstone_polishing"),

@@ -3,7 +3,7 @@ package com.ordana.spelunkery.entities;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.entity.ImprovedProjectileEntity;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -11,7 +11,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
@@ -66,10 +65,10 @@ public class ThrownPrimedMineomiteEntity extends ImprovedProjectileEntity {
     private void createExplosion() {
 
         boolean breaks = (this.getOwner() instanceof Player ||
-                PlatformHelper.isMobGriefingOn(this.level, this.getOwner()));
+                PlatHelper.isMobGriefingOn(this.level, this.getOwner()));
 
         this.level.explode(null, this.getX(), this.getY(), this.getZ(),
-                3.5F, breaks ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE);
+                3.5F, breaks ? Level.ExplosionInteraction.TNT : Level.ExplosionInteraction.NONE);
 
     }
 }

@@ -17,6 +17,7 @@ import net.minecraft.world.level.gameevent.BlockPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.level.gameevent.PositionSource;
+import net.minecraft.world.phys.Vec3;
 
 public class MagnetiteBlockEntity extends BlockEntity implements GameEventListener {
 
@@ -38,21 +39,21 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
     }
 
     @Override
-    public boolean handleGameEvent(ServerLevel level, GameEvent.Message eventMessage) {
-        if (ModGameEvents.COMPASS_PING_EVENT.get() == eventMessage.gameEvent()) {
-            Entity entity = eventMessage.context().sourceEntity();
+    public boolean handleGameEvent(ServerLevel level, GameEvent gameEvent, GameEvent.Context context, Vec3 pos) {
+        if (ModGameEvents.COMPASS_PING_EVENT.get() == gameEvent) {
+            Entity entity = context.sourceEntity();
 
-                if (entity instanceof Player player) {
-                    var inventory = player.getInventory();
+            if (entity instanceof Player player) {
+                var inventory = player.getInventory();
 
-                    for (int i = 0; i < inventory.getContainerSize(); i++) {
-                        ItemStack compass = inventory.getItem(i);
-                        if (compass.is(ModItems.MAGNETIC_COMPASS.get())) {
-                            MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
-                            level.playSound(null, entity.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.BLOCKS, 0.4f, 1.0f);
-                        }
+                for (int i = 0; i < inventory.getContainerSize(); i++) {
+                    ItemStack compass = inventory.getItem(i);
+                    if (compass.is(ModItems.MAGNETIC_COMPASS.get())) {
+                        MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                        level.playSound(null, entity.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.BLOCKS, 0.4f, 1.0f);
                     }
                 }
+            }
         }
         return false;
     }

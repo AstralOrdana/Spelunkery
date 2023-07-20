@@ -8,7 +8,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
@@ -37,7 +37,7 @@ import java.util.List;
 
 public class PortalFluidBucketItem extends BucketItem {
     
-    private static final Field CONTENT = PlatformHelper.findField(BucketItem.class, "content");
+    private static final Field CONTENT = PlatHelper.findField(BucketItem.class, "content");
 
     public PortalFluidBucketItem(Fluid fluid, Properties properties) {
         super(fluid, properties);

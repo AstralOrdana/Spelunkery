@@ -10,8 +10,8 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiWorldInteractionRecipe;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
-import net.minecraft.core.Registry;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -24,13 +24,13 @@ public class EmiIntegration implements EmiPlugin {
 
         EmiIngredient bottle = EmiStack.of(Items.GLASS_BOTTLE);
 
-        if (PlatformHelper.isModLoaded("create")) {
+        if (PlatHelper.isModLoaded("create")) {
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
                         .id(new ResourceLocation("spelunkery", "/rose_quartz"))
                         .rightInput(EmiStack.of(Blocks.GRINDSTONE), true)
-                        .leftInput(EmiStack.of(Registry.ITEM.get(new ResourceLocation("create:rose_quartz"))))
-                        .output(EmiStack.of(Registry.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
+                        .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:rose_quartz"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
                         .build());
             } catch (Exception e) {
                 e.printStackTrace();

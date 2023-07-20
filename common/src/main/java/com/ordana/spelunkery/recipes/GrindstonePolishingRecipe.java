@@ -9,7 +9,8 @@ Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LIC
 import com.google.gson.JsonObject;
 import com.ordana.spelunkery.reg.ModRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -61,7 +62,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container pContainer) {
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
         return this.result;
     }
 
@@ -83,7 +84,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return this.result.copy();
     }
 
@@ -143,7 +144,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             else {
                 String ingredientItem = GsonHelper.getAsString(jsonObject, "ingredient");
                 ResourceLocation resourcelocation = new ResourceLocation(ingredientItem);
-                ingredient = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + ingredientItem + " does not exist")));
+                ingredient = new ItemStack(BuiltInRegistries.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + ingredientItem + " does not exist")));
             }
             if (!jsonObject.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
             ItemStack result;
@@ -153,7 +154,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             else {
                 String resultItem = GsonHelper.getAsString(jsonObject, "result");
                 ResourceLocation resourcelocation = new ResourceLocation(resultItem);
-                result = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + resultItem + " does not exist")));
+                result = new ItemStack(BuiltInRegistries.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + resultItem + " does not exist")));
             }
             int resultCount = GsonHelper.getAsInt(jsonObject, "resultCount", 1);
 
@@ -164,7 +165,7 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             else {
                 String byproductItem = GsonHelper.getAsString(jsonObject, "byproduct");
                 ResourceLocation resourcelocation = new ResourceLocation(byproductItem);
-                byproduct = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + byproductItem + " does not exist")));
+                byproduct = new ItemStack(BuiltInRegistries.ITEM.getOptional(resourcelocation).orElseThrow(() -> new IllegalStateException("Item: " + byproductItem + " does not exist")));
             }
             int byproductMin = GsonHelper.getAsInt(jsonObject, "byproductMin", 1);
             int byproductMax = GsonHelper.getAsInt(jsonObject, "byproductMax", 1);

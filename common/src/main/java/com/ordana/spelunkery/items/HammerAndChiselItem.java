@@ -16,9 +16,9 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
@@ -146,8 +146,8 @@ public class HammerAndChiselItem extends Item implements Vanishable {
 
     public static void addOptional(ImmutableBiMap.Builder<Block, Block> map,
                                    String moddedId, String moddedId2) {
-        var o1 = Registry.BLOCK.getOptional(new ResourceLocation(moddedId));
-        var o2 = Registry.BLOCK.getOptional(new ResourceLocation(moddedId2));
+        var o1 = BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(moddedId));
+        var o2 = BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(moddedId2));
         if (o1.isPresent() && o2.isPresent()) {
             map.put(o1.get(), o2.get());
         }

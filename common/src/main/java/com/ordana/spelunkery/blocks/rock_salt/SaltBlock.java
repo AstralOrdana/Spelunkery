@@ -9,7 +9,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +26,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.RedstoneSide;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -118,11 +116,6 @@ public class SaltBlock extends Block {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.getConnectionState(context.getLevel(), this.crossState, context.getClickedPos());
-    }
-
-    @Override
-    public boolean canBeReplaced(BlockState state, Fluid fluid) {
-        return this.material.isReplaceable() || !this.material.isSolid();
     }
 
     //-----connection logic------
@@ -382,7 +375,7 @@ public class SaltBlock extends Block {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity && entity.getType().is(ModTags.HURT_BY_SALT)) {
             if (((LivingEntity) entity).isInvertedHealAndHarm()) entity.setRemainingFireTicks(8);
-            entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
+            entity.hurt(entity.damageSources().hotFloor(), 1.0F);
         }
     }
 }

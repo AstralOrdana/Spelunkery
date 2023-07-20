@@ -10,12 +10,12 @@ import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -92,10 +92,7 @@ public class HugeConkFungusFeature extends Feature<HugeConkFungusFeatureConfig> 
     }
 
     private static boolean isReplaceablePlant(LevelSimulatedReader level, BlockPos pos) {
-        return level.isStateAtPosition(pos, (blockState) -> {
-            Material material = blockState.getMaterial();
-            return material == Material.REPLACEABLE_PLANT || material == Material.REPLACEABLE_WATER_PLANT || material == Material.REPLACEABLE_FIREPROOF_PLANT;
-        });
+        return level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::canBeReplaced);
     }
 
     public static boolean validTreePos(LevelSimulatedReader level, BlockPos pos) {

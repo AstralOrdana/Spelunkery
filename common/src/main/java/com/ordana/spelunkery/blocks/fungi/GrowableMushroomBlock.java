@@ -4,12 +4,13 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,12 +36,12 @@ public class GrowableMushroomBlock extends ModMushroomBlock implements Bonemeala
         level.removeBlock(pos, false);
         Holder<ConfiguredFeature<?, ?>> feature = null;
 
-        if (state.is(ModBlocks.INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
-                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_inkcap_mushroom_bonemeal"))).get());
-        if (state.is(ModBlocks.WHITE_INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
-                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_white_inkcap_mushroom_bonemeal"))).get());
-        if (state.is(ModBlocks.PORTABELLA.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
-                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_portabella_bonemeal"))).get());
+        if (state.is(ModBlocks.INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_inkcap_mushroom_bonemeal"))).get());
+        if (state.is(ModBlocks.WHITE_INKCAP_MUSHROOM.get())) feature = (level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_white_inkcap_mushroom_bonemeal"))).get());
+        if (state.is(ModBlocks.PORTABELLA.get())) feature = (level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
+                ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_portabella_bonemeal"))).get());
 
 
         if (feature != null) {
@@ -55,7 +56,7 @@ public class GrowableMushroomBlock extends ModMushroomBlock implements Bonemeala
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 

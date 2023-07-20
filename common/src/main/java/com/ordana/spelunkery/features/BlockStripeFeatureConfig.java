@@ -4,8 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.ordana.spelunkery.features.util.StoneEntry;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -17,20 +17,20 @@ public class BlockStripeFeatureConfig implements FeatureConfiguration {
     public static final Codec<BlockStripeFeatureConfig> CODEC = RecordCodecBuilder.create((instance)
             -> instance.group(
 
-                    RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("first_target").forGetter((blockStripeFeatureConfig)
+                    RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("first_target").forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.firstTarget),
                     Codec.list(StoneEntry.CODEC).fieldOf("first_target_placer").forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.firstTargetPlacer),
                     Codec.BOOL.fieldOf("use_second_target").orElse(false).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.useSecondTarget),
-                    RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("second_target").orElse(null).forGetter((blockStripeFeatureConfig)
+                    RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("second_target").orElse(null).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.secondTarget),
                     Codec.list(StoneEntry.CODEC).fieldOf("second_target_placer").orElse(null).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.secondTargetPlacer),
 
                     Codec.BOOL.fieldOf("use_biome_filter").orElse(false).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.useBiomeFilter),
-                    RegistryCodecs.homogeneousList(Registry.BIOME_REGISTRY).fieldOf("biomes").orElse(null).forGetter((blockStripeFeatureConfig)
+                    RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").orElse(null).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.biomes),
                     Codec.floatRange(0.0F, 1.0F).fieldOf("blank_patch_chance").orElse(0.0f).forGetter((blockStripeFeatureConfig)
                             -> blockStripeFeatureConfig.blankPatchChance),

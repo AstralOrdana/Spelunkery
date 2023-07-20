@@ -8,27 +8,23 @@ import com.ordana.spelunkery.blocks.nephrite.*;
 import com.ordana.spelunkery.blocks.rock_salt.*;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
-
-import static com.ordana.spelunkery.reg.ModCreativeTab.getTab;
 
 public class ModBlocks {
 
@@ -63,41 +59,37 @@ public class ModBlocks {
         return RegHelper.registerBlock(Spelunkery.res(name), block);
     }
 
-    public static <T extends Block> Supplier<T> regWithItem(String name, Supplier<T> block) {
-        return regWithItem(name, block, getTab(CreativeModeTab.TAB_BUILDING_BLOCKS));
-    }
-
-    public static <T extends Block> Supplier<T> regWithItem(String name, Supplier<T> blockFactory, CreativeModeTab tab) {
+    public static <T extends Block> Supplier<T> regWithItem(String name, Supplier<T> blockFactory) {
         Supplier<T> block = regBlock(name, blockFactory);
-        regBlockItem(name, block, new Item.Properties().tab(tab));
+        regBlockItem(name, block, new Item.Properties());
         return block;
     }
 
     public static <T extends Block> Supplier<T> regWithItem(String name, Supplier<T> block, String requiredMod) {
-        CreativeModeTab tab = isCompatBlockEanbled(requiredMod) ? getTab(CreativeModeTab.TAB_BUILDING_BLOCKS) : null;
-        return regWithItem(name, block, tab);
+        if (isCompatBlockEanbled(requiredMod)) return regWithItem(name, block);
+        else return null;
     }
 
     public static <T extends Block> Supplier<T> regWithItemConfigurable(String name, Supplier<T> block) {
-        CreativeModeTab tab = CommonConfigs.ENABLE_MORES.get() ? getTab(CreativeModeTab.TAB_BUILDING_BLOCKS) : null;
-        return regWithItem(name, block, tab);
+        if (CommonConfigs.ENABLE_MORES.get()) return regWithItem(name, block);
+        else return null;
     }
 
     public static <T extends Block> Supplier<T> regWithItemConfigurable(String name, Supplier<T> block, String requiredMod) {
-        CreativeModeTab tab = (isCompatBlockEanbled(requiredMod) && CommonConfigs.ENABLE_MORES.get()) ? getTab(CreativeModeTab.TAB_BUILDING_BLOCKS) : null;
-        return regWithItem(name, block, tab);
+        if (isCompatBlockEanbled(requiredMod) && CommonConfigs.ENABLE_MORES.get()) return regWithItem(name, block);
+        else return null;
     }
 
     private static boolean isCompatBlockEanbled(String requiredMod) {
         if(Objects.equals(requiredMod, "quark")) {
-            if (PlatformHelper.getPlatform().isFabric()) {
+            if (PlatHelper.getPlatform().isFabric()) {
                 return requiredMod.equals("amogus");
             } else {
                 return false;
                 //return IntegrationHandler.quark && QuarkPlugin.isVerticalSlabsOn();
             }
         }
-        return PlatformHelper.isModLoaded(requiredMod);
+        return PlatHelper.isModLoaded(requiredMod);
     }
 
 
@@ -244,43 +236,43 @@ public class ModBlocks {
 
     //rough gems
     public static final Supplier<Block> ROUGH_CINNABAR_BLOCK = regWithItem("rough_cinnabar_block", () ->
-            new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
+            new RoughCinnabarBlock(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
+            new Block(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.LAPIS)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_EMERALD_BLOCK = regWithItem("rough_emerald_block", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD)
+            new Block(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.EMERALD)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_DIAMOND_BLOCK = regWithItem("rough_diamond_block", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND)
+            new Block(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.DIAMOND)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
     public static final Supplier<Block> ROUGH_QUARTZ_BLOCK = regWithItem("rough_quartz_block", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.QUARTZ)
+            new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.QUARTZ)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
 
     public static final Supplier<Block> CINNABAR_BLOCK = regWithItem("cinnabar_block", () ->
-            new PoweredBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_RED)
+            new PoweredBlock(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.COLOR_RED)
                     .requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).isRedstoneConductor(ModBlocks::never)));
 
     public static final Supplier<Block> DIAMOND_GRINDSTONE = regWithItem("diamond_grindstone", () ->
-            new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(Blocks.GRINDSTONE)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new DiamondGrindstoneBlock(BlockBehaviour.Properties.copy(Blocks.GRINDSTONE)));
 
 
     //rock salt
     public static final Supplier<Block> ROCK_SALT = regBlock("rock_salt", () ->
-            new RockSaltCrystalBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
+            new RockSaltCrystalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
-            new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
-                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new SaltLampBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
+                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
-            new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission()));
+            new SaltBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_WIRE).mapColor(MapColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission()));
     public static final Supplier<Block> SALT_BLOCK = regWithItem("salt_block", () ->
-            new SaltBlockBlock(14606046, BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.SAND)));
+            new SaltBlockBlock(14606046, BlockBehaviour.Properties.copy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.SAND)));
 
     public static final Supplier<Block> ROCK_SALT_BLOCK = regWithItem("rock_salt_block", () ->
-            new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
+            new RockSaltBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
     public static final Supplier<Block> ROCK_SALT_SLAB = regWithItem("rock_salt_slab", () ->
             new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
@@ -290,7 +282,7 @@ public class ModBlocks {
             new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BLOCK.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
 
     public static final Supplier<Block> POLISHED_ROCK_SALT = regWithItem("polished_rock_salt", () ->
-            new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
+            new RockSaltBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
     public static final Supplier<Block> POLISHED_ROCK_SALT_SLAB = regWithItem("polished_rock_salt_slab", () ->
             new RockSaltSlab(BlockBehaviour.Properties.copy(POLISHED_ROCK_SALT.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
@@ -300,7 +292,7 @@ public class ModBlocks {
             new RockSaltWall(BlockBehaviour.Properties.copy(POLISHED_ROCK_SALT.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
 
     public static final Supplier<Block> ROCK_SALT_BRICKS = regWithItem("rock_salt_bricks", () ->
-            new RockSaltBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
+            new RockSaltBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
     public static final Supplier<Block> ROCK_SALT_BRICK_SLAB = regWithItem("rock_salt_brick_slab", () ->
             new RockSaltSlab(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
@@ -311,13 +303,13 @@ public class ModBlocks {
 
 
     public static final Supplier<Block> SULFUR_GEYSER = regWithItem("sulfur_geyser", () ->
-            new SulfurGeyserBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SAND)));
+            new SulfurGeyserBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.SAND)));
 
     //nephrite
     public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->
-            new RawNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new RawNephriteBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE = regWithItem("nephrite", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
+            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f)));
     public static final Supplier<Block> NEPHRITE_SLAB = regWithItem("nephrite_slab", () ->
             new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_STAIRS = regWithItem("nephrite_stairs", () ->
@@ -344,7 +336,7 @@ public class ModBlocks {
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
-            new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));
+            new CarvedNephriteBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));
     public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
@@ -362,38 +354,38 @@ public class ModBlocks {
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
-            new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new TangleRootsBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES).mapColor(MapColor.COLOR_BROWN).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
     public static final Supplier<Block> TANGLE_ROOTS_PLANT = regBlock("tangle_roots_plant", () ->
-            new TangleRootsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
+            new TangleRootsPlantBlock(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES_PLANT).mapColor(MapColor.COLOR_BROWN).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)));
     public static final Supplier<Block> SPOROPHYTE = regWithItem("sporophyte", () ->
-            new SporophyteBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new SporophyteBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)));
     public static final Supplier<Block> TALL_SPOROPHYTE = regWithItem("tall_sporophyte", () ->
-            new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().instabreak().sound(SoundType.MOSS).offsetType(BlockBehaviour.OffsetType.XZ)));
 
 
 
     //fungi
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
-            new ConkFungusBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new ConkFungusBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS)));
     public static final Supplier<Block> PORTABELLA = regBlock("portabella", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always)));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> CRIMINI = regBlock("crimini", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> BUTTON_MUSHROOM = regBlock("button_mushroom", () ->
             new ModMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get())));
     public static final Supplier<Block> INKCAP_MUSHROOM = regWithItem("inkcap_mushroom", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
-            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
-            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> MUSHGLOOM = regWithItem("mushgloom", () ->
-            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
-            new MillyBubcapMushroomBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new MillyBubcapMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
 
     public static final Supplier<Block> POTTED_PORTABELLA = regBlock("potted_portabella", () ->
-            new FlowerPotBlock(PORTABELLA.get(), BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion()));
+            new FlowerPotBlock(PORTABELLA.get(), BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY).instabreak().noOcclusion()));
     public static final Supplier<Block> POTTED_CRIMINI = regBlock("potted_crimini", () ->
             new FlowerPotBlock(CRIMINI.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
     public static final Supplier<Block> POTTED_BUTTON_MUSHROOM = regBlock("potted_button_mushroom", () ->
@@ -412,24 +404,24 @@ public class ModBlocks {
             new FlowerPotBlock(SPOROPHYTE.get(), BlockBehaviour.Properties.copy(POTTED_PORTABELLA.get())));
 
     public static final Supplier<Block> CONK_FUNGUS_BLOCK = regWithItem("conk_fungus_block", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.STEM)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.DIRT).strength(0.2F).sound(SoundType.STEM)));
     public static final Supplier<Block> PORTABELLA_BLOCK = regWithItem("portabella_block", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.DIRT).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.DIRT).strength(0.2F).sound(SoundType.WOOD)));
     public static final Supplier<Block> INKCAP_MUSHROOM_BLOCK = regWithItem("inkcap_mushroom_block", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_BLACK).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLACK).strength(0.2F).sound(SoundType.WOOD)));
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM_BLOCK = regWithItem("white_inkcap_mushroom_block", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.SAND).strength(0.2F).sound(SoundType.WOOD)));
     public static final Supplier<Block> MILLY_BUBCAP_BLOCK = regWithItem("milly_bubcap_block", () ->
-            new HugeMushroomBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.TERRACOTTA_BROWN).strength(0.2F).sound(SoundType.WOOD)), getTab(CreativeModeTab.TAB_DECORATIONS));
+            new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BROWN).strength(0.2F).sound(SoundType.WOOD)));
 
 
     //mining gear
     public static final Supplier<Block> GLOWSTICK = regBlock("glowstick", () ->
-            new GlowstickBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
+            new GlowstickBlock(BlockBehaviour.Properties.copy(Blocks.END_ROD).instabreak().noCollission().noOcclusion().emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 14).sound(SoundType.CANDLE)));
     public static final Supplier<Block> ROPE_LADDER = regBlock("rope_ladder", () ->
             new RopeLadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(1f).sound(SoundType.WOOD)));
     public static final Supplier<Block> WOODEN_RAIL = regBlock("wooden_rail", () ->
-            new WoodenRailBlock(true, BlockBehaviour.Properties.of(Material.DECORATION).noOcclusion().strength(0.7F).sound(SoundType.WOOD).instabreak()));
+            new WoodenRailBlock(true, BlockBehaviour.Properties.copy(Blocks.RAIL).noOcclusion().strength(0.7F).sound(SoundType.WOOD).instabreak()));
 
     //glowsticks
     public static final Supplier<Block> RED_GLOWSTICK = regBlock("red_glowstick", () ->
@@ -470,6 +462,6 @@ public class ModBlocks {
 
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
-            SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
+            SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
 
 }

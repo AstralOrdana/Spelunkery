@@ -10,7 +10,7 @@ import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -131,8 +131,8 @@ public class HandheldCompactorItem extends Item {
 
     public static void addOptional(ImmutableBiMap.Builder<Item, Item> map,
                                    String moddedId, String moddedId2) {
-        var o1 = Registry.ITEM.getOptional(new ResourceLocation(moddedId));
-        var o2 = Registry.ITEM.getOptional(new ResourceLocation(moddedId2));
+        var o1 = BuiltInRegistries.ITEM.getOptional(new ResourceLocation(moddedId));
+        var o2 = BuiltInRegistries.ITEM.getOptional(new ResourceLocation(moddedId2));
         if (o1.isPresent() && o2.isPresent()) {
             map.put(o1.get(), o2.get());
         }

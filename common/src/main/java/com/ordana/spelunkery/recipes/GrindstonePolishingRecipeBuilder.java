@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -74,14 +74,14 @@ public class GrindstonePolishingRecipeBuilder {
 
     //The save methods here could be improved!
     public void save(Consumer<FinishedRecipe> consumer) {
-        ResourceLocation resourcelocation = Registry.ITEM.getKey(this.result);
+        ResourceLocation resourcelocation = BuiltInRegistries.ITEM.getKey(this.result);
         if (resourcelocation != null) {
             this.save(consumer, Spelunkery.MOD_ID + ":grindstone_polishing/" + resourcelocation.getPath() + "_from_grindstone_polishing");
         }
     }
 
     public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, String save) {
-        ResourceLocation defaultResourcelocation = Registry.ITEM.getKey(this.result);
+        ResourceLocation defaultResourcelocation = BuiltInRegistries.ITEM.getKey(this.result);
         ResourceLocation resourcelocation = new ResourceLocation(save);
         if (resourcelocation.equals(defaultResourcelocation)) {
             throw new IllegalStateException("Polishing Recipe " + save + " should remove its 'save' argument as it is equal to default one");
@@ -128,10 +128,10 @@ public class GrindstonePolishingRecipeBuilder {
                 pJson.addProperty("group", this.group);
             }
 
-            pJson.addProperty("ingredient", Registry.ITEM.getKey(this.ingredient).toString());
-            pJson.addProperty("result", Registry.ITEM.getKey(this.result).toString());
+            pJson.addProperty("ingredient", BuiltInRegistries.ITEM.getKey(this.ingredient).toString());
+            pJson.addProperty("result", BuiltInRegistries.ITEM.getKey(this.result).toString());
             pJson.addProperty("resultCount", this.resultCount);
-            pJson.addProperty("byproduct", Registry.ITEM.getKey(this.byproduct).toString());
+            pJson.addProperty("byproduct", BuiltInRegistries.ITEM.getKey(this.byproduct).toString());
             pJson.addProperty("byproductMin", this.byproductMin);
             pJson.addProperty("byproductMax", this.byproductMax);
             pJson.addProperty("experience", this.experience);

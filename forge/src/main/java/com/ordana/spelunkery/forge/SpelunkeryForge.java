@@ -2,7 +2,7 @@ package com.ordana.spelunkery.forge;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.packs.PackType;
@@ -31,7 +31,7 @@ public class SpelunkeryForge {
 
         Spelunkery.commonInit();
 
-        if (PlatformHelper.getEnv().isClient()) {
+        if (PlatHelper.getEnv().isClient()) {
             SpelunkeryClient.init();
         }
     }

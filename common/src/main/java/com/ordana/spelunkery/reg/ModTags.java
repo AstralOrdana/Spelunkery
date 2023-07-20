@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -61,26 +61,26 @@ public class ModTags {
     }
 
     private static TagKey<Block> registerBlockTag(String id) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.BLOCK, Spelunkery.res(id));
     }
 
     private static TagKey<Item> registerItemTag(String id) {
-        return TagKey.create(Registry.ITEM_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.ITEM, Spelunkery.res(id));
     }
 
     private static TagKey<Biome> registerBiomeTag(String id) {
-        return TagKey.create(Registry.BIOME_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.BIOME, Spelunkery.res(id));
     }
 
     private static TagKey<EntityType<?>> registerEntityTag(String id) {
-        return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.ENTITY_TYPE, Spelunkery.res(id));
     }
 
     private static TagKey<Fluid> registerFluidTag(String id) {
-        return TagKey.create(Registry.FLUID_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.FLUID, Spelunkery.res(id));
     }
 
     private static TagKey<Enchantment> registerEnchantTag(String id) {
-        return TagKey.create(Registry.ENCHANTMENT_REGISTRY, Spelunkery.res(id));
+        return TagKey.create(Registries.ENCHANTMENT, Spelunkery.res(id));
     }
 }

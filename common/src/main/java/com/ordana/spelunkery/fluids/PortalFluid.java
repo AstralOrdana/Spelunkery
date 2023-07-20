@@ -1,6 +1,5 @@
 package com.ordana.spelunkery.fluids;
 
-import com.mojang.math.Vector3f;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
@@ -19,6 +18,7 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -37,7 +37,7 @@ public class PortalFluid extends ModFlowingFluid {
                 -1,
                 Spelunkery.res("block/portal_fluid"),
                 Spelunkery.res("block/portal_fluid"),
-                new Vector3f(133, 0, 0));
+                new Vec3(133, 0, 0));
 
     }
 

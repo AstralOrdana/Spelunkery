@@ -1,19 +1,19 @@
 package com.ordana.spelunkery.fluids;
 
-import com.mojang.math.Vector3f;
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class PortalFluidRenderer extends ModFluidRenderProperties {
     private final ResourceLocation overlay;
     private final ResourceLocation renderOverlay;
-    private final Vector3f fogColor;
+    private final Vec3 fogColor;
 
-    public PortalFluidRenderer(ResourceLocation still, ResourceLocation flowing, int tint, ResourceLocation overlay, ResourceLocation renderOverlay, Vector3f fogColor) {
+    public PortalFluidRenderer(ResourceLocation still, ResourceLocation flowing, int tint, ResourceLocation overlay, ResourceLocation renderOverlay, Vec3 fogColor) {
         super(still, flowing, tint);
         this.overlay = overlay;
         this.renderOverlay = renderOverlay;
@@ -38,11 +38,11 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         return this.getRenderOverlayTexture();
     }
 
-    public Vector3f modifyFogColor() {
+    public Vec3 modifyFogColor() {
         return this.fogColor;
     }
 
-    public Vector3f modifyFogColor(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
+    public Vec3 modifyFogColor(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
         return this.modifyFogColor();
     }
 

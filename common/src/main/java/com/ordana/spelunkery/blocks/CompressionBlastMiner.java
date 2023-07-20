@@ -8,13 +8,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DirectionalBlock;
@@ -67,7 +65,7 @@ public class CompressionBlastMiner extends DirectionalBlock {
         if (state.getValue(PRIMED) && !level.getBlockState(pos.relative(dir)).is(ModTags.BLAST_MINER_IMMUNE)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, false));
             level.destroyBlock(pos.relative(dir), false);
-            level.explode(null, DamageSource.badRespawnPointExplosion(), null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, 5.0F, false, Explosion.BlockInteraction.DESTROY);
+            level.explode(null, level.damageSources().badRespawnPointExplosion(pos.getCenter()), null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, 5.0F, false, Level.ExplosionInteraction.TNT);
         }
     }
 
