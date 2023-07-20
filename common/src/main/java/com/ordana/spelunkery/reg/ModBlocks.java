@@ -332,14 +332,14 @@ public class ModBlocks {
             new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_STAIRS = regWithItem("polished_nephrite_brick_stairs", () ->
             new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
-    public static final Supplier<Block> POLISHED_NEPHRITE__BRICK_WALL = regWithItem("polished_nephrite_brick_wall", () ->
+    public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_WALL = regWithItem("polished_nephrite_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
             new CarvedNephriteBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));
     public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
-    public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
+    public static final Supplier<Block> NEPHRITE_FOUNTAIN = regBlock("nephrite_fountain", () ->
             new NephriteFountainBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
@@ -349,7 +349,7 @@ public class ModBlocks {
     public static final Supplier<Block> MINEOMITE = regBlock("mineomite", () ->
             new MineomiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT).sound(SoundType.CANDLE)));
 
-    public static final Supplier<Block> MAGNETITE = regWithItem("magnetite", () ->
+    public static final Supplier<Block> RAW_MAGNETITE_BLOCK = regWithItem("raw_magnetite_block", () ->
             new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
 
     //plants

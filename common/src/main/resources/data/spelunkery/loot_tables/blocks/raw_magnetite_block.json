@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "spelunkery:magnetite",
+              "name": "spelunkery:raw_magnetite_block",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "spelunkery:magnetite_chunk",
+              "name": "spelunkery:raw_magnetite",
               "functions": [
                 {
                   "function": "minecraft:explosion_decay"

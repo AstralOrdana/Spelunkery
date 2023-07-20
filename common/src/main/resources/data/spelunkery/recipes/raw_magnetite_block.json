@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "spelunkery:magnetite_chunk"
+      "item": "spelunkery:raw_magnetite"
     }
   },
   "result": {
-    "item": "spelunkery:magnetite"
+    "item": "spelunkery:raw_magnetite_block"
   }
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class NephriteFountainEntity extends BlockEntity {
     public NephriteFountainEntity(BlockPos pos, BlockState state) {
-        super(ModEntities.NEPHRITE_SPOUT.get(), pos, state);
+        super(ModEntities.NEPHRITE_FOUNTAIN.get(), pos, state);
     }
 
     private int tickCounter = 0;

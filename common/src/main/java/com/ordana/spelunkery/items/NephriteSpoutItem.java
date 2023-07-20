@@ -29,9 +29,9 @@ public class NephriteSpoutItem extends BlockItem {
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_spout_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_spout_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_spout_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_fountain_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_fountain_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_fountain_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {
                 tooltip.add(TranslationUtils.CROUCH.component());
             }

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "spelunkery:nephrite_spout"
+          "name": "spelunkery:nephrite_fountain"
         }
       ],
       "conditions": [

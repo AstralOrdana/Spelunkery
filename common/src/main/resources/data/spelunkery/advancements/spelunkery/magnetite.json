@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "spelunkery:magnetite_chunk"
+      "item": "spelunkery:raw_magnetite"
     },
     "title": {
       "translate": "advancements.spelunkery.magnetite.title"
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-              "spelunkery:magnetite_chunk"
+              "spelunkery:raw_magnetite"
             ]
           }
         ]

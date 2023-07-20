@@ -148,7 +148,7 @@ public class HandheldCompactorItem extends Item {
                 .put(ModItems.RAW_IRON_NUGGET.get(), Items.RAW_IRON)
                 .put(ModItems.RAW_GOLD_NUGGET.get(), Items.RAW_GOLD)
                 .put(ModItems.RAW_COPPER_NUGGET.get(), Items.RAW_COPPER)
-                .put(ModItems.RAW_MAGNETITE_NUGGET.get(), ModItems.MAGNETITE_CHUNK.get())
+                .put(ModItems.RAW_MAGNETITE_NUGGET.get(), ModItems.RAW_MAGNETITE.get())
 
                 .put(ModItems.CINNABAR_SHARD.get(), ModItems.CINNABAR.get())
                 .put(ModItems.LAPIS_LAZULI_SHARD.get(), Items.LAPIS_LAZULI)
@@ -189,7 +189,7 @@ public class HandheldCompactorItem extends Item {
                 .put(Items.RAW_IRON, Items.RAW_IRON_BLOCK)
                 .put(Items.RAW_GOLD, Items.RAW_GOLD_BLOCK)
                 .put(Items.RAW_COPPER, Items.RAW_COPPER_BLOCK)
-                .put(ModItems.MAGNETITE_CHUNK.get(), ModBlocks.MAGNETITE.get().asItem())
+                .put(ModItems.RAW_MAGNETITE.get(), ModBlocks.RAW_MAGNETITE_BLOCK.get().asItem())
 
                 .put(ModItems.CINNABAR.get(), ModBlocks.CINNABAR_BLOCK.get().asItem())
                 .put(Items.REDSTONE, Items.REDSTONE_BLOCK)

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "spelunkery:magnetite_chunk"
+      "item": "spelunkery:raw_magnetite"
     }
   ],
   "result": {

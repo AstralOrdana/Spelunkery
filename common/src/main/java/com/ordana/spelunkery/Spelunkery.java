@@ -58,7 +58,6 @@ public class Spelunkery {
         ModEntities.init();
         ModRecipes.init();
         ModCreativeTabs.init();
-        ModCreativeTabs.setup();
 
         MoonlightEventsHelper.addListener(Spelunkery::compassLogic, IDropItemOnDeathEvent.class);
 

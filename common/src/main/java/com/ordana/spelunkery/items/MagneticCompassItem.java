@@ -138,7 +138,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
             Optional<ResourceKey<Level>> optional = getDimension(compoundTag);
             if (optional.isPresent() && optional.get() == level.dimension() && compoundTag.contains("magnetitePos")) {
                 BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
-                if (!level.isInWorldBounds(blockPos) || !level.getBlockState(blockPos).is(ModBlocks.MAGNETITE.get())) {
+                if (!level.isInWorldBounds(blockPos) || !level.getBlockState(blockPos).is(ModBlocks.RAW_MAGNETITE_BLOCK.get())) {
                     compoundTag.remove("magnetitePos");
                     level.gameEvent(entity, ModGameEvents.COMPASS_PING_EVENT.get(), entity.blockPosition());
                 }

@@ -2,6 +2,7 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
+import com.ordana.spelunkery.utils.DisabledItem;
 import net.mehvahdjukaar.moonlight.api.item.FuelItem;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -32,7 +33,7 @@ public class ModItems {
             new SaltBlockItem(ModBlocks.SALT.get(), new Item.Properties()));
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
             new Item(new Item.Properties()));
-    public static final Supplier<Item> MAGNETITE_CHUNK = regItem("magnetite_chunk", () ->
+    public static final Supplier<Item> RAW_MAGNETITE = regItem("raw_magnetite", () ->
             new Item(new Item.Properties()));
 
     public static final Supplier<Item> RAW_IRON_NUGGET = regItem("raw_iron_nugget", () ->
@@ -98,8 +99,8 @@ public class ModItems {
             new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties()));
     public static final Supplier<Item> NEPHRITE_SIPHON = regItem("nephrite_siphon", () ->
             new NephriteSiphonItem(ModBlocks.NEPHRITE_SIPHON.get(), new Item.Properties()));
-    public static final Supplier<Item> NEPHRITE_SPOUT = regItem("nephrite_spout", () ->
-            new NephriteSpoutItem(ModBlocks.NEPHRITE_SPOUT.get(), new Item.Properties()));
+    public static final Supplier<Item> NEPHRITE_FOUNTAIN = regItem("nephrite_fountain", () ->
+            new NephriteSpoutItem(ModBlocks.NEPHRITE_FOUNTAIN.get(), new Item.Properties()));
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties()));
 
@@ -191,6 +192,7 @@ public class ModItems {
     public static final Supplier<Item> LIGHT_GRAY_GLOWSTICK = regItem("light_gray_glowstick", () ->
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties()));
 
+    @DisabledItem
     public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->
             new EggplantItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 

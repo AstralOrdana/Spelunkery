@@ -4,7 +4,7 @@
     "item": "minecraft:compass"
   },
   "addition": {
-    "item": "spelunkery:magnetite_chunk"
+    "item": "spelunkery:raw_magnetite"
   },
   "result": {
     "item": "spelunkery:magnetic_compass"

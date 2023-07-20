@@ -2,63 +2,63 @@
   "variants": {
 
     "facing=east,powered=false,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 90
     },
     "facing=east,powered=true,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 90
     },
     "facing=north,powered=false,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open"
+      "model": "spelunkery:block/nephrite_fountain_open"
     },
     "facing=north,powered=true,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open"
+      "model": "spelunkery:block/nephrite_fountain_open"
     },
     "facing=south,powered=false,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 180
     },
     "facing=south,powered=true,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 180
     },
     "facing=west,powered=false,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 270
     },
     "facing=west,powered=true,open=true": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 270
     },
     "facing=east,powered=false,open=false": {
-      "model": "spelunkery:block/nephrite_spout_closed",
+      "model": "spelunkery:block/nephrite_fountain_closed",
       "y": 90
     },
     "facing=east,powered=true,open=false": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 90
     },
     "facing=north,powered=false,open=false": {
-      "model": "spelunkery:block/nephrite_spout_closed"
+      "model": "spelunkery:block/nephrite_fountain_closed"
     },
     "facing=north,powered=true,open=false": {
-      "model": "spelunkery:block/nephrite_spout_open"
+      "model": "spelunkery:block/nephrite_fountain_open"
     },
     "facing=south,powered=false,open=false": {
-      "model": "spelunkery:block/nephrite_spout_closed",
+      "model": "spelunkery:block/nephrite_fountain_closed",
       "y": 180
     },
     "facing=south,powered=true,open=false": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 180
     },
     "facing=west,powered=false,open=false": {
-      "model": "spelunkery:block/nephrite_spout_closed",
+      "model": "spelunkery:block/nephrite_fountain_closed",
       "y": 270
     },
     "facing=west,powered=true,open=false": {
-      "model": "spelunkery:block/nephrite_spout_open",
+      "model": "spelunkery:block/nephrite_fountain_open",
       "y": 270
     }
   }

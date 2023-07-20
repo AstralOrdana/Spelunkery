@@ -64,7 +64,7 @@ public class SpelunkeryClient {
         ClientHelper.registerRenderType(ModBlocks.POTTED_BUTTON_MUSHROOM.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.POTTED_SPOROPHYTE.get(), RenderType.cutout());
 
-        ClientHelper.registerRenderType(ModBlocks.NEPHRITE_SPOUT.get(), RenderType.cutout());
+        ClientHelper.registerRenderType(ModBlocks.NEPHRITE_FOUNTAIN.get(), RenderType.cutout());
 
         ItemProperties.register(ModItems.DEPTH_GAUGE.get(), Spelunkery.res("depth"),
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);

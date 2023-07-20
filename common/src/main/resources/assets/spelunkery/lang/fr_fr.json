@@ -70,9 +70,9 @@
   "tooltip.spelunkery.carved_nephrite_2": "  Chaque block peut contenir 100 Charges (~7 niveaux depuis le niveau 0)",
   "tooltip.spelunkery.carved_nephrite_3": "  Use with a Nephrite Siphon, Fountain, and Diode",
 
-  "tooltip.spelunkery.nephrite_spout_1": "  Draine les Charges de blocks Néphrite Sculptée, pour créer des orbes d'expérience",
-  "tooltip.spelunkery.nephrite_spout_2": "  Ne draine que les Charges de la Néphrite sur laquelle il est placée",
-  "tooltip.spelunkery.nephrite_spout_3": "  Doit être alimenté en Redstone pour s'activer",
+  "tooltip.spelunkery.nephrite_fountain_1": "  Draine les Charges de blocks Néphrite Sculptée, pour créer des orbes d'expérience",
+  "tooltip.spelunkery.nephrite_fountain_2": "  Ne draine que les Charges de la Néphrite sur laquelle il est placée",
+  "tooltip.spelunkery.nephrite_fountain_3": "  Doit être alimenté en Redstone pour s'activer",
 
   "tooltip.spelunkery.nephrite_siphon_1": "  Draine l'expérience de tout joueur se tenant dessus",
   "tooltip.spelunkery.nephrite_siphon_2": "  Convertis en Charges réparties entre les blocks de Néphrites Sculptée adjacents",
@@ -219,7 +219,7 @@
 
   "block.spelunkery.carved_nephrite": "Néphrite sculptée",
   "block.spelunkery.nephrite_siphon": "Siphon de néphrite",
-  "block.spelunkery.nephrite_spout": "Fontaine de néphrite",
+  "block.spelunkery.nephrite_fountain": "Fontaine de néphrite",
   "block.spelunkery.nephrite_diode": "Valve de néphrite",
   "item.spelunkery.nephrite_charm": "Amulette de néphrite",
   "item.spelunkery.echo_fork": "Echo Fork",

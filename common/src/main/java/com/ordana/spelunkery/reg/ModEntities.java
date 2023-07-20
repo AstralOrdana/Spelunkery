@@ -26,13 +26,13 @@ public class ModEntities {
             Spelunkery.res("carved_nephrite"),
             () -> PlatHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
 
-    public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
-            Spelunkery.res("nephrite_spout"),
-            () -> PlatHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
+    public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_FOUNTAIN = RegHelper.registerBlockEntityType(
+            Spelunkery.res("nephrite_fountain"),
+            () -> PlatHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_FOUNTAIN.get()));
 
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
-            Spelunkery.res("magnetite"),
-            () -> PlatHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.MAGNETITE.get()));
+            Spelunkery.res("raw_magnetite_block"),
+            () -> PlatHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.RAW_MAGNETITE_BLOCK.get()));
 
 
     public static Supplier<EntityType<GlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(

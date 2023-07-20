@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class ModCreativeTabs {
+public class CreativeTabsNew {
 
     private static final Set<Item> HIDDEN_ITEMS = new HashSet<>();
     private static final List<ItemStack> NON_HIDDEN_ITEMS = new ArrayList<>();
@@ -36,6 +36,36 @@ public class ModCreativeTabs {
 
     private static boolean isRunningSetup = false;
 
+    public static void setup() {
+        isRunningSetup = true;
+        List<Item> all = new ArrayList<>(BuiltInRegistries.ITEM.entrySet().stream().filter(e -> e.getKey().location().getNamespace()
+                .equals(Spelunkery.MOD_ID)).map(Map.Entry::getValue).toList());
+        Map<ResourceKey<CreativeModeTab>,List<ItemStack>> map = new HashMap<>();
+        CreativeModeTabs.tabs().forEach(t->map.putIfAbsent(BuiltInRegistries.CREATIVE_MODE_TAB.getResourceKey(t).get(), new ArrayList<>()));
+        var dummy = new RegHelper.ItemToTabEvent((creativeModeTab, itemStackPredicate, reverse, itemStacks) -> {
+            var l = map.computeIfAbsent(creativeModeTab,t->new ArrayList<>());
+            if (reverse) {
+                var v = new ArrayList<>(itemStacks);
+                Collections.reverse(v);
+                l.addAll(v);
+            } else l.addAll(itemStacks);
+        });
+        registerItemsToTabs(dummy);
+        for(var e : map.values()){
+            NON_HIDDEN_ITEMS.addAll(e);
+        }
+
+        for (var v : NON_HIDDEN_ITEMS) {
+            all.remove(v.getItem());
+        }
+        HIDDEN_ITEMS.addAll(all);
+        isRunningSetup = false;
+    }
+
+    public static boolean isHidden(Item item) {
+        return HIDDEN_ITEMS.contains(item);
+    }
+
     public static void registerItemsToTabs(RegHelper.ItemToTabEvent e) {
 
         if (MOD_TAB != null && !isRunningSetup) {
@@ -47,8 +77,6 @@ public class ModCreativeTabs {
                 ModConstants.COAL_ORE,
                 ModBlocks.ANDESITE_COAL_ORE, ModBlocks.DIORITE_COAL_ORE, ModBlocks.GRANITE_COAL_ORE, ModBlocks.TUFF_COAL_ORE
         );
-
-        /*
         after(e, Items.DEEPSLATE_IRON_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.IRON_ORE,
                 ModBlocks.ANDESITE_IRON_ORE, ModBlocks.DIORITE_IRON_ORE, ModBlocks.GRANITE_IRON_ORE, ModBlocks.TUFF_IRON_ORE
@@ -255,8 +283,6 @@ public class ModCreativeTabs {
                 ModItems.BLACK_GLOWSTICK
         );
 
-         */
-
         SYNCED_ADD_TO_TABS.forEach(o -> o.accept(e));
     }
 
@@ -276,8 +302,8 @@ public class ModCreativeTabs {
     private static void after(RegHelper.ItemToTabEvent event, Predicate<ItemStack> targetPred,
                               ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
-        ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
-        event.addAfter(tab, targetPred, entries);
+            ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
+            event.addAfter(tab, targetPred, entries);
         //}
     }
 
@@ -289,16 +315,16 @@ public class ModCreativeTabs {
     private static void before(RegHelper.ItemToTabEvent event, Predicate<ItemStack> targetPred,
                                ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
-        ItemLike[] entries = Arrays.stream(items).map(s -> (ItemLike) s.get()).toArray(ItemLike[]::new);
-        event.addBefore(tab, targetPred, entries);
+            ItemLike[] entries = Arrays.stream(items).map(s -> (ItemLike) s.get()).toArray(ItemLike[]::new);
+            event.addBefore(tab, targetPred, entries);
         //}
     }
 
     private static void add(RegHelper.ItemToTabEvent event,
                             ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
-        ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
-        event.add(tab, entries);
+            ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
+            event.add(tab, entries);
         //}
     }
 

@@ -79,9 +79,9 @@
   "tooltip.spelunkery.carved_nephrite_2": "  Каждый блок хранит до 100 очков заряда (~7 уровней с 0)",
   "tooltip.spelunkery.carved_nephrite_3": "  Используйте с нефритовым сифоном, фонтаном и диодом",
 
-  "tooltip.spelunkery.nephrite_spout_1": "  Выкачивает заряд из резного нефрита, конвертирует очки в сферы опыта",
-  "tooltip.spelunkery.nephrite_spout_2": "  Взаимодействует только с тем блоком нефрита, на который установлен",
-  "tooltip.spelunkery.nephrite_spout_3": "  Требует редстоун сигнал для активации",
+  "tooltip.spelunkery.nephrite_fountain_1": "  Выкачивает заряд из резного нефрита, конвертирует очки в сферы опыта",
+  "tooltip.spelunkery.nephrite_fountain_2": "  Взаимодействует только с тем блоком нефрита, на который установлен",
+  "tooltip.spelunkery.nephrite_fountain_3": "  Требует редстоун сигнал для активации",
 
   "tooltip.spelunkery.nephrite_siphon_1": "  Извлекает очки опыта персонажа, который стоит на нём",
   "tooltip.spelunkery.nephrite_siphon_2": "  Конвертирует очки в заряд, передаваемый блокам резного нефрита, расположенным под ним",
@@ -228,7 +228,7 @@
 
   "block.spelunkery.carved_nephrite": "Резной нефрит",
   "block.spelunkery.nephrite_siphon": "Нефритовый сифон",
-  "block.spelunkery.nephrite_spout": "Нефритовый фонтан",
+  "block.spelunkery.nephrite_fountain": "Нефритовый фонтан",
   "block.spelunkery.nephrite_diode": "Нефритовый диод",
   "item.spelunkery.nephrite_charm": "Нефритовый амулет",
   "item.spelunkery.echo_fork": "Скалк-камертон",
