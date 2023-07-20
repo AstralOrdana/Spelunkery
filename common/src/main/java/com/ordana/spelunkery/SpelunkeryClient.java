@@ -31,7 +31,7 @@ public class SpelunkeryClient {
     public static void setup() {
         ClientHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
-        
+
         ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
@@ -91,8 +91,8 @@ public class SpelunkeryClient {
         ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
-        ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
-                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);
+        //ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
+        //        (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);
 
         finishedSetup = true;
     }

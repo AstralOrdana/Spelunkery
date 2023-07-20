@@ -44,18 +44,20 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
 
             poseStack.pushPose();
 
-            poseStack.translate(0, -2, 0);
             poseStack.mulPose(RotHlpr.X180);
 
             var model = ClientHelper.getModel(Minecraft.getInstance().getModelManager(), SpelunkeryClient.PARACHUTE_3D_MODEL);
             float ticks = livingEntity.getParachuteTicks() + partialTick;
-            int timeToOpen = 20;
-            if(ticks<timeToOpen) {
-                float x = ticks / timeToOpen;
-                float scaleH = 1 - (x - 1) * (x - 1);
-                float scaleW = x * x;
-                poseStack.scale(scaleW, scaleH, scaleW);
-            }
+            int timeToOpen = 15;
+
+
+            float x = Math.min(1, ticks / timeToOpen);
+            float scaleH = x;
+            float scaleW = x * x;
+            poseStack.translate(0, 0.5 + scaleH / 2, 0);
+            poseStack.scale(scaleW, scaleH, scaleW);
+            poseStack.translate(0, 1, 0);
+
             itemRenderer.render(ModItems.PARACHUTE.get().getDefaultInstance(), ItemDisplayContext.HEAD,
                     false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 

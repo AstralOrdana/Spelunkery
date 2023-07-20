@@ -35,7 +35,7 @@ public abstract class RemotePlayerMixin extends Player implements IParachuteEnti
     )
     private void checkIfHasParachute(CallbackInfo ci) {
         spelunkery$parachute = ParachuteItem.getParachute(this);
-        if (!spelunkery$parachute.isEmpty()) {
+        if (!spelunkery$parachute.isEmpty()  && ParachuteItem.getActive(spelunkery$parachute)) {
             spelunkery$parachuteTicks++;
         } else  {
             spelunkery$parachuteTicks = 0;
