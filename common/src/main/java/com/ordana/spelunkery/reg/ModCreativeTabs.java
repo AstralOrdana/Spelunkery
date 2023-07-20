@@ -21,12 +21,9 @@ import java.util.function.Supplier;
 
 public class ModCreativeTabs {
 
-    private static final Set<Item> HIDDEN_ITEMS = new HashSet<>();
-    private static final List<ItemStack> NON_HIDDEN_ITEMS = new ArrayList<>();
-
     public static final RegSupplier<CreativeModeTab> MOD_TAB = !CommonConfigs.CREATIVE_TAB.get() ? null :
-            RegHelper.registerCreativeModeTab(Spelunkery.res("supplementaries"),
-                    (c) -> c.title(Component.translatable("itemGroup.supplementaries"))
+            RegHelper.registerCreativeModeTab(Spelunkery.res("spelunkery"),
+                    (c) -> c.title(Component.translatable("itemGroup.spelunkery"))
                             .icon(() -> ModItems.ROCK_SALT.get().getDefaultInstance()));
 
 
@@ -34,21 +31,15 @@ public class ModCreativeTabs {
         RegHelper.addItemsToTabsRegistration(ModCreativeTabs::registerItemsToTabs);
     }
 
-    private static boolean isRunningSetup = false;
 
     public static void registerItemsToTabs(RegHelper.ItemToTabEvent e) {
 
-        if (MOD_TAB != null && !isRunningSetup) {
-            e.add(MOD_TAB.getHolder().unwrapKey().get(), NON_HIDDEN_ITEMS.toArray(ItemStack[]::new));
-            return;
-        }
 
         after(e, Items.DEEPSLATE_COAL_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.COAL_ORE,
                 ModBlocks.ANDESITE_COAL_ORE, ModBlocks.DIORITE_COAL_ORE, ModBlocks.GRANITE_COAL_ORE, ModBlocks.TUFF_COAL_ORE
         );
 
-        /*
         after(e, Items.DEEPSLATE_IRON_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.IRON_ORE,
                 ModBlocks.ANDESITE_IRON_ORE, ModBlocks.DIORITE_IRON_ORE, ModBlocks.GRANITE_IRON_ORE, ModBlocks.TUFF_IRON_ORE
@@ -254,14 +245,7 @@ public class ModCreativeTabs {
                 ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK, ModItems.BROWN_GLOWSTICK,
                 ModItems.BLACK_GLOWSTICK
         );
-
-         */
-
-        SYNCED_ADD_TO_TABS.forEach(o -> o.accept(e));
     }
-
-    //for supp2. ugly i know but fabric has no load order
-    public static final List<Consumer<RegHelper.ItemToTabEvent>> SYNCED_ADD_TO_TABS = new ArrayList<>();
 
     private static void after(RegHelper.ItemToTabEvent event, TagKey<Item> target,
                               ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
@@ -277,6 +261,9 @@ public class ModCreativeTabs {
                               ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
         ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
+        if(CommonConfigs.CREATIVE_TAB.get()){
+            tab = MOD_TAB.getHolder().unwrapKey().get();
+        }
         event.addAfter(tab, targetPred, entries);
         //}
     }
@@ -290,6 +277,9 @@ public class ModCreativeTabs {
                                ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
         ItemLike[] entries = Arrays.stream(items).map(s -> (ItemLike) s.get()).toArray(ItemLike[]::new);
+        if(CommonConfigs.CREATIVE_TAB.get()){
+            tab = MOD_TAB.getHolder().unwrapKey().get();
+        }
         event.addBefore(tab, targetPred, entries);
         //}
     }
@@ -298,6 +288,9 @@ public class ModCreativeTabs {
                             ResourceKey<CreativeModeTab> tab, String key, Supplier<?>... items) {
         //if (CommonConfigs.isEnabled(key)) {
         ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
+        if(CommonConfigs.CREATIVE_TAB.get()){
+            tab = MOD_TAB.getHolder().unwrapKey().get();
+        }
         event.add(tab, entries);
         //}
     }
