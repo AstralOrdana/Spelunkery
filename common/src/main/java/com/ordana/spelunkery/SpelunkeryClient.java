@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SpelunkeryClient {
 
-    public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute_3D");
+    public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute");
 
     public static void init() {
         ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);

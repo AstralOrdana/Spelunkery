@@ -12,4 +12,6 @@ public interface IParachuteEntity {
     }
 
     void setParachute(ItemStack parachute);
+
+    int getParachuteTicks();
 }
