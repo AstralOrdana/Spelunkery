@@ -3,7 +3,7 @@ package com.ordana.spelunkery;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.events.ModLootInjects;
-import com.ordana.spelunkery.events.PackProvider;
+import com.ordana.spelunkery.events.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
@@ -50,7 +50,7 @@ public class Spelunkery {
 
 
         ModGameEvents.init();
-        PackProvider.INSTANCE.register();
+        ModLootOverrides.INSTANCE.register();
         ModFeatures.init();
         ModBlocks.init();
         ModFluids.init();

@@ -95,9 +95,8 @@ public class ModLootInjects {
 
     public static void onLootInject(RegHelper.LootInjectEvent event) {
 
-
         ResourceLocation name = event.getTable();
-        String path = name.getPath();
+        String path = name.getNamespace();
         if (!path.equals("minecraft") && !path.equals("spelunkery")) return;
 
 

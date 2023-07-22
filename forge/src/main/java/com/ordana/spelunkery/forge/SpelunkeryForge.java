@@ -29,6 +29,7 @@ public class SpelunkeryForge {
         Spelunkery.commonInit();
 
         if (PlatHelper.getPhysicalSide().isClient()) {
+            ClientEventsForge.init();
             SpelunkeryClient.init();
         }
     }

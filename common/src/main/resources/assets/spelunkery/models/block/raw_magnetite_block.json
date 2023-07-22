@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "spelunkery:block/magnetite"
+    "all": "spelunkery:block/raw_magnetite_block"
   }
 }

@@ -239,11 +239,20 @@ public class ModCreativeTabs {
 
         after(e, Items.END_ROD, CreativeModeTabs.FUNCTIONAL_BLOCKS,
                 ModConstants.GLOWSTICKS,
-                ModItems.GLOWSTICK, ModItems.WHITE_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK,
-                ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK, ModItems.LIME_GLOWSTICK,
-                ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK, ModItems.BLUE_GLOWSTICK,
-                ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK, ModItems.BROWN_GLOWSTICK,
-                ModItems.BLACK_GLOWSTICK
+                ModItems.GLOWSTICK,
+                ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
+                ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
+                ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
+                ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
+        );
+
+        after(e, Items.PINK_BANNER, CreativeModeTabs.COLORED_BLOCKS,
+                ModConstants.GLOWSTICKS,
+                ModItems.GLOWSTICK,
+                ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
+                ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
+                ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
+                ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
         );
     }
 

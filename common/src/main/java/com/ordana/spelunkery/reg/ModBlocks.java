@@ -192,48 +192,6 @@ public class ModBlocks {
     public static final Supplier<Block> TUFF_DIAMOND_ORE = regWithItemConfigurable("tuff_diamond_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_DIAMOND_ORE.get()).sound(SoundType.TUFF), UniformInt.of(3, 7)));
 
-    //mod compat mores
-    public static final Supplier<Block> GRANITE_ZINC_ORE = regWithItemConfigurable("granite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "create");
-    public static final Supplier<Block> ANDESITE_ZINC_ORE = regWithItemConfigurable("andesite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
-    public static final Supplier<Block> DIORITE_ZINC_ORE = regWithItemConfigurable("diorite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
-    public static final Supplier<Block> TUFF_ZINC_ORE = regWithItemConfigurable("tuff_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get()).sound(SoundType.TUFF)), "create");
-
-    public static final Supplier<Block> GRANITE_LEAD_ORE = regWithItemConfigurable("granite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
-    public static final Supplier<Block> ANDESITE_LEAD_ORE = regWithItemConfigurable("andesite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
-    public static final Supplier<Block> DIORITE_LEAD_ORE = regWithItemConfigurable("diorite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
-    public static final Supplier<Block> TUFF_LEAD_ORE = regWithItemConfigurable("tuff_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get()).sound(SoundType.TUFF)), "oreganized");
-
-    public static final Supplier<Block> GRANITE_SILVER_ORE = regWithItemConfigurable("granite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
-    public static final Supplier<Block> ANDESITE_SILVER_ORE = regWithItemConfigurable("andesite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
-    public static final Supplier<Block> DIORITE_SILVER_ORE = regWithItemConfigurable("diorite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
-    public static final Supplier<Block> TUFF_SILVER_ORE = regWithItemConfigurable("tuff_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get()).sound(SoundType.TUFF)), "oreganized");
-
-    public static final Supplier<Block> GRANITE_JADE_ORE = regWithItemConfigurable("granite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "sullysmod");
-    public static final Supplier<Block> ANDESITE_JADE_ORE = regWithItemConfigurable("andesite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
-    public static final Supplier<Block> DIORITE_JADE_ORE = regWithItemConfigurable("diorite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
-    public static final Supplier<Block> TUFF_JADE_ORE = regWithItemConfigurable("tuff_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get()).sound(SoundType.TUFF)), "sullysmod");
-
-
     //rough gems
     public static final Supplier<Block> ROUGH_CINNABAR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.copy(Blocks.RAW_COPPER_BLOCK).mapColor(MapColor.COLOR_RED)
@@ -463,5 +421,50 @@ public class ModBlocks {
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
             SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
+
+    
+    //mod support
+
+    public static final Supplier<Block> GRANITE_ZINC_ORE = regWithItemConfigurable("granite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)));
+    public static final Supplier<Block> ANDESITE_ZINC_ORE = regWithItemConfigurable("andesite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())));
+    public static final Supplier<Block> DIORITE_ZINC_ORE = regWithItemConfigurable("diorite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())));
+    public static final Supplier<Block> TUFF_ZINC_ORE = regWithItemConfigurable("tuff_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get()).sound(SoundType.TUFF)));
+
+    public static final Supplier<Block> GRANITE_LEAD_ORE = regWithItemConfigurable("granite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)));
+    public static final Supplier<Block> ANDESITE_LEAD_ORE = regWithItemConfigurable("andesite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())));
+    public static final Supplier<Block> DIORITE_LEAD_ORE = regWithItemConfigurable("diorite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())));
+    public static final Supplier<Block> TUFF_LEAD_ORE = regWithItemConfigurable("tuff_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get()).sound(SoundType.TUFF)));
+
+    public static final Supplier<Block> GRANITE_SILVER_ORE = regWithItemConfigurable("granite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)));
+    public static final Supplier<Block> ANDESITE_SILVER_ORE = regWithItemConfigurable("andesite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())));
+    public static final Supplier<Block> DIORITE_SILVER_ORE = regWithItemConfigurable("diorite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())));
+    public static final Supplier<Block> TUFF_SILVER_ORE = regWithItemConfigurable("tuff_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get()).sound(SoundType.TUFF)));
+
+    public static final Supplier<Block> GRANITE_JADE_ORE = regWithItemConfigurable("granite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)));
+    public static final Supplier<Block> ANDESITE_JADE_ORE = regWithItemConfigurable("andesite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())));
+    public static final Supplier<Block> DIORITE_JADE_ORE = regWithItemConfigurable("diorite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())));
+    public static final Supplier<Block> TUFF_JADE_ORE = regWithItemConfigurable("tuff_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get()).sound(SoundType.TUFF)));
+
+
 
 }

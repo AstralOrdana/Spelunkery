@@ -82,6 +82,8 @@ public abstract class AbstractMinecartMixin extends Entity {
     @Final
     protected abstract void addAdditionalSaveData(CompoundTag compound);
 
+    /*
     @Final
     public abstract Packet<ClientGamePacketListener> getAddEntityPacket();
+     */
 }

@@ -1,10 +1,17 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:compass"
-  },
-  "addition": {
-    "item": "spelunkery:raw_magnetite"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_magnetite"
+    },
+    "X": {
+      "item": "minecraft:redstone"
+    }
   },
   "result": {
     "item": "spelunkery:magnetic_compass"
