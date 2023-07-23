@@ -32,6 +32,7 @@ public class SpelunkeryForge {
         Spelunkery.commonInit();
 
         if (PlatformHelper.getEnv().isClient()) {
+            ClientEventsForge.init();
             SpelunkeryClient.init();
         }
     }

@@ -15,11 +15,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class PackProvider extends DynServerResourcesProvider {
+public class ModLootOverrides extends DynServerResourcesProvider {
 
-    public static final PackProvider INSTANCE = new PackProvider();
+    public static final ModLootOverrides INSTANCE = new ModLootOverrides();
 
-    public PackProvider() {
+    public ModLootOverrides() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
         this.dynamicPack.generateDebugResources = true;
         this.dynamicPack.addNamespaces("spelunkery");
