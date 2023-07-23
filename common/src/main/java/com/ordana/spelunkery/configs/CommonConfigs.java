@@ -71,7 +71,6 @@ public class CommonConfigs {
         PARACHUTE_DELAY = builder.define("parachute_delay", 10, 0, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
-        ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
         //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         builder.pop();
 
@@ -117,6 +116,9 @@ public class CommonConfigs {
 
         //fabric specific
         PlatformHelper.getPlatform().ifFabric(() -> {
+            builder.push("misc");
+            ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
+            builder.pop();
 
         });
 
