@@ -3,6 +3,7 @@ package com.ordana.spelunkery.events;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTables;
@@ -110,6 +111,8 @@ public class ModLootInjects {
                 "nether_gold_ore",
                 "nether_quartz_ore"
         );
+
+        if (PlatformHelper.getPlatform() == PlatformHelper.Platform.FORGE) return;
 
         if (CommonConfigs.ORE_STONE_DROPS.get()) {
 
