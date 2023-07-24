@@ -1,7 +1,8 @@
-package com.ordana.spelunkery.events;
+package com.ordana.spelunkery.loot_modifiers;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.resources.ResourceLocation;
 
@@ -105,7 +106,6 @@ public class ModLootInjects {
                 event.addTableReference(Spelunkery.res("injects/" + loot));
             }
         }
-
 
         if (CommonConfigs.ORE_STONE_DROPS.get()) {
 

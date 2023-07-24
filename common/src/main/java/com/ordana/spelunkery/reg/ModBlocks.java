@@ -324,7 +324,7 @@ public class ModBlocks {
 
     //fungi
     public static final Supplier<Block> CONK_FUNGUS = regWithItem("conk_fungus", () ->
-            new ConkFungusBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS)));
+            new ConkFungusBlock(BlockBehaviour.Properties.copy(Blocks.DEAD_BRAIN_CORAL_FAN).noCollission().instabreak().sound(SoundType.FUNGUS)));
     public static final Supplier<Block> PORTABELLA = regBlock("portabella", () ->
             new GrowableMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().randomTicks().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> CRIMINI = regBlock("crimini", () ->

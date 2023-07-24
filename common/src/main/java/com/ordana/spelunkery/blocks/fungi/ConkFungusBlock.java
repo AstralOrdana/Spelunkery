@@ -98,7 +98,7 @@ public class ConkFungusBlock extends FloorAndSidesMushroomBlock implements Bonem
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
-        return false;
+        return true;
     }
 
     @Override
