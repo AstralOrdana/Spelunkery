@@ -107,6 +107,8 @@ public class ModLootInjects {
             }
         }
 
+        if (PlatHelper.getPlatform() == PlatHelper.Platform.FORGE) return;
+
         if (CommonConfigs.ORE_STONE_DROPS.get()) {
 
             for (var loot : oreNetherDrops) {
