@@ -1,4 +1,4 @@
-package com.ordana.spelunkery.events;
+package com.ordana.spelunkery.loot_modifiers;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;

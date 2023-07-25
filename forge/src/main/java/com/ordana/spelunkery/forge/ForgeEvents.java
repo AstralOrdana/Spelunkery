@@ -1,6 +1,6 @@
 package com.ordana.spelunkery.forge;
 
-import com.ordana.spelunkery.events.ModLootInjects;
+import com.ordana.spelunkery.loot_modifiers.ModLootInjects;
 import net.minecraft.world.InteractionResult;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
