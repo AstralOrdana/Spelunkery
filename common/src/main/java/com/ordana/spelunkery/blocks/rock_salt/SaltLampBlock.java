@@ -10,31 +10,32 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SaltLampBlock extends LanternBlock implements RockSalt {
+public class SaltLampBlock extends LanternBlock {
     protected static final VoxelShape SHAPE;
     protected static final VoxelShape HANGING_SHAPE;
 
     public SaltLampBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ILLUMINATED, false).setValue(HANGING, true).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.LIT, false).setValue(HANGING, true).setValue(WATERLOGGED, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateManager) {
         super.createBlockStateDefinition(stateManager);
-        stateManager.add(ILLUMINATED);
+        stateManager.add(BlockStateProperties.LIT);
     }
 
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if (!level.isClientSide) {
-            state = state.cycle(ILLUMINATED);
+            state = state.cycle(BlockStateProperties.LIT);
             level.setBlock(pos, state, 3);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);

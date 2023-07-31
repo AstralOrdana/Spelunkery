@@ -5,6 +5,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.TranslationUtils;
@@ -102,7 +103,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
         if (f < 1f || !(livingEntity instanceof Player player)) {
             return;
         }
-        var hit = Utils.rayTrace(player, level, ClipContext.Block.COLLIDER, ClipContext.Fluid.ANY);
+        var hit = Utils.rayTrace(player, level, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE);
 
         if (hit instanceof BlockHitResult blockHit) {
             BlockPos pos = blockHit.getBlockPos();
@@ -122,7 +123,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
             }
-            else if (!state.is(ModTags.CHISELABLE) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && (state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL)))) {
+            else if (!state.is(ModTags.CHISELABLE) || state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && (state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL)))) {
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
                 level.playSound(null, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
             }

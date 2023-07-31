@@ -47,6 +47,10 @@ public class ModBlocks {
         return state.getValue(ModBlockProperties.ILLUMINATED);
     }
 
+    private static boolean ifLit(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return state.getValue(BlockStateProperties.LIT);
+    }
+
     private static boolean ifNotEmpty(BlockState state, BlockGetter blockGetter, BlockPos pos) {
         return state.getValue(CarvedNephriteBlock.CHARGE) != CarvedNephriteBlock.ChargeState.EMPTY;
     }
@@ -55,7 +59,7 @@ public class ModBlocks {
         return (state) -> (Boolean)state.getValue(ModBlockProperties.ILLUMINATED) ? litLevel : 0;
     }
 
-    private static ToIntFunction<BlockState> litBlockEmission(int lightValue) {
+    private static ToIntFunction<BlockState> createLightLevelFromLitBlockState(int lightValue) {
         return (blockState) -> (Boolean)blockState.getValue(BlockStateProperties.LIT) ? lightValue : 0;
     }
 
@@ -108,7 +112,7 @@ public class ModBlocks {
     //rough gem blocks
     public static final Supplier<Block> CALCITE_REDSTONE_ORE = regWithItem("calcite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
+                    .requiresCorrectToolForDrops().strength(3f, 3f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(9)).randomTicks()));
     public static final Supplier<Block> SANDSTONE_LAPIS_ORE = regWithItem("sandstone_lapis_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_ORE)
                     .requiresCorrectToolForDrops().strength(2.5f, 3f)));
@@ -162,7 +166,7 @@ public class ModBlocks {
 
     public static final Supplier<Block> GRANITE_REDSTONE_ORE = regWithItemConfigurable("granite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f).randomTicks().lightLevel(ModBlocks.litBlockEmission(9))));
+                    .requiresCorrectToolForDrops().strength(3f, 3f).randomTicks().lightLevel(ModBlocks.createLightLevelFromLitBlockState(9))));
     public static final Supplier<Block> ANDESITE_REDSTONE_ORE = regWithItemConfigurable("andesite_redstone_ore", () ->
             new RedStoneOreBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_REDSTONE_ORE.get())));
     public static final Supplier<Block> DIORITE_REDSTONE_ORE = regWithItemConfigurable("diorite_redstone_ore", () ->
@@ -245,7 +249,7 @@ public class ModBlocks {
     //rough gems
     public static final Supplier<Block> ROUGH_CINNABAR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
-                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(litBlockEmission(9)).randomTicks()));
+                    .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(9)).randomTicks()));
     public static final Supplier<Block> ROUGH_LAZURITE_BLOCK = regWithItem("rough_lazurite_block", () ->
             new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)
                     .requiresCorrectToolForDrops().strength(5f, 6f).sound(SoundType.CALCITE)));
@@ -273,7 +277,7 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
-                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(7)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
+                    .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(7)).emissiveRendering(ModBlocks::ifLit).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
             new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission()));
     public static final Supplier<Block> SALT_BLOCK = regWithItem("salt_block", () ->
