@@ -59,6 +59,10 @@ public class CommonConfigs {
 
 
     public static void init() {
+        // bump class load init
+    }
+
+    static {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("common"), ConfigType.COMMON);
 
         builder.setSynced();
