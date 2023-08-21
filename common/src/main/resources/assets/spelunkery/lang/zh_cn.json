@@ -59,11 +59,14 @@
   "tooltip.spelunkery.hold_crouch": "按住%1$s获取更多细节信息",
   "tooltip.spelunkery.throwable": "可投掷！",
   "tooltip.spelunkery.slime_food": "史莱姆的最爱",
+  "tooltip.spelunkery.wip_items": "开发中--目前无法获得",
   "tooltip.spelunkery.grindable": "使用砂轮打磨",
   "tooltip.spelunkery.diamond_grindable": "使用钻石砂轮打磨",
   "tooltip.spelunkery.keep_on_death": "不会在死亡时掉落",
   "tooltip.spelunkery.rock_salt": "可使用砂轮来磨碎",
   "tooltip.spelunkery.flint_and_steel": "微小的力量并不足以撕开通往另一个维度的裂隙",
+  "tooltip.spelunkery.active": "已激活",
+  "tooltip.spelunkery.inactive": "未激活",
   "tooltip.spelunkery.sculk": "使用剪刀采掘来获取幽匿脉络",
   "tooltip.spelunkery.sculk_veins": "使用剪刀采掘幽匿块来获取",
   "tooltip.spelunkery.dust_bun": "手持右击来扯开",
@@ -80,6 +83,7 @@
   "tooltip.spelunkery.wooden_rail_2": "  若下方为空气方块，放置不受影响。可借此搭建跨过间隙的轨道",
   "tooltip.spelunkery.rhymes_with_tears_0": "和“畏”字押韵",
   "tooltip.spelunkery.rhymes_with_tears_1": "和“威”字押韵",
+  "tooltip.spelunkery.portal_fluid_pos":"已绑定至：%1$s，%2$s，%3$s",
   "tooltip.spelunkery.portal_fluid_1": "  饮用后立即传送至重生点或世界出生点",
   "tooltip.spelunkery.portal_fluid_2": "  可用以激活下界传送门",
   "tooltip.spelunkery.portal_fluid_3": "  手持玻璃瓶右击哭泣的黑曜石或重生锚即可获得",
@@ -97,16 +101,22 @@
   "tooltip.spelunkery.magnetic_compass_2": "  永远指向磁北",
   "tooltip.spelunkery.magnetic_compass_3": "  强磁场会对指针的指向造成干扰",
   "tooltip.spelunkery.magnetic_compass_4": "  按住%1$s并点按使用键以重置",
-  "tooltip.spelunkery.item_magnet_1": "已激活",
-  "tooltip.spelunkery.item_magnet_2": "未激活",
-  "tooltip.spelunkery.item_magnet_3": "  激活后，将半径%1$s格 内的物品自动吸向玩家",
-  "tooltip.spelunkery.item_magnet_4": "  手持并点按使用键来切换激活状态",
+  "tooltip.spelunkery.item_magnet_1": "  激活后，将半径%1$s格 内的物品自动吸向玩家",
+  "tooltip.spelunkery.item_magnet_2": "  手持并点按使用键来切换激活状态",
+  "tooltip.spelunkery.handheld_compactor_nuggets_to_ingots": "模式：粒——>锭",
+  "tooltip.spelunkery.handheld_compactor_ingots_to_blocks": "模式：锭——>方块",
+  "tooltip.spelunkery.handheld_compactor_all": "模式：全部",
+  "tooltip.spelunkery.handheld_compactor_1": "  自动压缩任何可压缩的物品（如粒、碎片、锭、宝石）",
+  "tooltip.spelunkery.handheld_compactor_2": "  手持并点按使用键来切换模式",
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "挖掘等级：钻石",
   "tooltip.spelunkery.flint_hammer_and_chisel": "挖掘等级：石头",
   "tooltip.spelunkery.hammer_and_chisel_1": "  对方块使用可将其精准凿落",
   "tooltip.spelunkery.hammer_and_chisel_2": "  仅对挖掘等级相吻合或更低的方块有效",
   "tooltip.spelunkery.hammer_and_chisel_3": "  仅对适合用镐进行开采的方块有效",
   "tooltip.spelunkery.hammer_and_chisel_4": "  按住%1$s并点按使用键可将砖类方块变为对应的錾制形式",
+  "tooltip.spelunkery.parachute_1": "  从致命高度掉下时，会自动展开",
+  "tooltip.spelunkery.parachute_2": "  自由落体时使用以手动展开",
+  "tooltip.spelunkery.parachute_3": "  使用后，潜行并右键3秒来重新收起",
   "tooltip.spelunkery.cbm_1": "  与侦测器类似，放置时需注意朝向",
   "tooltip.spelunkery.cbm_2": "  手持TNT右击来装填炸药，用红石信号充能引爆后将破坏前方1格内的方块",
   "tooltip.spelunkery.cbm_3": "  爆炸可摧毁包括基岩在内几乎任何种类的方块",
@@ -131,6 +141,7 @@
 
   "tag.spelunkery.glowsticks": "荧光棒",
   "tag.spelunkery.grindable": "可打磨物品",
+  "tag.spelunkery.nuggets":"粒",
   "tag.spelunkery.diamond_grindable": "钻石类可打磨物品",
   "tag.spelunkery.diamond_ores": "钻石矿石",
   "tag.spelunkery.copper_ores": "铜矿石",
@@ -263,10 +274,14 @@
   "item.spelunkery.cinnabar": "朱砂",
   "block.spelunkery.cinnabar_block": "朱砂块",
 
-  "item.spelunkery.magnetite_chunk": "粗磁铁",
-  "block.spelunkery.magnetite": "粗磁铁块",
+  "item.spelunkery.sulfur": "硫磺",
+  "item.spelunkery.saltpeter": "硝石",
+
+  "item.spelunkery.raw_magnetite": "粗磁铁矿",
+  "block.spelunkery.raw_magnetite_block": "粗磁铁块",
   "item.spelunkery.item_magnet": "物品磁铁",
   "item.spelunkery.magnetic_compass": "地磁指北针",
+  "item.spelunkery.handheld_compactor": "便携物品压缩器",
 
   "item.spelunkery.nephrite_chunk": "软玉碎块",
   "block.spelunkery.raw_nephrite": "粗软玉",
@@ -336,6 +351,7 @@
   "item.spelunkery.depth_gauge": "深度计",
   "item.spelunkery.flint_hammer_and_chisel": "燧石锤和凿",
   "item.spelunkery.obsidian_hammer_and_chisel": "黑曜石锤和凿",
+  "item.spelunkery.parachute": "降落伞",
 
   "block.spelunkery.diamond_grindstone": "钻石砂轮",
 
@@ -360,5 +376,7 @@
   "block.spelunkery.light_gray_glowstick": "淡灰色荧光棒",
 
   "death.attack.stonecutter": "%1$s被锯成了两半",
-  "death.attack.stonecutter.player": "%1$s在与%2$s的战斗中被锯成了两半"
+  "death.attack.stonecutter.player": "%1$s在与%2$s的战斗中被锯成了两半",
+
+  "item.spelunkery.eggplant": "茄子"
 }
