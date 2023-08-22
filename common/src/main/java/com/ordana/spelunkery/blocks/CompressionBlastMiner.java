@@ -94,5 +94,4 @@ public class CompressionBlastMiner extends DirectionalBlock {
         POWERED = BlockStateProperties.POWERED;
         PRIMED = ModBlockProperties.PRIMED;
     }
-
 }

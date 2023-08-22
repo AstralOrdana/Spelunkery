@@ -2,6 +2,7 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.loot_modifiers.ModLootInjects;
 import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
@@ -36,6 +37,7 @@ public class Spelunkery {
         }
         initiated = true;
 
+        NetworkHandler.registerMessages();
         CommonConfigs.init();
 
         if(PlatHelper.getPhysicalSide().isClient()){
@@ -56,6 +58,7 @@ public class Spelunkery {
         ModFluids.init();
         ModItems.init();
         ModEntities.init();
+        ModParticles.init();
         ModRecipes.init();
         ModCreativeTabs.init();
 

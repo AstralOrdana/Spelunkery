@@ -95,6 +95,7 @@ public class ModLootInjects {
     );
 
     public static void onLootInject(RegHelper.LootInjectEvent event) {
+        if (!CommonConfigs.ORE_STONE_DROPS.get()) return;
 
         ResourceLocation name = event.getTable();
         String path = name.getNamespace();
@@ -109,58 +110,61 @@ public class ModLootInjects {
 
         if (PlatHelper.getPlatform() == PlatHelper.Platform.FORGE) return;
 
-        if (CommonConfigs.ORE_STONE_DROPS.get()) {
-
-            for (var loot : oreNetherDrops) {
-                if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/netherrack"));
-                }
+        if (PlatHelper.isModLoaded("ditr")) {
+            if (name.equals(new ResourceLocation("ditr", "blocks/obsidian_diamond_ore"))) {
+                event.addTableReference(Spelunkery.res("injects/ores/obsidian"));
             }
 
-            for (var loot : oreStoneDropsOther) {
-                if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/" + loot));
-                }
-            }
+        }
 
-            for (var loot : oreStoneDrops) {
-                if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/stone"));
-                }
-            }
-
-            for (var loot : oreDeepslateDrops) {
-                if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/deepslate"));
-                }
-            }
-
-            for (var loot : oreAndesiteDrops) {
-                if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/andesite"));
-
-                }
-            }
-
-            for (var loot : oreDioriteDrops) {
-                if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/diorite"));
-                }
-            }
-
-            for (var loot : oreGraniteDrops) {
-                if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/granite"));
-
-                }
-            }
-
-            for (var loot : oreTuffDrops) {
-                if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
-                    event.addTableReference(Spelunkery.res("injects/ores/tuff"));
-                }
+        for (var loot : oreNetherDrops) {
+            if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/netherrack"));
             }
         }
 
+        for (var loot : oreStoneDropsOther) {
+            if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/" + loot));
+            }
+        }
+
+        for (var loot : oreStoneDrops) {
+            if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/stone"));
+            }
+        }
+
+        for (var loot : oreDeepslateDrops) {
+            if (name.equals(new ResourceLocation("minecraft", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/deepslate"));
+            }
+        }
+
+        for (var loot : oreAndesiteDrops) {
+            if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/andesite"));
+
+            }
+        }
+
+        for (var loot : oreDioriteDrops) {
+            if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/diorite"));
+            }
+        }
+
+        for (var loot : oreGraniteDrops) {
+            if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/granite"));
+
+            }
+        }
+
+        for (var loot : oreTuffDrops) {
+            if (name.equals(new ResourceLocation("spelunkery", "blocks/" + loot))) {
+                event.addTableReference(Spelunkery.res("injects/ores/tuff"));
+            }
+        }
     }
 }

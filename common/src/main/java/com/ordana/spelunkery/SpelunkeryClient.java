@@ -4,13 +4,10 @@ import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
-import com.ordana.spelunkery.reg.ModBlocks;
-import com.ordana.spelunkery.reg.ModEntities;
-import com.ordana.spelunkery.reg.ModFluids;
-import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.particles.SulfurParticle;
+import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -24,6 +21,7 @@ public class SpelunkeryClient {
         ClientHelper.addClientSetup(SpelunkeryClient::setup);
         ClientHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
         ClientHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
+        ClientHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
     }
 
     private static boolean finishedSetup = false;
@@ -90,9 +88,6 @@ public class SpelunkeryClient {
         ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
-        //ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
-        //        (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);
-
         finishedSetup = true;
     }
 
@@ -107,7 +102,6 @@ public class SpelunkeryClient {
         }
     }
 
-
     private static void registerEntityRenderers(ClientHelper.EntityRendererEvent event) {
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
@@ -116,4 +110,8 @@ public class SpelunkeryClient {
         event.register(ModEntities.EGGPLANT.get(), context -> new ThrownItemRenderer<>(context, 1, false));
     }
 
+    private static void registerParticles(ClientHelper.ParticleEvent event) {
+        event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
+        event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
+    }
 }

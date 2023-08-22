@@ -265,7 +265,7 @@ public class ModBlocks {
 
 
     public static final Supplier<Block> SULFUR_GEYSER = regWithItem("sulfur_geyser", () ->
-            new SulfurGeyserBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.SAND)));
+            new SulfuricVentBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.SAND)));
 
     //nephrite
     public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->

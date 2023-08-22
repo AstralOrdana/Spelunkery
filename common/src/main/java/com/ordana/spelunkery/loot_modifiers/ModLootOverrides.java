@@ -27,6 +27,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
         this.dynamicPack.addNamespaces("create");
         this.dynamicPack.addNamespaces("sullysmod");
         this.dynamicPack.addNamespaces("oreganized");
+        this.dynamicPack.addNamespaces("ditr");
     }
 
     @Override
@@ -195,6 +196,10 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                 "tuff_jade_ore"
         );
 
+        var ditrLootGems = List.of(
+                "obsidian_diamond_ore"
+        );
+
 
         var oreganizedLootMetal = List.of(
                 "deepslate_lead_ore",
@@ -355,6 +360,14 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                 overrideDataFile(manager, spelunkeryRecipeCrushingGems,
                         "spelunkery", "crushing/",
                         "overrides/recipes/crushing/", ResType.RECIPES);
+            }
+
+            if (PlatHelper.isModLoaded("ditr")) {
+
+                //override ditr loot tables to mak gem ores drop rough gems
+                overrideDataFile(manager, ditrLootGems,
+                        "ditr", "",
+                        "overrides/loot_tables/ditr/", ResType.BLOCK_LOOT_TABLES);
             }
         }
 
