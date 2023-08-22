@@ -120,7 +120,7 @@ public class CommonConfigs {
 
         //fabric specific
         PlatformHelper.getPlatform().ifFabric(() -> {
-            builder.push("misc");
+            builder.push("fabric_specific");
             ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
             builder.pop();
 
