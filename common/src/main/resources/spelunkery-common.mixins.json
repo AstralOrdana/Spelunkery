@@ -16,6 +16,8 @@
     "MossBlockMixin",
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",
+    "OreBlockMixin",
+    "RedstoneOreBlockMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
     "StonecutterBlockMixin",

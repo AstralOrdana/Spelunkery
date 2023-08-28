@@ -160,6 +160,10 @@
   "tag.spelunkery.anvil_repair_item": "Anvil Repairers",
   "tag.spelunkery.grindstone_repair_item": "Grindstone Repairers",
 
+  "material.spelunkery.nephrite": "Nephrite Material",
+  "material.spelunkery.magnetite": "Magnetite Material",
+  "material.spelunkery.salt": "Rock Salt Material",
+
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
   "block.spelunkery.salt": "Salt",

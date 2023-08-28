@@ -57,8 +57,11 @@ public class CommonConfigs {
     public static Supplier<Boolean> ENABLE_MORES;
 
 
-
     public static void init() {
+        // bump class load init
+    }
+
+    static {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("common"), ConfigType.COMMON);
 
         builder.setSynced();
@@ -71,6 +74,9 @@ public class CommonConfigs {
         PARACHUTE_DELAY = builder.define("parachute_delay", 10, 0, 128);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
+        PlatHelper.getPlatform().ifFabric(() -> {
+            ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
+        });
         //ENABLE_GEM_SHARDS = builder.define("enable_gem_shards", true);
         builder.pop();
 
@@ -113,14 +119,6 @@ public class CommonConfigs {
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
         ENABLE_MORES = builder.define("enable_mores", true);
         builder.pop();
-
-        //fabric specific
-        PlatHelper.getPlatform().ifFabric(() -> {
-            builder.push("misc");
-            ORE_STONE_DROPS = builder.define("ore_stone_drops", true);
-            builder.pop();
-        });
-
 
         SERVER_SPEC = builder.buildAndRegister();
         SERVER_SPEC.loadFromFile();

@@ -1,0 +1,9 @@
+{
+  "encoded_palette": false,
+  "asset_name": "magnetite",
+  "description": {
+    "color": "#4a4a4c",
+    "translate": "material.spelunkery.magnetite"
+  },
+  "ingredient": "spelunkery:raw_magnetite"
+}

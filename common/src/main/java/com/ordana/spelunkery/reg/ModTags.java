@@ -22,6 +22,7 @@ public class ModTags {
     public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
     public static final TagKey<Block> BLAST_MINER_IMMUNE = registerBlockTag("blast_miner_immune");
     public static final TagKey<Block> BASE_STONE_END = registerBlockTag("base_stone_end");
+    public static final TagKey<Block> XP_DROP_DISABLED = registerBlockTag("xp_drop_disabled");
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");

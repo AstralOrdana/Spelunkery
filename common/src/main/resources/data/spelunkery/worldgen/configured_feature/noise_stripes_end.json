@@ -43,7 +43,7 @@
     "second_target": "#spelunkery:deepslate_target",
     "second_target_placer": [],
     "use_biome_filter": true,
-    "biomes": "#minecraft:is_end",
+    "biomes": "#spelunkery:has_end_noise",
     "blank_patch_chance": 0.25,
     "use_height_filter": false,
     "surface_offset": 0,

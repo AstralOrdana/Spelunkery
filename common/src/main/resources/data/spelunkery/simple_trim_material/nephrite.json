@@ -1,0 +1,9 @@
+{
+  "encoded_palette": false,
+  "asset_name": "nephrite",
+  "description": {
+    "color": "#103F2C",
+    "translate": "material.spelunkery.nephrite"
+  },
+  "ingredient": "spelunkery:nephrite_chunk"
+}

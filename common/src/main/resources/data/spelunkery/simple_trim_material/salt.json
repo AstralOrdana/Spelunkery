@@ -1,0 +1,9 @@
+{
+  "encoded_palette": false,
+  "asset_name": "salt",
+  "description": {
+    "color": "#dab2bc",
+    "translate": "material.spelunkery.salt"
+  },
+  "ingredient": "spelunkery:rock_salt"
+}

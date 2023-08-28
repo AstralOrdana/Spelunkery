@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:has_swamp_hut",
+  "biomes": "#spelunkery:has_swamp_noise",
   "features": [
     "spelunkery:large_coal_vein"
   ],

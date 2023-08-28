@@ -102,6 +102,10 @@ public class ModLootInjects {
         if (!path.equals("minecraft") && !path.equals("spelunkery")) return;
 
 
+        if (name.equals(new ResourceLocation("minecraft", "blocks/gravel"))) {
+            event.addTableReference(Spelunkery.res("injects/ores/gravel"));
+        }
+
         for (var loot : lootChests) {
             if (name.equals(new ResourceLocation("minecraft", "chests/" + loot))) {
                 event.addTableReference(Spelunkery.res("injects/" + loot));
