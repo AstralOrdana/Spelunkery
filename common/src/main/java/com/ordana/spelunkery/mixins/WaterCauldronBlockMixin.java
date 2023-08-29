@@ -56,7 +56,7 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
                     try {
                         ServerPlayer player = (ServerPlayer) item.getThrowingEntity();
                         CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(player, pos, itemStack);
-                    } catch (NullPointerException ex) {
+                    } catch (NullPointerException|ClassCastException ex) {
                         // ignored -- not dropped by a player
                     }
                     item.remove(Entity.RemovalReason.DISCARDED);
