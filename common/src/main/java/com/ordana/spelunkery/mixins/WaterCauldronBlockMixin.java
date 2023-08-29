@@ -56,7 +56,7 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
                 if (slime != null) {
                     try {
                         ServerPlayer player = (ServerPlayer) item.getOwner();
-                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(player, pos, itemStack);
+                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(Objects.requireNonNull(player), pos, itemStack);
                     } catch (NullPointerException|ClassCastException ex) {
                         // ignored -- not thrown by a player
                     }
