@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.reg.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.sounds.SoundEvent;
@@ -36,11 +37,6 @@ public interface ModCauldronInteraction {
 
     static void bootStrap() {
         addDefaultInteractions(PORTAL);
-        PORTAL.put(Items.BUCKET, (blockState, level, blockPos, player, interactionHand, itemStack) -> {
-            return fillBucket(blockState, level, blockPos, player, interactionHand, itemStack, new ItemStack(ModItems.PORTAL_FLUID_BUCKET.get()), (blockStatex) -> {
-                return blockStatex.getValue(LayeredCauldronBlock.LEVEL) == 3;
-            }, SoundEvents.BUCKET_FILL);
-        });
         PORTAL.put(Items.GLASS_BOTTLE, (blockState, level, blockPos, player, interactionHand, itemStack) -> {
             if (!level.isClientSide) {
                 Item item = itemStack.getItem();
@@ -69,6 +65,11 @@ public interface ModCauldronInteraction {
             } else {
                 return InteractionResult.PASS;
             }
+        });
+        PORTAL.put(Items.BUCKET, (blockState, level, blockPos, player, interactionHand, itemStack) -> {
+            return fillBucket(blockState, level, blockPos, player, interactionHand, itemStack, new ItemStack(ModItems.PORTAL_FLUID_BUCKET.get()), (blockStatex) -> {
+                return blockStatex.getValue(LayeredCauldronBlock.LEVEL) == 3;
+            }, ModSoundEvents.PORTAL_FLUID_FILL);
         });
     }
 

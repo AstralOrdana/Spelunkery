@@ -90,6 +90,10 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
     TextureAtlasSprite[] portalFluidSpriteUncommon = new TextureAtlasSprite[3];
     TextureAtlasSprite[] portalFluidSpriteRare = new TextureAtlasSprite[3];
 
+    private boolean isPortalFluid(FluidState state) {
+        return state.is(ModFluids.PORTAL_FLUID.get()) || state.is(ModFluids.FLOWING_PORTAL_FLUID.get());
+    }
+
     private boolean isRandomPos(BlockPos pos, int rarity) {
         Random random = new Random((long) (Mth.getSeed(pos) * ClientConfigs.PORTAL_FLUID_SEED.get()));
         return random.nextInt(rarity) == 0;
@@ -97,15 +101,15 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
 
     private boolean areAllNeighborsFluid(BlockPos pos) {
         Level level = Minecraft.getInstance().level;
-        return (level != null && level.getFluidState(pos.relative(Direction.NORTH)).is(ModFluids.PORTAL_FLUID.get())
-                && level.getFluidState(pos.relative(Direction.SOUTH)).is(ModFluids.PORTAL_FLUID.get())
-                && level.getFluidState(pos.relative(Direction.EAST)).is(ModFluids.PORTAL_FLUID.get())
-                && level.getFluidState(pos.relative(Direction.WEST)).is(ModFluids.PORTAL_FLUID.get()));
+        return (level != null && isPortalFluid(level.getFluidState(pos.relative(Direction.NORTH))))
+                && isPortalFluid(level.getFluidState(pos.relative(Direction.EAST)))
+                && isPortalFluid(level.getFluidState(pos.relative(Direction.SOUTH)))
+                && isPortalFluid(level.getFluidState(pos.relative(Direction.WEST)));
     }
 
     private boolean isNonFluidAdjacent(BlockPos pos, Direction dir) {
         Level level = Minecraft.getInstance().level;
-        return level != null && !level.getFluidState(pos.relative(dir)).is(ModFluids.PORTAL_FLUID.get());
+        return level != null && !isPortalFluid(level.getFluidState(pos.relative(dir)));
     }
 
 

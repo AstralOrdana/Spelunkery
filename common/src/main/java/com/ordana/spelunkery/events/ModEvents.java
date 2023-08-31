@@ -4,10 +4,7 @@ import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.PortalFluidBottleitem;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
-import com.ordana.spelunkery.reg.ModBlockProperties;
-import com.ordana.spelunkery.reg.ModBlocks;
-import com.ordana.spelunkery.reg.ModItems;
-import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.reg.*;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -89,7 +86,7 @@ public class ModEvents {
         }
         else if (item == Items.BUCKET) {
             if (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) == 3) {
-                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BUCKET.get().getDefaultInstance());
                     player.setItemInHand(hand, itemStack2);

@@ -4,6 +4,7 @@ import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
+import com.ordana.spelunkery.particles.PortalFluidFlameParticle;
 import com.ordana.spelunkery.particles.SulfurParticle;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
@@ -113,5 +114,6 @@ public class SpelunkeryClient {
     private static void registerParticles(ClientHelper.ParticleEvent event) {
         event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
+        event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);
     }
 }

@@ -164,6 +164,9 @@
   "material.spelunkery.magnetite": "Magnetite Material",
   "material.spelunkery.salt": "Rock Salt Material",
 
+  "subtitles.block.portal_fluid.ambient": "Dimensional Tears Ripple",
+  "subtitles.block.portal_fluid.enter": "Dimensional Tears Warp",
+
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
   "block.spelunkery.salt": "Salt",
