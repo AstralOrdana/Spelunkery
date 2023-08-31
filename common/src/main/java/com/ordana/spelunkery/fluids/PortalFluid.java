@@ -33,7 +33,7 @@ public class PortalFluid extends ModFlowingFluid {
     public ModFluidRenderProperties createRenderProperties() {
         return new PortalFluidRenderer(
                 Spelunkery.res("block/portal_fluid"),
-                Spelunkery.res("block/portal_fluid_flow"),
+                Spelunkery.res("block/portal_fluid_flowing"),
                 -1,
                 Spelunkery.res("block/portal_fluid"),
                 Spelunkery.res("block/portal_fluid"),

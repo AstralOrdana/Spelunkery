@@ -95,16 +95,17 @@ public class ModLootInjects {
     );
 
     public static void onLootInject(RegHelper.LootInjectEvent event) {
-        if (!CommonConfigs.ORE_STONE_DROPS.get()) return;
 
         ResourceLocation name = event.getTable();
         String path = name.getNamespace();
         if (!path.equals("minecraft") && !path.equals("spelunkery")) return;
 
-
+/*
         if (name.equals(new ResourceLocation("minecraft", "blocks/gravel"))) {
             event.addTableReference(Spelunkery.res("injects/ores/gravel"));
         }
+
+ */
 
         for (var loot : lootChests) {
             if (name.equals(new ResourceLocation("minecraft", "chests/" + loot))) {
@@ -113,6 +114,7 @@ public class ModLootInjects {
         }
 
         if (PlatHelper.getPlatform() == PlatHelper.Platform.FORGE) return;
+        if (!CommonConfigs.ORE_STONE_DROPS.get()) return;
 
         if (PlatHelper.isModLoaded("ditr")) {
             if (name.equals(new ResourceLocation("ditr", "blocks/obsidian_diamond_ore"))) {
