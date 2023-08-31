@@ -42,18 +42,23 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
     @Inject(method = "entityInside", at = @At("HEAD"))
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
         if (entity instanceof ItemEntity item && state.is(Blocks.WATER_CAULDRON) && this.isEntityInsideContent(state, pos, entity) && level instanceof ServerLevel serverLevel) {
-            ItemStack itemStack2 = item.getItem();
-            if (itemStack2.is(ModItems.SALT.get()) && serverLevel.getBlockState(pos.below()).is(ModTags.CAN_BOIL_WATER)) {
-                int count = itemStack2.getCount();
-                ItemStack itemStack = new ItemStack(ModItems.ROCK_SALT.get());
-                itemStack.setCount(count);
-                item.setItem(itemStack);
+            ItemStack itemStack = item.getItem();
+            if (itemStack.is(ModItems.SALT.get()) && serverLevel.getBlockState(pos.below()).is(ModTags.CAN_BOIL_WATER)) {
+                int count = itemStack.getCount();
+                ItemStack newStack = new ItemStack(ModItems.ROCK_SALT.get());
+                newStack.setCount(count);
+                item.setItem(newStack);
                 LayeredCauldronBlock.lowerFillLevel(state, serverLevel, pos);
             }
-            if (itemStack2.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
+            if (itemStack.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
                 Slime slime = EntityType.SLIME.create(serverLevel);
                 if (slime != null) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) item.getThrowingEntity(), pos, itemStack2);
+                    try {
+                        ServerPlayer player = (ServerPlayer) item.getThrowingEntity();
+                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(player, pos, itemStack);
+                    } catch (NullPointerException|ClassCastException ex) {
+                        // ignored -- not dropped by a player
+                    }
                     item.remove(Entity.RemovalReason.DISCARDED);
                     slime.moveTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                     serverLevel.addFreshEntity(slime);
