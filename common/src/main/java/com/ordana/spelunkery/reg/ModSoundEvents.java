@@ -16,8 +16,11 @@ public class ModSoundEvents {
 
     public static SoundEvent PORTAL_FLUID_AMBIENT = registerSoundEvent("portal_fluid_ambient");
     public static SoundEvent PORTAL_FLUID_ENTER = registerSoundEvent("portal_fluid_submerge");
-    public static SoundEvent PORTAL_FLUID_EMPTY = registerSoundEvent("portal_fluid_empty");
-    public static SoundEvent PORTAL_FLUID_FILL = registerSoundEvent("portal_fluid_fill");
+    public static SoundEvent PORTAL_FLUID_TELEPORT = registerSoundEvent("portal_fluid_teleport");
+    public static SoundEvent PORTAL_FLUID_BUCKET_EMPTY = registerSoundEvent("portal_fluid_bucket_empty");
+    public static SoundEvent PORTAL_FLUID_BUCKET_FILL = registerSoundEvent("portal_fluid_bucket_fill");
+    public static SoundEvent PORTAL_FLUID_BOTTLE_EMPTY = registerSoundEvent("portal_fluid_bottle_empty");
+    public static SoundEvent PORTAL_FLUID_BOTTLE_FILL = registerSoundEvent("portal_fluid_bottle_fill");
 
     @NotNull
     private static SoundEvent registerSoundEvent(@NotNull String name) {

@@ -71,7 +71,7 @@ public class ModEvents {
                                                          Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         if (item == Items.GLASS_BOTTLE) {
             if (state.getBlock() instanceof PortalFluidCauldronBlock) {
-                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
                     player.setItemInHand(hand, itemStack2);
@@ -86,7 +86,7 @@ public class ModEvents {
         }
         else if (item == Items.BUCKET) {
             if (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) == 3) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BUCKET.get().getDefaultInstance());
                     player.setItemInHand(hand, itemStack2);

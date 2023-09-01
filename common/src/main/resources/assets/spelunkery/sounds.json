@@ -1,31 +1,53 @@
 {
-  "portal_fluid_empty": {
+  "portal_fluid_bucket_empty": {
     "subtitle": "subtitles.item.bucket.empty",
     "sounds": [
-      "spelunkery:portal_fluid_empty_0",
-      "spelunkery:portal_fluid_empty_1",
-      "spelunkery:portal_fluid_empty_2"
+      "spelunkery:item/bucket/empty_dimensional_tears_0",
+      "spelunkery:item/bucket/empty_dimensional_tears_1",
+      "spelunkery:item/bucket/empty_dimensional_tears_2"
     ]
   },
-  "portal_fluid_fill": {
+  "portal_fluid_bucket_fill": {
     "subtitle": "subtitles.item.bucket.fill",
     "sounds": [
-      "spelunkery:portal_fluid_fill_0",
-      "spelunkery:portal_fluid_fill_1",
-      "spelunkery:portal_fluid_fill_2"
+      "spelunkery:item/bucket/fill_dimensional_tears_0",
+      "spelunkery:item/bucket/fill_dimensional_tears_1",
+      "spelunkery:item/bucket/fill_dimensional_tears_2"
+    ]
+  },
+  "portal_fluid_bottle_empty": {
+    "subtitle": "subtitles.item.bottle.empty",
+    "sounds": [
+      "spelunkery:item/bottle/empty_dimensional_tears_0",
+      "spelunkery:item/bottle/empty_dimensional_tears_1",
+      "spelunkery:item/bottle/empty_dimensional_tears_2"
+    ]
+  },
+  "portal_fluid_bottle_fill": {
+    "subtitle": "subtitles.item.bottle.fill",
+    "sounds": [
+      "spelunkery:item/bottle/fill_dimensional_tears_0",
+      "spelunkery:item/bottle/fill_dimensional_tears_1",
+      "spelunkery:item/bottle/fill_dimensional_tears_2"
     ]
   },
   "portal_fluid_enter": {
     "subtitle": "subtitles.block.portal_fluid.enter",
     "sounds": [
-      "spelunkery:portal_fluid_enter"
+      "spelunkery:block/portal_fluid/enter"
+    ]
+  },
+  "portal_fluid_teleport": {
+    "subtitle": "subtitles.block.portal_fluid.teleport",
+    "sounds": [
+      "spelunkery:block/portal_fluid/teleport"
     ]
   },
   "portal_fluid_ambient": {
     "subtitle": "subtitles.block.portal_fluid.ambient",
     "sounds": [
-      "spelunkery:portal_fluid_ambient_0",
-      "spelunkery:portal_fluid_ambient_1"
+      "spelunkery:block/portal_fluid/ambient_0",
+      "spelunkery:block/portal_fluid/ambient_1"
     ]
   }
 }
