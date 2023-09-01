@@ -19,16 +19,14 @@
     "subtitle": "subtitles.item.bottle.empty",
     "sounds": [
       "spelunkery:item/bottle/empty_dimensional_tears_0",
-      "spelunkery:item/bottle/empty_dimensional_tears_1",
-      "spelunkery:item/bottle/empty_dimensional_tears_2"
+      "spelunkery:item/bottle/empty_dimensional_tears_1"
     ]
   },
   "portal_fluid_bottle_fill": {
     "subtitle": "subtitles.item.bottle.fill",
     "sounds": [
       "spelunkery:item/bottle/fill_dimensional_tears_0",
-      "spelunkery:item/bottle/fill_dimensional_tears_1",
-      "spelunkery:item/bottle/fill_dimensional_tears_2"
+      "spelunkery:item/bottle/fill_dimensional_tears_1"
     ]
   },
   "portal_fluid_enter": {
