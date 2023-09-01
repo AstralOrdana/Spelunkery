@@ -1,14 +1,11 @@
 package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
-import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Supplier;
 
 public class ModSoundEvents {
     public static void init() {
