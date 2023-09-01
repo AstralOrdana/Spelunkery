@@ -36,8 +36,6 @@ public class PortalFluidBlock extends LiquidBlock {
         if (!entity.isInWater() || entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions() || pos.equals(level.getSharedSpawnPos())) return;
         if (entity instanceof ServerPlayer player && player.isSecondaryUseActive()) return;
 
-
-
         tickCounter++;
 
         if (this.tickCounter < 1) {

@@ -3,6 +3,7 @@ package com.ordana.spelunkery.fluids;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;
 import net.minecraft.client.Minecraft;
@@ -14,6 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -60,6 +63,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
     static ResourceLocation portalFluidUncommon = Spelunkery.res("block/portal_fluid_uncommon");
     static ResourceLocation portalFluidRare = Spelunkery.res("block/portal_fluid_rare");
 
+    static ResourceLocation portalFluidSnence = Spelunkery.res("block/portal_fluid_snence");
+    static ResourceLocation portalFluidMaple = Spelunkery.res("block/portal_fluid_maple");
+
 
 
     TextureAtlasSprite[] portalFluidSpriteLargeSW = new TextureAtlasSprite[3];
@@ -90,6 +96,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
     TextureAtlasSprite[] portalFluidSpriteUncommon = new TextureAtlasSprite[3];
     TextureAtlasSprite[] portalFluidSpriteRare = new TextureAtlasSprite[3];
 
+    TextureAtlasSprite[] portalFluidSpriteSnence = new TextureAtlasSprite[3];
+    TextureAtlasSprite[] portalFluidSpriteMaple = new TextureAtlasSprite[3];
+
     private boolean isPortalFluid(FluidState state) {
         return state.is(ModFluids.PORTAL_FLUID.get()) || state.is(ModFluids.FLOWING_PORTAL_FLUID.get());
     }
@@ -112,6 +121,11 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         return level != null && !isPortalFluid(level.getFluidState(pos.relative(dir)));
     }
 
+    private BlockState getBelowBlock(BlockPos pos) {
+        Level level = Minecraft.getInstance().level;
+        return level.getBlockState(pos.below());
+    }
+
 
     @Override
     public ResourceLocation getStillTexture(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
@@ -122,6 +136,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         if (isNonFluidAdjacent(pos, Direction.NORTH) && isNonFluidAdjacent(pos, Direction.SOUTH) && isNonFluidAdjacent(pos, Direction.EAST) && isNonFluidAdjacent(pos, Direction.WEST)) {
             return portalFluidNESW;
         }
+
+        else if (getBelowBlock(pos).is(Blocks.HONEY_BLOCK)) return portalFluidMaple;
+        else if (getBelowBlock(pos).is(ModBlocks.RAW_MAGNETITE_BLOCK.get())) return portalFluidSnence;
         else if (isNonFluidAdjacent(pos, Direction.NORTH)) {
             texture = portalFluidN;
 
@@ -227,6 +244,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         portalFluidSpriteUncommon[0] = textureAtlas.getSprite(portalFluidUncommon);
         portalFluidSpriteRare[0] = textureAtlas.getSprite(portalFluidRare);
 
+        portalFluidSpriteSnence[0] = textureAtlas.getSprite(portalFluidSnence);
+        portalFluidSpriteMaple[0] = textureAtlas.getSprite(portalFluidMaple);
+
         //flowing textures
 
         portalFluidSpriteLargeSW[1] = textureAtlas.getSprite(getFlowingTexture());
@@ -256,6 +276,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         portalFluidSpriteNONE[1] = textureAtlas.getSprite(getFlowingTexture());
         portalFluidSpriteUncommon[1] = textureAtlas.getSprite(getFlowingTexture());
         portalFluidSpriteRare[1] = textureAtlas.getSprite(getFlowingTexture());
+
+        portalFluidSpriteSnence[1] = textureAtlas.getSprite(getFlowingTexture());
+        portalFluidSpriteMaple[1] = textureAtlas.getSprite(getFlowingTexture());
 
 
         var overlayTexture = this.getOverlayTexture();
@@ -288,6 +311,9 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
             portalFluidSpriteNONE[2] = textureAtlas.getSprite(overlayTexture);
             portalFluidSpriteUncommon[2] = textureAtlas.getSprite(overlayTexture);
             portalFluidSpriteRare[2] = textureAtlas.getSprite(overlayTexture);
+
+            portalFluidSpriteSnence[2] = textureAtlas.getSprite(overlayTexture);
+            portalFluidSpriteMaple[2] = textureAtlas.getSprite(overlayTexture);
         }
     }
 
@@ -301,6 +327,8 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         if (isNonFluidAdjacent(pos, Direction.NORTH) && isNonFluidAdjacent(pos, Direction.SOUTH) && isNonFluidAdjacent(pos, Direction.EAST) && isNonFluidAdjacent(pos, Direction.WEST)) {
             return portalFluidSpriteNESW;
         }
+        else if (getBelowBlock(pos).is(Blocks.HONEY_BLOCK)) return portalFluidSpriteMaple;
+        else if (getBelowBlock(pos).is(ModBlocks.RAW_MAGNETITE_BLOCK.get())) return portalFluidSpriteSnence;
         else if (isNonFluidAdjacent(pos, Direction.NORTH)) {
             texture = portalFluidSpriteN;
 
