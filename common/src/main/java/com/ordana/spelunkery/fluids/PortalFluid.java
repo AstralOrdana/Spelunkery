@@ -86,7 +86,7 @@ public class PortalFluid extends ModFlowingFluid {
     public void animateTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
         BlockPos blockPos = pos.above();
         if (level.getBlockState(blockPos).isAir() && !level.getBlockState(blockPos).isSolidRender(level, blockPos)) {
-            if (random.nextInt(75) == 0) {
+            if (random.nextInt(20) == 0) {
                 double d = (double)pos.getX() + random.nextDouble();
                 double e = (double)pos.getY() + 1.0D;
                 double f = (double)pos.getZ() + random.nextDouble();

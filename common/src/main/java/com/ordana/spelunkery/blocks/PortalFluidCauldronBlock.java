@@ -1,11 +1,14 @@
 package com.ordana.spelunkery.blocks;
 
+import com.ordana.spelunkery.reg.ModParticles;
+import com.ordana.spelunkery.reg.ModSoundEvents;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -18,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.Map;
@@ -40,6 +44,25 @@ public class PortalFluidCauldronBlock extends AbstractCauldronBlock {
 
     public boolean isFull(BlockState state) {
         return state.getValue(LEVEL) == 3;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        BlockPos blockPos = pos.above();
+        if (level.getBlockState(blockPos).isAir() && !level.getBlockState(blockPos).isSolidRender(level, blockPos)) {
+            if (random.nextInt(20) == 0) {
+                double d = (double)pos.getX() + random.nextDouble();
+                double e = (double)pos.getY() + 1.0D;
+                double f = (double)pos.getZ() + random.nextDouble();
+                level.addParticle(ModParticles.PORTAL_FLAME.get(), d, e + 0.2, f, 0.0D, 0.0D, 0.0D);
+                //level.playLocalSound(d, e, f, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+            }
+
+            if (random.nextInt(200) == 0) {
+                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.PORTAL_FLUID_AMBIENT, SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+            }
+        }
+
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {

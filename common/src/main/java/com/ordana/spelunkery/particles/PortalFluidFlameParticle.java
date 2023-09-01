@@ -23,7 +23,7 @@ public class PortalFluidFlameParticle extends TextureSheetParticle {
         super(clientLevel, d, e, f, g, h, i);
         this.sprites = spriteSet;
         this.scale(2F);
-        this.lifetime = (int)(this.random.nextFloat() + 6.0f);
+        this.lifetime = 10;
         this.setSpriteFromAge(spriteSet);
     }
 
