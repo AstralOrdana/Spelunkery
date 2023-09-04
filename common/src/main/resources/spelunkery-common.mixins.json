@@ -10,6 +10,7 @@
   "mixins": [
     "AbstractMinecartMixin",
     "BaseFireBlockMixin",
+    "BoatPaddleSoundMixin",
     "ExperienceOrbMixin",
     "IceMixin",
     "ItemFrameMixin",

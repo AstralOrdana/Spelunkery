@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.forge;
 
 import com.ordana.spelunkery.reg.ModSoundEvents;
+import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -33,13 +34,18 @@ public class PortalFluidBlock extends LiquidBlock {
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 
-        if (!entity.isInWater() || entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions() || pos.equals(level.getSharedSpawnPos())) return;
+        if (entity.getType().is(ModTags.PORTAL_FLUID_IMMUNE)
+                || !entity.isInFluidType()
+                || entity.isPassenger()
+                || entity.isVehicle()
+                || !entity.canChangeDimensions()
+                || pos.equals(level.getSharedSpawnPos())) return;
         if (entity instanceof ServerPlayer player && player.isSecondaryUseActive()) return;
 
         tickCounter++;
 
         if (this.tickCounter < 1) {
-            entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER, 1.0f, 1.0f);
+            entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER.get(), 1.0f, 1.0f);
         }
         level.scheduleTick(pos, this, 120);
         if (this.tickCounter >= 100) {
@@ -47,7 +53,7 @@ public class PortalFluidBlock extends LiquidBlock {
 
             if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
             else LevelHelper.teleportToWorldspawn(level, entity);
-            entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT, 1.0f, 1.0f);
+            entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
 
 
             setTickCounter(0);

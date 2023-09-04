@@ -107,7 +107,7 @@ public class PortalFluidBucketItem extends BucketItem {
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
         if (state.getBlock() instanceof CauldronBlock || (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) < 3)) {
-            level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BUCKET_EMPTY.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
             if (player instanceof ServerPlayer serverPlayer) {
                 ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, Items.BUCKET.getDefaultInstance());
                 player.setItemInHand(context.getHand(), itemStack2);
@@ -122,7 +122,7 @@ public class PortalFluidBucketItem extends BucketItem {
 
     @Override
     protected void playEmptySound(@org.jetbrains.annotations.Nullable Player player, LevelAccessor level, BlockPos pos) {
-        SoundEvent soundEvent = ModSoundEvents.PORTAL_FLUID_BUCKET_EMPTY;
+        SoundEvent soundEvent = ModSoundEvents.PORTAL_FLUID_BUCKET_EMPTY.get();
         level.playSound(player, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
         level.gameEvent(player, GameEvent.FLUID_PLACE, pos);
     }

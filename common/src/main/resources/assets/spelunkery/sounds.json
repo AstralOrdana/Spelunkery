@@ -47,5 +47,14 @@
       "spelunkery:block/portal_fluid/ambient_0",
       "spelunkery:block/portal_fluid/ambient_1"
     ]
+  },
+  "boat_paddle_portal_fluid": {
+    "subtitle": "subtitles.entity.boat.paddle_water",
+    "sounds": [
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_0",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_1",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_2",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_3"
+    ]
   }
 }

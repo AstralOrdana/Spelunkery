@@ -21,7 +21,7 @@
     {
       "fluid": "spelunkery:portal_fluid",
       "nbt": {},
-      "amount": 250
+      "amount": 27000
     }
   ],
   "heatRequirement": "heated"

@@ -166,6 +166,7 @@
 
   "subtitles.block.portal_fluid.ambient": "Dimensional Tears Ripple",
   "subtitles.block.portal_fluid.enter": "Dimensional Tears Warp",
+  "subtitles.block.portal_fluid.teleport": "Dimensional Tears Pulsate",
 
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",

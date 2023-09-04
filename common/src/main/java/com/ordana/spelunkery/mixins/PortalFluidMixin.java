@@ -87,7 +87,7 @@ public abstract class PortalFluidMixin {
 
                     if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
                     else LevelHelper.teleportToWorldspawn(level, entity);
-                    entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT, 1.0f, 1.0f);
+                    entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
 
                 }
 

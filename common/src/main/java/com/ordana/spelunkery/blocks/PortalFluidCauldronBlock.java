@@ -59,7 +59,7 @@ public class PortalFluidCauldronBlock extends AbstractCauldronBlock {
             }
 
             if (random.nextInt(200) == 0) {
-                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.PORTAL_FLUID_AMBIENT, SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.PORTAL_FLUID_AMBIENT.get(), SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }
 

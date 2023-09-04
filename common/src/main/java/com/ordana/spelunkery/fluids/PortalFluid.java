@@ -61,7 +61,7 @@ public class PortalFluid extends ModFlowingFluid {
 
     @NotNull
     public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(ModSoundEvents.PORTAL_FLUID_BUCKET_FILL);
+        return Optional.of(ModSoundEvents.PORTAL_FLUID_BUCKET_FILL.get());
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PortalFluid extends ModFlowingFluid {
             }
 
             if (random.nextInt(200) == 0) {
-                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.PORTAL_FLUID_AMBIENT, SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), ModSoundEvents.PORTAL_FLUID_AMBIENT.get(), SoundSource.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }
 
