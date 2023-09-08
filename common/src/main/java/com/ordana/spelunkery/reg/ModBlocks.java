@@ -419,6 +419,12 @@ public class ModBlocks {
     public static final Supplier<Block> LIGHT_GRAY_GLOWSTICK = regBlock("light_gray_glowstick", () ->
             new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
 
+
+    public static final Supplier<Block> OAK_CHANNEL = regWithItem("oak_channel", () ->
+            new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+
+
+
     public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->
             new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((blockStatex) -> 5), CauldronInteraction.WATER));
 

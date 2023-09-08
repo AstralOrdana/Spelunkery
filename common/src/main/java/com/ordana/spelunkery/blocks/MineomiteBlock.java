@@ -304,14 +304,14 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
         NINE_AABB = Shapes.or(Block.box(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.box(11.0D, 0.0D, 6.0D, 15.0D, 16.0D, 10.0D), Block.box(6.0D, 0.0D, 1.0D, 10.0D, 16.0D, 5.0D), Block.box(1.0D, 0.0D, 6.0D, 5.0D, 16.0D, 10.0D), Block.box(6.0D, 0.0D, 11.0D, 10.0D, 16.0D, 15.0D), Block.box(1.0D, 0.0D, 1.0D, 5.0D, 16.0D, 5.0D), Block.box(11.0D, 0.0D, 1.0D, 15.0D, 16.0D, 5.0D), Block.box(1.0D, 0.0D, 11.0D, 5.0D, 16.0D, 15.0D), Block.box(11.0D, 0.0D, 11.0D, 15.0D, 16.0D, 15.0D));
 
         ONE_AABB_Z =   Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D));
-        TWO_AABB_Z =   Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D));
-        THREE_AABB_Z = Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D));
-        FOUR_AABB_Z =  Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D));
-        FIVE_AABB_Z =  Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D), Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D));
-        SIX_AABB_Z =   Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D), Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D), Block.box(1.0D, 1.0D, 0.0D, 5.0D, 5.0D, 16.0D));
-        SEVEN_AABB_Z = Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D), Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D), Block.box(1.0D, 1.0D, 0.0D, 5.0D, 5.0D, 16.0D), Block.box(11.0D, 1.0D, 0.0D, 15.0D, 5.0D, 16.0D));
-        EIGHT_AABB_Z = Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D), Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D), Block.box(1.0D, 1.0D, 0.0D, 5.0D, 5.0D, 16.0D), Block.box(11.0D, 1.0D, 0.0D, 15.0D, 5.0D, 16.0D), Block.box(1.0D, 11.0D, 0.0D, 5.0D, 15.0D, 16.0D));
-        NINE_AABB_Z =  Shapes.or(Block.box(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D), Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D), Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D), Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D), Block.box(1.0D, 1.0D, 0.0D, 5.0D, 5.0D, 16.0D), Block.box(11.0D, 1.0D, 0.0D, 15.0D, 5.0D, 16.0D), Block.box(1.0D, 11.0D, 0.0D, 5.0D, 15.0D, 16.0D), Block.box(11.0D, 11.0D, 0.0D, 15.0D, 15.0D, 16.0D));
+        TWO_AABB_Z =   Shapes.or(ONE_AABB_Z, Block.box(11.0D, 6.0D, 0.0D, 15.0D, 10.0D, 16.0D));
+        THREE_AABB_Z = Shapes.or(ONE_AABB_Z, TWO_AABB_Z, Block.box(6.0D, 1.0D, 0.0D, 10.0D, 5.0D, 16.0D));
+        FOUR_AABB_Z =  Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, Block.box(1.0D, 6.0D, 0.0D, 5.0D, 10.0D, 16.0D));
+        FIVE_AABB_Z =  Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, FOUR_AABB_Z, Block.box(6.0D, 11.0D, 0.0D, 10.0D, 15.0D, 16.0D));
+        SIX_AABB_Z =   Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, FOUR_AABB_Z, FIVE_AABB_Z, Block.box(1.0D, 1.0D, 0.0D, 5.0D, 5.0D, 16.0D));
+        SEVEN_AABB_Z = Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, FOUR_AABB_Z, FIVE_AABB_Z, SIX_AABB_Z, Block.box(11.0D, 1.0D, 0.0D, 15.0D, 5.0D, 16.0D));
+        EIGHT_AABB_Z = Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, FOUR_AABB_Z, FIVE_AABB_Z, SIX_AABB_Z, SEVEN_AABB_Z, Block.box(1.0D, 11.0D, 0.0D, 5.0D, 15.0D, 16.0D));
+        NINE_AABB_Z =  Shapes.or(ONE_AABB_Z, TWO_AABB_Z, THREE_AABB_Z, FOUR_AABB_Z, FIVE_AABB_Z, SIX_AABB_Z, SEVEN_AABB_Z, EIGHT_AABB_Z, Block.box(11.0D, 11.0D, 0.0D, 15.0D, 15.0D, 16.0D));
     }
 }
 

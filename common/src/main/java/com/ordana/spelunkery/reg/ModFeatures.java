@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -38,6 +39,19 @@ public class ModFeatures {
                     new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
 
     public static void init() {
+
+        //carvers
+        ResourceKey<ConfiguredWorldCarver<?>> end_cave = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_cave"));
+        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_cave);
+
+        ResourceKey<ConfiguredWorldCarver<?>> end_cave_extra = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_cave_extra"));
+        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_cave_extra);
+
+        ResourceKey<ConfiguredWorldCarver<?>> end_canyon = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_canyon"));
+        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_canyon);
+
+        ResourceKey<ConfiguredWorldCarver<?>> crevice = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("crevice"));
+        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_STONE_NOISE, crevice);
 
         //stone generation
         ResourceKey<PlacedFeature> noise_stone = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_stone"));

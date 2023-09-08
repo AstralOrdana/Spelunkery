@@ -1,0 +1,21 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "#planks"
+	},
+	"elements": [
+		{
+			"from": [0, 12, -2],
+			"to": [16, 22, 0.01],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 16, 8]},
+			"faces": {
+				"north": {"uv": [0, 1, 16, 11], "texture": "#planks"},
+				"east": {"uv": [0, 1, 2, 11], "texture": "#planks"},
+				"south": {"uv": [0, 1, 16, 11], "texture": "#planks"},
+				"west": {"uv": [0, 1, 2, 11], "texture": "#planks"},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#planks"},
+				"down": {"uv": [0, 14, 16, 16], "rotation": 180, "texture": "#planks"}
+			}
+		}
+	]
+}

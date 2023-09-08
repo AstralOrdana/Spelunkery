@@ -122,4 +122,7 @@ dependencies {
     modImplementation("curse.maven:selene-499980:4654070")
 
     modLocalRuntime "dev.emi:emi-forge:${rootProject.emi_version}"
+
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixin_extras_version}"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:${mixin_extras_version}"))
 }

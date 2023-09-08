@@ -12,6 +12,7 @@
     "BaseFireBlockMixin",
     "BoatPaddleSoundMixin",
     "ExperienceOrbMixin",
+    "FlowingFluidMixin",
     "IceMixin",
     "ItemFrameMixin",
     "MossBlockMixin",
