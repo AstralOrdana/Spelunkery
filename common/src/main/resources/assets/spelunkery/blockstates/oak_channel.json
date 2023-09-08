@@ -46,9 +46,6 @@
     {
       "apply": {
         "model": "spelunkery:block/oak_channel_base"
-      },
-      "when": {
-        "hole": "false"
       }
     },
     {

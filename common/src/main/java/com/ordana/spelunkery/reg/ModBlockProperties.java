@@ -10,8 +10,6 @@ public class ModBlockProperties {
     public static final BooleanProperty END = BooleanProperty.create("end");
     public static final BooleanProperty FLOOR = BooleanProperty.create("floor");
     public static final BooleanProperty PRIMED = BooleanProperty.create("primed");
-    public static final BooleanProperty HOLE  = BooleanProperty.create("hole");
-    public static final BooleanProperty FLOWING  = BooleanProperty.create("flowing");
     public static final BooleanProperty SUPPORTED  = BooleanProperty.create("supported");
     public static final IntegerProperty CAPS = IntegerProperty.create("caps", 1, 8);
     public static final IntegerProperty STICKS = IntegerProperty.create("sticks", 1, 9);
