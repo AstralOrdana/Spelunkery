@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_side"
+        "model": "spelunkery:block/wooden_channel_side"
       },
       "when": {
         "north": "true"
@@ -10,7 +10,7 @@
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_side",
+        "model": "spelunkery:block/wooden_channel_side",
         "y": 90
       },
       "when": {
@@ -19,7 +19,7 @@
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_side",
+        "model": "spelunkery:block/wooden_channel_side",
         "y": 180
       },
       "when": {
@@ -28,7 +28,7 @@
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_side",
+        "model": "spelunkery:block/wooden_channel_side",
         "y": 270
       },
       "when": {
@@ -37,7 +37,7 @@
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_legs"
+        "model": "spelunkery:block/wooden_channel_legs"
       },
       "when": {
         "supported": "true"
@@ -45,12 +45,12 @@
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_base"
+        "model": "spelunkery:block/wooden_channel_base"
       }
     },
     {
       "apply": {
-        "model": "spelunkery:block/oak_channel_corners"
+        "model": "spelunkery:block/wooden_channel_corners"
       }
     }
   ]

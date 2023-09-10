@@ -420,7 +420,10 @@ public class ModBlocks {
             new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
 
 
-    public static final Supplier<Block> OAK_CHANNEL = regWithItem("oak_channel", () ->
+    public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
+            new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+
+    public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
             new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
 
 

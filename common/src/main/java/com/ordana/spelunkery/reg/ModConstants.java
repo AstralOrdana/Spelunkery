@@ -32,6 +32,7 @@ public final class ModConstants {
     public static final String CBM = "cbm";
     public static final String WOODEN_RAIL = "wooden_rain";
     public static final String LADDER = "ladder";
+    public static final String CHANNELS = "channels";
     public static final String BELLAS = "bellas";
     public static final String CHISELS = "chisels";
     public static final String TEARS = "tears";

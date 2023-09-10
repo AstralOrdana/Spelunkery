@@ -351,6 +351,8 @@
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",
   "block.spelunkery.rope_ladder": "Rope Ladder",
+  "block.spelunkery.wooden_channel": "Wooden Channel",
+  "block.spelunkery.wooden_sluice": "Wooden Sluice",
   "item.spelunkery.portal_fluid_bottle": "Bottle o' Dimensional Tears",
   "item.spelunkery.portal_fluid_bucket": "Bucket of Dimensional Tears",
   "block.spelunkery.portal_fluid": "Dimensional Tears",

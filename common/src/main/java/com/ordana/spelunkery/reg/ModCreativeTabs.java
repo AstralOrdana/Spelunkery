@@ -186,6 +186,12 @@ public class ModCreativeTabs {
                 ModBlocks.WOODEN_RAIL
         );
 
+        after(e, Items.MAGMA_BLOCK, CreativeModeTabs.FUNCTIONAL_BLOCKS,
+                ModConstants.CHANNELS,
+                ModBlocks.WOODEN_CHANNEL,
+                ModBlocks.WOODEN_SLUICE
+        );
+
         after(e, Items.LADDER, CreativeModeTabs.FUNCTIONAL_BLOCKS,
                 ModConstants.LADDER,
                 ModBlocks.ROPE_LADDER
