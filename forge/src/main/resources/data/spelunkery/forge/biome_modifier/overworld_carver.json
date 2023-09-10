@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_carvers",
-  "biomes": "#minecraft:is_overworld",
-  "features": [
-    "spelunkery:crevice"
-  ],
-  "step": "air"
-}

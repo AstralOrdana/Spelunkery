@@ -34,8 +34,7 @@ public class MineomiteDispenserBehavior extends DispenserHelper.AdditionalDispen
             BlockHitResult blockHitResult = new BlockHitResult(Vec3.atCenterOf(blockPos), dir, blockPos, false);
 
             cbm.use(blockState, level, blockPos, fp, InteractionHand.MAIN_HAND, blockHitResult);
-            //var v = stack.useOn(context);
-            //doesnt consume key
+
             return InteractionResultHolder.consume(stack);
         }
         return InteractionResultHolder.pass(stack);

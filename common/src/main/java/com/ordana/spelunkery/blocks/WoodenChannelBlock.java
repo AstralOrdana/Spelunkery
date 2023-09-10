@@ -3,17 +3,19 @@ package com.ordana.spelunkery.blocks;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -21,10 +23,12 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -71,21 +75,30 @@ public class WoodenChannelBlock extends Block {
         builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST);
     }
 
+    public boolean checkNeighborsForChannel(BlockPos pos, LevelAccessor level, Direction dir) {
+        return level.getBlockState(pos.relative(dir)).getBlock() instanceof WoodenChannelBlock
+                && level.getBlockState(pos.relative(dir.getOpposite())).getBlock() instanceof  WoodenChannelBlock;
+    }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         var belowPos = pos.below();
-        var belowState = level.getBlockState(belowPos);
-        level.setBlock(pos, state.setValue(SUPPORTED, belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock), 3);
+        BlockState belowState = level.getBlockState(belowPos);
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
+        level.setBlock(pos, state.setValue(SUPPORTED, bl), 3);
         super.tick(state, level, pos, random);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockGetter blockGetter = context.getLevel();
-        BlockPos blockPos = context.getClickedPos();
-        BlockPos belowPos = blockPos.below();
+        BlockPos pos = context.getClickedPos();
+        BlockPos belowPos = pos.below();
         BlockState belowState = blockGetter.getBlockState(belowPos);
-        return this.defaultBlockState().setValue(NORTH, !blockGetter.getBlockState(blockPos.north()).is(this)).setValue(EAST, !blockGetter.getBlockState(blockPos.east()).is(this)).setValue(SOUTH, !blockGetter.getBlockState(blockPos.south()).is(this)).setValue(WEST, !blockGetter.getBlockState(blockPos.west()).is(this)).setValue(SUPPORTED, belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock);
+        boolean bl = belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        if (checkNeighborsForChannel(pos, context.getLevel(), Direction.NORTH) || checkNeighborsForChannel(pos, context.getLevel(), Direction.WEST)) bl = false;
+
+        return this.defaultBlockState().setValue(NORTH, !blockGetter.getBlockState(pos.north()).is(this)).setValue(EAST, !blockGetter.getBlockState(pos.east()).is(this)).setValue(SOUTH, !blockGetter.getBlockState(pos.south()).is(this)).setValue(WEST, !blockGetter.getBlockState(pos.west()).is(this)).setValue(SUPPORTED, bl);
     }
 
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
@@ -99,7 +112,12 @@ public class WoodenChannelBlock extends Block {
         level.scheduleTick(pos, this, 1);
         level.scheduleTick(pos.above(), level.getBlockState(pos.above()).getBlock(), 1);
         level.scheduleTick(pos.below(), level.getBlockState(pos.below()).getBlock(), 1);
-        if (direction == Direction.DOWN && (neighborState.isFaceSturdy(level, neighborPos, direction) || neighborState.getBlock() instanceof WoodenChannelBlock)) state.setValue(SUPPORTED, true);
+        BlockPos belowPos = pos.below();
+        BlockState belowState = level.getBlockState(belowPos);
+
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
+        state.setValue(SUPPORTED, bl);
         return neighborState.is(this) && direction != Direction.UP && direction != Direction.DOWN ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
@@ -107,26 +125,35 @@ public class WoodenChannelBlock extends Block {
         ItemStack itemStack = player.getItemInHand(hand);
         Item item = itemStack.getItem();
         var dir = hit.getDirection();
-        var propDir = PROPERTY_BY_DIRECTION.get(dir);
         boolean planks = itemStack.is(ItemTags.PLANKS);
         boolean axes = itemStack.is(ItemTags.AXES);
-        var check = state.getValue(PROPERTY_BY_DIRECTION.get(dir));
 
         if (dir == Direction.UP || dir == Direction.DOWN || (!planks && !axes)) {
             return super.use(state, level, pos, player, hand, hit);
         } else {
-            if ((check && planks) || (!check && axes)) level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), planks), 3);
-            if (axes) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.playSound(null, pos, axes ? SoundEvents.WOOD_BREAK : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            var propDir = PROPERTY_BY_DIRECTION.get(dir);
+            var check = state.getValue(propDir);
+            if ((!check && planks) || (check && axes)) {
+                level.setBlock(pos, state.setValue(propDir, !check), 3);
+                if (level.getFluidState(pos.relative(dir).above()).is(Fluids.FLOWING_WATER)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+                //level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+                if (axes) {
+                    ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
+                    level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                }
+                level.playSound(null, pos, axes ? SoundEvents.WOOD_BREAK : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
-            if (!player.isCreative()) {
-                itemStack.hurtAndBreak(1, player, (playerx) -> {
-                    playerx.broadcastBreakEvent(hand);
-                });
+                if (!player.isCreative()) {
+                    if (axes) itemStack.hurtAndBreak(1, player, (playerx) -> {
+                        playerx.broadcastBreakEvent(hand);
+                    });
+                    if (planks) itemStack.shrink(1);
+                }
+
+                player.awardStat(Stats.ITEM_USED.get(item));
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
-
-            player.awardStat(Stats.ITEM_USED.get(item));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.PASS;
         }
     }
 

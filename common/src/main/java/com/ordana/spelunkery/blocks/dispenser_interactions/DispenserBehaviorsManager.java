@@ -7,7 +7,7 @@ import net.minecraft.core.RegistryAccess;
 
 public class DispenserBehaviorsManager {
 
-    public static void registerBehaviors(RegistryAccess registryAccess) {
+    public static void registerBehaviors() {
         DispenserHelper.registerCustomBehavior(new MineomiteDispenserBehavior(ModItems.MINEOMITE.get()));
     }
 }
