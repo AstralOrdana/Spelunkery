@@ -424,7 +424,7 @@ public class ModBlocks {
             new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
 
     public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
-            new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+            new WoodenSluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
 
 
 

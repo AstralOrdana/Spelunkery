@@ -385,6 +385,8 @@
   "block.spelunkery.gray_glowstick": "Gray Glowstick",
   "block.spelunkery.light_gray_glowstick": "Light Gray Glowstick",
 
+  "container.spelunkery.sluice": "Wooden Sluice",
+
   "death.attack.stonecutter": "%1$s was sawed in half",
   "death.attack.stonecutter.player": "%1$s was sawed in half whilst fighting %2$s",
 
