@@ -1,6 +1,5 @@
 package com.ordana.spelunkery.blocks.entity;
 
-import com.ordana.spelunkery.blocks.WoodenSluiceBlock;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -8,8 +7,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -19,12 +16,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> items;
@@ -90,19 +81,6 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
         this.items = itemStacks;
     }
 
-    private void setCooldown(int cooldownTime) {
-        this.cooldownTime = cooldownTime;
-    }
-
-    private boolean isOnCooldown() {
-        return this.cooldownTime > 0;
-    }
-
-    private boolean isOnCustomCooldown() {
-        return this.cooldownTime > 8;
-    }
-
-
     protected Component getDefaultName() {
         return Component.translatable("container.spelunkery.sluice");
     }
@@ -130,6 +108,20 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
             this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
         }
 
+    }
+
+/*
+
+    private void setCooldown(int cooldownTime) {
+        this.cooldownTime = cooldownTime;
+    }
+
+    private boolean isOnCooldown() {
+        return this.cooldownTime > 0;
+    }
+
+    private boolean isOnCustomCooldown() {
+        return this.cooldownTime > 8;
     }
 
     public static void pushItemsTick(Level level, BlockPos pos, BlockState state, WoodenSluiceBlockEntity blockEntity) {
@@ -214,9 +206,6 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
     }
 
 
-
-
-    /*
     void updateBlockState(BlockState state, boolean open) {
         this.level.setBlock(this.getBlockPos(), (BlockState)state.setValue(BarrelBlock.OPEN, open), 3);
     }

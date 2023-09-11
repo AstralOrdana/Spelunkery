@@ -5,7 +5,8 @@
         "model": "spelunkery:block/wooden_channel_side"
       },
       "when": {
-        "north": "true"
+        "north": "true",
+        "grate_north": "false"
       }
     },
     {
@@ -14,7 +15,8 @@
         "y": 90
       },
       "when": {
-        "east": "true"
+        "east": "true",
+        "grate_east": "false"
       }
     },
     {
@@ -23,7 +25,8 @@
         "y": 180
       },
       "when": {
-        "south": "true"
+        "south": "true",
+        "grate_south": "false"
       }
     },
     {
@@ -32,7 +35,8 @@
         "y": 270
       },
       "when": {
-        "west": "true"
+        "west": "true",
+        "grate_west": "false"
       }
     },
     {
@@ -40,7 +44,8 @@
         "model": "spelunkery:block/wooden_sluice_side"
       },
       "when": {
-        "north": "false"
+        "north": "false",
+        "grate_north": "true"
       }
     },
     {
@@ -49,7 +54,8 @@
         "y": 90
       },
       "when": {
-        "east": "false"
+        "east": "false",
+        "grate_east": "true"
       }
     },
     {
@@ -58,7 +64,8 @@
         "y": 180
       },
       "when": {
-        "south": "false"
+        "south": "false",
+        "grate_south": "true"
       }
     },
     {
@@ -67,7 +74,8 @@
         "y": 270
       },
       "when": {
-        "west": "false"
+        "west": "false",
+        "grate_west": "true"
       }
     },
     {

@@ -1,12 +1,21 @@
 package com.ordana.spelunkery.blocks;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.ordana.spelunkery.blocks.entity.WoodenSluiceBlockEntity;
-import com.ordana.spelunkery.reg.ModEntities;
+import com.ordana.spelunkery.reg.ModBlockProperties;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -15,30 +24,66 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public class WoodenSluiceBlock extends ModBaseEntityBlock {
+    public static final BooleanProperty GRATE_NORTH;
+    public static final BooleanProperty GRATE_SOUTH;
+    public static final BooleanProperty GRATE_EAST;
+    public static final BooleanProperty GRATE_WEST;
+
+    public static final Map<Direction, BooleanProperty> GRATE_PROPERTY_BY_DIRECTION;
+
     public WoodenSluiceBlock(Properties properties) {
         super(properties);
+        super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false).setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST, GRATE_NORTH, GRATE_EAST, GRATE_SOUTH, GRATE_WEST);
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         boolean planks = itemStack.is(ItemTags.PLANKS);
         boolean axes = itemStack.is(ItemTags.AXES);
-        if (planks || axes) {
+        var dir = hit.getDirection();
+        if (planks && (dir != Direction.DOWN && dir != Direction.UP)) {
             return super.use(state, level, pos, player, hand, hit);
-        } else if (level.isClientSide) {
+        } else if (axes  && (dir != Direction.DOWN && dir != Direction.UP)) {
+            if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
+                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
+                level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
+            }
+            else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
+                level.setBlock(pos, state.setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), false), 3);
+                level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
+            }
+            else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
+                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
+                level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (!level.getBlockState(pos.relative(dir).above()).isCollisionShapeFullBlock(level, pos)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+            }
+        }
+        else if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }
         else {
@@ -49,6 +94,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
             return InteractionResult.CONSUME;
         }
+        return InteractionResult.CONSUME;
     }
 
     @Override
@@ -61,7 +107,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
         int flowCount = 0;
         for (var direction : Direction.Plane.HORIZONTAL) {
             BlockPos neighborPos = pos.relative(direction);
-            if (level.getFluidState(neighborPos).is(Fluids.FLOWING_WATER) && state.getValue(WoodenChannelBlock.PROPERTY_BY_DIRECTION.get(direction))) {
+            if (level.getFluidState(neighborPos).is(Fluids.FLOWING_WATER) && !(state.getValue(WoodenChannelBlock.PROPERTY_BY_DIRECTION.get(direction))) && state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(direction))) {
                 flowCount += 1;
             }
         }
@@ -85,6 +131,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
         if (blockEntity instanceof WoodenSluiceBlockEntity) {
             ((WoodenSluiceBlockEntity)blockEntity).recheckOpen();
         }
+        super.tick(state, level, pos, random);
 
     }
 
@@ -127,6 +174,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
     }
 
 
+    /*
     @org.jetbrains.annotations.Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
@@ -135,6 +183,21 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
         } else {
             return super.getTicker(level, state, blockEntityType);
         }
+    }
+
+     */
+
+    static {
+        GRATE_NORTH = ModBlockProperties.GRATE_NORTH;
+        GRATE_EAST = ModBlockProperties.GRATE_EAST;
+        GRATE_SOUTH = ModBlockProperties.GRATE_SOUTH;
+        GRATE_WEST = ModBlockProperties.GRATE_WEST;
+        GRATE_PROPERTY_BY_DIRECTION = ImmutableMap.copyOf((Map) Util.make(Maps.newEnumMap(Direction.class), (enumMap) -> {
+            enumMap.put(Direction.NORTH, GRATE_NORTH);
+            enumMap.put(Direction.EAST, GRATE_EAST);
+            enumMap.put(Direction.SOUTH, GRATE_SOUTH);
+            enumMap.put(Direction.WEST, GRATE_WEST);
+        }));
     }
 
 }
