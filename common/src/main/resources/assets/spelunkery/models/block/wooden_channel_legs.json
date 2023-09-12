@@ -1,0 +1,6 @@
+{
+  "parent": "spelunkery:block/channel_template_legs",
+  "textures": {
+    "texture": "spelunkery:block/wooden_channel"
+  }
+}

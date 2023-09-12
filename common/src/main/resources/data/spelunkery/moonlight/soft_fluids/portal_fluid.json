@@ -18,9 +18,9 @@
   "equivalent_fluids": [
     "spelunkery:portal_fluid"
   ],
-  "flowing_texture": "spelunkery:block/portal_fluid",
+  "flowing_texture": "spelunkery:block/portal_fluid_flowing",
   "luminosity": 5,
   "from_mod": "spelunkery",
-  "still_texture": "spelunkery:block/portal_fluid",
+  "still_texture": "spelunkery:block/portal_fluid_overlay",
   "translation_key": "block.spelunkery.portal_fluid"
 }

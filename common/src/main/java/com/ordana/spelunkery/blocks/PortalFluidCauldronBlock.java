@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.Map;

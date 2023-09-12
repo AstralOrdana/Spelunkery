@@ -34,7 +34,7 @@ public class ModItems {
             new SaltBlockItem(ModBlocks.SALT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
     public static final Supplier<Item> NEPHRITE_CHUNK = regItem("nephrite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-    public static final Supplier<Item> MAGNETITE_CHUNK = regItem("magnetite_chunk", () ->
+    public static final Supplier<Item> /* TODO :: RAW_MAGNETITE */ MAGNETITE_CHUNK = regItem("magnetite_chunk", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> RAW_IRON_NUGGET = regItem("raw_iron_nugget", () ->
@@ -100,7 +100,7 @@ public class ModItems {
             new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
     public static final Supplier<Item> NEPHRITE_SIPHON = regItem("nephrite_siphon", () ->
             new NephriteSiphonItem(ModBlocks.NEPHRITE_SIPHON.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
-    public static final Supplier<Item> NEPHRITE_SPOUT = regItem("nephrite_spout", () ->
+    public static final Supplier<Item> /* TODO :: NEPHRITE_FOUNTAIN */ NEPHRITE_SPOUT = regItem("nephrite_spout", () ->
             new NephriteSpoutItem(ModBlocks.NEPHRITE_SPOUT.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
     public static final Supplier<Item> NEPHRITE_DIODE = regItem("nephrite_diode", () ->
             new NephriteDiodeItem(ModBlocks.NEPHRITE_DIODE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
@@ -193,6 +193,7 @@ public class ModItems {
     public static final Supplier<Item> LIGHT_GRAY_GLOWSTICK = regItem("light_gray_glowstick", () ->
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
+    /* TODO @DisabledItem */
     public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->
             new EggplantItem(new Item.Properties().tab(getTab(null)).stacksTo(1).rarity(Rarity.EPIC)));
 

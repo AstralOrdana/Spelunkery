@@ -4,6 +4,7 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.blocks.entity.MagnetiteBlockEntity;
 import com.ordana.spelunkery.blocks.entity.NephriteFountainEntity;
+import com.ordana.spelunkery.blocks.entity.WoodenSluiceBlockEntity;
 import com.ordana.spelunkery.entities.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -27,13 +28,16 @@ public class ModEntities {
             () -> PlatformHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
 
     public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
-            Spelunkery.res("nephrite_spout"),
+            /* TODO nephrite_fountain */ Spelunkery.res("nephrite_spout"),
             () -> PlatformHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
 
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
-            Spelunkery.res("magnetite"),
+            /* TODO raw_magnetite_block */ Spelunkery.res("magnetite"),
             () -> PlatformHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.MAGNETITE.get()));
 
+    public static final Supplier<BlockEntityType<WoodenSluiceBlockEntity>> WOODEN_SLUICE = RegHelper.registerBlockEntityType(
+            Spelunkery.res("wooden_sluice"),
+            () -> PlatformHelper.newBlockEntityType(WoodenSluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));
 
     public static Supplier<EntityType<GlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(
             Spelunkery.res("glowstick"),
