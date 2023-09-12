@@ -26,6 +26,7 @@ https://github.com/Majrusz/MajruszLibrary
 package com.ordana.spelunkery.utils;
 
 import com.mojang.datafixers.util.Pair;
+import com.ordana.spelunkery.reg.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
@@ -35,6 +36,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
@@ -57,7 +59,7 @@ public class LevelHelper {
         if (exactSpawnPosition == null) {
             serverLevel = player.server.getLevel(Level.OVERWORLD);
             assert serverLevel != null;
-            exactSpawnPosition = vec3(serverLevel.getSharedSpawnPos());
+            exactSpawnPosition = Vec3.atCenterOf(serverLevel.getSharedSpawnPos());
         }
         return new Pair<>(exactSpawnPosition, serverLevel);
     }
@@ -66,28 +68,47 @@ public class LevelHelper {
         Pair<Vec3, ServerLevel> spawnData = getSpawnData(player);
         Vec3 spawnPosition = spawnData.getFirst();
         ServerLevel serverLevel = spawnData.getSecond();
-        player.level.playSound(null, player.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1f, 1f);
+        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
 
         player.teleportTo(serverLevel, spawnPosition.x, spawnPosition.y, spawnPosition.z, player.getYRot(), player.getXRot());
     }
 
     public static void teleportToAnchorPosition(ServerPlayer player, GlobalPos pos) {
 
-        player.level.playSound(null, player.blockPosition(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.BLOCKS, 1f, 1f);
+        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
         player.teleportTo(Objects.requireNonNull(player.server.getLevel(pos.dimension())), pos.pos().getX() + 0.5, pos.pos().getY() + 1, pos.pos().getZ() + 0.5, player.getYRot(), player.getXRot());
     }
 
     public static void teleportToWorldspawn(Level level, Entity entity) {
-        Vec3 spawnPosition = vec3(level.getSharedSpawnPos());
+        Vec3 spawnPosition = Vec3.atCenterOf(level.getSharedSpawnPos());
 
         entity.teleportTo(spawnPosition.x, spawnPosition.y, spawnPosition.z);
     }
-    
-    public static Vec3 vec3(BlockPos blockPosition) {
-        return new Vec3(blockPosition.getX() + 0.5, blockPosition.getY() + 0.5, blockPosition.getZ() + 0.5);
-    }
 
-    public static BlockPos blockPos(Vec3 vec3) {
-        return new BlockPos(vec3.x, vec3.y, vec3.z);
+    /*
+    public static void portalFluidBehavior(BlockState state, Level level, BlockPos pos, Entity entity, int tickCounter) {
+        if (!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions() && !pos.equals(level.getSharedSpawnPos())) {
+            if (entity.isInWater()) {
+                tickCounter++;
+                if (tickCounter < 1) {
+                    entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER, 1.0f, 1.0f);
+                }
+                level.scheduleTick(pos, this, 120);
+                if (tickCounter >= 100) {
+
+                    setTickCounter(0);
+
+                    if (entity instanceof ServerPlayer player) {
+                        if (player.isSecondaryUseActive()) return;
+                        LevelHelper.teleportToSpawnPosition(player);
+                    } else {
+                        LevelHelper.teleportToWorldspawn(level, entity);
+                        entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT, 1.0f, 1.0f);
+                    }
+                }
+            }
+        }
     }
+     */
+    
 }

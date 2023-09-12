@@ -4,9 +4,11 @@ import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
+import com.ordana.spelunkery.particles.PortalFluidFlameParticle;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.reg.ModParticles;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -20,6 +22,7 @@ public class SpelunkeryClient {
     public static void init() {
         ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
         ClientPlatformHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
+        ClientPlatformHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
     }
 
     private static boolean finishedSetup = false;
@@ -110,4 +113,9 @@ public class SpelunkeryClient {
         event.register(ModEntities.EGGPLANT.get(), context -> new ThrownItemRenderer<>(context, 1, false));
     }
 
+    private static void registerParticles(ClientPlatformHelper.ParticleEvent event) {
+//        event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
+//        event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
+        event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);
+    }
 }
