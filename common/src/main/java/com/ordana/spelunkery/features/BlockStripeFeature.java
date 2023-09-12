@@ -5,6 +5,7 @@ import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.features.util.FastNoiseLite;
 import com.ordana.spelunkery.features.util.StoneEntry;
 import com.ordana.spelunkery.features.util.StonePattern;
+import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -68,44 +69,52 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
             noise.SetFractalOctaves(1);
             var getX = (originPos.getX() & ~15);
             var getZ = (originPos.getZ() & ~15);
+            var minY = chunkGenerator.getMinY();
 
             for (int x = getX; x < getX + 16; x++) {
                 for (int z = getZ; z < getZ + 16; z++) {
-                    var heightmap = worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
-                    for (int y = chunkGenerator.getMinY(); y < heightmap - config.surfaceOffset; y++) {
-
-
-                        BlockPos currentPos = new BlockPos(x, y, z);
-                        BlockState currentState = cachedChunk.getBlockState(currentPos);
-
-
-
-                        boolean isTarget1 = currentState.is(config.firstTarget);
-                        boolean isTarget2 = false;
-                        if (config.secondTarget != null && config.secondTargetPlacer != null) isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
-                        if (!isTarget1 && !isTarget2) continue;
-
-
-                        domainWarpedVector.x = x;
-                        domainWarpedVector.y = y;
-                        domainWarpedVector.z = z;
-                        noise.DomainWarp(domainWarpedVector);
-                        float cellValue = cellNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z);
-                        cellValue = (cellValue * 0.5F + 0.5F);
-                        int stoneIndex = Mth.floor((cellValue) * config.firstTargetPlacer.size());
-
-                        float seed = cellValue * 1000000;
-                        Random patchRandom = new Random((long) seed);
-                        boolean isBlankPatch = (patchRandom.nextFloat() < config.blankPatchChance) || cellBufferNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z) > -0.1;
-
-
-                        boolean passesBiomeFilter = true;
-                        if (config.biomes != null && config.useBiomeFilter) {
-                            var biome = worldGenLevel.getBiome(currentPos);
-                            if (!config.biomes.contains(biome)) {
-                                passesBiomeFilter = false;
-                            }
+                    if (originPos.getY() == minY && CommonConfigs.PORTAL_FLUID_OCEAN.get()) {
+                        BlockPos currentPos = new BlockPos(x, minY, z);
+                        if (cachedChunk.getBlockState(currentPos).isAir()) {
+                            worldGenLevel.setBlock(currentPos, ModBlocks.PORTAL_FLUID.get().defaultBlockState(), Block.UPDATE_CLIENTS);
                         }
+                    } else {
+
+                        var heightmap = worldGenLevel.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, x, z);
+                        for (int y = chunkGenerator.getMinY(); y < heightmap - config.surfaceOffset; y++) {
+
+
+                            BlockPos currentPos = new BlockPos(x, y, z);
+                            BlockState currentState = cachedChunk.getBlockState(currentPos);
+
+
+                            boolean isTarget1 = currentState.is(config.firstTarget);
+                            boolean isTarget2 = false;
+                            if (config.secondTarget != null && config.secondTargetPlacer != null)
+                                isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
+                            if (!isTarget1 && !isTarget2) continue;
+
+
+                            domainWarpedVector.x = x;
+                            domainWarpedVector.y = y;
+                            domainWarpedVector.z = z;
+                            noise.DomainWarp(domainWarpedVector);
+                            float cellValue = cellNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z);
+                            cellValue = (cellValue * 0.5F + 0.5F);
+                            int stoneIndex = Mth.floor((cellValue) * config.firstTargetPlacer.size());
+
+                            float seed = cellValue * 1000000;
+                            Random patchRandom = new Random((long) seed);
+                            boolean isBlankPatch = (patchRandom.nextFloat() < config.blankPatchChance) || cellBufferNoise.GetNoise(domainWarpedVector.x, domainWarpedVector.y, domainWarpedVector.z) > -0.1;
+
+
+                            boolean passesBiomeFilter = true;
+                            if (config.biomes != null && config.useBiomeFilter) {
+                                var biome = worldGenLevel.getBiome(currentPos);
+                                if (!config.biomes.contains(biome)) {
+                                    passesBiomeFilter = false;
+                                }
+                            }
 
 
                         /*
@@ -114,29 +123,30 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                                 cachedChunk.setBlockState(currentPos, Blocks.BARRIER.defaultBlockState(), false);
                         }
                          */
-                        if (passesBiomeFilter) {
-                            if (!isBlankPatch) {
-                                if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - config.bottomOffset))) {
+                            if (passesBiomeFilter) {
+                                if (!isBlankPatch) {
+                                    if (!config.useHeightFilter || (y > (cachedChunk.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - config.bottomOffset))) {
 
-                                    List<StoneEntry> patternList = null;
-                                    if (isTarget1) patternList = config.firstTargetPlacer;
-                                    else if (isTarget2) patternList = config.secondTargetPlacer;
+                                        List<StoneEntry> patternList = null;
+                                        if (isTarget1) patternList = config.firstTargetPlacer;
+                                        else if (isTarget2) patternList = config.secondTargetPlacer;
 
 
+                                        if (patternList != null) {
+                                            StoneEntry stoneEntry = patternList.get(stoneIndex);
+                                            StonePattern stonePattern = stoneEntry.getStonePattern();
 
-                                    if (patternList != null) {
-                                        StoneEntry stoneEntry = patternList.get(stoneIndex);
-                                        StonePattern stonePattern = stoneEntry.getStonePattern();
-
-                                        if (stonePattern.shouldPlacePrimaryStone(currentPos)) {
-                                            worldGenLevel.setBlock(currentPos, stoneEntry.getPrimaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
-                                        } else if (stonePattern.shouldPlaceSecondaryStone(currentPos)) {
-                                            worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
+                                            if (stonePattern.shouldPlacePrimaryStone(currentPos)) {
+                                                worldGenLevel.setBlock(currentPos, stoneEntry.getPrimaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
+                                            } else if (stonePattern.shouldPlaceSecondaryStone(currentPos)) {
+                                                worldGenLevel.setBlock(currentPos, stoneEntry.getSecondaryStoneState(worldGenLevel, currentPos), Block.UPDATE_CLIENTS);
+                                            }
                                         }
-                                    }
 
+                                    }
                                 }
                             }
+
                         }
                     }
                 }

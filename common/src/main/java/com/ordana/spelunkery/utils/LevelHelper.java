@@ -31,12 +31,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
@@ -68,21 +65,22 @@ public class LevelHelper {
         Pair<Vec3, ServerLevel> spawnData = getSpawnData(player);
         Vec3 spawnPosition = spawnData.getFirst();
         ServerLevel serverLevel = spawnData.getSecond();
-        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
 
         player.teleportTo(serverLevel, spawnPosition.x, spawnPosition.y, spawnPosition.z, player.getYRot(), player.getXRot());
+        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
     }
 
     public static void teleportToAnchorPosition(ServerPlayer player, GlobalPos pos) {
 
-        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
         player.teleportTo(Objects.requireNonNull(player.server.getLevel(pos.dimension())), pos.pos().getX() + 0.5, pos.pos().getY() + 1, pos.pos().getZ() + 0.5, player.getYRot(), player.getXRot());
+        player.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
     }
 
     public static void teleportToWorldspawn(Level level, Entity entity) {
         Vec3 spawnPosition = Vec3.atCenterOf(level.getSharedSpawnPos());
 
         entity.teleportTo(spawnPosition.x, spawnPosition.y, spawnPosition.z);
+        entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get());
     }
 
     /*

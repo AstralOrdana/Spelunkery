@@ -19,16 +19,14 @@
     "subtitle": "subtitles.item.bottle.empty",
     "sounds": [
       "spelunkery:item/bottle/empty_dimensional_tears_0",
-      "spelunkery:item/bottle/empty_dimensional_tears_1",
-      "spelunkery:item/bottle/empty_dimensional_tears_2"
+      "spelunkery:item/bottle/empty_dimensional_tears_1"
     ]
   },
   "portal_fluid_bottle_fill": {
     "subtitle": "subtitles.item.bottle.fill",
     "sounds": [
       "spelunkery:item/bottle/fill_dimensional_tears_0",
-      "spelunkery:item/bottle/fill_dimensional_tears_1",
-      "spelunkery:item/bottle/fill_dimensional_tears_2"
+      "spelunkery:item/bottle/fill_dimensional_tears_1"
     ]
   },
   "portal_fluid_enter": {
@@ -48,6 +46,15 @@
     "sounds": [
       "spelunkery:block/portal_fluid/ambient_0",
       "spelunkery:block/portal_fluid/ambient_1"
+    ]
+  },
+  "boat_paddle_portal_fluid": {
+    "subtitle": "subtitles.entity.boat.paddle_water",
+    "sounds": [
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_0",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_1",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_2",
+      "spelunkery:block/portal_fluid/paddle_portal_fluid_3"
     ]
   }
 }

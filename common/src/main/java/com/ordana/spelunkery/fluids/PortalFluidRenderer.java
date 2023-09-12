@@ -2,7 +2,6 @@ package com.ordana.spelunkery.fluids;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.ClientConfigs;
-import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;

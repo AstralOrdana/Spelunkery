@@ -1,12 +1,11 @@
 package com.ordana.spelunkery.forge;
 
 import com.ordana.spelunkery.reg.ModSoundEvents;
+import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -35,7 +34,12 @@ public class PortalFluidBlock extends LiquidBlock {
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 
-        if (!entity.isInWater() || entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions() || pos.equals(level.getSharedSpawnPos())) return;
+        if (entity.getType().is(ModTags.PORTAL_FLUID_IMMUNE)
+                || !entity.isInFluidType()
+                || entity.isPassenger()
+                || entity.isVehicle()
+                || !entity.canChangeDimensions()
+                || pos.equals(level.getSharedSpawnPos())) return;
         if (entity instanceof ServerPlayer player && player.isSecondaryUseActive()) return;
 
         tickCounter++;

@@ -19,6 +19,7 @@ public class ModTags {
     public static final TagKey<Block> OCEAN_TARGET = registerBlockTag("ocean_target");
     public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
     public static final TagKey<Block> CHISELABLE = registerBlockTag("chiselable");
+    public static final TagKey<Block> CHISEL_IMMUNE = registerBlockTag("chisel_immune");
     public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
     public static final TagKey<Block> BLAST_MINER_IMMUNE = registerBlockTag("blast_miner_immune");
     public static final TagKey<Block> BASE_STONE_END = registerBlockTag("base_stone_end");
@@ -50,6 +51,7 @@ public class ModTags {
 
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");
+    public static final TagKey<EntityType<?>> PORTAL_FLUID_IMMUNE = registerEntityTag("portal_fluid_immune");
 
     //fluids
     public static final TagKey<Fluid> PORTAL_FLUID = registerFluidTag("portal_fluid");

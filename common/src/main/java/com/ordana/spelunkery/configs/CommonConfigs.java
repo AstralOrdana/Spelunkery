@@ -55,6 +55,7 @@ public class CommonConfigs {
     public static Supplier<Boolean> BETTER_SCULK_PATCHES;
     public static Supplier<Boolean> DARK_FOREST_PORTABELLAS;
     public static Supplier<Boolean> ENABLE_MORES;
+    public static Supplier<Boolean> PORTAL_FLUID_OCEAN;
 
 
 
@@ -113,9 +114,10 @@ public class CommonConfigs {
         builder.push("worldgen");
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         ENABLE_SPOROPHYTES = builder.define("enable_sporophytes", true);
-        BETTER_SCULK_PATCHES = builder.define("better_sculk_patches", true);
+        BETTER_SCULK_PATCHES = builder.define("better_sculk_patches", false);
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
         ENABLE_MORES = builder.define("enable_mores", true);
+        PORTAL_FLUID_OCEAN = builder.define("portal_fluid_ocean", false);
         builder.pop();
 
         //fabric specific
