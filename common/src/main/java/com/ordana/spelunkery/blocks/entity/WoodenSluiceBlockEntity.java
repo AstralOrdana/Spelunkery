@@ -153,14 +153,14 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
         blockEntity.tickedGameTime = level.getGameTime();
         if (!blockEntity.isOnCooldown()) {
             blockEntity.setCooldown(0);
-            tryFilterItems(level, pos, state, blockEntity, ()
+            int flow = WoodenSluiceBlock.getFlow(level, state, pos);
+            tryFilterItems(level, pos, state, blockEntity, flow, ()
                     -> createFilteredItems(pos, level, blockEntity));
         }
     }
 
-    private static boolean tryFilterItems(Level level, BlockPos pos, BlockState state, WoodenSluiceBlockEntity blockEntity, BooleanSupplier validator) {
+    public static boolean tryFilterItems(Level level, BlockPos pos, BlockState state, WoodenSluiceBlockEntity blockEntity, int flow, BooleanSupplier validator) {
         if (!level.isClientSide && !blockEntity.isOnCooldown()) {
-            int flow = WoodenSluiceBlock.getFlow(level, state, pos);
             boolean bl = false;
             int delay = 20;
             for (int i = 0; i < flow; ++i) {
@@ -209,7 +209,6 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
         ItemEntity itemEntity = (ItemEntity)itemList.next();
         var itemName = Utils.getID(itemEntity.getItem().getItem()).getPath();
         var fluidName = Utils.getID(level.getFluidState(pos.above()).getType()).getPath();
-        var biomeName = Utils.getID(level.getBiome(pos).value()).getPath();
 
         if (fluidName.contains("flowing_")) fluidName = fluidName.replace("flowing_", "");
 
@@ -227,7 +226,7 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
             var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
             if (lootItem.isEmpty()) return false;
 
-            suckInItems(pos, level, entity, lootItem.iterator().next(), itemEntity);
+            suckInItems(entity, lootItem.iterator().next());
 
             var itemEntityItem = itemEntity.getItem();
             var subtractCount = new ItemStack(itemEntityItem.getItem(), itemEntityItem.getCount() - 1);
@@ -238,59 +237,25 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
 
     }
 
-    public static boolean suckInItems(BlockPos pos, Level level, WoodenSluiceBlockEntity container, ItemStack itemStack, ItemEntity itemEntity) {
-        {
-            Iterator var3 = getItemsAtAndAbove(pos, level).iterator();
-
-            do {
-                if (!var3.hasNext()) {
-                    return false;
-                }
-
-            } while(!addItem(container, itemStack, itemEntity));
-
-            return true;
-        }
+    public static boolean suckInItems(Container container, ItemStack itemStack) {
+        ItemStack itemStack2 = addItem(container, itemStack);
+        return itemStack2.isEmpty();
     }
 
-
-    public static boolean addItem(Container container, ItemStack itemStack, ItemEntity itemEntity) {
-        boolean bl = false;
-        ItemStack itemStack2 = addItem(null, container, itemStack, null);
-        if (itemStack2.isEmpty()) {
-            bl = true;
-        }
-
-        return bl;
-    }
-
-    public static ItemStack addItem(@Nullable Container source, Container destination, ItemStack stack, @Nullable Direction direction) {
+    public static ItemStack addItem(Container destination, ItemStack stack) {
         int i;
-        if (destination instanceof WorldlyContainer) {
-            WorldlyContainer worldlyContainer = (WorldlyContainer)destination;
-            if (direction != null) {
-                int[] is = worldlyContainer.getSlotsForFace(direction);
-
-                for(i = 0; i < is.length && !stack.isEmpty(); ++i) {
-                    stack = tryMoveInItem(source, destination, stack, is[i], direction);
-                }
-
-                return stack;
-            }
-        }
-
         int j = destination.getContainerSize();
 
         for(i = 0; i < j && !stack.isEmpty(); ++i) {
-            stack = tryMoveInItem(source, destination, stack, i, direction);
+            stack = tryMoveInItem(destination, stack, i);
         }
 
         return stack;
     }
 
-    private static ItemStack tryMoveInItem(@Nullable Container source, Container destination, ItemStack stack, int slot, @Nullable Direction direction) {
+    private static ItemStack tryMoveInItem(Container destination, ItemStack stack, int slot) {
         ItemStack itemStack = destination.getItem(slot);
-        if (canPlaceItemInContainer(destination, stack, slot, direction)) {
+        if (canPlaceItemInContainer(destination, stack, slot)) {
             boolean bl = false;
             boolean bl2 = destination.isEmpty();
             if (itemStack.isEmpty()) {
@@ -319,14 +284,14 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
         return stack;
     }
 
-    private static boolean canPlaceItemInContainer(Container container, ItemStack stack, int slot, @Nullable Direction direction) {
+    private static boolean canPlaceItemInContainer(Container container, ItemStack stack, int slot) {
         if (!container.canPlaceItem(slot, stack)) {
             return false;
         } else {
             boolean var10000;
             if (container instanceof WorldlyContainer) {
                 WorldlyContainer worldlyContainer = (WorldlyContainer)container;
-                if (!worldlyContainer.canPlaceItemThroughFace(slot, stack, direction)) {
+                if (!worldlyContainer.canPlaceItemThroughFace(slot, stack, null)) {
                     var10000 = false;
                     return var10000;
                 }

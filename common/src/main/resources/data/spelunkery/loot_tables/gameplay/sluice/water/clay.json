@@ -32,7 +32,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "spelunkery:rough_diamond_nugget"
+          "name": "spelunkery:rough_diamond_shard"
         }
       ]
     }

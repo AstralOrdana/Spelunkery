@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -132,7 +133,7 @@ public class WoodenChannelBlock extends Block {
             level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.playSound(null, pos, check ? SoundEvents.WOOD_BREAK : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
-            if (!level.getBlockState(pos.relative(dir).above()).isCollisionShapeFullBlock(level, pos)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+            if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
 
                 if (!player.isCreative()) {
                     itemStack.hurtAndBreak(1, player, (playerx)
