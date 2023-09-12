@@ -159,6 +159,8 @@
   "tag.spelunkery.keep_on_death": "Kept on Death Items",
   "tag.spelunkery.anvil_repair_item": "Anvil Repairers",
   "tag.spelunkery.grindstone_repair_item": "Grindstone Repairers",
+  "tag.spelunkery.parachute_repair": "Parachute Repairers",
+  "tag.spelunkery.wip_items": "WIP items",
 
   "material.spelunkery.nephrite": "Nephrite Material",
   "material.spelunkery.magnetite": "Magnetite Material",
