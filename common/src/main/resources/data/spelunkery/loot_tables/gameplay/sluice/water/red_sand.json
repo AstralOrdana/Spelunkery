@@ -12,32 +12,32 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:string"
+          "name": "minecraft:dead_bush"
         },
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:feather"
+          "name": "minecraft:bone"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cobweb"
+          "name": "minecraft:skeleton_skull"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:grass"
+          "name": "spelunkery:raw_gold_nugget"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:wheat_seeds"
+          "name": "spelunkery:raw_iron_nugget"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cocoa_beans"
+          "name": "spelunkery:rough_cinnabar_shard"
         }
       ]
     }

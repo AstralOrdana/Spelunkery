@@ -7,37 +7,42 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:stick"
+          "name": "minecraft:mangrove_roots"
         },
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:string"
+          "name": "minecraft:mangrove_propagule"
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:feather"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:cobweb"
+          "weight": 5,
+          "name": "minecraft:pitcher_pod"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:grass"
+          "name": "minecraft:bone"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:skeleton_skull"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:wheat_seeds"
+          "name": "minecraft:leather_boots"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cocoa_beans"
+          "name": "minecraft:glass_bottle"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "spelunkery:rough_emerald_shard"
         }
       ]
     }

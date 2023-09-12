@@ -7,7 +7,12 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:stick"
+          "name": "spelunkery:tangle_roots"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "minecraft:hanging_roots"
         },
         {
           "type": "minecraft:item",
@@ -16,28 +21,23 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:feather"
+          "weight":1,
+          "name": "minecraft:potato"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:cobweb"
+          "weight":2,
+          "name": "minecraft:carrot"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:grass"
+          "weight":1,
+          "name": "minecraft:poisonous_potato"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:wheat_seeds"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:cocoa_beans"
+          "weight": 2,
+          "name": "minecraft:beetroot_seeds"
         }
       ]
     }

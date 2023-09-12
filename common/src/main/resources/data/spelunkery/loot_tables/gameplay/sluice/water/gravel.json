@@ -7,37 +7,32 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:stick"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:string"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:feather"
+          "name": "minecraft:flint"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cobweb"
+          "name": "spelunkery:raw_copper_nugget"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:grass"
+          "name": "spelunkery:raw_iron_nugget"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:wheat_seeds"
+          "name": "minecraft:prismarine_shard"
         },
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cocoa_beans"
+          "name": "spelunkery:nephrite_chunk"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "minecraft:scute"
         }
       ]
     }
