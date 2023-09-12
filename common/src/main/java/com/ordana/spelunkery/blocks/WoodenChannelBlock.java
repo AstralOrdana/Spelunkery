@@ -15,7 +15,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,10 +28,8 @@ import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -106,15 +103,11 @@ public class WoodenChannelBlock extends Block {
 
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         level.scheduleTick(pos, this, 1);
-        level.scheduleTick(pos.above(), level.getBlockState(pos.above()).getBlock(), 1);
-        level.scheduleTick(pos.below(), level.getBlockState(pos.below()).getBlock(), 1);
         super.neighborChanged(state, level, pos, block, fromPos, isMoving);
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         level.scheduleTick(pos, this, 1);
-        level.scheduleTick(pos.above(), level.getBlockState(pos.above()).getBlock(), 1);
-        level.scheduleTick(pos.below(), level.getBlockState(pos.below()).getBlock(), 1);
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
 

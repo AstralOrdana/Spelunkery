@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.ordana.spelunkery.blocks.entity.WoodenSluiceBlockEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModEntities;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,6 +13,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
@@ -28,6 +30,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -57,13 +61,11 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        boolean planks = itemStack.is(ItemTags.PLANKS);
-        boolean axes = itemStack.is(ItemTags.AXES);
+        ItemStack stack = player.getItemInHand(hand);
+        boolean axes = stack.is(ItemTags.AXES);
         var dir = hit.getDirection();
-        if (planks && (dir != Direction.DOWN && dir != Direction.UP)) {
-            return super.use(state, level, pos, player, hand, hit);
-        } else if (axes  && (dir != Direction.DOWN && dir != Direction.UP)) {
+
+        if (axes  && (dir != Direction.DOWN && dir != Direction.UP)) {
             if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
                 level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -82,6 +84,13 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
                 level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!level.getBlockState(pos.relative(dir).above()).isCollisionShapeFullBlock(level, pos)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
             }
+            if (!player.isCreative()) {
+                stack.hurtAndBreak(1, player, (playerx)
+                        -> playerx.broadcastBreakEvent(hand));
+            }
+
+            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
         else if (level.isClientSide) {
             return InteractionResult.SUCCESS;
@@ -94,7 +103,6 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
             return InteractionResult.CONSUME;
         }
-        return InteractionResult.CONSUME;
     }
 
     @Override
@@ -173,8 +181,6 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
         return blockEntity instanceof MenuProvider ? (MenuProvider)blockEntity : null;
     }
 
-
-    /*
     @org.jetbrains.annotations.Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
@@ -184,8 +190,6 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
             return super.getTicker(level, state, blockEntityType);
         }
     }
-
-     */
 
     static {
         GRATE_NORTH = ModBlockProperties.GRATE_NORTH;

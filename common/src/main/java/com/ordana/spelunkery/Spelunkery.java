@@ -1,6 +1,5 @@
 package com.ordana.spelunkery;
 
-import com.ordana.spelunkery.blocks.dispenser_interactions.DispenserBehaviorsManager;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.events.NetworkHandler;
