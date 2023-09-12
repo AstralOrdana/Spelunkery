@@ -28,6 +28,7 @@ public class SpelunkeryForge {
     public SpelunkeryForge() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
+        ModBiomeModifier.register(bus);
 
         Spelunkery.commonInit();
 
