@@ -1,5 +1,5 @@
 {
-  "type": "forge:add_carvers",
+  "type": "spelunkery:add_carvers",
   "biomes": "#spelunkery:has_end_noise",
   "carvers": [
     "spelunkery:end_cave",

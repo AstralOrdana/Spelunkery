@@ -17,7 +17,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 /** License: LGPL-2.1-only | Original: <a href="https://github.com/neoforged/NeoForge/pull/65">NeoForge</a> */
 public class ModBiomeModifier {
-    private static final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, /* So that they datapack files can stay the same */ "forge");
+    private static final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, "spelunkery");
 
     /**
      * Stock biome modifier for adding carvers to biomes.
