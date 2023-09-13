@@ -5,10 +5,7 @@ import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.particles.PortalFluidFlameParticle;
-import com.ordana.spelunkery.reg.ModBlocks;
-import com.ordana.spelunkery.reg.ModEntities;
-import com.ordana.spelunkery.reg.ModItems;
-import com.ordana.spelunkery.reg.ModParticles;
+import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -28,6 +25,8 @@ public class SpelunkeryClient {
     private static boolean finishedSetup = false;
 
     public static void setup() {
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
 
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
