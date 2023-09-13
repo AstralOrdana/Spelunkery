@@ -2,7 +2,6 @@ package com.ordana.spelunkery.mixins;
 
 import com.mojang.datafixers.util.Pair;
 import com.ordana.spelunkery.blocks.WoodenChannelBlock;
-import com.ordana.spelunkery.reg.ModBlocks;
 import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
 import net.minecraft.core.BlockPos;
