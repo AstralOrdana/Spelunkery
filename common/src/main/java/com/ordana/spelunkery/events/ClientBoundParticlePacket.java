@@ -19,14 +19,14 @@ public class ClientBoundParticlePacket implements Message {
 
     public ClientBoundParticlePacket(FriendlyByteBuf buffer) {
         this.id = buffer.readEnum(EventType.class);
+
         if (buffer.readBoolean()) {
             this.extraData = buffer.readInt();
         } else this.extraData = null;
+
         if (buffer.readBoolean()) {
             this.pos = new Vec3(buffer.readDouble(), buffer.readDouble(), buffer.readDouble());
-        } else {
-            this.pos = null;
-        }
+        } else this.pos = null;
     }
 
     public ClientBoundParticlePacket(BlockPos pos, EventType id) {
@@ -74,7 +74,8 @@ public class ClientBoundParticlePacket implements Message {
     }
 
     public enum EventType {
-        SULFUR_VENT
+        SULFUR_VENT,
+        SLUICE
     }
 
 }

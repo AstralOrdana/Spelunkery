@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class ModBaseEntityBlock extends WoodenChannelBlock implements EntityBlock {
+public abstract class ModBaseEntityBlock extends ChannelBlock implements EntityBlock {
     protected ModBaseEntityBlock(Properties properties) {
         super(properties);
     }

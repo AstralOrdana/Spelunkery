@@ -6,6 +6,11 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:silverfish_spawn_egg"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:kelp"
         },

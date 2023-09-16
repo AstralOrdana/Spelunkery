@@ -31,6 +31,9 @@ public class ClientReceivers {
 
     public static void handleSpawnBlockParticlePacket(ClientBoundParticlePacket message) {
         withLevelDo(l -> {
+            if (message.id == ClientBoundParticlePacket.EventType.SLUICE) {
+                //ParticleUtils.spawnParticleOnFace(l, message.pos, );
+            }
             if (message.id == ClientBoundParticlePacket.EventType.SULFUR_VENT) {
                 Vec3 vec = Vec3.atCenterOf(BlockPos.containing(message.pos));
                 var dir = l.getBlockState(BlockPos.containing(vec)).getValue(BlockStateProperties.FACING);
@@ -48,19 +51,18 @@ public class ClientReceivers {
                 var color = 0;
                 if (dustBlock instanceof FallingBlock block) color = block.getDustColor(dustBlockState, l, dustBlockPos);
 
-                if (water) {
-                    for (int j = 0; j < 40; ++j) {
+
+                for (int j = 0; j < 40; ++j) {
+                    if (water) {
                         var xSpeed = (x == 0 ? Mth.nextDouble(l.random, -0.6D, 0.6D) : (x < 0 ? x - Mth.nextDouble(l.random, 0.1D, 3.5D) : x + Mth.nextDouble(l.random, 0.1D, 3.5D)));
                         var ySpeed = (y == 0 ? Mth.nextDouble(l.random, -0.6D, 0.6D) : (y < 0 ? y - Mth.nextDouble(l.random, 0.1D, 3.5D) : y + Mth.nextDouble(l.random, 0.1D, 3.5D)));
                         var zSpeed = (z == 0 ? Mth.nextDouble(l.random, -0.6D, 0.6D) : (z < 0 ? z - Mth.nextDouble(l.random, 0.1D, 3.5D) : z + Mth.nextDouble(l.random, 0.1D, 3.5D)));
-
                         l.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, true, vec.x + (x / 2f), vec.y + (y / 2f), vec.z + (z / 2f), xSpeed, ySpeed, zSpeed);
                     }
-                } else for (int j = 0; j < 40; ++j) {
-
-                    l.addAlwaysVisibleParticle(ModParticles.SULFUR.get(), true, vec.x + (x/2f), vec.y + (y/2f), vec.z + (z/2f), 0, orientation, 0);
-                    if (color != 0) l.addAlwaysVisibleParticle(ModParticles.SULFUR_DUSTING.get(), true, vec.x + (x/2f), vec.y + (y/2f), vec.z + (z/2f), color, orientation, 0);
-
+                    else {
+                        l.addAlwaysVisibleParticle(ModParticles.SULFUR.get(), true, vec.x + (x / 2f), vec.y + (y / 2f), vec.z + (z / 2f), 0, orientation, 0);
+                        if (color != 0) l.addAlwaysVisibleParticle(ModParticles.SULFUR_DUSTING.get(), true, vec.x + (x / 2f), vec.y + (y / 2f), vec.z + (z / 2f), color, orientation, 0);
+                    }
                 }
             }
         });

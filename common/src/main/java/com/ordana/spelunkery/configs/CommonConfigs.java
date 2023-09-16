@@ -15,7 +15,6 @@ public class CommonConfigs {
 
     public static Supplier<Boolean> CREATIVE_TAB;
     //public static Supplier<Boolean> CROSS_SECTION;
-    public static Supplier<Boolean> STONECUTTER_DAMAGE;
     public static Supplier<Boolean> DISABLE_DIAMOND_GRINDSTONE_DEPLETION;
     public static Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static Supplier<Integer> PARACHUTE_DELAY;
@@ -56,6 +55,7 @@ public class CommonConfigs {
     public static Supplier<Boolean> DARK_FOREST_PORTABELLAS;
     public static Supplier<Boolean> ENABLE_MORES;
     public static Supplier<Boolean> PORTAL_FLUID_OCEAN;
+    public static Supplier<Boolean> END_OCEAN_BUCKETABLE;
 
 
     public static void init() {
@@ -69,7 +69,6 @@ public class CommonConfigs {
 
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
-        STONECUTTER_DAMAGE = builder.define("stonecutter_damage", true);
         DISABLE_DIAMOND_GRINDSTONE_DEPLETION = builder.define("disable_diamond_grindstone_depletion", false);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 0, 128);
         PARACHUTE_DELAY = builder.define("parachute_delay", 10, 0, 128);
@@ -120,6 +119,7 @@ public class CommonConfigs {
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
         ENABLE_MORES = builder.define("enable_mores", true);
         PORTAL_FLUID_OCEAN = builder.define("portal_fluid_ocean", false);
+        END_OCEAN_BUCKETABLE = builder.define("end_ocean_bucketable", false);
         builder.pop();
 
         SERVER_SPEC = builder.buildAndRegister();

@@ -34,6 +34,7 @@ public class SpelunkeryClient {
         ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.WOODEN_SLUICE.get(), RenderType.cutout());
+        ClientHelper.registerRenderType(ModBlocks.STONE_SLUICE.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());

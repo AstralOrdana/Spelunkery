@@ -18,11 +18,11 @@
     "MossBlockMixin",
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",
+    "NoiseChunkGeneratorMixin",
     "OreBlockMixin",
     "RedstoneOreBlockMixin",
     "ServerPlayerMixin",
     "SlimeMixin",
-    "StonecutterBlockMixin",
     "TooltipMixin",
     "WaterCauldronBlockMixin"
   ],

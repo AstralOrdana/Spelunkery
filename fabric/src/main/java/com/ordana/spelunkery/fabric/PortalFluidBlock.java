@@ -1,17 +1,26 @@
 package com.ordana.spelunkery.fabric;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModSoundEvents;
 import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.material.FlowingFluid;
+
+import java.util.Optional;
 
 public class PortalFluidBlock extends LiquidBlock {
 
@@ -27,6 +36,17 @@ public class PortalFluidBlock extends LiquidBlock {
 
     public int setTickCounter(int tick) {
         return tickCounter = tick;
+    }
+
+    @Override
+    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registries.DIMENSION_TYPE);
+
+        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY() && !CommonConfigs.PORTAL_FLUID_OCEAN.get()) {
+            return ItemStack.EMPTY;
+        }
+
+        return super.pickupBlock(level, pos, state);
     }
 
 

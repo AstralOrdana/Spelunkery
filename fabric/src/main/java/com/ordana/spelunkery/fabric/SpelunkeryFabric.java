@@ -3,10 +3,12 @@ package com.ordana.spelunkery.fabric;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.events.ModEvents;
+import com.ordana.spelunkery.reg.ModSetup;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.fabric.MLFabricSetupCallbacks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,10 +22,11 @@ public class SpelunkeryFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        Spelunkery.commonInit();
 
         ServerLifecycleEvents.SERVER_STARTING.register(s -> currentServer = s);
+        MLFabricSetupCallbacks.COMMON_SETUP.add(SpelunkeryFabric::onSetup);
 
-        Spelunkery.commonInit();
 
         UseBlockCallback.EVENT.register(SpelunkeryFabric::onRightClickBlock);
 
@@ -33,6 +36,10 @@ public class SpelunkeryFabric implements ModInitializer {
             SpelunkeryClient.init();
         }
 
+    }
+
+    public static void onSetup(){
+        ModSetup.setup();
     }
 
     public static InteractionResult onRightClickBlock(Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {

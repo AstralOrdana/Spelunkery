@@ -1,30 +1,42 @@
 package com.ordana.spelunkery.blocks.entity;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.WoodenSluiceBlock;
+import com.ordana.spelunkery.blocks.SluiceBlock;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,7 +45,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,22 +52,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
-public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
+public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> items;
     private final ContainerOpenersCounter openersCounter;
     private int cooldownTime;
     private long tickedGameTime;
 
-    public WoodenSluiceBlockEntity(BlockPos blockPos, BlockState blockState) {
+    public SluiceBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModEntities.WOODEN_SLUICE.get(), blockPos, blockState);
         this.items = NonNullList.withSize(9, ItemStack.EMPTY);
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level level, BlockPos pos, BlockState state) {
-                WoodenSluiceBlockEntity.this.playSound(state, SoundEvents.BARREL_OPEN);
+                SluiceBlockEntity.this.playSound(state, SoundEvents.BARREL_OPEN);
             }
 
             protected void onClose(Level level, BlockPos pos, BlockState state) {
-                WoodenSluiceBlockEntity.this.playSound(state, SoundEvents.BARREL_CLOSE);
+                SluiceBlockEntity.this.playSound(state, SoundEvents.BARREL_CLOSE);
             }
 
             protected void openerCountChanged(Level level, BlockPos pos, BlockState state, int count, int openCount) {
@@ -65,7 +76,7 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
             protected boolean isOwnContainer(Player player) {
                 if (player.containerMenu instanceof ChestMenu) {
                     Container container = ((ChestMenu)player.containerMenu).getContainer();
-                    return container == WoodenSluiceBlockEntity.this;
+                    return container == SluiceBlockEntity.this;
                 } else {
                     return false;
                 }
@@ -148,18 +159,18 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
         return this.cooldownTime > 0;
     }
 
-    public static void pushItemsTick(Level level, BlockPos pos, BlockState state, WoodenSluiceBlockEntity blockEntity) {
+    public static void pushItemsTick(Level level, BlockPos pos, BlockState state, SluiceBlockEntity blockEntity) {
         --blockEntity.cooldownTime;
         blockEntity.tickedGameTime = level.getGameTime();
         if (!blockEntity.isOnCooldown()) {
             blockEntity.setCooldown(0);
-            int flow = WoodenSluiceBlock.getFlow(level, state, pos);
+            int flow = SluiceBlock.getFlow(level, state, pos);
             tryFilterItems(level, pos, state, blockEntity, flow, ()
                     -> createFilteredItems(pos, level, blockEntity));
         }
     }
 
-    public static boolean tryFilterItems(Level level, BlockPos pos, BlockState state, WoodenSluiceBlockEntity blockEntity, int flow, BooleanSupplier validator) {
+    public static boolean tryFilterItems(Level level, BlockPos pos, BlockState state, SluiceBlockEntity blockEntity, int flow, BooleanSupplier validator) {
         if (!level.isClientSide && !blockEntity.isOnCooldown()) {
             boolean bl = false;
             int delay = 20;
@@ -198,7 +209,7 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
                 EntitySelector.ENTITY_STILL_ALIVE));
     }
 
-    public static boolean createFilteredItems(BlockPos pos, Level level, WoodenSluiceBlockEntity entity) {
+    public static boolean createFilteredItems(BlockPos pos, Level level, SluiceBlockEntity entity) {
 
         Iterator itemList = getItemsAtAndAbove(pos, level).iterator();
 
@@ -223,14 +234,29 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
                     .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)
                     .withOptionalParameter(LootContextParams.BLOCK_ENTITY, entity);
 
-            var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
-            if (lootItem.isEmpty()) return false;
+            var lootList = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
+            if (lootList.isEmpty()) return false;
+            var lootItem = lootList.iterator().next();
 
-            suckInItems(entity, lootItem.iterator().next());
+            if (lootItem.getItem() instanceof SpawnEggItem egg) {
 
-            var itemEntityItem = itemEntity.getItem();
-            var subtractCount = new ItemStack(itemEntityItem.getItem(), itemEntityItem.getCount() - 1);
-            itemEntity.setItem(subtractCount);
+                Entity eggEntity = egg.getType(lootItem.getTag()).create(level);
+                if (eggEntity != null) {
+                    eggEntity.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+                    level.addFreshEntity(eggEntity);
+                    itemEntity.getItem().shrink(1);
+                    return true;
+                }
+            }
+
+            suckInItems(entity, lootItem);
+            var random = level.random;
+            ParticleUtils.spawnParticlesOnBlockFace(level, pos, new ItemParticleOption(ParticleTypes.ITEM, lootItem),
+                    UniformInt.of(3, 5), Direction.UP,
+                    (() -> new Vec3(Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D))),
+                    0.55D);
+
+            itemEntity.getItem().shrink(1);
             return true;
         }
         return false;
@@ -271,8 +297,8 @@ public class WoodenSluiceBlockEntity extends RandomizableContainerBlockEntity {
             }
 
             if (bl) {
-                if (bl2 && destination instanceof WoodenSluiceBlockEntity) {
-                    WoodenSluiceBlockEntity hopperBlockEntity = (WoodenSluiceBlockEntity)destination;
+                if (bl2 && destination instanceof SluiceBlockEntity) {
+                    SluiceBlockEntity hopperBlockEntity = (SluiceBlockEntity)destination;
                     int j = 0;
                     hopperBlockEntity.setCooldown(8 - j);
                 }

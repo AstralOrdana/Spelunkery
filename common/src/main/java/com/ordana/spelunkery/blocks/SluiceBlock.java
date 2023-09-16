@@ -3,8 +3,9 @@ package com.ordana.spelunkery.blocks;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.entity.WoodenSluiceBlockEntity;
+import com.ordana.spelunkery.blocks.entity.SluiceBlockEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.Util;
@@ -51,7 +52,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 import java.util.Objects;
 
-public class WoodenSluiceBlock extends ModBaseEntityBlock {
+public class SluiceBlock extends ModBaseEntityBlock {
     public static final BooleanProperty GRATE_NORTH;
     public static final BooleanProperty GRATE_SOUTH;
     public static final BooleanProperty GRATE_EAST;
@@ -78,7 +79,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
     public static final Map<Direction, BooleanProperty> GRATE_PROPERTY_BY_DIRECTION;
 
-    public WoodenSluiceBlock(Properties properties) {
+    public SluiceBlock(Properties properties) {
         super(properties);
         super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false).setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
     }
@@ -92,8 +93,8 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int flow = WoodenSluiceBlock.getFlow(level, state, pos);
-        if (!(level.getBlockEntity(pos) instanceof WoodenSluiceBlockEntity sluice) || flow == 0) return;
+        int flow = SluiceBlock.getFlow(level, state, pos);
+        if (!(level.getBlockEntity(pos) instanceof SluiceBlockEntity sluice) || flow == 0) return;
 
         var fluidName = Utils.getID(level.getFluidState(pos.above()).getType()).getPath();
 
@@ -113,8 +114,8 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
             for (int i = 0; i < flow; ++i) {
                 var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
                 if (lootItem.isEmpty()) return;
-                var bl = WoodenSluiceBlockEntity.suckInItems(sluice, lootItem.iterator().next());
-                WoodenSluiceBlockEntity.tryFilterItems(level, pos, state, sluice, flow, () -> bl);
+                var bl = SluiceBlockEntity.suckInItems(sluice, lootItem.iterator().next());
+                SluiceBlockEntity.tryFilterItems(level, pos, state, sluice, flow, () -> bl);
 
             }
         }
@@ -123,26 +124,27 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        boolean axes = stack.is(ItemTags.AXES);
+        boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
+        boolean tool = stone ? stack.is(ItemTags.PICKAXES) : stack.is(ItemTags.AXES);
         var dir = hit.getDirection();
 
-        if (axes  && (dir != Direction.DOWN && dir != Direction.UP)) {
+        if (tool  && (dir != Direction.DOWN && dir != Direction.UP)) {
             if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
             }
             else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), false), 3);
-                level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
             }
             else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
             }
             if (!player.isCreative()) {
@@ -158,8 +160,8 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
         }
         else {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof WoodenSluiceBlockEntity) {
-                player.openMenu((WoodenSluiceBlockEntity)blockEntity);
+            if (blockEntity instanceof SluiceBlockEntity) {
+                player.openMenu((SluiceBlockEntity)blockEntity);
             }
 
             return InteractionResult.CONSUME;
@@ -264,8 +266,8 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof WoodenSluiceBlockEntity) {
-            ((WoodenSluiceBlockEntity)blockEntity).recheckOpen();
+        if (blockEntity instanceof SluiceBlockEntity) {
+            ((SluiceBlockEntity)blockEntity).recheckOpen();
         }
         super.tick(state, level, pos, random);
 
@@ -273,7 +275,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
 
     @org.jetbrains.annotations.Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new WoodenSluiceBlockEntity(pos, state);
+        return new SluiceBlockEntity(pos, state);
     }
 
     public RenderShape getRenderShape(BlockState state) {
@@ -283,8 +285,8 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @org.jetbrains.annotations.Nullable LivingEntity placer, ItemStack stack) {
         if (stack.hasCustomHoverName()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof WoodenSluiceBlockEntity) {
-                ((WoodenSluiceBlockEntity)blockEntity).setCustomName(stack.getHoverName());
+            if (blockEntity instanceof SluiceBlockEntity) {
+                ((SluiceBlockEntity)blockEntity).setCustomName(stack.getHoverName());
             }
         }
 
@@ -313,7 +315,7 @@ public class WoodenSluiceBlock extends ModBaseEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if (!level.isClientSide) {
-            return createTickerHelper(blockEntityType, ModEntities.WOODEN_SLUICE.get(), WoodenSluiceBlockEntity::pushItemsTick);
+            return createTickerHelper(blockEntityType, ModEntities.WOODEN_SLUICE.get(), SluiceBlockEntity::pushItemsTick);
         } else {
             return super.getTicker(level, state, blockEntityType);
         }

@@ -1,6 +1,8 @@
 package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModBlocks;
+import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -37,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class WoodenChannelBlock extends Block {
+public class ChannelBlock extends Block {
     public static final BooleanProperty NORTH;
     public static final BooleanProperty SOUTH;
     public static final BooleanProperty EAST;
@@ -67,25 +69,45 @@ public class WoodenChannelBlock extends Block {
 
     public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION;
 
-    public WoodenChannelBlock(Properties properties) {
+    public ChannelBlock(Properties properties) {
         super(properties);
         this.registerDefaultState((this.stateDefinition.any()).setValue(NORTH, true).setValue(SOUTH, true).setValue(EAST, true).setValue(WEST, true).setValue(SUPPORTED, false));
     }
+
+    //@Override
+    @PlatformOnly(PlatformOnly.FORGE)
+    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return state.is(ModBlocks.WOODEN_CHANNEL.get());
+    }
+
+
+    //@Override
+    @PlatformOnly(PlatformOnly.FORGE)
+    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return state.is(ModBlocks.WOODEN_CHANNEL.get()) ? 20 : 0;
+    }
+
+    //@Override
+    @PlatformOnly(PlatformOnly.FORGE)
+    public int getFireSpread(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        return state.is(ModBlocks.WOODEN_CHANNEL.get()) ? 5 : 0;
+    }
+
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST);
     }
 
     public boolean checkNeighborsForChannel(BlockPos pos, LevelAccessor level, Direction dir) {
-        return level.getBlockState(pos.relative(dir)).getBlock() instanceof WoodenChannelBlock
-                && level.getBlockState(pos.relative(dir.getOpposite())).getBlock() instanceof WoodenChannelBlock;
+        return level.getBlockState(pos.relative(dir)).getBlock() instanceof ChannelBlock
+                && level.getBlockState(pos.relative(dir.getOpposite())).getBlock() instanceof ChannelBlock;
     }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         var belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
-        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
         if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
         level.setBlock(pos, state.setValue(SUPPORTED, bl), 3);
         super.tick(state, level, pos, random);
@@ -96,10 +118,10 @@ public class WoodenChannelBlock extends Block {
         BlockPos pos = context.getClickedPos();
         BlockPos belowPos = pos.below();
         BlockState belowState = blockGetter.getBlockState(belowPos);
-        boolean bl = belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        boolean bl = belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
         if (checkNeighborsForChannel(pos, context.getLevel(), Direction.NORTH) || checkNeighborsForChannel(pos, context.getLevel(), Direction.WEST)) bl = false;
 
-        return this.defaultBlockState().setValue(NORTH, !(blockGetter.getBlockState(pos.north()).getBlock() instanceof WoodenChannelBlock)).setValue(EAST, !(blockGetter.getBlockState(pos.east()).getBlock() instanceof WoodenChannelBlock)).setValue(SOUTH, !(blockGetter.getBlockState(pos.south()).getBlock() instanceof WoodenChannelBlock)).setValue(WEST, !(blockGetter.getBlockState(pos.west()).getBlock() instanceof WoodenChannelBlock)).setValue(SUPPORTED, bl);
+        return this.defaultBlockState().setValue(NORTH, !(blockGetter.getBlockState(pos.north()).getBlock() instanceof ChannelBlock)).setValue(EAST, !(blockGetter.getBlockState(pos.east()).getBlock() instanceof ChannelBlock)).setValue(SOUTH, !(blockGetter.getBlockState(pos.south()).getBlock() instanceof ChannelBlock)).setValue(WEST, !(blockGetter.getBlockState(pos.west()).getBlock() instanceof ChannelBlock)).setValue(SUPPORTED, bl);
     }
 
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
@@ -112,26 +134,27 @@ public class WoodenChannelBlock extends Block {
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
 
-        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof WoodenChannelBlock;
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
         if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
         state.setValue(SUPPORTED, bl);
-        return neighborState.getBlock() instanceof WoodenChannelBlock && direction != Direction.UP && direction != Direction.DOWN ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+        return neighborState.getBlock() instanceof ChannelBlock && direction != Direction.UP && direction != Direction.DOWN ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         Item item = itemStack.getItem();
         var dir = hit.getDirection();
-        boolean axes = itemStack.is(ItemTags.AXES);
+        boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
+        boolean tool = stone ? itemStack.is(ItemTags.PICKAXES) : itemStack.is(ItemTags.AXES);
 
-        if (dir == Direction.UP || dir == Direction.DOWN || !axes) {
+        if (dir == Direction.UP || dir == Direction.DOWN || !tool) {
             return super.use(state, level, pos, player, hand, hit);
         } else {
             var propDir = PROPERTY_BY_DIRECTION.get(dir);
             var check = state.getValue(propDir);
             level.setBlock(pos, state.setValue(propDir, !check), 3);
-            level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.playSound(null, pos, check ? SoundEvents.WOOD_BREAK : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, pos, check ? (stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK) : (stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE), SoundSource.BLOCKS, 1.0F, 1.0F);
             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
             if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
 
