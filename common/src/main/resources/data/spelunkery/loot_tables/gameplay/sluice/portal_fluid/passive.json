@@ -8,27 +8,22 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:bone"
+          "name": "spelunkery:end_stone_pebble"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "spelunkery:basalt_pebble"
+          "weight": 5,
+          "name": "minecraft:ender_pearl"
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:nether_wart"
+          "weight": 5,
+          "name": "minecraft:popped_chorus_fruit"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:quartz"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
-          "name": "spelunkery:raw_gold_nugget"
+          "weight": 5,
+          "name": "minecraft:endermite_spawn_egg"
         }
       ]
     }

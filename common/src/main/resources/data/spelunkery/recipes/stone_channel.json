@@ -7,7 +7,7 @@
   ],
   "key": {
     "#": {
-      "tag": "minecraft:stone_brick_slab"
+      "item": "minecraft:stone_brick_slab"
     },
     "H": {
       "item": "minecraft:honeycomb"

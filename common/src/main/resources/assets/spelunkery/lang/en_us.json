@@ -139,6 +139,25 @@
   "tooltip.spelunkery.mineomite_2": "  Will explode after being primed, explosion size relative to stick count",
   "tooltip.spelunkery.mineomite_3": "  If holding Flint and Steel when thrown, explodes on contact",
 
+  "tooltip.spelunkery.sluice.wastes_deltas": "Only within Basalt Deltas or Nether Wastes",
+  "tooltip.spelunkery.sluice.nether_forests": "Only within Nether Forests",
+  "tooltip.spelunkery.sluice.soul_sand_valleys": "Only within Soul Sand Valleys",
+  "tooltip.spelunkery.sluice.fortresses": "Only within Nether Fortresses",
+  "tooltip.spelunkery.sluice.desert_villages": "Only within Desert Villages",
+  "tooltip.spelunkery.sluice.ruins": "Only within Ruins",
+  "tooltip.spelunkery.sluice.mineshafts": "Only within Mineshafts",
+  "tooltip.spelunkery.sluice.jungles": "Only within Jungles",
+  "tooltip.spelunkery.sluice.rivers": "Only within River Biomes",
+  "tooltip.spelunkery.sluice.icy": "Only within Icy Biomes",
+  "tooltip.spelunkery.sluice.beaches": "Only within Beach Biomes",
+  "tooltip.spelunkery.sluice.mangrove_swamps": "Only within Mangrove Swamps",
+  "tooltip.spelunkery.sluice.oceans": "Only within Oceans",
+  "tooltip.spelunkery.sluice.warm_oceans": "Only within Warm Ocean",
+  "tooltip.spelunkery.sluice.jagged_peaks": "Only within Jagged Peaks",
+  "tooltip.spelunkery.sluice.deserts": "Only within Deserts",
+  "tooltip.spelunkery.sluice.badlands": "Only within Badlands",
+
+
   "tag.spelunkery.glowsticks": "Glowsticks",
   "tag.spelunkery.grindable": "Grindables",
   "tag.spelunkery.nuggets": "Nuggets",
@@ -286,6 +305,11 @@
 
   "item.spelunkery.sulfur": "Sulfur",
   "item.spelunkery.saltpeter": "Saltpeter",
+  "item.spelunkery.stone_pebble": "Stone Pebble",
+  "item.spelunkery.deepslate_pebble": "Deepslate Pebble",
+  "item.spelunkery.blackstone_pebble": "Blackstone Pebble",
+  "item.spelunkery.basalt_pebble": "Basalt Pebble",
+  "item.spelunkery.end_stone_pebble": "End Stone Pebble",
 
   "item.spelunkery.raw_magnetite": "Raw Magnetite",
   "block.spelunkery.raw_magnetite_block": "Block of Raw Magnetite",

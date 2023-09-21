@@ -168,7 +168,12 @@ public class ModCreativeTabs {
 
         after(e, Items.EMERALD, CreativeModeTabs.INGREDIENTS,
                 ModConstants.CINNABAR,
-                ModItems.CINNABAR
+                ModItems.CINNABAR,
+                ModItems.STONE_PEBBLE,
+                ModItems.DEEPSLATE_PEBBLE,
+                ModItems.BLACKSTONE_PEBBLE,
+                ModItems.BASALT_PEBBLE,
+                ModItems.END_STONE_PEBBLE
         );
 
         after(e, Items.LIGHTNING_ROD, CreativeModeTabs.REDSTONE_BLOCKS,
