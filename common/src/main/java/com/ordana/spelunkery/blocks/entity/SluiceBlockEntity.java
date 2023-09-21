@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks.entity;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.SluiceBlock;
+import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -59,7 +60,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
     private long tickedGameTime;
 
     public SluiceBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModEntities.WOODEN_SLUICE.get(), blockPos, blockState);
+        super((blockState.is(ModBlocks.WOODEN_SLUICE.get()) ? ModEntities.WOODEN_SLUICE.get() : ModEntities.STONE_SLUICE.get()), blockPos, blockState);
         this.items = NonNullList.withSize(9, ItemStack.EMPTY);
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level level, BlockPos pos, BlockState state) {

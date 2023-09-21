@@ -22,11 +22,13 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -114,6 +116,17 @@ public class SluiceBlock extends ModBaseEntityBlock {
             for (int i = 0; i < flow; ++i) {
                 var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
                 if (lootItem.isEmpty()) return;
+
+                if (lootItem.iterator().next().getItem() instanceof SpawnEggItem egg) {
+
+                    Entity eggEntity = egg.getType(lootItem.iterator().next().getTag()).create(level);
+                    if (eggEntity != null) {
+                        eggEntity.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+                        level.addFreshEntity(eggEntity);
+                        return;
+                    }
+                }
+
                 var bl = SluiceBlockEntity.suckInItems(sluice, lootItem.iterator().next());
                 SluiceBlockEntity.tryFilterItems(level, pos, state, sluice, flow, () -> bl);
 
@@ -315,7 +328,7 @@ public class SluiceBlock extends ModBaseEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if (!level.isClientSide) {
-            return createTickerHelper(blockEntityType, ModEntities.WOODEN_SLUICE.get(), SluiceBlockEntity::pushItemsTick);
+            return createTickerHelper(blockEntityType, (state.is(ModBlocks.WOODEN_SLUICE.get()) ? ModEntities.WOODEN_SLUICE.get() : ModEntities.STONE_SLUICE.get()), SluiceBlockEntity::pushItemsTick);
         } else {
             return super.getTicker(level, state, blockEntityType);
         }

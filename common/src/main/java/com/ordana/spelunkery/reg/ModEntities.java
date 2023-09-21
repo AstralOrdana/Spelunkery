@@ -39,6 +39,10 @@ public class ModEntities {
             Spelunkery.res("wooden_sluice"),
             () -> PlatHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));
 
+    public static final Supplier<BlockEntityType<SluiceBlockEntity>> STONE_SLUICE = RegHelper.registerBlockEntityType(
+            Spelunkery.res("stone_sluice"),
+            () -> PlatHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.STONE_SLUICE.get()));
+
     public static Supplier<EntityType<GlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(
             Spelunkery.res("glowstick"),
             GlowstickEntity::new, MobCategory.MISC, 0.28F, 0.98F, 10, 20);
