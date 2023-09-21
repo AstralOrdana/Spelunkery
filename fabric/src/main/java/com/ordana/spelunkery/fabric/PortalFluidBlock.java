@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.fabric;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModSoundEvents;
 import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
@@ -36,6 +37,17 @@ public class PortalFluidBlock extends LiquidBlock {
         return tickCounter = tick;
     }
 
+    @Override
+    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
+
+        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY() && !CommonConfigs.PORTAL_FLUID_OCEAN.get()) {
+            return ItemStack.EMPTY;
+        }
+
+        return super.pickupBlock(level, pos, state);
+    }
+
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
 
@@ -64,17 +76,6 @@ public class PortalFluidBlock extends LiquidBlock {
             setTickCounter(0);
 
         }
-    }
-
-    @Override
-    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
-
-        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY()) {
-            return ItemStack.EMPTY;
-        }
-
-        return super.pickupBlock(level, pos, state);
     }
 
 }

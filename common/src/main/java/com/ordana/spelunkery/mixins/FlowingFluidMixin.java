@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.mixins;
 
 import com.mojang.datafixers.util.Pair;
-import com.ordana.spelunkery.blocks.WoodenChannelBlock;
+import com.ordana.spelunkery.blocks.ChannelBlock;
 import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
 import net.minecraft.core.BlockPos;
@@ -33,8 +33,8 @@ abstract class FlowingFluidMixin {
     private boolean modifyFlag(boolean flag, LevelReader level, BlockPos pos, BlockState state) {
 
         var channelState = level.getBlockState(pos.below());
-        if (channelState.getBlock() instanceof WoodenChannelBlock && dir != Direction.UP && dir != Direction.DOWN) {
-            if (channelState.getValue(WoodenChannelBlock.PROPERTY_BY_DIRECTION.get(dir))) return false;
+        if (channelState.getBlock() instanceof ChannelBlock && dir != Direction.UP && dir != Direction.DOWN) {
+            if (channelState.getValue(ChannelBlock.PROPERTY_BY_DIRECTION.get(dir))) return false;
         }
         return flag;
     }
@@ -51,8 +51,8 @@ abstract class FlowingFluidMixin {
     private <K, V> V addChannelException(Map<K, V> instance, K direction, V fluidState, LevelReader level, BlockPos pos, BlockState blockState) {
 
         var channelState = level.getBlockState(pos.below());
-        if (channelState.getBlock() instanceof WoodenChannelBlock && direction != Direction.DOWN && direction != Direction.UP) {
-            if (channelState.getValue(WoodenChannelBlock.PROPERTY_BY_DIRECTION.get(direction))) return null;
+        if (channelState.getBlock() instanceof ChannelBlock && direction != Direction.DOWN && direction != Direction.UP) {
+            if (channelState.getValue(ChannelBlock.PROPERTY_BY_DIRECTION.get(direction))) return null;
         }
         return instance.put(direction, fluidState);
 

@@ -5,10 +5,11 @@ import com.ordana.spelunkery.fluids.PortalFluid;
 import net.mehvahdjukaar.moonlight.api.fluids.ModFlowingFluid;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Supplier;
 
-public class ModFluids {
+public class ModFluids extends Fluids {
     public static void  init() {
     }
 

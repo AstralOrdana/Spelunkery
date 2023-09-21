@@ -21,8 +21,33 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:skeleton_skull"
+          "weight": 5,
+          "name": "minecraft:skeleton_skull",
+          "conditions": [
+            {
+              "condition": "minecraft:alternative",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:badlands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:wooded_badlands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:eroded_badlands"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "minecraft:item",
@@ -36,8 +61,33 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "spelunkery:rough_cinnabar_shard"
+          "weight": 5,
+          "name": "spelunkery:rough_cinnabar_shard",
+          "conditions": [
+            {
+              "condition": "minecraft:alternative",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:badlands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:wooded_badlands"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:eroded_badlands"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

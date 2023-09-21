@@ -7,17 +7,28 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:mangrove_roots"
+          "name": "minecraft:mangrove_roots",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "minecraft:mangrove_swamp"
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:mangrove_propagule"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 5,
-          "name": "minecraft:pitcher_pod"
+          "name": "minecraft:mangrove_propagule",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "minecraft:mangrove_swamp"
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
@@ -42,7 +53,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "spelunkery:rough_emerald_shard"
+          "name": "minecraft:clay"
         }
       ]
     }

@@ -37,7 +37,7 @@
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:beetroot_seeds"
+          "name": "minecraft:beetroot"
         }
       ]
     }

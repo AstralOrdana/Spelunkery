@@ -429,11 +429,14 @@ public class ModBlocks {
 
 
     public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
-            new WoodenChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+            new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
 
     public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
-            new WoodenSluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-
+            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final Supplier<Block> STONE_CHANNEL = regWithItem("stone_channel", () ->
+            new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
+    public static final Supplier<Block> STONE_SLUICE = regWithItem("stone_sluice", () ->
+            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
 
 
     public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->

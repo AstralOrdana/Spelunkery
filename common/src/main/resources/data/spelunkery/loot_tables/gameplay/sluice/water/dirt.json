@@ -21,6 +21,16 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 15,
+          "name": "spelunkery:stone_pebble"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:deepslate_pebble"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 10,
           "name": "minecraft:cobweb"
         },
@@ -37,7 +47,32 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:cocoa_beans"
+          "name": "minecraft:cocoa_beans",
+          "conditions": [
+            {
+              "condition": "minecraft:alternative",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:jungle"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:bamboo_jungle"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:sparse_jungle"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

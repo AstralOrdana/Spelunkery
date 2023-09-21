@@ -7,12 +7,22 @@
         {
           "type": "minecraft:item",
           "weight": 20,
-          "name": "minecraft:seagrass"
+          "name": "spelunkery:stone_pebble"
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
-          "name": "minecraft:cobblestone"
+          "weight": 15,
+          "name": "minecraft:wheat_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "minecraft:grass"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:dirt"
         },
         {
           "type": "minecraft:item",
@@ -23,6 +33,49 @@
           "type": "minecraft:item",
           "weight": 1,
           "name": "spelunkery:raw_gold_nugget"
+        },
+
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "minecraft:ice",
+          "conditions": [
+            {
+              "condition": "minecraft:alternative",
+              "terms": [
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:frozen_peaks"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:frozen_ocean"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:frozen_river"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:snowy_taiga"
+                  }
+                },
+                {
+                  "condition": "minecraft:location_check",
+                  "predicate": {
+                    "biome": "minecraft:snowy_plains"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

@@ -1,7 +1,7 @@
 /*
 Methods in this class from MajruszLibrary under the MIT license
 
-https://github.com/Majrusz/MajruszLibrary
+Full repo can be found here: https://github.com/Majrusz/MajruszLibrary
 
         Permission is hereby granted, free of charge, to any person obtaining
         a copy of this software and associated documentation files (the

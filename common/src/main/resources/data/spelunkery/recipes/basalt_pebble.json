@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:smooth_basalt"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:basalt_pebble",
+    "count": 9
+  }
+}

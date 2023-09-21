@@ -18,8 +18,8 @@
     "MossBlockMixin",
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",
+    "NoiseChunkGeneratorMixin",
     "SlimeMixin",
-    "StonecutterBlockMixin",
     "TooltipMixin",
     "WaterCauldronBlockMixin"
   ],

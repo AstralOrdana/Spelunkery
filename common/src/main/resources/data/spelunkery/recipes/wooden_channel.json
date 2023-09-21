@@ -7,13 +7,13 @@
   ],
   "key": {
     "#": {
-      "tag": "minecraft:planks"
+      "tag": "minecraft:wooden_slabs"
     },
     "H": {
       "item": "minecraft:honeycomb"
     },
     "/": {
-      "item": "minecraft:stick"
+      "tag": "minecraft:wooden_fences"
     }
   },
   "result": {
