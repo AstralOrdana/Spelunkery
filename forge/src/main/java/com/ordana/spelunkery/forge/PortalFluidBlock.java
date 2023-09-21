@@ -4,15 +4,21 @@ import com.ordana.spelunkery.reg.ModSoundEvents;
 import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.material.FlowingFluid;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class PortalFluidBlock extends LiquidBlock {
@@ -61,4 +67,14 @@ public class PortalFluidBlock extends LiquidBlock {
         }
     }
 
+    @Override
+    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
+
+        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY()) {
+            return ItemStack.EMPTY;
+        }
+
+        return super.pickupBlock(level, pos, state);
+    }
 }
