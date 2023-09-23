@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:glowstone",
+    "minecraft:sea_lantern",
     "minecraft:tinted_glass",
     "minecraft:glass",
     "minecraft:red_stained_glass",

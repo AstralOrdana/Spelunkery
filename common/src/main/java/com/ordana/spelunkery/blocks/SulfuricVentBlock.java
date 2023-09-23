@@ -3,6 +3,7 @@ package com.ordana.spelunkery.blocks;
 import com.ordana.spelunkery.events.ClientBoundParticlePacket;
 import com.ordana.spelunkery.events.ClientBoundSendKnockbackPacket;
 import com.ordana.spelunkery.events.NetworkHandler;
+import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -12,6 +13,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -83,9 +86,15 @@ public class SulfuricVentBlock extends DirectionalBlock {
 
     public void geyserEruption(Level level, BlockState state, BlockPos pos) {
         Direction facing = state.getValue(FACING);
+        var sourceBlock = getSourceBlock(level, state, pos);
 
-        if (getSourceBlock(level, state, pos).getBlock() instanceof FallingBlock && level instanceof ServerLevel) {
-            var entity = FallingBlockEntity.fall(level, pos.relative(facing), getSourceBlock(level, state, pos));
+        if (level instanceof ServerLevel) {
+            Entity entity = new ItemEntity(level, 0, 0, 0, new ItemStack(ModItems.SULFUR.get()));
+            if (sourceBlock.getBlock() instanceof FallingBlock) entity = FallingBlockEntity.fall(level, pos.relative(facing), getSourceBlock(level, state, pos));
+
+
+            entity.moveTo(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
+            if (level.random.nextBoolean()) level.setBlockAndUpdate(pos.relative(facing.getOpposite()), Blocks.AIR.defaultBlockState());
             //entity.setDeltaMovement(new Vec3(level.random.nextIntBetweenInclusive(-1, 1), 0, level.random.nextIntBetweenInclusive(-1, 1)));
         }
 

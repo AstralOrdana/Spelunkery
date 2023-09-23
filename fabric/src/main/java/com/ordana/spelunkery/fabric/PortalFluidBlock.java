@@ -42,7 +42,7 @@ public class PortalFluidBlock extends LiquidBlock {
     public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
         Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registries.DIMENSION_TYPE);
 
-        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY() && !CommonConfigs.PORTAL_FLUID_OCEAN.get()) {
+        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY() && !CommonConfigs.END_OCEAN_BUCKETABLE.get()) {
             return ItemStack.EMPTY;
         }
 

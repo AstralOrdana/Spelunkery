@@ -29,15 +29,15 @@ public class ModItems {
 
 
     public static final Supplier<Item> STONE_PEBBLE = regItem("stone_pebble", () ->
-            new Item(new Item.Properties()));
+            new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> DEEPSLATE_PEBBLE = regItem("deepslate_pebble", () ->
-            new Item(new Item.Properties()));
+            new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> BLACKSTONE_PEBBLE = regItem("blackstone_pebble", () ->
-            new Item(new Item.Properties()));
+            new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> BASALT_PEBBLE = regItem("basalt_pebble", () ->
-            new Item(new Item.Properties()));
+            new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> END_STONE_PEBBLE = regItem("end_stone_pebble", () ->
-            new Item(new Item.Properties()));
+            new PebbleItem(new Item.Properties()));
 
     public static final Supplier<Item> ROCK_SALT = regItem("rock_salt", () ->
             new RockSaltBlockItem(ModBlocks.ROCK_SALT.get(), new Item.Properties()));

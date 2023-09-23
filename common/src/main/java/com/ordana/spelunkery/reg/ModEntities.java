@@ -56,6 +56,9 @@ public class ModEntities {
     public static Supplier<EntityType<PrimedMineomiteEntity>> PRIMED_MINEOMITE = RegHelper.registerEntityType(
             Spelunkery.res("primed_mineomite"),
             PrimedMineomiteEntity::new, MobCategory.MISC, 0.98F, 0.98F, 10, 20);
+    public static Supplier<EntityType<PebbleEntity>> PEBBLE = RegHelper.registerEntityType(
+            Spelunkery.res("pebble"),
+            PebbleEntity::new, MobCategory.MISC, 0.7F, 0.7F, 10, 20);
 
     public static Supplier<EntityType<EggplantEntity>> EGGPLANT = RegHelper.registerEntityType(
             Spelunkery.res("eggplant"),
