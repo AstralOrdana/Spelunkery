@@ -188,6 +188,8 @@
   "subtitles.block.portal_fluid.ambient": "Dimensional Tears Ripple",
   "subtitles.block.portal_fluid.enter": "Dimensional Tears Warp",
   "subtitles.block.portal_fluid.teleport": "Dimensional Tears Pulsate",
+  "subtitles.item.pebble.bonk": "Bonk",
+  "subtitles.item.pebble.knob": "konB",
 
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
@@ -277,6 +279,7 @@
   "item.spelunkery.copper_nugget": "Copper Nugget",
 
   "item.spelunkery.coal_lump": "Lump of Coal",
+  "item.spelunkery.charcoal_lump": "Charcoal Briquette",
   "item.spelunkery.rough_lazurite_shard": "Rough Lazurite Shard",
   "item.spelunkery.rough_cinnabar_shard": "Rough Cinnabar Shard",
   "item.spelunkery.rough_diamond_shard": "Rough Diamond Shard",
@@ -373,6 +376,7 @@
   "block.spelunkery.milly_bubcap_block": "Milly Bubcap Block",
 
   "item.spelunkery.dust_bun": "Dust Bun",
+  "item.spelunkery.dust_bunny_spawn_egg": "Dust Bunny Spawn Egg",
 
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",
@@ -381,11 +385,17 @@
   "block.spelunkery.wooden_sluice": "Wooden Sluice",
   "block.spelunkery.stone_channel": "Stone Channel",
   "block.spelunkery.stone_sluice": "Stone Sluice",
+
   "item.spelunkery.portal_fluid_bottle": "Bottle o' Dimensional Tears",
   "item.spelunkery.portal_fluid_bucket": "Bucket of Dimensional Tears",
   "block.spelunkery.portal_fluid": "Dimensional Tears",
   "fluid.spelunkery.portal_fluid": "Dimensional Tears",
   "fluid_type.spelunkery.portal_fluid": "Dimensional Tears",
+  "item.spelunkery.spring_water_bucket": "Bucket of Spring Water",
+  "block.spelunkery.spring_water": "Spring Water",
+  "fluid.spelunkery.spring_water": "Spring Water",
+  "fluid_type.spelunkery.spring_water": "Spring Water",
+
   "item.spelunkery.depth_gauge": "Depth Gauge",
   "item.spelunkery.flint_hammer_and_chisel": "Flint Hammer and Chisel",
   "item.spelunkery.obsidian_hammer_and_chisel": "Obsidian Hammer and Chisel",

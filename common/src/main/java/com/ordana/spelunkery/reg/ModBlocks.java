@@ -437,6 +437,8 @@ public class ModBlocks {
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
             SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
+    public static final Supplier<LiquidBlock> SPRING_WATER = regBlock("spring_water", () ->
+            SpelunkeryPlatform.doSpringWater(ModFluids.SPRING_WATER, BlockBehaviour.Properties.copy(Blocks.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 2)));
 
     
     //mod support

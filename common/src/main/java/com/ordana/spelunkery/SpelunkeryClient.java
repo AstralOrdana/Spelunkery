@@ -1,5 +1,7 @@
 package com.ordana.spelunkery;
 
+import com.ordana.spelunkery.entities.DustBunnyModel;
+import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
@@ -9,17 +11,21 @@ import com.ordana.spelunkery.particles.SulfurParticle;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 
 public class SpelunkeryClient {
 
+    public static final ModelLayerLocation DUST_BUNNY = loc("dust_bunny");
     public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute");
 
     public static void init() {
         ClientHelper.addClientSetup(SpelunkeryClient::setup);
+        ClientHelper.addModelLayerRegistration(SpelunkeryClient::registerLayers);
         ClientHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
         ClientHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
         ClientHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
@@ -30,9 +36,12 @@ public class SpelunkeryClient {
     public static void setup() {
         ClientHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
+        ClientHelper.registerFluidRenderType(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
+        ClientHelper.registerFluidRenderType(ModFluids.SPRING_WATER.get(), RenderType.translucent());
 
         ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
+        ClientHelper.registerRenderType(ModBlocks.SPRING_WATER.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.WOODEN_SLUICE.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.STONE_SLUICE.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
@@ -94,6 +103,14 @@ public class SpelunkeryClient {
         finishedSetup = true;
     }
 
+    private static ModelLayerLocation loc(String name) {
+        return new ModelLayerLocation(Spelunkery.res(name), name);
+    }
+
+    private static void registerLayers(ClientHelper.ModelLayerEvent event) {
+        event.register(DUST_BUNNY, DustBunnyModel::createOuterBodyLayer);
+    }
+
     @EventCalled
     private static void registerSpecialModels(ClientHelper.SpecialModelEvent event) {
         event.register(PARACHUTE_3D_MODEL);
@@ -106,6 +123,7 @@ public class SpelunkeryClient {
     }
 
     private static void registerEntityRenderers(ClientHelper.EntityRendererEvent event) {
+        event.register(ModEntities.DUST_BUNNY.get(), DustBunnyRenderer::new);
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.THROWN_PRIMED_MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));

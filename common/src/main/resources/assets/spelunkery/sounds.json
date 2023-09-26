@@ -56,5 +56,17 @@
       "spelunkery:block/portal_fluid/paddle_portal_fluid_2",
       "spelunkery:block/portal_fluid/paddle_portal_fluid_3"
     ]
+  },
+  "bonk": {
+    "subtitle": "subtitles.item.pebble.bonk",
+    "sounds": [
+      "spelunkery:item/pebble/bonk"
+    ]
+  },
+  "knob": {
+    "subtitle": "subtitles.item.pebble.knob",
+    "sounds": [
+      "spelunkery:item/pebble/knob"
+    ]
   }
 }

@@ -2,6 +2,7 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.entities.DustBunnyEntity;
 import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.loot_modifiers.ModLootInjects;
 import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
@@ -50,7 +51,7 @@ public class Spelunkery {
 
         }
 
-
+        RegHelper.addAttributeRegistration(Spelunkery::registerEntityAttributes);
         ModGameEvents.init();
         ModLootOverrides.INSTANCE.register();
         ModFeatures.init();
@@ -81,6 +82,10 @@ public class Spelunkery {
             if (event.getPlayer() instanceof ServerPlayer serverPlayer) CriteriaTriggers.USING_ITEM.trigger(serverPlayer, event.getItemStack());
             event.setCanceled(true);
         }
+    }
+
+    private static void registerEntityAttributes(RegHelper.AttributeEvent event) {
+        event.register(ModEntities.DUST_BUNNY.get(), DustBunnyEntity.createAttributes());
     }
 
 }

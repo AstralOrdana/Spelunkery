@@ -19,6 +19,8 @@ public class ModSoundEvents {
     public static RegSupplier<SoundEvent> PORTAL_FLUID_BOTTLE_EMPTY = registerSoundEvent("portal_fluid_bottle_empty");
     public static RegSupplier<SoundEvent> PORTAL_FLUID_BOTTLE_FILL = registerSoundEvent("portal_fluid_bottle_fill");
     public static RegSupplier<SoundEvent> BOAT_PADDLE_PORTAL_FLUID = registerSoundEvent("boat_paddle_portal_fluid");
+    public static RegSupplier<SoundEvent> BONK = registerSoundEvent("bonk");
+    public static RegSupplier<SoundEvent> KNOB = registerSoundEvent("knob");
 
     @NotNull
     private static RegSupplier<SoundEvent> registerSoundEvent(@NotNull String name) {

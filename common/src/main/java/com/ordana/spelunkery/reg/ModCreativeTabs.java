@@ -157,7 +157,7 @@ public class ModCreativeTabs {
 
         before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
                 ModConstants.ROUGH_NUGGETS,
-                ModItems.COAL_LUMP, ModItems.RAW_IRON_NUGGET, ModItems.RAW_COPPER_NUGGET, ModItems.RAW_GOLD_NUGGET, ModItems.RAW_MAGNETITE_NUGGET,
+                ModItems.COAL_LUMP, ModItems.CHARCOAL_LUMP, ModItems.RAW_IRON_NUGGET, ModItems.RAW_COPPER_NUGGET, ModItems.RAW_GOLD_NUGGET, ModItems.RAW_MAGNETITE_NUGGET,
                 ModItems.ROUGH_CINNABAR_SHARD, ModItems.ROUGH_LAZURITE_SHARD, ModItems.ROUGH_EMERALD_SHARD, ModItems.ROUGH_DIAMOND_SHARD
         );
 
@@ -215,6 +215,11 @@ public class ModCreativeTabs {
                 ModItems.FLINT_HAMMER_AND_CHISEL, ModItems.OBSIDIAN_HAMMER_AND_CHISEL
         );
 
+        after(e, Items.WATER_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES,
+                ModConstants.TEARS,
+                ModItems.SPRING_WATER_BUCKET
+        );
+
         after(e, Items.MILK_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES,
                 ModConstants.TEARS,
                 ModItems.SALT_BUCKET, ModItems.PORTAL_FLUID_BUCKET, ModItems.PORTAL_FLUID_BOTTLE
@@ -267,6 +272,8 @@ public class ModCreativeTabs {
                 ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
                 ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
         );
+
+        e.add(CreativeModeTabs.SPAWN_EGGS, ModItems.DUST_BUNNY_SPAWN_EGG.get());
     }
 
     private static void after(RegHelper.ItemToTabEvent event, TagKey<Item> target,

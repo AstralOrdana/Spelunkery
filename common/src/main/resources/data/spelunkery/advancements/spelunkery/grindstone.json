@@ -44,7 +44,8 @@
             "predicate": {
               "block": {
                 "blocks": [
-                  "minecraft:grindstone"
+                  "minecraft:grindstone",
+                  "spelunkery:diamond_grindstone"
                 ]
               }
             }
