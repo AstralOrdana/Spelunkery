@@ -2,10 +2,12 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
+import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
@@ -32,10 +34,16 @@ public class Spelunkery {
         }
         initiated = true;
 
+        NetworkHandler.registerMessages();
         CommonConfigs.init();
 
         if(PlatformHelper.getEnv().isClient()){
             ClientConfigs.init();
+
+            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", true);
+            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), "Unlit Redstone Ores", true);
+            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), "Emissive Ores", false);
+            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), "Emissive Better Vanilla Ores", false);
         }
 
         ModGameEvents.init();

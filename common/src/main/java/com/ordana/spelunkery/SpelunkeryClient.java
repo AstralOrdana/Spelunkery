@@ -5,6 +5,7 @@ import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.particles.PortalFluidFlameParticle;
+import com.ordana.spelunkery.particles.SulfurParticle;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
@@ -88,6 +89,7 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
+        // TODO 1.19.2 :: Not registered here in 1.20.x?
         ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);
 
@@ -110,12 +112,13 @@ public class SpelunkeryClient {
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.THROWN_PRIMED_MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.PRIMED_MINEOMITE.get(), PrimedMineomiteEntityRenderer::new);
+        event.register(ModEntities.PEBBLE.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.EGGPLANT.get(), context -> new ThrownItemRenderer<>(context, 1, false));
     }
 
     private static void registerParticles(ClientPlatformHelper.ParticleEvent event) {
-//        event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
-//        event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
+        event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
+        event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);
     }
 }

@@ -52,7 +52,7 @@ public class ModFeatures {
             Spelunkery.res("sculk_patch"), () ->
                     new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
 
-
+    // TODO 1.19.2 :: removed?
     public static final RegSupplier<ConfiguredFeature<VegetationPatchConfiguration, Feature<VegetationPatchConfiguration>>> SPORE_MOSS_PATCH_BONEMEAL =
             RegHelper.registerConfiguredFeature(Spelunkery.res("spore_moss_patch_bonemeal"), () -> Feature.VEGETATION_PATCH,
                     () -> new VegetationPatchConfiguration(

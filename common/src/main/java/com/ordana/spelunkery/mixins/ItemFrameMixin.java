@@ -40,7 +40,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
                 List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
                         item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
-                                (item.getThrower() == null || !item.getThrower().equals(this.getUUID()) || !item.hasPickUpDelay()) &&
+                                (item.getOwner() == null || !item.hasPickUpDelay()) &&
                                 !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
                 );
 

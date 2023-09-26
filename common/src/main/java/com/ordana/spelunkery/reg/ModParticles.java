@@ -15,8 +15,8 @@ public class ModParticles {
         return RegHelper.registerParticle(Spelunkery.res(name));
     }
 
-//    public static final Supplier<SimpleParticleType> SULFUR = registerParticle("sulfur");
-//    public static final Supplier<SimpleParticleType> SULFUR_DUSTING = registerParticle("sulfur_dusting");
+    public static final Supplier<SimpleParticleType> SULFUR = registerParticle("sulfur");
+    public static final Supplier<SimpleParticleType> SULFUR_DUSTING = registerParticle("sulfur_dusting");
     public static final Supplier<SimpleParticleType> PORTAL_FLAME = registerParticle("portal_fluid_flame");
 
 }

@@ -1,1 +1,1 @@
-# Codebase of the Spelunkery Mod
+# Codebase of the Spelunkery mod

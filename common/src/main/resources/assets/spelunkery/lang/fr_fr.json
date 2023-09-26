@@ -71,7 +71,7 @@
   "tooltip.spelunkery.salt_1": "Moudre de l'Évaporite pour obtenir",
   "tooltip.spelunkery.salt_2": "Infranchissable pour les non-vivants",
 
-  "tooltip.spelunkery.grindstone_1": "  Interagir avec une gemme brute pour la polir",
+  "tooltip.spelunkery.grindstone_1": "  Interagir avec une gemme brute pour la polire",
   "tooltip.spelunkery.grindstone_2": "  %1$s et utiliser pour polir le stack entier",
 
   "tooltip.spelunkery.salt_bucket_1": "Contient actuellement un équivalent de %1$s piles de Sel",
@@ -84,7 +84,6 @@
   "tooltip.spelunkery.wooden_rail_1": "  Utiliser sur d'autres rails similaires pour les prolonger",
   "tooltip.spelunkery.wooden_rail_2": "  Peut s'étendre à travers l'air pour traverser des creux",
 
-  "tooltip.spelunkery.portal_fluid_pos": "  Lié à : %1$s, %2$s, %3$s",
   "tooltip.spelunkery.portal_fluid_1": "  Boire pour retourner à votre point de spawn",
   "tooltip.spelunkery.portal_fluid_2": "  Peut être utilisé pour allumer un Portail du Nether",
   "tooltip.spelunkery.portal_fluid_3": "  Utiliser une Fiole sur de l'Obsidienne Pleureuse ou une Ancre de Réapparition pour obtenir",
@@ -108,24 +107,22 @@
   "tooltip.spelunkery.magnetic_compass_3": "  Sauf s'il est présente une forte interférence dans le champ magnétique",
   "tooltip.spelunkery.magnetic_compass_4": "  Utiliser en maintenant %1$s pour réinitialiser",
 
-  "tooltip.spelunkery.item_magnet_1": "  Attire les items à proximité vers le joueur dans un rayon de %1$s blocks quand activf",
-  "tooltip.spelunkery.item_magnet_2": "  Utiliser pour alterner entre actif et inactif",
+  "tooltip.spelunkery.item_magnet_1": "Actif",
+  "tooltip.spelunkery.item_magnet_2": "Inactif",
+  "tooltip.spelunkery.item_magnet_3": "  Attire les items à proximité vers le joueur dans un rayon de %1$s blocks quand activf",
+  "tooltip.spelunkery.item_magnet_4": "  Utiliser pour alterner entre actif et inactif",
 
   "tooltip.spelunkery.obsidian_hammer_and_chisel": "Niveau de minage: Diamant",
   "tooltip.spelunkery.flint_hammer_and_chisel": "Niveau de minage: Pierre",
 
-  "tooltip.spelunkery.hammer_and_chisel_1": "  Utiliser en maintenant sur des blocks pour les casser",
-  "tooltip.spelunkery.hammer_and_chisel_2": "  Peut seulement casser des blocks au même niveau de minage avec une pioche",
-  "tooltip.spelunkery.hammer_and_chisel_3": "  Drop les blocks comme si cassés avec Touché de Soie",
+  "tooltip.spelunkery.hammer_and_chisel_1": "  Utiliser sur des blocks pour les casser et récupérer",
+  "tooltip.spelunkery.hammer_and_chisel_2": "  Peut seulement casser des blocks au correspondant niveau de minage",
+  "tooltip.spelunkery.hammer_and_chisel_3": "  Peut seulement casser des blocks pouvant être cassés avec une pioche",
   "tooltip.spelunkery.hammer_and_chisel_4": "  Utiliser en maintenant %1$s pour convertir des blocks de briques en leur forme sculptée",
 
   "tooltip.spelunkery.nephrite_charm_1": "%1$s/%2$s Points d'Expérience stockés",
   "tooltip.spelunkery.nephrite_charm_2": "  Peut stocker jusqu'à 30 Niveaux",
   "tooltip.spelunkery.nephrite_charm_3": "  Utiliser en maintenant %1$s pour stocker, utiliser pour récupérer",
-
-  "tooltip.spelunkery.cbm_1": "  Se place directionnellement comme un observeur",
-  "tooltip.spelunkery.cbm_2": "  Utiliser de la TNT dessus pour le charger, alimenter en redstone pour faire détonner",
-  "tooltip.spelunkery.cbm_3": "  L'explosion peut casser presque tous les blocks, incluant la bedrock",
 
   "tooltip.spelunkery.carved_nephrite_1": "  Peut stocker des Points d'Expérience sous la forme de 'Charge'",
   "tooltip.spelunkery.carved_nephrite_2": "  Chaque block peut contenir 100 Charges (~7 niveaux depuis le niveau 0)",
@@ -312,6 +309,7 @@
   "block.spelunkery.nephrite_spout": "Fontaine de néphrite",
   "block.spelunkery.nephrite_diode": "Valve de néphrite",
   "item.spelunkery.nephrite_charm": "Amulette de néphrite",
+  "item.spelunkery.echo_fork": "Echo Fork",
 
   "block.spelunkery.tangle_roots": "Racines entortillées",
   "block.spelunkery.sporophyte": "Sporophyte",

@@ -1,6 +1,0 @@
-{
-  "parent": "spelunkery:block/channel_template_base",
-  "textures": {
-    "planks": "minecraft:block/oak_planks"
-  }
-}

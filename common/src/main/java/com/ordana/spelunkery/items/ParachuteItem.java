@@ -58,10 +58,6 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         return ItemStack.EMPTY;
     }
 
-    static public void set3DModel(ItemStack stack, boolean model) {
-        stack.getOrCreateTag().putBoolean("model", model);
-    }
-
     public void setUsed(ItemStack stack, boolean used) {
         stack.getOrCreateTag().putBoolean("used", used);
     }
@@ -235,7 +231,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         return false;
     }
 
-    //TODO: finish this
+
     @Override
     public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand, DualWeildState twoHanded) {
         if (entity.getUseItemRemainingTicks() > 0 &&
