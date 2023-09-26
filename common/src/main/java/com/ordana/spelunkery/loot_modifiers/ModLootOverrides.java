@@ -26,6 +26,7 @@ public class ModLootOverrides extends DynServerResourcesProvider {
         this.dynamicPack.addNamespaces("create");
         this.dynamicPack.addNamespaces("sullysmod");
         this.dynamicPack.addNamespaces("oreganized");
+        // TODO 1.19.2 :: this.dynamicPack.addNamespaces("ditr");
     }
 
     @Override
@@ -519,7 +520,7 @@ public class ModLootOverrides extends DynServerResourcesProvider {
         }
     }
 
-    @Override
-    public void generateStaticAssetsOnStartup(ResourceManager manager) {
-    }
+//    @Override
+//    public void generateStaticAssetsOnStartup(ResourceManager manager) {
+//    }
 }

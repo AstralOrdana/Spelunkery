@@ -37,9 +37,7 @@ public class PrimedMineomiteEntityRenderer extends EntityRenderer<PrimedMineomit
             matrixStack.scale(g, g, g);
         }
 
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
         matrixStack.translate(-0.5D, -0.5D, 0.5D);
-        matrixStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
         TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, ModBlocks.MINEOMITE.get().defaultBlockState(), matrixStack, buffer, packedLight, i / 5 % 2 == 0);
         matrixStack.popPose();
         super.render(entity, entityYaw, partialTicks, matrixStack, buffer, packedLight);
