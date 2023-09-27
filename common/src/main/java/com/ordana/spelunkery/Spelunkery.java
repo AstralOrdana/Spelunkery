@@ -39,16 +39,6 @@ public class Spelunkery {
         NetworkHandler.registerMessages();
         CommonConfigs.init();
 
-        if(PlatformHelper.getEnv().isClient()){
-            ClientConfigs.init();
-
-            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", true);
-            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), "Unlit Redstone Ores", true);
-            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), "Emissive Ores", false);
-            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), "Emissive Better Vanilla Ores", false);
-
-        }
-
         RegHelper.addAttributeRegistration(Spelunkery::registerEntityAttributes);
         ModGameEvents.init();
         ModLootOverrides.INSTANCE.register();

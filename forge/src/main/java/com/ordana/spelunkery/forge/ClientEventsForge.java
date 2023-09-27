@@ -1,15 +1,11 @@
 package com.ordana.spelunkery.forge;
 
-import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.entities.ParachuteLayer;
 import com.ordana.spelunkery.fluids.PortalFluidRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ClientEventsForge {
@@ -17,12 +13,7 @@ public class ClientEventsForge {
     public static void init() {
         MinecraftForge.EVENT_BUS.register(ClientEventsForge.class);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onAddLayers);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::loadComplete);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onTextureStitchEvent);
-    }
-
-    public static void loadComplete(FMLLoadCompleteEvent event){
-        SpelunkeryClient.checkIfFailed();
     }
 
     @SuppressWarnings("unchecked")

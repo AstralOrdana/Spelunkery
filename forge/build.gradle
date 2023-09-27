@@ -119,7 +119,7 @@ dependencies {
 
     implementation 'org.jetbrains:annotations:22.0.0'
 
-    modImplementation("curse.maven:selene-499980:4569958")
+    modImplementation("curse.maven:selene-499980:4758015")
 
     modLocalRuntime "dev.emi:emi-forge:${rootProject.emi_version}"
 

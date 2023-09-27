@@ -16,6 +16,8 @@ public class SpelunkeryForgeClient {
     public static void init(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModFluids.SPRING_WATER.get(), RenderType.translucent());
         event.enqueueWork(SpelunkeryClient::setup);
     }
 }

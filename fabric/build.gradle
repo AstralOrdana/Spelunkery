@@ -25,7 +25,7 @@ dependencies {
 
     modLocalRuntime "dev.emi:emi-fabric:${rootProject.emi_version}"
 
-    modImplementation("curse.maven:selene-499980:4569959")
+    modImplementation("curse.maven:selene-499980:4757232")
 
     modImplementation("maven.modrinth:modmenu:4.2.0-beta.2")
 
