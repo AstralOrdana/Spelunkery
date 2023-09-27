@@ -39,6 +39,7 @@ public class EmiIntegration implements EmiPlugin {
 
         var style = Style.EMPTY.applyFormats(ChatFormatting.GREEN);
 
+
         if (PlatformHelper.isModLoaded("create")) {
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()

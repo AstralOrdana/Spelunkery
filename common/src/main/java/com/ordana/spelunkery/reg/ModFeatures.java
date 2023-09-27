@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 
 public class ModFeatures {
 
-    //features
+    //custom feature types
     public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
             Spelunkery.res("huge_conk"), () ->
                     new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
@@ -70,7 +70,7 @@ public class ModFeatures {
 
     public static void init() {
 
-        //carvers
+        //carver generation
         ResourceKey<ConfiguredWorldCarver<?>> end_cave = ResourceKey.create(Registry.CONFIGURED_CARVER_REGISTRY, Spelunkery.res("end_cave"));
         SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_cave);
 
@@ -117,6 +117,12 @@ public class ModFeatures {
 
 
         //ores
+        ResourceKey<PlacedFeature> spring_water_pool = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("spring_water_pool"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.FLUID_SPRINGS, ModTags.HAS_SALT_NOISE, spring_water_pool);
+
+        ResourceKey<PlacedFeature> spring_water_spring = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("spring_water_spring"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.FLUID_SPRINGS, ModTags.HAS_SALT_NOISE, spring_water_spring);
+
         ResourceKey<PlacedFeature> ore_aquifer = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("ore_aquifer"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.UNDERGROUND_ORES, BiomeTags.IS_OVERWORLD, ore_aquifer);
 

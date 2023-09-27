@@ -2,6 +2,7 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
+import com.ordana.spelunkery.utils.DisabledItem;
 import net.mehvahdjukaar.moonlight.api.item.FuelItem;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -68,6 +69,8 @@ public class ModItems {
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
     public static final Supplier<Item> COAL_LUMP = regItem("coal_lump", () ->
+            new FuelItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS)), () -> 200));
+    public static final Supplier<Item> CHARCOAL_LUMP = regItem("charcoal_lump", () ->
             new FuelItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS)), () -> 200));
     public static final Supplier<Item> ROUGH_CINNABAR_SHARD = regItem("rough_cinnabar_shard", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
@@ -164,6 +167,8 @@ public class ModItems {
 
     public static final Supplier<Item> PORTAL_FLUID_BUCKET = regItem("portal_fluid_bucket", () ->
             new PortalFluidBucketItem(ModFluids.PORTAL_FLUID.get(), (new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1))));
+    public static final Supplier<Item> SPRING_WATER_BUCKET = regItem("spring_water_bucket", () ->
+            new SpringWaterBucketItem(ModFluids.SPRING_WATER.get(), (new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1))));
     public static final Supplier<Item> SALT_BUCKET = regItem("salt_bucket", () ->
             new SaltBucketItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).craftRemainder(Items.BUCKET)));
     public static final Supplier<Item> ECHO_FORK = regItem("echo_fork", () ->
@@ -205,7 +210,10 @@ public class ModItems {
     public static final Supplier<Item> LIGHT_GRAY_GLOWSTICK = regItem("light_gray_glowstick", () ->
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS))));
 
-    /* TODO @DisabledItem */
+    public static final Supplier<Item> DUST_BUNNY_SPAWN_EGG = RegHelper.registerItem(Spelunkery.res("dust_bunny_spawn_egg"), () ->
+            PlatformHelper.newSpawnEgg(ModEntities.DUST_BUNNY, 0x727272, 0x876554, new Item.Properties().tab(getTab(CreativeModeTab.TAB_MISC))));
+
+    @DisabledItem
     public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->
             new EggplantItem(new Item.Properties().tab(getTab(null)).stacksTo(1).rarity(Rarity.EPIC)));
 

@@ -133,6 +133,7 @@ public class SluiceBlock extends ModBaseEntityBlock {
         }
     }
 
+
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         boolean stone = state.is(ModBlocks.STONE_SLUICE.get());

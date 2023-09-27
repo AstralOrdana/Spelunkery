@@ -28,6 +28,7 @@ public abstract class RemotePlayerMixin extends Player implements IParachuteEnti
         super(level, blockPos, f, gameProfile, profilePublicKey);
     }
 
+
     //this isn't optimal but still better than checking every render tick the whole inventory
     @Inject(method = "tick",
             at = @At(value = "INVOKE",

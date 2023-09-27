@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "spelunkery:spring_water",
+    "spelunkery:flowing_spring_water",
     "spelunkery:portal_fluid",
     "spelunkery:flowing_portal_fluid"
   ]

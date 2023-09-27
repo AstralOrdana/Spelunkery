@@ -1,7 +1,6 @@
 package com.ordana.spelunkery.entities;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

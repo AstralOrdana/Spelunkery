@@ -430,7 +430,6 @@ public class ModBlocks {
 
     public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
             new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
-
     public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
             new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
     public static final Supplier<Block> STONE_CHANNEL = regWithItem("stone_channel", () ->
@@ -439,13 +438,15 @@ public class ModBlocks {
             new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
 
 
+
     public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->
             new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((blockStatex) -> 5), CauldronInteraction.WATER));
 
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
             SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
-
+    public static final Supplier<LiquidBlock> SPRING_WATER = regBlock("spring_water", () ->
+            SpelunkeryPlatform.doSpringWater(ModFluids.SPRING_WATER, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 2)));
 
     //mod support
 
@@ -488,4 +489,7 @@ public class ModBlocks {
             new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
     public static final Supplier<Block> TUFF_JADE_ORE = regWithItemConfigurable("tuff_jade_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get()).sound(SoundType.TUFF)), "sullysmod");
+
+
+
 }

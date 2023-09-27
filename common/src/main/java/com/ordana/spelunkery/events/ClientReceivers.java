@@ -70,6 +70,6 @@ public class ClientReceivers {
     }
 
     private static BlockPos containing(@NotNull final Vec3 input) {
-        return new BlockPos(Mth.floor(input.x()), Mth.floor(input.y()), Mth.floor(input.z()));
+        return new BlockPos(input);
     }
 }

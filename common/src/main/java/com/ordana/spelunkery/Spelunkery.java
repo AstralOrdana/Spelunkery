@@ -2,6 +2,7 @@ package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.entities.DustBunnyEntity;
 import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
@@ -9,6 +10,7 @@ import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,8 +46,10 @@ public class Spelunkery {
             ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), "Unlit Redstone Ores", true);
             ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), "Emissive Ores", false);
             ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), "Emissive Better Vanilla Ores", false);
+
         }
 
+        RegHelper.addAttributeRegistration(Spelunkery::registerEntityAttributes);
         ModGameEvents.init();
         ModLootOverrides.INSTANCE.register();
         ModFeatures.init();
@@ -73,6 +77,10 @@ public class Spelunkery {
             if (event.getPlayer() instanceof ServerPlayer serverPlayer) CriteriaTriggers.USING_ITEM.trigger(serverPlayer, event.getItemStack());
             event.setCanceled(true);
         }
+    }
+
+    private static void registerEntityAttributes(RegHelper.AttributeEvent event) {
+        event.register(ModEntities.DUST_BUNNY.get(), DustBunnyEntity.createAttributes());
     }
 
 }

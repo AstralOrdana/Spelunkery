@@ -23,6 +23,12 @@ public class ModEntities {
     public static void init() {
     }
 
+    //Entities
+    public static Supplier<EntityType<DustBunnyEntity>> DUST_BUNNY = RegHelper.registerEntityType(
+            Spelunkery.res("dust_bunny"),
+            DustBunnyEntity::new, MobCategory.CREATURE, 1F, 1F, 10, 20);
+
+    //Tile Entities
     public static final Supplier<BlockEntityType<CarvedNephriteBlockEntity>> NEPHRITE_TILE = RegHelper.registerBlockEntityType(
             Spelunkery.res("carved_nephrite"),
             () -> PlatformHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
@@ -43,10 +49,10 @@ public class ModEntities {
             Spelunkery.res("stone_sluice"),
             () -> PlatformHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.STONE_SLUICE.get()));
 
+    //Thrown Entities
     public static Supplier<EntityType<GlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(
             Spelunkery.res("glowstick"),
             GlowstickEntity::new, MobCategory.MISC, 0.28F, 0.98F, 10, 20);
-
     public static Supplier<EntityType<MineomiteEntity>> MINEOMITE = RegHelper.registerEntityType(
             Spelunkery.res("mineomite"),
             MineomiteEntity::new, MobCategory.MISC, 0.28F, 0.98F, 10, 20);
@@ -59,7 +65,6 @@ public class ModEntities {
     public static Supplier<EntityType<PebbleEntity>> PEBBLE = RegHelper.registerEntityType(
             Spelunkery.res("pebble"),
             PebbleEntity::new, MobCategory.MISC, 0.7F, 0.7F, 10, 20);
-
     public static Supplier<EntityType<EggplantEntity>> EGGPLANT = RegHelper.registerEntityType(
             Spelunkery.res("eggplant"),
             EggplantEntity::new, MobCategory.MISC, 0.7F, 0.7F, 10, 20);

@@ -22,7 +22,7 @@ public class PortalFluidFlameParticle extends TextureSheetParticle {
         super(clientLevel, d, e, f, g, h, i);
         this.sprites = spriteSet;
         this.scale(2F);
-        this.lifetime = (int)(this.random.nextFloat() + 6.0f);
+        this.lifetime = (int)(this.random.nextFloat() + 6.0f); // TODO 1.19.2 :: Changed to static 10
         this.setSpriteFromAge(spriteSet);
     }
 
@@ -49,6 +49,7 @@ public class PortalFluidFlameParticle extends TextureSheetParticle {
         float j = this.getQuadSize(partialTicks);
         for (int k = 0; k < 4; ++k) {
             Vector3f vector3f2 = vector3fs[k];
+            // TODO 1.19.2
 //            vector3f2.rotate(this.rotation);
             vector3f2.mul(j);
             vector3f2.add(f, g, h);

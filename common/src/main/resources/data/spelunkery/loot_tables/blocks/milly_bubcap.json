@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -18,7 +18,7 @@
                   }
                 }
               ],
-              "count": 2.0,
+              "count": 2,
               "function": "minecraft:set_count"
             },
             {
@@ -32,7 +32,7 @@
                   }
                 }
               ],
-              "count": 3.0,
+              "count": 3,
               "function": "minecraft:set_count"
             },
             {
@@ -46,7 +46,7 @@
                   }
                 }
               ],
-              "count": 4.0,
+              "count": 4,
               "function": "minecraft:set_count"
             },
             {
@@ -60,7 +60,7 @@
                   }
                 }
               ],
-              "count": 5.0,
+              "count": 5,
               "function": "minecraft:set_count"
             },
             {
@@ -74,7 +74,7 @@
                   }
                 }
               ],
-              "count": 6.0,
+              "count": 6,
               "function": "minecraft:set_count"
             },
             {
@@ -88,7 +88,7 @@
                   }
                 }
               ],
-              "count": 7.0,
+              "count": 7,
               "function": "minecraft:set_count"
             },
             {
@@ -102,7 +102,7 @@
                   }
                 }
               ],
-              "count": 8.0,
+              "count": 8,
               "function": "minecraft:set_count"
             },
             {
@@ -112,7 +112,7 @@
           "name": "spelunkery:milly_bubcap"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ]
 }
