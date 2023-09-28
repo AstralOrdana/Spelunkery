@@ -47,15 +47,7 @@
         {
           "type": "minecraft:item",
           "weight": 200,
-          "name": "spelunkery:basalt_pebble",
-          "conditions": [
-            {
-              "condition": "minecraft:location_check",
-              "predicate": {
-                "biome": "minecraft:soul_sand_valley"
-              }
-            }
-          ]
+          "name": "spelunkery:netherrack_pebble"
         },
         {
           "type": "minecraft:item",

@@ -15,6 +15,7 @@
     "FlowingFluidMixin",
     "IceMixin",
     "ItemFrameMixin",
+    "MineshaftMixin",
     "MossBlockMixin",
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",

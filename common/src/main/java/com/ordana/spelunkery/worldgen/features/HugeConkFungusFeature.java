@@ -1,8 +1,9 @@
-package com.ordana.spelunkery.features;
+package com.ordana.spelunkery.worldgen.features;
 
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.worldgen.feature_configs.HugeConkFungusFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;

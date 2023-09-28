@@ -310,6 +310,7 @@
   "item.spelunkery.saltpeter": "Saltpeter",
   "item.spelunkery.stone_pebble": "Stone Pebble",
   "item.spelunkery.deepslate_pebble": "Deepslate Pebble",
+  "item.spelunkery.netherrack_pebble": "Netherrack Pebble",
   "item.spelunkery.blackstone_pebble": "Blackstone Pebble",
   "item.spelunkery.basalt_pebble": "Basalt Pebble",
   "item.spelunkery.end_stone_pebble": "End Stone Pebble",
@@ -377,6 +378,7 @@
 
   "item.spelunkery.dust_bun": "Dust Bun",
   "item.spelunkery.dust_bunny_spawn_egg": "Dust Bunny Spawn Egg",
+  "block.spelunkery.dust": "Dust",
 
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",

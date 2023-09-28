@@ -217,6 +217,16 @@
           "type": "minecraft:item",
           "weight": 5,
           "name": "spelunkery:nephrite_chunk"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "spelunkery:raw_zinc_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "spelunkery:saltpeter"
         }
       ]
     }

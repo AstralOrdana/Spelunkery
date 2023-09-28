@@ -1,4 +1,4 @@
-package com.ordana.spelunkery.features.util;
+package com.ordana.spelunkery.worldgen.feature_configs.util;
 
 // MIT License
 //

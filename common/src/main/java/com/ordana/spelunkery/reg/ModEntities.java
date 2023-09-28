@@ -1,10 +1,7 @@
 package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
-import com.ordana.spelunkery.blocks.entity.MagnetiteBlockEntity;
-import com.ordana.spelunkery.blocks.entity.NephriteFountainEntity;
-import com.ordana.spelunkery.blocks.entity.SluiceBlockEntity;
+import com.ordana.spelunkery.blocks.entity.*;
 import com.ordana.spelunkery.entities.*;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -23,10 +20,10 @@ public class ModEntities {
     public static void init() {
     }
 
-    //Entities
+    //Living Entities
     public static Supplier<EntityType<DustBunnyEntity>> DUST_BUNNY = RegHelper.registerEntityType(
             Spelunkery.res("dust_bunny"),
-            DustBunnyEntity::new, MobCategory.CREATURE, 1F, 1F, 10, 20);
+            DustBunnyEntity::new, MobCategory.CREATURE, 0.8F, 0.5F, 10, 20);
 
     //Tile Entities
     public static final Supplier<BlockEntityType<CarvedNephriteBlockEntity>> NEPHRITE_TILE = RegHelper.registerBlockEntityType(
@@ -64,4 +61,10 @@ public class ModEntities {
     public static Supplier<EntityType<EggplantEntity>> EGGPLANT = RegHelper.registerEntityType(
             Spelunkery.res("eggplant"),
             EggplantEntity::new, MobCategory.MISC, 0.7F, 0.7F, 10, 20);
+
+    //Other Entities
+    public static Supplier<EntityType<FallingLayerEntity>> FALLING_LAYER = RegHelper.registerEntityType(
+            Spelunkery.res("falling_layer"),
+            FallingLayerEntity::new, MobCategory.MISC, 0.98F, 0.98F, 10, 20);
+
 }

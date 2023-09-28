@@ -12,29 +12,13 @@
         {
           "type": "minecraft:item",
           "weight": 15,
-          "name": "minecraft:wheat_seeds"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 15,
-          "name": "minecraft:grass"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:dirt"
+          "name": "minecraft:seagrass"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "spelunkery:raw_iron_nugget"
+          "name": "minecraft:dirt"
         },
-        {
-          "type": "minecraft:item",
-          "weight": 1,
-          "name": "spelunkery:raw_gold_nugget"
-        },
-
         {
           "type": "minecraft:item",
           "weight": 20,

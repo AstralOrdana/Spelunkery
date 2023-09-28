@@ -32,6 +32,8 @@ public class ModItems {
             new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> DEEPSLATE_PEBBLE = regItem("deepslate_pebble", () ->
             new PebbleItem(new Item.Properties()));
+    public static final Supplier<Item> NETHERRACK_PEBBLE = regItem("netherrack_pebble", () ->
+            new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> BLACKSTONE_PEBBLE = regItem("blackstone_pebble", () ->
             new PebbleItem(new Item.Properties()));
     public static final Supplier<Item> BASALT_PEBBLE = regItem("basalt_pebble", () ->
@@ -209,7 +211,7 @@ public class ModItems {
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties()));
 
     public static final Supplier<Item> DUST_BUNNY_SPAWN_EGG = RegHelper.registerItem(Spelunkery.res("dust_bunny_spawn_egg"), () ->
-            PlatHelper.newSpawnEgg(ModEntities.DUST_BUNNY, 0x727272, 0x876554, new Item.Properties()));
+            PlatHelper.newSpawnEgg(ModEntities.DUST_BUNNY, 0x5E625E, 0x3F3C39, new Item.Properties()));
 
     @DisabledItem
     public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->

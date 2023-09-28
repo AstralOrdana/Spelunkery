@@ -99,7 +99,7 @@ public class ModCreativeTabs {
 
         after(e, Items.RED_SANDSTONE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.ROCK_SALT,
-                ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT
+                ModBlocks.DUST, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT
         );
 
         after(e, Items.CUT_RED_SANDSTONE_SLAB, CreativeModeTabs.BUILDING_BLOCKS,
@@ -171,6 +171,7 @@ public class ModCreativeTabs {
                 ModItems.CINNABAR,
                 ModItems.STONE_PEBBLE,
                 ModItems.DEEPSLATE_PEBBLE,
+                ModItems.NETHERRACK_PEBBLE,
                 ModItems.BLACKSTONE_PEBBLE,
                 ModItems.BASALT_PEBBLE,
                 ModItems.END_STONE_PEBBLE

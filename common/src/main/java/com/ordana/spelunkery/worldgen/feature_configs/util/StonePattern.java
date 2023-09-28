@@ -1,4 +1,4 @@
-package com.ordana.spelunkery.features.util;
+package com.ordana.spelunkery.worldgen.feature_configs.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

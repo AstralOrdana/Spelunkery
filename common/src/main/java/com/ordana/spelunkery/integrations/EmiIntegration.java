@@ -24,7 +24,7 @@ import net.minecraft.world.level.material.Fluids;
 
 @EmiEntrypoint
 public class EmiIntegration implements EmiPlugin {
-        @Override
+    @Override
     public void register(EmiRegistry registry) {
 
         EmiIngredient grindstone = EmiStack.of(Blocks.GRINDSTONE);
@@ -36,6 +36,8 @@ public class EmiIntegration implements EmiPlugin {
         lava.setRemainder(lava);
         EmiStack portalFluid = EmiStack.of(ModFluids.PORTAL_FLUID.get());
         portalFluid.setRemainder(portalFluid);
+        EmiStack springWater = EmiStack.of(ModFluids.SPRING_WATER.get());
+        springWater.setRemainder(springWater);
 
         var style = Style.EMPTY.applyFormats(ChatFormatting.GREEN);
 
@@ -201,16 +203,25 @@ public class EmiIntegration implements EmiPlugin {
 
         //sluice recipes
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
+                .id(new ResourceLocation("spelunkery", "/spring_water_passive"))
+                .rightInput(sluice, true)
+                .leftInput(springWater)
+                .output(EmiStack.of(ModItems.ROCK_SALT.get()).setChance(20f / 50f))
+                .output(EmiStack.of(ModItems.SALTPETER.get()).setChance(15f / 50f))
+                .output(EmiStack.of(ModItems.SULFUR.get()).setChance(5f / 50f))
+                .output(EmiStack.of(ModItems.RAW_COPPER_NUGGET.get()).setChance(5f / 50f))
+                .output(EmiStack.of(ModItems.RAW_IRON_NUGGET.get()).setChance(5f / 50f))
+                .build());
+
+        registry.addRecipe(EmiWorldInteractionRecipe.builder()
                 .id(new ResourceLocation("spelunkery", "/water_passive"))
                 .rightInput(sluice, true)
                 .leftInput(water)
-                .output(EmiStack.of(ModItems.STONE_PEBBLE.get()).setChance(0.232f))
-                .output(EmiStack.of(Items.WHEAT_SEEDS).setChance(0.174f))
-                .output(EmiStack.of(Items.GRASS).setChance(0.174f))
-                .output(EmiStack.of(Items.DIRT).setChance(0.116f))
-                .output(EmiStack.of(ModItems.RAW_IRON_NUGGET.get()).setChance(0.058f))
-                .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(0.011f))
-                .output(EmiStack.of(Items.ICE).setChance(0.232f), s -> s.appendTooltip(
+                .output(EmiStack.of(ModItems.STONE_PEBBLE.get()).setChance(20f / 60f))
+                .output(EmiStack.of(Items.WHEAT_SEEDS).setChance(20f / 60f))
+                .output(EmiStack.of(Items.SEAGRASS).setChance(15f / 60f))
+                .output(EmiStack.of(Items.DIRT).setChance(5f / 60f))
+                .output(EmiStack.of(Items.ICE).setChance(20f / 60f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.icy").setStyle(style)))
                 .build());
 
@@ -219,22 +230,24 @@ public class EmiIntegration implements EmiPlugin {
                 .rightInput(sluice, true)
                 .leftInput(water)
                 .leftInput(EmiStack.of(Blocks.CLAY))
-                .output(EmiStack.of(Items.SEAGRASS).setChance(0.151f))
-                .output(EmiStack.of(ModBlocks.TANGLE_ROOTS.get()).setChance(0.151f))
-                .output(EmiStack.of(ModItems.NEPHRITE_CHUNK.get()).setChance(0.075f))
-                .output(EmiStack.of(Items.BOWL).setChance(0.151f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.SEAGRASS).setChance(10f / 80f))
+                .output(EmiStack.of(ModBlocks.TANGLE_ROOTS.get()).setChance(10f / 80f))
+                .output(EmiStack.of(ModItems.NEPHRITE_CHUNK.get()).setChance(5f / 80f))
+                .output(EmiStack.of(ModItems.RAW_ZINC_NUGGET.get()).setChance(4f / 80f))
+                .output(EmiStack.of(ModItems.SALTPETER.get()).setChance(10f / 80f))
+                .output(EmiStack.of(Items.BOWL).setChance(10f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(Items.BRICK).setChance(0.151f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.BRICK).setChance(10f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(Items.SPYGLASS).setChance(0.075f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.SPYGLASS).setChance(5f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(Items.WRITABLE_BOOK).setChance(0.075f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.WRITABLE_BOOK).setChance(5f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(Items.SHEARS).setChance(0.075f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.SHEARS).setChance(5f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(Items.BUNDLE).setChance(0.075f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.BUNDLE).setChance(5f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
-                .output(EmiStack.of(ModItems.ROUGH_DIAMOND_SHARD.get()).setChance(0.015f), s -> s.appendTooltip(
+                .output(EmiStack.of(ModItems.ROUGH_DIAMOND_SHARD.get()).setChance(1f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.desert_villages").setStyle(style)))
                 .build());
 
@@ -247,7 +260,7 @@ public class EmiIntegration implements EmiPlugin {
                 .output(EmiStack.of(ModItems.STONE_PEBBLE.get()).setChance(0.267f))
                 .output(EmiStack.of(Items.MELON_SEEDS).setChance(0.178f))
                 .output(EmiStack.of(Items.PUMPKIN_SEEDS).setChance(0.178f))
-                .output(EmiStack.of(ModItems.DUST_BUN.get()).setChance(0.017f), s -> s.appendTooltip(
+                .output(EmiStack.of(ModItems.DUST_BUNNY_SPAWN_EGG.get()).setChance(0.017f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.mineshafts").setStyle(style)))
                 .build());
 
@@ -388,11 +401,12 @@ public class EmiIntegration implements EmiPlugin {
                 .rightInput(sluice, true)
                 .leftInput(water)
                 .leftInput(EmiStack.of(Blocks.SOUL_SAND))
-                .output(EmiStack.of(Items.BONE).setChance(0.285f))
-                .output(EmiStack.of(ModItems.BASALT_PEBBLE.get()).setChance(0.142f))
-                .output(EmiStack.of(Items.NETHER_WART).setChance(0.285f))
-                .output(EmiStack.of(Items.QUARTZ).setChance(0.142f))
-                .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(0.142f))
+                .output(EmiStack.of(Items.BONE).setChance(20f / 85f))
+                .output(EmiStack.of(ModItems.BASALT_PEBBLE.get()).setChance(10f / 85f))
+                .output(EmiStack.of(Items.NETHER_WART).setChance(20f / 85f))
+                .output(EmiStack.of(Items.QUARTZ).setChance(10f / 85f))
+                .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(10f / 85f))
+                .output(EmiStack.of(ModItems.SULFUR.get()).setChance(15f / 85f))
                 .build());
 
 
@@ -401,18 +415,17 @@ public class EmiIntegration implements EmiPlugin {
                 .id(new ResourceLocation("spelunkery", "/lava_passive"))
                 .rightInput(sluice, true)
                 .leftInput(lava)
-                .output(EmiStack.of(ModItems.BASALT_PEBBLE.get()).setChance(0.092f), s -> s.appendTooltip(
-                        Component.translatable("tooltip.spelunkery.sluice.soul_sand_valleys").setStyle(style)))
-                .output(EmiStack.of(ModItems.BLACKSTONE_PEBBLE.get()).setChance(0.268f), s -> s.appendTooltip(
+                .output(EmiStack.of(ModItems.NETHERRACK_PEBBLE.get()).setChance(200f / 572f))
+                .output(EmiStack.of(ModItems.BLACKSTONE_PEBBLE.get()).setChance(100f / 572f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.wastes_deltas").setStyle(style)))
-                .output(EmiStack.of(Items.MAGMA_BLOCK).setChance(0.403f))
-                .output(EmiStack.of(Items.MAGMA_CREAM).setChance(0.268f))
-                .output(EmiStack.of(Items.MAGMA_CUBE_SPAWN_EGG).setChance(0.026f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.MAGMA_BLOCK).setChance(150f / 572f))
+                .output(EmiStack.of(Items.MAGMA_CREAM).setChance(100f / 572f))
+                .output(EmiStack.of(Items.MAGMA_CUBE_SPAWN_EGG).setChance(10f / 572f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.wastes_deltas").setStyle(style)))
-                .output(EmiStack.of(Items.WITHER_SKELETON_SKULL).setChance(0.002f), s -> s.appendTooltip(
+                .output(EmiStack.of(Items.WITHER_SKELETON_SKULL).setChance(1f / 572f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.fortresses").setStyle(style)))
-                .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(0.026f))
-                .output(EmiStack.of(Items.NETHERITE_SCRAP).setChance(0.002f), s -> s.appendTooltip(
+                .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(10f / 572f))
+                .output(EmiStack.of(Items.NETHERITE_SCRAP).setChance(1f / 572f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.wastes_deltas").setStyle(style)))
                 .build());
 
