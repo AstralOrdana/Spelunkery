@@ -10,7 +10,7 @@ public class DustBunnyRenderer extends MobRenderer<DustBunnyEntity, DustBunnyMod
     private static final ResourceLocation LOCATION = Spelunkery.res("textures/entity/dust_bunny/dust_bunny.png");
 
     public DustBunnyRenderer(EntityRendererProvider.Context context) {
-        super(context, new DustBunnyModel<>(context.bakeLayer(SpelunkeryClient.DUST_BUNNY)), 0.7F);
+        super(context, new DustBunnyModel<>(context.bakeLayer(SpelunkeryClient.DUST_BUNNY)), 0.5F);
     }
 
     @Override

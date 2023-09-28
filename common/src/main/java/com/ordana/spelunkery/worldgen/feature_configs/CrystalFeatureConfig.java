@@ -1,4 +1,4 @@
-package com.ordana.spelunkery.features;
+package com.ordana.spelunkery.worldgen.feature_configs;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;

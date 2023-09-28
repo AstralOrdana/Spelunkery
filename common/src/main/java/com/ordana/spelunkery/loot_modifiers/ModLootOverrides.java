@@ -21,12 +21,13 @@ public class ModLootOverrides extends DynServerResourcesProvider {
 
     public ModLootOverrides() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
+        this.dynamicPack.generateDebugResources = true;
         this.dynamicPack.addNamespaces("spelunkery");
         this.dynamicPack.addNamespaces("minecraft");
         this.dynamicPack.addNamespaces("create");
         this.dynamicPack.addNamespaces("sullysmod");
         this.dynamicPack.addNamespaces("oreganized");
-        // TODO 1.19.2 :: this.dynamicPack.addNamespaces("ditr");
+        this.dynamicPack.addNamespaces("ditr");
     }
 
     @Override
@@ -195,6 +196,10 @@ public class ModLootOverrides extends DynServerResourcesProvider {
                 "tuff_jade_ore"
         );
 
+        var ditrLootGems = List.of(
+                "obsidian_diamond_ore"
+        );
+
 
         var oreganizedLootMetal = List.of(
                 "deepslate_lead_ore",
@@ -355,6 +360,14 @@ public class ModLootOverrides extends DynServerResourcesProvider {
                 overrideDataFile(manager, spelunkeryRecipeCrushingGems,
                         "spelunkery", "crushing/",
                         "overrides/recipes/crushing/", ResType.RECIPES);
+            }
+
+            if (PlatformHelper.isModLoaded("ditr")) {
+
+                //override ditr loot tables to mak gem ores drop rough gems
+                overrideDataFile(manager, ditrLootGems,
+                        "ditr", "",
+                        "overrides/loot_tables/ditr/", ResType.BLOCK_LOOT_TABLES);
             }
         }
 
@@ -519,8 +532,4 @@ public class ModLootOverrides extends DynServerResourcesProvider {
             }
         }
     }
-
-//    @Override
-//    public void generateStaticAssetsOnStartup(ResourceManager manager) {
-//    }
 }

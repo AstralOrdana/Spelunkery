@@ -1,11 +1,12 @@
-package com.ordana.spelunkery.features;
+package com.ordana.spelunkery.worldgen.features;
 
 import com.mojang.serialization.Codec;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.features.util.FastNoiseLite;
-import com.ordana.spelunkery.features.util.StoneEntry;
-import com.ordana.spelunkery.features.util.StonePattern;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.worldgen.feature_configs.BlockStripeFeatureConfig;
+import com.ordana.spelunkery.worldgen.feature_configs.util.FastNoiseLite;
+import com.ordana.spelunkery.worldgen.feature_configs.util.StoneEntry;
+import com.ordana.spelunkery.worldgen.feature_configs.util.StonePattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;

@@ -27,7 +27,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "spelunkery:dust_bun",
+          "name": "spelunkery:dust_bunny_spawn_egg",
           "conditions": [
             {
               "condition": "minecraft:alternative",

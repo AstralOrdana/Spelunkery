@@ -1,6 +1,7 @@
-package com.ordana.spelunkery.features;
+package com.ordana.spelunkery.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import com.ordana.spelunkery.worldgen.feature_configs.CrystalFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;

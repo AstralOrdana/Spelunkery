@@ -1,6 +1,5 @@
 package com.ordana.spelunkery;
 
-import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.entities.DustBunnyEntity;
 import com.ordana.spelunkery.events.NetworkHandler;
@@ -8,8 +7,6 @@ import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
-import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
-import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.resources.ResourceLocation;
@@ -42,7 +39,7 @@ public class Spelunkery {
         RegHelper.addAttributeRegistration(Spelunkery::registerEntityAttributes);
         ModGameEvents.init();
         ModLootOverrides.INSTANCE.register();
-        ModFeatures.init();
+        ModWorldgenFeatures.init();
         ModBlocks.init();
         ModFluids.init();
         ModItems.init();

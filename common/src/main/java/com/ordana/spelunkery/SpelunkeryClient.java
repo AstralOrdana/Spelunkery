@@ -10,6 +10,7 @@ import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyF
 import com.ordana.spelunkery.particles.PortalFluidFlameParticle;
 import com.ordana.spelunkery.particles.SulfurParticle;
 import com.ordana.spelunkery.reg.*;
+import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGeneric;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -118,7 +119,7 @@ public class SpelunkeryClient {
     }
 
     private static void registerLayers(ClientPlatformHelper.ModelLayerEvent event) {
-        event.register(DUST_BUNNY, DustBunnyModel::createOuterBodyLayer);
+        event.register(DUST_BUNNY, DustBunnyModel::createBodyLayer);
     }
 
     @EventCalled
@@ -133,6 +134,7 @@ public class SpelunkeryClient {
     }
 
     private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
+        event.register(ModEntities.FALLING_LAYER.get(), FallingBlockRendererGeneric::new);
         event.register(ModEntities.DUST_BUNNY.get(), DustBunnyRenderer::new);
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.MINEOMITE.get(), context -> new ThrownItemRenderer<>(context, 1, false));

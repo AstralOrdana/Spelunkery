@@ -1,8 +1,8 @@
-package com.ordana.spelunkery.features;
+package com.ordana.spelunkery.worldgen.feature_configs;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.ordana.spelunkery.features.util.StoneEntry;
+import com.ordana.spelunkery.worldgen.feature_configs.util.StoneEntry;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;

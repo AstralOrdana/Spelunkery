@@ -322,6 +322,10 @@ public class ModBlocks {
     public static final Supplier<Block> /* TODO RAW_MAGNETITE_BLOCK */ MAGNETITE = regWithItem("magnetite", () ->
             new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
 
+
+    public static final Supplier<Block> DUST = regWithItem("dust", () ->
+            new DustBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()/* ignitedByLava() */));
+
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
             new TangleRootsBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.NETHER).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)), getTab(CreativeModeTab.TAB_DECORATIONS));
@@ -447,6 +451,7 @@ public class ModBlocks {
             SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
     public static final Supplier<LiquidBlock> SPRING_WATER = regBlock("spring_water", () ->
             SpelunkeryPlatform.doSpringWater(ModFluids.SPRING_WATER, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 2)));
+
 
     //mod support
 

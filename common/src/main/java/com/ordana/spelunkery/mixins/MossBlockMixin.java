@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.reg.ModFeatures;
+import com.ordana.spelunkery.reg.ModWorldgenFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -24,7 +24,7 @@ public class MossBlockMixin extends Block {
     @Inject(method = "performBonemeal", at = @At("HEAD"), cancellable = true)
     private void sporophyteBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, CallbackInfo ci) {
         if (CommonConfigs.ENABLE_SPOROPHYTES.get()) {
-            ModFeatures.SPORE_MOSS_PATCH_BONEMEAL.get().place(level, level.getChunkSource().getGenerator(), random, pos.above());
+            ModWorldgenFeatures.SPORE_MOSS_PATCH_BONEMEAL.get().place(level, level.getChunkSource().getGenerator(), random, pos.above());
             ci.cancel();
         }
     }
