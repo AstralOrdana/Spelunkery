@@ -32,8 +32,8 @@ public class SpelunkeryClient {
 
         ClientConfigs.init();
         // TODO :: In the dev environment the resourcepacks in `common` are not provided to the mod loaders paths (need to specifiy in the build.gradle to copy them?)
-        ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", true);
-        ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), "Unlit Redstone Ores", true);
+        ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", false);
+        ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("unlit_redstone_ores"), "Unlit Redstone Ores", false);
         ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_ores"), "Emissive Ores", false);
         ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("emissive_better_vanilla_ores"), "Emissive Better Vanilla Ores", false);
     }
