@@ -1,15 +1,11 @@
 package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.blocks.entity.FallingLayerEntity;
-import com.ordana.spelunkery.reg.ModBlocks;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -23,8 +19,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
@@ -67,6 +61,12 @@ public class FallingLayerBlock extends FallingBlock {
 
     public int getLayers(BlockState state) {
         return state.getValue(layerProperty());
+    }
+
+    protected void removeOneLayer(BlockState state, BlockPos pos, Level level) {
+        int levels = getLayers(state);
+        if (levels > 1) level.setBlockAndUpdate(pos, state.setValue(layerProperty(), levels - 1));
+        else level.removeBlock(pos, false);
     }
 
     @Override

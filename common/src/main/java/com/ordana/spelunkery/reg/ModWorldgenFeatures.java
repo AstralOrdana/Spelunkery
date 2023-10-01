@@ -2,11 +2,11 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryPlatform;
-import com.ordana.spelunkery.worldgen.features.*;
 import com.ordana.spelunkery.worldgen.feature_configs.BlockStripeFeatureConfig;
 import com.ordana.spelunkery.worldgen.feature_configs.CrystalFeatureConfig;
 import com.ordana.spelunkery.worldgen.feature_configs.HugeConkFungusFeatureConfig;
 import com.ordana.spelunkery.worldgen.feature_configs.WallMushroomFeatureConfig;
+import com.ordana.spelunkery.worldgen.features.*;
 import com.ordana.spelunkery.worldgen.structures.MineshaftDustCorridor;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.registries.Registries;

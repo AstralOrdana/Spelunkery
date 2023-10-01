@@ -2,6 +2,8 @@
   "values": [
     "minecraft:beetroot",
     "minecraft:chicken",
-    "minecraft:rabbit"
+    "minecraft:rabbit",
+    "minecraft:brown_mushroom",
+    "spelunkery:portabella"
   ]
 }

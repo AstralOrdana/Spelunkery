@@ -6,19 +6,13 @@ import com.ordana.spelunkery.reg.ModSoundEvents;
 import net.mehvahdjukaar.moonlight.api.entity.ImprovedProjectileEntity;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.boss.EnderDragonPart;
-import net.minecraft.world.entity.monster.Witch;
-import net.minecraft.world.entity.npc.Villager;
-import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -64,7 +58,7 @@ public class PebbleEntity extends ImprovedProjectileEntity {
         Entity entity = result.getEntity();
         double d = 0;
         if (entity instanceof LivingEntity livingEntity) {
-            level.playSound(null, getX(), getY(), getZ(), this.getItem().is(ModItems.END_STONE_PEBBLE.get()) ? ModSoundEvents.KNOB.get() : ModSoundEvents.BONK.get(), SoundSource.NEUTRAL, 0.5F, 1.5F / (level.getRandom().nextFloat() * 1.5F + 0.8F));
+            if (livingEntity instanceof Player) level.playSound(null, getX(), getY(), getZ(), this.getItem().is(ModItems.END_STONE_PEBBLE.get()) ? ModSoundEvents.KNOB.get() : ModSoundEvents.BONK.get(), SoundSource.NEUTRAL, 0.5F, 1.5F / (level.getRandom().nextFloat() * 1.5F + 0.8F));
             d = Math.max(0.0D, 1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
         }
         Vec3 vec3 = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize().scale(0.6D * d);
