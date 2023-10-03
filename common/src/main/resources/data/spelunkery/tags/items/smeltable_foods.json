@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:baked_potato",
+    "minecraft:bread",
+    "minecraft:pumpkin_pie",
+    "minecraft:cookie",
+    "minecraft:cake",
+    "minecraft:cooked_chicken",
+    "minecraft:cooked_rabbit",
+    "minecraft:cooked_beef",
+    "minecraft:cooked_porkchop",
+    "minecraft:cooked_cod",
+    "minecraft:cooked_salmon",
+    "minecraft:cooked_mutton",
+    "spelunkery:grilled_portabella",
+    "minecraft:rotten_flesh"
+  ]
+}

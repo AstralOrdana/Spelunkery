@@ -14,6 +14,7 @@ import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGener
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -148,5 +149,6 @@ public class SpelunkeryClient {
         event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);
+        event.register(ModParticles.DUST_POOF.get(), ExplodeParticle.Provider::new);
     }
 }

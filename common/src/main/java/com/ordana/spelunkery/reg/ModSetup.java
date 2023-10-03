@@ -2,7 +2,11 @@ package com.ordana.spelunkery.reg;
 
 import com.google.common.base.Stopwatch;
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.blocks.dispenser_interactions.MineomiteBehavior;
+import com.ordana.spelunkery.blocks.dispenser_interactions.PebbleBehavior;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
+import net.minecraft.core.Registry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +16,8 @@ public class ModSetup {
     private static int setupStage = 0;
 
     private static final List<Runnable> MOD_SETUP_WORK = List.of(
-            ModSetup::registerFabricFlammable
+            ModSetup::registerFabricFlammable,
+            ModSetup::registerDispenserBehvaiors
     );
 
     public static void setup() {
@@ -46,5 +51,16 @@ public class ModSetup {
     private static void registerFabricFlammable() {
         RegHelper.registerBlockFlammability(ModBlocks.WOODEN_CHANNEL.get(), 5, 20);
         RegHelper.registerBlockFlammability(ModBlocks.WOODEN_SLUICE.get(), 5, 20);
+    }
+
+
+    private static void registerDispenserBehvaiors() {
+        DispenserHelper.registerCustomBehavior(new MineomiteBehavior(ModItems.MINEOMITE.get()));
+        Registry.ITEM.getTagOrEmpty(ModTags.PEBBLES).iterator().forEachRemaining(h ->
+                DispenserHelper.registerCustomBehavior(new PebbleBehavior(h.value()))
+        );
+        Registry.ITEM.getTagOrEmpty(ModTags.GLOWSTICKS).iterator().forEachRemaining(h ->
+                DispenserHelper.registerCustomBehavior(new PebbleBehavior(h.value()))
+        );
     }
 }

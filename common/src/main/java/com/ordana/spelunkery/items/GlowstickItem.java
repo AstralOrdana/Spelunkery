@@ -32,6 +32,10 @@ public class GlowstickItem extends BlockItem {
         this.color = color;
     }
 
+    public DyeColor getColor(GlowstickItem item) {
+        return item.color;
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {

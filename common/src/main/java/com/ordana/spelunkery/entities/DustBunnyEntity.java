@@ -1,10 +1,9 @@
 package com.ordana.spelunkery.entities;
 
 import com.ordana.spelunkery.reg.ModItems;
-import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.reg.ModParticles;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -14,7 +13,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -27,7 +25,6 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -37,7 +34,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -60,12 +56,16 @@ public class DustBunnyEntity extends PathfinderMob {
                 double d0 = this.random.nextGaussian() * 0.02D;
                 double d1 = this.random.nextGaussian() * 0.02D;
                 double d2 = this.random.nextGaussian() * 0.02D;
-                this.level.addParticle(ParticleTypes.POOF, this.getX() - d0 * 10.0D, this.getRandomY() - d1 * 10.0D, this.getZ() - d2 * 10.0D, d0, d1, d2);
+                this.level.addParticle(ModParticles.DUST_POOF.get(), this.getX() - d0 * 10.0D, this.getRandomY() - d1 * 10.0D, this.getZ() - d2 * 10.0D, d0, d1, d2);
             }
         }
         this.remove(RemovalReason.DISCARDED);
         return InteractionResult.SUCCESS;
 
+    }
+
+    public boolean isSensitiveToWater() {
+        return true;
     }
 
     protected void registerGoals() {

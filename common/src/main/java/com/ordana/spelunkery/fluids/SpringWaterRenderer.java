@@ -1,7 +1,6 @@
 package com.ordana.spelunkery.fluids;
 
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;
-import net.minecraft.client.renderer.debug.WaterDebugRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -20,7 +19,6 @@ public class SpringWaterRenderer extends ModFluidRenderProperties {
         this.renderOverlay = renderOverlay;
         this.fogColor = fogColor;
     }
-
     @Nullable
     @Override
     public ResourceLocation getOverlayTexture() {

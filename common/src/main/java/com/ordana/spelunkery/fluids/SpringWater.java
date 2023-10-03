@@ -36,7 +36,7 @@ public class SpringWater extends ModFlowingFluid {
         return new SpringWaterRenderer(
                 new ResourceLocation("minecraft", "block/water_still"),
                 new ResourceLocation("minecraft", "block/water_flow"),
-                4445678,
+                0xff43D5EE,
                 new ResourceLocation("minecraft", "block/water_overlay"),
                 new ResourceLocation("minecraft", "block/water_overlay"),
                 new Vec3(68, 69, 103));
