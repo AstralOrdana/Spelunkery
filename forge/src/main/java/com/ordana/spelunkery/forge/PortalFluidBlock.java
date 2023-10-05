@@ -40,10 +40,12 @@ public class PortalFluidBlock extends LiquidBlock {
 
     @Override
     public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
+        if (!CommonConfigs.END_OCEAN_BUCKETABLE.get() && level.getMinBuildHeight() == pos.getY()) {
+            Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
 
-        if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() == pos.getY() && !CommonConfigs.END_OCEAN_BUCKETABLE.get()) {
-            return ItemStack.EMPTY;
+            if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END)) {
+                return ItemStack.EMPTY;
+            }
         }
 
         return super.pickupBlock(level, pos, state);
@@ -65,18 +67,25 @@ public class PortalFluidBlock extends LiquidBlock {
         if (this.tickCounter < 1) {
             entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER.get(), 1.0f, 1.0f);
         }
+
+        if (pos.getY() <= level.getMinBuildHeight()) {
+            if (level.dimension() == Level.END) {
+                teleport(level, entity);
+                return;
+            }
+        }
+
         level.scheduleTick(pos, this, 120);
         if (this.tickCounter >= 100) {
-
-
-            if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
-            else LevelHelper.teleportToWorldspawn(level, entity);
-            entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
-
-
-            setTickCounter(0);
-
+            teleport(level, entity);
         }
     }
 
+    private void teleport(final Level level, final Entity entity) {
+        if (entity instanceof ServerPlayer player) LevelHelper.teleportToSpawnPosition(player);
+        else LevelHelper.teleportToWorldspawn(level, entity);
+        entity.playSound(ModSoundEvents.PORTAL_FLUID_TELEPORT.get(), 1.0f, 1.0f);
+
+        setTickCounter(0);
+    }
 }
