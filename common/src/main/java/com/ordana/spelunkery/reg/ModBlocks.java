@@ -263,7 +263,14 @@ public class ModBlocks {
     public static final Supplier<Block> ROCK_SALT_BRICK_WALL = regWithItem("rock_salt_brick_wall", () ->
             new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
 
+    public static final Supplier<Block> POLISHED_QUARTZ_BLOCK = regWithItem("polished_quartz_block", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.QUARTZ)
+                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE)));
 
+    public static final Supplier<Block> SALTPETER_BLOCK = regWithItem("saltpeter_block", () ->
+            new SandBlock(14407892, BlockBehaviour.Properties.copy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_WHITE).strength(0.5F).sound(SoundType.SAND)));
+    public static final Supplier<Block> SULFUR_BLOCK = regWithItem("sulfur_block", () ->
+            new SandBlock(14794633, BlockBehaviour.Properties.copy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_YELLOW).strength(0.5F).sound(SoundType.SAND)));
     public static final Supplier<Block> SULFUR_GEYSER = regWithItem("sulfur_geyser", () ->
             new SulfuricVentBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.SAND)));
 

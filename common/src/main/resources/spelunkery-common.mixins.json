@@ -11,6 +11,8 @@
     "AbstractMinecartMixin",
     "BaseFireBlockMixin",
     "BoatPaddleSoundMixin",
+    "BuddingAmethystBlockMixin",
+    "BuriedTreasureMixin",
     "ExperienceOrbMixin",
     "FlowingFluidMixin",
     "IceMixin",

@@ -3,6 +3,7 @@ package com.ordana.spelunkery;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
+import com.ordana.spelunkery.items.AmethystTuningForkItem;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
@@ -39,6 +40,8 @@ public class SpelunkeryClient {
         ClientHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerFluidRenderType(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
         ClientHelper.registerFluidRenderType(ModFluids.SPRING_WATER.get(), RenderType.translucent());
+
+        ClientHelper.registerRenderType(ModBlocks.POLISHED_QUARTZ_BLOCK.get(), RenderType.translucent());
 
         ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
@@ -91,6 +94,9 @@ public class SpelunkeryClient {
 
         ItemProperties.register(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel))));
+
+        ItemProperties.register(ModItems.TUNING_FORK.get(), Spelunkery.res("angle"),
+                new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> AmethystTuningForkItem.getAmethystPos(itemStack.getOrCreateTag()))));
 
         ItemProperties.register(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);

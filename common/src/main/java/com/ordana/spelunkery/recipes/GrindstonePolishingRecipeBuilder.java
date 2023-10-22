@@ -20,11 +20,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Consumer;
 
 @SuppressWarnings({"unused", "deprecation"})
-@ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class GrindstonePolishingRecipeBuilder {
 
@@ -54,18 +52,6 @@ public class GrindstonePolishingRecipeBuilder {
 
     public static GrindstonePolishingRecipeBuilder grindstonePolishing(ItemLike ingredient, ItemLike result) {
         return grindstonePolishing(ingredient, result, 1, Blocks.AIR, 1, 1, 0, false);
-    }
-
-    public static GrindstonePolishingRecipeBuilder grindstonePolishingWithoutExperience(ItemLike ingredient, ItemLike result, int resultCount) {
-        return grindstonePolishing(ingredient, result, resultCount, Blocks.AIR, 0, 0, 0, false);
-    }
-
-    public static GrindstonePolishingRecipeBuilder grindstonePolishingWithoutCountWithByproduct(ItemLike ingredient, ItemLike result, ItemLike byproduct, int experience) {
-        return grindstonePolishing(ingredient, result, 1, byproduct, 0, 1, experience, false);
-    }
-
-    public static GrindstonePolishingRecipeBuilder grindstonePolishingWithoutCountOrByproduct(ItemLike ingredient, ItemLike result, int experience) {
-        return grindstonePolishing(ingredient, result, 1, Blocks.AIR, 0, 0, experience, false);
     }
 
     public static GrindstonePolishingRecipeBuilder grindstonePolishing(ItemLike ingredient, ItemLike result, int resultCount, ItemLike byproduct, int byproductMin, int byproductMax, int experience, boolean requiresDiamondGrindstone) {

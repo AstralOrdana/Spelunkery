@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import org.jetbrains.annotations.Nullable;
 
-public class MagnetiteBlock extends BaseEntityBlock implements EntityBlock {
+public class MagnetiteBlock extends BaseEntityBlock {
     public MagnetiteBlock(Properties properties) {
         super(properties);
     }

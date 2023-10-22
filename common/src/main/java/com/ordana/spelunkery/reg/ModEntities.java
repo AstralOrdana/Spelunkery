@@ -8,6 +8,7 @@ import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -35,6 +36,9 @@ public class ModEntities {
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
             Spelunkery.res("raw_magnetite_block"),
             () -> PlatHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.RAW_MAGNETITE_BLOCK.get()));
+    public static final Supplier<BlockEntityType<BuddingAmethystBlockEntity>> BUDDING_AMETHYST = RegHelper.registerBlockEntityType(
+            Spelunkery.res("budding_amethyst"),
+            () -> PlatHelper.newBlockEntityType(BuddingAmethystBlockEntity::new, Blocks.BUDDING_AMETHYST));
     public static final Supplier<BlockEntityType<SluiceBlockEntity>> WOODEN_SLUICE = RegHelper.registerBlockEntityType(
             Spelunkery.res("wooden_sluice"),
             () -> PlatHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));

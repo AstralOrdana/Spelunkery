@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:salt_block"
+    "spelunkery:salt_block",
+    "spelunkery:saltpeter_block",
+    "spelunkery:sulfur_block"
   ]
 }

@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class MagneticCompassItem extends Item implements Vanishable {
+public class MagneticCompassItem extends Item {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String TAG_LODESTONE_POS = "LodestonePos";
     public static final String TAG_LODESTONE_DIMENSION = "LodestoneDimension";
@@ -49,7 +49,7 @@ public class MagneticCompassItem extends Item implements Vanishable {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             CompoundTag compoundTag = stack.getOrCreateTag();
             tooltip.add(Component.translatable("tooltip.spelunkery.player_pos", getPlayerX(stack), getPlayerZ(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));

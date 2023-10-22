@@ -93,6 +93,8 @@
   "tooltip.spelunkery.crying_obsidian": "Use empty bottle on to obtain Dimensional Tears",
   "tooltip.spelunkery.redstone": "Can be obtained by polishing Rough Cinnabar on a Grindstone",
   "tooltip.spelunkery.depth_gauge_depth": "Current Elevation: Y = %1$s",
+  "tooltip.spelunkery.tuning_fork_1": "  Can be used to locate Amethyst Geodes up to %1$s blocks away",
+  "tooltip.spelunkery.tuning_fork_2": "  Will vibrate faster the closer you are to the Geode",
   "tooltip.spelunkery.echo_fork_1": "  Highlights living entities within %1$s blocks for %2$s seconds",
   "tooltip.spelunkery.echo_fork_2": "  Cooldown: %1$s seconds",
   "tooltip.spelunkery.echo_fork_3": "  %1$s and use to clear Glowing effect",
@@ -212,6 +214,16 @@
   "block.spelunkery.rock_salt_brick_stairs": "Rock Salt Brick Stairs",
   "block.spelunkery.rock_salt_brick_wall": "Rock Salt Brick Wall",
 
+  "block.spelunkery.polished_quartz": "Polished Quartz Block",
+  "block.spelunkery.polished_quartz_slab": "Polished Rock Salt Slab",
+  "block.spelunkery.polished_quartz_stairs": "Polished Rock Salt Stairs",
+  "block.spelunkery.polished_quartz_wall": "Polished Rock Salt Wall",
+
+  "block.spelunkery.polished_quartz_brick": "Polished Rock Salt",
+  "block.spelunkery.polished_quartz_brick_slab": "Polished Rock Salt Slab",
+  "block.spelunkery.polished_quartz_brick_stairs": "Polished Rock Salt Stairs",
+  "block.spelunkery.polished_quartz_brick_wall": "Polished Rock Salt Wall",
+
   "block.spelunkery.sandstone_lapis_ore": "Sandstone Lapis Ore",
   "block.spelunkery.calcite_redstone_ore": "Calcite Redstone Ore",
   "block.spelunkery.smooth_basalt_diamond_ore": "Smooth Basalt Diamond Ore",
@@ -308,6 +320,9 @@
 
   "item.spelunkery.sulfur": "Sulfur",
   "item.spelunkery.saltpeter": "Saltpeter",
+  "block.spelunkery.sulfur_block": "Block of Sulfur",
+  "block.spelunkery.saltpeter_block": "Block of Saltpeter",
+
   "item.spelunkery.stone_pebble": "Stone Pebble",
   "item.spelunkery.deepslate_pebble": "Deepslate Pebble",
   "item.spelunkery.netherrack_pebble": "Netherrack Pebble",
@@ -343,6 +358,7 @@
   "block.spelunkery.nephrite_fountain": "Nephrite Fountain",
   "block.spelunkery.nephrite_diode": "Nephrite Diode",
   "item.spelunkery.nephrite_charm": "Nephrite Charm",
+  "item.spelunkery.tuning_fork": "Tuning Fork",
   "item.spelunkery.echo_fork": "Echo Fork",
 
   "block.spelunkery.tangle_roots": "Tangle Roots",

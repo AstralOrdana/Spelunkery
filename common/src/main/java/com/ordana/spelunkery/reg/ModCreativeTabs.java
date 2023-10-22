@@ -99,7 +99,9 @@ public class ModCreativeTabs {
 
         after(e, Items.RED_SANDSTONE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.ROCK_SALT,
-                ModBlocks.DUST, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT
+                ModBlocks.DUST, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT,
+                ModBlocks.SULFUR_BLOCK, ModItems.SULFUR,
+                ModBlocks.SALTPETER_BLOCK, ModItems.SALTPETER
         );
 
         after(e, Items.CUT_RED_SANDSTONE_SLAB, CreativeModeTabs.BUILDING_BLOCKS,
@@ -135,9 +137,11 @@ public class ModCreativeTabs {
                 ModBlocks.WHITE_INKCAP_MUSHROOM_BLOCK, ModBlocks.MILLY_BUBCAP_BLOCK
         );
 
-        after(e, Items.GUNPOWDER, CreativeModeTabs.INGREDIENTS,
+        after(e, Items.CLAY_BALL, CreativeModeTabs.INGREDIENTS,
                 ModConstants.SALT_POWDER,
-                ModBlocks.ROCK_SALT, ModBlocks.SALT
+                ModBlocks.ROCK_SALT, ModBlocks.SALT,
+                ModItems.SALTPETER,
+                ModItems.SULFUR
         );
 
         after(e, Items.AMETHYST_SHARD, CreativeModeTabs.INGREDIENTS,

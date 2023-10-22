@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -25,8 +26,8 @@ public class SpringWaterBlock extends LiquidBlock {
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5, 0, true, false, true));
+        if (entity instanceof LivingEntity livingEntity && !livingEntity.hasEffect(MobEffects.REGENERATION)) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 50, 0, true, false, true));
         }
     }
 

@@ -14,6 +14,8 @@ public class ModGameEvents {
 
     public static final Supplier<GameEvent> COMPASS_PING_EVENT = RegHelper.register(Spelunkery.res("compass_ping"),
             () -> new GameEvent("compass_ping", CommonConfigs.MAGNETITE_RANGE.get()), Registries.GAME_EVENT);
+    public static final Supplier<GameEvent> FORK_TONE_EVENT = RegHelper.register(Spelunkery.res("fork_tone"),
+            () -> new GameEvent("fork_tone", CommonConfigs.MAGNETITE_RANGE.get()), Registries.GAME_EVENT);
 
     /*
 

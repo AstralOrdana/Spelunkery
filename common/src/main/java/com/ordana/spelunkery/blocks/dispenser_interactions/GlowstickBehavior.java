@@ -1,7 +1,6 @@
 package com.ordana.spelunkery.blocks.dispenser_interactions;
 
 import com.ordana.spelunkery.entities.GlowstickEntity;
-import com.ordana.spelunkery.entities.PebbleEntity;
 import com.ordana.spelunkery.items.GlowstickItem;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.minecraft.core.BlockSource;

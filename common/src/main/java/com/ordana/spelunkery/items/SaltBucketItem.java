@@ -40,7 +40,7 @@ public class SaltBucketItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.salt_bucket_1", getSaltToPlace(stack)).setStyle(Style.EMPTY.applyFormats(ChatFormatting.WHITE)));
             tooltip.add(Component.translatable("tooltip.spelunkery.salt_bucket_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
