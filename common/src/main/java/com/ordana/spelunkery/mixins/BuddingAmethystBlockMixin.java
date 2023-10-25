@@ -1,0 +1,53 @@
+package com.ordana.spelunkery.mixins;
+
+import com.ordana.spelunkery.blocks.entity.BuddingAmethystBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AmethystBlock;
+import net.minecraft.world.level.block.BuddingAmethystBlock;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEventListener;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Mixin;
+
+@Mixin(BuddingAmethystBlock.class)
+public abstract class BuddingAmethystBlockMixin extends AmethystBlock implements EntityBlock {
+
+    public BuddingAmethystBlockMixin(Properties properties) {
+        super(properties);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new BuddingAmethystBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> GameEventListener getListener(ServerLevel serverLevel, T blockEntity) {
+        return blockEntity instanceof BuddingAmethystBlockEntity t ? t : null;
+    }
+
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+
+    public boolean triggerEvent(BlockState state, Level level, BlockPos pos, int id, int param) {
+        super.triggerEvent(state, level, pos, id, param);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        return blockEntity == null ? false : blockEntity.triggerEvent(id, param);
+    }
+
+    @Nullable
+    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        return blockEntity instanceof MenuProvider ? (MenuProvider)blockEntity : null;
+    }
+}

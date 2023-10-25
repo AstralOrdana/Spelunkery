@@ -8,6 +8,7 @@ import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -29,19 +30,18 @@ public class ModEntities {
     public static final Supplier<BlockEntityType<CarvedNephriteBlockEntity>> NEPHRITE_TILE = RegHelper.registerBlockEntityType(
             Spelunkery.res("carved_nephrite"),
             () -> PlatformHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
-
     public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_SPOUT = RegHelper.registerBlockEntityType(
             /* TODO nephrite_fountain */ Spelunkery.res("nephrite_spout"),
             () -> PlatformHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_SPOUT.get()));
-
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
             /* TODO raw_magnetite_block */ Spelunkery.res("magnetite"),
             () -> PlatformHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.MAGNETITE.get()));
-
+    public static final Supplier<BlockEntityType<BuddingAmethystBlockEntity>> BUDDING_AMETHYST = RegHelper.registerBlockEntityType(
+            Spelunkery.res("budding_amethyst"),
+            () -> PlatformHelper.newBlockEntityType(BuddingAmethystBlockEntity::new, Blocks.BUDDING_AMETHYST));
     public static final Supplier<BlockEntityType<SluiceBlockEntity>> WOODEN_SLUICE = RegHelper.registerBlockEntityType(
             Spelunkery.res("wooden_sluice"),
             () -> PlatformHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));
-
     public static final Supplier<BlockEntityType<SluiceBlockEntity>> STONE_SLUICE = RegHelper.registerBlockEntityType(
             Spelunkery.res("stone_sluice"),
             () -> PlatformHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.STONE_SLUICE.get()));

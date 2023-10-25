@@ -4,6 +4,7 @@ import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
+import com.ordana.spelunkery.items.AmethystTuningForkItem;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
@@ -17,6 +18,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 
 public class SpelunkeryClient {
@@ -46,6 +48,8 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
         ClientPlatformHelper.registerFluidRenderType(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
         ClientPlatformHelper.registerFluidRenderType(ModFluids.SPRING_WATER.get(), RenderType.translucent());
+
+        ClientPlatformHelper.registerRenderType(ModBlocks.POLISHED_QUARTZ_BLOCK.get(), RenderType.translucent());
 
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
         ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
@@ -98,6 +102,9 @@ public class SpelunkeryClient {
 
         ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel))));
+
+        ClientPlatformHelper.registerItemProperty(ModItems.TUNING_FORK.get(), Spelunkery.res("angle"),
+                new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> AmethystTuningForkItem.getAmethystPos(itemStack.getOrCreateTag()))));
 
         ClientPlatformHelper.registerItemProperty(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);

@@ -1,8 +1,7 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:saltpeter",
-    "spelunkery:sulfur",
+    "spelunkery:tuning_fork",
     "spelunkery:sulfur_geyser"
   ]
 }

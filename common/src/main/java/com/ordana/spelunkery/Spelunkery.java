@@ -27,7 +27,6 @@ public class Spelunkery {
     }
 
     public static void commonInit() {
-
         if (initiated) {
             return;
         }

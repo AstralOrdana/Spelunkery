@@ -173,6 +173,8 @@ public class ModItems {
             new SpringWaterBucketItem(ModFluids.SPRING_WATER.get(), (new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1))));
     public static final Supplier<Item> SALT_BUCKET = regItem("salt_bucket", () ->
             new SaltBucketItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1).craftRemainder(Items.BUCKET)));
+    public static final Supplier<Item> TUNING_FORK = regItem("tuning_fork", () ->
+            new AmethystTuningForkItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> ECHO_FORK = regItem("echo_fork", () ->
             new EchoForkItem(new Item.Properties().tab(getTab(CreativeModeTab.TAB_TOOLS)).stacksTo(1)));
     public static final Supplier<Item> GLOWSTICK = regItem("glowstick", () ->
