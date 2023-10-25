@@ -21,6 +21,8 @@
     "NetherPortalBlockMixin",
     "NetherPortalSoundMixin",
     "NoiseChunkGeneratorMixin",
+    "OreBlockMixin",
+    "RedstoneOreBlockMixin",
     "SlimeMixin",
     "TooltipMixin",
     "WaterCauldronBlockMixin"

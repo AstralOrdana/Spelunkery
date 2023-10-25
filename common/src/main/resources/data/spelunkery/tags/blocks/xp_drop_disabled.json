@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#minecraft:redstone_ores",
+    "#minecraft:lapis_ores",
+    "#minecraft:emerald_ores",
+    "#minecraft:diamond_ores"
+  ]
+}
