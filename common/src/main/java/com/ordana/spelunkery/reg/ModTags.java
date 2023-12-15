@@ -54,6 +54,7 @@ public class ModTags {
     public static final TagKey<Biome> HAS_SWAMP_NOISE = registerBiomeTag("has_mountain_noise");
     public static final TagKey<Biome> HAS_NETHER_NOISE = registerBiomeTag("has_nether_noise");
     public static final TagKey<Biome> HAS_END_NOISE = registerBiomeTag("has_end_noise");
+    public static final TagKey<Biome> HAS_SULFUR_PATCHES = registerBiomeTag("has_sulfur_patches");
 
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");

@@ -1,0 +1,7 @@
+{
+  "parent": "spelunkery:block/dust_10",
+  "textures": {
+    "particle": "spelunkery:block/sulfur_block",
+    "texture": "spelunkery:block/sulfur_block"
+  }
+}

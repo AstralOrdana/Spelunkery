@@ -81,6 +81,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
         ItemStack stack = player.getItemInHand(hand);
         CompoundTag compoundTag = stack.getOrCreateTag();
         boolean hasTag = compoundTag.contains("amethystPos");
+        if (level.dimension() != Level.OVERWORLD) return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
         if (player.isSecondaryUseActive()) {
             if (hasTag) {
@@ -133,7 +134,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
 
 
     public int getTollRange() {
-        return CommonConfigs.ECHO_FORK_RANGE.get();
+        return CommonConfigs.TUNING_FORK_RANGE.get();
     }
 
     public void setPlayerX(ItemStack stack, int amount) {

@@ -318,8 +318,8 @@
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
 
-  "item.spelunkery.sulfur": "Sulfur",
-  "item.spelunkery.saltpeter": "Saltpeter",
+  "block.spelunkery.sulfur": "Sulfur",
+  "block.spelunkery.saltpeter": "Saltpeter",
   "block.spelunkery.sulfur_block": "Block of Sulfur",
   "block.spelunkery.saltpeter_block": "Block of Saltpeter",
 
@@ -420,6 +420,10 @@
   "item.spelunkery.parachute": "Parachute",
 
   "block.spelunkery.diamond_grindstone": "Diamond Grindstone",
+  "item.spelunkery.diamond_grindstone.unused": "Diamond Grindstone",
+  "item.spelunkery.diamond_grindstone.used": "Used Diamond Grindstone",
+  "item.spelunkery.diamond_grindstone.worn": "Worn Diamond Grindstone",
+  "item.spelunkery.diamond_grindstone.dull": "Dull Diamond Grindstone",
 
   "block.spelunkery.mineomite": "Mine-o-mite",
   "block.spelunkery.compression_blast_miner": "Compression Blast Miner",

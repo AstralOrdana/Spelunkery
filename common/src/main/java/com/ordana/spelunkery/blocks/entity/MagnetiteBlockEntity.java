@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.entity;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.MagneticCompassItem;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModGameEvents;
@@ -34,7 +35,7 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
 
     @Override
     public int getListenerRadius() {
-        return 64;
+        return CommonConfigs.MAGNETITE_RANGE.get();
     }
 
     @Override

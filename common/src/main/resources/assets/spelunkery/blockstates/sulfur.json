@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "spelunkery:block/sulfur_2"
+    },
+    "layers=2": {
+      "model": "spelunkery:block/sulfur_4"
+    },
+    "layers=3": {
+      "model": "spelunkery:block/sulfur_6"
+    },
+    "layers=4": {
+      "model": "spelunkery:block/sulfur_8"
+    },
+    "layers=5": {
+      "model": "spelunkery:block/sulfur_10"
+    },
+    "layers=6": {
+      "model": "spelunkery:block/sulfur_12"
+    },
+    "layers=7": {
+      "model": "spelunkery:block/sulfur_14"
+    },
+    "layers=8": {
+      "model": "spelunkery:block/sulfur_16"
+    }
+  }
+}

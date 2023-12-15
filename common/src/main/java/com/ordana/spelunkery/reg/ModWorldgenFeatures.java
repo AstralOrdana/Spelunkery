@@ -120,6 +120,9 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> noise_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("noise_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, noise_salt);
 
+        ResourceKey<PlacedFeature> noise_end = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("noise_end"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, noise_end);
+
         ResourceKey<PlacedFeature> rock_salt = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("rock_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, rock_salt);
 
@@ -204,9 +207,8 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> obsidian_patch = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("obsidian_patch"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, obsidian_patch);
 
-        ResourceKey<PlacedFeature> noise_end = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("noise_end"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, noise_end);
-
+        ResourceKey<PlacedFeature> sulfur_patch = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Spelunkery.res("sulfur_patch"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SULFUR_PATCHES, sulfur_patch);
     }
 
 }

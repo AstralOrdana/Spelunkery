@@ -1,5 +1,9 @@
 {
   "values": [
+    {
+      "id": "wythers:underground",
+      "required": false
+    },
     "minecraft:mushroom_fields",
     "minecraft:stony_shore",
     "minecraft:swamp",

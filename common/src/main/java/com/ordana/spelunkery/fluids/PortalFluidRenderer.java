@@ -125,7 +125,6 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         return level.getBlockState(pos.below());
     }
 
-
     @Override
     public ResourceLocation getStillTexture(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
         var texture = portalFluidNONE;

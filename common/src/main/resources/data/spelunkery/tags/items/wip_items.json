@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:tuning_fork",
-    "spelunkery:sulfur_geyser"
+    "spelunkery:sulfur_geyser",
+    "spelunkery:polished_quartz_block",
+    "spelunkery:nephrite_charm"
   ]
 }

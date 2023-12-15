@@ -108,11 +108,6 @@ public class ModItems {
     public static final Supplier<Item> CINNABAR = regItem("cinnabar", () ->
             new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
 
-    public static final Supplier<Item> SULFUR = regItem("sulfur", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-    public static final Supplier<Item> SALTPETER = regItem("saltpeter", () ->
-            new Item(new Item.Properties().tab(getTab(CreativeModeTab.TAB_MATERIALS))));
-
     public static final Supplier<Item> CARVED_NEPHRITE = regItem("carved_nephrite", () ->
             new CarvedNephriteItem(ModBlocks.CARVED_NEPHRITE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_REDSTONE))));
     public static final Supplier<Item> NEPHRITE_SIPHON = regItem("nephrite_siphon", () ->

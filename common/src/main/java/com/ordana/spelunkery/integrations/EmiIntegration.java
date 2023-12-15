@@ -207,8 +207,8 @@ public class EmiIntegration implements EmiPlugin {
                 .rightInput(sluice, true)
                 .leftInput(springWater)
                 .output(EmiStack.of(ModItems.ROCK_SALT.get()).setChance(20f / 50f))
-                .output(EmiStack.of(ModItems.SALTPETER.get()).setChance(15f / 50f))
-                .output(EmiStack.of(ModItems.SULFUR.get()).setChance(5f / 50f))
+                .output(EmiStack.of(ModBlocks.SALTPETER.get()).setChance(15f / 50f))
+                .output(EmiStack.of(ModBlocks.SULFUR.get()).setChance(5f / 50f))
                 .output(EmiStack.of(ModItems.RAW_COPPER_NUGGET.get()).setChance(5f / 50f))
                 .output(EmiStack.of(ModItems.RAW_IRON_NUGGET.get()).setChance(5f / 50f))
                 .build());
@@ -234,7 +234,7 @@ public class EmiIntegration implements EmiPlugin {
                 .output(EmiStack.of(ModBlocks.TANGLE_ROOTS.get()).setChance(10f / 80f))
                 .output(EmiStack.of(ModItems.NEPHRITE_CHUNK.get()).setChance(5f / 80f))
                 .output(EmiStack.of(ModItems.RAW_ZINC_NUGGET.get()).setChance(4f / 80f))
-                .output(EmiStack.of(ModItems.SALTPETER.get()).setChance(10f / 80f))
+                .output(EmiStack.of(ModBlocks.SALTPETER.get()).setChance(10f / 80f))
                 .output(EmiStack.of(Items.BOWL).setChance(10f / 80f), s -> s.appendTooltip(
                         Component.translatable("tooltip.spelunkery.sluice.ruins").setStyle(style)))
                 .output(EmiStack.of(Items.BRICK).setChance(10f / 80f), s -> s.appendTooltip(
@@ -404,7 +404,7 @@ public class EmiIntegration implements EmiPlugin {
                 .output(EmiStack.of(Items.NETHER_WART).setChance(20f / 85f))
                 .output(EmiStack.of(Items.QUARTZ).setChance(10f / 85f))
                 .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(10f / 85f))
-                .output(EmiStack.of(ModItems.SULFUR.get()).setChance(15f / 85f))
+                .output(EmiStack.of(ModBlocks.SULFUR.get()).setChance(15f / 85f))
                 .build());
 
 

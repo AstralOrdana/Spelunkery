@@ -114,6 +114,9 @@ public class SpelunkeryClient {
         ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
+        ClientPlatformHelper.registerItemProperty(ModBlocks.DIAMOND_GRINDSTONE.get().asItem(), Spelunkery.res("depletion"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("depletion") / 8f) : 0);
+
         // TODO 1.19.2 :: Not registered here in 1.20.x?
         ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("model"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("model") ? 0.5f : 0) : 0);

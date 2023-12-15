@@ -4,6 +4,7 @@ import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.client.ModFluidRenderProperties;
 import net.mehvahdjukaar.moonlight.api.fluids.ModFlowingFluid;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -36,7 +37,7 @@ public class SpringWater extends ModFlowingFluid {
         return new SpringWaterRenderer(
                 new ResourceLocation("minecraft", "block/water_still"),
                 new ResourceLocation("minecraft", "block/water_flow"),
-                0xff43D5EE,
+                (PlatformHelper.isModLoaded("sodium") || PlatformHelper.isModLoaded("embeddium")) ? 0xffEED543 : 0xff43D5EE,
                 new ResourceLocation("minecraft", "block/water_overlay"),
                 new ResourceLocation("minecraft", "block/water_overlay"),
                 new Vec3(68, 69, 103));

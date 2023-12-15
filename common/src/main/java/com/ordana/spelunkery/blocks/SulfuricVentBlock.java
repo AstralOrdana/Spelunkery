@@ -3,7 +3,7 @@ package com.ordana.spelunkery.blocks;
 import com.ordana.spelunkery.events.ClientBoundParticlePacket;
 import com.ordana.spelunkery.events.ClientBoundSendKnockbackPacket;
 import com.ordana.spelunkery.events.NetworkHandler;
-import com.ordana.spelunkery.reg.ModItems;
+import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -89,7 +89,7 @@ public class SulfuricVentBlock extends DirectionalBlock {
         var sourceBlock = getSourceBlock(level, state, pos);
 
         if (level instanceof ServerLevel) {
-            Entity entity = new ItemEntity(level, 0, 0, 0, new ItemStack(ModItems.SULFUR.get()));
+            Entity entity = new ItemEntity(level, 0, 0, 0, new ItemStack(ModBlocks.SULFUR.get()));
             if (sourceBlock.getBlock() instanceof FallingBlock) entity = FallingBlockEntity.fall(level, pos.relative(facing), getSourceBlock(level, state, pos));
 
 

@@ -237,7 +237,7 @@ public class ModBlocks {
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
                     .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(7)).emissiveRendering(ModBlocks::ifLit).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
-            new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission()));
+            new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission().sound(SoundType.SAND)));
     public static final Supplier<Block> SALT_BLOCK = regWithItem("salt_block", () ->
             new SaltBlockBlock(14606046, BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.SAND)));
 
@@ -332,6 +332,10 @@ public class ModBlocks {
 
     public static final Supplier<Block> DUST = regWithItem("dust", () ->
             new DustBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()/* ignitedByLava() */));
+    public static final Supplier<Block> SULFUR = regWithItem("sulfur", () ->
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND).noCollission().instabreak().sound(SoundType.SAND).color(MaterialColor.TERRACOTTA_YELLOW)));
+    public static final Supplier<Block> SALTPETER = regWithItem("saltpeter", () ->
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND).noCollission().instabreak().sound(SoundType.SAND).color(MaterialColor.TERRACOTTA_WHITE)));
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->

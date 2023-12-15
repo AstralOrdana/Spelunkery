@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.entity;
 
+import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.AmethystTuningForkItem;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModGameEvents;
@@ -34,7 +35,7 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
 
     @Override
     public int getListenerRadius() {
-        return 64;
+        return CommonConfigs.TUNING_FORK_RANGE.get();
     }
 
     @Override

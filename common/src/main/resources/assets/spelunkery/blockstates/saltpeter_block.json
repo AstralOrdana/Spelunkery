@@ -3,6 +3,18 @@
     "": [
       {
         "model": "spelunkery:block/saltpeter_block"
+      },
+      {
+        "model": "spelunkery:block/saltpeter_block",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/saltpeter_block",
+        "y": 180
+      },
+      {
+        "model": "spelunkery:block/saltpeter_block",
+        "y": 270
       }
     ]
   }
