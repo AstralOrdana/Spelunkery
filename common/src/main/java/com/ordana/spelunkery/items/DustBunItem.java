@@ -79,7 +79,6 @@ public class DustBunItem extends Item {
                 double d2 = level.random.nextGaussian() * 0.02D;
                 serverLevel.sendParticles(ModParticles.DUST_POOF.get(), (player.getX()) - d0 * 10.0D, (player.getY() + player.getEyeHeight() - 0.2) - d1 * 10.0D, (player.getZ()) - d2 * 10.0D, 5, 0, 0, 0, d2);
 
-
             }
             level.playSound(null, player.blockPosition(), SoundEvents.LEASH_KNOT_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
             return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);

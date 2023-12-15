@@ -32,6 +32,10 @@
     "spelunkery:granite_jade_ore",
     "spelunkery:diorite_jade_ore",
     "spelunkery:andesite_jade_ore",
-    "spelunkery:tuff_jade_ore"
+    "spelunkery:tuff_jade_ore",
+    "spelunkery:granite_zinc_ore",
+    "spelunkery:diorite_zinc_ore",
+    "spelunkery:andesite_zinc_ore",
+    "spelunkery:tuff_zinc_ore"
   ]
 }

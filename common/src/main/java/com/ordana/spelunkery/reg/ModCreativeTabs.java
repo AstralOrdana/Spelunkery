@@ -34,43 +34,88 @@ public class ModCreativeTabs {
 
     public static void registerItemsToTabs(RegHelper.ItemToTabEvent e) {
 
+        if (CommonConfigs.ENABLE_MORES.get()) {
+            if (PlatHelper.isModLoaded("create")) {
+                after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+                    ModConstants.ZINC_ORE,
+                    ModBlocks.ANDESITE_ZINC_ORE, ModBlocks.DIORITE_ZINC_ORE, ModBlocks.GRANITE_ZINC_ORE, ModBlocks.DIORITE_ZINC_ORE
+                );
 
-        after(e, Items.DEEPSLATE_COAL_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+                after(e, Items.IRON_NUGGET, CreativeModeTabs.INGREDIENTS,
+                    ModConstants.COPPER_NUGGET,
+                    ModItems.COPPER_NUGGET
+                );
+
+                before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
+                    ModConstants.ROUGH_NUGGETS,
+                    ModItems.RAW_ZINC_NUGGET
+                );
+            }
+            if (PlatHelper.isModLoaded("oreganized")) {
+                after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+                    ModConstants.SILVER_ORE,
+                    ModBlocks.ANDESITE_SILVER_ORE, ModBlocks.DIORITE_SILVER_ORE, ModBlocks.GRANITE_SILVER_ORE, ModBlocks.TUFF_SILVER_ORE
+                );
+
+                after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+                    ModConstants.LEAD_ORE,
+                    ModBlocks.ANDESITE_LEAD_ORE, ModBlocks.DIORITE_LEAD_ORE, ModBlocks.GRANITE_LEAD_ORE, ModBlocks.TUFF_LEAD_ORE
+                );
+
+                before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
+                    ModConstants.ROUGH_NUGGETS,
+                    ModItems.RAW_LEAD_NUGGET, ModItems.RAW_SILVER_NUGGET
+                );
+            }
+            if (PlatHelper.isModLoaded("sullysmod")) {
+                after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+                    ModConstants.JADE_ORE,
+                    ModBlocks.ANDESITE_JADE_ORE, ModBlocks.DIORITE_JADE_ORE, ModBlocks.GRANITE_JADE_ORE, ModBlocks.TUFF_JADE_ORE
+                );
+
+                before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
+                    ModConstants.ROUGH_NUGGETS,
+                    ModItems.ROUGH_JADE_SHARD, ModItems.JADE_SHARD
+                );
+            }
+
+            after(e, Items.DEEPSLATE_COAL_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.COAL_ORE,
                 ModBlocks.ANDESITE_COAL_ORE, ModBlocks.DIORITE_COAL_ORE, ModBlocks.GRANITE_COAL_ORE, ModBlocks.TUFF_COAL_ORE
-        );
+            );
 
-        after(e, Items.DEEPSLATE_IRON_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            after(e, Items.DEEPSLATE_IRON_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.IRON_ORE,
                 ModBlocks.ANDESITE_IRON_ORE, ModBlocks.DIORITE_IRON_ORE, ModBlocks.GRANITE_IRON_ORE, ModBlocks.TUFF_IRON_ORE
-        );
-        after(e, Items.DEEPSLATE_COPPER_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_COPPER_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.COPPER_ORE,
                 ModBlocks.ANDESITE_COPPER_ORE, ModBlocks.DIORITE_COPPER_ORE, ModBlocks.GRANITE_COPPER_ORE, ModBlocks.TUFF_COPPER_ORE
-        );
-        after(e, Items.DEEPSLATE_GOLD_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_GOLD_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.GOLD_ORE,
                 ModBlocks.ANDESITE_GOLD_ORE, ModBlocks.DIORITE_GOLD_ORE, ModBlocks.GRANITE_GOLD_ORE, ModBlocks.TUFF_GOLD_ORE
-        );
-        after(e, Items.DEEPSLATE_REDSTONE_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_REDSTONE_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.REDSTONE_ORE,
                 ModBlocks.ANDESITE_REDSTONE_ORE, ModBlocks.DIORITE_REDSTONE_ORE, ModBlocks.GRANITE_REDSTONE_ORE, ModBlocks.TUFF_REDSTONE_ORE,
                 ModBlocks.CALCITE_REDSTONE_ORE
-        );
-        after(e, Items.DEEPSLATE_LAPIS_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_LAPIS_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.LAPIS_ORE,
                 ModBlocks.ANDESITE_LAPIS_ORE, ModBlocks.DIORITE_LAPIS_ORE, ModBlocks.GRANITE_LAPIS_ORE, ModBlocks.TUFF_LAPIS_ORE,
                 ModBlocks.SANDSTONE_LAPIS_ORE
-        );
-        after(e, Items.DEEPSLATE_EMERALD_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_EMERALD_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.EMERALD_ORE,
                 ModBlocks.ANDESITE_EMERALD_ORE, ModBlocks.DIORITE_EMERALD_ORE, ModBlocks.GRANITE_EMERALD_ORE, ModBlocks.TUFF_EMERALD_ORE
-        );
-        after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
+            );
+            after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.DIAMOND_ORE,
                 ModBlocks.ANDESITE_DIAMOND_ORE, ModBlocks.DIORITE_DIAMOND_ORE, ModBlocks.GRANITE_DIAMOND_ORE, ModBlocks.TUFF_DIAMOND_ORE,
                 ModBlocks.SMOOTH_BASALT_DIAMOND_ORE
-        );
+            );
+        }
 
         after(e, Items.RAW_GOLD_BLOCK, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.ROUGH_BLOCKS,
@@ -99,14 +144,16 @@ public class ModCreativeTabs {
 
         after(e, Items.RED_SANDSTONE, CreativeModeTabs.NATURAL_BLOCKS,
                 ModConstants.ROCK_SALT,
-                ModBlocks.DUST, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT,
-                ModBlocks.SULFUR_BLOCK, ModItems.SULFUR,
-                ModBlocks.SALTPETER_BLOCK, ModItems.SALTPETER
+                ModBlocks.DUST,
+                ModBlocks.SALT_BLOCK, ModBlocks.SALT,
+                ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT,
+                ModBlocks.SULFUR_BLOCK, ModBlocks.SULFUR,
+                ModBlocks.SALTPETER_BLOCK, ModBlocks.SALTPETER
         );
 
         after(e, Items.CUT_RED_SANDSTONE_SLAB, CreativeModeTabs.BUILDING_BLOCKS,
                 ModConstants.SALT,
-                ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT_STAIRS, ModBlocks.ROCK_SALT_SLAB, ModBlocks.ROCK_SALT_WALL,
+                ModBlocks.SALT_BLOCK, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT_STAIRS, ModBlocks.ROCK_SALT_SLAB, ModBlocks.ROCK_SALT_WALL,
                 ModBlocks.POLISHED_ROCK_SALT, ModBlocks.POLISHED_ROCK_SALT_STAIRS, ModBlocks.POLISHED_ROCK_SALT_SLAB, ModBlocks.POLISHED_ROCK_SALT_WALL,
                 ModBlocks.ROCK_SALT_BRICKS, ModBlocks.ROCK_SALT_BRICK_STAIRS, ModBlocks.ROCK_SALT_BRICK_SLAB, ModBlocks.ROCK_SALT_BRICK_WALL
         );
@@ -140,8 +187,8 @@ public class ModCreativeTabs {
         after(e, Items.CLAY_BALL, CreativeModeTabs.INGREDIENTS,
                 ModConstants.SALT_POWDER,
                 ModBlocks.ROCK_SALT, ModBlocks.SALT,
-                ModItems.SALTPETER,
-                ModItems.SULFUR
+                ModBlocks.SALTPETER,
+                ModBlocks.SULFUR
         );
 
         after(e, Items.AMETHYST_SHARD, CreativeModeTabs.INGREDIENTS,
@@ -149,10 +196,13 @@ public class ModCreativeTabs {
                 ModItems.NEPHRITE_CHUNK
         );
 
-        after(e, Items.IRON_NUGGET, CreativeModeTabs.INGREDIENTS,
+
+        if (!PlatHelper.isModLoaded("create")) {
+            after(e, Items.IRON_NUGGET, CreativeModeTabs.INGREDIENTS,
                 ModConstants.COPPER_NUGGET,
                 ModItems.COPPER_NUGGET
-        );
+            );
+        }
 
         after(e, Items.RAW_GOLD, CreativeModeTabs.INGREDIENTS,
                 ModConstants.ROUGH_GEMS,
@@ -237,7 +287,8 @@ public class ModCreativeTabs {
 
         before(e, Items.COMPASS, CreativeModeTabs.TOOLS_AND_UTILITIES,
                 ModConstants.MAGNET,
-                ModItems.ITEM_MAGNET, ModItems.HANDHELD_COMPACTOR, ModItems.ECHO_FORK
+                ModItems.ITEM_MAGNET, ModItems.HANDHELD_COMPACTOR,
+                ModItems.TUNING_FORK, ModItems.ECHO_FORK
         );
 
         before(e, Items.ELYTRA, CreativeModeTabs.TOOLS_AND_UTILITIES,

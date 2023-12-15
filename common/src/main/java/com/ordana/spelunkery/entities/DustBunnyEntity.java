@@ -65,7 +65,7 @@ public class DustBunnyEntity extends PathfinderMob {
     }
 
     public boolean isSensitiveToWater() {
-        return true;
+        return false;
     }
 
     protected void registerGoals() {

@@ -9,7 +9,6 @@ import com.ordana.spelunkery.worldgen.feature_configs.util.StoneEntry;
 import com.ordana.spelunkery.worldgen.feature_configs.util.StonePattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -88,7 +87,7 @@ public class BlockStripeFeature extends Feature<BlockStripeFeatureConfig> {
                     if (config.secondTarget != null && config.secondTargetPlacer != null)
                         isTarget2 = config.useSecondTarget && currentState.is(config.secondTarget);
                     if (!isTarget1 && !isTarget2) continue;
-                    
+
                     domainWarpedVector.x = x;
                     domainWarpedVector.y = y;
                     domainWarpedVector.z = z;

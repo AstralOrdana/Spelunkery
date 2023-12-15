@@ -224,6 +224,19 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:scute",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biome": "minecraft:beach"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:beetroot_seeds",
           "conditions": [

@@ -9,7 +9,16 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "spelunkery:nephrite_charm",
+              "name": "spelunkery:carved_nephrite",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 6,
+                    "max": 11
+                  }
+                }
+              ],
               "conditions": [
                 {
                   "condition": "minecraft:random_chance",

@@ -107,6 +107,9 @@ public class SpelunkeryClient {
         ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
+        ItemProperties.register(ModBlocks.DIAMOND_GRINDSTONE.get().asItem(), Spelunkery.res("depletion"),
+                (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("depletion") / 8f) : 0);
+
         finishedSetup = true;
     }
 

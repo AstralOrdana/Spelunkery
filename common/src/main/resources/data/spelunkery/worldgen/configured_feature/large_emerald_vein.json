@@ -1,16 +1,16 @@
 {
   "type": "minecraft:random_patch",
   "config": {
-    "tries": 40,
-    "xz_spread": 2,
-    "y_spread": 2,
+    "tries": 16,
+    "xz_spread": 3,
+    "y_spread": 3,
     "feature": {
       "feature": {
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
             "type": "minecraft:noise_threshold_provider",
-            "seed": 420,
+            "seed": 69,
             "noise": {
               "firstOctave": -3,
               "amplitudes": [
@@ -18,25 +18,25 @@
               ]
             },
             "scale": 1,
-            "threshold": 0.5,
-            "high_chance": 0.2,
+            "threshold": 0.2,
+            "high_chance": 0.9,
             "default_state": {
-              "Name": "minecraft:andesite"
+              "Name": "spelunkery:rough_emerald_block"
             },
             "low_states": [
               {
-                "Name": "minecraft:andesite"
+                "Name": "minecraft:infested_stone"
               },
               {
-                "Name": "spelunkery:andesite_emerald_ore"
+                "Name": "minecraft:emerald_ore"
               }
             ],
             "high_states": [
               {
-                "Name": "spelunkery:rough_emerald_block"
+                "Name": "minecraft:infested_stone"
               },
               {
-                "Name": "spelunkery:andesite_emerald_ore"
+                "Name": "minecraft:emerald_ore"
               }
             ]
           }
@@ -46,8 +46,8 @@
         {
           "type": "minecraft:block_predicate_filter",
           "predicate": {
-            "type": "minecraft:matching_block_tag",
-            "tag": "minecraft:base_stone_overworld"
+            "type": "minecraft:matching_blocks",
+            "blocks": "#minecraft:base_stone_overworld"
           }
         }
       ]

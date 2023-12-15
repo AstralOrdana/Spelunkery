@@ -5,6 +5,8 @@ import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -37,11 +39,13 @@ public class CompressionBlastMiner extends DirectionalBlock {
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.is(Items.TNT) && !state.getValue(PRIMED)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, true));
+            level.playSound(null, pos, SoundEvents.GRASS_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);
             return InteractionResult.SUCCESS;
         }
         if (player.isSecondaryUseActive() && state.getValue(PRIMED)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, false));
+            level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
             Block.popResourceFromFace(level, pos, hit.getDirection(), Items.TNT.getDefaultInstance());
             return InteractionResult.SUCCESS;
         }

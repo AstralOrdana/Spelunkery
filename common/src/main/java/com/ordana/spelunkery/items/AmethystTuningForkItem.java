@@ -7,11 +7,9 @@ import com.mojang.math.Axis;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.items.magnetic_compass.MagneticCompassItemPropertyFunction;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
-import io.netty.util.internal.MathUtil;
 import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
@@ -20,7 +18,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Vec3i;
@@ -31,7 +28,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -41,13 +37,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Quaternionf;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -83,6 +80,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
         ItemStack stack = player.getItemInHand(hand);
         CompoundTag compoundTag = stack.getOrCreateTag();
         boolean hasTag = compoundTag.contains("amethystPos");
+        if (level.dimension() != Level.OVERWORLD) return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
         if (player.isSecondaryUseActive()) {
             if (hasTag) {
@@ -135,7 +133,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
 
 
     public int getTollRange() {
-        return CommonConfigs.ECHO_FORK_RANGE.get();
+        return CommonConfigs.TUNING_FORK_RANGE.get();
     }
 
     public void setPlayerX(ItemStack stack, int amount) {

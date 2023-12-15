@@ -11,6 +11,10 @@ public final class ModConstants {
     public static final String LAPIS_ORE = "lapis_ore";
     public static final String EMERALD_ORE = "emerald_ore";
     public static final String DIAMOND_ORE = "diamond_ore";
+    public static final String ZINC_ORE = "zinc_ore";
+    public static final String LEAD_ORE = "lead_ore";
+    public static final String SILVER_ORE = "silver_ore";
+    public static final String JADE_ORE = "jade_ore";
     public static final String ROUGH_BLOCKS = "rough_blocks";
     public static final String CINNABAR_BLOCK = "cinnabar_block";
     public static final String DIAMOND_GRINDSTONE = "diamond_grindstone";

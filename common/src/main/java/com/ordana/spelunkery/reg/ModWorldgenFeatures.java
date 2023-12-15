@@ -12,6 +12,7 @@ import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -89,6 +90,9 @@ public class ModWorldgenFeatures {
 
         ResourceKey<PlacedFeature> noise_salt = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, noise_salt);
+
+        ResourceKey<PlacedFeature> noise_end = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_end"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, noise_end);
 
         ResourceKey<PlacedFeature> rock_salt = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("rock_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, rock_salt);
@@ -174,9 +178,8 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> obsidian_patch = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("obsidian_patch"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, obsidian_patch);
 
-        ResourceKey<PlacedFeature> noise_end = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_end"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, noise_end);
-
+        ResourceKey<PlacedFeature> sulfur_patch = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("sulfur_patch"));
+        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SULFUR_PATCHES, sulfur_patch);
     }
 
 }

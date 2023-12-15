@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -124,7 +125,6 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
         Level level = Minecraft.getInstance().level;
         return level.getBlockState(pos.below());
     }
-
 
     @Override
     public ResourceLocation getStillTexture(FluidState state, BlockAndTintGetter getter, BlockPos pos) {

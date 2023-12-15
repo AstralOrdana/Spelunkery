@@ -1,3 +1,13 @@
 {
-  "parent": "spelunkery:block/diamond_grindstone_0"
+  "parent": "spelunkery:block/diamond_grindstone_0",
+  "textures": {
+    "1": "spelunkery:block/diamond_grindstone_0",
+    "2": "minecraft:block/spruce_planks"
+  },
+  "overrides": [
+    { "predicate": { "spelunkery:depletion": 0.005 }, "model": "spelunkery:block/diamond_grindstone_0" },
+    { "predicate": { "spelunkery:depletion": 0.125 }, "model": "spelunkery:block/diamond_grindstone_1" },
+    { "predicate": { "spelunkery:depletion": 0.250 }, "model": "spelunkery:block/diamond_grindstone_2" },
+    { "predicate": { "spelunkery:depletion": 0.375 }, "model": "spelunkery:block/diamond_grindstone_3" }
+  ]
 }
