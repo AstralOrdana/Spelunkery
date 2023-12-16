@@ -329,13 +329,14 @@ public class ModBlocks {
     public static final Supplier<Block> /* TODO RAW_MAGNETITE_BLOCK */ MAGNETITE = regWithItem("magnetite", () ->
             new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
 
-
+    public static final Supplier<Block> DUST_BLOCK = regWithItem("dust_block", () ->
+            new DustBlockBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()));
     public static final Supplier<Block> DUST = regWithItem("dust", () ->
             new DustBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()/* ignitedByLava() */));
     public static final Supplier<Block> SULFUR = regWithItem("sulfur", () ->
-            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND).noCollission().instabreak().sound(SoundType.SAND).color(MaterialColor.TERRACOTTA_YELLOW)));
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_YELLOW).noCollission().instabreak()));
     public static final Supplier<Block> SALTPETER = regWithItem("saltpeter", () ->
-            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND).noCollission().instabreak().sound(SoundType.SAND).color(MaterialColor.TERRACOTTA_WHITE)));
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_WHITE).noCollission().instabreak()));
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->

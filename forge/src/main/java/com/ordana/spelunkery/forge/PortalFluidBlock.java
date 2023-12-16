@@ -65,7 +65,7 @@ public class PortalFluidBlock extends LiquidBlock {
         tickCounter++;
 
         if (this.tickCounter < 1) {
-            entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER.get(), 1.0f, 1.0f);
+            entity.playSound(ModSoundEvents.PORTAL_FLUID_SUBMERGE.get(), 1.0f, 1.0f);
         }
 
         if (pos.getY() <= level.getMinBuildHeight()) {

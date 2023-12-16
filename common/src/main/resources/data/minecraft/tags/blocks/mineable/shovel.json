@@ -2,7 +2,11 @@
   "replace": false,
   "values": [
     "spelunkery:salt_block",
+    "spelunkery:dust_block",
     "spelunkery:saltpeter_block",
-    "spelunkery:sulfur_block"
+    "spelunkery:sulfur_block",
+    "spelunkery:dust",
+    "spelunkery:sulfur",
+    "spelunkery:saltpeter"
   ]
 }

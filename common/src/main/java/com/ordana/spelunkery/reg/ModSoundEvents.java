@@ -12,7 +12,7 @@ public class ModSoundEvents {
     }
 
     public static RegSupplier<SoundEvent> PORTAL_FLUID_AMBIENT = registerSoundEvent("portal_fluid_ambient");
-    public static RegSupplier<SoundEvent> PORTAL_FLUID_ENTER = registerSoundEvent("portal_fluid_submerge");
+    public static RegSupplier<SoundEvent> PORTAL_FLUID_SUBMERGE = registerSoundEvent("portal_fluid_submerge");
     public static RegSupplier<SoundEvent> PORTAL_FLUID_TELEPORT = registerSoundEvent("portal_fluid_teleport");
     public static RegSupplier<SoundEvent> PORTAL_FLUID_BUCKET_EMPTY = registerSoundEvent("portal_fluid_bucket_empty");
     public static RegSupplier<SoundEvent> PORTAL_FLUID_BUCKET_FILL = registerSoundEvent("portal_fluid_bucket_fill");

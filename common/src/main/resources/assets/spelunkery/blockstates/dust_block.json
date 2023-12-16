@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spelunkery:block/dust_block",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_block_alt",
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -1,3 +1,6 @@
 {
-  "parent": "spelunkery:block/dust_2"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "spelunkery:item/dust"
+  }
 }
