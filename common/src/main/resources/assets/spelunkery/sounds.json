@@ -29,10 +29,10 @@
       "spelunkery:item/bottle/fill_dimensional_tears_1"
     ]
   },
-  "portal_fluid_enter": {
-    "subtitle": "subtitles.block.portal_fluid.enter",
+  "portal_fluid_submerge": {
+    "subtitle": "subtitles.block.portal_fluid.submerge",
     "sounds": [
-      "spelunkery:block/portal_fluid/enter"
+      "spelunkery:block/portal_fluid/submerge"
     ]
   },
   "portal_fluid_teleport": {

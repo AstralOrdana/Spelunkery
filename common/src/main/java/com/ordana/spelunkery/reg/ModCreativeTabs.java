@@ -22,9 +22,9 @@ import java.util.function.Supplier;
 public class ModCreativeTabs {
 
     public static final RegSupplier<CreativeModeTab> MOD_TAB = !CommonConfigs.CREATIVE_TAB.get() ? null :
-            RegHelper.registerCreativeModeTab(Spelunkery.res("spelunkery"),
-                    (c) -> c.title(Component.translatable("itemGroup.spelunkery"))
-                            .icon(() -> ModItems.ROCK_SALT.get().getDefaultInstance()));
+        RegHelper.registerCreativeModeTab(Spelunkery.res("spelunkery"),
+            (c) -> c.title(Component.translatable("itemGroup.spelunkery"))
+                .icon(() -> ModItems.ROCK_SALT.get().getDefaultInstance()));
 
 
     public static void init() {
@@ -118,82 +118,82 @@ public class ModCreativeTabs {
         }
 
         after(e, Items.RAW_GOLD_BLOCK, CreativeModeTabs.NATURAL_BLOCKS,
-                ModConstants.ROUGH_BLOCKS,
-                ModBlocks.ROUGH_CINNABAR_BLOCK, ModBlocks.ROUGH_LAZURITE_BLOCK, ModBlocks.ROUGH_EMERALD_BLOCK,
-                ModBlocks.ROUGH_DIAMOND_BLOCK, ModBlocks.ROUGH_QUARTZ_BLOCK, ModBlocks.RAW_MAGNETITE_BLOCK
+            ModConstants.ROUGH_BLOCKS,
+            ModBlocks.ROUGH_CINNABAR_BLOCK, ModBlocks.ROUGH_LAZURITE_BLOCK, ModBlocks.ROUGH_EMERALD_BLOCK,
+            ModBlocks.ROUGH_DIAMOND_BLOCK, ModBlocks.ROUGH_QUARTZ_BLOCK, ModBlocks.RAW_MAGNETITE_BLOCK
         );
 
         after(e, Items.REDSTONE_BLOCK, CreativeModeTabs.BUILDING_BLOCKS,
-                ModConstants.CINNABAR_BLOCK,
-                ModBlocks.CINNABAR_BLOCK
+            ModConstants.CINNABAR_BLOCK,
+            ModBlocks.CINNABAR_BLOCK
         );
         after(e, Items.REDSTONE_BLOCK, CreativeModeTabs.REDSTONE_BLOCKS,
-                ModConstants.CINNABAR_BLOCK,
-                ModBlocks.CINNABAR_BLOCK
+            ModConstants.CINNABAR_BLOCK,
+            ModBlocks.CINNABAR_BLOCK
         );
 
         after(e, Items.GRINDSTONE, CreativeModeTabs.FUNCTIONAL_BLOCKS,
-                ModConstants.DIAMOND_GRINDSTONE,
-                ModBlocks.DIAMOND_GRINDSTONE
+            ModConstants.DIAMOND_GRINDSTONE,
+            ModBlocks.DIAMOND_GRINDSTONE
         );
 
         after(e, Items.REDSTONE_TORCH, CreativeModeTabs.FUNCTIONAL_BLOCKS,
-                ModConstants.SALT_LAMP,
-                ModBlocks.SALT_LAMP
+            ModConstants.SALT_LAMP,
+            ModBlocks.SALT_LAMP
         );
 
         after(e, Items.RED_SANDSTONE, CreativeModeTabs.NATURAL_BLOCKS,
-                ModConstants.ROCK_SALT,
-                ModBlocks.DUST,
-                ModBlocks.SALT_BLOCK, ModBlocks.SALT,
-                ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT,
-                ModBlocks.SULFUR_BLOCK, ModBlocks.SULFUR,
-                ModBlocks.SALTPETER_BLOCK, ModBlocks.SALTPETER
+            ModConstants.ROCK_SALT,
+            ModBlocks.DUST_BLOCK, ModBlocks.DUST,
+            ModBlocks.SALT_BLOCK, ModBlocks.SALT,
+            ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT,
+            ModBlocks.SULFUR_BLOCK, ModBlocks.SULFUR,
+            ModBlocks.SALTPETER_BLOCK, ModBlocks.SALTPETER
         );
 
         after(e, Items.CUT_RED_SANDSTONE_SLAB, CreativeModeTabs.BUILDING_BLOCKS,
-                ModConstants.SALT,
-                ModBlocks.SALT_BLOCK, ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT_STAIRS, ModBlocks.ROCK_SALT_SLAB, ModBlocks.ROCK_SALT_WALL,
-                ModBlocks.POLISHED_ROCK_SALT, ModBlocks.POLISHED_ROCK_SALT_STAIRS, ModBlocks.POLISHED_ROCK_SALT_SLAB, ModBlocks.POLISHED_ROCK_SALT_WALL,
-                ModBlocks.ROCK_SALT_BRICKS, ModBlocks.ROCK_SALT_BRICK_STAIRS, ModBlocks.ROCK_SALT_BRICK_SLAB, ModBlocks.ROCK_SALT_BRICK_WALL
+            ModConstants.SALT,
+            ModBlocks.ROCK_SALT_BLOCK, ModBlocks.ROCK_SALT_STAIRS, ModBlocks.ROCK_SALT_SLAB, ModBlocks.ROCK_SALT_WALL,
+            ModBlocks.POLISHED_ROCK_SALT, ModBlocks.POLISHED_ROCK_SALT_STAIRS, ModBlocks.POLISHED_ROCK_SALT_SLAB, ModBlocks.POLISHED_ROCK_SALT_WALL,
+            ModBlocks.ROCK_SALT_BRICKS, ModBlocks.ROCK_SALT_BRICK_STAIRS, ModBlocks.ROCK_SALT_BRICK_SLAB, ModBlocks.ROCK_SALT_BRICK_WALL
         );
 
         after(e, Items.DARK_PRISMARINE_SLAB, CreativeModeTabs.BUILDING_BLOCKS,
-                ModConstants.NEPHRITE_BLOCKS,
-                ModBlocks.NEPHRITE, ModBlocks.NEPHRITE_STAIRS, ModBlocks.NEPHRITE_SLAB, ModBlocks.NEPHRITE_WALL,
-                ModBlocks.POLISHED_NEPHRITE, ModBlocks.POLISHED_NEPHRITE_STAIRS, ModBlocks.POLISHED_NEPHRITE_SLAB, ModBlocks.POLISHED_NEPHRITE_WALL,
-                ModBlocks.POLISHED_NEPHRITE_BRICKS, ModBlocks.POLISHED_NEPHRITE_BRICK_STAIRS, ModBlocks.POLISHED_NEPHRITE_BRICK_SLAB, ModBlocks.POLISHED_NEPHRITE_BRICK_WALL
+            ModConstants.NEPHRITE_BLOCKS,
+            ModBlocks.NEPHRITE, ModBlocks.NEPHRITE_STAIRS, ModBlocks.NEPHRITE_SLAB, ModBlocks.NEPHRITE_WALL,
+            ModBlocks.POLISHED_NEPHRITE, ModBlocks.POLISHED_NEPHRITE_STAIRS, ModBlocks.POLISHED_NEPHRITE_SLAB, ModBlocks.POLISHED_NEPHRITE_WALL,
+            ModBlocks.POLISHED_NEPHRITE_BRICKS, ModBlocks.POLISHED_NEPHRITE_BRICK_STAIRS, ModBlocks.POLISHED_NEPHRITE_BRICK_SLAB, ModBlocks.POLISHED_NEPHRITE_BRICK_WALL
         );
 
         after(e, Items.VINE, CreativeModeTabs.NATURAL_BLOCKS,
-                ModConstants.TANGLE_ROOTS,
-                ModBlocks.TANGLE_ROOTS, ModBlocks.SPOROPHYTE, ModBlocks.TALL_SPOROPHYTE
+            ModConstants.TANGLE_ROOTS,
+            ModBlocks.TANGLE_ROOTS, ModBlocks.SPOROPHYTE, ModBlocks.TALL_SPOROPHYTE
         );
 
         after(e, Items.RED_MUSHROOM, CreativeModeTabs.NATURAL_BLOCKS,
-                ModConstants.MUSHROOMS,
-                ModBlocks.BUTTON_MUSHROOM, ModBlocks.CRIMINI, ModBlocks.PORTABELLA,
-                ModBlocks.CONK_FUNGUS, ModBlocks.INKCAP_MUSHROOM, ModBlocks.WHITE_INKCAP_MUSHROOM,
-                ModBlocks.PHOSPHOR_FUNGUS, ModBlocks.MUSHGLOOM, ModBlocks.MILLY_BUBCAP
+            ModConstants.MUSHROOMS,
+            ModBlocks.BUTTON_MUSHROOM, ModBlocks.CRIMINI, ModBlocks.PORTABELLA,
+            ModBlocks.CONK_FUNGUS, ModBlocks.INKCAP_MUSHROOM, ModBlocks.WHITE_INKCAP_MUSHROOM,
+            ModBlocks.PHOSPHOR_FUNGUS, ModBlocks.MUSHGLOOM, ModBlocks.MILLY_BUBCAP
         );
 
         after(e, Items.RED_MUSHROOM_BLOCK, CreativeModeTabs.NATURAL_BLOCKS,
-                ModConstants.MUSHROOM_BLOCKS,
-                ModBlocks.PORTABELLA_BLOCK,
-                ModBlocks.CONK_FUNGUS_BLOCK, ModBlocks.INKCAP_MUSHROOM_BLOCK,
-                ModBlocks.WHITE_INKCAP_MUSHROOM_BLOCK, ModBlocks.MILLY_BUBCAP_BLOCK
+            ModConstants.MUSHROOM_BLOCKS,
+            ModBlocks.PORTABELLA_BLOCK,
+            ModBlocks.CONK_FUNGUS_BLOCK, ModBlocks.INKCAP_MUSHROOM_BLOCK,
+            ModBlocks.WHITE_INKCAP_MUSHROOM_BLOCK, ModBlocks.MILLY_BUBCAP_BLOCK
         );
 
         after(e, Items.CLAY_BALL, CreativeModeTabs.INGREDIENTS,
-                ModConstants.SALT_POWDER,
-                ModBlocks.ROCK_SALT, ModBlocks.SALT,
-                ModBlocks.SALTPETER,
-                ModBlocks.SULFUR
+            ModConstants.SALT_POWDER,
+            ModBlocks.ROCK_SALT, ModBlocks.SALT,
+            ModBlocks.SALTPETER,
+            ModBlocks.SULFUR
         );
 
         after(e, Items.AMETHYST_SHARD, CreativeModeTabs.INGREDIENTS,
-                ModConstants.NEPHRITE_CHUNK,
-                ModItems.NEPHRITE_CHUNK
+            ModConstants.NEPHRITE_CHUNK,
+            ModItems.NEPHRITE_CHUNK
         );
 
 
@@ -205,128 +205,128 @@ public class ModCreativeTabs {
         }
 
         after(e, Items.RAW_GOLD, CreativeModeTabs.INGREDIENTS,
-                ModConstants.ROUGH_GEMS,
-                ModItems.RAW_MAGNETITE, ModItems.ROUGH_CINNABAR, ModItems.ROUGH_LAZURITE, ModItems.ROUGH_EMERALD, ModItems.ROUGH_DIAMOND
+            ModConstants.ROUGH_GEMS,
+            ModItems.RAW_MAGNETITE, ModItems.ROUGH_CINNABAR, ModItems.ROUGH_LAZURITE, ModItems.ROUGH_EMERALD, ModItems.ROUGH_DIAMOND
         );
 
         before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
-                ModConstants.ROUGH_NUGGETS,
-                ModItems.COAL_LUMP, ModItems.CHARCOAL_LUMP, ModItems.RAW_IRON_NUGGET, ModItems.RAW_COPPER_NUGGET, ModItems.RAW_GOLD_NUGGET, ModItems.RAW_MAGNETITE_NUGGET,
-                ModItems.ROUGH_CINNABAR_SHARD, ModItems.ROUGH_LAZURITE_SHARD, ModItems.ROUGH_EMERALD_SHARD, ModItems.ROUGH_DIAMOND_SHARD
+            ModConstants.ROUGH_NUGGETS,
+            ModItems.COAL_LUMP, ModItems.CHARCOAL_LUMP, ModItems.RAW_IRON_NUGGET, ModItems.RAW_COPPER_NUGGET, ModItems.RAW_GOLD_NUGGET, ModItems.RAW_MAGNETITE_NUGGET,
+            ModItems.ROUGH_CINNABAR_SHARD, ModItems.ROUGH_LAZURITE_SHARD, ModItems.ROUGH_EMERALD_SHARD, ModItems.ROUGH_DIAMOND_SHARD
         );
 
         after(e, Items.GOLD_NUGGET, CreativeModeTabs.INGREDIENTS,
-                ModConstants.SHARDS,
-                ModItems.CINNABAR_SHARD, ModItems.LAPIS_LAZULI_SHARD, ModItems.EMERALD_SHARD, ModItems.DIAMOND_SHARD
+            ModConstants.SHARDS,
+            ModItems.CINNABAR_SHARD, ModItems.LAPIS_LAZULI_SHARD, ModItems.EMERALD_SHARD, ModItems.DIAMOND_SHARD
         );
 
         after(e, Items.EMERALD, CreativeModeTabs.INGREDIENTS,
-                ModConstants.CINNABAR,
-                ModItems.CINNABAR,
-                ModItems.STONE_PEBBLE,
-                ModItems.DEEPSLATE_PEBBLE,
-                ModItems.NETHERRACK_PEBBLE,
-                ModItems.BLACKSTONE_PEBBLE,
-                ModItems.BASALT_PEBBLE,
-                ModItems.END_STONE_PEBBLE
+            ModConstants.CINNABAR,
+            ModItems.CINNABAR,
+            ModItems.STONE_PEBBLE,
+            ModItems.DEEPSLATE_PEBBLE,
+            ModItems.NETHERRACK_PEBBLE,
+            ModItems.BLACKSTONE_PEBBLE,
+            ModItems.BASALT_PEBBLE,
+            ModItems.END_STONE_PEBBLE
         );
 
         after(e, Items.LIGHTNING_ROD, CreativeModeTabs.REDSTONE_BLOCKS,
-                ModConstants.NEPHRITE_COMPONENTS,
-                ModBlocks.CARVED_NEPHRITE, ModBlocks.NEPHRITE_SIPHON, ModBlocks.NEPHRITE_FOUNTAIN, ModBlocks.NEPHRITE_DIODE
+            ModConstants.NEPHRITE_COMPONENTS,
+            ModBlocks.CARVED_NEPHRITE, ModBlocks.NEPHRITE_SIPHON, ModBlocks.NEPHRITE_FOUNTAIN, ModBlocks.NEPHRITE_DIODE
         );
 
         after(e, Items.TNT, CreativeModeTabs.REDSTONE_BLOCKS,
-                ModConstants.CBM,
-                ModBlocks.COMPRESSION_BLAST_MINER
+            ModConstants.CBM,
+            ModBlocks.COMPRESSION_BLAST_MINER
         );
 
         after(e, Items.CAULDRON, CreativeModeTabs.REDSTONE_BLOCKS,
-                ModConstants.WOODEN_RAIL,
-                ModBlocks.WOODEN_RAIL
+            ModConstants.WOODEN_RAIL,
+            ModBlocks.WOODEN_RAIL
         );
 
         after(e, Items.MAGMA_BLOCK, CreativeModeTabs.FUNCTIONAL_BLOCKS,
-                ModConstants.CHANNELS,
-                ModBlocks.WOODEN_CHANNEL,
-                ModBlocks.WOODEN_SLUICE,
-                ModBlocks.STONE_CHANNEL,
-                ModBlocks.STONE_SLUICE
+            ModConstants.CHANNELS,
+            ModBlocks.WOODEN_CHANNEL,
+            ModBlocks.WOODEN_SLUICE,
+            ModBlocks.STONE_CHANNEL,
+            ModBlocks.STONE_SLUICE
         );
 
         after(e, Items.LADDER, CreativeModeTabs.FUNCTIONAL_BLOCKS,
-                ModConstants.LADDER,
-                ModBlocks.ROPE_LADDER
+            ModConstants.LADDER,
+            ModBlocks.ROPE_LADDER
         );
 
         after(e, Items.SPIDER_EYE, CreativeModeTabs.FOOD_AND_DRINKS,
-                ModConstants.BELLAS,
-                ModItems.BUTTON_MUSHROOM, ModItems.CRIMINI, ModItems.PORTABELLA,
-                ModItems.GRILLED_PORTABELLA
+            ModConstants.BELLAS,
+            ModItems.BUTTON_MUSHROOM, ModItems.CRIMINI, ModItems.PORTABELLA,
+            ModItems.GRILLED_PORTABELLA
         );
 
         after(e, Items.NETHERITE_HOE, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.CHISELS,
-                ModItems.FLINT_HAMMER_AND_CHISEL, ModItems.OBSIDIAN_HAMMER_AND_CHISEL
+            ModConstants.CHISELS,
+            ModItems.FLINT_HAMMER_AND_CHISEL, ModItems.OBSIDIAN_HAMMER_AND_CHISEL
         );
 
         after(e, Items.WATER_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.TEARS,
-                ModItems.SPRING_WATER_BUCKET
+            ModConstants.TEARS,
+            ModItems.SPRING_WATER_BUCKET
         );
 
         after(e, Items.MILK_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.TEARS,
-                ModItems.SALT_BUCKET, ModItems.PORTAL_FLUID_BUCKET, ModItems.PORTAL_FLUID_BOTTLE
+            ModConstants.TEARS,
+            ModItems.SALT_BUCKET, ModItems.PORTAL_FLUID_BUCKET, ModItems.PORTAL_FLUID_BOTTLE
         );
 
         after(e, Items.RECOVERY_COMPASS, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.COMPASS,
-                ModItems.MAGNETIC_COMPASS, ModItems.DEPTH_GAUGE
+            ModConstants.COMPASS,
+            ModItems.MAGNETIC_COMPASS, ModItems.DEPTH_GAUGE
         );
 
         before(e, Items.COMPASS, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.MAGNET,
-                ModItems.ITEM_MAGNET, ModItems.HANDHELD_COMPACTOR,
-                ModItems.TUNING_FORK, ModItems.ECHO_FORK
+            ModConstants.MAGNET,
+            ModItems.ITEM_MAGNET, ModItems.HANDHELD_COMPACTOR,
+            ModItems.TUNING_FORK, ModItems.ECHO_FORK
         );
 
         before(e, Items.ELYTRA, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.PARACHUTE,
-                ModItems.PARACHUTE
+            ModConstants.PARACHUTE,
+            ModItems.PARACHUTE
         );
 
         before(e, Items.RAIL, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.WOODEN_RAIL,
-                ModBlocks.WOODEN_RAIL
+            ModConstants.WOODEN_RAIL,
+            ModBlocks.WOODEN_RAIL
         );
 
         after(e, Items.FIRE_CHARGE, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.MINEOMITE,
-                ModItems.MINEOMITE, ModItems.COMPRESSION_BLAST_MINER
+            ModConstants.MINEOMITE,
+            ModItems.MINEOMITE, ModItems.COMPRESSION_BLAST_MINER
         );
 
         after(e, Items.BRUSH, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModConstants.DUST_BUN,
-                ModItems.DUST_BUN, ModItems.GLOWSTICK
+            ModConstants.DUST_BUN,
+            ModItems.DUST_BUN, ModItems.GLOWSTICK
         );
 
         after(e, Items.END_ROD, CreativeModeTabs.FUNCTIONAL_BLOCKS,
-                ModConstants.GLOWSTICKS,
-                ModItems.GLOWSTICK,
-                ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
-                ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
-                ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
-                ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
+            ModConstants.GLOWSTICKS,
+            ModItems.GLOWSTICK,
+            ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
+            ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
+            ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
+            ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
         );
 
         after(e, Items.PINK_BANNER, CreativeModeTabs.COLORED_BLOCKS,
-                ModConstants.GLOWSTICKS,
-                ModItems.GLOWSTICK,
-                ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
-                ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
-                ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
-                ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
+            ModConstants.GLOWSTICKS,
+            ModItems.GLOWSTICK,
+            ModItems.WHITE_GLOWSTICK, ModItems.LIGHT_GRAY_GLOWSTICK, ModItems.GRAY_GLOWSTICK, ModItems.BLACK_GLOWSTICK,
+            ModItems.BROWN_GLOWSTICK, ModItems.RED_GLOWSTICK, ModItems.ORANGE_GLOWSTICK, ModItems.YELLOW_GLOWSTICK,
+            ModItems.LIME_GLOWSTICK, ModItems.GREEN_GLOWSTICK, ModItems.CYAN_GLOWSTICK, ModItems.LIGHT_BLUE_GLOWSTICK,
+            ModItems.BLUE_GLOWSTICK, ModItems.PURPLE_GLOWSTICK, ModItems.MAGENTA_GLOWSTICK, ModItems.PINK_GLOWSTICK
         );
 
         e.add(CreativeModeTabs.SPAWN_EGGS, ModItems.DUST_BUNNY_SPAWN_EGG.get());

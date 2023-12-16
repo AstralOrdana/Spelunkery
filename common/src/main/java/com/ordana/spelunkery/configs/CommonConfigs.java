@@ -95,6 +95,7 @@ public class CommonConfigs {
         builder.push("utilities");
         HAMMER_CHISEL_CHARGE_TIME = builder.define("hammer_chisel_charge_time", 20, 1, 128);
         TUNING_FORK_RANGE = builder.define("tuning_fork_range", 128, 1, 256);
+        ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 256);
         ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
         SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);

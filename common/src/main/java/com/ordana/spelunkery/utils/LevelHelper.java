@@ -89,7 +89,7 @@ public class LevelHelper {
             if (entity.isInWater()) {
                 tickCounter++;
                 if (tickCounter < 1) {
-                    entity.playSound(ModSoundEvents.PORTAL_FLUID_ENTER, 1.0f, 1.0f);
+                    entity.playSound(ModSoundEvents.PORTAL_FLUID_SUBMERGE, 1.0f, 1.0f);
                 }
                 level.scheduleTick(pos, this, 120);
                 if (tickCounter >= 100) {

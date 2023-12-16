@@ -318,11 +318,6 @@
   "item.spelunkery.cinnabar": "Cinnabar",
   "block.spelunkery.cinnabar_block": "Block of Cinnabar",
 
-  "block.spelunkery.sulfur": "Sulfur",
-  "block.spelunkery.saltpeter": "Saltpeter",
-  "block.spelunkery.sulfur_block": "Block of Sulfur",
-  "block.spelunkery.saltpeter_block": "Block of Saltpeter",
-
   "item.spelunkery.stone_pebble": "Stone Pebble",
   "item.spelunkery.deepslate_pebble": "Deepslate Pebble",
   "item.spelunkery.netherrack_pebble": "Netherrack Pebble",
@@ -394,7 +389,13 @@
 
   "item.spelunkery.dust_bun": "Dust Bun",
   "item.spelunkery.dust_bunny_spawn_egg": "Dust Bunny Spawn Egg",
+  "block.spelunkery.dust_block": "Block of Dust",
   "block.spelunkery.dust": "Dust",
+
+  "block.spelunkery.sulfur": "Sulfur",
+  "block.spelunkery.saltpeter": "Saltpeter",
+  "block.spelunkery.sulfur_block": "Block of Sulfur",
+  "block.spelunkery.saltpeter_block": "Block of Saltpeter",
 
   "block.spelunkery.glowstick": "Glowstick",
   "block.spelunkery.wooden_rail": "Wooden Rail",
