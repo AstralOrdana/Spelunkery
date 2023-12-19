@@ -80,6 +80,8 @@ public class ModItems {
             new Item(new Item.Properties()));
     public static final Supplier<Item> ROUGH_DIAMOND_SHARD = regItem("rough_diamond_shard", () ->
             new Item(new Item.Properties()));
+    public static final Supplier<Item> ROUGH_QUARTZ_SHARD = regItem("rough_quartz_shard", () ->
+        new Item(new Item.Properties()));
     public static final Supplier<Item> ROUGH_JADE_SHARD = regItem("rough_jade_shard", () ->
             new Item(new Item.Properties()));
 

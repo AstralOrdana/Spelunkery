@@ -1,11 +1,15 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredient": "spelunkery:rough_emerald",
-  "result": "minecraft:emerald",
-  "resultCount": 1,
-  "byproduct": "minecraft:air",
-  "byproductMin": 0,
-  "byproductMax": 0,
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_emerald"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
   "experience": 9,
   "requiresDiamondGrindstone": true
 }

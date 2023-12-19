@@ -1,5 +1,7 @@
 package com.ordana.spelunkery;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.entities.DustBunnyEntity;
@@ -26,6 +28,9 @@ public class Spelunkery {
     public static final String MOD_ID = "spelunkery";
     public static final Logger LOGGER = LogManager.getLogger();
     private static boolean initiated = false;
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting()
+        .disableHtmlEscaping()
+        .create();
 
     public static ResourceLocation res(String name) {
         return new ResourceLocation(MOD_ID, name);

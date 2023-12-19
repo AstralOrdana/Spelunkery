@@ -212,7 +212,7 @@ public class ModCreativeTabs {
         before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
             ModConstants.ROUGH_NUGGETS,
             ModItems.COAL_LUMP, ModItems.CHARCOAL_LUMP, ModItems.RAW_IRON_NUGGET, ModItems.RAW_COPPER_NUGGET, ModItems.RAW_GOLD_NUGGET, ModItems.RAW_MAGNETITE_NUGGET,
-            ModItems.ROUGH_CINNABAR_SHARD, ModItems.ROUGH_LAZURITE_SHARD, ModItems.ROUGH_EMERALD_SHARD, ModItems.ROUGH_DIAMOND_SHARD
+            ModItems.ROUGH_CINNABAR_SHARD, ModItems.ROUGH_LAZURITE_SHARD, ModItems.ROUGH_EMERALD_SHARD, ModItems.ROUGH_DIAMOND_SHARD, ModItems.ROUGH_QUARTZ_SHARD
         );
 
         after(e, Items.GOLD_NUGGET, CreativeModeTabs.INGREDIENTS,

@@ -6,11 +6,15 @@
     }
   ],
   "type": "spelunkery:grindstone_polishing",
-  "ingredient": "spelunkery:rough_jade_shard",
-  "result": "spelunkery:jade_shard",
-  "resultCount": 1,
-  "byproduct": "minecraft:air",
-  "byproductMin": 0,
-  "byproductMax": 1,
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_jade_shard"
+    }
+  ],
+  "results": [
+    {
+      "item": "spelunkery:jade_shard"
+    }
+  ],
   "experience": 1
 }

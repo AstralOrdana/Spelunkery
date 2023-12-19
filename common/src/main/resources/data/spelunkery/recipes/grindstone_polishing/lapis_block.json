@@ -1,10 +1,27 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredient": "spelunkery:rough_lazurite_block",
-  "result": "minecraft:lapis_block",
-  "resultCount": 3,
-  "byproduct": "spelunkery:raw_gold_nugget",
-  "byproductMin": 0,
-  "byproductMax": 18,
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_lazurite_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:lapis_block"
+    },
+    {
+      "item": "minecraft:blue_dye",
+      "count": 9
+    },
+    {
+      "item": "spelunkery:raw_gold_nugget",
+      "count": 9
+    },
+    {
+      "item": "spelunkery:raw_gold_nugget",
+      "count": 9,
+      "chance": 0.50
+    }
+  ],
   "experience": 81
 }

@@ -2,10 +2,7 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryPlatform;
-import com.ordana.spelunkery.worldgen.feature_configs.BlockStripeFeatureConfig;
-import com.ordana.spelunkery.worldgen.feature_configs.CrystalFeatureConfig;
-import com.ordana.spelunkery.worldgen.feature_configs.HugeConkFungusFeatureConfig;
-import com.ordana.spelunkery.worldgen.feature_configs.WallMushroomFeatureConfig;
+import com.ordana.spelunkery.worldgen.feature_configs.*;
 import com.ordana.spelunkery.worldgen.features.*;
 import com.ordana.spelunkery.worldgen.structures.MineshaftDustCorridor;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
@@ -27,29 +24,33 @@ public class ModWorldgenFeatures {
     //structure pieces
 
     public static final Supplier<StructurePieceType> MINESHAFT_DUST_CORRIDOR = RegHelper.register(
-            Spelunkery.res("mineshaft_dust_corridor"), () -> MineshaftDustCorridor::new, Registries.STRUCTURE_PIECE);
+        Spelunkery.res("mineshaft_dust_corridor"), () -> MineshaftDustCorridor::new, Registries.STRUCTURE_PIECE);
 
 
     //custom feature types
     public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("huge_conk"), () ->
-                    new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
+        Spelunkery.res("huge_conk"), () ->
+            new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
+
+    public static final Supplier<Feature<HugeMushgloomFeatureConfig>> HUGE_MUSHGLOOM_FEATURE = RegHelper.registerFeature(
+        Spelunkery.res("huge_mushgloom"), () ->
+            new HugeMushgloomFeature(HugeMushgloomFeatureConfig.CODEC));
 
     public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("wall_mushroom"), () ->
-                    new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
+        Spelunkery.res("wall_mushroom"), () ->
+            new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
 
     public static final Supplier<Feature<CrystalFeatureConfig>> CRYSTAL_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("crystal"), () ->
-                    new CrystalFeature(CrystalFeatureConfig.CODEC));
+        Spelunkery.res("crystal"), () ->
+            new CrystalFeature(CrystalFeatureConfig.CODEC));
 
     public static final Supplier<Feature<BlockStripeFeatureConfig>> BLOCK_STRIPE_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("block_stripe"), () ->
-                    new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
+        Spelunkery.res("block_stripe"), () ->
+            new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
 
     public static final Supplier<Feature<NoneFeatureConfiguration>> SCULK_PATCH_FEATURE = RegHelper.registerFeature(
-            Spelunkery.res("sculk_patch"), () ->
-                    new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
+        Spelunkery.res("sculk_patch"), () ->
+            new SculkGrowthFeature(NoneFeatureConfiguration.CODEC));
 
     public static void init() {
 

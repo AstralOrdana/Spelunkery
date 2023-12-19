@@ -1,11 +1,15 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredient": "spelunkery:rough_diamond_block",
-  "result": "minecraft:diamond_block",
-  "resultCount": 1,
-  "byproduct": "minecraft:air",
-  "byproductMin": 0,
-  "byproductMax": 0,
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_diamond_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:diamond_block"
+    }
+  ],
   "experience": 81,
-  "requiresDiamondGrindstone": true
+  "requires_diamond_grindstone": true
 }

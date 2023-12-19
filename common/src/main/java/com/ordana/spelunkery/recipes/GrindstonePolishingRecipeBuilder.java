@@ -11,10 +11,12 @@ import com.google.gson.JsonObject;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -26,37 +28,41 @@ import java.util.function.Consumer;
 @MethodsReturnNonnullByDefault
 public class GrindstonePolishingRecipeBuilder {
 
-    private final Item ingredient;
-    private final Item result;
-    private final int resultCount;
-    private final Item byproduct;
-    private final int byproductMin;
-    private final int byproductMax;
+    private final NonNullList<Ingredient> ingredients;
+    private final NonNullList<ProcessingOutput> results;
     private final int experience;
-    private final boolean requiresDiamondGrindstone;
+    private final boolean diamondGrindstone;
     private final RecipeSerializer<?> serializer;
     private String recipeGroup;
 
-    private GrindstonePolishingRecipeBuilder(ItemLike ingredient, ItemLike result, int resultCount, ItemLike byproduct, int byproductMin, int byproductMax, int experience, boolean requiresDiamondGrindstone, RecipeSerializer<?> serializer) {
-        this.ingredient = ingredient.asItem();
-        this.result = result.asItem();
-        this.resultCount = resultCount;
-        this.byproduct = byproduct.asItem();
-        this.byproductMin = byproductMin;
-        this.byproductMax = byproductMax;
+    GrindstonePolishingRecipeBuilder(NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results, int experience, boolean diamondGrindstone, RecipeSerializer<?> serializer) {
+        this.ingredients = ingredients;
+        this.results = results;
         this.experience = experience;
-        this.requiresDiamondGrindstone = requiresDiamondGrindstone;
+        this.diamondGrindstone = diamondGrindstone;
         this.serializer = serializer;
     }
 
-
-    public static GrindstonePolishingRecipeBuilder grindstonePolishing(ItemLike ingredient, ItemLike result) {
-        return grindstonePolishing(ingredient, result, 1, Blocks.AIR, 1, 1, 0, false);
+    public static GrindstonePolishingRecipeBuilder noBool(NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results, int exp) {
+        return grindstonePolishing(ingredients, results, exp, false);
     }
 
-    public static GrindstonePolishingRecipeBuilder grindstonePolishing(ItemLike ingredient, ItemLike result, int resultCount, ItemLike byproduct, int byproductMin, int byproductMax, int experience, boolean requiresDiamondGrindstone) {
-        return new GrindstonePolishingRecipeBuilder(ingredient, result, resultCount, byproduct, byproductMin, byproductMax, experience, requiresDiamondGrindstone, ModRecipes.GRINDSTONE_POLISHING_SERIALIZER.get());
+    public static GrindstonePolishingRecipeBuilder noExp(NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results, boolean diamondGrindstone) {
+        return grindstonePolishing(ingredients, results, 0, diamondGrindstone);
     }
+
+    public static GrindstonePolishingRecipeBuilder noExpNoBool(NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results) {
+        return grindstonePolishing(ingredients, results, 0, false);
+    }
+
+    public static GrindstonePolishingRecipeBuilder grindstonePolishing(NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results, int exp, boolean diamondGrindstone) {
+        return new GrindstonePolishingRecipeBuilder(ingredients, results, exp, diamondGrindstone, ModRecipes.GRINDSTONE_POLISHING_SERIALIZER.get());
+    }
+
+
+
+/*
+
 
     //The save methods here could be improved!
     public void save(Consumer<FinishedRecipe> consumer) {
@@ -147,4 +153,25 @@ public class GrindstonePolishingRecipeBuilder {
         }
     }
 
+    public static class ProcessingRecipeParams {
+
+        protected ResourceLocation id;
+        protected NonNullList<Ingredient> ingredients;
+        protected NonNullList<ProcessingOutput> results;
+
+        protected int experience;
+        public boolean diamondGrindstone;
+
+        protected ProcessingRecipeParams(ResourceLocation id) {
+            this.id = id;
+            ingredients = NonNullList.create();
+            results = NonNullList.create();
+            experience = 0;
+            diamondGrindstone = false;
+        }
+
+    }
+
+
+ */
 }
