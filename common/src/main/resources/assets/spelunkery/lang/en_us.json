@@ -388,6 +388,9 @@
   "block.spelunkery.inkcap_mushroom_block": "Inkcap Mushroom Block",
   "block.spelunkery.white_inkcap_mushroom_block": "Pale Inkcap Mushroom Block",
   "block.spelunkery.milly_bubcap_block": "Milly Bubcap Block",
+  "block.spelunkery.phosphor_fungus_block": "Phosphor Fungus Block",
+  "block.spelunkery.mushgloom_block": "Mushgloom Block",
+  "block.spelunkery.cave_mushroom_stem": "Cave Mushroom Stem",
 
   "item.spelunkery.dust_bun": "Dust Bun",
   "item.spelunkery.dust_bunny_spawn_egg": "Dust Bunny Spawn Egg",

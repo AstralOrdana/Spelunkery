@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HopperBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -107,7 +108,7 @@ public class ChannelBlock extends Block {
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         var belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
-        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock || belowState.getBlock() instanceof HopperBlock;
         if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
         level.setBlock(pos, state.setValue(SUPPORTED, bl), 3);
         super.tick(state, level, pos, random);
@@ -118,7 +119,7 @@ public class ChannelBlock extends Block {
         BlockPos pos = context.getClickedPos();
         BlockPos belowPos = pos.below();
         BlockState belowState = blockGetter.getBlockState(belowPos);
-        boolean bl = belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
+        boolean bl = belowState.isFaceSturdy(blockGetter, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock || belowState.getBlock() instanceof HopperBlock;
         if (checkNeighborsForChannel(pos, context.getLevel(), Direction.NORTH) || checkNeighborsForChannel(pos, context.getLevel(), Direction.WEST)) bl = false;
 
         return this.defaultBlockState().setValue(NORTH, !(blockGetter.getBlockState(pos.north()).getBlock() instanceof ChannelBlock)).setValue(EAST, !(blockGetter.getBlockState(pos.east()).getBlock() instanceof ChannelBlock)).setValue(SOUTH, !(blockGetter.getBlockState(pos.south()).getBlock() instanceof ChannelBlock)).setValue(WEST, !(blockGetter.getBlockState(pos.west()).getBlock() instanceof ChannelBlock)).setValue(SUPPORTED, bl);
@@ -134,7 +135,7 @@ public class ChannelBlock extends Block {
         BlockPos belowPos = pos.below();
         BlockState belowState = level.getBlockState(belowPos);
 
-        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock;
+        boolean bl = belowState.isFaceSturdy(level, belowPos, Direction.UP) || belowState.getBlock() instanceof ChannelBlock || belowState.getBlock() instanceof HopperBlock;
         if (checkNeighborsForChannel(pos, level, Direction.NORTH) || checkNeighborsForChannel(pos, level, Direction.WEST)) bl = false;
         state.setValue(SUPPORTED, bl);
         return neighborState.getBlock() instanceof ChannelBlock && direction != Direction.UP && direction != Direction.DOWN ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);

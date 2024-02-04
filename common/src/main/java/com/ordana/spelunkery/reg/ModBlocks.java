@@ -357,9 +357,9 @@ public class ModBlocks {
     public static final Supplier<Block> WHITE_INKCAP_MUSHROOM = regWithItem("white_inkcap_mushroom", () ->
         new GrowableMushroomBlock(BlockBehaviour.Properties.copy(PORTABELLA.get()).hasPostProcess(ModBlocks::always)));
     public static final Supplier<Block> PHOSPHOR_FUNGUS = regWithItem("phosphor_fungus", () ->
-        new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
+        new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(ModBlocks.CONK_FUNGUS.get()).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> MUSHGLOOM = regWithItem("mushgloom", () ->
-        new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
+        new FloorAndSidesMushroomBlock(BlockBehaviour.Properties.copy(ModBlocks.CONK_FUNGUS.get()).emissiveRendering(ModBlocks::always).lightLevel((blockStatex) -> 3)));
     public static final Supplier<Block> MILLY_BUBCAP = regWithItem("milly_bubcap", () ->
         new MillyBubcapMushroomBlock(BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ)));
 
@@ -392,6 +392,13 @@ public class ModBlocks {
         new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.SAND).strength(0.2F).sound(SoundType.WOOD)));
     public static final Supplier<Block> MILLY_BUBCAP_BLOCK = regWithItem("milly_bubcap_block", () ->
         new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BROWN).strength(0.2F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> PHOSPHOR_FUNGUS_BLOCK = regWithItem("phosphor_fungus_block", () ->
+        new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.2F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> MUSHGLOOM_BLOCK = regWithItem("mushgloom_block", () ->
+        new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM_BLOCK).mapColor(MapColor.TERRACOTTA_BLUE).strength(0.2F).sound(SoundType.WOOD)));
+    public static final Supplier<Block> CAVE_MUSHROOM_STEM = regWithItem("cave_mushroom_stem", () ->
+        new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_GRAY).strength(0.2F).sound(SoundType.WOOD)));
+
 
 
     //mining gear
@@ -440,11 +447,11 @@ public class ModBlocks {
     public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
         new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).ignitedByLava()));
     public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
-        new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).ignitedByLava()));
+        new ChannelSluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).ignitedByLava()));
     public static final Supplier<Block> STONE_CHANNEL = regWithItem("stone_channel", () ->
         new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
     public static final Supplier<Block> STONE_SLUICE = regWithItem("stone_sluice", () ->
-        new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
+        new ChannelSluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
 
 
 
