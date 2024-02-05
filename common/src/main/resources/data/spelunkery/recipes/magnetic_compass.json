@@ -1,10 +1,17 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:compass"
-  },
-  "addition": {
-    "item": "spelunkery:magnetite_chunk"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:magnetite_chunk"
+    },
+    "X": {
+      "item": "minecraft:redstone"
+    }
   },
   "result": {
     "item": "spelunkery:magnetic_compass"
