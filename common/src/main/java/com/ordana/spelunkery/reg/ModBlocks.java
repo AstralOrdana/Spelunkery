@@ -447,11 +447,11 @@ public class ModBlocks {
     public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
             new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
     public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
-            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
+            new ChannelSluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
     public static final Supplier<Block> STONE_CHANNEL = regWithItem("stone_channel", () ->
             new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
     public static final Supplier<Block> STONE_SLUICE = regWithItem("stone_sluice", () ->
-            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
+            new ChannelSluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
 
 
 

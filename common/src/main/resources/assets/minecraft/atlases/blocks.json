@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "spelunkery:block/portal_fluid_n"
+    },
+    {
+      "type": "single",
+      "resource": "spelunkery:block/portal_fluid_s"
+    }
+  ]
+}

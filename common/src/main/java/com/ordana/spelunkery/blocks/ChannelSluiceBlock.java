@@ -53,7 +53,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 import java.util.Objects;
 
-public class SluiceBlock extends ModBaseEntityBlock {
+public class ChannelSluiceBlock extends ModBaseEntityBlock {
     public static final BooleanProperty GRATE_NORTH;
     public static final BooleanProperty GRATE_SOUTH;
     public static final BooleanProperty GRATE_EAST;
@@ -80,7 +80,7 @@ public class SluiceBlock extends ModBaseEntityBlock {
 
     public static final Map<Direction, BooleanProperty> GRATE_PROPERTY_BY_DIRECTION;
 
-    public SluiceBlock(Properties properties) {
+    public ChannelSluiceBlock(Properties properties) {
         super(properties);
         super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false).setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
     }
@@ -94,7 +94,7 @@ public class SluiceBlock extends ModBaseEntityBlock {
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int flow = SluiceBlock.getFlow(level, state, pos);
+        int flow = ChannelSluiceBlock.getFlow(level, state, pos);
         if (!(level.getBlockEntity(pos) instanceof SluiceBlockEntity sluice) || flow == 0) return;
 
         var fluidName = Utils.getID(level.getFluidState(pos.above()).getType()).getPath();

@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "spelunkery:basalt_pebble"
+      "item": "spelunkery:rough_quartz_shard"
     }
   },
   "result": {
-    "item": "minecraft:smooth_basalt"
+    "item": "minecraft:quartz"
   }
 }

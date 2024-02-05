@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.blocks.entity;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.SluiceBlock;
+import com.ordana.spelunkery.blocks.ChannelSluiceBlock;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
@@ -160,7 +160,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         blockEntity.tickedGameTime = level.getGameTime();
         if (!blockEntity.isOnCooldown()) {
             blockEntity.setCooldown(0);
-            int flow = SluiceBlock.getFlow(level, state, pos);
+            int flow = ChannelSluiceBlock.getFlow(level, state, pos);
             tryFilterItems(level, pos, state, blockEntity, flow, ()
                     -> createFilteredItems(pos, level, blockEntity));
         }

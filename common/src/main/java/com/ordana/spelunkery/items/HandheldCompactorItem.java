@@ -142,24 +142,27 @@ public class HandheldCompactorItem extends Item {
     public static final Supplier<BiMap<Item, Item>> NUGGET_COMPACTING = Suppliers.memoize(() -> {
 
         var builder = ImmutableBiMap.<Item, Item>builder()
-                .put(Items.IRON_NUGGET, Items.IRON_INGOT)
-                .put(Items.GOLD_NUGGET, Items.GOLD_INGOT)
-                .put(ModItems.COPPER_NUGGET.get(), Items.COPPER_INGOT)
+            .put(Items.IRON_NUGGET, Items.IRON_INGOT)
+            .put(Items.GOLD_NUGGET, Items.GOLD_INGOT)
+            .put(ModItems.COPPER_NUGGET.get(), Items.COPPER_INGOT)
 
-                .put(ModItems.RAW_IRON_NUGGET.get(), Items.RAW_IRON)
-                .put(ModItems.RAW_GOLD_NUGGET.get(), Items.RAW_GOLD)
-                .put(ModItems.RAW_COPPER_NUGGET.get(), Items.RAW_COPPER)
-                .put(ModItems.RAW_MAGNETITE_NUGGET.get(), ModItems.MAGNETITE_CHUNK.get())
+            .put(ModItems.RAW_IRON_NUGGET.get(), Items.RAW_IRON)
+            .put(ModItems.RAW_GOLD_NUGGET.get(), Items.RAW_GOLD)
+            .put(ModItems.RAW_COPPER_NUGGET.get(), Items.RAW_COPPER)
+            .put(ModItems.RAW_MAGNETITE_NUGGET.get(), ModItems.MAGNETITE_CHUNK.get())
 
-                .put(ModItems.CINNABAR_SHARD.get(), ModItems.CINNABAR.get())
-                .put(ModItems.LAPIS_LAZULI_SHARD.get(), Items.LAPIS_LAZULI)
-                .put(ModItems.EMERALD_SHARD.get(), Items.EMERALD)
-                .put(ModItems.DIAMOND_SHARD.get(), Items.DIAMOND)
+            .put(ModItems.CINNABAR_SHARD.get(), ModItems.CINNABAR.get())
+            .put(ModItems.LAPIS_LAZULI_SHARD.get(), Items.LAPIS_LAZULI)
+            .put(ModItems.EMERALD_SHARD.get(), Items.EMERALD)
+            .put(ModItems.DIAMOND_SHARD.get(), Items.DIAMOND)
+            .put(ModItems.COAL_LUMP.get(), Items.COAL)
+            .put(ModItems.CHARCOAL_LUMP.get(), Items.CHARCOAL)
 
-                .put(ModItems.ROUGH_CINNABAR_SHARD.get(), ModItems.ROUGH_CINNABAR.get())
-                .put(ModItems.ROUGH_LAZURITE_SHARD.get(), ModItems.ROUGH_LAZURITE.get())
-                .put(ModItems.ROUGH_EMERALD_SHARD.get(), ModItems.ROUGH_EMERALD.get())
-                .put(ModItems.ROUGH_DIAMOND_SHARD.get(), ModItems.ROUGH_DIAMOND.get());
+            .put(ModItems.ROUGH_CINNABAR_SHARD.get(), ModItems.ROUGH_CINNABAR.get())
+            .put(ModItems.ROUGH_LAZURITE_SHARD.get(), ModItems.ROUGH_LAZURITE.get())
+            .put(ModItems.ROUGH_EMERALD_SHARD.get(), ModItems.ROUGH_EMERALD.get())
+            .put(ModItems.ROUGH_DIAMOND_SHARD.get(), ModItems.ROUGH_DIAMOND.get())
+            .put(ModItems.ROUGH_QUARTZ_SHARD.get(), Items.QUARTZ);
 
         addOptional(builder, "spelunkery:rough_jade_shard", "sullysmod:rough_jade");
         addOptional(builder, "spelunkery:raw_silver_nugget", "oreganized:raw_silver");
@@ -177,31 +180,33 @@ public class HandheldCompactorItem extends Item {
 
     public static Optional<ItemStack> getCompressedNugget(ItemStack stack) {
         return Optional.ofNullable(NUGGET_COMPACTING.get().get(stack.getItem()))
-                .map(item -> item.asItem().getDefaultInstance());
+            .map(item -> item.asItem().getDefaultInstance());
     }
 
     public static final Supplier<BiMap<Item, Item>> INGOT_COMPACTING = Suppliers.memoize(() -> {
 
         var builder = ImmutableBiMap.<Item, Item>builder()
-                .put(Items.IRON_INGOT, Items.IRON_BLOCK)
-                .put(Items.GOLD_INGOT, Items.GOLD_BLOCK)
-                .put(Items.COPPER_INGOT, Items.COPPER_BLOCK)
+            .put(Items.IRON_INGOT, Items.IRON_BLOCK)
+            .put(Items.GOLD_INGOT, Items.GOLD_BLOCK)
+            .put(Items.COPPER_INGOT, Items.COPPER_BLOCK)
 
-                .put(Items.RAW_IRON, Items.RAW_IRON_BLOCK)
-                .put(Items.RAW_GOLD, Items.RAW_GOLD_BLOCK)
-                .put(Items.RAW_COPPER, Items.RAW_COPPER_BLOCK)
-                .put(ModItems.MAGNETITE_CHUNK.get(), ModBlocks.MAGNETITE.get().asItem())
+            .put(Items.RAW_IRON, Items.RAW_IRON_BLOCK)
+            .put(Items.RAW_GOLD, Items.RAW_GOLD_BLOCK)
+            .put(Items.RAW_COPPER, Items.RAW_COPPER_BLOCK)
+            .put(ModItems.MAGNETITE_CHUNK.get(), ModBlocks.MAGNETITE.get().asItem())
 
-                .put(ModItems.CINNABAR.get(), ModBlocks.CINNABAR_BLOCK.get().asItem())
-                .put(Items.REDSTONE, Items.REDSTONE_BLOCK)
-                .put(Items.LAPIS_LAZULI, Items.LAPIS_BLOCK)
-                .put(Items.EMERALD, Items.EMERALD_BLOCK)
-                .put(Items.DIAMOND, Items.DIAMOND_BLOCK)
+            .put(ModItems.CINNABAR.get(), ModBlocks.CINNABAR_BLOCK.get().asItem())
+            .put(Items.REDSTONE, Items.REDSTONE_BLOCK)
+            .put(Items.LAPIS_LAZULI, Items.LAPIS_BLOCK)
+            .put(Items.EMERALD, Items.EMERALD_BLOCK)
+            .put(Items.DIAMOND, Items.DIAMOND_BLOCK)
+            .put(Items.COAL, Items.COAL)
 
-                .put(ModItems.ROUGH_CINNABAR.get(), ModBlocks.ROUGH_CINNABAR_BLOCK.get().asItem())
-                .put(ModItems.ROUGH_LAZURITE.get(), ModBlocks.ROUGH_LAZURITE_BLOCK.get().asItem())
-                .put(ModItems.ROUGH_EMERALD.get(), ModBlocks.ROUGH_EMERALD_BLOCK.get().asItem())
-                .put(ModItems.ROUGH_DIAMOND.get(), ModBlocks.ROUGH_DIAMOND_BLOCK.get().asItem());
+            .put(ModItems.ROUGH_CINNABAR.get(), ModBlocks.ROUGH_CINNABAR_BLOCK.get().asItem())
+            .put(ModItems.ROUGH_LAZURITE.get(), ModBlocks.ROUGH_LAZURITE_BLOCK.get().asItem())
+            .put(ModItems.ROUGH_EMERALD.get(), ModBlocks.ROUGH_EMERALD_BLOCK.get().asItem())
+            .put(ModItems.ROUGH_DIAMOND.get(), ModBlocks.ROUGH_DIAMOND_BLOCK.get().asItem())
+            .put(Items.QUARTZ, ModBlocks.ROUGH_QUARTZ_BLOCK.get().asItem());
 
         addOptional(builder, "sullysmod:rough_jade", "sullysmod:rough_jade_block");
         addOptional(builder, "oreganized:raw_silver", "oreganized:raw_silver_block");
@@ -219,7 +224,7 @@ public class HandheldCompactorItem extends Item {
 
     public static Optional<ItemStack> getCompressedIngot(ItemStack stack) {
         return Optional.ofNullable(INGOT_COMPACTING.get().get(stack.getItem()))
-                .map(item -> item.asItem().getDefaultInstance());
+            .map(item -> item.asItem().getDefaultInstance());
     }
 
     private static void setMode(ItemStack stack, CompressionMode mode) {

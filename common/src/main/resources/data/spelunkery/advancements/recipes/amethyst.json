@@ -2,8 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "spelunkery:rough_quartz_block",
-      "spelunkery:rough_quartz_shard"
+      "spelunkery:tuning_fork"
     ]
   },
   "criteria": {
@@ -13,7 +12,7 @@
         "items": [
           {
             "items": [
-              "minecraft:quartz"
+              "minecraft:amethyst_shard"
             ]
           }
         ]
