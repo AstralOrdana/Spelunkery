@@ -1,0 +1,10 @@
+{
+  "type": "spelunkery:add_carvers",
+  "biomes": "#spelunkery:has_end_noise",
+  "carvers": [
+    "spelunkery:end_cave",
+    "spelunkery:end_cave_extra",
+    "spelunkery:end_canyon"
+  ],
+  "step": "air"
+}

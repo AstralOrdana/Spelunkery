@@ -20,13 +20,11 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
-@ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class GrindstonePolishingRecipe implements Recipe<Container> {
     public static final String NAME = "grindstone_polishing";

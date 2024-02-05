@@ -8,7 +8,7 @@
       "spelunkery:rock_salt_brick_stairs_from_brick_stonecutting",
       "spelunkery:rock_salt_brick_wall",
       "spelunkery:rock_salt_brick_wall_from_brick_stonecutting"
-          ]
+    ]
   },
   "criteria": {
     "has_item": {

@@ -4,10 +4,7 @@ import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.PortalFluidBottleitem;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
-import com.ordana.spelunkery.reg.ModBlockProperties;
-import com.ordana.spelunkery.reg.ModBlocks;
-import com.ordana.spelunkery.reg.ModItems;
-import com.ordana.spelunkery.reg.ModTags;
+import com.ordana.spelunkery.reg.*;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -74,7 +71,7 @@ public class ModEvents {
                                                          Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         if (item == Items.GLASS_BOTTLE) {
             if (state.getBlock() instanceof PortalFluidCauldronBlock) {
-                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
                     player.setItemInHand(hand, itemStack2);
@@ -89,7 +86,7 @@ public class ModEvents {
         }
         else if (item == Items.BUCKET) {
             if (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) == 3) {
-                level.playSound(player, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BUCKET_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BUCKET.get().getDefaultInstance());
                     player.setItemInHand(hand, itemStack2);
@@ -129,7 +126,7 @@ public class ModEvents {
 
         if (item == Items.GLASS_BOTTLE) {
             if (state.getBlock() instanceof CryingObsidianBlock && CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
                     ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
@@ -142,8 +139,10 @@ public class ModEvents {
 
             }
 
+
+
             if (state.getBlock() instanceof RespawnAnchorBlock && state.getValue(RespawnAnchorBlock.CHARGE) > 0 && CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(),SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
 
@@ -171,85 +170,86 @@ public class ModEvents {
                                                      Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         if (state.getBlock() instanceof GrindstoneBlock) {
-            /* Code below modified and adapted from Sully's Mod: https://github.com/Uraneptus/Sullys-Mod/
-            Specific section modified:https://github.com/Uraneptus/Sullys-Mod/blob/1.19.x/src/main/java/com/uraneptus/sullysmod/core/events/SMPlayerEvents.java#L33-L96
-            Significant changes include: addition of byproducts, location of code within mod, particle creation based on ground item.
-            Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LICENSE
-             */
+            //Code below modified and adapted from Sully's Mod: https://github.com/Uraneptus/Sullys-Mod/
+            //Specific section modified:https://github.com/Uraneptus/Sullys-Mod/blob/1.19.x/src/main/java/com/uraneptus/sullysmod/core/events/SMPlayerEvents.java#L33-L96
+            //Significant changes include: addition of byproducts, particle creation based on ground item.
+            //Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LICENSE
+
 
             ArrayList<GrindstonePolishingRecipe> recipes = new ArrayList<>(GrindstonePolishingRecipe.getRecipes(level));
             for (GrindstonePolishingRecipe polishingRecipe : recipes) {
-                if (!recipes.isEmpty()) {
-                    RandomSource random = level.getRandom();
-                    ItemStack ingredient = polishingRecipe.ingredient;
-                    ItemStack result = polishingRecipe.getResultItem();
-                    int resultCount = polishingRecipe.getResultCount();
-                    ItemStack byproduct = polishingRecipe.getByproduct();
-                    int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
-                    int xpAmount = polishingRecipe.getExperience();
-                    if (stack.is(ingredient.getItem())) {
-                        ItemStack resultItem = result.copy();
-                        ItemStack byproductItem = byproduct.copy();
-                        if (player.isShiftKeyDown() && stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
-                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                            level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) - 1));
-                            if (!player.getAbilities().instabuild) stack.shrink(1);
-                        }
-                        else if (state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) == 3 && polishingRecipe.isRequiresDiamondGrindstone() || (polishingRecipe.isRequiresDiamondGrindstone() && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get()))) {
-                            ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
-                            player.swing(hand);
-                            level.playSound(player, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
-                            return InteractionResult.sidedSuccess(level.isClientSide);
-                        }
-                        else if (player.isShiftKeyDown()) {
-                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                            int ingredientCount = stack.getCount();
-                            for (int b = 0; b <= ingredientCount; b++) {
-                                byproductCount = byproductCount + random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
-                            }
+                if (recipes.isEmpty()) return InteractionResult.PASS;
 
-                            if (!player.getAbilities().instabuild) {
-                                stack.shrink(ingredientCount);
-                            }
-                            if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount * ingredientCount))) {
-                                player.drop(new ItemStack(resultItem.getItem(), resultCount * ingredientCount), false);
-                            }
-                            if (!player.getInventory().add(new ItemStack(byproductItem.getItem(), byproductCount))) {
-                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
-                            }
-                            if (!(xpAmount == 0)) {
-                                for (int i = 0; i <= ingredientCount; i++) {
-                                    xpAmount = xpAmount + polishingRecipe.getExperience();
-                                }
-                                level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
-                            }
-                        } else {
-                            if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                            resultItem.setCount(resultCount);
-                            byproductItem.setCount(byproductCount);
-                            if (!player.getAbilities().instabuild) {
-                                stack.shrink(1);
-                            }
-                            if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount))) {
-                                player.drop(new ItemStack(resultItem.getItem(), resultCount), false);
-                            }
-                            if (!player.getInventory().add(new ItemStack(byproduct.getItem(), byproductCount))) {
-                                player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
-                            }
-                            if (!(xpAmount == 0)) {
-                                level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
-                            }
-                        }
-                        if (!resultItem.is(Items.AIR)) ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, resultItem), UniformInt.of(3, 5));
-                        else ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, byproductItem), UniformInt.of(3, 5));
+                RandomSource random = level.getRandom();
+                ItemStack ingredient = polishingRecipe.ingredient;
+                ItemStack result = polishingRecipe.getResultItem();
+                int resultCount = polishingRecipe.getResultCount();
+                ItemStack byproduct = polishingRecipe.getByproduct();
+                int byproductCount = random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
+                int xpAmount = polishingRecipe.getExperience();
+                if (stack.is(ingredient.getItem())) {
+                    ItemStack resultItem = result.copy();
+                    ItemStack byproductItem = byproduct.copy();
+                    if (player.isShiftKeyDown() && stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
+                        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                        level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) - 1));
+                        if (!player.getAbilities().instabuild) stack.shrink(1);
+                    }
+                    else if (state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) == 3 && polishingRecipe.isRequiresDiamondGrindstone() || (polishingRecipe.isRequiresDiamondGrindstone() && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get()))) {
+                        ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
                         player.swing(hand);
-                        level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
-                        if (random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get()) == 1 && !CommonConfigs.DISABLE_DIAMOND_GRINDSTONE_DEPLETION.get()) {
-                            if (polishingRecipe.isRequiresDiamondGrindstone() && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) < 3) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
-                        }
+                        level.playSound(player, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
                         return InteractionResult.sidedSuccess(level.isClientSide);
                     }
+                    else if (player.isShiftKeyDown()) {
+                        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                        int ingredientCount = stack.getCount();
+                        for (int b = 0; b <= ingredientCount; b++) {
+                            byproductCount = byproductCount + random.nextIntBetweenInclusive(polishingRecipe.getByproductMin(), polishingRecipe.getByproductMax());
+                        }
+
+                        if (!player.getAbilities().instabuild) {
+                            stack.shrink(ingredientCount);
+                        }
+                        if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount * ingredientCount))) {
+                            player.drop(new ItemStack(resultItem.getItem(), resultCount * ingredientCount), false);
+                        }
+                        if (!player.getInventory().add(new ItemStack(byproductItem.getItem(), byproductCount))) {
+                            player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
+                        }
+                        if (!(xpAmount == 0)) {
+                            for (int i = 0; i <= ingredientCount; i++) {
+                                xpAmount = xpAmount + polishingRecipe.getExperience();
+                            }
+                            level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
+                        }
+                    } else {
+                        if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                        resultItem.setCount(resultCount);
+                        byproductItem.setCount(byproductCount);
+                        if (!player.getAbilities().instabuild) {
+                            stack.shrink(1);
+                        }
+                        if (!player.getInventory().add(new ItemStack(resultItem.getItem(), resultCount))) {
+                            player.drop(new ItemStack(resultItem.getItem(), resultCount), false);
+                        }
+                        if (!player.getInventory().add(new ItemStack(byproduct.getItem(), byproductCount))) {
+                            player.drop(new ItemStack(byproductItem.getItem(), byproductCount), false);
+                        }
+                        if (!(xpAmount == 0)) {
+                            level.addFreshEntity(new ExperienceOrb(level, pos.getX(), pos.getY() + 1, pos.getZ(), xpAmount));
+                        }
+                    }
+                    if (!resultItem.is(Items.AIR)) ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, resultItem), UniformInt.of(3, 5));
+                    else ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, byproductItem), UniformInt.of(3, 5));
+                    player.swing(hand);
+                    level.playSound(player, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
+                    if (random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get()) == 1 && !CommonConfigs.DISABLE_DIAMOND_GRINDSTONE_DEPLETION.get()) {
+                        if (polishingRecipe.isRequiresDiamondGrindstone() && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) < 3) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+                    }
+                    return InteractionResult.sidedSuccess(level.isClientSide);
                 }
+
             }
         }
         return InteractionResult.PASS;

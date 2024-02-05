@@ -1,0 +1,100 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side"
+      },
+      "when": {
+        "north": "true",
+        "grate_north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side",
+        "y": 90
+      },
+      "when": {
+        "east": "true",
+        "grate_east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side",
+        "y": 180
+      },
+      "when": {
+        "south": "true",
+        "grate_south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side",
+        "y": 270
+      },
+      "when": {
+        "west": "true",
+        "grate_west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_sluice_side"
+      },
+      "when": {
+        "north": "false",
+        "grate_north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_sluice_side",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "grate_east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_sluice_side",
+        "y": 180
+      },
+      "when": {
+        "south": "false",
+        "grate_south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_sluice_side",
+        "y": 270
+      },
+      "when": {
+        "west": "false",
+        "grate_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_legs"
+      },
+      "when": {
+        "supported": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_base"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_corners"
+      }
+    }
+  ]
+}

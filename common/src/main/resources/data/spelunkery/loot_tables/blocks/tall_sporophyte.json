@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "conditions": [
         {
           "block": "spelunkery:tall_sporophyte",
@@ -45,7 +45,7 @@
               "functions": [
                 {
                   "add": false,
-                  "count": 2.0,
+                  "count": 2,
                   "function": "minecraft:set_count"
                 }
               ],
@@ -54,10 +54,10 @@
           ]
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     },
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
       "conditions": [
         {
           "block": "spelunkery:tall_sporophyte",
@@ -100,7 +100,7 @@
               "functions": [
                 {
                   "add": false,
-                  "count": 2.0,
+                  "count": 2,
                   "function": "minecraft:set_count"
                 }
               ],
@@ -109,7 +109,7 @@
           ]
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ]
 }

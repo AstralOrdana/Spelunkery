@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#H#",
+    "###",
+    "/ /"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "/": {
+      "tag": "minecraft:wooden_fences"
+    }
+  },
+  "result": {
+    "item": "spelunkery:wooden_channel",
+    "count": 4
+  }
+}

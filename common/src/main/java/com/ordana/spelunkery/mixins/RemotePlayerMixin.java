@@ -20,11 +20,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class RemotePlayerMixin extends Player implements IParachuteEntity {
 
     @Unique
-    private ItemStack parachute = ItemStack.EMPTY;
+    private ItemStack spelunkery$parachute = ItemStack.EMPTY;
+    @Unique
+    private int spelunkery$parachuteTicks;
 
     protected RemotePlayerMixin(Level level, BlockPos blockPos, float f, GameProfile gameProfile, @Nullable ProfilePublicKey profilePublicKey) {
         super(level, blockPos, f, gameProfile, profilePublicKey);
     }
+
 
     //this isn't optimal but still better than checking every render tick the whole inventory
     @Inject(method = "tick",
@@ -33,16 +36,26 @@ public abstract class RemotePlayerMixin extends Player implements IParachuteEnti
                     shift = At.Shift.AFTER)
     )
     private void checkIfHasParachute(CallbackInfo ci) {
-        parachute = ParachuteItem.getParachute(this);
+        spelunkery$parachute = ParachuteItem.getParachute(this);
+        if (!spelunkery$parachute.isEmpty()  && ParachuteItem.getActive(spelunkery$parachute)) {
+            spelunkery$parachuteTicks++;
+        } else  {
+            spelunkery$parachuteTicks = 0;
+        }
     }
 
     @Override
     public ItemStack getParachute() {
-        return parachute;
+        return spelunkery$parachute;
     }
 
     @Override
     public void setParachute(ItemStack parachute) {
-        this.parachute = parachute;
+        this.spelunkery$parachute = parachute;
+    }
+
+    @Override
+    public int getParachuteTicks() {
+        return spelunkery$parachuteTicks;
     }
 }

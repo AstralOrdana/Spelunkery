@@ -3,6 +3,7 @@ package com.ordana.spelunkery.items;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.reg.ModParticles;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class DustBunItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.dust_bun_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -50,9 +52,9 @@ public class DustBunItem extends Item {
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
 
         ItemStack stack = player.getItemInHand(hand);
-        if (level instanceof ServerLevel) {
+        if (level instanceof ServerLevel serverLevel) {
             LootTable lootTable = level.getServer().getLootTables().get(Spelunkery.res("gameplay/dust_bun"));
-            LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
+            LootContext.Builder builder = new LootContext.Builder(serverLevel)
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
                     .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 
@@ -70,6 +72,11 @@ public class DustBunItem extends Item {
                     }
                     stack.shrink(1);
                 }
+
+                double d0 = level.random.nextGaussian() * 0.02D;
+                double d1 = level.random.nextGaussian() * 0.02D;
+                double d2 = level.random.nextGaussian() * 0.02D;
+                serverLevel.sendParticles(ModParticles.DUST_POOF.get(), (player.getX()) - d0 * 10.0D, (player.getY() + player.getEyeHeight() - 0.2) - d1 * 10.0D, (player.getZ()) - d2 * 10.0D, 5, 0, 0, 0, d2);
 
             }
             level.playSound(null, player.blockPosition(), SoundEvents.LEASH_KNOT_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);

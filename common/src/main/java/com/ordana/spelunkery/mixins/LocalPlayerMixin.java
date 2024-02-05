@@ -29,7 +29,6 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer implements I
     @Unique
     private int spelunkery$parachuteTicks = 0;
 
-
     //this isn't optimal but still better than checking every render tick the whole inventory
     @Inject(method = "tick",
             at = @At(value = "INVOKE",

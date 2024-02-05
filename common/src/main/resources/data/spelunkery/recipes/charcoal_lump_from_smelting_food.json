@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "charcoal",
+  "ingredient": {
+    "tag": "spelunkery:smeltable_foods"
+  },
+  "result": "spelunkery:charcoal_lump",
+  "experience": 0.35,
+  "cookingtime": 100
+}

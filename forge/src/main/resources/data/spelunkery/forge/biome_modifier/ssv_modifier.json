@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#spelunkery:has_sulfur_patches",
+  "features": [
+    "spelunkery:sulfur_patch"
+  ],
+  "step": "raw_generation"
+}

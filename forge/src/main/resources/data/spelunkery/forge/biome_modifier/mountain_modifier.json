@@ -4,7 +4,9 @@
   "features": [
     "spelunkery:noise_salt",
     "spelunkery:rock_salt",
-    "spelunkery:large_emerald_vein"
+    "spelunkery:large_emerald_vein",
+    "spelunkery:spring_water_spring",
+    "spelunkery:spring_water_pool"
   ],
   "step": "raw_generation"
 }

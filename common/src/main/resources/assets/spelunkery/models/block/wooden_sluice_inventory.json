@@ -1,0 +1,6 @@
+{
+	"parent": "spelunkery:block/channel_template_sluice_inventory",
+	"textures": {
+		"texture": "spelunkery:block/wooden_sluice"
+	}
+}

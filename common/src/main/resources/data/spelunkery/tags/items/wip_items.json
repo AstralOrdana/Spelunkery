@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:saltpeter",
-    "spelunkery:sulfur",
-    "spelunkery:sulfur_geyser"
+    "spelunkery:sulfur_geyser",
+    "spelunkery:polished_quartz_block",
+    "spelunkery:nephrite_charm"
   ]
 }

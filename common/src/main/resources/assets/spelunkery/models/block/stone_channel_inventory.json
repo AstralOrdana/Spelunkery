@@ -1,0 +1,6 @@
+{
+  "parent": "spelunkery:block/channel_template_inventory",
+  "textures": {
+    "texture": "spelunkery:block/stone_channel"
+  }
+}

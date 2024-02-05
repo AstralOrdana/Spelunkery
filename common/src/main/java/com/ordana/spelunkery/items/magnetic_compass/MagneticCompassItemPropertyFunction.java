@@ -79,7 +79,7 @@ public class MagneticCompassItemPropertyFunction implements ClampedItemPropertyF
         return Mth.positiveModulo((float)f, 1.0F);
     }
 
-    private float getRotationTowardsCompassTarget(Entity entity, long l, BlockPos blockPos) {
+    public float getRotationTowardsCompassTarget(Entity entity, long l, BlockPos blockPos) {
         double d = this.getAngleFromEntityToPos(entity, blockPos);
         double e = this.getWrappedVisualRotationY(entity);
         double f;

@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spelunkery:block/sulfur_block"
+      },
+      {
+        "model": "spelunkery:block/sulfur_block",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/sulfur_block",
+        "y": 180
+      },
+      {
+        "model": "spelunkery:block/sulfur_block",
+        "y": 270
+      }
+    ]
+  }
+}

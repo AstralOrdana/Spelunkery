@@ -3,7 +3,6 @@ package com.ordana.spelunkery.mixins;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
@@ -81,7 +80,8 @@ public abstract class AbstractMinecartMixin extends Entity {
     @Final
     protected abstract void addAdditionalSaveData(CompoundTag compound);
 
-    @Shadow
+    /*
     @Final
-    public abstract Packet<?> getAddEntityPacket();
+    public abstract Packet<ClientGamePacketListener> getAddEntityPacket();
+     */
 }

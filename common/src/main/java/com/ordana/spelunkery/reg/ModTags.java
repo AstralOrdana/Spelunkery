@@ -19,9 +19,13 @@ public class ModTags {
     public static final TagKey<Block> OCEAN_TARGET = registerBlockTag("ocean_target");
     public static final TagKey<Block> SALT_BLOCKS = registerBlockTag("salt_blocks");
     public static final TagKey<Block> CHISELABLE = registerBlockTag("chiselable");
+    public static final TagKey<Block> CHISEL_IMMUNE = registerBlockTag("chisel_immune");
     public static final TagKey<Block> CAN_BOIL_WATER = registerBlockTag("can_boil_water");
     public static final TagKey<Block> BLAST_MINER_IMMUNE = registerBlockTag("blast_miner_immune");
     public static final TagKey<Block> BASE_STONE_END = registerBlockTag("base_stone_end");
+    public static final TagKey<Block> XP_DROP_DISABLED = registerBlockTag("xp_drop_disabled");
+    public static final TagKey<Block> SLUICES = registerBlockTag("sluices");
+    public static final TagKey<Block> SPRING_GEYSER_SOURCE = registerBlockTag("spring_geyser_source");
 
     //items
     public static final TagKey<Item> KEEP_ON_DEATH = registerItemTag("keep_on_death");
@@ -32,7 +36,10 @@ public class ModTags {
     public static final TagKey<Item> GRINDSTONE_REPAIR_ITEM = registerItemTag("grindstone_repair_item");
     public static final TagKey<Item> SLIME_FOOD = registerItemTag("slime_food");
     public static final TagKey<Item> NUGGETS = registerItemTag("nuggets");
+    public static final TagKey<Item> PEBBLES = registerItemTag("pebbles");
     public static final TagKey<Item> PARACHUE_REPAIR = registerItemTag("parachute_repair");
+    public static final TagKey<Item> BLASTABLE_FOODS = registerItemTag("blastable_foods");
+    public static final TagKey<Item> SMELTABLE_FOODS = registerItemTag("smeltable_foods");
     public static final TagKey<Item> WIP_ITEMS = registerItemTag("wip_items");
 
     //biomes
@@ -47,9 +54,11 @@ public class ModTags {
     public static final TagKey<Biome> HAS_SWAMP_NOISE = registerBiomeTag("has_mountain_noise");
     public static final TagKey<Biome> HAS_NETHER_NOISE = registerBiomeTag("has_nether_noise");
     public static final TagKey<Biome> HAS_END_NOISE = registerBiomeTag("has_end_noise");
+    public static final TagKey<Biome> HAS_SULFUR_PATCHES = registerBiomeTag("has_sulfur_patches");
 
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");
+    public static final TagKey<EntityType<?>> PORTAL_FLUID_IMMUNE = registerEntityTag("portal_fluid_immune");
 
     //fluids
     public static final TagKey<Fluid> PORTAL_FLUID = registerFluidTag("portal_fluid");

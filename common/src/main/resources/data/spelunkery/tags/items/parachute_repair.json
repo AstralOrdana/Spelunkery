@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:wool",
     {
       "id": "farmersdelight:canvas",
       "required": false
-    }
+    },
+    "#minecraft:wool"
   ]
 }

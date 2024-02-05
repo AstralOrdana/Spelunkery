@@ -1,0 +1,40 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "minecraft:bone"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "spelunkery:sulfur"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "spelunkery:basalt_pebble"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "minecraft:nether_wart"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:quartz"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "spelunkery:raw_gold_nugget"
+        }
+      ]
+    }
+  ]
+}

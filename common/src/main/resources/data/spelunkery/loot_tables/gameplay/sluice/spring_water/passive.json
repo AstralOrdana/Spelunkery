@@ -1,0 +1,35 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "spelunkery:rock_salt"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "spelunkery:saltpeter"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:sulfur"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:raw_copper_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "spelunkery:raw_iron_nugget"
+        }
+      ]
+    }
+  ]
+}

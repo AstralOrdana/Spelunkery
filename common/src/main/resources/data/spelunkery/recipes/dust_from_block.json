@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:dust_block"
+    }
+  ],
+  "result": {
+    "item": "spelunkery:dust",
+    "count": 9
+  }
+}

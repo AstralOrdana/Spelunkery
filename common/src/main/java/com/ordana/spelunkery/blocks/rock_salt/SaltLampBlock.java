@@ -16,7 +16,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SaltLampBlock extends LanternBlock {
+public class SaltLampBlock extends LanternBlock implements RockSalt {
     protected static final VoxelShape SHAPE;
     protected static final VoxelShape HANGING_SHAPE;
 

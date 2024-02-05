@@ -42,8 +42,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -95,7 +95,8 @@ public class HammerAndChiselItem extends Item implements Vanishable {
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, @NotNull ItemStack repairCandidate) {
-        return (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.OBSIDIAN)) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.FLINT));
+        return (stack.is(ModItems.OBSIDIAN_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.OBSIDIAN))
+                || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && repairCandidate.is(Items.FLINT));
     }
 
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
@@ -123,7 +124,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
             }
-            else if (!state.is(ModTags.CHISELABLE) || state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && (state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL)))) {
+            else if (!state.is(ModTags.CHISELABLE) || state.is(ModTags.CHISEL_IMMUNE) || state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) || (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()) && (state.is(BlockTags.NEEDS_IRON_TOOL) || state.is(BlockTags.NEEDS_DIAMOND_TOOL)))) {
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5));
                 level.playSound(null, pos, SoundEvents.SHIELD_BREAK, SoundSource.BLOCKS, 0.5F, 0.0F);
             }

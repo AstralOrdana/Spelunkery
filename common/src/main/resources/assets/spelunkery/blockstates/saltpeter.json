@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "spelunkery:block/saltpeter_2"
+    },
+    "layers=2": {
+      "model": "spelunkery:block/saltpeter_4"
+    },
+    "layers=3": {
+      "model": "spelunkery:block/saltpeter_6"
+    },
+    "layers=4": {
+      "model": "spelunkery:block/saltpeter_8"
+    },
+    "layers=5": {
+      "model": "spelunkery:block/saltpeter_10"
+    },
+    "layers=6": {
+      "model": "spelunkery:block/saltpeter_12"
+    },
+    "layers=7": {
+      "model": "spelunkery:block/saltpeter_14"
+    },
+    "layers=8": {
+      "model": "spelunkery:block/saltpeter_16"
+    }
+  }
+}

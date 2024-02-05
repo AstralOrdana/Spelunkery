@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class MagnetItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @javax.annotation.Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             CompoundTag compoundTag = stack.getOrCreateTag();
             if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.active").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
@@ -89,7 +90,7 @@ public class MagnetItem extends Item {
 
             List<ItemEntity> items = level.getEntities(EntityType.ITEM, area,
                     item -> item.isAlive() && (!level.isClientSide || item.tickCount > 1) &&
-                            (item.getThrower() == null || !item.getThrower().equals(entity.getUUID()) || !item.hasPickUpDelay()) &&
+                            (item.getOwner() == null || !item.hasPickUpDelay()) &&
                             !item.getItem().isEmpty() /*&& !item.getPersistentData().contains("PreventRemoteMovement") && this.canPickupStack(tag, item.getItem())*/
             );
 

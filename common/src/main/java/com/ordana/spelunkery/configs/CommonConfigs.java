@@ -15,7 +15,6 @@ public class CommonConfigs {
 
     public static Supplier<Boolean> CREATIVE_TAB;
     //public static Supplier<Boolean> CROSS_SECTION;
-    public static Supplier<Boolean> STONECUTTER_DAMAGE;
     public static Supplier<Boolean> DISABLE_DIAMOND_GRINDSTONE_DEPLETION;
     public static Supplier<Integer> DIAMOND_GRINDSTONE_DEPLETE_CHANCE;
     public static Supplier<Integer> PARACHUTE_DELAY;
@@ -34,6 +33,7 @@ public class CommonConfigs {
     public static Supplier<Integer> SLIME_GROWTH_MAX;
 
     public static Supplier<Integer> HAMMER_CHISEL_CHARGE_TIME;
+    public static Supplier<Integer> TUNING_FORK_RANGE;
     public static Supplier<Integer> ECHO_FORK_RANGE;
     public static Supplier<Integer> ECHO_DURRATION;
     public static Supplier<Integer> ECHO_COOLDOWN;
@@ -55,7 +55,8 @@ public class CommonConfigs {
     public static Supplier<Boolean> BETTER_SCULK_PATCHES;
     public static Supplier<Boolean> DARK_FOREST_PORTABELLAS;
     public static Supplier<Boolean> ENABLE_MORES;
-
+    public static Supplier<Boolean> PORTAL_FLUID_OCEAN;
+    public static Supplier<Boolean> END_OCEAN_BUCKETABLE;
 
 
     public static void init() {
@@ -69,7 +70,6 @@ public class CommonConfigs {
 
         builder.push("misc");
         CREATIVE_TAB = builder.define("creative_tab", false);
-        STONECUTTER_DAMAGE = builder.define("stonecutter_damage", true);
         DISABLE_DIAMOND_GRINDSTONE_DEPLETION = builder.define("disable_diamond_grindstone_depletion", false);
         DIAMOND_GRINDSTONE_DEPLETE_CHANCE = builder.define("diamond_grindstone_deplete_chance", 20, 0, 128);
         PARACHUTE_DELAY = builder.define("parachute_delay", 10, 0, 128);
@@ -91,10 +91,11 @@ public class CommonConfigs {
 
         builder.push("utilities");
         HAMMER_CHISEL_CHARGE_TIME = builder.define("hammer_chisel_charge_time", 20, 1, 128);
-        SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
-        ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 128);
+        TUNING_FORK_RANGE = builder.define("tuning_fork_range", 128, 1, 256);
+        ECHO_FORK_RANGE = builder.define("echo_fork_range", 16, 1, 256);
         ECHO_COOLDOWN = builder.define("echo_cooldown", 600, 1, 72000);
         ECHO_DURRATION = builder.define("echo_glow_durration", 1200, 1, 72000);
+        SCULK_SHEARING = builder.define("sculk_drops_with_shears", true);
         MAGNET_RANGE = builder.define("magnet_range", 8, 1, 32);
         MAGNETITE_RANGE = builder.define("magnetite_range", 64, 1, 512);
         builder.pop();
@@ -113,9 +114,11 @@ public class CommonConfigs {
         builder.push("worldgen");
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         ENABLE_SPOROPHYTES = builder.define("enable_sporophytes", true);
-        BETTER_SCULK_PATCHES = builder.define("better_sculk_patches", true);
+        BETTER_SCULK_PATCHES = builder.define("better_sculk_patches", false);
         DARK_FOREST_PORTABELLAS = builder.define("dark_forest_portabellas", true);
         ENABLE_MORES = builder.define("enable_mores", true);
+        PORTAL_FLUID_OCEAN = builder.define("portal_fluid_ocean", false);
+        END_OCEAN_BUCKETABLE = builder.define("end_ocean_bucketable", false);
         builder.pop();
 
         //fabric specific

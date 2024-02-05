@@ -53,11 +53,8 @@ public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
             if (itemStack.is(Items.SLIME_BLOCK) && CommonConfigs.SLIME_CAULDRONS.get() && state.getValue(LEVEL) == 3) {
                 Slime slime = EntityType.SLIME.create(serverLevel);
                 if (slime != null) {
-                    try {
-                        ServerPlayer player = (ServerPlayer) item.getThrowingEntity();
-                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(player, pos, itemStack);
-                    } catch (NullPointerException|ClassCastException ex) {
-                        // ignored -- not dropped by a player
+                    if (item.getThrowingEntity() instanceof ServerPlayer serverPlayer) {
+                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemStack);
                     }
                     item.remove(Entity.RemovalReason.DISCARDED);
                     slime.moveTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);

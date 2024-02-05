@@ -28,6 +28,7 @@ public class SpelunkeryForge {
     public SpelunkeryForge() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
+        ModBiomeModifier.register(bus);
 
         Spelunkery.commonInit();
 
@@ -37,7 +38,8 @@ public class SpelunkeryForge {
         }
     }
 
-    @SubscribeEvent
+    // TODO 1.19.2 :: Still needed?
+//    @SubscribeEvent
     public void addPackFinders(AddPackFindersEvent event) {
 
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
@@ -52,10 +54,7 @@ public class SpelunkeryForge {
         event.addRepositorySource((consumer, constructor) -> {
             String path = Spelunkery.res(folder).toString();
             IModFile file = ModList.get().getModFileById(Spelunkery.MOD_ID).getFile();
-            try (PathPackResources pack = new PathPackResources(
-                    path,
-                    file.findResource("resourcepacks/" + folder));) {
-
+            try (PathPackResources pack = new PathPackResources(path, file.findResource("resourcepacks/" + folder + "/"))) {
                 consumer.accept(constructor.create(
                         Spelunkery.res(folder).toString(),
                         name,

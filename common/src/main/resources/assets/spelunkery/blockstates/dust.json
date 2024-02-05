@@ -1,0 +1,84 @@
+{
+  "variants": {
+    "layers=1": [
+      {
+        "model": "spelunkery:block/dust_2",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_2_alt",
+        "weight": 1
+      }
+    ],
+    "layers=2": [
+      {
+        "model": "spelunkery:block/dust_4",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_4_alt",
+        "weight": 1
+      }
+    ],
+    "layers=3": [
+      {
+        "model": "spelunkery:block/dust_6",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_6_alt",
+        "weight": 1
+      }
+    ],
+    "layers=4": [
+      {
+        "model": "spelunkery:block/dust_8",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_8_alt",
+        "weight": 1
+      }
+    ],
+    "layers=5": [
+      {
+        "model": "spelunkery:block/dust_10",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_10_alt",
+        "weight": 1
+      }
+    ],
+    "layers=6": [
+      {
+        "model": "spelunkery:block/dust_12",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_12_alt",
+        "weight": 1
+      }
+    ],
+    "layers=7": [
+      {
+        "model": "spelunkery:block/dust_14",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_14_alt",
+        "weight": 1
+      }
+    ],
+    "layers=8": [
+      {
+        "model": "spelunkery:block/dust_16",
+        "weight": 99
+      },
+      {
+        "model": "spelunkery:block/dust_16_alt",
+        "weight": 1
+      }
+    ]
+  }
+}

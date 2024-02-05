@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "I#I",
+    " X "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "spelunkery:tuning_fork"
+  }
+}

@@ -35,6 +35,7 @@ public abstract class SlimeMixin extends Mob {
 
     @Shadow public abstract int getSize();
     @Shadow public abstract void setSize(int size, boolean resetHealth);
+
     public boolean canPickUpLoot() {
         return true;
     }

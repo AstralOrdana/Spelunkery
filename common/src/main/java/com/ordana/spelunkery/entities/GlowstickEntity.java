@@ -214,7 +214,7 @@ public class GlowstickEntity extends ImprovedProjectileEntity {
                 //get correct land pos
                 if (!noPhysics) {
                     newPos = blockHitResult.getLocation();
-                    BlockPos newBlockPos = new BlockPos(newPos.x, newPos.y, newPos.z);
+                    BlockPos newBlockPos = new BlockPos(newPos);
                     placeGlowstick(level, newBlockPos, (BlockHitResult) blockHitResult);
                     this.remove(RemovalReason.DISCARDED);
                 }

@@ -277,8 +277,8 @@
   "item.spelunkery.sulfur": "硫磺",
   "item.spelunkery.saltpeter": "硝石",
 
-  "item.spelunkery.raw_magnetite": "粗磁铁矿",
-  "block.spelunkery.raw_magnetite_block": "粗磁铁块",
+  "item.spelunkery.magnetite_chunk": "粗磁铁矿",
+  "block.spelunkery.magnetite": "粗磁铁块",
   "item.spelunkery.item_magnet": "物品磁铁",
   "item.spelunkery.magnetic_compass": "地磁指北针",
   "item.spelunkery.handheld_compactor": "便携物品压缩器",

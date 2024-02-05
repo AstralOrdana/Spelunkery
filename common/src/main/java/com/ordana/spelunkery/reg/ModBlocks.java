@@ -204,48 +204,6 @@ public class ModBlocks {
     public static final Supplier<Block> TUFF_DIAMOND_ORE = regWithItemConfigurable("tuff_diamond_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_DIAMOND_ORE.get()).sound(SoundType.TUFF), UniformInt.of(3, 7)));
 
-    //mod compat mores
-    public static final Supplier<Block> GRANITE_ZINC_ORE = regWithItemConfigurable("granite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "create");
-    public static final Supplier<Block> ANDESITE_ZINC_ORE = regWithItemConfigurable("andesite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
-    public static final Supplier<Block> DIORITE_ZINC_ORE = regWithItemConfigurable("diorite_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
-    public static final Supplier<Block> TUFF_ZINC_ORE = regWithItemConfigurable("tuff_zinc_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get()).sound(SoundType.TUFF)), "create");
-
-    public static final Supplier<Block> GRANITE_LEAD_ORE = regWithItemConfigurable("granite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
-    public static final Supplier<Block> ANDESITE_LEAD_ORE = regWithItemConfigurable("andesite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
-    public static final Supplier<Block> DIORITE_LEAD_ORE = regWithItemConfigurable("diorite_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
-    public static final Supplier<Block> TUFF_LEAD_ORE = regWithItemConfigurable("tuff_lead_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get()).sound(SoundType.TUFF)), "oreganized");
-
-    public static final Supplier<Block> GRANITE_SILVER_ORE = regWithItemConfigurable("granite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
-    public static final Supplier<Block> ANDESITE_SILVER_ORE = regWithItemConfigurable("andesite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
-    public static final Supplier<Block> DIORITE_SILVER_ORE = regWithItemConfigurable("diorite_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
-    public static final Supplier<Block> TUFF_SILVER_ORE = regWithItemConfigurable("tuff_silver_ore", () ->
-            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get()).sound(SoundType.TUFF)), "oreganized");
-
-    public static final Supplier<Block> GRANITE_JADE_ORE = regWithItemConfigurable("granite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
-                    .requiresCorrectToolForDrops().strength(3f, 3f)), "sullysmod");
-    public static final Supplier<Block> ANDESITE_JADE_ORE = regWithItemConfigurable("andesite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
-    public static final Supplier<Block> DIORITE_JADE_ORE = regWithItemConfigurable("diorite_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
-    public static final Supplier<Block> TUFF_JADE_ORE = regWithItemConfigurable("tuff_jade_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get()).sound(SoundType.TUFF)), "sullysmod");
-
-
     //rough gems
     public static final Supplier<Block> ROUGH_CINNABAR_BLOCK = regWithItem("rough_cinnabar_block", () ->
             new RoughCinnabarBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_RED)
@@ -279,7 +237,7 @@ public class ModBlocks {
             new SaltLampBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_PINK)
                     .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(7)).emissiveRendering(ModBlocks::ifLit).noOcclusion()), getTab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
-            new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission()));
+            new SaltBlock(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission().sound(SoundType.SAND)));
     public static final Supplier<Block> SALT_BLOCK = regWithItem("salt_block", () ->
             new SaltBlockBlock(14606046, BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.SAND)));
 
@@ -313,9 +271,16 @@ public class ModBlocks {
     public static final Supplier<Block> ROCK_SALT_BRICK_WALL = regWithItem("rock_salt_brick_wall", () ->
             new RockSaltWall(BlockBehaviour.Properties.copy(ROCK_SALT_BRICKS.get()).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated)));
 
+    public static final Supplier<Block> POLISHED_QUARTZ_BLOCK = regWithItem("polished_quartz_block", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.QUARTZ)
+                    .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE)));
 
+    public static final Supplier<Block> SALTPETER_BLOCK = regWithItem("saltpeter_block", () ->
+            new SandBlock(14407892, BlockBehaviour.Properties.copy(Blocks.SAND).color(MaterialColor.TERRACOTTA_WHITE).strength(0.5F).sound(SoundType.SAND)));
+    public static final Supplier<Block> SULFUR_BLOCK = regWithItem("sulfur_block", () ->
+            new SandBlock(14794633, BlockBehaviour.Properties.copy(Blocks.SAND).color(MaterialColor.TERRACOTTA_YELLOW).strength(0.5F).sound(SoundType.SAND)));
     public static final Supplier<Block> SULFUR_GEYSER = regWithItem("sulfur_geyser", () ->
-            new SulfurGeyserBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SAND)));
+            new SulfuricVentBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SAND)));
 
     //nephrite
     public static final Supplier<Block> RAW_NEPHRITE = regWithItem("raw_nephrite", () ->
@@ -344,14 +309,14 @@ public class ModBlocks {
             new SlabBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_STAIRS = regWithItem("polished_nephrite_brick_stairs", () ->
             new ModStairBlock(NEPHRITE, BlockBehaviour.Properties.copy(NEPHRITE.get())));
-    public static final Supplier<Block> POLISHED_NEPHRITE__BRICK_WALL = regWithItem("polished_nephrite_brick_wall", () ->
+    public static final Supplier<Block> POLISHED_NEPHRITE_BRICK_WALL = regWithItem("polished_nephrite_brick_wall", () ->
             new WallBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
 
     public static final Supplier<Block> CARVED_NEPHRITE = regBlock("carved_nephrite", () ->
             new CarvedNephriteBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.EMERALD).requiresCorrectToolForDrops().strength(3f, 2f).emissiveRendering(ModBlocks::ifNotEmpty)));
     public static final Supplier<Block> NEPHRITE_SIPHON = regBlock("nephrite_siphon", () ->
             new NephriteSiphonBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
-    public static final Supplier<Block> NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
+    public static final Supplier<Block> /* TODO NEPHRITE_FOUNTAIN */ NEPHRITE_SPOUT = regBlock("nephrite_spout", () ->
             new NephriteFountainBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
     public static final Supplier<Block> NEPHRITE_DIODE = regBlock("nephrite_diode", () ->
             new NephriteDiodeBlock(BlockBehaviour.Properties.copy(NEPHRITE.get())));
@@ -361,8 +326,17 @@ public class ModBlocks {
     public static final Supplier<Block> MINEOMITE = regBlock("mineomite", () ->
             new MineomiteBlock(BlockBehaviour.Properties.copy(Blocks.TNT).sound(SoundType.CANDLE)));
 
-    public static final Supplier<Block> MAGNETITE = regWithItem("magnetite", () ->
+    public static final Supplier<Block> /* TODO RAW_MAGNETITE_BLOCK */ MAGNETITE = regWithItem("magnetite", () ->
             new MagnetiteBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.LODESTONE)));
+
+    public static final Supplier<Block> DUST_BLOCK = regWithItem("dust_block", () ->
+            new DustBlockBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()));
+    public static final Supplier<Block> DUST = regWithItem("dust", () ->
+            new DustBlock(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_GRAY).noCollission().instabreak()/* ignitedByLava() */));
+    public static final Supplier<Block> SULFUR = regWithItem("sulfur", () ->
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_YELLOW).noCollission().instabreak()));
+    public static final Supplier<Block> SALTPETER = regWithItem("saltpeter", () ->
+            new FallingLayerBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.TERRACOTTA_WHITE).noCollission().instabreak()));
 
     //plants
     public static final Supplier<Block> TANGLE_ROOTS = regWithItem("tangle_roots", () ->
@@ -469,11 +443,70 @@ public class ModBlocks {
     public static final Supplier<Block> LIGHT_GRAY_GLOWSTICK = regBlock("light_gray_glowstick", () ->
             new GlowstickBlock(BlockBehaviour.Properties.copy(GLOWSTICK.get())));
 
+
+    public static final Supplier<Block> WOODEN_CHANNEL = regWithItem("wooden_channel", () ->
+            new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
+    public static final Supplier<Block> WOODEN_SLUICE = regWithItem("wooden_sluice", () ->
+            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)/* TODO 1.19.2 - is this copied from the properties? :: ignitedByLava()*/));
+    public static final Supplier<Block> STONE_CHANNEL = regWithItem("stone_channel", () ->
+            new ChannelBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
+    public static final Supplier<Block> STONE_SLUICE = regWithItem("stone_sluice", () ->
+            new SluiceBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
+
+
+
     public static final Supplier<Block> PORTAL_CAULDRON = regBlock("portal_cauldron", () ->
             new PortalFluidCauldronBlock(BlockBehaviour.Properties.copy(Blocks.CAULDRON).lightLevel((blockStatex) -> 5), CauldronInteraction.WATER));
 
     //fluids
     public static final Supplier<LiquidBlock> PORTAL_FLUID = regBlock("portal_fluid", () ->
             SpelunkeryPlatform.doPortalFluid(ModFluids.PORTAL_FLUID, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 5)));
+    public static final Supplier<LiquidBlock> SPRING_WATER = regBlock("spring_water", () ->
+            SpelunkeryPlatform.doSpringWater(ModFluids.SPRING_WATER, BlockBehaviour.Properties.of(Material.WATER).noCollission().strength(100f).noLootTable().lightLevel((blockStatex) -> 2)));
+
+
+    //mod support
+
+    public static final Supplier<Block> GRANITE_ZINC_ORE = regWithItemConfigurable("granite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)), "create");
+    public static final Supplier<Block> ANDESITE_ZINC_ORE = regWithItemConfigurable("andesite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
+    public static final Supplier<Block> DIORITE_ZINC_ORE = regWithItemConfigurable("diorite_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get())), "create");
+    public static final Supplier<Block> TUFF_ZINC_ORE = regWithItemConfigurable("tuff_zinc_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_ZINC_ORE.get()).sound(SoundType.TUFF)), "create");
+
+    public static final Supplier<Block> GRANITE_LEAD_ORE = regWithItemConfigurable("granite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
+    public static final Supplier<Block> ANDESITE_LEAD_ORE = regWithItemConfigurable("andesite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
+    public static final Supplier<Block> DIORITE_LEAD_ORE = regWithItemConfigurable("diorite_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get())), "oreganized");
+    public static final Supplier<Block> TUFF_LEAD_ORE = regWithItemConfigurable("tuff_lead_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_LEAD_ORE.get()).sound(SoundType.TUFF)), "oreganized");
+
+    public static final Supplier<Block> GRANITE_SILVER_ORE = regWithItemConfigurable("granite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.GOLD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)), "oreganized");
+    public static final Supplier<Block> ANDESITE_SILVER_ORE = regWithItemConfigurable("andesite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
+    public static final Supplier<Block> DIORITE_SILVER_ORE = regWithItemConfigurable("diorite_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get())), "oreganized");
+    public static final Supplier<Block> TUFF_SILVER_ORE = regWithItemConfigurable("tuff_silver_ore", () ->
+            new Block(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_SILVER_ORE.get()).sound(SoundType.TUFF)), "oreganized");
+
+    public static final Supplier<Block> GRANITE_JADE_ORE = regWithItemConfigurable("granite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)
+                    .requiresCorrectToolForDrops().strength(3f, 3f)), "sullysmod");
+    public static final Supplier<Block> ANDESITE_JADE_ORE = regWithItemConfigurable("andesite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
+    public static final Supplier<Block> DIORITE_JADE_ORE = regWithItemConfigurable("diorite_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get())), "sullysmod");
+    public static final Supplier<Block> TUFF_JADE_ORE = regWithItemConfigurable("tuff_jade_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.copy(ModBlocks.GRANITE_JADE_ORE.get()).sound(SoundType.TUFF)), "sullysmod");
+
+
 
 }

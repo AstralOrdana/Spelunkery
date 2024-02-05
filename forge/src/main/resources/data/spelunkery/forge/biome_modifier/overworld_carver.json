@@ -1,0 +1,8 @@
+{
+  "type": "spelunkery:add_carvers",
+  "biomes": "#minecraft:is_overworld",
+  "carvers": [
+    "spelunkery:crevice"
+  ],
+  "step": "air"
+}

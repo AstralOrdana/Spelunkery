@@ -52,7 +52,7 @@
     "second_target": "#spelunkery:deepslate_target",
     "second_target_placer": [],
     "use_biome_filter": true,
-    "biomes": "#spelunkery:has_salt_noise",
+    "biomes": "#spelunkery:has_dirt_noise",
     "use_height_filter": true,
     "bottom_offset": 25
   }

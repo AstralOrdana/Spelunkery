@@ -1,0 +1,67 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"from": [-0.01, -0.01, -0.01],
+			"to": [2.01, 12.01, 2.01],
+			"faces": {
+				"north": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"east": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"south": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"west": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"up": {"uv": [15, 15, 16, 16], "rotation": 90, "texture": "#texture"},
+				"down": {"uv": [15, 15, 16, 16], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [13.99, -0.01, -0.01],
+			"to": [16.01, 12.01, 2.01],
+			"faces": {
+				"north": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"east": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"south": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"west": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"up": {"uv": [15, 15, 16, 16], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [15, 15, 16, 16], "rotation": 270, "texture": "#texture"}
+			}
+		},
+		{
+			"from": [-0.01, -0.01, 13.99],
+			"to": [2.01, 12.01, 16.01],
+			"faces": {
+				"north": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"east": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"south": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"west": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"up": {"uv": [15, 15, 16, 16], "texture": "#texture"},
+				"down": {"uv": [15, 15, 16, 16], "rotation": 90, "texture": "#texture"}
+			}
+		},
+		{
+			"from": [13.99, -0.01, 13.99],
+			"to": [16.01, 12.01, 16.01],
+			"faces": {
+				"north": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"east": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"south": {"uv": [15, 9, 16, 16], "texture": "#texture"},
+				"west": {"uv": [16, 9, 15, 16], "texture": "#texture"},
+				"up": {"uv": [15, 15, 16, 16], "rotation": 270, "texture": "#texture"},
+				"down": {"uv": [15, 15, 16, 16], "rotation": 180, "texture": "#texture"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "corners",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1]
+		},
+		2,
+		3
+	]
+}
