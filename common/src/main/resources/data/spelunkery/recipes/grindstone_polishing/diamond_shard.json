@@ -1,15 +1,11 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredients": [
-    {
-      "item": "spelunkery:rough_diamond_shard"
-    }
-  ],
-  "results": [
-    {
-      "item": "spelunkery:diamond_shard"
-    }
-  ],
+  "ingredient": "spelunkery:rough_diamond_shard",
+  "result": "spelunkery:diamond_shard",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 0,
   "experience": 1,
   "requiresDiamondGrindstone": true
 }

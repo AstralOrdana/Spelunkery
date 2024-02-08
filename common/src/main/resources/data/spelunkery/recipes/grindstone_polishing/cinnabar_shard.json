@@ -1,18 +1,10 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredients": [
-    {
-      "item": "spelunkery:rough_cinnabar_shard"
-    }
-  ],
-  "results": [
-    {
-      "item": "spelunkery:cinnabar_shard"
-    },
-    {
-      "item": "minecraft:redstone",
-      "chance": 0.11
-    }
-  ],
+  "ingredient": "spelunkery:rough_cinnabar_shard",
+  "result": "spelunkery:cinnabar_shard",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 1,
   "experience": 1
 }

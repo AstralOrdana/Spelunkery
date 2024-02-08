@@ -6,13 +6,9 @@ Significant changes include: addition of byproducts, diamond grinding tier.
 Used under GNU LESSER GENERAL PUBLIC LICENSE, full text can be found in root/LICENSE
  */
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,36 +16,44 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @SuppressWarnings("deprecation")
 @MethodsReturnNonnullByDefault
 public class GrindstonePolishingRecipe implements Recipe<Container> {
     public static final String NAME = "grindstone_polishing";
 
-    protected ResourceLocation id;
-    protected NonNullList<Ingredient> ingredients;
-    protected NonNullList<ProcessingOutput> results;
-    protected int experience;
-    protected boolean diamondGrindstone;
+    private final ResourceLocation id;
+    private final String recipeGroup;
+    public final ItemStack ingredient;
+    public final ItemStack result;
+    private final int resultCount;
+    public final ItemStack byproduct;
+    private final int byproductMin;
+    private final int byproductMax;
+    private final int experience;
+    private final boolean requiresDiamondGrindstone;
 
-    public GrindstonePolishingRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, NonNullList<ProcessingOutput> results, int experience, boolean diamondGrindstone) {
+    public GrindstonePolishingRecipe(ResourceLocation id, String recipeGroup, ItemStack ingredient, ItemStack result, int resultCount, ItemStack byproduct, int byproductMin, int byproductMax, int experience, boolean requiresDiamondGrindstone) {
         this.id = id;
-        this.ingredients = ingredients;
-        this.results = results;
+        this.recipeGroup = recipeGroup;
+        this.ingredient = ingredient;
+        this.result = result;
+        this.resultCount = resultCount;
+        this.byproduct = byproduct;
+        this.byproductMin = byproductMin;
+        this.byproductMax = byproductMax;
         this.experience = experience;
-        this.diamondGrindstone = diamondGrindstone;
+        this.requiresDiamondGrindstone = requiresDiamondGrindstone;
     }
 
-
-/*
     @Override
     public boolean matches(Container pContainer, Level pLevel) {
         return true;
@@ -65,10 +69,17 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
         return false;
     }
 
+    public int getExperience() {
+        return this.experience;
+    }
+
     public int getResultCount() {
         return this.resultCount;
     }
 
+    public boolean isRequiresDiamondGrindstone() {
+        return this.requiresDiamondGrindstone;
+    }
 
     @Override
     public ItemStack getResultItem(RegistryAccess registryAccess) {
@@ -117,218 +128,11 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
         return level.getRecipeManager().getAllRecipesFor(ModRecipes.GRINDSTONE_POLISHING.get());
     }
 
-
-
- */
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.GRINDSTONE_POLISHING_SERIALIZER.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return ModRecipes.GRINDSTONE_POLISHING.get();
-    }
-
-    @Override
-    public boolean matches(Container pContainer, Level pLevel) {
-        return true;
-    }
-
-    @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
-        return getResultItem(registryAccess);
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return getRollableResults().isEmpty() ? ItemStack.EMPTY
-            : getRollableResults().get(0)
-            .getStack();
-    }
-
-    public int getExperience() {
-        return this.experience;
-    }
-    public boolean needsDiamond() {
-        return this.diamondGrindstone;
-    }
-
-    @Override
-    public boolean isSpecial() {
-        return true;
-    }
-
-    // Processing recipes do not show up in the recipe book
-    @Override
-    public String getGroup() {
-        return "grindstone_polishing";
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
-    }
-
-    public static boolean canPolish(Level world) {
-        return !getRecipes(world).isEmpty();
-    }
-
-    public static List<GrindstonePolishingRecipe> getRecipes(Level level) {
-        return level.getRecipeManager().getAllRecipesFor(ModRecipes.GRINDSTONE_POLISHING.get());
-    }
-
-    protected int getMaxInputCount() {
-        return 1;
-    }
-
-    protected int getMaxOutputCount() {
-        return 4;
-    }
-
-    public NonNullList<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public List<ProcessingOutput> getRollableResults() {
-        return results;
-    }
-
-    public List<ItemStack> getRollableResultsAsItemStacks() {
-        return getRollableResults().stream()
-            .map(ProcessingOutput::getStack)
-            .collect(Collectors.toList());
-    }
-    public List<ItemStack> rollResults() {
-        return rollResults(this.getRollableResults());
-    }
-
-    public List<ItemStack> rollResults(List<ProcessingOutput> rollableResults) {
-        List<ItemStack> results = new ArrayList<>();
-        for (ProcessingOutput output : rollableResults) {
-            ItemStack stack = output.rollOutput();
-            if (!stack.isEmpty())
-                results.add(stack);
-        }
-        return results;
-    }
-
-    private void validate(ResourceLocation recipeTypeId) {
-        String messageHeader = "Your custom " + recipeTypeId + " recipe (" + id.toString() + ")";
-        Logger logger = Spelunkery.LOGGER;
-        int ingredientCount = ingredients.size();
-        int outputCount = results.size();
-
-        if (ingredientCount > getMaxInputCount())
-            logger.warn(messageHeader + " has more item inputs (" + ingredientCount + ") than supported ("
-                + getMaxInputCount() + ").");
-
-        if (outputCount > getMaxOutputCount())
-            logger.warn(messageHeader + " has more item outputs (" + outputCount + ") than supported ("
-                + getMaxOutputCount() + ").");
-
-    }
-
-
-
-
     public static class Serializer implements RecipeSerializer<GrindstonePolishingRecipe> {
 
-        protected void writeToJson(JsonObject json, GrindstonePolishingRecipe recipe) {
-            JsonArray jsonIngredients = new JsonArray();
-            JsonArray jsonOutputs = new JsonArray();
-
-            recipe.ingredients.forEach(i -> jsonIngredients.add(i.toJson()));
-
-            recipe.results.forEach(o -> jsonOutputs.add(o.serialize()));
-
-            json.add("ingredients", jsonIngredients);
-            json.add("results", jsonOutputs);
-
-            //recipe.writeAdditional(json);
-        }
-
-        protected void writeToBuffer(FriendlyByteBuf buffer, GrindstonePolishingRecipe recipe) {
-
-            //recipe.writeAdditional(buffer);
-        }
-
-
-        public final void write(JsonObject json, GrindstonePolishingRecipe recipe) {
-            writeToJson(json, recipe);
-        }
-
-        @Override
-        public final GrindstonePolishingRecipe fromJson(ResourceLocation id, JsonObject json) {
-
-            NonNullList<Ingredient> ingredients = NonNullList.create();
-            NonNullList<ProcessingOutput> results = NonNullList.create();
-
-            for (JsonElement je : GsonHelper.getAsJsonArray(json, "ingredients")) {
-                ingredients.add(Ingredient.fromJson(je));
-            }
-
-            for (JsonElement je : GsonHelper.getAsJsonArray(json, "results")) {
-                results.add(ProcessingOutput.deserialize(je));
-            }
-
-            int experience = GsonHelper.getAsInt(json, "experience", 0);
-            boolean requiresDiamondGrindstone = GsonHelper.getAsBoolean(json, "requiresDiamondGrindstone", false);
-
-            return new GrindstonePolishingRecipe(id, ingredients, results, experience, requiresDiamondGrindstone);
-        }
-
-        @Override
-        public final GrindstonePolishingRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
-            NonNullList<Ingredient> ingredients = NonNullList.create();
-            NonNullList<ProcessingOutput> results = NonNullList.create();
-
-            int size = buffer.readVarInt();
-            for (int i = 0; i < size; i++)
-                ingredients.add(Ingredient.fromNetwork(buffer));
-
-            size = buffer.readVarInt();
-            for (int i = 0; i < size; i++)
-                results.add(ProcessingOutput.read(buffer));
-
-            int experience = buffer.readInt();
-            boolean requiresDiamondGrindstone = buffer.readBoolean();
-
-            return new GrindstonePolishingRecipe(id, ingredients, results, experience, requiresDiamondGrindstone);
-        }
-
-        @Override
-        public final void toNetwork(FriendlyByteBuf buffer, GrindstonePolishingRecipe recipe) {
-
-            NonNullList<Ingredient> ingredients = recipe.ingredients;
-            NonNullList<ProcessingOutput> outputs = recipe.results;
-
-            buffer.writeVarInt(ingredients.size());
-            ingredients.forEach(i -> i.toNetwork(buffer));
-
-            buffer.writeVarInt(outputs.size());
-            outputs.forEach(o -> o.write(buffer));
-
-            buffer.writeInt(recipe.experience);
-            buffer.writeBoolean(recipe.diamondGrindstone);
-        }
-
-
-
-
-
-
-
-
-        /*
         @Override
         public GrindstonePolishingRecipe fromJson(ResourceLocation pRecipeId, JsonObject jsonObject) {
+            String group = GsonHelper.getAsString(jsonObject, "group", "");
 
             if (!jsonObject.has("ingredient")) throw new com.google.gson.JsonSyntaxException("Missing ingredient, expected to find a string or object");
             ItemStack ingredient;
@@ -397,7 +201,5 @@ public class GrindstonePolishingRecipe implements Recipe<Container> {
             pBuffer.writeInt(pRecipe.experience);
             pBuffer.writeBoolean(pRecipe.requiresDiamondGrindstone);
         }
-
-         */
     }
 }

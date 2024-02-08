@@ -1,18 +1,10 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredients": [
-    {
-      "item": "spelunkery:rough_cinnabar_block"
-    }
-  ],
-  "results": [
-    {
-      "item": "spelunkery:cinnabar_block"
-    },
-    {
-      "item": "minecraft:redstone",
-      "count": 9
-    }
-  ],
+  "ingredient": "spelunkery:rough_cinnabar_block",
+  "result": "spelunkery:cinnabar_block",
+  "resultCount": 1,
+  "byproduct": "minecraft:redstone",
+  "byproductMin": 9,
+  "byproductMax": 27,
   "experience": 81
 }

@@ -6,15 +6,11 @@
     }
   ],
   "type": "spelunkery:grindstone_polishing",
-  "ingredients": [
-    {
-      "item": "create:rose_quartz"
-    }
-  ],
-  "results": [
-    {
-      "item": "create:polished_rose_quartz"
-    }
-  ],
+  "ingredient": "create:rose_quartz",
+  "result": "create:polished_rose_quartz",
+  "resultCount": 1,
+  "byproduct": "minecraft:air",
+  "byproductMin": 0,
+  "byproductMax": 1,
   "experience": 1
 }

@@ -24,7 +24,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 @Mixin(FlowingFluid.class)
-@Debug(export = true)
 abstract class FlowingFluidMixin {
 
     @Unique

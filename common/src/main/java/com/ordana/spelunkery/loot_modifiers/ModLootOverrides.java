@@ -21,7 +21,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
 
     public ModLootOverrides() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
-        this.dynamicPack.setGenerateDebugResources(true);
+        this.dynamicPack.setGenerateDebugResources(false);
         this.dynamicPack.addNamespaces("spelunkery");
         this.dynamicPack.addNamespaces("minecraft");
         this.dynamicPack.addNamespaces("create");

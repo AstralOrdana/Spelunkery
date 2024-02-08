@@ -1,22 +1,10 @@
 {
   "type": "spelunkery:grindstone_polishing",
-  "ingredients": [
-    {
-      "item": "spelunkery:rough_lazurite_shard"
-    }
-  ],
-  "results": [
-    {
-      "item": "spelunkery:lapis_shard"
-    },
-    {
-      "item": "minecraft:blue_dye",
-      "chance": 0.11
-    },
-    {
-      "item": "spelunkery:raw_gold_nugget",
-      "chance": 0.11
-    }
-  ],
+  "ingredient": "spelunkery:rough_lazurite_shard",
+  "result": "spelunkery:lapis_lazuli_shard",
+  "resultCount": 3,
+  "byproduct": "spelunkery:raw_gold_nugget",
+  "byproductMin": 0,
+  "byproductMax": 1,
   "experience": 1
 }
