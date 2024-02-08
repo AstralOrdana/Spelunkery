@@ -4,6 +4,7 @@ import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.entities.PrimedMineomiteEntityRenderer;
+import com.ordana.spelunkery.fluids.PortalFluidRenderer;
 import com.ordana.spelunkery.items.AmethystTuningForkItem;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
@@ -19,6 +20,8 @@ import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.Set;
 
 public class SpelunkeryClient {
 
@@ -159,5 +162,32 @@ public class SpelunkeryClient {
         event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);
         event.register(ModParticles.DUST_POOF.get(), ExplodeParticle.Provider::new);
+    }
+
+    public static void registerTextures(final Set<ResourceLocation> sprites) {
+        sprites.add(PortalFluidRenderer.portalFluidLargeSW);
+        sprites.add(PortalFluidRenderer.portalFluidLargeSE);
+        sprites.add(PortalFluidRenderer.portalFluidLargeNW);
+        sprites.add(PortalFluidRenderer.portalFluidLargeNE);
+        sprites.add(PortalFluidRenderer.portalFluidN);
+        sprites.add(PortalFluidRenderer.portalFluidE);
+        sprites.add(PortalFluidRenderer.portalFluidS);
+        sprites.add(PortalFluidRenderer.portalFluidW);
+        sprites.add(PortalFluidRenderer.portalFluidSW);
+        sprites.add(PortalFluidRenderer.portalFluidSE);
+        sprites.add(PortalFluidRenderer.portalFluidNW);
+        sprites.add(PortalFluidRenderer.portalFluidNE);
+        sprites.add(PortalFluidRenderer.portalFluidNS);
+        sprites.add(PortalFluidRenderer.portalFluidEW);
+        sprites.add(PortalFluidRenderer.portalFluidWNE);
+        sprites.add(PortalFluidRenderer.portalFluidNES);
+        sprites.add(PortalFluidRenderer.portalFluidESW);
+        sprites.add(PortalFluidRenderer.portalFluidSWN);
+        sprites.add(PortalFluidRenderer.portalFluidNESW);
+        sprites.add(PortalFluidRenderer.portalFluidNONE);
+        sprites.add(PortalFluidRenderer.portalFluidUncommon);
+        sprites.add(PortalFluidRenderer.portalFluidRare);
+        sprites.add(PortalFluidRenderer.portalFluidSnence);
+        sprites.add(PortalFluidRenderer.portalFluidMaple);
     }
 }
