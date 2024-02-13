@@ -187,11 +187,11 @@
   "material.spelunkery.magnetite": "Magnetite Material",
   "material.spelunkery.salt": "Rock Salt Material",
 
-  "subtitles.block.portal_fluid.ambient": "Dimensional Tears Ripple",
-  "subtitles.block.portal_fluid.enter": "Dimensional Tears Warp",
-  "subtitles.block.portal_fluid.teleport": "Dimensional Tears Pulsate",
-  "subtitles.item.pebble.bonk": "Bonk",
-  "subtitles.item.pebble.knob": "konB",
+  "subtitles.block.portal_fluid.ambient": "Dimensional Tears ripple",
+  "subtitles.block.portal_fluid.enter": "Dimensional Tears warp",
+  "subtitles.block.portal_fluid.teleport": "Dimensional Tears pulsate",
+  "subtitles.item.pebble.bonk": "Pebble bonks",
+  "subtitles.item.pebble.knob": "skonb elbbeP",
 
   "block.spelunkery.rock_salt": "Rock Salt",
   "block.spelunkery.salt_lamp": "Salt Lamp",
