@@ -92,4 +92,8 @@ public class Spelunkery {
         event.register(ModEntities.DUST_BUNNY.get(), DustBunnyEntity.createAttributes());
     }
 
+    public static boolean isInitiated() {
+        return initiated;
+    }
+
 }
