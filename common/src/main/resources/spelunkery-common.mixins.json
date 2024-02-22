@@ -15,6 +15,7 @@
     "BuriedTreasureMixin",
     "ExperienceOrbMixin",
     "FlowingFluidMixin",
+    "GrindstoneMixin",
     "IceMixin",
     "ItemFrameMixin",
     "MineshaftMixin",

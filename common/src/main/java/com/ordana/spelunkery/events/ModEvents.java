@@ -1,11 +1,13 @@
 package com.ordana.spelunkery.events;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
-import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.PortalFluidBottleitem;
 import com.ordana.spelunkery.recipes.GrindstonePolishingRecipe;
 import com.ordana.spelunkery.reg.*;
+import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;
+import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -27,13 +29,18 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class ModEvents {
@@ -54,8 +61,8 @@ public class ModEvents {
         EVENTS.add(ModEvents::obsidianDraining);
         EVENTS.add(ModEvents::portalCauldronLogic);
         EVENTS.add(ModEvents::saltBoiling);
-        EVENTS.add(ModEvents::polishingRecipe);
         EVENTS.add(ModEvents::anvilRepairing);
+        if (!CommonConfigs.GRINDSTONE_REWORK.get()) EVENTS.add(ModEvents::polishingRecipe);
     }
 
     public static InteractionResult onBlockCLicked(ItemStack stack, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
@@ -103,7 +110,7 @@ public class ModEvents {
     }
 
     private static InteractionResult saltBoiling(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                         Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+                                                 Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         if (item == ModItems.SALT.get()) {
             if (state.is(Blocks.WATER_CAULDRON) && level.getBlockState(pos.below()).is(ModTags.CAN_BOIL_WATER)) {
                 level.playSound(player, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -259,7 +266,7 @@ public class ModEvents {
     }
 
     private static InteractionResult anvilRepairing(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                 Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+                                                    Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         if (stack.is(ModTags.ANVIL_REPAIR_ITEM)) {
             if (state.is(BlockTags.ANVIL) && !state.is(Blocks.ANVIL)) {
                 level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -276,6 +283,88 @@ public class ModEvents {
             }
         }
         return InteractionResult.PASS;
+    }
+
+    public static InteractionResult useGrindstone(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, boolean diamondGrindstone) {
+        var itemStack = player.getItemInHand(hand);
+
+        if (itemStack.getItem() == Items.AIR) return InteractionResult.FAIL;
+        var itemName = Utils.getID(itemStack.getItem()).getPath();
+
+        //effects
+        if (level.isClientSide()) {
+            ParticleUtil.spawnParticlesOnBlockFaces(level, pos, new ItemParticleOption(ParticleTypes.ITEM, itemStack), UniformInt.of(3, 5), -0.05f, 0.05f, false);
+            player.swing(hand);
+        }
+        level.playSound(null, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.5F, 0.0F);
+
+
+        if (!level.isClientSide()) {
+
+            //handle enchants
+            if (itemStack.isEnchanted()) {
+                ExperienceOrb.award((ServerLevel)level, Vec3.atCenterOf(pos), getExperienceFromItem(itemStack));
+                var newStack = new ItemStack(itemStack.getItem());
+                newStack.setDamageValue(itemStack.getDamageValue());
+                player.setItemInHand(hand, newStack);
+                return InteractionResult.CONSUME;
+            }
+            var depleted = false;
+            if (diamondGrindstone) {
+                depleted = state.getValue(ModBlockProperties.DEPLETION) == 3;
+            }
+
+            var tablePath = Spelunkery.res("gameplay/" + (diamondGrindstone && !depleted ? "diamond_" : "") + "grindstone_polishing/" + itemName);
+            var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
+            LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
+                .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
+                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                .withParameter(LootContextParams.TOOL, ItemStack.EMPTY);
+
+            var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
+
+            if (lootItem.size() == 0) return InteractionResult.FAIL;
+
+
+            //give loot items and xp
+            for (ItemStack stack : lootItem) {
+                if (!player.getInventory().add(stack)) {
+                    player.drop(stack, false);
+                }
+                if (tablePath.getPath().contains("rough")) ExperienceOrb.award((ServerLevel) level, Vec3.atCenterOf(pos), 1);
+            }
+
+            //depletion
+            var chance = level.random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get());
+            if (chance > 0 && diamondGrindstone) {
+                if (chance == 1 && !depleted) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+            }
+
+            //subtract
+            if (!player.getAbilities().instabuild) {
+                itemStack.shrink(1);
+            }
+        }
+
+        return InteractionResult.CONSUME;
+
+
+    }
+
+
+    private static int getExperienceFromItem(ItemStack stack) {
+        int i = 0;
+        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
+
+        for (Map.Entry<Enchantment, Integer> enchantmentIntegerEntry : map.entrySet()) {
+            Enchantment enchantment = enchantmentIntegerEntry.getKey();
+            Integer integer = enchantmentIntegerEntry.getValue();
+            if (!enchantment.isCurse()) {
+                i += enchantment.getMinCost(integer);
+            }
+        }
+
+        return i;
     }
 
 }
