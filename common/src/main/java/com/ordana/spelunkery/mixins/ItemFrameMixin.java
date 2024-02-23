@@ -31,9 +31,9 @@ public abstract class ItemFrameMixin extends HangingEntity {
         if (!this.level.isClientSide) {
 
             ItemStack stack = this.getItem();
-            CompoundTag tag = stack.getOrCreateTag();
+            CompoundTag tag = stack.getTag();
 
-            if (tag.contains("active") && tag.getBoolean("active") && this.getItem().is(ModItems.ITEM_MAGNET.get())) {
+            if (tag != null && tag.contains("active") && tag.getBoolean("active") && this.getItem().is(ModItems.ITEM_MAGNET.get())) {
                 int r = CommonConfigs.MAGNET_RANGE.get();
                 AABB area = new AABB(this.position().add(-r, -r, -r), this.position().add(r, r, r));
 
