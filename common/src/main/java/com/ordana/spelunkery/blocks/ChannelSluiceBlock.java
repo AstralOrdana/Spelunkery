@@ -103,8 +103,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
         if (!Objects.equals(fluidName, "empty")) {
 
-            if (fluidName.contains("flowing")) fluidName = fluidName.replace("flowing", "");
-            if (fluidName.contains("_")) fluidName = fluidName.replace("_", "");
+            if (fluidName.contains("flowing_")) fluidName = fluidName.replace("flowing_", "");
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/passive");
             var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
