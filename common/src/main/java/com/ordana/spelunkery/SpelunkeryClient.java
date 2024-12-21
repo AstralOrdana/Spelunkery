@@ -1,5 +1,6 @@
 package com.ordana.spelunkery;
 
+import com.ordana.spelunkery.blocks.rock_salt.RockSaltBlock;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.items.AmethystTuningForkItem;
@@ -12,12 +13,18 @@ import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGeneric;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
+import net.mehvahdjukaar.moonlight.api.util.math.colors.RGBColor;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class SpelunkeryClient {
 
@@ -130,6 +137,31 @@ public class SpelunkeryClient {
         if(!finishedSetup){
             throw new RuntimeException("Failed to run client setup. This is likely due to the mod integration code being outdated, crashing with other mods new versions. Terminating");
         }
+    }
+
+    @EventCalled
+    private static void registerBlockColors(ClientHelper.BlockColorEvent event) {
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BLOCK.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_STAIRS.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_SLAB.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_WALL.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.POLISHED_ROCK_SALT.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.POLISHED_ROCK_SALT_STAIRS.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.POLISHED_ROCK_SALT_SLAB.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.POLISHED_ROCK_SALT_WALL.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BRICKS.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BRICK_STAIRS.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BRICK_SLAB.get());
+        event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BRICK_WALL.get());
+    }
+
+    private static int getSaltTint(ClientHelper.BlockColorEvent event, BlockState state, BlockAndTintGetter level, BlockPos pos, int i) {
+        //int original = event.getColor(state, level, pos, i);
+
+        //interpolate between color and brown
+        float percentage = 10f / state.getValue(RockSaltBlock.LIGHT);
+        int brown = 0xf5df9d;
+        return new RGBColor(0).asLAB().mixWith(new RGBColor(brown).asLAB(), percentage).asRGB().toInt();
     }
 
     private static void registerEntityRenderers(ClientHelper.EntityRendererEvent event) {

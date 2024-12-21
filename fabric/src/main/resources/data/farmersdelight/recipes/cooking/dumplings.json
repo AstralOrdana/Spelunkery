@@ -4,7 +4,7 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "tag": "c:crops/doughs"
+      "tag": "c:foods/doughs"
     },
     {
       "tag": "c:crops/cabbage"

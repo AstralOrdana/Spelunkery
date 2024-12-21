@@ -82,8 +82,8 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> noise_ocean = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_ocean"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_OCEAN_NOISE, noise_ocean);
 
-        ResourceKey<PlacedFeature> noise_desert = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_desert"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_DESERT_NOISE, noise_desert);
+        //ResourceKey<PlacedFeature> noise_desert = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_desert"));
+        //SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_DESERT_NOISE, noise_desert);
 
         ResourceKey<PlacedFeature> noise_ice = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_ice"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_ICE_NOISE, noise_ice);
