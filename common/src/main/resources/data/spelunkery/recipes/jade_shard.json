@@ -8,7 +8,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sullysmod:polished_jade"
+      "item": "sullysmod:jade"
     }
   ],
   "result": {
