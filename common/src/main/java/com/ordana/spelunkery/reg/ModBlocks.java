@@ -231,7 +231,7 @@ public class ModBlocks {
         new RockSaltCrystalBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
             .requiresCorrectToolForDrops().strength(3f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromIlluminatedBlockState(1)).emissiveRendering(ModBlocks::ifIlluminated).noOcclusion()));
     public static final Supplier<Block> SALT_LAMP = regWithItem("salt_lamp", () ->
-        new SaltLampBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_PINK)
+        new SaltLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK)
             .strength(0.5f, 2f).sound(SoundType.CALCITE).lightLevel(createLightLevelFromLitBlockState(7)).emissiveRendering(ModBlocks::ifLit).noOcclusion()));
     public static final Supplier<Block> SALT = regBlock("salt", () ->
         new SaltBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_WIRE).mapColor(MapColor.TERRACOTTA_PINK).instabreak().randomTicks().noCollission().sound(SoundType.SAND)));

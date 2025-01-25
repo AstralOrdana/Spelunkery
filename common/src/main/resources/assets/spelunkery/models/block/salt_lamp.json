@@ -3,7 +3,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"1": "spelunkery:block/salt_lamp",
-		"particle": "spelunkery:block/salt_lamp"
+		"particle": "spelunkery:block/polished_rock_salt"
 	},
 	"elements": [
 		{

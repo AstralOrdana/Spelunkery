@@ -202,7 +202,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
                 .put(Blocks.POLISHED_BLACKSTONE, Blocks.CHISELED_POLISHED_BLACKSTONE);
         addOptional(builder, "minecraft:prismarine_bricks", "immersive_weathering:chiseled_prismarine_bricks");
         addOptional(builder, "oreganized:glance_bricks", "oreganized:chiseled_glance");
-        addOptional(builder, "sullysmod:polished_jade_bricks", "sullysmod:polished_chiseled_jade");
+        addOptional(builder, "sullysmod:jade_bricks", "sullysmod:chiseled_jade");
         for (var chiselable : botaniaChiselables) addOptional(builder, "botania:" + chiselable, "botania:chiseled_" + chiselable);
         for (var chiselable : malumChiselables) addOptional(builder, "malum:" + chiselable, "malum:chiseled_" + chiselable);
         for (var chiselable : quarkChiselables) addOptional(builder, "quark:" + chiselable, "quark:chiseled_" + chiselable);

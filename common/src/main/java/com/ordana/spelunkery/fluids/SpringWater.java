@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.fluids;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModSoundEvents;
@@ -37,11 +38,11 @@ public class SpringWater extends ModFlowingFluid {
     @Override
     public ModFluidRenderProperties createRenderProperties() {
         return new SpringWaterRenderer(
-                new ResourceLocation("minecraft", "block/water_still"),
-                new ResourceLocation("minecraft", "block/water_flow"),
-                0xff43D5EE,
-                new ResourceLocation("minecraft", "block/water_overlay"),
-                new ResourceLocation("minecraft", "block/water_overlay"),
+                Spelunkery.res("block/spring_water"),
+                Spelunkery.res("block/spring_water_flowing"),
+                -1,
+                Spelunkery.res("block/spring_water_overlay"),
+                Spelunkery.res("block/spring_water_overlay"),
                 new Vec3(68, 69, 103));
 
     }

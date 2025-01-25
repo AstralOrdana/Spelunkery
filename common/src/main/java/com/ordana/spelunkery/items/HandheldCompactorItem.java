@@ -167,7 +167,7 @@ public class HandheldCompactorItem extends Item {
         addOptional(builder, "spelunkery:raw_lead_nugget", "oreganized:raw_lead");
         addOptional(builder, "spelunkery:raw_zinc_nugget", "create:raw_zinc");
 
-        addOptional(builder, "spelunkery:jade_shard", "sullysmod:polished_jade");
+        addOptional(builder, "spelunkery:jade_shard", "sullysmod:jade");
         addOptional(builder, "oreganized:silver_nugget", "oreganized:silver_ingot");
         addOptional(builder, "oreganized:lead_nugget", "oreganized:lead_ingot");
         addOptional(builder, "create:zinc_nugget", "create:zinc_ingot");
@@ -209,7 +209,7 @@ public class HandheldCompactorItem extends Item {
         addOptional(builder, "oreganized:raw_lead", "oreganized:raw_lead_block");
         addOptional(builder, "create:raw_zinc", "create:raw_zinc_block");
 
-        addOptional(builder, "sullysmod:polished_jade", "sullysmod:polished_jade_block");
+        addOptional(builder, "sullysmod:jade", "sullysmod:jade_block");
         addOptional(builder, "oreganized:silver_ingot", "oreganized:silver_block");
         addOptional(builder, "oreganized:lead_ingot", "oreganized:lead_block");
         addOptional(builder, "create:zinc_ingot", "create:zinc_block");

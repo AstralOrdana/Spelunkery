@@ -13,6 +13,6 @@ public class BindingMixin {
 
     @Inject(method = "hasBindingCurse", at = @At("HEAD"), cancellable = true)
     private static void injectBinding(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(stack.is(ModItems.TRUE_CROWN.get()));
+        if (stack.is(ModItems.TRUE_CROWN.get())) cir.setReturnValue(true);
     }
 }

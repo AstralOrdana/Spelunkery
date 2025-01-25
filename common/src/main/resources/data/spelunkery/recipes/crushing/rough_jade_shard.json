@@ -12,7 +12,7 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "sullysmod:polished_jade"
+      "item": "sullysmod:jade"
     }
   ],
   "results": [
