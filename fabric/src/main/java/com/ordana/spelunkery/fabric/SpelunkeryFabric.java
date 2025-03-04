@@ -7,7 +7,7 @@ import com.ordana.spelunkery.reg.ModSetup;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,13 +25,13 @@ public class SpelunkeryFabric implements ModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTING.register(s -> currentServer = s);
 
-        if(PlatHelper.getPhysicalSide().isClient()) {
+        if(PlatformHelper.Env.CLIENT.isClient()) {
             ClientEventsFabric.init();
             SpelunkeryClient.init();
         }
 
         UseBlockCallback.EVENT.register(SpelunkeryFabric::onRightClickBlock);
-        PlatHelper.addCommonSetup(SpelunkeryFabric::onSetup);
+        PlatformHelper.addCommonSetup(SpelunkeryFabric::onSetup);
     }
 
     public static void onSetup(){

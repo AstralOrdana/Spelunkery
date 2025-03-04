@@ -87,34 +87,34 @@ public class SpelunkeryClient {
 
         ClientPlatformHelper.registerRenderType(ModBlocks.NEPHRITE_FOUNTAIN.get(), RenderType.cutout());
 
-        ItemProperties.register(ModItems.DEPTH_GAUGE.get(), Spelunkery.res("depth"),
+        ClientPlatformHelper.registerItemProperty(ModItems.DEPTH_GAUGE.get(), Spelunkery.res("depth"),
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);
 
-        ItemProperties.register(ModItems.NEPHRITE_CHARM.get(), Spelunkery.res("charge"),
+        ClientPlatformHelper.registerItemProperty(ModItems.NEPHRITE_CHARM.get(), Spelunkery.res("charge"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("xp") / 1395f) : 0);
 
-        ItemProperties.register(ModItems.ITEM_MAGNET.get(), Spelunkery.res("active"),
+        ClientPlatformHelper.registerItemProperty(ModItems.ITEM_MAGNET.get(), Spelunkery.res("active"),
                 (stack, world, entity, seed) -> stack.getTag() != null && stack.getTag().getBoolean("active") ? 0.5f : 0);
 
-        ItemProperties.register(ModItems.HANDHELD_COMPACTOR.get(), Spelunkery.res("mode"),
+        ClientPlatformHelper.registerItemProperty(ModItems.HANDHELD_COMPACTOR.get(), Spelunkery.res("mode"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (HandheldCompactorItem.getMode(stack).ordinal() / 4f) : 0f);
 
-        ItemProperties.register(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
+        ClientPlatformHelper.registerItemProperty(ModItems.MAGNETIC_COMPASS.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> MagneticCompassItem.isMagnetiteNearby(itemStack) ? MagneticCompassItem.getMagnetitePos(itemStack.getOrCreateTag()) : MagneticCompassItem.getNorthPosition(clientLevel))));
 
-        ItemProperties.register(ModItems.TUNING_FORK.get(), Spelunkery.res("angle"),
+        ClientPlatformHelper.registerItemProperty(ModItems.TUNING_FORK.get(), Spelunkery.res("angle"),
                 new MagneticCompassItemPropertyFunction(((clientLevel, itemStack, entity) -> AmethystTuningForkItem.getAmethystPos(itemStack.getOrCreateTag()))));
 
-        ItemProperties.register(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
+        ClientPlatformHelper.registerItemProperty(ModItems.SALT_BUCKET.get(), Spelunkery.res("salt"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("salt") / 8f) : 0);
 
-        ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("active"),
+        ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("active"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("active") ? 0.5f : 0) : 0);
 
-        ItemProperties.register(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
+        ClientPlatformHelper.registerItemProperty(ModItems.PARACHUTE.get(), Spelunkery.res("used"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getBoolean("used") ? 0.5f : 0) : 0);
 
-        ItemProperties.register(ModBlocks.DIAMOND_GRINDSTONE.get().asItem(), Spelunkery.res("depletion"),
+        ClientPlatformHelper.registerItemProperty(ModBlocks.DIAMOND_GRINDSTONE.get().asItem(), Spelunkery.res("depletion"),
                 (stack, world, entity, seed) -> stack.getTag() != null ? (stack.getTag().getInt("depletion") / 8f) : 0);
 
         finishedSetup = true;

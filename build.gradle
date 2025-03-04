@@ -19,13 +19,7 @@ subprojects {
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 
-        mappings loom.layered() {
-
-            it.parchment("org.parchmentmc.data:parchment-${rootProject.parchment_version}")
-            it.officialMojangMappings {
-                setNameSyntheticMembers(false)
-            }
-        }
+        mappings loom.officialMojangMappings()
     }
 }
 
@@ -55,7 +49,7 @@ allprojects {
 
     }
 
-    tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile).configureEach {
         options.encoding = "UTF-8"
         options.release = 17
     }

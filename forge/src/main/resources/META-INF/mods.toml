@@ -33,13 +33,15 @@ An Overhaul to everything Underground
 [[dependencies.spelunkery]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+    versionRange="[1.19.2]"
     ordering="NONE"
     side="BOTH"
 
+
 [[dependencies.spelunkery]]
+
     modId="moonlight"
     mandatory=true
-    versionRange="[1.20-2.12.21,]"
-    ordering="NONE"
+    versionRange="[1.19.2-2.0.35,]"
+    ordering="AFTER"
     side="BOTH"
