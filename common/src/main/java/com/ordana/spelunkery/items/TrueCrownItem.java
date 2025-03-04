@@ -16,9 +16,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Wearable;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TrueCrownItem extends BlockItem implements Equipable {
+public class TrueCrownItem extends BlockItem implements Wearable {
 
     public TrueCrownItem(Properties properties) {
         super(ModBlocks.TRUE_CROWN.get(), properties);
@@ -39,7 +39,7 @@ public class TrueCrownItem extends BlockItem implements Equipable {
         }
     }
 
-    @Override
+//    @Override
     public EquipmentSlot getEquipmentSlot() {
         return EquipmentSlot.HEAD;
     }
@@ -48,10 +48,10 @@ public class TrueCrownItem extends BlockItem implements Equipable {
         return InteractionResult.PASS;
     }
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
-        return swapWithEquipmentSlot(this, level, player, hand);
-    }
+//    @Override
+//    public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
+//        return swapWithEquipmentSlot(this, level, player, hand);
+//    }
 
     @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, Entity entity, int slotId, boolean isSelected) {
@@ -59,7 +59,7 @@ public class TrueCrownItem extends BlockItem implements Equipable {
             if (lEntity.getItemBySlot(EquipmentSlot.HEAD).getItem() == this) {
                 lEntity.addEffect(new MobEffectInstance(MobEffects.UNLUCK, 2, 1, true, false, true));
                 lEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2, 20, true, false, true));
-                if (level.random.nextFloat() < 0.1 && (lEntity.getDeltaMovement().x > 0 || lEntity.getDeltaMovement().z > 0)) level.playLocalSound(entity.blockPosition(), ModSoundEvents.JANGLE.get(), SoundSource.PLAYERS, 1.0f, 1.0f + (level.random.nextFloat() / 2), false);
+                if (level.random.nextFloat() < 0.1 && (lEntity.getDeltaMovement().x > 0 || lEntity.getDeltaMovement().z > 0)) level.playLocalSound(entity.blockPosition().getX(), entity.blockPosition().getY(), entity.blockPosition().getZ(), ModSoundEvents.JANGLE.get(), SoundSource.PLAYERS, 1.0f, 1.0f + (level.random.nextFloat() / 2), false);
             }
         }
 

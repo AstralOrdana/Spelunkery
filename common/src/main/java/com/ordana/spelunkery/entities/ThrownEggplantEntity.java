@@ -8,6 +8,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -86,7 +87,7 @@ public class ThrownEggplantEntity extends ImprovedProjectileEntity {
             serverLevel.addFreshEntityWithPassengers(witch);
             villager.discard();
         }
-        if (entity instanceof EnderDragonPart dragon) dragon.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
+        if (entity instanceof EnderDragonPart dragon) dragon.hurt(DamageSource.thrown(this, this.getOwner()), 6969);
     }
 
     @Override

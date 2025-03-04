@@ -4,7 +4,7 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
 import com.ordana.spelunkery.utils.DisabledItem;
 import net.mehvahdjukaar.moonlight.api.item.FuelItem;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.item.*;
 
@@ -26,7 +26,7 @@ public class ModItems {
         if(Objects.equals(requiredMod, "oreganized")) return requiredMod.equals("oreganized");
         if(Objects.equals(requiredMod, "etcetera")) return requiredMod.equals("etcetera");
         if(Objects.equals(requiredMod, "create_dd")) return requiredMod.equals("create_dd");
-        return PlatHelper.isModLoaded(requiredMod);
+        return PlatformHelper.isModLoaded(requiredMod);
     }
 
 
@@ -235,7 +235,7 @@ public class ModItems {
             new GlowstickItem(DyeColor.LIGHT_GRAY, ModBlocks.LIGHT_GRAY_GLOWSTICK.get(), new Item.Properties()));
 
     public static final Supplier<Item> DUST_BUNNY_SPAWN_EGG = RegHelper.registerItem(Spelunkery.res("dust_bunny_spawn_egg"), () ->
-            PlatHelper.newSpawnEgg(ModEntities.DUST_BUNNY, 0x5E625E, 0x3F3C39, new Item.Properties()));
+            PlatformHelper.newSpawnEgg(ModEntities.DUST_BUNNY, 0x5E625E, 0x3F3C39, new Item.Properties()));
 
     @DisabledItem
     public static final Supplier<Item> EGGPLANT = regItem("eggplant", () ->

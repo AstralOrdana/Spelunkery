@@ -24,7 +24,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -109,9 +109,9 @@ public abstract class SlimeMixin extends Mob {
                 int i = 1 + this.random.nextInt(this.getSize());
                 for (int j = 0; j < i; ++j) {
                     if (random.nextInt(3) <= this.getSize()) {
-                        LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(Spelunkery.res(magma ? "gameplay/magma_cube_feeding" : "gameplay/slime_feeding"));
+                        LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootTables().get(Spelunkery.res(magma ? "gameplay/magma_cube_feeding" : "gameplay/slime_feeding"));
 
-                        LootParams.Builder builder = new LootParams.Builder((ServerLevel) level)
+                        LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
                                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
                                 .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 

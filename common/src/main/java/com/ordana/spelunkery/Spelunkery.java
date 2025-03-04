@@ -12,8 +12,8 @@ import com.ordana.spelunkery.loot_modifiers.ModLootOverrides;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.events.IDropItemOnDeathEvent;
 import net.mehvahdjukaar.moonlight.api.events.MoonlightEventsHelper;
-import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
@@ -46,12 +46,12 @@ public class Spelunkery {
         NetworkHandler.registerMessages();
         CommonConfigs.init();
 
-        PlatHelper.addCommonSetup(Spelunkery::setup);
+        PlatformHelper.addCommonSetup(Spelunkery::setup);
 
-        if(PlatHelper.getPhysicalSide().isClient()) {
+        if(PlatformHelper.Env.CLIENT.isClient()) {
             ClientConfigs.init();
 
-            ClientHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), Component.literal("Better Vanilla Gems"), false);
+            ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", false);
 
         }
 
@@ -65,12 +65,11 @@ public class Spelunkery {
         ModEntities.init();
         ModParticles.init();
         ModSoundEvents.init();
-        ModCreativeTabs.init();
-        ModDispenserBehaviors.init();
+        ModDispenserBehaviors.registerBehaviors();
 
         MoonlightEventsHelper.addListener(Spelunkery::compassLogic, IDropItemOnDeathEvent.class);
 
-        RegHelper.addLootTableInjects(ModLootInjects::onLootInject);
+//        RegHelper.addLootTableInjects(ModLootInjects::onLootInject);
     }
 
     public static void setup() {

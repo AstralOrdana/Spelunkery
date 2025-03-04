@@ -57,6 +57,11 @@ public class SpringWater extends ModFlowingFluid {
         return ModFluids.SPRING_WATER.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     @NotNull
     public Item getBucket() {
         return ModItems.SPRING_WATER_BUCKET.get();

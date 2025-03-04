@@ -126,7 +126,7 @@ public class FallingLayerBlock extends FallingBlock {
 
 
     public boolean shouldFall(BlockState belowState) {
-        return (belowState.isAir() || belowState.canBeReplaced()) && !(belowState.is(this));
+        return (belowState.isAir() || belowState.getMaterial().isReplaceable()) && !(belowState.is(this));
     }
 
     @Override

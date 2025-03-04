@@ -1,34 +1,33 @@
 package com.ordana.spelunkery.blocks.dispenser_interactions;
 
+import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.DispenserBlock;
 
 public class ModDispenserBehaviors {
 
-    public static void init() {
-        RegHelper.addDynamicDispenserBehaviorRegistration(ModDispenserBehaviors::registerBehaviors);
-    }
-
-    public static void registerBehaviors(DispenserHelper.Event event) {
-        event.register(new CBMBehavior());
-        event.register(new EggplantBehavior());
-        event.register(new MineOMiteBehavior());
-        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.GRINDSTONE_REPAIR_ITEM).iterator().forEachRemaining(h ->
-                event.register(new GrindstoneRepairBehavior(h.value()))
+    public static void registerBehaviors() {
+        DispenserBlock.registerBehavior(Items.TNT, new CBMBehavior());
+        DispenserBlock.registerBehavior(ModItems.EGGPLANT.get(), new EggplantBehavior());
+        DispenserBlock.registerBehavior(ModItems.MINEOMITE.get(), new MineOMiteBehavior());
+        Registry.ITEM.getTagOrEmpty(ModTags.GRINDSTONE_REPAIR_ITEM).iterator().forEachRemaining(h ->
+                DispenserBlock.registerBehavior(h.value(), new GrindstoneRepairBehavior(h.value()))
         );
-        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.DIAMOND_GRINDABLE).iterator().forEachRemaining(h ->
-                event.register(new GrindstoneBehavior(h.value()))
+        Registry.ITEM.getTagOrEmpty(ModTags.DIAMOND_GRINDABLE).iterator().forEachRemaining(h ->
+                DispenserBlock.registerBehavior(h.value(), new GrindstoneBehavior(h.value()))
         );
-        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.GRINDABLE).iterator().forEachRemaining(h ->
-                event.register(new GrindstoneBehavior(h.value()))
+        Registry.ITEM.getTagOrEmpty(ModTags.GRINDABLE).iterator().forEachRemaining(h ->
+                DispenserBlock.registerBehavior(h.value(), new GrindstoneBehavior(h.value()))
         );
-        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.GLOWSTICKS).iterator().forEachRemaining(h ->
-                event.register(new GlowstickBehavior(h.value()))
+        Registry.ITEM.getTagOrEmpty(ModTags.GLOWSTICKS).iterator().forEachRemaining(h ->
+                DispenserBlock.registerBehavior(h.value(), new GlowstickBehavior(h.value()))
         );
-        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.PEBBLES).iterator().forEachRemaining(h ->
-                event.register(new PebbleBehavior(h.value()))
+        Registry.ITEM.getTagOrEmpty(ModTags.PEBBLES).iterator().forEachRemaining(h ->
+                DispenserBlock.registerBehavior(h.value(), new PebbleBehavior(h.value()))
         );
     }
 }

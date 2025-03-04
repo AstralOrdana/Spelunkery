@@ -6,6 +6,7 @@ import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -112,10 +113,9 @@ public class SulfuricVentBlock extends DirectionalBlock {
             if (entities.isEmpty()) return;
 
             for (var e : entities) {
-
-                double x = e.getX() - pos.getCenter().x;
-                double y = e.getY() - pos.getCenter().y;
-                double z = e.getZ() - pos.getCenter().z;
+                double x = e.getX() - pos.getX();
+                double y = e.getY() - pos.getY();
+                double z = e.getZ() - pos.getZ();
                 double aa = Math.sqrt(x * x + y * y + z * z);
                 x /= aa;
                 y /= aa;

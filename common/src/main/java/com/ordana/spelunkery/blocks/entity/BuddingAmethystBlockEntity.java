@@ -40,9 +40,9 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
     }
 
     @Override
-    public boolean handleGameEvent(ServerLevel level, GameEvent gameEvent, GameEvent.Context context, Vec3 pos) {
-        if (ModGameEvents.FORK_TONE_EVENT.get() == gameEvent) {
-            Entity entity = context.sourceEntity();
+    public boolean handleGameEvent(ServerLevel level, GameEvent.Message eventMessage) {
+        if (ModGameEvents.FORK_TONE_EVENT.get() == eventMessage.gameEvent()) {
+            Entity entity = eventMessage.context().sourceEntity();
 
             if (entity instanceof Player player) {
                 var inventory = player.getInventory();
@@ -52,7 +52,7 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
                     if (compass.is(ModItems.TUNING_FORK.get())) {
                         AmethystTuningForkItem.addAmethystTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
 
-                        level.playSound(null, entity.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.4f, 1.0f);
+                        level.playSound(null, entity.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 0.4f, 1.0f);
                     }
                 }
             }

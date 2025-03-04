@@ -6,7 +6,7 @@ import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.entity.ImprovedProjectileEntity;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,12 +18,14 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RodBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class ThrownMineomiteEntity extends ImprovedProjectileEntity {
 
@@ -46,16 +48,16 @@ public class ThrownMineomiteEntity extends ImprovedProjectileEntity {
     }
 
     public static boolean canPlace (BlockState state) {
-        return state.isAir() || state.canBeReplaced() || state.is(ModBlocks.MINEOMITE.get());
+        return state.isAir() || state.getMaterial().isReplaceable() || state.is(ModBlocks.MINEOMITE.get());
     }
 
-    public void spawnTrailParticles() {
+    public void spawnTrailParticles(Vec3 currentPos, Vec3 newPos) {
         if (this.isOnFire()) {
             for (int i = 0; i < 4; ++i) {
                 this.level.addParticle(random.nextBoolean() ? ParticleTypes.FLAME : ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0D, 0.0D, 0.0D);
             }
         }
-        super.spawnTrailParticles();
+        super.spawnTrailParticles(currentPos, newPos);
     }
 
     protected void onHit(HitResult result) {
@@ -101,10 +103,10 @@ public class ThrownMineomiteEntity extends ImprovedProjectileEntity {
     private void createExplosion() {
 
         boolean breaks = (this.getOwner() instanceof Player ||
-                PlatHelper.isMobGriefingOn(this.level, this.getOwner()));
+                PlatformHelper.isMobGriefingOn(this.level, this.getOwner()));
 
         this.level.explode(null, this.getX(), this.getY(), this.getZ(),
-                3.5F, breaks ? Level.ExplosionInteraction.TNT : Level.ExplosionInteraction.NONE);
+                3.5F, breaks ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE);
 
     }
 }

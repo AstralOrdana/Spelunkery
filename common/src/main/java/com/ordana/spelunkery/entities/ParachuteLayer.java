@@ -6,16 +6,16 @@ import com.ordana.spelunkery.items.ParachuteItem;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.utils.IParachuteEntity;
 import net.mehvahdjukaar.moonlight.api.client.util.RotHlpr;
-import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 
@@ -46,7 +46,7 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
 
             poseStack.mulPose(RotHlpr.X180);
 
-            var model = ClientHelper.getModel(Minecraft.getInstance().getModelManager(), SpelunkeryClient.PARACHUTE_3D_MODEL);
+            var model = ClientPlatformHelper.getModel(Minecraft.getInstance().getModelManager(), SpelunkeryClient.PARACHUTE_3D_MODEL);
             float ticks = livingEntity.getParachuteTicks() + partialTick;
             int timeToOpen = 15;
 
@@ -58,7 +58,7 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
             poseStack.scale(scaleW, scaleH, scaleW);
             poseStack.translate(0, 1, 0);
 
-            itemRenderer.render(ModItems.PARACHUTE.get().getDefaultInstance(), ItemDisplayContext.HEAD,
+            itemRenderer.render(ModItems.PARACHUTE.get().getDefaultInstance(), ItemTransforms.TransformType.HEAD,
                     false, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, model);
 
             poseStack.popPose();

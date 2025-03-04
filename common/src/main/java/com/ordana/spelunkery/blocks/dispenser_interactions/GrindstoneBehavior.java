@@ -20,7 +20,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
@@ -45,9 +46,9 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
         var itemName = Utils.getID(itemStack.getItem()).getPath();
 
         var tablePath = Spelunkery.res("gameplay/" + (diamondGrindstone && !depleted ? "diamond_" : "") + "grindstone_polishing/" + itemName);
-        var lootTable = level.getServer().getLootData().getLootTable(tablePath);
+        var lootTable = level.getServer().getLootTables().get(tablePath);
 
-        LootParams.Builder builder = (new LootParams.Builder(level))
+        LootContext.Builder builder = (new LootContext.Builder(level))
                 .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                 .withParameter(LootContextParams.TOOL, ItemStack.EMPTY);
@@ -56,7 +57,7 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
 
         if (lootItem.isEmpty()) {
             tablePath = Spelunkery.res("gameplay/grindstone_polishing/" + itemName);
-            var lootTable2 = level.getServer().getLootData().getLootTable(tablePath);
+            var lootTable2 = level.getServer().getLootTables().get(tablePath);
 
             lootItem = lootTable2.getRandomItems(builder.create(LootContextParamSets.BLOCK));
         }

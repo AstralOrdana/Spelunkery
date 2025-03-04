@@ -6,8 +6,10 @@ import com.ordana.spelunkery.utils.IParachuteEntity;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.ProfilePublicKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,8 +24,8 @@ public abstract class RemotePlayerMixin extends Player implements IParachuteEnti
     @Unique
     private int spelunkery$parachuteTicks;
 
-    protected RemotePlayerMixin(Level level, BlockPos blockPos, float f, GameProfile gameProfile) {
-        super(level, blockPos, f, gameProfile);
+    protected RemotePlayerMixin(Level level, BlockPos blockPos, float f, GameProfile gameProfile, @Nullable ProfilePublicKey profilePublicKey) {
+        super(level, blockPos, f, gameProfile, profilePublicKey);
     }
 
 

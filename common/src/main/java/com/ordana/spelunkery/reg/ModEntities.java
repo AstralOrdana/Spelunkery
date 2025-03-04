@@ -3,7 +3,7 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.blocks.entity.*;
 import com.ordana.spelunkery.entities.*;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -29,22 +29,22 @@ public class ModEntities {
     //Tile Entities
     public static final Supplier<BlockEntityType<CarvedNephriteBlockEntity>> NEPHRITE_TILE = RegHelper.registerBlockEntityType(
             Spelunkery.res("carved_nephrite"),
-            () -> PlatHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
+            () -> PlatformHelper.newBlockEntityType(CarvedNephriteBlockEntity::new, ModBlocks.CARVED_NEPHRITE.get()));
     public static final Supplier<BlockEntityType<NephriteFountainEntity>> NEPHRITE_FOUNTAIN = RegHelper.registerBlockEntityType(
             Spelunkery.res("nephrite_fountain"),
-            () -> PlatHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_FOUNTAIN.get()));
+            () -> PlatformHelper.newBlockEntityType(NephriteFountainEntity::new, ModBlocks.NEPHRITE_FOUNTAIN.get()));
     public static final Supplier<BlockEntityType<MagnetiteBlockEntity>> MAGNETITE = RegHelper.registerBlockEntityType(
             Spelunkery.res("raw_magnetite_block"),
-            () -> PlatHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.RAW_MAGNETITE_BLOCK.get()));
+            () -> PlatformHelper.newBlockEntityType(MagnetiteBlockEntity::new, ModBlocks.RAW_MAGNETITE_BLOCK.get()));
     public static final Supplier<BlockEntityType<BuddingAmethystBlockEntity>> BUDDING_AMETHYST = RegHelper.registerBlockEntityType(
             Spelunkery.res("budding_amethyst"),
-            () -> PlatHelper.newBlockEntityType(BuddingAmethystBlockEntity::new, Blocks.BUDDING_AMETHYST));
+            () -> PlatformHelper.newBlockEntityType(BuddingAmethystBlockEntity::new, Blocks.BUDDING_AMETHYST));
     public static final Supplier<BlockEntityType<SluiceBlockEntity>> WOODEN_SLUICE = RegHelper.registerBlockEntityType(
             Spelunkery.res("wooden_sluice"),
-            () -> PlatHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));
+            () -> PlatformHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.WOODEN_SLUICE.get()));
     public static final Supplier<BlockEntityType<SluiceBlockEntity>> STONE_SLUICE = RegHelper.registerBlockEntityType(
             Spelunkery.res("stone_sluice"),
-            () -> PlatHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.STONE_SLUICE.get()));
+            () -> PlatformHelper.newBlockEntityType(SluiceBlockEntity::new, ModBlocks.STONE_SLUICE.get()));
 
     //Thrown Entities
     public static Supplier<EntityType<ThrownGlowstickEntity>> GLOWSTICK = RegHelper.registerEntityType(

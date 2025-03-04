@@ -54,12 +54,12 @@ public class DustBunnyEntity extends PathfinderMob {
         if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, this);
         player.playSound(SoundEvents.WOOL_BREAK, 1.0F, 1.0F);
         player.addItem(new ItemStack(ModItems.DUST_BUN.get()));
-        if (this.level().isClientSide) {
+        if (this.level.isClientSide) {
             for(int i = 0; i < 20; ++i) {
                 double d0 = this.random.nextGaussian() * 0.02D;
                 double d1 = this.random.nextGaussian() * 0.02D;
                 double d2 = this.random.nextGaussian() * 0.02D;
-                this.level().addParticle(ModParticles.DUST_POOF.get(), this.getX() - d0 * 10.0D, this.getRandomY() - d1 * 10.0D, this.getZ() - d2 * 10.0D, d0, d1, d2);
+                this.level.addParticle(ModParticles.DUST_POOF.get(), this.getX() - d0 * 10.0D, this.getRandomY() - d1 * 10.0D, this.getZ() - d2 * 10.0D, d0, d1, d2);
             }
         }
         this.remove(RemovalReason.DISCARDED);
@@ -73,7 +73,7 @@ public class DustBunnyEntity extends PathfinderMob {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level()));
+        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level));
         this.goalSelector.addGoal(1, new DustBunnyEntity.RabbitPanicGoal(this, 2.2D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.0D, Ingredient.of(Items.CARROT, Items.GOLDEN_CARROT, Blocks.DANDELION), false));
         this.goalSelector.addGoal(4, new DustBunnyEntity.RabbitAvoidEntityGoal(this, Player.class, 8.0F, 2.2D, 2.2D));
@@ -98,7 +98,7 @@ public class DustBunnyEntity extends PathfinderMob {
             }
         }
 
-        this.onGround();
+        this.isOnGround();
     }
 
     public boolean canSpawnSprintParticle() {

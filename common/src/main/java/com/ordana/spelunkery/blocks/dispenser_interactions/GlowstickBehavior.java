@@ -17,7 +17,9 @@ public class GlowstickBehavior extends ProjectileBehavior {
     @Override
     protected Projectile getProjectileEntity(BlockSource source, Position position, ItemStack stackIn) {
         var entity = new ThrownGlowstickEntity(source.getLevel(), position.x(), position.y(), position.z());
-        entity.setItem(stackIn.copyWithCount(1));
+        var copyStack = stackIn.copy();
+        copyStack.setCount(1);
+        entity.setItem(copyStack);
         if (stackIn.getItem() instanceof GlowstickItem stick) entity.setColor(stick.getColor());
         return entity;
     }

@@ -54,6 +54,11 @@ public class PortalFluid extends ModFlowingFluid {
         return ModFluids.PORTAL_FLUID.get();
     }
 
+    @Override
+    protected boolean canConvertToSource() {
+        return false;
+    }
+
     @NotNull
     public Item getBucket() {
         return ModItems.PORTAL_FLUID_BUCKET.get();

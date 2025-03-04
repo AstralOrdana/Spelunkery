@@ -3,10 +3,10 @@ package com.ordana.spelunkery.loot_modifiers;
 import com.google.gson.JsonElement;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
-import net.mehvahdjukaar.moonlight.api.resources.pack.DynServerResourcesGenerator;
+import net.mehvahdjukaar.moonlight.api.resources.pack.DynServerResourcesProvider;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.repository.Pack;
@@ -15,13 +15,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class ModLootOverrides extends DynServerResourcesGenerator {
+public class ModLootOverrides extends DynServerResourcesProvider {
 
     public static final ModLootOverrides INSTANCE = new ModLootOverrides();
 
     public ModLootOverrides() {
         super(new DynamicDataPack(Spelunkery.res("generated_pack"), Pack.Position.TOP, true, true));
-        this.dynamicPack.setGenerateDebugResources(false);
         this.dynamicPack.addNamespaces("spelunkery");
         this.dynamicPack.addNamespaces("minecraft");
         this.dynamicPack.addNamespaces("create");
@@ -322,7 +321,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
 
 
         //gems
-        if (PlatHelper.isModLoaded("sullysmod")) {
+        if (PlatformHelper.isModLoaded("sullysmod")) {
 
             //enable spelunkery m'ores loot tables when sullys mod is loaded
             overrideDataFile(manager, sullysLootSpelunkeryGems,
@@ -342,7 +341,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "spelunkery", "",
                     "overrides/loot_tables/", ResType.BLOCK_LOOT_TABLES);
 
-            if (PlatHelper.isModLoaded("sullysmod")) {
+            if (PlatformHelper.isModLoaded("sullysmod")) {
 
                 //override sullysmod loot tables to make gem ores drop rough gem shards
                 overrideDataFile(manager, sullysLootGems,
@@ -350,7 +349,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                         "overrides/loot_tables/sullysmod/", ResType.BLOCK_LOOT_TABLES);
             }
 
-            if (PlatHelper.isModLoaded("create")) {
+            if (PlatformHelper.isModLoaded("create")) {
 
                 //override create mod ore crushing recipes to create rough gems
                 overrideDataFile(manager, createRecipeCrushingGems,
@@ -363,7 +362,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                         "overrides/recipes/crushing/", ResType.RECIPES);
             }
 
-            if (PlatHelper.isModLoaded("ditr")) {
+            if (PlatformHelper.isModLoaded("ditr")) {
 
                 //override ditr loot tables to mak gem ores drop rough gems
                 overrideDataFile(manager, ditrLootGems,
@@ -374,7 +373,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
 
 
         //metals
-        if (PlatHelper.isModLoaded("oreganized") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+        if (PlatformHelper.isModLoaded("oreganized") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
 
             //enable oreganized m'ores loot tables when oreganized mod is loaded
             overrideDataFile(manager, oreganizedLootSpelunkeryMetal,
@@ -382,7 +381,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "overrides/loot_tables/", ResType.BLOCK_LOOT_TABLES);
         }
 
-        if (PlatHelper.isModLoaded("create") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+        if (PlatformHelper.isModLoaded("create") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
 
             //enable create m'ores loot tables when create mod is loaded
             overrideDataFile(manager, createLootSpelunkeryMetal,
@@ -390,7 +389,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "overrides/loot_tables/", ResType.BLOCK_LOOT_TABLES);
         }
 
-        if (PlatHelper.isModLoaded("etcetera") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
+        if (PlatformHelper.isModLoaded("etcetera") && !CommonConfigs.ENABLE_RAW_NUGGETS.get()) {
 
             overrideDataFile(manager, etceteraLootMetalNuggets,
                 "etcetera", "blocks/",
@@ -409,7 +408,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "spelunkery", "",
                     "overrides/loot_tables/", ResType.BLOCK_LOOT_TABLES);
 
-            if (PlatHelper.isModLoaded("oreganized")) {
+            if (PlatformHelper.isModLoaded("oreganized")) {
 
                 //override spelunkery loot tables to make oreganized mod compat m'ores metal ores drop raw nuggets
                 overrideDataFile(manager, oreganizedLootSpelunkeryMetalNuggets,
@@ -422,7 +421,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                         "overrides/loot_tables/oreganized/", ResType.BLOCK_LOOT_TABLES);
             }
 
-            if (PlatHelper.isModLoaded("create")) {
+            if (PlatformHelper.isModLoaded("create")) {
 
                 //override create loot tables to make deepslate metal ores drop raw nuggets
                 overrideDataFile(manager, createLootMetal,
@@ -449,7 +448,7 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                         "spelunkery", "crushing/",
                         "overrides/recipes/crushing/", ResType.RECIPES);
 
-                if (PlatHelper.isModLoaded("oreganized")) {
+                if (PlatformHelper.isModLoaded("oreganized")) {
 
                     //override glance crushing to create raw lead nuggets
                     overrideDataFile(manager, oreganizedRecipeCrushingMetal,
@@ -510,21 +509,21 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "minecraft", "worldgen/configured_feature/",
                     "overrides/worldgen/configured_feature/", ResType.GENERIC);
 
-            if (PlatHelper.isModLoaded("create")) {
+            if (PlatformHelper.isModLoaded("create")) {
                 //enable create compat M'ores ores to generate
                 overrideDataFileGeneric(manager, createWorldgenMores,
                         "create", "worldgen/configured_feature/",
                         "overrides/worldgen/configured_feature/create/", ResType.GENERIC);
             }
 
-            if (PlatHelper.isModLoaded("sullysmod")) {
+            if (PlatformHelper.isModLoaded("sullysmod")) {
                 //enable sullysmod compat M'ores ores to generate
                 overrideDataFileGeneric(manager, sullysWorldgenMores,
                         "sullysmod", "worldgen/configured_feature/",
                         "overrides/worldgen/configured_feature/sullysmod/", ResType.GENERIC);
             }
 
-            if (PlatHelper.isModLoaded("oreganized")) {
+            if (PlatformHelper.isModLoaded("oreganized")) {
                 //enable oreganized compat M'ores ores to generate
                 overrideDataFileGeneric(manager, oreganizedWorldgenMores,
                         "oreganized", "worldgen/configured_feature/",

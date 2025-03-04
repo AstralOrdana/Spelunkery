@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.HashMap;
 
@@ -81,13 +82,13 @@ public class ThrownGlowstickEntity extends ImprovedProjectileEntity {
     }
 
 
-    public void spawnTrailParticles() {
+    public void spawnTrailParticles(Vec3 currentPos, Vec3 newPos) {
         ParticleOptions particle = ParticleTypes.GLOW;
 
         for (int i = 0; i < 4; ++i) {
             this.level.addParticle(particle, this.getX(), this.getY() + 0.5, this.getZ(), 0.0D, 0.0D, 0.0D);
         }
-        super.spawnTrailParticles();
+        super.spawnTrailParticles(currentPos, newPos);
     }
 
     public static Block getGlowstickBlock(DyeColor color) {
@@ -107,7 +108,7 @@ public class ThrownGlowstickEntity extends ImprovedProjectileEntity {
         BlockState replaceState = level.getBlockState(relativePos);
         var glowstickCheck = getGlowstickBlock(this.getColor());
 
-        if (replaceState.canBeReplaced()) {
+        if (replaceState.getMaterial().isReplaceable()) {
             var waterlogged = replaceState.getFluidState().is(Fluids.WATER);
             level.setBlockAndUpdate(relativePos, glowstickCheck.defaultBlockState().setValue(RodBlock.FACING, dir).setValue(GlowstickBlock.WATERLOGGED, waterlogged));
         }

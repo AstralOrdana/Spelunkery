@@ -11,19 +11,19 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Wearable;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class BunnyEarsItem extends BlockItem implements Equipable {
+public class BunnyEarsItem extends BlockItem implements Wearable {
 
     public BunnyEarsItem(Properties properties) {
         super(ModBlocks.BUNNY_EARS.get(), properties);
     }
 
-    @Override
+//    @Override
     public EquipmentSlot getEquipmentSlot() {
         return EquipmentSlot.HEAD;
     }
@@ -32,10 +32,10 @@ public class BunnyEarsItem extends BlockItem implements Equipable {
         return InteractionResult.PASS;
     }
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
-        return swapWithEquipmentSlot(this, level, player, hand);
-    }
+//    @Override
+//    public InteractionResultHolder<ItemStack> use(Level level, @NotNull Player player, InteractionHand hand) {
+//        return swapWithEquipmentSlot(this, level, player, hand);
+//    }
 
     @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, Entity entity, int slotId, boolean isSelected) {

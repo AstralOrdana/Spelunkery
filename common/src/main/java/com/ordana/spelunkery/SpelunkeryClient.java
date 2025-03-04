@@ -12,7 +12,7 @@ import com.ordana.spelunkery.particles.SulfurParticle;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGeneric;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
-import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.util.math.colors.RGBColor;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -32,60 +32,60 @@ public class SpelunkeryClient {
     public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute");
 
     public static void init() {
-        ClientHelper.addClientSetup(SpelunkeryClient::setup);
-        ClientHelper.addModelLayerRegistration(SpelunkeryClient::registerLayers);
-        ClientHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
-        ClientHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
-        ClientHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
+        ClientPlatformHelper.addClientSetup(SpelunkeryClient::setup);
+        ClientPlatformHelper.addModelLayerRegistration(SpelunkeryClient::registerLayers);
+        ClientPlatformHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
+        ClientPlatformHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
+        ClientPlatformHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
     }
 
     private static boolean finishedSetup = false;
 
     public static void setup() {
-        ClientHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
-        ClientHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
-        ClientHelper.registerFluidRenderType(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
-        ClientHelper.registerFluidRenderType(ModFluids.SPRING_WATER.get(), RenderType.translucent());
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.FLOWING_PORTAL_FLUID.get(), RenderType.translucent());
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.PORTAL_FLUID.get(), RenderType.translucent());
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
+        ClientPlatformHelper.registerFluidRenderType(ModFluids.SPRING_WATER.get(), RenderType.translucent());
 
-        ClientHelper.registerRenderType(ModBlocks.POLISHED_QUARTZ_BLOCK.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POLISHED_QUARTZ_BLOCK.get(), RenderType.translucent());
 
-        ClientHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
-        ClientHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
-        ClientHelper.registerRenderType(ModBlocks.SPRING_WATER.get(), RenderType.translucent());
-        ClientHelper.registerRenderType(ModBlocks.WOODEN_SLUICE.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.STONE_SLUICE.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.WOODEN_RAIL.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.ROPE_LADDER.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.TANGLE_ROOTS.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.TANGLE_ROOTS_PLANT.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.SPOROPHYTE.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.TALL_SPOROPHYTE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_FLUID.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PORTAL_CAULDRON.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.SPRING_WATER.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.WOODEN_SLUICE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.STONE_SLUICE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.MINEOMITE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.SALT_LAMP.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.WOODEN_RAIL.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.ROPE_LADDER.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.TANGLE_ROOTS.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.TANGLE_ROOTS_PLANT.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.SPOROPHYTE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.TALL_SPOROPHYTE.get(), RenderType.cutout());
 
-        ClientHelper.registerRenderType(ModBlocks.CONK_FUNGUS.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.INKCAP_MUSHROOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.WHITE_INKCAP_MUSHROOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.PHOSPHOR_FUNGUS.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.MUSHGLOOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.MILLY_BUBCAP.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.PORTABELLA.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.CRIMINI.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.BUTTON_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.CONK_FUNGUS.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.INKCAP_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.WHITE_INKCAP_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PHOSPHOR_FUNGUS.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.MUSHGLOOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.MILLY_BUBCAP.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PORTABELLA.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.CRIMINI.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.BUTTON_MUSHROOM.get(), RenderType.cutout());
 
-        ClientHelper.registerRenderType(ModBlocks.POTTED_INKCAP_MUSHROOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_WHITE_INKCAP_MUSHROOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_PHOSPHOR_FUNGUS.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_MUSHGLOOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_MILLY_BUBCAP.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_PORTABELLA.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_CRIMINI.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_BUTTON_MUSHROOM.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.POTTED_SPOROPHYTE.get(), RenderType.cutout());
-        ClientHelper.registerRenderType(ModBlocks.PHOSPHOR_FUNGUS_BLOCK.get(), RenderType.translucent());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_INKCAP_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_WHITE_INKCAP_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_PHOSPHOR_FUNGUS.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_MUSHGLOOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_MILLY_BUBCAP.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_PORTABELLA.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_CRIMINI.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_BUTTON_MUSHROOM.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.POTTED_SPOROPHYTE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.PHOSPHOR_FUNGUS_BLOCK.get(), RenderType.translucent());
 
-        ClientHelper.registerRenderType(ModBlocks.NEPHRITE_FOUNTAIN.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModBlocks.NEPHRITE_FOUNTAIN.get(), RenderType.cutout());
 
         ItemProperties.register(ModItems.DEPTH_GAUGE.get(), Spelunkery.res("depth"),
                 (stack, world, entity, seed) -> entity != null ? (((float) entity.getBlockY() + 64) / 384) : 0);
@@ -124,12 +124,12 @@ public class SpelunkeryClient {
         return new ModelLayerLocation(Spelunkery.res(name), name);
     }
 
-    private static void registerLayers(ClientHelper.ModelLayerEvent event) {
+    private static void registerLayers(ClientPlatformHelper.ModelLayerEvent event) {
         event.register(DUST_BUNNY, DustBunnyModel::createBodyLayer);
     }
 
     @EventCalled
-    private static void registerSpecialModels(ClientHelper.SpecialModelEvent event) {
+    private static void registerSpecialModels(ClientPlatformHelper.SpecialModelEvent event) {
         event.register(PARACHUTE_3D_MODEL);
     }
 
@@ -140,7 +140,7 @@ public class SpelunkeryClient {
     }
 
     @EventCalled
-    private static void registerBlockColors(ClientHelper.BlockColorEvent event) {
+    private static void registerBlockColors(ClientPlatformHelper.BlockColorEvent event) {
         event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BLOCK.get());
         event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_STAIRS.get());
         event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_SLAB.get());
@@ -155,7 +155,7 @@ public class SpelunkeryClient {
         event.register((blockState, blockAndTintGetter, blockPos, i) -> getSaltTint(event, blockState, blockAndTintGetter, blockPos, i), ModBlocks.ROCK_SALT_BRICK_WALL.get());
     }
 
-    private static int getSaltTint(ClientHelper.BlockColorEvent event, BlockState state, BlockAndTintGetter level, BlockPos pos, int i) {
+    private static int getSaltTint(ClientPlatformHelper.BlockColorEvent event, BlockState state, BlockAndTintGetter level, BlockPos pos, int i) {
         //int original = event.getColor(state, level, pos, i);
 
         //interpolate between color and brown
@@ -164,7 +164,7 @@ public class SpelunkeryClient {
         return new RGBColor(0).asLAB().mixWith(new RGBColor(brown).asLAB(), percentage).asRGB().toInt();
     }
 
-    private static void registerEntityRenderers(ClientHelper.EntityRendererEvent event) {
+    private static void registerEntityRenderers(ClientPlatformHelper.EntityRendererEvent event) {
         event.register(ModEntities.FALLING_LAYER.get(), FallingBlockRendererGeneric::new);
         event.register(ModEntities.DUST_BUNNY.get(), DustBunnyRenderer::new);
         event.register(ModEntities.GLOWSTICK.get(), context -> new ThrownItemRenderer<>(context, 1, true));
@@ -174,7 +174,7 @@ public class SpelunkeryClient {
         event.register(ModEntities.EGGPLANT.get(), context -> new ThrownItemRenderer<>(context, 1, false));
     }
 
-    private static void registerParticles(ClientHelper.ParticleEvent event) {
+    private static void registerParticles(ClientPlatformHelper.ParticleEvent event) {
         event.register(ModParticles.SULFUR.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.SULFUR_DUSTING.get(), SulfurParticle.Provider::new);
         event.register(ModParticles.PORTAL_FLAME.get(), PortalFluidFlameParticle.Provider::new);

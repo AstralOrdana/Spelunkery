@@ -36,7 +36,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
@@ -222,9 +222,9 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         if (!Objects.equals(fluidName, "empty")) {
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/" + itemName);
-            var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
+            var lootTable = Objects.requireNonNull(level.getServer()).getLootTables().get(tablePath);
 
-            LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
+            LootContext.Builder builder = (new LootContext.Builder((ServerLevel) level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                     .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)

@@ -1,7 +1,8 @@
 package com.ordana.spelunkery.particles;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Camera;
@@ -10,14 +11,12 @@ import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 @Environment(EnvType.CLIENT)
 public class PortalFluidFlameParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
     protected boolean isGlowing;
-    private final Quaternionf rotation = new Quaternionf(0F, 0F, 0F, 0F);
+    private final Quaternion rotation = new Quaternion(0F, 0F, 0F, 0F);
 
     PortalFluidFlameParticle(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, SpriteSet spriteSet) {
         super(clientLevel, d, e, f, g, h, i);
@@ -40,17 +39,18 @@ public class PortalFluidFlameParticle extends TextureSheetParticle {
         float g = (float) (Mth.lerp(partialTicks, this.yo, this.y) - vec3.y());
         float h = (float) (Mth.lerp(partialTicks, this.zo, this.z) - vec3.z());
         this.rotation.set(0.0f, 0.0f, 0.0f, 1.0f);
-        this.rotation.mul(Axis.YP.rotationDegrees(-renderInfo.getYRot()));
+        this.rotation.mul(Vector3f.YP.rotationDegrees(-renderInfo.getYRot()));
         //this.rotation.mul(Axis.XP.rotationDegrees(renderInfo.getXRot() * (Mth.lerp(partialTicks, this.prevXRotMultiplier, this.xRotMultiplier))));
         if (this.roll != 0.0f) {
             float i = Mth.lerp(partialTicks, this.oRoll, this.roll);
-            this.rotation.mul(Axis.ZP.rotation(i));
+            this.rotation.mul(Vector3f.ZP.rotation(i));
         }
         Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0f, -1.0f, 0.0f), new Vector3f(-1.0f, 1.0f, 0.0f), new Vector3f(1.0f, 1.0f, 0.0f), new Vector3f(1.0f, -1.0f, 0.0f)};
         float j = this.getQuadSize(partialTicks);
         for (int k = 0; k < 4; ++k) {
             Vector3f vector3f2 = vector3fs[k];
-            vector3f2.rotate(this.rotation);
+            // TODO 1.19.2
+//            vector3f2.rotate(this.rotation);
             vector3f2.mul(j);
             vector3f2.add(f, g, h);
         }

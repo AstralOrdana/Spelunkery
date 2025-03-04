@@ -3,7 +3,7 @@ package com.ordana.spelunkery.items;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
@@ -12,6 +12,7 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
 import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
+import net.mehvahdjukaar.moonlight.api.misc.DualWeildState;
 import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -19,6 +20,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
@@ -252,7 +254,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     @Override
-    public <T extends LivingEntity> boolean poseLeftArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm) {
+    public <T extends LivingEntity> boolean poseLeftArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm, DualWeildState dualWeildState) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
                 entity.getTicksUsingItem() < 50) {
@@ -266,7 +268,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
 
 
     @Override
-    public <T extends LivingEntity> boolean poseRightArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm) {
+    public <T extends LivingEntity> boolean poseRightArm(ItemStack itemStack, HumanoidModel<T> model, T entity, HumanoidArm humanoidArm, DualWeildState dualWeildState) {
         if (entity.getUseItemRemainingTicks() > 0 &&
                 entity.getUseItem().getItem() == this &&
                 entity.getTicksUsingItem() < 50) {
@@ -281,7 +283,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     @Override
     public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
-        if (tolling && entity.getUsedItemHand() == hand && entity.level() instanceof ClientLevel level) {
+        if (tolling && entity.getUsedItemHand() == hand && entity.level instanceof ClientLevel level) {
 
             //budding amethyst block pos
             BlockPos blockPos = NbtUtils.readBlockPos(stack.getOrCreateTag().getCompound("amethystPos"));
@@ -296,12 +298,13 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
             var distance = StrictMath.cbrt(distanceToAmethyst(entity.blockPosition(), blockPos));
 
             //position the fork
-            poseStack.mulPose(Axis.XP.rotationDegrees(-80.0F));
-            poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(-80.0F));
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+            poseStack.mulPose(Vector3f.ZP.rotationDegrees(0.0F));
+
 
             //wobble + rotation
-            poseStack.mulPose(Axis.XP.rotationDegrees((float)(value / distance) + modifier));
+            poseStack.mulPose(Vector3f.XP.rotationDegrees((float)(value / distance) + modifier));
 
         }
 

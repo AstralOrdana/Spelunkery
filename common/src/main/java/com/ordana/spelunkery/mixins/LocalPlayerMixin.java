@@ -6,7 +6,9 @@ import com.ordana.spelunkery.utils.IParachuteEntity;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.entity.player.ProfilePublicKey;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class LocalPlayerMixin extends AbstractClientPlayer implements IParachuteEntity {
 
 
-    protected LocalPlayerMixin(ClientLevel clientLevel, GameProfile gameProfile) {
-        super(clientLevel, gameProfile);
+    protected LocalPlayerMixin(ClientLevel clientLevel, GameProfile gameProfile, @Nullable ProfilePublicKey profilePublicKey) {
+        super(clientLevel, gameProfile, profilePublicKey);
     }
 
     @Unique

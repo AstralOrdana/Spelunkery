@@ -25,9 +25,9 @@ dependencies {
 
     modLocalRuntime "dev.emi:emi-fabric:${rootProject.emi_version}"
 
-    modImplementation("curse.maven:selene-499980:5726768")
+    modImplementation("curse.maven:selene-499980:5567103")
 
-    modImplementation("maven.modrinth:modmenu:7.2.1")
+    modImplementation("maven.modrinth:modmenu:${modmenu_version}")
 
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }

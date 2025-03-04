@@ -18,8 +18,10 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -148,7 +150,7 @@ public class ChannelBlock extends Block {
         Item item = itemStack.getItem();
         var dir = hit.getDirection();
         boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
-        boolean tool = stone ? itemStack.is(ItemTags.PICKAXES) : itemStack.is(ItemTags.AXES);
+        boolean tool = stone ? itemStack.getItem() instanceof PickaxeItem : itemStack.getItem() instanceof AxeItem;
 
         if (dir == Direction.UP || dir == Direction.DOWN || !tool) {
             return super.use(state, level, pos, player, hand, hit);

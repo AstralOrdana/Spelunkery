@@ -8,7 +8,6 @@ import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -28,11 +27,10 @@ public class BuriedTreasureMixin {
         BlockState blockState = level.getBlockState(mutableBlockPos);
         BlockState blockState2 = level.getBlockState(mutableBlockPos.above());
 
-        if (!blockState.isAir() && !blockState.is(Blocks.WATER) && (blockState2.isAir() || blockState2.is(Blocks.WATER))) level.setBlock(mutableBlockPos, blockState.is(Blocks.SAND) ? Blocks.SUSPICIOUS_SAND.defaultBlockState() : Blocks.SUSPICIOUS_GRAVEL.defaultBlockState(), 3);
-
-        BlockEntity blockEntity = level.getBlockEntity(mutableBlockPos);
-        if (blockEntity instanceof BrushableBlockEntity susSand) {
-            (susSand).setLootTable(Spelunkery.res("gameplay/buried_treasure_marker"), random.nextLong());
+        if (!blockState.isAir() && !blockState.is(Blocks.WATER)) {
+            if (!blockState2.isAir()) {
+                blockState2.is(Blocks.WATER);
+            }
         }
     }
 

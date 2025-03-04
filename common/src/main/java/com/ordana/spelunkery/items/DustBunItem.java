@@ -21,7 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -54,8 +54,8 @@ public class DustBunItem extends Item {
 
         ItemStack stack = player.getItemInHand(hand);
         if (level instanceof ServerLevel serverLevel) {
-            LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(Spelunkery.res("gameplay/dust_bun"));
-            LootParams.Builder builder = new LootParams.Builder((ServerLevel) level)
+            LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootTables().get(Spelunkery.res("gameplay/dust_bun"));
+            LootContext.Builder builder = new LootContext.Builder(serverLevel)
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
                     .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
 
