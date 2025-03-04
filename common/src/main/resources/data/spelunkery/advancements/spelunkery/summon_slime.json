@@ -19,26 +19,18 @@
     "item": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "location": [
-          {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "items": [
-                "minecraft:slime_block"
-              ]
-            }
-          },
-          {
-            "condition": "minecraft:location_check",
-            "predicate": {
-              "block": {
-                "blocks": [
-                  "minecraft:water_cauldron"
-                ]
-              }
-            }
+        "item": {
+          "items": [
+            "minecraft:slime_block"
+          ]
+        },
+        "location": {
+          "block": {
+            "blocks": [
+              "minecraft:water_cauldron"
+            ]
           }
-        ]
+        }
       }
     }
   },

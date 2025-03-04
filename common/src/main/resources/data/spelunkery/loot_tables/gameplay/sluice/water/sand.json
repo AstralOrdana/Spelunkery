@@ -10,7 +10,7 @@
           "name": "minecraft:kelp",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
+              "condition": "minecraft:alternative",
               "terms": [
                 {
                   "condition": "minecraft:location_check",
@@ -76,7 +76,7 @@
           "name": "minecraft:seagrass",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
+              "condition": "minecraft:alternative",
               "terms": [
                 {
                   "condition": "minecraft:location_check",
@@ -144,7 +144,7 @@
           "name": "spelunkery:raw_gold_nugget",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
+              "condition": "minecraft:alternative",
               "terms": [
                 {
                   "condition": "minecraft:location_check",
@@ -319,19 +319,6 @@
           "type": "minecraft:item",
           "weight": 10,
           "name": "minecraft:sea_pickle",
-          "conditions": [
-            {
-              "condition": "minecraft:location_check",
-              "predicate": {
-                "biome": "minecraft:warm_ocean"
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 1,
-          "name": "minecraft:sniffer_egg",
           "conditions": [
             {
               "condition": "minecraft:location_check",
