@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 public class ModDispenserBehaviors {
 
     public static void registerBehaviors() {
-        DispenserBlock.registerBehavior(Items.TNT, new CBMBehavior());
+        DispenserBlock.registerBehavior(ModItems.COMPRESSION_BLAST_MINER.get(), new CBMBehavior());
         DispenserBlock.registerBehavior(ModItems.EGGPLANT.get(), new EggplantBehavior());
         DispenserBlock.registerBehavior(ModItems.MINEOMITE.get(), new MineOMiteBehavior());
         Registry.ITEM.getTagOrEmpty(ModTags.GRINDSTONE_REPAIR_ITEM).iterator().forEachRemaining(h ->

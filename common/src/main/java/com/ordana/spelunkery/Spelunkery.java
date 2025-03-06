@@ -65,7 +65,6 @@ public class Spelunkery {
         ModEntities.init();
         ModParticles.init();
         ModSoundEvents.init();
-//        ModDispenserBehaviors.registerBehaviors();
 
         MoonlightEventsHelper.addListener(Spelunkery::compassLogic, IDropItemOnDeathEvent.class);
 
@@ -74,6 +73,7 @@ public class Spelunkery {
 
     public static void setup() {
         ModCompostable.register();
+        ModDispenserBehaviors.registerBehaviors();
     }
 
     private static void compassLogic(IDropItemOnDeathEvent event) {
