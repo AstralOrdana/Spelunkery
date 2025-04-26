@@ -21,6 +21,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
+import java.util.Set;
 
 public class PortalFluidRenderer extends ModFluidRenderProperties {
     private final ResourceLocation overlay;
@@ -420,6 +421,33 @@ public class PortalFluidRenderer extends ModFluidRenderProperties {
 
     public Vec3 modifyFogColor(FluidState state, BlockAndTintGetter getter, BlockPos pos) {
         return this.modifyFogColor();
+    }
+
+    public static void registerTextures(final Set<ResourceLocation> sprites) {
+        sprites.add(PortalFluidRenderer.portalFluidLargeSW);
+        sprites.add(PortalFluidRenderer.portalFluidLargeSE);
+        sprites.add(PortalFluidRenderer.portalFluidLargeNW);
+        sprites.add(PortalFluidRenderer.portalFluidLargeNE);
+        sprites.add(PortalFluidRenderer.portalFluidN);
+        sprites.add(PortalFluidRenderer.portalFluidE);
+        sprites.add(PortalFluidRenderer.portalFluidS);
+        sprites.add(PortalFluidRenderer.portalFluidW);
+        sprites.add(PortalFluidRenderer.portalFluidSW);
+        sprites.add(PortalFluidRenderer.portalFluidSE);
+        sprites.add(PortalFluidRenderer.portalFluidNW);
+        sprites.add(PortalFluidRenderer.portalFluidNE);
+        sprites.add(PortalFluidRenderer.portalFluidNS);
+        sprites.add(PortalFluidRenderer.portalFluidEW);
+        sprites.add(PortalFluidRenderer.portalFluidWNE);
+        sprites.add(PortalFluidRenderer.portalFluidNES);
+        sprites.add(PortalFluidRenderer.portalFluidESW);
+        sprites.add(PortalFluidRenderer.portalFluidSWN);
+        sprites.add(PortalFluidRenderer.portalFluidNESW);
+        sprites.add(PortalFluidRenderer.portalFluidNONE);
+        sprites.add(PortalFluidRenderer.portalFluidUncommon);
+        sprites.add(PortalFluidRenderer.portalFluidRare);
+        sprites.add(PortalFluidRenderer.portalFluidSnence);
+//        sprites.add(PortalFluidRenderer.portalfluidMaple);
     }
 
 }

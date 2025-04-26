@@ -3,6 +3,7 @@ package com.ordana.spelunkery;
 import com.ordana.spelunkery.blocks.rock_salt.RockSaltBlock;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
+import com.ordana.spelunkery.fluids.PortalFluidRenderer;
 import com.ordana.spelunkery.items.AmethystTuningForkItem;
 import com.ordana.spelunkery.items.HandheldCompactorItem;
 import com.ordana.spelunkery.items.MagneticCompassItem;
@@ -25,6 +26,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.Set;
 
 public class SpelunkeryClient {
 
