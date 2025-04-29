@@ -48,7 +48,7 @@ public class Spelunkery {
 
         PlatformHelper.addCommonSetup(Spelunkery::setup);
 
-        if(PlatformHelper.Env.CLIENT.isClient()) {
+        if(PlatformHelper.getEnv().isClient()) {
             ClientConfigs.init();
 
             ClientPlatformHelper.registerOptionalTexturePack(Spelunkery.res("better_vanilla_gems"), "Better Vanilla Gems", false);

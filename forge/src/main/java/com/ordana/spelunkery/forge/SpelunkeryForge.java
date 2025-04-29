@@ -15,7 +15,7 @@ public class SpelunkeryForge {
     public SpelunkeryForge() {
         Spelunkery.commonInit();
 
-        if (PlatformHelper.Env.CLIENT.isClient()) {
+        if (PlatformHelper.getEnv().isClient()) {
             ClientEventsForge.init();
             SpelunkeryClient.init();
         }

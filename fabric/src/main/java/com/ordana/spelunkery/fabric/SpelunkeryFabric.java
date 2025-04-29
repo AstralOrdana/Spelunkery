@@ -25,7 +25,7 @@ public class SpelunkeryFabric implements ModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTING.register(s -> currentServer = s);
 
-        if(PlatformHelper.Env.CLIENT.isClient()) {
+        if(PlatformHelper.getEnv().isClient()) {
             ClientEventsFabric.init();
             SpelunkeryClient.init();
         }
