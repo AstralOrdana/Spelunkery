@@ -6,7 +6,6 @@ import com.ordana.spelunkery.reg.ModTags;
 import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
@@ -40,7 +39,7 @@ public class PortalFluidBlock extends LiquidBlock {
 
     @Override
     public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registries.DIMENSION_TYPE);
+        Optional<? extends Registry<DimensionType>> registry = level.registryAccess().registry(Registry.DIMENSION_TYPE_REGISTRY);
 
         if (registry.isPresent() && level.dimensionType() == registry.get().get(BuiltinDimensionTypes.END) && level.getMinBuildHeight() + 3 >= pos.getY() && !CommonConfigs.END_OCEAN_BUCKETABLE.get()) {
             return ItemStack.EMPTY;

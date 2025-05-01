@@ -40,9 +40,9 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
     }
 
     @Override
-    public boolean handleGameEvent(ServerLevel level, GameEvent gameEvent, GameEvent.Context context, Vec3 pos) {
-        if (ModGameEvents.COMPASS_PING_EVENT.get() == gameEvent) {
-            Entity entity = context.sourceEntity();
+    public boolean handleGameEvent(ServerLevel level, GameEvent.Message eventMessage) {
+        if (ModGameEvents.COMPASS_PING_EVENT.get() == eventMessage.gameEvent()) {
+            Entity entity = eventMessage.context().sourceEntity();
 
             if (entity instanceof Player player) {
                 var inventory = player.getInventory();

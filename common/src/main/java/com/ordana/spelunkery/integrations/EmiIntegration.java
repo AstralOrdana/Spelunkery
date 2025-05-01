@@ -11,9 +11,9 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiWorldInteractionRecipe;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
@@ -42,13 +42,13 @@ public class EmiIntegration implements EmiPlugin {
         var style = Style.EMPTY.applyFormats(ChatFormatting.GREEN);
 
 
-        if (PlatHelper.isModLoaded("create")) {
+        if (PlatformHelper.isModLoaded("create")) {
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
                     .id(new ResourceLocation("spelunkery", "/rose_quartz"))
                     .rightInput(grindstone, true)
-                    .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:rose_quartz"))))
-                    .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
+                    .leftInput(EmiStack.of(Registry.ITEM.get(new ResourceLocation("create:rose_quartz"))))
+                    .output(EmiStack.of(Registry.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
                     .build());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -323,8 +323,6 @@ public class EmiIntegration implements EmiPlugin {
             .output(EmiStack.of(Items.BROWN_STAINED_GLASS_PANE).setChance(1f / 158f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.beaches").setStyle(style)))
             .output(EmiStack.of(Items.SEA_PICKLE).setChance(10f / 158f), s -> s.appendTooltip(
-                Component.translatable("tooltip.spelunkery.sluice.warm_oceans").setStyle(style)))
-            .output(EmiStack.of(Items.SNIFFER_EGG).setChance(1f / 158f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.warm_oceans").setStyle(style)))
             .output(EmiStack.of(Items.FIRE_CORAL).setChance(2f / 158f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.warm_oceans").setStyle(style)))

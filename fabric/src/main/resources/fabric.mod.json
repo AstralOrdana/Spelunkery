@@ -40,8 +40,8 @@
     "spelunkery-common.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
-    "minecraft": "1.20.1",
-    "moonlight": ">=1.20-2.12.21"
+    "fabric-api": "*",
+    "minecraft": "1.19.2",
+    "moonlight": ">=1.19.2-2.0.35"
   }
 }

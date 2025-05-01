@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -375,7 +376,7 @@ public class SaltBlock extends Block {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity && entity.getType().is(ModTags.HURT_BY_SALT)) {
             if (((LivingEntity) entity).isInvertedHealAndHarm()) entity.setRemainingFireTicks(8);
-            entity.hurt(entity.damageSources().hotFloor(), 1.0F);
+            entity.hurt(DamageSource.HOT_FLOOR, 1.0F);
         }
     }
 }

@@ -3,14 +3,18 @@ package com.ordana.spelunkery.events;
 import com.ordana.spelunkery.reg.ModParticles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -35,11 +39,11 @@ public class ClientReceivers {
                 //ParticleUtils.spawnParticleOnFace(l, message.pos, );
             }
             if (message.id == ClientBoundParticlePacket.EventType.SULFUR_VENT) {
-                Vec3 vec = Vec3.atCenterOf(BlockPos.containing(message.pos));
-                var dir = l.getBlockState(BlockPos.containing(vec)).getValue(BlockStateProperties.FACING);
-                var water = l.getFluidState(BlockPos.containing(vec).relative(dir)).is(Fluids.WATER);
+                Vec3 vec = Vec3.atCenterOf(ClientReceivers.containing(message.pos));
+                var dir = l.getBlockState(ClientReceivers.containing(vec)).getValue(BlockStateProperties.FACING);
+                var water = l.getFluidState(ClientReceivers.containing(vec).relative(dir)).is(Fluids.WATER);
 
-                var dustBlockPos = BlockPos.containing(vec).relative(dir.getOpposite());
+                var dustBlockPos = ClientReceivers.containing(vec).relative(dir.getOpposite());
                 var dustBlockState = l.getBlockState(dustBlockPos);
                 var dustBlock = dustBlockState.getBlock();
 
@@ -66,5 +70,9 @@ public class ClientReceivers {
                 }
             }
         });
+    }
+
+    private static BlockPos containing(@NotNull Vec3 input) {
+        return new BlockPos(input);
     }
 }

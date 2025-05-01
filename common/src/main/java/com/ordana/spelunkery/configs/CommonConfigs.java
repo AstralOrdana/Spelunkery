@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.configs;
 
 import com.ordana.spelunkery.Spelunkery;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigSpec;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;
@@ -74,7 +74,7 @@ public class CommonConfigs {
         ENABLE_MORES = builder.define("enable_mores", true);
         ENABLE_ROUGH_GEMS = builder.define("enable_rough_gems", true);
         ENABLE_RAW_NUGGETS = builder.define("enable_raw_nuggets", true);
-        PlatHelper.getPlatform().ifFabric(() -> {
+        PlatformHelper.getPlatform().ifFabric(() -> {
             ORE_STONE_DROPS = builder.define("ores_drop_base_stone", false);
         });
         builder.pop();

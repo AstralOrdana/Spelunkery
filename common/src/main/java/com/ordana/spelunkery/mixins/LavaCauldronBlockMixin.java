@@ -46,8 +46,9 @@ public class LavaCauldronBlockMixin extends AbstractCauldronBlock {
                 Slime slime = EntityType.MAGMA_CUBE.create(serverLevel);
                 if (slime != null) {
                     try {
-                        ServerPlayer player = (ServerPlayer) item.getOwner();
-                        CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(Objects.requireNonNull(player), pos, itemStack);
+                        Entity entity1 = ((ServerLevel) level).getEntity(item.getOwner());
+                        if (entity1 instanceof ServerPlayer player)
+                            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(Objects.requireNonNull(player), pos, itemStack);
                     } catch (NullPointerException|ClassCastException ex) {
                         // ignored -- not thrown by a player
                     }

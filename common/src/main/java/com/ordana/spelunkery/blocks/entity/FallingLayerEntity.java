@@ -109,7 +109,7 @@ public class FallingLayerEntity extends FallingBlockEntity {
 
 
                 //fall
-                if (!this.onGround()) {
+                if (!this.onGround) {
                     if (!this.level.isClientSide && (this.time > 100 && (pos.getY() <= this.level.getMinBuildHeight() || pos.getY() > this.level.getMaxBuildHeight()) || this.time > 600)) {
                         discardAndDrop(blockState,pos);
                         return;
@@ -151,7 +151,7 @@ public class FallingLayerEntity extends FallingBlockEntity {
                                 if (remaining != 0) {
                                     BlockPos above = pos.above();
                                     blockState = blockState.setValue(block.layerProperty(), remaining);
-                                    if (level.getBlockState(above).canBeReplaced()) {
+                                    if (level.getBlockState(above).getMaterial().isReplaceable()) {
                                         if (!this.level.setBlock(above, blockState, 3)) {
                                             ((ServerLevel) this.level).getChunkSource().chunkMap.broadcast(this,
                                                     new ClientboundBlockUpdatePacket(above, this.level.getBlockState(above)));

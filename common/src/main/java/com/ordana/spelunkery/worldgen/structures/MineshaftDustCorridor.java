@@ -230,7 +230,7 @@ public class MineshaftDustCorridor extends MineshaftPieces.MineShaftPiece {
                         BlockEntity blockEntity = level.getBlockEntity(blockPos);
                         if (blockEntity instanceof SpawnerBlockEntity) {
                             SpawnerBlockEntity spawnerBlockEntity = (SpawnerBlockEntity)blockEntity;
-                            spawnerBlockEntity.setEntityId(ModEntities.DUST_BUNNY.get(), random);
+                            spawnerBlockEntity.getSpawner().setEntityId(ModEntities.DUST_BUNNY.get());
                         }
                     }
                 }

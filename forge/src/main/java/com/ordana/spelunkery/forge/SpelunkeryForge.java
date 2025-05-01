@@ -3,7 +3,7 @@ package com.ordana.spelunkery.forge;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.reg.ModSetup;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -15,7 +15,7 @@ public class SpelunkeryForge {
     public SpelunkeryForge() {
         Spelunkery.commonInit();
 
-        if (PlatHelper.getPhysicalSide().isClient()) {
+        if (PlatformHelper.getEnv().isClient()) {
             ClientEventsForge.init();
             SpelunkeryClient.init();
         }

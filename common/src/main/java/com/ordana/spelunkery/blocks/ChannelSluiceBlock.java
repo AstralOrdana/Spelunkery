@@ -11,6 +11,7 @@ import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -27,7 +28,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -41,7 +44,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -106,9 +109,9 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
             if (fluidName.contains("flowing_")) fluidName = fluidName.replace("flowing_", "");
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/passive");
-            var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
+            var lootTable = Objects.requireNonNull(level.getServer()).getLootTables().get(tablePath);
 
-            LootParams.Builder builder = (new LootParams.Builder(level))
+            LootContext.Builder builder = (new LootContext.Builder(level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                     .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)
@@ -139,7 +142,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
-        boolean tool = stone ? stack.is(ItemTags.PICKAXES) : stack.is(ItemTags.AXES);
+        boolean tool = stone ? stack.getItem() instanceof PickaxeItem : stack.getItem() instanceof AxeItem;
         var dir = hit.getDirection();
 
         if (tool  && (dir != Direction.DOWN && dir != Direction.UP)) {

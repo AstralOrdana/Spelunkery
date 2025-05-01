@@ -36,7 +36,7 @@ import net.minecraft.world.level.block.CryingObsidianBlock;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -252,9 +252,9 @@ public class ModEvents {
         if (!level.isClientSide()) {
             //find loot table for held item
             var tablePath = Spelunkery.res("gameplay/" + (diamondGrindstone && !depleted ? "diamond_" : "") + "grindstone_polishing/" + itemName);
-            var lootTable = level.getServer().getLootData().getLootTable(tablePath);
+            var lootTable = level.getServer().getLootTables().get(tablePath);
 
-            LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
+            LootContext.Builder builder = (new LootContext.Builder((ServerLevel) level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                     .withParameter(LootContextParams.TOOL, ItemStack.EMPTY);
@@ -263,7 +263,7 @@ public class ModEvents {
 
             if (lootItem.isEmpty()) {
                 tablePath = Spelunkery.res("gameplay/grindstone_polishing/" + itemName);
-                var lootTable2 = level.getServer().getLootData().getLootTable(tablePath);
+                var lootTable2 = level.getServer().getLootTables().get(tablePath);
 
                 lootItem = lootTable2.getRandomItems(builder.create(LootContextParamSets.BLOCK));
             }

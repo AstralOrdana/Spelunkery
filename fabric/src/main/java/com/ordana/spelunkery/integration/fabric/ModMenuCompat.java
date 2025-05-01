@@ -34,9 +34,7 @@ public class ModMenuCompat implements ModMenuApi {
             int y = this.height - 27;
             int centerX = this.width / 2;
 
-            this.addRenderableWidget(Button.builder(CommonComponents.GUI_BACK, (button) -> this.minecraft.setScreen(this.parent))
-                    .bounds(centerX - 45, y, 90, 20).build());
-
+            this.addRenderableWidget(new Button(centerX - 45, y, 90, 20, CommonComponents.GUI_BACK, (button) -> this.minecraft.setScreen(this.parent)));
             //TODO: link buttons
 
         }

@@ -1,7 +1,7 @@
 package com.ordana.spelunkery.items;
 
 import dev.architectury.injectables.annotations.PlatformOnly;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 
 public class SpringWaterBucketItem extends BucketItem {
 
-    private static final Field CONTENT = PlatHelper.findField(BucketItem.class, "content");
+    private static final Field CONTENT = PlatformHelper.findField(BucketItem.class, "content");
 
     public SpringWaterBucketItem(Fluid fluid, Properties properties) {
         super(fluid, properties);

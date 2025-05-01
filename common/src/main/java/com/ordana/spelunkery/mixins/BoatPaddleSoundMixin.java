@@ -4,6 +4,7 @@ import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -46,7 +47,7 @@ public class BoatPaddleSoundMixin extends Entity {
             for(int l1 = k; l1 < l; ++l1) {
                 for(int i2 = i1; i2 < j1; ++i2) {
                     blockpos$mutableblockpos.set(k1, l1, i2);
-                    FluidState fluidstate = this.level().getFluidState(blockpos$mutableblockpos);
+                    FluidState fluidstate = this.level.getFluidState(blockpos$mutableblockpos);
                     return fluidstate.is(ModFluids.PORTAL_FLUID.get()) || fluidstate.is(ModFluids.FLOWING_PORTAL_FLUID.get());
 
                 }
@@ -67,5 +68,10 @@ public class BoatPaddleSoundMixin extends Entity {
 
     @Shadow
     protected void addAdditionalSaveData(CompoundTag compound) {
+    }
+
+    @Override
+    public Packet<?> getAddEntityPacket() {
+        return null;
     }
 }

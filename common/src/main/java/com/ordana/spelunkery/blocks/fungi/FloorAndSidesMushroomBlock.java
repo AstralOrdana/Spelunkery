@@ -8,7 +8,7 @@ import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -105,10 +105,10 @@ public class FloorAndSidesMushroomBlock extends Block implements BonemealableBlo
         level.removeBlock(pos, false);
         Holder<ConfiguredFeature<?, ?>> feature = null;
 
-        if (state.is(ModBlocks.PHOSPHOR_FUNGUS.get())) feature = (level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_phosphor_fungus_bonemeal"))).get());
-        if (state.is(ModBlocks.MUSHGLOOM.get())) feature = (level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("huge_mushgloom_bonemeal"))).get());
+        if (state.is(ModBlocks.PHOSPHOR_FUNGUS.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+            ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_phosphor_fungus_bonemeal"))).get());
+        if (state.is(ModBlocks.MUSHGLOOM.get())) feature = (level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+            ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("huge_mushgloom_bonemeal"))).get());
 
         if (feature != null) {
             if ((feature.value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
@@ -122,7 +122,7 @@ public class FloorAndSidesMushroomBlock extends Block implements BonemealableBlo
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
         return state.getValue(FLOOR) && (level.getBlockState(pos.below()).is(BlockTags.MUSHROOM_GROW_BLOCK) || pos.getY() < 0);
     }
 

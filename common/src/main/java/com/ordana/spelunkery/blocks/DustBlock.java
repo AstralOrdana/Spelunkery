@@ -4,6 +4,7 @@ import com.ordana.spelunkery.reg.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -89,7 +90,7 @@ public class DustBlock extends FallingLayerBlock {
 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float height) {
-        entity.causeFallDamage(height, 0.1f, entity.damageSources().fall());
+        entity.causeFallDamage(height, 0.1f, DamageSource.FALL);
     }
 
     @Override

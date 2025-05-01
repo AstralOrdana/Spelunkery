@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.mixins;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
 import com.ordana.spelunkery.blocks.ChannelBlock;
 import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
@@ -7,6 +8,7 @@ import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.FluidState;
@@ -30,7 +32,7 @@ abstract class FlowingFluidMixin {
 
 
     @ModifyVariable(method = "getSpread", at = @At("STORE"), ordinal = 0)
-    private boolean modifyFlag(boolean flag, Level level, BlockPos pos, BlockState state) {
+    private boolean modifyFlag(boolean flag, LevelReader level, BlockPos pos, BlockState state) {
 
         var channelState = level.getBlockState(pos.below());
         if (channelState.getBlock() instanceof ChannelBlock && dir != Direction.UP && dir != Direction.DOWN) {
@@ -42,13 +44,13 @@ abstract class FlowingFluidMixin {
     @Inject(method = "getSpread", at = @At(value = "INVOKE",
             target = "Lit/unimi/dsi/fastutil/shorts/Short2BooleanMap;computeIfAbsent(SLit/unimi/dsi/fastutil/shorts/Short2BooleanFunction;)Z"),
             locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void getDirection(Level level, BlockPos pos, BlockState state, CallbackInfoReturnable<Map<Direction, FluidState>> cir, int i, Map map, Short2ObjectMap short2ObjectMap, Short2BooleanMap short2BooleanMap, Iterator var8, Direction direction, BlockPos blockPos, short s, Pair pair, BlockState blockState, FluidState fluidState, FluidState fluidState2, BlockPos blockPos2) {
+    private void getDirection(LevelReader level, BlockPos pos, BlockState state, CallbackInfoReturnable<Map<Direction, FluidState>> cir, int i, Map map, Short2ObjectMap short2ObjectMap, Short2BooleanMap short2BooleanMap, Iterator var8, Direction direction, BlockPos blockPos, short s, Pair pair, BlockState blockState, FluidState fluidState, FluidState fluidState2, BlockPos blockPos2) {
         dir = direction;
     }
 
     @Redirect(method = "getSpread",
             at = @At(value = "INVOKE", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"))
-    private <K, V> V addChannelException(Map<K, V> instance, K direction, V fluidState, Level level, BlockPos pos, BlockState blockState) {
+    private <K, V> V addChannelException(Map<K, V> instance, K direction, V fluidState, LevelReader level, BlockPos pos, BlockState blockState) {
 
         var channelState = level.getBlockState(pos.below());
         if (channelState.getBlock() instanceof ChannelBlock && direction != Direction.DOWN && direction != Direction.UP) {

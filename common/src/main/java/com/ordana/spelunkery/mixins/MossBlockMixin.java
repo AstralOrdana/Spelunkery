@@ -2,7 +2,7 @@ package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.Spelunkery;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -28,8 +28,8 @@ public class MossBlockMixin extends Block {
     }
 
     public boolean growMushroom(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
-        if (((level.registryAccess().registry(Registries.CONFIGURED_FEATURE).get().getHolder(
-                ResourceKey.create(Registries.CONFIGURED_FEATURE, Spelunkery.res("spore_patch_bonemeal"))).get())
+        if (((level.registryAccess().registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, Spelunkery.res("spore_patch_bonemeal"))).get())
                 .value()).place(level, level.getChunkSource().getGenerator(), random, pos)) {
             return true;
         } else {

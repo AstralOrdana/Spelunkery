@@ -20,12 +20,12 @@ public class PickOnAStickEntity extends ImprovedProjectileEntity {
 
     public PickOnAStickEntity(EntityType<PickOnAStickEntity> type, Level level) {
         super(type, level);
-        this.maxStuckTime = Integer.MAX_VALUE;
+        this.maxGroundTime = Integer.MAX_VALUE;
     }
 
     public PickOnAStickEntity(Level level, LivingEntity thrower) {
         super(ModEntities.PICK.get(), thrower, level);
-        this.maxStuckTime = Integer.MAX_VALUE;
+        this.maxGroundTime = Integer.MAX_VALUE;
     }
 
     public PickOnAStickEntity(Level worldIn, double x, double y, double z) {
