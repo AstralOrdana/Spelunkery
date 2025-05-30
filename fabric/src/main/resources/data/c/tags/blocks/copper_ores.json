@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:andesite_copper_ore",
+    "spelunkery:diorite_copper_ore",
+    "spelunkery:granite_copper_ore",
+    "spelunkery:tuff_copper_ore",
+    "minecraft:deepslate_copper_ore",
+    "minecraft:copper_ore"
+  ]
+}

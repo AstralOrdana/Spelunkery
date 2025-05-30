@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:andesite_coal_ore",
+    "spelunkery:diorite_coal_ore",
+    "spelunkery:granite_coal_ore",
+    "spelunkery:tuff_coal_ore",
+    "minecraft:deepslate_coal_ore",
+    "minecraft:coal_ore"
+  ]
+}
