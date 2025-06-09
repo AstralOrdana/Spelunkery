@@ -84,7 +84,8 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
     public ChannelSluiceBlock(Properties properties) {
         super(properties);
-        super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false).setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
+        super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false)
+                .setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -92,18 +93,21 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(GRATE_NORTH) || state.getValue(GRATE_EAST) || state.getValue(GRATE_WEST) || state.getValue(GRATE_SOUTH);
+        return state.getValue(GRATE_NORTH) || state.getValue(GRATE_EAST) || state.getValue(GRATE_WEST)
+                || state.getValue(GRATE_SOUTH);
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int flow = ChannelSluiceBlock.getFlow(level, state, pos);
-        if (!(level.getBlockEntity(pos) instanceof SluiceBlockEntity sluice) || flow == 0) return;
+        if (!(level.getBlockEntity(pos) instanceof SluiceBlockEntity sluice) || flow == 0)
+            return;
 
         var fluidName = Utils.getID(level.getFluidState(pos.above()).getType()).getPath();
 
         if (!Objects.equals(fluidName, "empty")) {
 
-            if (fluidName.contains("flowing_")) fluidName = fluidName.replace("flowing_", "");
+            if (fluidName.contains("flowing_"))
+                fluidName = fluidName.replace("flowing_", "");
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/passive");
             var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
@@ -116,7 +120,8 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
             for (int i = 0; i < flow; ++i) {
                 var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
-                if (lootItem.isEmpty()) return;
+                if (lootItem.isEmpty())
+                    return;
 
                 if (lootItem.iterator().next().getItem() instanceof SpawnEggItem egg) {
 
@@ -135,53 +140,55 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         }
     }
 
-
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
+            BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
         boolean tool = stone ? stack.is(ItemTags.PICKAXES) : stack.is(ItemTags.AXES);
         var dir = hit.getDirection();
 
-        if (tool  && (dir != Direction.DOWN && dir != Direction.UP)) {
+        if (tool && (dir != Direction.DOWN && dir != Direction.UP)) {
             if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.playSound(null, pos, stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false)
+                        .setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
+                if (!stone)
+                    level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pos, stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK, SoundSource.BLOCKS,
+                        1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
-            }
-            else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos,
+                        new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
+            } else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), false), 3);
-                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (!stone)
+                    level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
-            }
-            else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos,
+                        new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
+            } else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+                level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS,
+                        1.0F, 1.0F);
+                if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY))
+                    level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
             }
             if (!player.isCreative()) {
-                stack.hurtAndBreak(1, player, (playerx)
-                        -> playerx.broadcastBreakEvent(hand));
+                stack.hurtAndBreak(1, player, (playerx) -> playerx.broadcastBreakEvent(hand));
             }
 
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        else if (level.isClientSide) {
+        } else if (level.isClientSide) {
             return InteractionResult.SUCCESS;
-        }
-        else {
+        } else {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof SluiceBlockEntity) {
-                player.openMenu((SluiceBlockEntity)blockEntity);
+                player.openMenu((SluiceBlockEntity) blockEntity);
             }
 
             return InteractionResult.CONSUME;
         }
     }
-
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -194,8 +201,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
             if (north && south && east && west) {
                 return SHAPE_TALL_NESW;
-            }
-            else if (north) {
+            } else if (north) {
                 model = SHAPE_TALL_N;
 
                 if (east) {
@@ -258,8 +264,9 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     public static int getFlow(Level level, BlockState state, BlockPos pos) {
         int flowCount = 0;
         for (var direction : Direction.Plane.HORIZONTAL) {
-            BlockPos neighborPos = pos.relative(direction);
-            if (!level.getFluidState(neighborPos).is(Fluids.EMPTY) && state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(direction))) {
+            BlockPos neighborPos = pos.relative(direction).above();
+            if (!level.getFluidState(neighborPos).is(Fluids.EMPTY)
+                    && state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(direction))) {
                 flowCount += 1;
             }
         }
@@ -270,7 +277,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof Container) {
-                Containers.dropContents(level, pos, (Container)blockEntity);
+                Containers.dropContents(level, pos, (Container) blockEntity);
                 level.updateNeighbourForOutputSignal(pos, this);
             }
 
@@ -281,7 +288,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof SluiceBlockEntity) {
-            ((SluiceBlockEntity)blockEntity).recheckOpen();
+            ((SluiceBlockEntity) blockEntity).recheckOpen();
         }
         super.tick(state, level, pos, random);
 
@@ -296,11 +303,12 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @org.jetbrains.annotations.Nullable LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state,
+            @org.jetbrains.annotations.Nullable LivingEntity placer, ItemStack stack) {
         if (stack.hasCustomHoverName()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof SluiceBlockEntity) {
-                ((SluiceBlockEntity)blockEntity).setCustomName(stack.getHoverName());
+                ((SluiceBlockEntity) blockEntity).setCustomName(stack.getHoverName());
             }
         }
 
@@ -313,6 +321,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
     }
+
     public boolean triggerEvent(BlockState state, Level level, BlockPos pos, int id, int param) {
         super.triggerEvent(state, level, pos, id, param);
         BlockEntity blockEntity = level.getBlockEntity(pos);
@@ -322,14 +331,18 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     @Nullable
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        return blockEntity instanceof MenuProvider ? (MenuProvider)blockEntity : null;
+        return blockEntity instanceof MenuProvider ? (MenuProvider) blockEntity : null;
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+            BlockEntityType<T> blockEntityType) {
         if (!level.isClientSide) {
-            return createTickerHelper(blockEntityType, (state.is(ModBlocks.WOODEN_SLUICE.get()) ? ModEntities.WOODEN_SLUICE.get() : ModEntities.STONE_SLUICE.get()), SluiceBlockEntity::pushItemsTick);
+            return createTickerHelper(blockEntityType,
+                    (state.is(ModBlocks.WOODEN_SLUICE.get()) ? ModEntities.WOODEN_SLUICE.get()
+                            : ModEntities.STONE_SLUICE.get()),
+                    SluiceBlockEntity::pushItemsTick);
         } else {
             return super.getTicker(level, state, blockEntityType);
         }
@@ -340,20 +353,20 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         GRATE_EAST = ModBlockProperties.GRATE_EAST;
         GRATE_SOUTH = ModBlockProperties.GRATE_SOUTH;
         GRATE_WEST = ModBlockProperties.GRATE_WEST;
-        GRATE_PROPERTY_BY_DIRECTION = ImmutableMap.copyOf((Map) Util.make(Maps.newEnumMap(Direction.class), (enumMap) -> {
-            enumMap.put(Direction.NORTH, GRATE_NORTH);
-            enumMap.put(Direction.EAST, GRATE_EAST);
-            enumMap.put(Direction.SOUTH, GRATE_SOUTH);
-            enumMap.put(Direction.WEST, GRATE_WEST);
-        }));
-
+        GRATE_PROPERTY_BY_DIRECTION = ImmutableMap
+                .copyOf((Map) Util.make(Maps.newEnumMap(Direction.class), (enumMap) -> {
+                    enumMap.put(Direction.NORTH, GRATE_NORTH);
+                    enumMap.put(Direction.EAST, GRATE_EAST);
+                    enumMap.put(Direction.SOUTH, GRATE_SOUTH);
+                    enumMap.put(Direction.WEST, GRATE_WEST);
+                }));
 
         SHAPE_TALL_NONE = Shapes.or(SHAPE_LEGS, SHAPE_BASE);
 
         SHAPE_TALL_N = Shapes.or(SHAPE_LEGS, SHAPE_BASE, Block.box(0.0D, 12.0D, -2.0D, 16.0D, 32.0D, 0.0D));
         SHAPE_TALL_E = Shapes.or(SHAPE_LEGS, SHAPE_BASE, Block.box(16.0D, 12.0D, 0.0D, 18.0D, 32.0D, 16.0D));
         SHAPE_TALL_S = Shapes.or(SHAPE_LEGS, SHAPE_BASE, Block.box(0.0D, 12.0D, 16.0D, 16.0D, 32.0D, 18.0D));
-        SHAPE_TALL_W = Shapes.or(SHAPE_LEGS, SHAPE_BASE, Block.box(-2.0D, 12.0D, 0.0D, 0.0D,  32.0D, 16.0D));
+        SHAPE_TALL_W = Shapes.or(SHAPE_LEGS, SHAPE_BASE, Block.box(-2.0D, 12.0D, 0.0D, 0.0D, 32.0D, 16.0D));
 
         SHAPE_TALL_NE = Shapes.or(SHAPE_TALL_N, SHAPE_TALL_E);
         SHAPE_TALL_SE = Shapes.or(SHAPE_TALL_S, SHAPE_TALL_E);
