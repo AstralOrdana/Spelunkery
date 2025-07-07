@@ -221,7 +221,7 @@ public class ModEvents {
         if (!state.is(Blocks.GRINDSTONE) && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get())) return InteractionResult.PASS;
 
         //handle enchants
-        if (stack.isEnchanted()) {
+        if (stack.isEnchanted() && CommonConfigs.GRINDSTONE_DISENCHANTS_TOOLS.get()) {
             if (level instanceof ServerLevel serverLevel) ExperienceOrb.award(serverLevel, Vec3.atCenterOf(pos), getExperienceFromItem(stack, depleted));
             player.setItemInHand(hand, removeEnchants(stack, stack.getDamageValue(), depleted));
             return InteractionResult.SUCCESS;
