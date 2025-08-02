@@ -245,7 +245,7 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
     }
 
     @Override
-    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+    public void animateItemFirstPerson(Player entity, ItemStack stack, InteractionHand hand, HumanoidArm arm, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
         if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand &&
                 entity.getTicksUsingItem() < 60) {
@@ -257,10 +257,10 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
             float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
             float f18 = f12 - 0.1F;
             float f20 = f15 * f18;
-            matrixStack.translate(0, f20 * 0.007F, 0);
+            poseStack.translate(0, f20 * 0.007F, 0);
 
-            matrixStack.translate(0, 0, f12 * 0.04F);
-            matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
+            poseStack.translate(0, 0, f12 * 0.04F);
+            poseStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
             //matrixStack.mulPose(Vector3f.YN.rotationDegrees((float)k * 45.0F));
         }
     }

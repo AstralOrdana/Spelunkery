@@ -43,7 +43,7 @@ public class Spelunkery {
         }
         initiated = true;
 
-        NetworkHandler.registerMessages();
+        NetworkHandler.init();
         CommonConfigs.init();
 
         PlatHelper.addCommonSetup(Spelunkery::setup);

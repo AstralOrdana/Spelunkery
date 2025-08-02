@@ -279,7 +279,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     @Override
-    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+    public void animateItemFirstPerson(Player entity, ItemStack stack, InteractionHand hand, HumanoidArm arm, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
         if (tolling && entity.getUsedItemHand() == hand && entity.level() instanceof ClientLevel level) {
 

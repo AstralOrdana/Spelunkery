@@ -8,7 +8,9 @@ loom {
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modImplementation("curse.maven:selene-499980:5726768")
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.3.6"))
+
+    modImplementation("curse.maven:selene-499980:6838880")
     modImplementation "dev.emi:emi-xplat-intermediary:${rootProject.emi_version}:api"
 }
 
