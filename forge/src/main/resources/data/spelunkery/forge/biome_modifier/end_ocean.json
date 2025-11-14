@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_end",
-  "features": [
-    "spelunkery:portal_fluid_ocean"
-  ],
-  "step": "raw_generation"
-}

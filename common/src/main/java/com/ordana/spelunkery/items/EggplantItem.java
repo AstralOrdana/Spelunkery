@@ -29,4 +29,6 @@ public class EggplantItem extends Item {
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
+
+
 }

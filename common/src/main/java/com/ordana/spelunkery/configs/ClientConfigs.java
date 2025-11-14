@@ -20,7 +20,6 @@ public class ClientConfigs {
 
         builder.push("general");
         ENABLE_TOOLTIPS = builder.comment("Enable Tooltips").define("enable_tooltips", true);
-        PORTAL_FLUID_SEED = builder.define("portal_fluid_seed", 1D, 0.01D, 1D);
 
         builder.pop();
 

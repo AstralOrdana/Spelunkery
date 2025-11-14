@@ -38,20 +38,11 @@ public class TooltipMixin {
             if (stack.is(ModTags.SLIME_FOOD)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.slime_food").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GREEN)));
             }
-            if (stack.is(Items.FLINT_AND_STEEL) && !CommonConfigs.FlINT_AND_STEEL_PORTAL_LIGHTING.get()) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.flint_and_steel").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            }
             if (stack.is(Items.REDSTONE)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.redstone").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_RED)));
             }
             if (stack.is(ModTags.KEEP_ON_DEATH)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.keep_on_death").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_AQUA)));
-            }
-            if (CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get() && stack.is(Items.CRYING_OBSIDIAN)) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.crying_obsidian").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
-            }
-            if (CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get() && stack.is(Items.RESPAWN_ANCHOR)) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.crying_obsidian").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
             }
 
             if (stack.is(Items.GRINDSTONE) || stack.is(ModBlocks.DIAMOND_GRINDSTONE.get().asItem())) {

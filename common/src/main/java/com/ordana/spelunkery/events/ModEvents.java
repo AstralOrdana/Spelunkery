@@ -1,9 +1,7 @@
 package com.ordana.spelunkery.events;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.blocks.PortalFluidCauldronBlock;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import com.ordana.spelunkery.items.PortalFluidBottleItem;
 import com.ordana.spelunkery.reg.*;
 import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
@@ -32,9 +30,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CryingObsidianBlock;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
-import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -63,8 +59,6 @@ public class ModEvents {
     private static final List<InteractionEvent> EVENTS = new ArrayList<>();
 
     static {
-        EVENTS.add(ModEvents::obsidianDraining);
-        EVENTS.add(ModEvents::portalCauldronLogic);
         EVENTS.add(ModEvents::saltBoiling);
         EVENTS.add(ModEvents::anvilRepairing);
         EVENTS.add(ModEvents::disenchant);
@@ -81,38 +75,6 @@ public class ModEvents {
         }
         return InteractionResult.PASS;
     }
-    private static InteractionResult portalCauldronLogic(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                         Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
-        if (item == Items.GLASS_BOTTLE) {
-            if (state.getBlock() instanceof PortalFluidCauldronBlock) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                if (player instanceof ServerPlayer serverPlayer) {
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
-                    player.setItemInHand(hand, itemStack2);
-                    if (state.getValue(LayeredCauldronBlock.LEVEL) > 1) level.setBlockAndUpdate(pos, ModBlocks.PORTAL_CAULDRON.get().defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) - 1));
-                    else level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
-
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-
-            }
-        }
-        else if (item == Items.BUCKET) {
-            if (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) == 3) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BUCKET_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                if (player instanceof ServerPlayer serverPlayer) {
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BUCKET.get().getDefaultInstance());
-                    player.setItemInHand(hand, itemStack2);
-                    level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
-
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
-        }
-        return InteractionResult.PASS;
-    }
 
     private static InteractionResult saltBoiling(Item item, ItemStack stack, BlockPos pos, BlockState state,
                                                  Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
@@ -126,65 +88,6 @@ public class ModEvents {
                     if (state.getValue(LayeredCauldronBlock.LEVEL) > 1) level.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) - 1));
                     else level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
 
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
-    private static InteractionResult obsidianDraining(Item item, ItemStack stack, BlockPos pos, BlockState state,
-                                                      Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
-
-
-        if (item == ModItems.PORTAL_FLUID_BOTTLE.get()) {
-            if (state.is(Blocks.CAULDRON) || (state.getBlock() instanceof PortalFluidCauldronBlock && state.getValue(LayeredCauldronBlock.LEVEL) < 3)) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_EMPTY.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                if (player instanceof ServerPlayer serverPlayer) {
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, Items.GLASS_BOTTLE.getDefaultInstance());
-                    player.setItemInHand(hand, itemStack2);
-                    if (state.is(Blocks.CAULDRON)) level.setBlockAndUpdate(pos, ModBlocks.PORTAL_CAULDRON.get().defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 1));
-                    else level.setBlockAndUpdate(pos, ModBlocks.PORTAL_CAULDRON.get().defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, state.getValue(LayeredCauldronBlock.LEVEL) + 1));
-
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-
-            }
-            return InteractionResult.PASS;
-        }
-        if (item == Items.GLASS_BOTTLE) {
-            if (state.getBlock() instanceof CryingObsidianBlock && CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
-                if (player instanceof ServerPlayer serverPlayer) {
-                    ItemStack itemStack2 = ItemUtils.createFilledResult(stack, player, ModItems.PORTAL_FLUID_BOTTLE.get().getDefaultInstance());
-                    player.setItemInHand(hand, itemStack2);
-                    //if (!player.getAbilities().instabuild) stack.shrink(1);
-                    level.setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-                }
-                return InteractionResult.sidedSuccess(level.isClientSide);
-
-            }
-
-            if (state.getBlock() instanceof RespawnAnchorBlock && state.getValue(RespawnAnchorBlock.CHARGE) > 0 && CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
-                level.playSound(player, pos, ModSoundEvents.PORTAL_FLUID_BOTTLE_FILL.get(),SoundSource.BLOCKS, 1.0f, 1.0f);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FALLING_OBSIDIAN_TEAR, UniformInt.of(3, 5));
-                if (player instanceof ServerPlayer serverPlayer) {
-
-                    ItemStack itemStack2 = new ItemStack(ModItems.PORTAL_FLUID_BOTTLE.get());
-                    PortalFluidBottleItem.addLocationTags(level.dimension(), pos, itemStack2.getOrCreateTag());
-
-                    if (!player.getInventory().add(itemStack2)) {
-                        player.drop(itemStack2, false);
-                    }
-
-                    stack.shrink(1);
-
-                    level.setBlockAndUpdate(pos, state.setValue(RespawnAnchorBlock.CHARGE, state.getValue(RespawnAnchorBlock.CHARGE) - 1));
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);

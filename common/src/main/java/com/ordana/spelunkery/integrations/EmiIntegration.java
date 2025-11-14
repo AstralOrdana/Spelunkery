@@ -34,8 +34,6 @@ public class EmiIntegration implements EmiPlugin {
         water.setRemainder(water);
         EmiStack lava = EmiStack.of(Fluids.LAVA);
         lava.setRemainder(lava);
-        EmiStack portalFluid = EmiStack.of(ModFluids.PORTAL_FLUID.get());
-        portalFluid.setRemainder(portalFluid);
         EmiStack springWater = EmiStack.of(ModFluids.SPRING_WATER.get());
         springWater.setRemainder(springWater);
 
@@ -45,15 +43,52 @@ public class EmiIntegration implements EmiPlugin {
         if (PlatHelper.isModLoaded("create")) {
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                    .id(new ResourceLocation("spelunkery", "/rose_quartz"))
-                    .rightInput(grindstone, true)
-                    .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:rose_quartz"))))
-                    .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
-                    .build());
+                        .id(new ResourceLocation("spelunkery", "/rose_quartz"))
+                        .rightInput(grindstone, true)
+                        .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:rose_quartz"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
+                        .build());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        if (PlatHelper.isModLoaded("portal_fluid")) {
+            EmiStack portalFluid = EmiStack.of(BuiltInRegistries.FLUID.get(new ResourceLocation("portal_fluid:portal_fluid")));
+            portalFluid.setRemainder(portalFluid);
+
+            try {
+                registry.addRecipe(EmiWorldInteractionRecipe.builder()
+                        .id(new ResourceLocation("spelunkery", "/portal_fluid_passive"))
+                        .rightInput(sluice, true)
+                        .leftInput(portalFluid)
+                        .output(EmiStack.of(ModItems.END_STONE_PEBBLE.get()).setChance(0.571f))
+                        .output(EmiStack.of(Items.ENDER_PEARL).setChance(0.142f))
+                        .output(EmiStack.of(Items.POPPED_CHORUS_FRUIT).setChance(0.142f))
+                        .output(EmiStack.of(Items.ENDERMITE_SPAWN_EGG).setChance(0.142f))
+                        .build());
+
+                registry.addRecipe(EmiWorldInteractionRecipe.builder()
+                        .id(new ResourceLocation("spelunkery", "/portal_fluid"))
+                        .rightInput(EmiStack.of(Blocks.CRYING_OBSIDIAN), false)
+                        .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
+                        .output(EmiStack.of(Blocks.OBSIDIAN))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("portal_fluid:portal_fluid_bottle"))))
+                        .build());
+
+
+                registry.addRecipe(EmiWorldInteractionRecipe.builder()
+                        .id(new ResourceLocation("spelunkery", "/portal_fluid_anchor"))
+                        .rightInput(EmiStack.of(Blocks.RESPAWN_ANCHOR), true)
+                        .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("portal_fluid:portal_fluid_bottle"))))
+                        .build());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
             .id(new ResourceLocation("spelunkery", "/rock_salt_boiling"))
@@ -90,25 +125,6 @@ public class EmiIntegration implements EmiPlugin {
             .rightInput(grindstone, false)
             .output(EmiStack.of(ModItems.SALT.get()))
             .build());
-
-        if (CommonConfigs.CRYING_OBSIDIAN_PORTAL_FLUID.get()) {
-            registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                .id(new ResourceLocation("spelunkery", "/portal_fluid"))
-                .rightInput(EmiStack.of(Blocks.CRYING_OBSIDIAN), false)
-                .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
-                .output(EmiStack.of(Blocks.OBSIDIAN))
-                .output(EmiStack.of(ModItems.PORTAL_FLUID_BOTTLE.get()))
-                .build());
-        }
-
-        if (CommonConfigs.RESPAWN_ANCHOR_PORTAL_FLUID.get()) {
-            registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                .id(new ResourceLocation("spelunkery", "/portal_fluid_anchor"))
-                .rightInput(EmiStack.of(Blocks.RESPAWN_ANCHOR), true)
-                .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
-                .output(EmiStack.of(ModItems.PORTAL_FLUID_BOTTLE.get()))
-                .build());
-        }
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
             .id(new ResourceLocation("spelunkery", "/cinnabar"))
@@ -369,16 +385,6 @@ public class EmiIntegration implements EmiPlugin {
             .output(EmiStack.of(ModItems.RAW_GOLD_NUGGET.get()).setChance(10f / 472f))
             .output(EmiStack.of(Items.NETHERITE_SCRAP).setChance(1f / 472f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.wastes_deltas").setStyle(style)))
-            .build());
-
-        registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/portal_fluid_passive"))
-            .rightInput(sluice, true)
-            .leftInput(portalFluid)
-            .output(EmiStack.of(ModItems.END_STONE_PEBBLE.get()).setChance(0.571f))
-            .output(EmiStack.of(Items.ENDER_PEARL).setChance(0.142f))
-            .output(EmiStack.of(Items.POPPED_CHORUS_FRUIT).setChance(0.142f))
-            .output(EmiStack.of(Items.ENDERMITE_SPAWN_EGG).setChance(0.142f))
             .build());
     }
 }

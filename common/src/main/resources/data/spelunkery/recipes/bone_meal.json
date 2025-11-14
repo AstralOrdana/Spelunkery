@@ -5,11 +5,11 @@
       "item": "spelunkery:saltpeter"
     },
     {
-      "item": "spelunkery:phosphor_fungus"
+      "item": "minecraft:glowstone_dust"
     }
   ],
   "result": {
     "item": "minecraft:bone_meal",
-    "count": 3
+    "count": 8
   }
 }

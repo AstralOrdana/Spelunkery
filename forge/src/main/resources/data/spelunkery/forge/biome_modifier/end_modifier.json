@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#spelunkery:has_end_noise",
-  "features": [
-    "spelunkery:obsidian_patch",
-    "spelunkery:noise_end"
-  ],
-  "step": "raw_generation"
-}
