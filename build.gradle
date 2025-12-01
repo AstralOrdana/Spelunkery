@@ -76,6 +76,18 @@ allprojects {
             name = "MehVadJukaar"
             url = "https://registry.somethingcatchy.net/repository/maven-releases/"
         }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Gegy"
+                    url = "https://maven.gegy.dev"
+                }
+            }
+            filter {
+                includeGroupAndSubgroups("dev.lambdaurora")
+                includeGroup("io.github.queerbric")
+            }
+        }
     }
 
     tasks.withType(JavaCompile) {

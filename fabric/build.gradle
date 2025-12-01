@@ -29,6 +29,7 @@ dependencies {
 
     modImplementation("maven.modrinth:modmenu:${modmenu_version}")
 
+    modLocalRuntime("dev.lambdaurora.lambdynamiclights:lambdynamiclights-runtime:4.8.6+$minecraft_version")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
