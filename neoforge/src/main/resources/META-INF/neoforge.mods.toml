@@ -43,3 +43,6 @@ An Overhaul to everything Underground
     versionRange="[1.20-2.12.21,]"
     ordering="NONE"
     side="BOTH"
+
+[[mixins]]
+config = "spelunkery-common.mixins.json"
