@@ -152,9 +152,9 @@ public class DustBunnyEntity extends PathfinderMob {
         return isTemptingItem(stack);
     }
 
-    @Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
-        return super.finalizeSpawn(level, difficulty, reason, spawnData, dataTag);
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
     public static boolean checkRabbitSpawnRules(EntityType<Rabbit> rabbit, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {

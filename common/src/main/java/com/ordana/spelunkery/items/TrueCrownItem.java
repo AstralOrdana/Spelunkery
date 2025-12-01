@@ -33,7 +33,7 @@ public class TrueCrownItem extends BlockItem implements Equipable {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(ItemStack stack, @Nullable TooltipContext level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.crown_1").setStyle(Style.EMPTY.applyFormats(ChatFormatting.RED, ChatFormatting.ITALIC)));
         }

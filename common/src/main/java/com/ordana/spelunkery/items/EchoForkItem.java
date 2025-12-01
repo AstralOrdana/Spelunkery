@@ -37,7 +37,7 @@ public class EchoForkItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.echo_fork_1", CommonConfigs.ECHO_FORK_RANGE.get(), CommonConfigs.ECHO_DURRATION.get() / 20).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));

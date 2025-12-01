@@ -75,7 +75,7 @@ public class ThrownEggplantEntity extends ImprovedProjectileEntity {
         if (entity instanceof Villager villager && level instanceof ServerLevel serverLevel) {
             Witch witch = EntityType.WITCH.create(serverLevel);
             witch.moveTo(villager.getX(), villager.getY(), villager.getZ(), villager.getYRot(), villager.getXRot());
-            witch.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(witch.blockPosition()), MobSpawnType.CONVERSION, null, null);
+            witch.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(witch.blockPosition()), MobSpawnType.CONVERSION, null);
             witch.setNoAi(villager.isNoAi());
             if (villager.hasCustomName()) {
                 witch.setCustomName(villager.getCustomName());

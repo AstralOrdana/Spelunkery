@@ -7,6 +7,7 @@ import com.mojang.math.Axis;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
@@ -20,6 +21,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -64,7 +66,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.tuning_fork_1", getTollRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -78,18 +80,16 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     @Override
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        CompoundTag compoundTag = stack.getOrCreateTag();
-        boolean hasTag = compoundTag.contains("amethystPos");
+        boolean hasTag = stack.has(ModComponents.AMETHYST_POS.get());
         if (level.dimension() != Level.OVERWORLD) return new InteractionResultHolder<>(InteractionResult.PASS, stack);
 
         if (player.isSecondaryUseActive()) {
             if (hasTag) {
-                compoundTag.remove("amethystPos");
-                compoundTag.remove("amethystDimension");
+                stack.remove(ModComponents.AMETHYST_POS.get());
             }
             tolling = false;
         } else if (!hasTag) {
-            level.gameEvent(player, ModGameEvents.FORK_TONE_EVENT.get(), player.blockPosition());
+            level.gameEvent(player, ModGameEvents.FORK_TONE_EVENT, player.blockPosition());
             player.getCooldowns().addCooldown(this, 20);
         }
         if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.USING_ITEM.trigger(serverPlayer, stack);
@@ -137,19 +137,21 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     public void setPlayerX(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("ex", amount);
+        var pos = stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO);
+        stack.set(ModComponents.PLAYER_POS.get(), new BlockPos(amount, pos.getY(), pos.getZ()));
     }
 
     public int getPlayerX(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("ex");
+        return stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO).getX();
     }
 
     public void setPlayerZ(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("zed", amount);
+        var pos = stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO);
+        stack.set(ModComponents.PLAYER_POS.get(), new BlockPos(pos.getX(), pos.getY(), amount));
     }
 
     public int getPlayerZ(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("zed");
+        return stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO).getZ();
     }
 
     //Override
@@ -160,7 +162,7 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
 
     //Override
     @PlatformOnly(PlatformOnly.FABRIC)
-    public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
+    public boolean allowComponentsUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
         return false;
     }
 
@@ -204,18 +206,12 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
 
      */
 
-    public static void addAmethystTags(ResourceKey<Level> lodestoneDimension, BlockPos pos, CompoundTag compoundTag) {
-        if (!compoundTag.contains("amethystPos")) compoundTag.put("amethystPos", NbtUtils.writeBlockPos(pos));
-        tolling = true;
-        DataResult<Tag> var10000 = Level.RESOURCE_KEY_CODEC.encodeStart(NbtOps.INSTANCE, lodestoneDimension);
-        Logger var10001 = LOGGER;
-        Objects.requireNonNull(var10001);
-        var10000.resultOrPartial(var10001::error).ifPresent(tag -> compoundTag.put("amethystDimension", tag));
+    public static void addAmethystTags(ResourceKey<Level> lodestoneDimension, BlockPos pos, ItemStack compoundTag) {
+        if (!compoundTag.has(ModComponents.AMETHYST_POS.get())) compoundTag.set(ModComponents.AMETHYST_POS.get(), new GlobalPos(lodestoneDimension, pos));
     }
 
     public static boolean isAmethystNearby(ItemStack stack) {
-        CompoundTag compoundTag = stack.getTag();
-        return compoundTag != null && compoundTag.contains("amethystPos");
+        return stack.has(ModComponents.AMETHYST_POS.get());
     }
 
 
@@ -224,22 +220,9 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     @Nullable
-    public static GlobalPos getAmethystPos(CompoundTag compoundTag) {
-        boolean bl = compoundTag.contains("amethystPos");
-        boolean bl2 = compoundTag.contains("amethystDimension");
-        if (bl && bl2) {
-            Optional<ResourceKey<Level>> optional = getDimension(compoundTag);
-            if (optional.isPresent()) {
-                BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("amethystPos"));
-                return GlobalPos.of(optional.get(), blockPos);
-            }
-        }
-
-        return null;
+    public static GlobalPos getAmethystPos(ItemStack stack) {
+        return stack.getOrDefault(ModComponents.AMETHYST_POS.get(), null);
     }
-
-
-
 
     public int getUseDuration(ItemStack stack) {
         return 72000;
@@ -279,12 +262,12 @@ public class AmethystTuningForkItem extends Item implements IFirstPersonAnimatio
     }
 
     @Override
-    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+    public void animateItemFirstPerson(Player entity, ItemStack stack, InteractionHand hand, HumanoidArm arm, PoseStack poseStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
         if (tolling && entity.getUsedItemHand() == hand && entity.level() instanceof ClientLevel level) {
 
             //budding amethyst block pos
-            BlockPos blockPos = NbtUtils.readBlockPos(stack.getOrCreateTag().getCompound("amethystPos"));
+            BlockPos blockPos = stack.get(ModComponents.AMETHYST_POS.get()).pos();
 
             //time
             var time = level.getGameTime();

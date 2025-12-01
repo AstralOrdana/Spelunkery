@@ -342,8 +342,8 @@ public class SaltBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        InteractionResult lightUp = super.use(state, world, pos, player, hand, hit);
+    public InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        InteractionResult lightUp = super.useWithoutItem(state, world, pos, player, hit);
         if (lightUp.consumesAction()) return lightUp;
         if (player.getAbilities().mayBuild) {
             if (isCross(state) || isDot(state)) {

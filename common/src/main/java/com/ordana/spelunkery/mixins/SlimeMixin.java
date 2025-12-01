@@ -6,6 +6,8 @@ import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -109,7 +111,7 @@ public abstract class SlimeMixin extends Mob {
                 int i = 1 + this.random.nextInt(this.getSize());
                 for (int j = 0; j < i; ++j) {
                     if (random.nextInt(3) <= this.getSize()) {
-                        LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(Spelunkery.res(magma ? "gameplay/magma_cube_feeding" : "gameplay/slime_feeding"));
+                        LootTable lootTable = Objects.requireNonNull(level.getServer()).reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, Spelunkery.res(magma ? "gameplay/magma_cube_feeding" : "gameplay/slime_feeding")));
 
                         LootParams.Builder builder = new LootParams.Builder((ServerLevel) level)
                                 .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))

@@ -2,10 +2,13 @@ package com.ordana.spelunkery.blocks.entity;
 
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.items.MagneticCompassItem;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -40,8 +43,8 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
     }
 
     @Override
-    public boolean handleGameEvent(ServerLevel level, GameEvent gameEvent, GameEvent.Context context, Vec3 pos) {
-        if (ModGameEvents.COMPASS_PING_EVENT.get() == gameEvent) {
+    public boolean handleGameEvent(ServerLevel level, Holder<GameEvent> gameEvent, GameEvent.Context context, Vec3 pos) {
+        if (ModGameEvents.COMPASS_PING_EVENT.value() == gameEvent.value()) {
             Entity entity = context.sourceEntity();
 
             if (entity instanceof Player player) {
@@ -50,7 +53,7 @@ public class MagnetiteBlockEntity extends BlockEntity implements GameEventListen
                 for (int i = 0; i < inventory.getContainerSize(); i++) {
                     ItemStack compass = inventory.getItem(i);
                     if (compass.is(ModItems.MAGNETIC_COMPASS.get())) {
-                        MagneticCompassItem.addMagnetiteTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                        compass.set(ModComponents.MAGNETITE_POS.get(), new GlobalPos(level.dimension(), getBlockPos()));
                         level.playSound(null, entity.blockPosition(), SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.BLOCKS, 0.4f, 1.0f);
                     }
                 }

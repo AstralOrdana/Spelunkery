@@ -3,15 +3,15 @@ package com.ordana.spelunkery.configs;
 import com.ordana.spelunkery.Spelunkery;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder;
-import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigSpec;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;
+import net.mehvahdjukaar.moonlight.api.platform.configs.ModConfigHolder;
 
 import java.util.function.Supplier;
 
 public class CommonConfigs {
 
 
-    public static ConfigSpec SERVER_SPEC;
+    public static ModConfigHolder SERVER_SPEC;
 
     public static Supplier<Boolean> CREATIVE_TAB;
     //public static Supplier<Boolean> CROSS_SECTION;
@@ -42,8 +42,6 @@ public class CommonConfigs {
 
     public static Supplier<Boolean> STONE_STRIPE_FEATURES;
     public static Supplier<Boolean> ENABLE_MORES;
-    public static Supplier<Boolean> PORTAL_FLUID_OCEAN;
-    public static Supplier<Boolean> END_OCEAN_BUCKETABLE;
 
 
     public static void init() {
@@ -53,7 +51,7 @@ public class CommonConfigs {
     static {
         ConfigBuilder builder = ConfigBuilder.create(Spelunkery.res("common"), ConfigType.COMMON);
 
-        builder.setSynced();
+//        builder.setSynced();
 
         builder.push("misc");
         CREATIVE_TAB = builder.define("spelunkery_creative_tab", false);
@@ -93,7 +91,7 @@ public class CommonConfigs {
         STONE_STRIPE_FEATURES = builder.define("stone_stripe_features", true);
         builder.pop();
 
-        SERVER_SPEC = builder.buildAndRegister();
-        SERVER_SPEC.loadFromFile();
+        SERVER_SPEC = builder.build();
+        SERVER_SPEC.forceLoad();
     }
 }

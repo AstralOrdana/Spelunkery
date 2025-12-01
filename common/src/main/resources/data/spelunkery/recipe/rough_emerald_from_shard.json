@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rough_emerald_shard"
+    }
+  },
+  "result": {
+    "id": "spelunkery:rough_emerald",
+    "count": 1
+  }
+}

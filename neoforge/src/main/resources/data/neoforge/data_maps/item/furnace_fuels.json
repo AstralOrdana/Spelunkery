@@ -1,0 +1,10 @@
+{
+  "values": {
+    "spelunkery:coal_lump": {
+      "burn_time": 200
+    },
+    "spelunkery:charcoal_lump": {
+      "burn_time": 200
+    }
+  }
+}

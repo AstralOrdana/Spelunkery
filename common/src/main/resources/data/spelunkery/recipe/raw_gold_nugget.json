@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_gold"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:raw_gold_nugget",
+    "count": 1
+  }
+}

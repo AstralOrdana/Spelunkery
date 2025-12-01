@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:raw_magnetite"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:raw_magnetite_nugget",
+    "count": 1
+  }
+}

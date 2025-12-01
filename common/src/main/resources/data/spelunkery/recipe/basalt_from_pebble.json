@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:basalt_pebble"
+    }
+  },
+  "result": {
+    "id": "minecraft:smooth_basalt",
+    "count": 1
+  }
+}

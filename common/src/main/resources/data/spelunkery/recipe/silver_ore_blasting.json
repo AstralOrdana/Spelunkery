@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "oreganized",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "oreganized"
+      ]
+    }
+  ],
+  "cookingtime": 100,
+  "experience": 0.7,
+  "ingredient": {
+    "tag": "spelunkery:silver_ores"
+  },
+  "result": {
+    "id": "oreganized:silver_ingot"
+  },
+  "type": "minecraft:blasting"
+}

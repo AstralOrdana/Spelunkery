@@ -28,7 +28,7 @@ public class MineomiteItem extends BlockItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(ItemStack stack, @Nullable TooltipContext level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.throwable").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
         }
@@ -42,10 +42,10 @@ public class MineomiteItem extends BlockItem {
             if (offStack.getItem() instanceof FlintAndSteelItem) {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 0.5F, 1F);
                 level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.TNT_PRIMED, SoundSource.NEUTRAL, 0.5F, 1F);
-                if (!player.isCreative()) offStack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(player.getUsedItemHand()));
+                if (!player.isCreative()) offStack.hurtAndBreak(1, player, Player.getSlotForHand(player.getUsedItemHand()));
                 ThrownMineomiteEntity mineomiteEntity = new ThrownMineomiteEntity(level, player);
                 mineomiteEntity.setItem(itemStack);
-                mineomiteEntity.setSecondsOnFire(100);
+                mineomiteEntity.setRemainingFireTicks(2000);
                 mineomiteEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                 level.addFreshEntity(mineomiteEntity);
             }

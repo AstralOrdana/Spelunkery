@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "S#S",
+    "SSS"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:bucket"
+    },
+    "S": {
+      "item": "spelunkery:salt"
+    }
+  },
+  "result": {
+    "id": "spelunkery:salt_bucket",
+    "count": 1
+  }
+}

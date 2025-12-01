@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create_dd",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create_dd"
+      ]
+    }
+  ],
+  "type": "create_dd:sanding",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_cinnabar"
+    }
+  ],
+  "results": [
+    {
+      "id": "spelunkery:cinnabar"
+    }
+  ]
+}

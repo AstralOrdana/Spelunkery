@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:blackstone_pebble"
+    }
+  },
+  "result": {
+    "id": "minecraft:blackstone",
+    "count": 1
+  }
+}

@@ -3,21 +3,22 @@ package com.ordana.spelunkery.blocks;
 import com.ordana.spelunkery.reg.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SandBlock;
+import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class DustBlockBlock extends SandBlock {
+public class DustBlockBlock extends ColoredFallingBlock {
   public DustBlockBlock(Properties properties) {
-    super(0x5E625E, properties);
+    super(new ColorRGBA(0x5E625E), properties);
   }
 
   public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
@@ -67,13 +68,14 @@ public class DustBlockBlock extends SandBlock {
   }
 
   @Override
-  public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-    if (!(level instanceof ServerLevel serverLevel)) return;
+  public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    if (!(level instanceof ServerLevel serverLevel)) return state;
     for(int i = 0; i < 10; ++i) {
       double d0 = level.random.nextGaussian() * 0.02D;
       double d1 = level.random.nextGaussian() * 0.02D;
       double d2 = level.random.nextGaussian() * 0.02D;
       serverLevel.sendParticles(ModParticles.DUST_POOF.get(), (pos.getX() + 0.5) - d0 * 10.0D, (pos.getY() + 0.5) - d1 * 10.0D, (pos.getZ() + 0.5) - d2 * 10.0D, 1, 0, 0, 0, d2);
     }
+      return state;
   }
 }

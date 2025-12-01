@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X",
+    "X#"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rough_cinnabar"
+    },
+    "X": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "id": "create:rose_quartz",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "cookingtime": 23,
+  "experience": 0.1,
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "etcetera"
+      ]
+    }
+  ],
+  "group": "bismuth_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_bismuth_nugget"
+  },
+  "neoforge:conditions": [
+    {
+      "modid": "etcetera",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:bismuth_nugget"
+  },
+  "type": "minecraft:smelting"
+}

@@ -8,27 +8,7 @@ loom {
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modImplementation("curse.maven:selene-499980:5726768")
+    modImplementation("net.mehvahdjukaar:moonlight:${moonlight_version}")
     modImplementation "dev.emi:emi-xplat-intermediary:${rootProject.emi_version}:api"
-}
 
-publishing {
-    publications {
-        mavenCommon(MavenPublication) {
-            artifactId = rootProject.mod_id
-            from components.java
-        }
-    }
-
-    repositories {
-        // Add repositories to publish to here.
-        maven {
-            name = "TerraformersMC"
-            url = "https://maven.terraformersmc.com/releases"
-        }
-    }
-}
-
-repositories {
-    maven { url "https://maven.terraformersmc.com/releases" }
 }

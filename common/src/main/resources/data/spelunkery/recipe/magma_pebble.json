@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:magma_pebble",
+    "count": 1
+  }
+}

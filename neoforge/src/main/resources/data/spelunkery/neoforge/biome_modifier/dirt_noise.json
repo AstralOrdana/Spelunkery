@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#spelunkery:has_dirt_noise",
+  "features": [
+    "spelunkery:noise_dirt"
+  ],
+  "step": "raw_generation"
+}

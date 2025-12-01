@@ -1,0 +1,1 @@
+{"type":"minecraft:smelting","group":"iron_nugget","ingredient":{"item":"spelunkery:raw_iron_nugget"},"result":{"id":"minecraft:iron_nugget"},"experience":0.1,"cookingtime":23}

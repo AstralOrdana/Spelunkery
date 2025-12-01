@@ -4,6 +4,7 @@ import com.ordana.spelunkery.blocks.nephrite.CarvedNephriteBlock;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -109,15 +110,17 @@ public class CarvedNephriteBlockEntity extends BlockEntity {
         }
     }
 
-    public void load(CompoundTag tag) {
+    @Override
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
         if (tag.contains("Charge")) {
             this.setCharge(tag.getInt("Charge"));
         }
     }
 
-    protected void saveAdditional(CompoundTag tag) {
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
         tag.putInt("Charge", this.getCharge());
-        super.saveAdditional(tag);
+        super.saveAdditional(tag, lookup);
     }
 
 

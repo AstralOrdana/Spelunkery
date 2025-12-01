@@ -1,0 +1,45 @@
+
+modLoader="javafml"
+
+loaderVersion="[4,)"
+
+license="LGPLv3"
+
+[[mods]]
+
+modId="spelunkery"
+
+version = "${version}"
+
+displayName="Spelunkery"
+
+logoFile="icon.png"
+
+credits="Contributors: Bobisnotaperson, ElBones, cassiancc"
+
+authors="Ordana, Keybounce"
+
+itemIcon="spelunkery:rough_diamond"
+description='''
+An Overhaul to everything Underground
+'''
+
+[[dependencies.spelunkery]]
+    modId="neoforge"
+    type = "required"
+    versionRange="[21,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.spelunkery]]
+    modId="minecraft"
+    type = "required"
+    versionRange="[1.21.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.spelunkery]]
+    modId="moonlight"
+    type = "required"
+    versionRange="[1.20-2.12.21,]"
+    ordering="NONE"
+    side="BOTH"

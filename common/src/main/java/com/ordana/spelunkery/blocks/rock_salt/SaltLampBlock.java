@@ -33,8 +33,8 @@ public class SaltLampBlock extends LanternBlock implements RockSalt {
 
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        if (!level.isClientSide) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide()) {
             state = state.cycle(BlockStateProperties.LIT);
             level.setBlock(pos, state, 3);
         }

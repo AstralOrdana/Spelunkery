@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rough_lazurite"
+    }
+  },
+  "result": {
+    "id": "spelunkery:rough_lazurite_block",
+    "count": 1
+  }
+}

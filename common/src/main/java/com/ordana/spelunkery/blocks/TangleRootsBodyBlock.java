@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -58,6 +59,11 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
         if (!level.isClientSide) {
             level.scheduleTick(pos, this, 1);
         }
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantBodyBlock> codec() {
+        return simpleCodec(TangleRootsBodyBlock::new);
     }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {

@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.nephrite;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.blocks.entity.NephriteFountainEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
@@ -52,6 +53,11 @@ public class NephriteFountainBlock extends BaseEntityBlock {
     public NephriteFountainBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(OPEN, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return simpleCodec(NephriteFountainBlock::new);
     }
 
     public RenderShape getRenderShape(BlockState state) {

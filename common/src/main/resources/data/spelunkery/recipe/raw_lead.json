@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "oreganized",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "oreganized"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_lead_nugget"
+    }
+  },
+  "result": {
+    "id": "oreganized:raw_lead",
+    "count": 1
+  }
+}

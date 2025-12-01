@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#spelunkery:has_swamp_noise",
+  "features": [
+    "spelunkery:large_coal_vein"
+  ],
+  "step": "raw_generation"
+}

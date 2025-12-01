@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.nephrite;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,6 +23,11 @@ public class NephriteDiodeBlock extends DirectionalBlock {
     public NephriteDiodeBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(POWERED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends DirectionalBlock> codec() {
+        return simpleCodec(NephriteDiodeBlock::new);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

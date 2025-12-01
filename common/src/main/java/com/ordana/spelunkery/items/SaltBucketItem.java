@@ -2,9 +2,12 @@ package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.reg.ModComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -15,6 +18,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.BlockItemStateProperties;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -37,7 +41,7 @@ public class SaltBucketItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(ItemStack stack, @Nullable TooltipContext level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.salt_bucket_1", getSaltToPlace(stack)).setStyle(Style.EMPTY.applyFormats(ChatFormatting.WHITE)));
             tooltip.add(Component.translatable("tooltip.spelunkery.salt_bucket_2").setStyle(Style.EMPTY.applyFormats(ChatFormatting.GRAY, ChatFormatting.ITALIC)));
@@ -45,11 +49,11 @@ public class SaltBucketItem extends Item {
     }
 
     public void setAmount(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("salt", amount);
+        stack.set(ModComponents.SALT.get(), amount);
     }
 
     public int getAmount(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("salt");
+        return stack.getOrDefault(ModComponents.SALT.get(), 0);
     }
 
     public int getSaltToPlace(ItemStack stack) {
@@ -68,7 +72,7 @@ public class SaltBucketItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         InteractionResult interactionResult = this.place(new BlockPlaceContext(context));
-        if (!interactionResult.consumesAction() && this.isEdible()) {
+        if (!interactionResult.consumesAction() && this.getDefaultInstance().has(DataComponents.FOOD)) {
             InteractionResult interactionResult2 = this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult();
             return interactionResult2 == InteractionResult.CONSUME ? InteractionResult.CONSUME_PARTIAL : interactionResult2;
         } else {
@@ -140,20 +144,9 @@ public class SaltBucketItem extends Item {
 
     private BlockState updateBlockStateFromTag(BlockPos pos, Level level, ItemStack stack, BlockState state) {
         BlockState blockState = state;
-        CompoundTag compoundTag = stack.getTag();
-        if (compoundTag != null) {
-            CompoundTag compoundTag2 = compoundTag.getCompound("BlockStateTag");
-            StateDefinition<Block, BlockState> stateDefinition = state.getBlock().getStateDefinition();
-            Iterator var9 = compoundTag2.getAllKeys().iterator();
-
-            while(var9.hasNext()) {
-                String string = (String)var9.next();
-                Property<?> property = stateDefinition.getProperty(string);
-                if (property != null) {
-                    String string2 = compoundTag2.get(string).getAsString();
-                    blockState = updateState(blockState, property, string2);
-                }
-            }
+        BlockItemStateProperties blockItemStateProperties = stack.get(DataComponents.BLOCK_STATE);
+        if (blockItemStateProperties != null) {
+            blockState = blockItemStateProperties.apply(blockState);
         }
 
         if (blockState != state) {
@@ -164,9 +157,7 @@ public class SaltBucketItem extends Item {
     }
 
     private static <T extends Comparable<T>> BlockState updateState(BlockState state, Property<T> property, String valueIdentifier) {
-        return property.getValue(valueIdentifier).map((comparable) -> {
-            return state.setValue(property, comparable);
-        }).orElse(state);
+        return property.getValue(valueIdentifier).map((comparable) -> state.setValue(property, comparable)).orElse(state);
     }
 
     protected boolean canPlace(BlockPlaceContext context, BlockState state) {
@@ -188,23 +179,16 @@ public class SaltBucketItem extends Item {
         if (minecraftServer == null) {
             return false;
         } else {
-            CompoundTag compoundTag = getBlockEntityData(stack);
-            if (compoundTag != null) {
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-                if (blockEntity != null) {
-                    if (!level.isClientSide && blockEntity.onlyOpCanSetNbt() && (player == null || !player.canUseGameMasterBlocks())) {
-                        return false;
-                    }
-
-                    CompoundTag compoundTag2 = blockEntity.saveWithoutMetadata();
-                    CompoundTag compoundTag3 = compoundTag2.copy();
-                    compoundTag2.merge(compoundTag);
-                    if (!compoundTag2.equals(compoundTag3)) {
-                        blockEntity.load(compoundTag2);
-                        blockEntity.setChanged();
-                        return true;
-                    }
+            DataComponentMap compoundTag = getBlockEntityData(stack);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity != null) {
+                if (!level.isClientSide() && blockEntity.onlyOpCanSetNbt() && (player == null || !player.canUseGameMasterBlocks())) {
+                    return false;
                 }
+
+                blockEntity.setComponents(compoundTag);
+                blockEntity.setChanged();
+                return true;
             }
 
             return false;
@@ -215,9 +199,8 @@ public class SaltBucketItem extends Item {
         return ModBlocks.SALT.get();
     }
 
-    @Nullable
-    public static CompoundTag getBlockEntityData(ItemStack stack) {
-        return stack.getTagElement("BlockEntityTag");
+    public static DataComponentMap getBlockEntityData(ItemStack stack) {
+        return stack.getComponents();
     }
 
 }

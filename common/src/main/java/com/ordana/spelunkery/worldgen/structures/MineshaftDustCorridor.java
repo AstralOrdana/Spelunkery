@@ -6,7 +6,9 @@ import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModWorldgenFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.vehicle.MinecartChest;
@@ -171,7 +173,7 @@ public class MineshaftDustCorridor extends MineshaftPieces.MineShaftPiece {
             BlockState blockState = Blocks.RAIL.defaultBlockState().setValue(RailBlock.SHAPE, random.nextBoolean() ? RailShape.NORTH_SOUTH : RailShape.EAST_WEST);
             this.placeBlock(level, blockState, x, y, z, box);
             MinecartChest minecartChest = new MinecartChest(level.getLevel(), (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D);
-            minecartChest.setLootTable(lootTable, random.nextLong());
+            minecartChest.setLootTable(ResourceKey.create(Registries.LOOT_TABLE, lootTable), random.nextLong());
             level.addFreshEntity(minecartChest);
             return true;
         } else {

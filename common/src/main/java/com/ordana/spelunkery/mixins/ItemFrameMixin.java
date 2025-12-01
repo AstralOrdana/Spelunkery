@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
@@ -31,9 +32,9 @@ public abstract class ItemFrameMixin extends HangingEntity {
         //if (!this.level.isClientSide) {
 
             ItemStack stack = this.getItem();
-            CompoundTag tag = stack.getTag();
+            boolean active = stack.getOrDefault(ModComponents.ACTIVE.get(), false);
 
-            if (tag != null && tag.contains("active") && tag.getBoolean("active") && this.getItem().is(ModItems.ITEM_MAGNET.get())) {
+            if (active && this.getItem().is(ModItems.ITEM_MAGNET.get())) {
                 int r = CommonConfigs.MAGNET_RANGE.get();
                 AABB area = new AABB(this.position().add(-r, -r, -r), this.position().add(r, r, r));
 

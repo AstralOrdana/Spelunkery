@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.blocks.entity.MagnetiteBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -13,6 +14,11 @@ import org.jetbrains.annotations.Nullable;
 public class MagnetiteBlock extends BaseEntityBlock {
     public MagnetiteBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return simpleCodec(MagnetiteBlock::new);
     }
 
     @Nullable

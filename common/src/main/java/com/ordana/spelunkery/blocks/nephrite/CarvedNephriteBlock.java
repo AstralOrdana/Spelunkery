@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks.nephrite;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.blocks.entity.CarvedNephriteBlockEntity;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -39,6 +40,11 @@ public class CarvedNephriteBlock extends BaseEntityBlock {
         ));
 
         this.registerDefaultState(this.stateDefinition.any().setValue(CHARGE, ChargeState.EMPTY));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return null;
     }
 
     @Override
@@ -122,10 +128,11 @@ public class CarvedNephriteBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (level instanceof ServerLevel && level.getBlockEntity(pos) instanceof CarvedNephriteBlockEntity selfTile) {
             this.popExperience((ServerLevel) level, pos, selfTile.getCharge());
         }
         super.playerWillDestroy(level, pos, state, player);
+        return state;
     }
 }

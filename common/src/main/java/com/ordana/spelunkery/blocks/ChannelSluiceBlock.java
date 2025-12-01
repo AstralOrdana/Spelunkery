@@ -11,8 +11,11 @@ import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -106,7 +109,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
             if (fluidName.contains("flowing_")) fluidName = fluidName.replace("flowing_", "");
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/passive");
-            var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
+            var lootTable = Objects.requireNonNull(level.getServer()).reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
             LootParams.Builder builder = (new LootParams.Builder(level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
@@ -118,9 +121,9 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
                 var lootItem = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
                 if (lootItem.isEmpty()) return;
 
-                if (lootItem.iterator().next().getItem() instanceof SpawnEggItem egg) {
+                if (lootItem.getFirst().getItem() instanceof SpawnEggItem egg) {
 
-                    Entity eggEntity = egg.getType(lootItem.iterator().next().getTag()).create(level);
+                    Entity eggEntity = egg.getType(lootItem.getFirst()).create(level);
                     if (eggEntity != null) {
                         eggEntity.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
                         level.addFreshEntity(eggEntity);
@@ -128,7 +131,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
                     }
                 }
 
-                var bl = SluiceBlockEntity.suckInItems(sluice, lootItem.iterator().next());
+                var bl = SluiceBlockEntity.suckInItems(sluice, lootItem.getFirst());
                 SluiceBlockEntity.tryFilterItems(level, pos, state, sluice, flow, () -> bl);
 
             }
@@ -162,8 +165,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
                 if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
             }
             if (!player.isCreative()) {
-                stack.hurtAndBreak(1, player, (playerx)
-                        -> playerx.broadcastBreakEvent(hand));
+                stack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
             }
 
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
@@ -297,10 +299,10 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     }
 
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @org.jetbrains.annotations.Nullable LivingEntity placer, ItemStack stack) {
-        if (stack.hasCustomHoverName()) {
+        if (stack.has(DataComponents.CUSTOM_NAME)) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof SluiceBlockEntity) {
-                ((SluiceBlockEntity)blockEntity).setCustomName(stack.getHoverName());
+                blockEntity.setComponents(stack.getComponents());
             }
         }
 

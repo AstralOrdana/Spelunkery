@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,6 +32,11 @@ public class TangleRootsHeadBlock extends GrowingPlantHeadBlock implements Simpl
         return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return simpleCodec(TangleRootsHeadBlock::new);
+    }
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {

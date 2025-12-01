@@ -8,12 +8,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 public class PickOnAStickEntity extends ImprovedProjectileEntity {
     private BlockPos pos;
@@ -53,8 +54,8 @@ public class PickOnAStickEntity extends ImprovedProjectileEntity {
 
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("pos"));
-        this.setHitBlock(pos);
+        Optional<BlockPos> pos = NbtUtils.readBlockPos(tag, ("pos"));
+        this.setHitBlock(pos.orElse(null));
     }
 
     public void setHitBlock(BlockPos pos) {

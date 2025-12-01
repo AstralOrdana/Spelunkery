@@ -1,6 +1,7 @@
 package com.ordana.spelunkery.items;
 
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.reg.ModComponents;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -46,12 +47,12 @@ public class DepthGaugeItem extends Item {
 
     //Override
     @PlatformOnly(PlatformOnly.FABRIC)
-    public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
+    public boolean allowComponentsUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
         return false;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag context) {
+    public void appendHoverText(ItemStack stack, @Nullable TooltipContext level, List<Component> tooltip, TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.depth_gauge_depth", getYLevel(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
         }
@@ -66,10 +67,10 @@ public class DepthGaugeItem extends Item {
     }
 
     public void setYLevel(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("depth", amount);
+        stack.set(ModComponents.DEPTH.get(), amount);
     }
 
     public int getYLevel(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("depth");
+        return stack.getOrDefault(ModComponents.DEPTH.get(), 0);
     }
 }

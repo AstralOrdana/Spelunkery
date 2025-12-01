@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "spelunkery:item/true_crown_2d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "spelunkery:item/true_crown_2d"
+    },
+    "head": {
+      "parent": "spelunkery:item/true_crown_3d"
+    }
+  }
+}

@@ -164,6 +164,20 @@
   "tooltip.spelunkery.sluice.badlands": "Only within Badlands",
 
 
+  "tag.item.c.salt": "Salt",
+  "tag.item.c.salts": "Salts",
+
+  "tag.item.c.ores.jade": "Jade Ores",
+  "tag.item.c.ores.silver": "Silver Ores",
+  "tag.item.c.ores.lead": "Lead Ores",
+  "tag.item.c.ores.zinc": "Zinc Ores",
+
+  "tag.item.c.nuggets.lapis": "Lapis Nuggets",
+  "tag.item.c.nuggets.lapis_lazuli": "Lapis Lazuli Nuggets",
+  "tag.item.c.nuggets.emerald": "Emerald Nuggets",
+  "tag.item.c.nuggets.diamond": "Diamond Nuggets",
+  "tag.item.c.nuggets.metal": "Metal Nuggets",
+
   "tag.spelunkery.glowsticks": "Glowsticks",
   "tag.spelunkery.grindable": "Grindables",
   "tag.spelunkery.nuggets": "Nuggets",

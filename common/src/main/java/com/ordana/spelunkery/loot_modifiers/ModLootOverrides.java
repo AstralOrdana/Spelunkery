@@ -37,15 +37,15 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
         return Spelunkery.LOGGER;
     }
 
-    @Override
-    public boolean dependsOnLoadedPacks() {
-        return true;
-    }
+//    @Override
+//    public boolean dependsOnLoadedPacks() {
+//        return true;
+//    }
 
     public void overrideDataFile(ResourceManager manager, List list, String targetNamespace, String targetPath, String sourcePath, ResType resType) {
         for (var recipe : list) {
-            ResourceLocation target = new ResourceLocation(targetNamespace, targetPath + recipe);
-            ResourceLocation source = new ResourceLocation("spelunkery", sourcePath + recipe + ".json");
+            ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, targetPath + recipe);
+            ResourceLocation source = Spelunkery.res( sourcePath + recipe + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);
@@ -58,8 +58,8 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
 
     public void overrideDataFileGeneric(ResourceManager manager, List list, String targetNamespace, String targetPath, String sourcePath, ResType resType) {
         for (var recipe : list) {
-            ResourceLocation target = new ResourceLocation(targetNamespace, targetPath + recipe + ".json");
-            ResourceLocation source = new ResourceLocation("spelunkery", sourcePath + recipe + ".json");
+            ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, targetPath + recipe + ".json");
+            ResourceLocation source = Spelunkery.res( sourcePath + recipe + ".json");
 
             try (var bsStream = manager.getResource(source).orElseThrow().open()) {
                 JsonElement bsElement = RPUtils.deserializeJson(bsStream);

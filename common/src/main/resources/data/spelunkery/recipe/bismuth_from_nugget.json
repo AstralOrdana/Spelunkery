@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "etcetera",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "etcetera"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:bismuth_nugget"
+    }
+  },
+  "result": {
+    "id": "etcetera:bismuth_ingot",
+    "count": 1
+  }
+}

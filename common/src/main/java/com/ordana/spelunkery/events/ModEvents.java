@@ -3,19 +3,25 @@ package com.ordana.spelunkery.events;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.*;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
@@ -28,6 +34,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
@@ -155,7 +162,7 @@ public class ModEvents {
         if (!level.isClientSide()) {
             //find loot table for held item
             var tablePath = Spelunkery.res("gameplay/" + (diamondGrindstone && !depleted ? "diamond_" : "") + "grindstone_polishing/" + itemName);
-            var lootTable = level.getServer().getLootData().getLootTable(tablePath);
+            var lootTable = level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
             LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
@@ -166,7 +173,7 @@ public class ModEvents {
 
             if (lootItem.isEmpty()) {
                 tablePath = Spelunkery.res("gameplay/grindstone_polishing/" + itemName);
-                var lootTable2 = level.getServer().getLootData().getLootTable(tablePath);
+                var lootTable2 = level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
                 lootItem = lootTable2.getRandomItems(builder.create(LootContextParamSets.BLOCK));
             }
@@ -234,13 +241,13 @@ public class ModEvents {
 
     private static int getExperienceFromItem(ItemStack stack, boolean depleted) {
         int i = 0;
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
+        ItemEnchantments map = EnchantmentHelper.getEnchantmentsForCrafting(stack);
 
-        for (Map.Entry<Enchantment, Integer> enchantmentIntegerEntry : map.entrySet()) {
-            Enchantment enchantment = enchantmentIntegerEntry.getKey();
-            Integer integer = enchantmentIntegerEntry.getValue();
-            if (!enchantment.isCurse() || !depleted) {
-                i += enchantment.getMinCost(integer);
+        for (Object2IntMap.Entry<Holder<Enchantment>> enchantmentIntegerEntry : map.entrySet()) {
+            Holder<Enchantment> enchantment = enchantmentIntegerEntry.getKey();
+            int integer = enchantmentIntegerEntry.getIntValue();
+            if (!enchantment.is(EnchantmentTags.CURSE) || !depleted) {
+                i += enchantment.value().getMinCost(integer);
             }
         }
 
@@ -249,22 +256,24 @@ public class ModEvents {
 
     private static ItemStack removeEnchants(ItemStack stack, int damage, boolean depleted) {
         ItemStack itemStack = stack.copy();
-        itemStack.removeTagKey("Enchantments");
-        itemStack.removeTagKey("StoredEnchantments");
+        itemStack.remove(DataComponents.ENCHANTMENTS);
+        itemStack.remove(DataComponents.STORED_ENCHANTMENTS);
         if (damage > 0) {
             itemStack.setDamageValue(damage);
         } else {
-            itemStack.removeTagKey("Damage");
+            itemStack.remove(DataComponents.DAMAGE);
         }
 
         itemStack.setCount(1);
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((entry) -> (depleted || !entry.getKey().isCurse()) && entry.getKey().isCurse()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        EnchantmentHelper.setEnchantments(map, itemStack);
-        itemStack.setRepairCost(0);
-        if (itemStack.is(Items.ENCHANTED_BOOK) && map.size() == 0) {
+        ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+        Map<Holder<Enchantment>, Integer> map = EnchantmentHelper.getEnchantmentsForCrafting(stack).entrySet().stream().filter((entry) -> (depleted || !entry.getKey().is(EnchantmentTags.CURSE)) && entry.getKey().is(EnchantmentTags.CURSE)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        map.forEach(mutable::set);
+        EnchantmentHelper.setEnchantments(itemStack, mutable.toImmutable());
+        itemStack.set(DataComponents.REPAIR_COST, 0);
+        if (itemStack.is(Items.ENCHANTED_BOOK) && map.isEmpty()) {
             itemStack = new ItemStack(Items.BOOK);
-            if (stack.hasCustomHoverName()) {
-                itemStack.setHoverName(stack.getHoverName());
+            if (stack.has(DataComponents.CUSTOM_DATA)) {
+                itemStack.set(DataComponents.CUSTOM_NAME, stack.getHoverName());
             }
         }
 

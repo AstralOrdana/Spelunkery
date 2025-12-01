@@ -27,9 +27,9 @@ import java.util.Map;
 import java.util.Objects;
 
 @Mixin(LavaCauldronBlock.class)
-public class LavaCauldronBlockMixin extends AbstractCauldronBlock {
+public abstract class LavaCauldronBlockMixin extends AbstractCauldronBlock {
 
-    public LavaCauldronBlockMixin(Properties properties, Map<Item, CauldronInteraction> map) {
+    public LavaCauldronBlockMixin(Properties properties, CauldronInteraction.InteractionMap map) {
         super(properties, map);
     }
 

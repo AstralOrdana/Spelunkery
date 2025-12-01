@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_quartz_block"
+    }
+  ],
+  "result": {
+    "id": "minecraft:quartz",
+    "count": 1
+  }
+}

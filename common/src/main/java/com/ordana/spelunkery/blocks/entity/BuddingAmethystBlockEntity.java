@@ -6,6 +6,7 @@ import com.ordana.spelunkery.reg.ModEntities;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import com.ordana.spelunkery.reg.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -40,8 +41,8 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
     }
 
     @Override
-    public boolean handleGameEvent(ServerLevel level, GameEvent gameEvent, GameEvent.Context context, Vec3 pos) {
-        if (ModGameEvents.FORK_TONE_EVENT.get() == gameEvent) {
+    public boolean handleGameEvent(ServerLevel level, Holder<GameEvent> gameEvent, GameEvent.Context context, Vec3 pos) {
+        if (ModGameEvents.FORK_TONE_EVENT.value() == gameEvent.value()) {
             Entity entity = context.sourceEntity();
 
             if (entity instanceof Player player) {
@@ -50,7 +51,7 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
                 for (int i = 0; i < inventory.getContainerSize(); i++) {
                     ItemStack compass = inventory.getItem(i);
                     if (compass.is(ModItems.TUNING_FORK.get())) {
-                        AmethystTuningForkItem.addAmethystTags(level.dimension(), getBlockPos(), compass.getOrCreateTag());
+                        AmethystTuningForkItem.addAmethystTags(level.dimension(), getBlockPos(), compass);
 
                         level.playSound(null, entity.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 0.4f, 1.0f);
                     }

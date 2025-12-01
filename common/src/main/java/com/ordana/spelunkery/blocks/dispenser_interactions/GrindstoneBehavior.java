@@ -7,7 +7,10 @@ import com.ordana.spelunkery.reg.ModBlocks;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
+import net.minecraft.core.Registry;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -33,8 +36,8 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
 
     @Override
     protected InteractionResultHolder<ItemStack> customBehavior(BlockSource source, ItemStack itemStack) {
-        ServerLevel level = source.getLevel();
-        BlockPos pos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+        ServerLevel level = source.level();
+        BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
         BlockState state = level.getBlockState(pos);
         if (!state.is(Blocks.GRINDSTONE) && !state.is(ModBlocks.DIAMOND_GRINDSTONE.get())) return InteractionResultHolder.pass(itemStack);
 
@@ -45,7 +48,7 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
         var itemName = Utils.getID(itemStack.getItem()).getPath();
 
         var tablePath = Spelunkery.res("gameplay/" + (diamondGrindstone && !depleted ? "diamond_" : "") + "grindstone_polishing/" + itemName);
-        var lootTable = level.getServer().getLootData().getLootTable(tablePath);
+        var lootTable = level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
         LootParams.Builder builder = (new LootParams.Builder(level))
                 .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
@@ -56,7 +59,7 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
 
         if (lootItem.isEmpty()) {
             tablePath = Spelunkery.res("gameplay/grindstone_polishing/" + itemName);
-            var lootTable2 = level.getServer().getLootData().getLootTable(tablePath);
+            var lootTable2 = level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
             lootItem = lootTable2.getRandomItems(builder.create(LootContextParamSets.BLOCK));
         }

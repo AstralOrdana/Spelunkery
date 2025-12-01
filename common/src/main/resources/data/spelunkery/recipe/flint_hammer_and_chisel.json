@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "/X ",
+    " /X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:flint"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "spelunkery:flint_hammer_and_chisel",
+    "count": 1
+  }
+}

@@ -30,7 +30,7 @@ public class TooltipMixin {
 
     @Environment(EnvType.CLIENT)
     @Inject(method = "appendHoverText", at = @At("HEAD"))
-    private void vanillaItemTooltips(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
+    private void vanillaItemTooltips(ItemStack stack, Item.TooltipContext level, List<Component> tooltip, TooltipFlag isAdvanced, CallbackInfo ci) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (stack.is(ModTags.WIP_ITEMS)) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.wip_items").setStyle(Style.EMPTY.applyFormat(ChatFormatting.RED)));

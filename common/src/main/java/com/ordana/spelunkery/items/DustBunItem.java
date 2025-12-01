@@ -8,8 +8,10 @@ import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -38,7 +40,7 @@ public class DustBunItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.dust_bun_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -54,7 +56,7 @@ public class DustBunItem extends Item {
 
         ItemStack stack = player.getItemInHand(hand);
         if (level instanceof ServerLevel serverLevel) {
-            LootTable lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(Spelunkery.res("gameplay/dust_bun"));
+            LootTable lootTable = Objects.requireNonNull(level.getServer()).reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, Spelunkery.res("gameplay/dust_bun")));
             LootParams.Builder builder = new LootParams.Builder((ServerLevel) level)
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(Vec3i.ZERO))
                     .withOptionalParameter(LootContextParams.THIS_ENTITY, player);

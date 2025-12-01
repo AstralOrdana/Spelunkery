@@ -11,3 +11,7 @@ accessible field net/minecraft/world/entity/Entity level Lnet/minecraft/world/le
 accessible class net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece
 accessible method net/minecraft/world/level/levelgen/structure/structures/MineshaftPieces generateAndAddPiece (Lnet/minecraft/world/level/levelgen/structure/StructurePiece;Lnet/minecraft/world/level/levelgen/structure/StructurePieceAccessor;Lnet/minecraft/util/RandomSource;IIILnet/minecraft/core/Direction;I)Lnet/minecraft/world/level/levelgen/structure/structures/MineshaftPieces$MineShaftPiece;
 accessible method net/minecraft/world/level/levelgen/structure/StructurePiece generateMaybeBox (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;FIIIIIILnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;ZZ)V
+
+# respawn logic
+accessible method net/minecraft/server/level/ServerPlayer findRespawnAndUseSpawnBlock (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;FZZ)Ljava/util/Optional;
+accessible class net/minecraft/server/level/ServerPlayer$RespawnPosAngle

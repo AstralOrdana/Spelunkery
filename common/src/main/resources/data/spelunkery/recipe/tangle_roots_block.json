@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:tangle_roots"
+    }
+  },
+  "result": {
+    "id": "spelunkery:tangle_roots_block",
+    "count": 1
+  }
+}

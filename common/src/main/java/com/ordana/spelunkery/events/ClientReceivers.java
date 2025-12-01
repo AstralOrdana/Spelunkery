@@ -23,9 +23,9 @@ public class ClientReceivers {
 
     public static void handleSendBombKnockbackPacket(ClientBoundSendKnockbackPacket message) {
         withLevelDo(l -> {
-            Entity e = l.getEntity(message.id);
+            Entity e = l.getEntity(message.id());
             if (e != null) e.setDeltaMovement(e.getDeltaMovement()
-                    .add(message.knockbackX, message.knockbackY, message.knockbackZ));
+                    .add(message.knockback().x, message.knockback().y, message.knockback().z));
         });
     }
 

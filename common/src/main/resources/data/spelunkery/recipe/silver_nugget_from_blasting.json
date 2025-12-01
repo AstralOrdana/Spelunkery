@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "oreganized",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "oreganized"
+      ]
+    }
+  ],
+  "cookingtime": 12,
+  "experience": 0.1,
+  "group": "silver_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_silver_nugget"
+  },
+  "result": {
+    "id": "oreganized:silver_nugget"
+  },
+  "type": "minecraft:blasting"
+}

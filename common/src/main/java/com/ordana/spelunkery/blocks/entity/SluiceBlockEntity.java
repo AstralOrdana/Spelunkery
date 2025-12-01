@@ -5,13 +5,13 @@ import com.ordana.spelunkery.blocks.ChannelSluiceBlock;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.*;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -80,19 +80,21 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         };
     }
 
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
+        super.saveAdditional(tag, lookup);
         if (!this.trySaveLootTable(tag)) {
-            ContainerHelper.saveAllItems(tag, this.items);
+            ContainerHelper.saveAllItems(tag, this.items, lookup);
         }
 
     }
 
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    @Override
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
+        super.loadAdditional(tag, lookup);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         if (!this.tryLoadLootTable(tag)) {
-            ContainerHelper.loadAllItems(tag, this.items);
+            ContainerHelper.loadAllItems(tag, this.items, lookup);
         }
 
     }
@@ -222,7 +224,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         if (!Objects.equals(fluidName, "empty")) {
 
             var tablePath = Spelunkery.res("gameplay/sluice/" + fluidName + "/" + itemName);
-            var lootTable = Objects.requireNonNull(level.getServer()).getLootData().getLootTable(tablePath);
+            var lootTable = Objects.requireNonNull(level.getServer()).reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, tablePath));
 
             LootParams.Builder builder = (new LootParams.Builder((ServerLevel) level))
                     .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(pos))
@@ -236,7 +238,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
 
             if (lootItem.getItem() instanceof SpawnEggItem egg) {
 
-                Entity eggEntity = egg.getType(lootItem.getTag()).create(level);
+                Entity eggEntity = egg.getType(lootItem).create(level);
                 if (eggEntity != null) {
                     eggEntity.moveTo(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
                     level.addFreshEntity(eggEntity);
@@ -325,7 +327,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     private static boolean canMergeItems(ItemStack stack1, ItemStack stack2) {
-        return stack1.getCount() <= stack1.getMaxStackSize() && ItemStack.isSameItemSameTags(stack1, stack2);
+        return stack1.getCount() <= stack1.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack1, stack2);
     }
 
 }

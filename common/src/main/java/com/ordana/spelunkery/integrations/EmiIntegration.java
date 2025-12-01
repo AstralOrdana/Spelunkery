@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.integrations;
 
+import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
@@ -43,10 +44,10 @@ public class EmiIntegration implements EmiPlugin {
         if (PlatHelper.isModLoaded("create")) {
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(new ResourceLocation("spelunkery", "/rose_quartz"))
+                        .id(Spelunkery.res("/rose_quartz"))
                         .rightInput(grindstone, true)
-                        .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:rose_quartz"))))
-                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("create:polished_rose_quartz"))))
+                        .leftInput(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("create:rose_quartz"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("create:polished_rose_quartz"))))
                         .build());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -54,12 +55,12 @@ public class EmiIntegration implements EmiPlugin {
         }
 
         if (PlatHelper.isModLoaded("portal_fluid")) {
-            EmiStack portalFluid = EmiStack.of(BuiltInRegistries.FLUID.get(new ResourceLocation("portal_fluid:portal_fluid")));
+            EmiStack portalFluid = EmiStack.of(BuiltInRegistries.FLUID.get(ResourceLocation.parse("portal_fluid:portal_fluid")));
             portalFluid.setRemainder(portalFluid);
 
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(new ResourceLocation("spelunkery", "/portal_fluid_passive"))
+                        .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/portal_fluid_passive"))
                         .rightInput(sluice, true)
                         .leftInput(portalFluid)
                         .output(EmiStack.of(ModItems.END_STONE_PEBBLE.get()).setChance(0.571f))
@@ -69,19 +70,19 @@ public class EmiIntegration implements EmiPlugin {
                         .build());
 
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(new ResourceLocation("spelunkery", "/portal_fluid"))
+                        .id(Spelunkery.res("/portal_fluid"))
                         .rightInput(EmiStack.of(Blocks.CRYING_OBSIDIAN), false)
                         .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
                         .output(EmiStack.of(Blocks.OBSIDIAN))
-                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("portal_fluid:portal_fluid_bottle"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("portal_fluid:portal_fluid_bottle"))))
                         .build());
 
 
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(new ResourceLocation("spelunkery", "/portal_fluid_anchor"))
+                        .id(Spelunkery.res("/portal_fluid_anchor"))
                         .rightInput(EmiStack.of(Blocks.RESPAWN_ANCHOR), true)
                         .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
-                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(new ResourceLocation("portal_fluid:portal_fluid_bottle"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("portal_fluid:portal_fluid_bottle"))))
                         .build());
 
             } catch (Exception e) {
@@ -91,7 +92,7 @@ public class EmiIntegration implements EmiPlugin {
 
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/rock_salt_boiling"))
+            .id(Spelunkery.res("/rock_salt_boiling"))
             .leftInput(EmiStack.of(ModItems.SALT.get()))
             .rightInput(EmiStack.of(Blocks.WATER_CAULDRON), false)
             .output(EmiStack.of(ModItems.ROCK_SALT.get()))
@@ -99,35 +100,35 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/anvil_repair"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/anvil_repair"))
             .leftInput(EmiIngredient.of(Ingredient.of(ModTags.ANVIL_REPAIR_ITEM)))
             .rightInput(EmiStack.of(Blocks.DAMAGED_ANVIL), false)
             .output(EmiStack.of(Blocks.CHIPPED_ANVIL))
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/anvil_repair2"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/anvil_repair2"))
             .leftInput(EmiIngredient.of(Ingredient.of(ModTags.ANVIL_REPAIR_ITEM)))
             .rightInput(EmiStack.of(Blocks.CHIPPED_ANVIL), false)
             .output(EmiStack.of(Blocks.ANVIL))
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/diamond_grindstone_repair"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/diamond_grindstone_repair"))
             .leftInput(EmiStack.of(ModItems.ROUGH_DIAMOND_SHARD.get()))
             .rightInput(diamondGrindstone, false)
             .output(EmiStack.of(ModBlocks.DIAMOND_GRINDSTONE.get()))
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/salt_grinding"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/salt_grinding"))
             .leftInput(EmiStack.of(ModItems.ROCK_SALT.get()))
             .rightInput(grindstone, false)
             .output(EmiStack.of(ModItems.SALT.get()))
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/cinnabar"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/cinnabar"))
             .rightInput(grindstone, true)
             .leftInput(EmiStack.of(ModItems.ROUGH_CINNABAR.get()))
             .output(EmiStack.of(ModItems.CINNABAR.get()))
@@ -135,7 +136,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/lazurite"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/lazurite"))
             .rightInput(grindstone, true)
             .leftInput(EmiStack.of(ModItems.ROUGH_LAZURITE.get()))
             .output(EmiStack.of(Items.LAPIS_LAZULI))
@@ -143,14 +144,14 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/emerald"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/emerald"))
             .rightInput(diamondGrindstone, true)
             .leftInput(EmiStack.of(ModItems.ROUGH_EMERALD.get()))
             .output(EmiStack.of(Items.EMERALD))
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/diamond"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/diamond"))
             .rightInput(diamondGrindstone, true)
             .leftInput(EmiStack.of(ModItems.ROUGH_DIAMOND.get()))
             .output(EmiStack.of(Items.DIAMOND))
@@ -159,7 +160,7 @@ public class EmiIntegration implements EmiPlugin {
 
         //sluice recipes
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/spring_water_passive"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/spring_water_passive"))
             .rightInput(sluice, true)
             .leftInput(springWater)
             .output(EmiStack.of(ModItems.ROCK_SALT.get()).setChance(20f / 50f))
@@ -170,7 +171,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_passive"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_passive"))
             .rightInput(sluice, true)
             .leftInput(water)
             .output(EmiStack.of(ModItems.STONE_PEBBLE.get()).setChance(20f / 60f))
@@ -182,7 +183,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_clay"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_clay"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.CLAY))
@@ -208,7 +209,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_coarse_dirt"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_coarse_dirt"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.COARSE_DIRT))
@@ -221,7 +222,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_dirt"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_dirt"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.DIRT))
@@ -229,7 +230,7 @@ public class EmiIntegration implements EmiPlugin {
             .output(EmiStack.of(Items.STRING).setChance(0.166f))
             .output(EmiStack.of(Items.FEATHER).setChance(0.166f))
             .output(EmiStack.of(Items.COBWEB).setChance(0.083f))
-            .output(EmiStack.of(Items.GRASS).setChance(0.083f))
+            .output(EmiStack.of(Items.SHORT_GRASS).setChance(0.083f))
             .output(EmiStack.of(Items.WHEAT_SEEDS).setChance(0.083f))
             .output(EmiStack.of(Items.COCOA_BEANS).setChance(0.083f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.jungles").setStyle(style)))
@@ -238,7 +239,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_gravel"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_gravel"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.GRAVEL))
@@ -257,7 +258,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_mud"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_mud"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.MUD))
@@ -273,7 +274,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_red_sand"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_red_sand"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.RED_SAND))
@@ -289,7 +290,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_rooted_dirt"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_rooted_dirt"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.ROOTED_DIRT))
@@ -303,7 +304,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_sand"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_sand"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.SAND))
@@ -323,7 +324,7 @@ public class EmiIntegration implements EmiPlugin {
 
             .output(EmiStack.of(Items.NAUTILUS_SHELL).setChance(5f / 158f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.beaches").setStyle(style)))
-            .output(EmiStack.of(Items.SCUTE).setChance(5f / 158f), s -> s.appendTooltip(
+            .output(EmiStack.of(Items.TURTLE_SCUTE).setChance(5f / 158f), s -> s.appendTooltip(
                 Component.translatable("tooltip.spelunkery.sluice.beaches").setStyle(style)))
 
             .output(EmiStack.of(Items.BEETROOT_SEEDS).setChance(20f / 158f), s -> s.appendTooltip(
@@ -358,7 +359,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/water_sluice_soul_sand"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/water_sluice_soul_sand"))
             .rightInput(sluice, true)
             .leftInput(water)
             .leftInput(EmiStack.of(Blocks.SOUL_SAND))
@@ -371,7 +372,7 @@ public class EmiIntegration implements EmiPlugin {
             .build());
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
-            .id(new ResourceLocation("spelunkery", "/lava_passive"))
+            .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/lava_passive"))
             .rightInput(sluice, true)
             .leftInput(lava)
             .output(EmiStack.of(ModItems.NETHERRACK_PEBBLE.get()).setChance(200f / 472f))

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "sullysmod"
+      ]
+    }
+  ],
+  "cookingtime": 100,
+  "experience": 0.7,
+  "ingredient": {
+    "tag": "spelunkery:jade_ores"
+  },
+  "result": {
+    "id": "sullysmod:jade"
+  },
+  "type": "minecraft:blasting"
+}

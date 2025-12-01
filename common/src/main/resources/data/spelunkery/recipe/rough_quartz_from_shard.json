@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:rough_quartz_shard"
+    }
+  },
+  "result": {
+    "id": "minecraft:quartz",
+    "count": 1
+  }
+}

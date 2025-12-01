@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "sullysmod",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "sullysmod"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sullysmod:rough_jade"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:rough_jade_shard",
+    "count": 1
+  }
+}

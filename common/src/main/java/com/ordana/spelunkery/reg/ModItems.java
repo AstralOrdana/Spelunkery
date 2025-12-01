@@ -3,10 +3,11 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.items.*;
 import com.ordana.spelunkery.utils.DisabledItem;
-import net.mehvahdjukaar.moonlight.api.item.FuelItem;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -79,9 +80,9 @@ public class ModItems {
         new Item(new Item.Properties()));
 
     public static final Supplier<Item> COAL_LUMP = regItem("coal_lump", () ->
-            new FuelItem(new Item.Properties(), () -> 200));
+            new Item(new Item.Properties()));
     public static final Supplier<Item> CHARCOAL_LUMP = regItem("charcoal_lump", () ->
-            new FuelItem(new Item.Properties(), () -> 200));
+            new Item(new Item.Properties()));
     public static final Supplier<Item> ROUGH_CINNABAR_SHARD = regItem("rough_cinnabar_shard", () ->
             new Item(new Item.Properties()));
     public static final Supplier<Item> ROUGH_LAZURITE_SHARD = regItem("rough_lazurite_shard", () ->
@@ -153,7 +154,7 @@ public class ModItems {
     public static final Supplier<Item> BUNNY_EARS = regItem("bunny_ears", () ->
             new BunnyEarsItem(new Item.Properties().stacksTo(1)));
     public static final Supplier<Item> TRUE_CROWN = regItem("true_crown", () ->
-            new TrueCrownItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+            new TrueCrownItem(new Item.Properties().component(EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE, Unit.INSTANCE).stacksTo(1).rarity(Rarity.EPIC)));
 
     //mining gear
     public static final Supplier<Item> ROPE_LADDER = regItem("rope_ladder", () ->

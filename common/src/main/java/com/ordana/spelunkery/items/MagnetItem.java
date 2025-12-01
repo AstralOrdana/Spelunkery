@@ -3,6 +3,7 @@ package com.ordana.spelunkery.items;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.configs.CommonConfigs;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -36,11 +37,10 @@ public class MagnetItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            CompoundTag compoundTag = stack.getOrCreateTag();
-            if (compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.active").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
-            if (!compoundTag.getBoolean("active")) tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
+            if (stack.getOrDefault(ModComponents.ACTIVE.get(), false)) tooltip.add(Component.translatable("tooltip.spelunkery.active").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_GREEN, ChatFormatting.ITALIC)));
+            if (!stack.getOrDefault(ModComponents.ACTIVE.get(), false)) tooltip.add(Component.translatable("tooltip.spelunkery.inactive").setStyle(Style.EMPTY.applyFormats(ChatFormatting.DARK_RED, ChatFormatting.ITALIC)));
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_1", getMagnetRange()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.item_magnet_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
@@ -59,17 +59,17 @@ public class MagnetItem extends Item {
     }
 
     public static void toggleMagnet(Player player, ItemStack stack, Level level) {
-        if(!player.level.isClientSide && stack.getItem() instanceof MagnetItem){
-            boolean active = stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
+        if(!player.level.isClientSide() && stack.getItem() instanceof MagnetItem){
+            boolean active = stack.getOrDefault(ModComponents.ACTIVE.get(), false);
             var beaconSound = active ? SoundEvents.BEACON_DEACTIVATE : SoundEvents.BEACON_ACTIVATE;
             level.playSound(null, player.blockPosition(), beaconSound, SoundSource.BLOCKS, 1.0f, 2.0f);
-            stack.getOrCreateTag().putBoolean("active", !active);
+            stack.set(ModComponents.ACTIVE.get(), !active);
         }
     }
 
     @Override
     public boolean isFoil(ItemStack stack){
-        return stack.getOrCreateTag().contains("active") && stack.getOrCreateTag().getBoolean("active");
+        return stack.getOrDefault(ModComponents.ACTIVE.get(), false);
     }
 
     public int getMagnetRange() {
@@ -82,8 +82,7 @@ public class MagnetItem extends Item {
             return;
         }
 
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("active") && tag.getBoolean("active")) {
+        if (stack.getOrDefault(ModComponents.ACTIVE.get(), false)) {
             int r = getMagnetRange();
             AABB area = new AABB(entity.position().add(-r, -r, -r), entity.position().add(r, r, r));
 

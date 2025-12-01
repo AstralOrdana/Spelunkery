@@ -2,6 +2,7 @@ package com.ordana.spelunkery.items;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.ordana.spelunkery.configs.ClientConfigs;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.utils.EnchantmentUtils;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import net.fabricmc.api.EnvType;
@@ -34,7 +35,7 @@ public class NephriteCharmItem extends Item {
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.wip_items").setStyle(Style.EMPTY.applyFormat(ChatFormatting.RED)));
             tooltip.add(Component.translatable("tooltip.spelunkery.nephrite_charm_1", getStoredXP(stack), "1395").setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
@@ -136,10 +137,10 @@ public class NephriteCharmItem extends Item {
     }
 
     public void setStoredXP(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("xp", amount);
+        stack.set(ModComponents.XP.get(), amount);
     }
 
     public int getStoredXP(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("xp");
+        return stack.getOrDefault(ModComponents.XP.get(), 0);
     }
 }

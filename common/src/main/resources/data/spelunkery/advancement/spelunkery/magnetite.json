@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "id": "spelunkery:raw_magnetite"
+    },
+    "title": {
+      "translate": "advancements.spelunkery.magnetite.title"
+    },
+    "description": {
+      "translate": "advancements.spelunkery.magnetite.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:story/mine_diamond",
+  "criteria": {
+    "item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "spelunkery:raw_magnetite"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "item"
+    ]
+  ]
+}

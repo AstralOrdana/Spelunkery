@@ -1,9 +1,13 @@
 package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
+import com.ordana.spelunkery.SpelunkeryPlatform;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.minecraft.core.registries.Registries;
+import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.function.Supplier;
@@ -12,10 +16,10 @@ public class ModGameEvents {
     public static void init() {
     }
 
-    public static final Supplier<GameEvent> COMPASS_PING_EVENT = RegHelper.register(Spelunkery.res("compass_ping"),
-            () -> new GameEvent("compass_ping", CommonConfigs.MAGNETITE_RANGE.get()), Registries.GAME_EVENT);
-    public static final Supplier<GameEvent> FORK_TONE_EVENT = RegHelper.register(Spelunkery.res("fork_tone"),
-            () -> new GameEvent("fork_tone", CommonConfigs.MAGNETITE_RANGE.get()), Registries.GAME_EVENT);
+    public static final Holder<GameEvent> COMPASS_PING_EVENT = SpelunkeryPlatform.registerForHolder(Spelunkery.res("compass_ping"),
+            () -> new GameEvent(CommonConfigs.MAGNETITE_RANGE.get()));
+    public static final Holder<GameEvent> FORK_TONE_EVENT = SpelunkeryPlatform.registerForHolder(Spelunkery.res("fork_tone"),
+            () -> new GameEvent(CommonConfigs.MAGNETITE_RANGE.get()));
 
     /*
 

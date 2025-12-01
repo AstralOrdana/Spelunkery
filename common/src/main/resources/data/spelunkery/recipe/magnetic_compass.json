@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_magnetite"
+    },
+    "X": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "spelunkery:magnetic_compass",
+    "count": 1
+  }
+}

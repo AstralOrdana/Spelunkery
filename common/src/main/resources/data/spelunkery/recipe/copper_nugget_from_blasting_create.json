@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "cookingtime": 12,
+  "experience": 0.1,
+  "group": "copper_nugget",
+  "ingredient": {
+    "item": "spelunkery:raw_copper_nugget"
+  },
+  "result": {
+    "id": "create:copper_nugget"
+  },
+  "type": "minecraft:blasting"
+}

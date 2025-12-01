@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -77,6 +79,11 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
         this.registerDefaultState(((this.stateDefinition.any()).setValue(FACING, Direction.UP)).setValue(WATERLOGGED, false).setValue(STICKS, 1).setValue(PRIMED, false));
     }
 
+    @Override
+    protected MapCodec<? extends RodBlock> codec() {
+        return null;
+    }
+
     public static int getSticks(Level level, BlockPos pos) {
         return level.getBlockState(pos).getValue(STICKS);
     }
@@ -136,15 +143,16 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
     }
 
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    @Override
+    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         if (player.isSecondaryUseActive() && state.getValue(STICKS) > 1) {
             level.setBlockAndUpdate(pos, state.setValue(STICKS, state.getValue(STICKS) - 1));
             Block.popResourceFromFace(level, pos, hit.getDirection(), new ItemStack(ModBlocks.MINEOMITE.get()));
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         }
         if (!itemStack.is(Items.FLINT_AND_STEEL) && !itemStack.is(Items.FIRE_CHARGE)) {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useItemOn(stack, state, level, pos, player, hand, hit);
         } else {
             level.setBlock(pos, state.setValue(PRIMED, true), 3);
             level.playSound(null, pos, SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -152,16 +160,14 @@ public class MineomiteBlock extends RodBlock implements SimpleWaterloggedBlock {
             Item item = itemStack.getItem();
             if (!player.isCreative()) {
                 if (itemStack.is(Items.FLINT_AND_STEEL)) {
-                    itemStack.hurtAndBreak(1, player, (playerx) -> {
-                        playerx.broadcastBreakEvent(hand);
-                    });
+                    itemStack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
                 } else {
                     itemStack.shrink(1);
                 }
             }
 
             player.awardStat(Stats.ITEM_USED.get(item));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
     }
 

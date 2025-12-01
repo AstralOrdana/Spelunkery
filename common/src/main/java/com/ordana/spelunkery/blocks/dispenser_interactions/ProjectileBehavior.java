@@ -1,9 +1,9 @@
 package com.ordana.spelunkery.blocks.dispenser_interactions;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,10 +22,10 @@ abstract class ProjectileBehavior extends DispenserHelper.AdditionalDispenserBeh
 
     @Override
     protected InteractionResultHolder<ItemStack> customBehavior(BlockSource source, ItemStack stack) {
-        Level world = source.getLevel();
+        Level world = source.level();
         Position dispensePosition = DispenserBlock.getDispensePosition(source);
-        Direction direction = source.getBlockState().getValue(DispenserBlock.FACING);
-        BlockPos frontPos = source.getPos().relative(direction);
+        Direction direction = source.state().getValue(DispenserBlock.FACING);
+        BlockPos frontPos = source.pos().relative(direction);
         //this will make it so stuff can only shoot when no collision block is in front so we can run other behaviors too
         if (!world.getBlockState(frontPos).getCollisionShape(world, frontPos).isEmpty()) {
             return InteractionResultHolder.fail(stack);
@@ -39,10 +39,10 @@ abstract class ProjectileBehavior extends DispenserHelper.AdditionalDispenserBeh
 
     @Override
     protected void playSound(BlockSource source, boolean success) {
-        source.getLevel().playSound(null, source.x() + 0.5, source.y() + 0.5, source.z() + 0.5,
+        source.level().playSound(null, source.pos().getX() + 0.5, source.pos().getY() + 0.5, source.pos().getZ() + 0.5,
                 getSound(),
                 SoundSource.NEUTRAL, 0.5F,
-                0.4F / (source.getLevel().getRandom().nextFloat() * 0.4F + 0.8F));
+                0.4F / (source.level().getRandom().nextFloat() * 0.4F + 0.8F));
     }
 
     protected SoundEvent getSound() {

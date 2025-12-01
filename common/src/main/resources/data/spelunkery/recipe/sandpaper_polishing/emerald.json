@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:sandpaper_polishing",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_emerald"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:emerald"
+    }
+  ]
+}

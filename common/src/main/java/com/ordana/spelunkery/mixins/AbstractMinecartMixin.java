@@ -3,9 +3,11 @@ package com.ordana.spelunkery.mixins;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.VehicleEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Final;
@@ -17,27 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(AbstractMinecart.class)
-public abstract class AbstractMinecartMixin extends Entity {
+public abstract class AbstractMinecartMixin extends VehicleEntity {
 
-    @Shadow
-    @Final
-    public abstract int getHurtTime();
-
-    @Shadow
-    @Final
-    public abstract void setHurtTime(int i);
-
-    @Shadow
-    @Final
-    public abstract int getHurtDir();
-
-    @Shadow
-    @Final
-    public abstract void setHurtDir(int i);
-
-    @Shadow
-    @Final
-    public abstract void setDamage(float v);
 
     public AbstractMinecartMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -70,7 +53,7 @@ public abstract class AbstractMinecartMixin extends Entity {
 
     @Shadow
     @Final
-    protected abstract void defineSynchedData();
+    protected abstract void defineSynchedData(SynchedEntityData.Builder builder);
 
     @Shadow
     @Final

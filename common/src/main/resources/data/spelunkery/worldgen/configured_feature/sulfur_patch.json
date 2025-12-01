@@ -9,10 +9,8 @@
     "vegetation_chance": 0.1,
     "xz_radius": {
       "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 3,
-        "max_inclusive": 5
-      }
+      "min_inclusive": 3,
+      "max_inclusive": 5
     },
     "replaceable": "#minecraft:soul_speed_blocks",
     "ground_state": {
@@ -47,10 +45,8 @@
             "property": "layers",
             "values": {
               "type": "minecraft:uniform",
-              "value": {
-                "min_inclusive": 1,
-                "max_inclusive": 6
-              }
+              "min_inclusive": 1,
+              "max_inclusive": 6
             },
             "source": {
               "type": "minecraft:simple_state_provider",

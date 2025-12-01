@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.reg.ModGameEvents;
 import com.ordana.spelunkery.utils.TranslationUtils;
 import dev.architectury.injectables.annotations.PlatformOnly;
@@ -48,12 +49,11 @@ public class MagneticCompassItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
-            CompoundTag compoundTag = stack.getOrCreateTag();
             tooltip.add(Component.translatable("tooltip.spelunkery.player_pos", getPlayerX(stack), getPlayerZ(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
-            if (compoundTag.contains("magnetitePos")) {
-                BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
+            if (stack.has(ModComponents.MAGNETITE_POS.get())) {
+                BlockPos blockPos = stack.get(ModComponents.MAGNETITE_POS.get()).pos();
                 tooltip.add(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)));
             }
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
@@ -67,19 +67,21 @@ public class MagneticCompassItem extends Item {
     }
 
     public void setPlayerX(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("ex", amount);
+        var pos = stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO);
+        stack.set(ModComponents.PLAYER_POS.get(), new BlockPos(amount, pos.getY(), pos.getZ()));
     }
 
     public int getPlayerX(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("ex");
+        return stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO).getX();
     }
 
     public void setPlayerZ(ItemStack stack, int amount) {
-        stack.getOrCreateTag().putInt("zed", amount);
+        var pos = stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO);
+        stack.set(ModComponents.PLAYER_POS.get(), new BlockPos(pos.getX(), pos.getY(), amount));
     }
 
     public int getPlayerZ(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("zed");
+        return stack.getOrDefault(ModComponents.PLAYER_POS.get(), BlockPos.ZERO).getZ();
     }
 
     //Override
@@ -90,21 +92,20 @@ public class MagneticCompassItem extends Item {
 
     //Override
     @PlatformOnly(PlatformOnly.FABRIC)
-    public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
+    public boolean allowComponentsUpdateAnimation(Player player, InteractionHand hand, ItemStack originalStack, ItemStack updatedStack) {
         return false;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        CompoundTag compoundTag = stack.getOrCreateTag();
-        if (compoundTag.contains("magnetitePos")) {
-            BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
+        if (stack.has(ModComponents.MAGNETITE_POS.get())) {
+            BlockPos blockPos = stack.get(ModComponents.MAGNETITE_POS.get()).pos();
             player.displayClientMessage(Component.translatable("tooltip.spelunkery.magnetite_pos", blockPos.getX(), blockPos.getZ()).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)), true);
         } else player.displayClientMessage(Component.translatable("tooltip.spelunkery.player_pos", getPlayerX(stack), getPlayerZ(stack)).setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_GREEN)), true);
         if (player.isSecondaryUseActive()) {
-            compoundTag.remove("magnetitePos");
-            level.gameEvent(player, ModGameEvents.COMPASS_PING_EVENT.get(), player.blockPosition());
+            stack.remove(ModComponents.MAGNETITE_POS.get());
+            level.gameEvent(player, ModGameEvents.COMPASS_PING_EVENT, player.blockPosition());
         }
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
     }
@@ -127,19 +128,20 @@ public class MagneticCompassItem extends Item {
 
             }
 
-            CompoundTag compoundTag = stack.getOrCreateTag();
             tickCounter++;
             if (tickCounter == 100) {
-                if (!compoundTag.contains("magnetitePos")) level.gameEvent(entity, ModGameEvents.COMPASS_PING_EVENT.get(), entity.blockPosition());
+                if (!stack.has(ModComponents.MAGNETITE_POS.get())) level.gameEvent(entity, ModGameEvents.COMPASS_PING_EVENT, entity.blockPosition());
                 setTickCounter(0);
             }
 
-            Optional<ResourceKey<Level>> optional = getDimension(compoundTag);
-            if (optional.isPresent() && optional.get() == level.dimension() && compoundTag.contains("magnetitePos")) {
-                BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
+
+
+            if (stack.has(ModComponents.MAGNETITE_POS.get())) {
+                var component = stack.get(ModComponents.MAGNETITE_POS.get());
+                BlockPos blockPos = component.pos();
                 if (!level.isInWorldBounds(blockPos) || !level.getBlockState(blockPos).is(ModBlocks.RAW_MAGNETITE_BLOCK.get())) {
-                    compoundTag.remove("magnetitePos");
-                    level.gameEvent(entity, ModGameEvents.COMPASS_PING_EVENT.get(), entity.blockPosition());
+                    stack.remove(ModComponents.MAGNETITE_POS.get());
+                    level.gameEvent(entity, ModGameEvents.COMPASS_PING_EVENT, entity.blockPosition());
                 }
             }
 
@@ -160,8 +162,7 @@ public class MagneticCompassItem extends Item {
     }
 
     public static boolean isMagnetiteNearby(ItemStack stack) {
-        CompoundTag compoundTag = stack.getTag();
-        return compoundTag != null && compoundTag.contains("magnetitePos");
+        return stack.has(ModComponents.MAGNETITE_POS.get());
     }
 
     @Nullable
@@ -170,17 +171,7 @@ public class MagneticCompassItem extends Item {
     }
 
     @Nullable
-    public static GlobalPos getMagnetitePos(CompoundTag compoundTag) {
-        boolean bl = compoundTag.contains("magnetitePos");
-        boolean bl2 = compoundTag.contains("magnetiteDimension");
-        if (bl && bl2) {
-            Optional<ResourceKey<Level>> optional = getDimension(compoundTag);
-            if (optional.isPresent()) {
-                BlockPos blockPos = NbtUtils.readBlockPos(compoundTag.getCompound("magnetitePos"));
-                return GlobalPos.of(optional.get(), blockPos);
-            }
-        }
-
-        return null;
+    public static GlobalPos getMagnetitePos(ItemStack stack) {
+        return stack.getOrDefault(ModComponents.MAGNETITE_POS.get(), null);
     }
 }

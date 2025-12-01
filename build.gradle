@@ -1,7 +1,7 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
-    id "com.github.johnrengelman.shadow" version "7.1.2" apply false
+    id "dev.architectury.loom" version "1.11-SNAPSHOT" apply false
+    id "com.gradleup.shadow" version "8.3.6" apply false
 }
 
 architectury {
@@ -21,10 +21,8 @@ subprojects {
 
         mappings loom.layered() {
 
-            it.parchment("org.parchmentmc.data:parchment-${rootProject.parchment_version}")
-            it.officialMojangMappings {
-                setNameSyntheticMembers(false)
-            }
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-${rootProject.parchment_version}")
         }
     }
 }
@@ -48,16 +46,41 @@ allprojects {
 
         maven { url "https://maven.parchmentmc.org" }
 
-        maven {
-            url = "https://www.cursemaven.com"
-            allowInsecureProtocol = true
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "CurseForge"
+                    url = "https://www.cursemaven.com"
+                }
+            }
+            filter {
+                includeGroup "curse.maven"
+            }
         }
-
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/releases"
+        }
+        maven {
+            name = "MehVadJukaar"
+            url = "https://registry.somethingcatchy.net/repository/maven-releases/"
+        }
     }
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release = 17
+        options.release = 21
     }
 
     java {

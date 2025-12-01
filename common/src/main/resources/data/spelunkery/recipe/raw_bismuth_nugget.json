@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "etcetera",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "etcetera"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "etcetera:raw_bismuth"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:raw_bismuth_nugget",
+    "count": 1
+  }
+}

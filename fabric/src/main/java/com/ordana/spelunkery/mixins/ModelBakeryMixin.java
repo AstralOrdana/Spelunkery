@@ -18,12 +18,13 @@ import java.util.Map;
 
 @Mixin(ModelBakery.class)
 public abstract class ModelBakeryMixin {
-    @Shadow
-    protected abstract void loadTopLevel(ModelResourceLocation modelId);
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadTopLevel(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", ordinal = 3, shift = At.Shift.AFTER))
-    public void addModels(BlockColors blockColors, ProfilerFiller profiler, Map<ResourceLocation, BlockModel> jsonUnbakedModels, Map<ResourceLocation, List<ModelBakery.LoadedJson>> blockStates, CallbackInfo ci) {
-        this.loadTopLevel(new ModelResourceLocation(Spelunkery.MOD_ID, "bunny_ears_3d", "inventory"));
-        this.loadTopLevel(new ModelResourceLocation(Spelunkery.MOD_ID, "true_crown_3d", "inventory"));
+    @Shadow
+    protected abstract void loadSpecialItemModelAndDependencies(ModelResourceLocation modelLocation);
+
+    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadSpecialItemModelAndDependencies(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", shift = At.Shift.AFTER))
+    public void addModels(BlockColors blockColors, ProfilerFiller profiler, Map<ResourceLocation, BlockModel> jsonUnbakedModels, Map<ResourceLocation, List<ModelBakery>> blockStates, CallbackInfo ci) {
+        this.loadSpecialItemModelAndDependencies(new ModelResourceLocation(Spelunkery.res("bunny_ears_3d"), "inventory"));
+        this.loadSpecialItemModelAndDependencies(new ModelResourceLocation(Spelunkery.res("true_crown_3d"), "inventory"));
     }
 }

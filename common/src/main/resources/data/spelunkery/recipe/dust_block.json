@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:dust"
+    }
+  },
+  "result": {
+    "id": "spelunkery:dust_block",
+    "count": 1
+  }
+}

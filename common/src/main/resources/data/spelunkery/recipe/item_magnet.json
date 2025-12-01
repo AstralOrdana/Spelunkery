@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "spelunkery:raw_magnetite"
+    },
+    "X": {
+      "item": "spelunkery:cinnabar"
+    }
+  },
+  "result": {
+    "id": "spelunkery:item_magnet",
+    "count": 1
+  }
+}

@@ -149,7 +149,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (isTop(level, pos) && player.isCrouching()) {
             int i = 0;
             while (i < 32) {
@@ -163,7 +163,7 @@ public class RopeLadderBlock extends Block implements SimpleWaterloggedBlock {
 
                 else i++;
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         else return InteractionResult.PASS;
     }

@@ -3,7 +3,7 @@ package com.ordana.spelunkery.blocks.dispenser_interactions;
 import com.ordana.spelunkery.blocks.CompressionBlastMiner;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.ItemStack;
@@ -20,8 +20,8 @@ public class CBMBehavior extends DispenserHelper.AdditionalDispenserBehavior {
     @Override
     protected InteractionResultHolder<ItemStack> customBehavior(BlockSource source, ItemStack stack) {
         //this.setSuccessful(false);
-        ServerLevel level = source.getLevel();
-        BlockPos pos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+        ServerLevel level = source.level();
+        BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
         BlockState state = level.getBlockState(pos);
         if (state.getBlock() instanceof CompressionBlastMiner) {
             if (!state.getValue(CompressionBlastMiner.PRIMED)) {

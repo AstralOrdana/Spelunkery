@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    },
+    {
+      "item": "spelunkery:charcoal_lump"
+    }
+  ],
+  "result": {
+    "id": "minecraft:charcoal",
+    "count": 1
+  }
+}

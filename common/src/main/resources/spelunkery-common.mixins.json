@@ -9,7 +9,6 @@
   ],
   "mixins": [
     "AbstractMinecartMixin",
-    "BindingMixin",
     "BuddingAmethystBlockMixin",
     "BuriedTreasureMixin",
     "ExperienceOrbMixin",

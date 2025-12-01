@@ -32,11 +32,11 @@ import java.util.Map;
 import java.util.Objects;
 
 @Mixin(LayeredCauldronBlock.class)
-public class WaterCauldronBlockMixin extends AbstractCauldronBlock {
+public abstract class WaterCauldronBlockMixin extends AbstractCauldronBlock {
 
     @Shadow @Final public static IntegerProperty LEVEL;
 
-    public WaterCauldronBlockMixin(Properties properties, Map<Item, CauldronInteraction> map) {
+    public WaterCauldronBlockMixin(Properties properties, CauldronInteraction.InteractionMap map) {
         super(properties, map);
     }
 

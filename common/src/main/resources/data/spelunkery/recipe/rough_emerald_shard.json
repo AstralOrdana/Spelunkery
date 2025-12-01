@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:rough_emerald"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:rough_emerald_shard",
+    "count": 1
+  }
+}

@@ -2,6 +2,9 @@ package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.Spelunkery;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
@@ -32,7 +35,7 @@ public class BuriedTreasureMixin {
 
         BlockEntity blockEntity = level.getBlockEntity(mutableBlockPos);
         if (blockEntity instanceof BrushableBlockEntity susSand) {
-            (susSand).setLootTable(Spelunkery.res("gameplay/buried_treasure_marker"), random.nextLong());
+            (susSand).setLootTable(ResourceKey.create(Registries.LOOT_TABLE, Spelunkery.res("gameplay/buried_treasure_marker")), random.nextLong());
         }
     }
 

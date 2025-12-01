@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spelunkery:sulfur_block"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:sulfur",
+    "count": 1
+  }
+}

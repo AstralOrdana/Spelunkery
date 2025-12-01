@@ -22,9 +22,9 @@ public abstract class GrindstoneMixin extends FaceAttachedHorizontalDirectionalB
         super(properties);
     }
 
-    @Inject(method = "use", at = @At("HEAD"), cancellable = true)
-    private void grind(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
-        cir.setReturnValue(ModEvents.useGrindstone(state, level, pos, player, hand, hit, false));
+    @Inject(method = "useWithoutItem", at = @At("HEAD"), cancellable = true)
+    private void grind(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir) {
+        cir.setReturnValue(ModEvents.useGrindstone(state, level, pos, player, InteractionHand.MAIN_HAND, hitResult, false));
     }
 
 }

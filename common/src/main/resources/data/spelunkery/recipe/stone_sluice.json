@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#H#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_bars"
+    },
+    "H": {
+      "item": "spelunkery:stone_channel"
+    }
+  },
+  "result": {
+    "id": "spelunkery:stone_sluice",
+    "count": 1
+  }
+}

@@ -4,19 +4,25 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.serialization.Codec;
 import com.ordana.spelunkery.configs.ClientConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.reg.ModComponents;
 import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.utils.TranslationUtils;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -41,7 +47,7 @@ public class HandheldCompactorItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             tooltip.add(Component.translatable("tooltip.spelunkery.wip_items").setStyle(Style.EMPTY.applyFormat(ChatFormatting.RED)));
 
@@ -133,8 +139,8 @@ public class HandheldCompactorItem extends Item {
 
     public static void addOptional(ImmutableBiMap.Builder<Item, Item> map,
                                    String moddedId, String moddedId2) {
-        var o1 = BuiltInRegistries.ITEM.getOptional(new ResourceLocation(moddedId));
-        var o2 = BuiltInRegistries.ITEM.getOptional(new ResourceLocation(moddedId2));
+        var o1 = BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(moddedId));
+        var o2 = BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(moddedId2));
         if (o1.isPresent() && o2.isPresent()) {
             map.put(o1.get(), o2.get());
         }
@@ -224,22 +230,29 @@ public class HandheldCompactorItem extends Item {
     }
 
     private static void setMode(ItemStack stack, CompressionMode mode) {
-        stack.getOrCreateTag().putString("mode", mode.name());
+        stack.set(ModComponents.MODE.get(), mode);
     }
 
     public static CompressionMode getMode(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.contains("mode")) return CompressionMode.valueOf(tag.getString("mode").toUpperCase(Locale.ROOT));
-        else return CompressionMode.DISABLED;
+        return stack.getOrDefault(ModComponents.MODE.get(), CompressionMode.DISABLED);
     }
 
 
-    public enum CompressionMode {
+    public enum CompressionMode implements StringRepresentable {
 
         DISABLED,
         NUGGETS_TO_INGOTS,
         INGOTS_TO_BLOCKS,
         ALL;
         public static CompressionMode[] VALUES = CompressionMode.values();
+
+        public static final Codec<CompressionMode> CODEC = StringRepresentable.fromEnum(CompressionMode::values);
+        public static final StreamCodec<ByteBuf, CompressionMode> STREAM_CODEC = ByteBufCodecs.fromCodec(CODEC);
+
+
+        @Override
+        public String getSerializedName() {
+            return name().toLowerCase(Locale.ROOT);
+        }
     }
 }

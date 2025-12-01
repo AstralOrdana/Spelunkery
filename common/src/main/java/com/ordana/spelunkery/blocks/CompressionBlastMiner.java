@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
@@ -33,6 +34,11 @@ public class CompressionBlastMiner extends DirectionalBlock {
     public CompressionBlastMiner(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(POWERED, false).setValue(PRIMED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends DirectionalBlock> codec() {
+        return null;
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {

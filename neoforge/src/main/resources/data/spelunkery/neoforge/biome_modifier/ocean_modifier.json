@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#spelunkery:has_ocean_noise",
+  "features": [
+    "spelunkery:noise_ocean"
+  ],
+  "step": "raw_generation"
+}

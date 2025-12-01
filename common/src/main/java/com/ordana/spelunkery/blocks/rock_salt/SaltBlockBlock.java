@@ -1,14 +1,15 @@
 package com.ordana.spelunkery.blocks.rock_salt;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SandBlock;
+import net.minecraft.world.level.block.ColoredFallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SaltBlockBlock extends SandBlock implements RockSalt {
+public class SaltBlockBlock extends ColoredFallingBlock implements RockSalt {
     public SaltBlockBlock(int i, Properties properties) {
-        super(i, properties);
+        super(new ColorRGBA(i), properties);
     }
 
     @Override

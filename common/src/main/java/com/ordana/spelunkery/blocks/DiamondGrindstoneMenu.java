@@ -1,24 +1,29 @@
 package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.reg.ModBlocks;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DiamondGrindstoneMenu extends AbstractContainerMenu {
@@ -89,15 +94,13 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
 
             private int getExperienceFromItem(ItemStack stack) {
                 int i = 0;
-                Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
-                Iterator var4 = map.entrySet().iterator();
+                ItemEnchantments map = EnchantmentHelper.getEnchantmentsForCrafting(stack);
 
-                while(var4.hasNext()) {
-                    Entry<Enchantment, Integer> entry = (Entry)var4.next();
-                    Enchantment enchantment = entry.getKey();
+                for (Object2IntMap.Entry<Holder<Enchantment>> entry : map.entrySet()) {
+                    Enchantment enchantment = entry.getKey().value();
                     Integer integer = entry.getValue();
                     //if (!enchantment.isCurse()) {
-                        i += enchantment.getMinCost(integer);
+                    i += enchantment.getMinCost(integer);
                     //}
                 }
 
@@ -151,11 +154,11 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
                     return;
                 }
 
-                Item item = itemStack.getItem();
-                int j = item.getMaxDamage() - itemStack.getDamageValue();
-                int k = item.getMaxDamage() - itemStack2.getDamageValue();
-                int l = j + k + item.getMaxDamage() * 5 / 100;
-                m = Math.max(item.getMaxDamage() - l, 0);
+
+                int j = itemStack.getMaxDamage() - itemStack.getDamageValue();
+                int k = itemStack.getMaxDamage() - itemStack2.getDamageValue();
+                int l = j + k + itemStack.getMaxDamage() * 5 / 100;
+                m = Math.max(itemStack.getMaxDamage() - l, 0);
                 itemStack3 = this.mergeEnchants(itemStack, itemStack2);
                 if (!itemStack3.isDamageableItem()) {
                     if (!ItemStack.matches(itemStack, itemStack2)) {
@@ -180,48 +183,43 @@ public class DiamondGrindstoneMenu extends AbstractContainerMenu {
 
     private ItemStack mergeEnchants(ItemStack copyTo, ItemStack copyFrom) {
         ItemStack itemStack = copyTo.copy();
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(copyFrom);
-        Iterator var5 = map.entrySet().iterator();
+        ItemEnchantments map = EnchantmentHelper.getEnchantmentsForCrafting(copyFrom);
+        Set<Object2IntMap.Entry<Holder<Enchantment>>> var5 = map.entrySet();
 
-        while(true) {
-            Entry entry;
-            Enchantment enchantment;
-            do {
-                if (!var5.hasNext()) {
-                    return itemStack;
-                }
-
-                entry = (Entry)var5.next();
-                enchantment = (Enchantment)entry.getKey();
-            } while(/*enchantment.isCurse() &&*/ EnchantmentHelper.getItemEnchantmentLevel(enchantment, itemStack) != 0);
-
-            itemStack.enchant(enchantment, (Integer)entry.getValue());
+        for (Object2IntMap.Entry<Holder<Enchantment>> entry : var5) {
+            if (EnchantmentHelper.getItemEnchantmentLevel(entry.getKey(), itemStack) != 0) {
+                itemStack.enchant(entry.getKey(), entry.getIntValue());
+            }
         }
+
+        return itemStack;
     }
 
     private ItemStack removeEnchants(ItemStack stack, int damage, int count) {
         ItemStack itemStack = stack.copy();
-        itemStack.removeTagKey("Enchantments");
-        itemStack.removeTagKey("StoredEnchantments");
+        itemStack.remove(DataComponents.ENCHANTMENTS);
+        itemStack.remove(DataComponents.STORED_ENCHANTMENTS);
         if (damage > 0) {
             itemStack.setDamageValue(damage);
         } else {
-            itemStack.removeTagKey("Damage");
+            itemStack.remove(DataComponents.DAMAGE);
         }
 
         itemStack.setCount(count);
-        Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((entry) -> !entry.getKey().isCurse() && entry.getKey().isCurse()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-        EnchantmentHelper.setEnchantments(map, itemStack);
-        itemStack.setRepairCost(0);
-        if (itemStack.is(Items.ENCHANTED_BOOK) && map.size() == 0) {
+        Map<Holder<Enchantment>, Integer> map = EnchantmentHelper.getEnchantmentsForCrafting(stack).entrySet().stream().filter((entry) -> !entry.getKey().is(EnchantmentTags.CURSE) && entry.getKey().is(EnchantmentTags.CURSE)).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+        map.forEach(mutable::set);
+        EnchantmentHelper.setEnchantments(itemStack, mutable.toImmutable());
+        itemStack.set(DataComponents.REPAIR_COST, 0);
+        if (itemStack.is(Items.ENCHANTED_BOOK) && map.isEmpty()) {
             itemStack = new ItemStack(Items.BOOK);
-            if (stack.hasCustomHoverName()) {
-                itemStack.setHoverName(stack.getHoverName());
+            if (stack.has(DataComponents.CUSTOM_NAME)) {
+                itemStack.set(DataComponents.CUSTOM_NAME, stack.getHoverName());
             }
         }
 
         for(int i = 0; i < map.size(); ++i) {
-            itemStack.setRepairCost(AnvilMenu.calculateIncreasedRepairCost(itemStack.getBaseRepairCost()));
+            itemStack.set(DataComponents.REPAIR_COST, AnvilMenu.calculateIncreasedRepairCost(itemStack.getOrDefault(DataComponents.REPAIR_COST, 0)));
         }
 
         return itemStack;

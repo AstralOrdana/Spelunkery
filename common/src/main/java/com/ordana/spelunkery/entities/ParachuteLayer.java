@@ -9,11 +9,14 @@ import net.mehvahdjukaar.moonlight.api.client.util.RotHlpr;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +49,7 @@ public class ParachuteLayer<T extends LivingEntity & IParachuteEntity, M extends
 
             poseStack.mulPose(RotHlpr.X180);
 
-            var model = ClientHelper.getModel(Minecraft.getInstance().getModelManager(), SpelunkeryClient.PARACHUTE_3D_MODEL);
+            var model = ClientHelper.getModel(Minecraft.getInstance().getModelManager(), ModelResourceLocation.inventory(SpelunkeryClient.PARACHUTE_3D_MODEL));
             float ticks = livingEntity.getParachuteTicks() + partialTick;
             int timeToOpen = 15;
 

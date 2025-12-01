@@ -1,9 +1,11 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.events.ClientBoundParticlePacket;
 import com.ordana.spelunkery.events.ClientBoundSendKnockbackPacket;
 import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.reg.ModBlocks;
+import net.mehvahdjukaar.moonlight.api.platform.network.NetworkHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,6 +32,11 @@ public class SulfuricVentBlock extends DirectionalBlock {
     public SulfuricVentBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH));
+    }
+
+    @Override
+    protected MapCodec<? extends DirectionalBlock> codec() {
+        return simpleCodec(SulfuricVentBlock::new);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -101,13 +108,13 @@ public class SulfuricVentBlock extends DirectionalBlock {
         AABB area = new AABB(pos.relative(facing));
         List<Entity> entities = level.getEntities(null, area);
 
-        if (!level.isClientSide) {
+        if (level instanceof ServerLevel serverLevel) {
 
-            NetworkHandler.CHANNEL.sendToAllClientPlayersInRange(level, pos, 64,
+            NetworkHelper.sendToAllClientPlayersInRange(serverLevel, pos, 64,
                     new ClientBoundParticlePacket(Vec3.atCenterOf(pos),
                             ClientBoundParticlePacket.EventType.SULFUR_VENT));
 
-            level.playSound(null, pos, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0F, 1.7F);
+            serverLevel.playSound(null, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, 1.0F, 1.7F);
 
             if (entities.isEmpty()) return;
 
@@ -135,7 +142,7 @@ public class SulfuricVentBlock extends DirectionalBlock {
                         (ordinalZ == 0 ? (level.random.nextBoolean() ? z + gz : z - gz) : z));
 
                 if (e instanceof ServerPlayer) {
-                    NetworkHandler.CHANNEL.sendToClientPlayer((ServerPlayer) e,
+                    NetworkHelper.sendToClientPlayer((ServerPlayer) e,
                             new ClientBoundSendKnockbackPacket(e.getDeltaMovement().add(vec32), e.getId()));
                 }
                 else e.setDeltaMovement(e.getDeltaMovement().add(vec32));

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "create:raw_zinc"
+    }
+  ],
+  "result": {
+    "id": "spelunkery:raw_zinc_nugget",
+    "count": 1
+  }
+}

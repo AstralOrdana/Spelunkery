@@ -13,11 +13,13 @@
     "ElBones",
     "Nerjal Nosk",
     "ChromaPIE",
-    "Mikeliro"
+    "Mikeliro",
+    "cassiancc"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/spelunkery",
-    "sources": "https://github.com/AstralOrdana/Spelunkery"
+    "sources": "https://github.com/AstralOrdana/Spelunkery",
+    "issues": "https://github.com/AstralOrdana/Spelunkery/issues"
   },
   "license": "LGPLv3",
   "icon": "icon.png",
@@ -40,8 +42,8 @@
     "spelunkery-common.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
-    "minecraft": "1.20.1",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
     "moonlight": ">=1.20-2.12.21"
   }
 }

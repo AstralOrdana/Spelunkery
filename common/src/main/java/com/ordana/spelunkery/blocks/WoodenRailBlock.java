@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,6 +34,11 @@ public class WoodenRailBlock extends BaseRailBlock {
     public WoodenRailBlock(boolean bl, Properties properties) {
         super(bl, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false).setValue(BOTTOM, true).setValue(DISTANCE, 0));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseRailBlock> codec() {
+        return null;
     }
 
 

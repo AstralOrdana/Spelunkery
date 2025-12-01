@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#spelunkery:has_ice_noise",
+  "features": [
+    "spelunkery:noise_ice"
+  ],
+  "step": "raw_generation"
+}

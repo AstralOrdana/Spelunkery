@@ -1,5 +1,6 @@
 package com.ordana.spelunkery.blocks;
 
+import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.blocks.entity.FallingLayerEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -46,6 +47,11 @@ public class FallingLayerBlock extends FallingBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(layerProperty(), 1));
         this.min = Collections.min(this.layerProperty().getPossibleValues());
         this.max = Collections.max(this.layerProperty().getPossibleValues());
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return null;
     }
 
     public final int getMaxLayers() {
@@ -95,7 +101,7 @@ public class FallingLayerBlock extends FallingBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
+    public boolean isPathfindable(BlockState state, PathComputationType type) {
         return switch (type) {
             case LAND -> getLayers(state) < 5;
             case WATER -> getLayers(state) == 0;

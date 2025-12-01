@@ -17,6 +17,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -95,6 +96,7 @@ public class ChannelBlock extends Block {
     }
 
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST);
     }
@@ -119,6 +121,7 @@ public class ChannelBlock extends Block {
         super.tick(state, level, pos, random);
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockGetter blockGetter = context.getLevel();
         BlockPos pos = context.getClickedPos();
@@ -129,11 +132,13 @@ public class ChannelBlock extends Block {
         return this.defaultBlockState().setValue(NORTH, !(blockGetter.getBlockState(pos.north()).getBlock() instanceof ChannelBlock)).setValue(EAST, !(blockGetter.getBlockState(pos.east()).getBlock() instanceof ChannelBlock)).setValue(SOUTH, !(blockGetter.getBlockState(pos.south()).getBlock() instanceof ChannelBlock)).setValue(WEST, !(blockGetter.getBlockState(pos.west()).getBlock() instanceof ChannelBlock)).setValue(SUPPORTED, bl);
     }
 
+    @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         level.scheduleTick(pos, this, 1);
         super.neighborChanged(state, level, pos, block, fromPos, isMoving);
     }
 
+    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         level.scheduleTick(pos, this, 1);
 
@@ -143,15 +148,15 @@ public class ChannelBlock extends Block {
         return neighborState.getBlock() instanceof ChannelBlock && direction != Direction.UP && direction != Direction.DOWN ? state.setValue(PROPERTY_BY_DIRECTION.get(direction), false) : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getItemInHand(hand);
+    @Override
+    public ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         Item item = itemStack.getItem();
         var dir = hit.getDirection();
         boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
         boolean tool = stone ? itemStack.is(ItemTags.PICKAXES) : itemStack.is(ItemTags.AXES);
 
         if (dir == Direction.UP || dir == Direction.DOWN || !tool) {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useItemOn(itemStack, state, level, pos, player, hand, hit);
         } else {
             var propDir = PROPERTY_BY_DIRECTION.get(dir);
             var check = state.getValue(propDir);
@@ -162,12 +167,11 @@ public class ChannelBlock extends Block {
             if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
 
                 if (!player.isCreative()) {
-                    itemStack.hurtAndBreak(1, player, (playerx)
-                            -> playerx.broadcastBreakEvent(hand));
+                    itemStack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
                 }
 
                 player.awardStat(Stats.ITEM_USED.get(item));
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
             //return InteractionResult.SUCCESS;
 

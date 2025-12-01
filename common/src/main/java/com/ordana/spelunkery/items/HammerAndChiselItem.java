@@ -33,6 +33,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ClipContext;
@@ -48,14 +49,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class HammerAndChiselItem extends Item implements Vanishable {
+public class HammerAndChiselItem extends Item {
     public HammerAndChiselItem(Properties properties) {
         super(properties);
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level,
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable TooltipContext level,
                                 @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
         if (ClientConfigs.ENABLE_TOOLTIPS.get()) {
             if (stack.is(ModItems.FLINT_HAMMER_AND_CHISEL.get()))
@@ -100,11 +101,11 @@ public class HammerAndChiselItem extends Item implements Vanishable {
     }
 
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
-        float f = (float)(stack.getUseDuration() - remainingUseDuration) / 20;
+        float f = (float)(stack.getUseDuration(livingEntity) - remainingUseDuration) / 20;
         if (f < 1f || !(livingEntity instanceof Player player)) {
             return;
         }
-        var hit = Utils.rayTrace(player, level, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE);
+        var hit = livingEntity.pick(livingEntity.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE), 1, false);
 
         if (hit instanceof BlockHitResult blockHit) {
             BlockPos pos = blockHit.getBlockPos();
@@ -114,11 +115,11 @@ public class HammerAndChiselItem extends Item implements Vanishable {
             var chiseled = getChiseled(state);
             if (chiseled.isPresent() && player.isSecondaryUseActive()) {
                 level.playSound(null, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
-                level.playSound(null, pos, state.getBlock().getSoundType(state).getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(null, pos, state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, state), UniformInt.of(3, 5));
                 if (player instanceof ServerPlayer serverPlayer) {
                     if (!serverPlayer.isCreative())
-                        stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(serverPlayer.getUsedItemHand()));
+                        stack.hurtAndBreak(1, player, Player.getSlotForHand(serverPlayer.getUsedItemHand()));
                     level.setBlockAndUpdate(pos, chiseled.get());
                     player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
@@ -130,7 +131,7 @@ public class HammerAndChiselItem extends Item implements Vanishable {
             }
             else if (player instanceof ServerPlayer serverPlayer) {
                 if (!player.isCreative())
-                    stack.hurtAndBreak(1, player, (l) -> l.broadcastBreakEvent(player.getUsedItemHand()));
+                    stack.hurtAndBreak(1, player, Player.getSlotForHand(player.getUsedItemHand()));
                 level.destroyBlock(pos, false, player);
                 Block.popResourceFromFace(level, pos, dir, state.getBlock().getCloneItemStack(level, pos, state));
 
@@ -144,8 +145,8 @@ public class HammerAndChiselItem extends Item implements Vanishable {
 
     public static void addOptional(ImmutableBiMap.Builder<Block, Block> map,
                                    String moddedId, String moddedId2) {
-        var o1 = BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(moddedId));
-        var o2 = BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(moddedId2));
+        var o1 = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(moddedId));
+        var o2 = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(moddedId2));
         if (o1.isPresent() && o2.isPresent()) {
             map.put(o1.get(), o2.get());
         }

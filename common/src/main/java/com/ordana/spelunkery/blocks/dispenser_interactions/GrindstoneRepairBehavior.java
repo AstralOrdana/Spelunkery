@@ -4,7 +4,7 @@ import com.ordana.spelunkery.blocks.DiamondGrindstoneBlock;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.Item;
@@ -20,8 +20,8 @@ public class GrindstoneRepairBehavior extends DispenserHelper.AdditionalDispense
 
     @Override
     protected InteractionResultHolder<ItemStack> customBehavior(BlockSource source, ItemStack stack) {
-        ServerLevel level = source.getLevel();
-        BlockPos pos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
+        ServerLevel level = source.level();
+        BlockPos pos = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
         BlockState state = level.getBlockState(pos);
         if (state.getBlock() instanceof DiamondGrindstoneBlock) {
             if (state.getValue(ModBlockProperties.DEPLETION) < 3) {

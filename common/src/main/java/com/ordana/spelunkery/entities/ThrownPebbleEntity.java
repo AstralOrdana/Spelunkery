@@ -64,7 +64,7 @@ public class ThrownPebbleEntity extends ImprovedProjectileEntity {
         if (entity instanceof LivingEntity livingEntity) {
             if (livingEntity instanceof Player) level.playSound(null, getX(), getY(), getZ(), this.getItem().is(ModItems.END_STONE_PEBBLE.get()) ? ModSoundEvents.KNOB.get() : ModSoundEvents.BONK.get(), SoundSource.NEUTRAL, 0.5F, 1.5F / (level.getRandom().nextFloat() * 1.5F + 0.8F));
             d = Math.max(0.0D, 1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-            if (this.getItem().is(ModItems.MAGMA_PEBBLE.get())) entity.setSecondsOnFire(1);
+            if (this.getItem().is(ModItems.MAGMA_PEBBLE.get())) entity.setRemainingFireTicks(20);
         }
         Vec3 vec3 = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize().scale(0.6D * d);
         if (vec3.lengthSqr() > 0.0D) {

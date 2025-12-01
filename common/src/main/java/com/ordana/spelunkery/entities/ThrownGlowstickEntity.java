@@ -45,9 +45,9 @@ public class ThrownGlowstickEntity extends ImprovedProjectileEntity {
         super(ModEntities.GLOWSTICK.get(), x, y, z, worldIn);
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_GLOWSTICK_COLOR, DyeColor.RED.getId());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_GLOWSTICK_COLOR, DyeColor.RED.getId());
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {
