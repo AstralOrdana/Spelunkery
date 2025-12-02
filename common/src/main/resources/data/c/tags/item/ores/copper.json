@@ -1,10 +1,22 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:andesite_copper_ore",
-    "spelunkery:diorite_copper_ore",
-    "spelunkery:granite_copper_ore",
-    "spelunkery:tuff_copper_ore",
+    {
+      "id": "spelunkery:andesite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_copper_ore",
+      "required": false
+    },
     "minecraft:deepslate_copper_ore",
     "minecraft:copper_ore"
   ]
