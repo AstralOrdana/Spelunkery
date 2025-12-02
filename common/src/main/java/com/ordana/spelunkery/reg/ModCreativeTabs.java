@@ -152,26 +152,6 @@ public class ModCreativeTabs {
                 ModBlocks.TANGLE_ROOTS_BLOCK, ModBlocks.TANGLE_ROOTS, ModBlocks.SPOROPHYTE, ModBlocks.TALL_SPOROPHYTE
         );
 
-        after(e, Items.RED_MUSHROOM, CreativeModeTabs.NATURAL_BLOCKS,
-                ModBlocks.BUTTON_MUSHROOM, ModBlocks.CRIMINI, ModBlocks.PORTABELLA,
-                ModBlocks.CONK_FUNGUS, ModBlocks.INKCAP_MUSHROOM, ModBlocks.WHITE_INKCAP_MUSHROOM,
-                ModBlocks.PHOSPHOR_FUNGUS, ModBlocks.MUSHGLOOM, ModBlocks.MILLY_BUBCAP
-        );
-
-        after(e, Items.MUSHROOM_STEM, CreativeModeTabs.NATURAL_BLOCKS,
-                ModBlocks.CAVE_MUSHROOM_STEM
-        );
-
-        after(e, Items.SHROOMLIGHT, CreativeModeTabs.NATURAL_BLOCKS,
-                ModBlocks.PHOSPHOR_SHROOMLIGHT
-        );
-
-        after(e, Items.RED_MUSHROOM_BLOCK, CreativeModeTabs.NATURAL_BLOCKS,
-                ModBlocks.PORTABELLA_BLOCK,
-                ModBlocks.CONK_FUNGUS_BLOCK, ModBlocks.INKCAP_MUSHROOM_BLOCK, ModBlocks.WHITE_INKCAP_MUSHROOM_BLOCK,
-                ModBlocks.PHOSPHOR_FUNGUS_BLOCK, ModBlocks.MUSHGLOOM_BLOCK, ModBlocks.MILLY_BUBCAP_BLOCK
-        );
-
         after(e, Items.CLAY_BALL, CreativeModeTabs.INGREDIENTS,
                 ModBlocks.ROCK_SALT, ModBlocks.SALT,
                 ModBlocks.SALTPETER,
@@ -228,11 +208,6 @@ public class ModCreativeTabs {
                 ModBlocks.ROPE_LADDER
         );
 
-        after(e, Items.SPIDER_EYE, CreativeModeTabs.FOOD_AND_DRINKS,
-                ModItems.BUTTON_MUSHROOM, ModItems.CRIMINI, ModItems.PORTABELLA,
-                ModItems.GRILLED_PORTABELLA
-        );
-
         after(e, Items.NETHERITE_HOE, CreativeModeTabs.TOOLS_AND_UTILITIES,
                 ModItems.FLINT_HAMMER_AND_CHISEL, ModItems.OBSIDIAN_HAMMER_AND_CHISEL
         );
@@ -242,7 +217,7 @@ public class ModCreativeTabs {
         );
 
         after(e, Items.MILK_BUCKET, CreativeModeTabs.TOOLS_AND_UTILITIES,
-                ModItems.SALT_BUCKET, ModItems.PORTAL_FLUID_BUCKET, ModItems.PORTAL_FLUID_BOTTLE
+                ModItems.SALT_BUCKET
         );
 
         after(e, Items.RECOVERY_COMPASS, CreativeModeTabs.TOOLS_AND_UTILITIES,

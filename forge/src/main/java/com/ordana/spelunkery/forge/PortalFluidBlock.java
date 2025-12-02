@@ -3,7 +3,6 @@ package com.ordana.spelunkery.forge;
 import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModSoundEvents;
 import com.ordana.spelunkery.reg.ModTags;
-import com.ordana.spelunkery.utils.LevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;

@@ -9,9 +9,7 @@
   ],
   "mixins": [
     "AbstractMinecartMixin",
-    "BaseFireBlockMixin",
     "BindingMixin",
-    "BoatPaddleSoundMixin",
     "BuddingAmethystBlockMixin",
     "BuriedTreasureMixin",
     "ExperienceOrbMixin",
@@ -22,8 +20,6 @@
     "LavaCauldronBlockMixin",
     "MineshaftMixin",
     "MossBlockMixin",
-    "NetherPortalBlockMixin",
-    "NetherPortalSoundMixin",
     "OreBlockMixin",
     "PlayerMixin",
     "RedstoneOreBlockMixin",

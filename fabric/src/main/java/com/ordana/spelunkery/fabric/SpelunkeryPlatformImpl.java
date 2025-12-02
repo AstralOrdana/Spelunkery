@@ -23,10 +23,6 @@ public class SpelunkeryPlatformImpl {
         BiomeModifications.addCarver(BiomeSelectors.tag(tagKey), step, carver);
     }
 
-    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
-        return new PortalFluidBlock(flowingFluid.get(), properties);
-    }
-
     public static LiquidBlock doSpringWater(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
         return new SpringWaterBlock(flowingFluid.get(), properties);
     }

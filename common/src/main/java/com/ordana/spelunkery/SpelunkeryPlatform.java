@@ -30,11 +30,6 @@ public class SpelunkeryPlatform {
     }
 
     @ExpectPlatform
-    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
     public static LiquidBlock doSpringWater(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
         throw new AssertionError();
     }

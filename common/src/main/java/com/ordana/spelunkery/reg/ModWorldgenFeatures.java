@@ -25,20 +25,6 @@ public class ModWorldgenFeatures {
     public static final Supplier<StructurePieceType> MINESHAFT_DUST_CORRIDOR = RegHelper.register(
         Spelunkery.res("mineshaft_dust_corridor"), () -> MineshaftDustCorridor::new, Registries.STRUCTURE_PIECE);
 
-
-    //custom feature types
-    public static final Supplier<Feature<HugeConkFungusFeatureConfig>> HUGE_CONK_FEATURE = RegHelper.registerFeature(
-        Spelunkery.res("huge_conk"), () ->
-            new HugeConkFungusFeature(HugeConkFungusFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<HugeForkingMushroomFeatureConfig>> HUGE_FORKING_MUSHROOM_FEATURE = RegHelper.registerFeature(
-        Spelunkery.res("huge_forking_mushroom"), () ->
-            new HugeForkingMushroomFeature(HugeForkingMushroomFeatureConfig.CODEC));
-
-    public static final Supplier<Feature<WallMushroomFeatureConfig>> WALL_MUSHROOM_FEATURE = RegHelper.registerFeature(
-        Spelunkery.res("wall_mushroom"), () ->
-            new WallMushroomFeature(WallMushroomFeatureConfig.CODEC));
-
     public static final Supplier<Feature<CrystalFeatureConfig>> CRYSTAL_FEATURE = RegHelper.registerFeature(
         Spelunkery.res("crystal"), () ->
             new CrystalFeature(CrystalFeatureConfig.CODEC));
@@ -47,27 +33,12 @@ public class ModWorldgenFeatures {
         Spelunkery.res("block_stripe"), () ->
             new BlockStripeFeature(BlockStripeFeatureConfig.CODEC));
 
-    public static final Supplier<Feature<NoneFeatureConfiguration>> PORTAL_FLUID_OCEAN_FEATURE = RegHelper.registerFeature(
-         Spelunkery.res("portal_fluid_ocean"), () ->
-            new PortalFluidOceanFeature(NoneFeatureConfiguration.CODEC));
 
     public static void init() {
 
         //carver generation
-        ResourceKey<ConfiguredWorldCarver<?>> end_cave = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_cave"));
-        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_cave);
-
-        ResourceKey<ConfiguredWorldCarver<?>> end_cave_extra = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_cave_extra"));
-        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_cave_extra);
-
-        ResourceKey<ConfiguredWorldCarver<?>> end_canyon = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("end_canyon"));
-        SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_END_NOISE, end_canyon);
-
         ResourceKey<ConfiguredWorldCarver<?>> crevice = ResourceKey.create(Registries.CONFIGURED_CARVER, Spelunkery.res("crevice"));
         SpelunkeryPlatform.addCarverToBiome(GenerationStep.Carving.AIR, ModTags.HAS_STONE_NOISE, crevice);
-
-        ResourceKey<PlacedFeature> portal_fluid_ocean = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("portal_fluid_ocean"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, BiomeTags.IS_END, portal_fluid_ocean);
 
         //stone generation
         ResourceKey<PlacedFeature> noise_stone = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_stone"));
@@ -82,9 +53,6 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> noise_ocean = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_ocean"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_OCEAN_NOISE, noise_ocean);
 
-        //ResourceKey<PlacedFeature> noise_desert = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_desert"));
-        //SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_DESERT_NOISE, noise_desert);
-
         ResourceKey<PlacedFeature> noise_ice = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_ice"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_ICE_NOISE, noise_ice);
 
@@ -93,9 +61,6 @@ public class ModWorldgenFeatures {
 
         ResourceKey<PlacedFeature> noise_salt = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, noise_salt);
-
-        ResourceKey<PlacedFeature> noise_end = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("noise_end"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, noise_end);
 
         ResourceKey<PlacedFeature> rock_salt = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("rock_salt"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SALT_NOISE, rock_salt);
@@ -145,41 +110,8 @@ public class ModWorldgenFeatures {
         ResourceKey<PlacedFeature> tangle_roots_ceiling = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("tangle_roots_ceiling"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, tangle_roots_ceiling);
 
-        ResourceKey<PlacedFeature> conk_fungus = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("conk_fungus"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, conk_fungus);
-
-        ResourceKey<PlacedFeature> conk_fungus_surface = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("conk_fungus_surface"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, conk_fungus_surface);
-
-        ResourceKey<PlacedFeature> inkcap = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("inkcap"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, inkcap);
-
-        ResourceKey<PlacedFeature> inkcap_deepslate = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("inkcap_deepslate"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, inkcap_deepslate);
-
-        ResourceKey<PlacedFeature> portabella = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("portabella"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, portabella);
-
-        ResourceKey<PlacedFeature> phosphor_fungus = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("phosphor_fungus"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, phosphor_fungus);
-
-        ResourceKey<PlacedFeature> mushgloom = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("mushgloom"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, mushgloom);
-
-        ResourceKey<PlacedFeature> rare_huge_mushroom = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("rare_huge_mushroom"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, BiomeTags.IS_OVERWORLD, rare_huge_mushroom);
-
         ResourceKey<PlacedFeature> deep_dark_fossil = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("deep_dark_fossil"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.VEGETAL_DECORATION, ModTags.HAS_SCULK_NOISE, deep_dark_fossil);
-
-        ResourceKey<PlacedFeature> portal_fluid_pool = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("portal_fluid_pool"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.SURFACE_STRUCTURES, ModTags.HAS_END_NOISE, portal_fluid_pool);
-
-        ResourceKey<PlacedFeature> portal_fluid_spring = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("portal_fluid_spring"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.SURFACE_STRUCTURES, ModTags.HAS_END_NOISE, portal_fluid_spring);
-
-        ResourceKey<PlacedFeature> obsidian_patch = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("obsidian_patch"));
-        SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_END_NOISE, obsidian_patch);
 
         ResourceKey<PlacedFeature> sulfur_patch = ResourceKey.create(Registries.PLACED_FEATURE, Spelunkery.res("sulfur_patch"));
         SpelunkeryPlatform.addFeatureToBiome(GenerationStep.Decoration.RAW_GENERATION, ModTags.HAS_SULFUR_PATCHES, sulfur_patch);

@@ -469,15 +469,6 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
                     "overrides/loot_tables/", ResType.BLOCK_LOOT_TABLES);
         }
 
-        if (CommonConfigs.PIGLINS_GIVE_CRYING_OBSIDIAN.get()) {
-
-            //make piglins not give you crying obsidian as barter loot
-            overrideDataFile(manager, vanillaLootPiglins,
-                    "minecraft", "gameplay/",
-                    "overrides/loot_tables/", ResType.LOOT_TABLES);
-        }
-
-
         //worldgen
         if (CommonConfigs.STONE_STRIPE_FEATURES.get()) {
 
@@ -491,14 +482,6 @@ public class ModLootOverrides extends DynServerResourcesGenerator {
 
             //make sporophytes generate instead of tall grass in lush caves
             overrideDataFileGeneric(manager, vanillaWorldgenMoss,
-                    "minecraft", "worldgen/configured_feature/",
-                    "overrides/worldgen/configured_feature/", ResType.GENERIC);
-        }
-
-        if (CommonConfigs.DARK_FOREST_PORTABELLAS.get()) {
-
-            //make large portabellas generate in dark forests
-            overrideDataFileGeneric(manager, vanillaWorldgenPortabellas,
                     "minecraft", "worldgen/configured_feature/",
                     "overrides/worldgen/configured_feature/", ResType.GENERIC);
         }

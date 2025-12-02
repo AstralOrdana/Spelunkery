@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:portal_cauldron",
     "spelunkery:stone_channel",
     "spelunkery:stone_sluice",
     "spelunkery:compression_blast_miner",
