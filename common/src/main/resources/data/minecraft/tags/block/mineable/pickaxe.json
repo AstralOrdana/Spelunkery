@@ -46,38 +46,134 @@
     "spelunkery:polished_nephrite_brick_wall",
     "spelunkery:diamond_grindstone",
     "spelunkery:raw_magnetite_block",
-    "spelunkery:andesite_coal_ore",
-    "spelunkery:diorite_coal_ore",
-    "spelunkery:granite_coal_ore",
-    "spelunkery:tuff_coal_ore",
-    "spelunkery:andesite_iron_ore",
-    "spelunkery:diorite_iron_ore",
-    "spelunkery:granite_iron_ore",
-    "spelunkery:tuff_iron_ore",
-    "spelunkery:andesite_gold_ore",
-    "spelunkery:diorite_gold_ore",
-    "spelunkery:granite_gold_ore",
-    "spelunkery:tuff_gold_ore",
-    "spelunkery:andesite_copper_ore",
-    "spelunkery:diorite_copper_ore",
-    "spelunkery:granite_copper_ore",
-    "spelunkery:tuff_copper_ore",
-    "spelunkery:andesite_redstone_ore",
-    "spelunkery:diorite_redstone_ore",
-    "spelunkery:granite_redstone_ore",
-    "spelunkery:tuff_redstone_ore",
-    "spelunkery:andesite_lapis_ore",
-    "spelunkery:diorite_lapis_ore",
-    "spelunkery:granite_lapis_ore",
-    "spelunkery:tuff_lapis_ore",
-    "spelunkery:andesite_emerald_ore",
-    "spelunkery:diorite_emerald_ore",
-    "spelunkery:granite_emerald_ore",
-    "spelunkery:tuff_emerald_ore",
-    "spelunkery:andesite_diamond_ore",
-    "spelunkery:diorite_diamond_ore",
-    "spelunkery:granite_diamond_ore",
-    "spelunkery:tuff_diamond_ore",
+    {
+      "id": "spelunkery:andesite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_copper_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_emerald_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_diamond_ore",
+      "required": false
+    },
     {
       "id": "spelunkery:granite_zinc_ore",
       "required": false

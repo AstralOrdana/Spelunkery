@@ -17,25 +17,85 @@
     "spelunkery:diorite_emerald_ore",
     "spelunkery:andesite_emerald_ore",
     "spelunkery:tuff_emerald_ore",
-    "spelunkery:granite_gold_ore",
-    "spelunkery:diorite_gold_ore",
-    "spelunkery:andesite_gold_ore",
-    "spelunkery:tuff_gold_ore",
-    "spelunkery:granite_redstone_ore",
-    "spelunkery:diorite_redstone_ore",
-    "spelunkery:andesite_redstone_ore",
-    "spelunkery:tuff_redstone_ore",
-    "spelunkery:granite_silver_ore",
-    "spelunkery:diorite_silver_ore",
-    "spelunkery:andesite_silver_ore",
-    "spelunkery:tuff_silver_ore",
-    "spelunkery:granite_jade_ore",
-    "spelunkery:diorite_jade_ore",
-    "spelunkery:andesite_jade_ore",
-    "spelunkery:tuff_jade_ore",
-    "spelunkery:granite_zinc_ore",
-    "spelunkery:diorite_zinc_ore",
-    "spelunkery:andesite_zinc_ore",
-    "spelunkery:tuff_zinc_ore"
+    {
+      "id": "spelunkery:andesite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_gold_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_silver_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_silver_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_silver_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_silver_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_zinc_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_zinc_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_zinc_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_zinc_ore",
+      "required": false
+    }
   ]
 }
