@@ -1,9 +1,21 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:granite_iron_ore",
-    "spelunkery:diorite_iron_ore",
-    "spelunkery:andesite_iron_ore",
-    "spelunkery:tuff_iron_ore"
+    {
+      "id": "spelunkery:andesite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_iron_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_iron_ore",
+      "required": false
+    }
   ]
 }

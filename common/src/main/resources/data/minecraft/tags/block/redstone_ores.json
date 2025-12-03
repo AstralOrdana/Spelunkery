@@ -1,10 +1,21 @@
 {
   "replace": false,
   "values": [
-    "spelunkery:granite_redstone_ore",
-    "spelunkery:diorite_redstone_ore",
-    "spelunkery:andesite_redstone_ore",
-    "spelunkery:tuff_redstone_ore",
-    "spelunkery:calcite_redstone_ore"
+    {
+      "id": "spelunkery:andesite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_redstone_ore",
+      "required": false
+    }
   ]
 }
