@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:granite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_jade_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_jade_ore",
+      "required": false
+    }
+  ]
+}

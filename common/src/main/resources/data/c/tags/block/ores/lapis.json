@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:andesite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_lapis_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:sandstone_lapis_ore",
+      "required": false
+    },
+    "minecraft:deepslate_lapis_ore",
+    "minecraft:lapis_ore"
+  ]
+}

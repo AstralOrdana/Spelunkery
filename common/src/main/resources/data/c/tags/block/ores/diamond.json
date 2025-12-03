@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:smooth_basalt_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_diamond_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_diamond_ore",
+      "required": false
+    },
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:diamond_ore"
+  ]
+}

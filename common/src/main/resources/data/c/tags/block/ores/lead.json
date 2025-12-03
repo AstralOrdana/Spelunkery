@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:granite_lead_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_lead_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:andesite_lead_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_lead_ore",
+      "required": false
+    }
+  ]
+}
