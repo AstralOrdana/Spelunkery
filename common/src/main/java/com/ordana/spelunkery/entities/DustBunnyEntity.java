@@ -38,7 +38,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class DustBunnyEntity extends PathfinderMob {
-    private static final EntityDataAccessor<Integer> DATA_TYPE_ID;
+    private static final EntityDataAccessor<Integer> DATA_TYPE_ID = SynchedEntityData.defineId(DustBunnyEntity.class, EntityDataSerializers.INT);;
     int moreCarrotTicks;
 
     public DustBunnyEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
@@ -87,7 +87,6 @@ public class DustBunnyEntity extends PathfinderMob {
         this.getNavigation().setSpeedModifier(speedModifier);
         this.moveControl.setWantedPosition(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ(), speedModifier);
     }
-
 
     public void customServerAiStep() {
 
@@ -157,6 +156,12 @@ public class DustBunnyEntity extends PathfinderMob {
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_TYPE_ID, 16);
+    }
+
     public static boolean checkRabbitSpawnRules(EntityType<Rabbit> rabbit, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         return level.getBlockState(pos.below()).is(BlockTags.RABBITS_SPAWNABLE_ON);
     }
@@ -177,11 +182,6 @@ public class DustBunnyEntity extends PathfinderMob {
     public Vec3 getLeashOffset() {
         return new Vec3(0.0D, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
     }
-
-    static {
-        DATA_TYPE_ID = SynchedEntityData.defineId(DustBunnyEntity.class, EntityDataSerializers.INT);
-    }
-
 
     private static class RabbitMoveControl extends MoveControl {
         private final DustBunnyEntity rabbit;

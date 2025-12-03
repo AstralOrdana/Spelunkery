@@ -60,7 +60,7 @@ public class ModCreativeTabs {
             }
             if (PlatHelper.isModLoaded("etcetera")) {
                 before(e, Items.COAL, CreativeModeTabs.INGREDIENTS,
-                        ModItems.RAW_BISMUTH_NUGGET
+                        ModItems.RAW_BISMUTH_NUGGET, ModItems.BISMUTH_NUGGET
                 );
             }
             if (PlatHelper.isModLoaded("create_dd")) {
