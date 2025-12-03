@@ -443,8 +443,6 @@
 
   "block.spelunkery.tangle_roots": "Tangle Roots",
   "block.spelunkery.tangle_roots_block": "Bramble of Tangle Roots",
-  "block.spelunkery.sporophyte": "Sporophyte",
-  "block.spelunkery.tall_sporophyte": "Tall Sporophyte",
 
   "block.spelunkery.conk_fungus": "Conk Fungus",
   "block.spelunkery.inkcap_mushroom": "Inkcap Mushroom",
@@ -465,7 +463,6 @@
   "block.spelunkery.potted_phosphor_fungus": "Potted Phosphor Fungus",
   "block.spelunkery.potted_mushgloom": "Potted Mushgloom",
   "block.spelunkery.potted_milly_bubcap": "Potted Milly Bubcap",
-  "block.spelunkery.potted_sporophyte": "Potted Sporophyte",
 
   "block.spelunkery.conk_fungus_block": "Conk Fungus Block",
   "block.spelunkery.portabella_block": "Portabella Block",

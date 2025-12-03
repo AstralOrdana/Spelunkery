@@ -54,6 +54,7 @@ public class SpelunkeryClient {
         ClientHelper.registerRenderType(ModBlocks.SALT.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.WOODEN_RAIL.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.ROPE_LADDER.get(), RenderType.cutout());
+        ClientHelper.registerRenderType(ModBlocks.TANGLE_ROOTS_BLOCK.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.TANGLE_ROOTS.get(), RenderType.cutout());
         ClientHelper.registerRenderType(ModBlocks.TANGLE_ROOTS_PLANT.get(), RenderType.cutout());
 

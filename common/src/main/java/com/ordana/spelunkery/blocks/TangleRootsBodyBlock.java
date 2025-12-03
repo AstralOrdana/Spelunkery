@@ -35,7 +35,7 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
     }
 
     private boolean isTop(BlockGetter level, BlockPos pos) {
-        return !level.getBlockState(pos.above()).is(this) && level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN);
+        return !level.getBlockState(pos.above()).is(this);
     }
 
     @Override
@@ -43,7 +43,11 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
         BlockPos blockPos = context.getClickedPos();
         LevelReader levelReader = context.getLevel();
         BlockState blockState = context.getLevel().getBlockState(context.getClickedPos().relative(this.growthDirection));
-        return !blockState.is(this.getHeadBlock()) && !blockState.is(this.getBodyBlock()) ? this.getStateForPlacement(context.getLevel()) : this.getBodyBlock().defaultBlockState().setValue(TOP, this.isTop(levelReader, blockPos)).setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
+        return !blockState.is(this.getHeadBlock()) && !blockState.is(this.getBodyBlock()) ?
+                this.getStateForPlacement(context.getLevel()) :
+                this.getBodyBlock().defaultBlockState()
+                        .setValue(TOP, this.isTop(levelReader, blockPos))
+                        .setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -70,7 +74,6 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-
         if (!level.isClientSide()) {
             level.scheduleTick(currentPos, this, 1);
         }

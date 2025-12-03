@@ -15,13 +15,20 @@ displayName="Spelunkery"
 
 logoFile="icon.png"
 
-credits="Contributors: Bobisnotaperson, ElBones, cassiancc"
+credits='''
+    "Bobisnotaperson",
+    "Nerjal Nosk",
+    "ChromaPIE",
+    "Mikeliro",
+    "cassiancc"
+'''
 
-authors="Ordana, Keybounce"
+authors="Ordana, Keybounce, eldabys"
 
 itemIcon="spelunkery:rough_diamond"
+
 description='''
-An Overhaul to everything Underground
+An overhaul of everything underground
 '''
 
 [[dependencies.spelunkery]]

@@ -19,7 +19,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class TangleRootsHeadBlock extends GrowingPlantHeadBlock implements SimpleWaterloggedBlock {
+public class    TangleRootsHeadBlock extends GrowingPlantHeadBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED;
     protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 

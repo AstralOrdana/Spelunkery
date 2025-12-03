@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "spelunkery:block/tangle_roots_block"
-    }
+    "": [
+      {
+        "model": "spelunkery:block/tangle_roots_block"
+      },
+      {
+        "model": "spelunkery:block/tangle_roots_block",
+        "y": 90
+      },
+      {
+        "model": "spelunkery:block/tangle_roots_block",
+        "y": 180
+      },
+      {
+        "model": "spelunkery:block/tangle_roots_block",
+        "y": 270
+      }
+    ]
   }
 }

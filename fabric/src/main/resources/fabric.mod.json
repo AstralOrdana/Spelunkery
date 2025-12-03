@@ -3,14 +3,14 @@
   "id": "spelunkery",
   "version": "${version}",
   "name": "Spelunkery",
-  "description": "An Overhaul to everything Underground",
+  "description": "An overhaul of everything underground",
   "authors": [
     "Ordana",
-    "Keybounce"
+    "Keyberries",
+    "eldabys"
   ],
   "contributors": [
     "Bobisnotaperson",
-    "ElBones",
     "Nerjal Nosk",
     "ChromaPIE",
     "Mikeliro",
