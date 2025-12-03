@@ -5,8 +5,6 @@ import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -50,7 +48,6 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
                         .setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
     }
 
-    @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (!level.isClientSide) {
             level.scheduleTick(pos, this, 1);

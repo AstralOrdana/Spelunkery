@@ -3,7 +3,6 @@ package com.ordana.spelunkery.blocks;
 import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.events.ClientBoundParticlePacket;
 import com.ordana.spelunkery.events.ClientBoundSendKnockbackPacket;
-import com.ordana.spelunkery.events.NetworkHandler;
 import com.ordana.spelunkery.reg.ModBlocks;
 import net.mehvahdjukaar.moonlight.api.platform.network.NetworkHelper;
 import net.minecraft.core.BlockPos;

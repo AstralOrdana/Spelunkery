@@ -3,8 +3,6 @@ package com.ordana.spelunkery.neoforge;
 
 import com.ordana.spelunkery.Spelunkery;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

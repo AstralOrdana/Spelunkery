@@ -3,14 +3,8 @@ package com.ordana.spelunkery.reg;
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryPlatform;
 import com.ordana.spelunkery.configs.CommonConfigs;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.gameevent.GameEvent;
-
-import java.util.function.Supplier;
 
 public class ModGameEvents {
     public static void init() {

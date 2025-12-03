@@ -2,8 +2,10 @@ package com.ordana.spelunkery.reg;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryPlatform;
-import com.ordana.spelunkery.worldgen.feature_configs.*;
-import com.ordana.spelunkery.worldgen.features.*;
+import com.ordana.spelunkery.worldgen.feature_configs.BlockStripeFeatureConfig;
+import com.ordana.spelunkery.worldgen.feature_configs.CrystalFeatureConfig;
+import com.ordana.spelunkery.worldgen.features.BlockStripeFeature;
+import com.ordana.spelunkery.worldgen.features.CrystalFeature;
 import com.ordana.spelunkery.worldgen.structures.MineshaftDustCorridor;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.minecraft.core.registries.Registries;
@@ -12,7 +14,6 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 

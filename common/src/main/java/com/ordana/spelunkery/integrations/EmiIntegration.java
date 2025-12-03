@@ -1,7 +1,6 @@
 package com.ordana.spelunkery.integrations;
 
 import com.ordana.spelunkery.Spelunkery;
-import com.ordana.spelunkery.configs.CommonConfigs;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModFluids;
 import com.ordana.spelunkery.reg.ModItems;
