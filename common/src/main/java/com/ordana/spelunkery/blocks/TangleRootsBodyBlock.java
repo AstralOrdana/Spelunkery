@@ -50,15 +50,7 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
                         .setValue(WATERLOGGED, levelReader.getFluidState(blockPos).getType() == Fluids.WATER);
     }
 
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockState blockState = state.setValue(TOP, this.isTop(level, pos));
-        if (!state.getValue(TOP) && !level.getBlockState(pos.above()).is(this)) {
-            level.destroyBlock(pos, true);
-        } else if (state != blockState) {
-            level.setBlock(pos, blockState, 3);
-        }
-    }
-
+    @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         if (!level.isClientSide) {
             level.scheduleTick(pos, this, 1);
@@ -70,6 +62,7 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
         return simpleCodec(TangleRootsBodyBlock::new);
     }
 
+    @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (state.getValue(WATERLOGGED)) {
             level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
@@ -81,14 +74,17 @@ public class TangleRootsBodyBlock extends GrowingPlantBodyBlock implements Simpl
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
 
+    @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
+    @Override
     protected GrowingPlantHeadBlock getHeadBlock() {
         return (GrowingPlantHeadBlock) ModBlocks.TANGLE_ROOTS.get();
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED, TOP);
     }

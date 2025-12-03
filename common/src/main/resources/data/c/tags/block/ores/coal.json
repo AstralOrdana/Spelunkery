@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:andesite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_coal_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_coal_ore",
+      "required": false
+    },
+    "minecraft:deepslate_coal_ore",
+    "minecraft:coal_ore"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:andesite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:diorite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:granite_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tuff_redstone_ore",
+      "required": false
+    },
+    {
+      "id": "spelunkery:calcite_redstone_ore",
+      "required": false
+    },
+    "minecraft:deepslate_redstone_ore",
+    "minecraft:redstone_ore"
+  ]
+}
