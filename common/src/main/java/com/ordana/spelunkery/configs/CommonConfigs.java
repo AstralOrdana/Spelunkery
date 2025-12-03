@@ -21,6 +21,7 @@ public class CommonConfigs {
     public static Supplier<Boolean> ENABLE_RAW_NUGGETS;
     public static Supplier<Boolean> ORE_STONE_DROPS;
     //public static Supplier<Boolean> ENABLE_GEM_SHARDS;
+    public static Supplier<Boolean> GRINDSTONE_DISENCHANTS_TOOLS;
 
     public static Supplier<Boolean> INCREASED_SLIME_SPAWN_RATE;
     public static Supplier<Boolean> SLIME_CAULDRONS;
@@ -63,6 +64,7 @@ public class CommonConfigs {
         PlatHelper.getPlatform().ifFabric(() -> {
             ORE_STONE_DROPS = builder.define("ores_drop_base_stone", false);
         });
+        GRINDSTONE_DISENCHANTS_TOOLS = builder.define("grindstone_disenchants_tools", true);
         builder.pop();
 
         builder.push("utilities");
