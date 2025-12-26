@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -13,21 +21,21 @@
   ],
   "results": [
     {
-      "item": "spelunkery:rough_cinnabar",
+      "item": { "id": "spelunkery:rough_cinnabar" },
       "count": 2
     },
     {
-      "item": "spelunkery:rough_cinnabar",
+      "item": { "id": "spelunkery:rough_cinnabar" },
       "chance": 0.75
     },
     {
-      "item": "create:experience_nugget",
+      "item": { "id": "create:experience_nugget" },
       "chance": 0.75
     },
     {
-      "item": "minecraft:andesite",
+      "item": { "id": "minecraft:andesite" },
       "chance": 0.125
     }
   ],
-  "processingTime": 250
+  "processing_time": 250
 }

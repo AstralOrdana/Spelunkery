@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:splashing",
@@ -13,12 +21,12 @@
   ],
   "results": [
     {
-      "item": "minecraft:quartz",
+      "item": { "id": "minecraft:quartz" },
       "count": 4,
       "chance": 0.125
     },
     {
-      "item": "spelunkery:raw_gold_nugget",
+      "item": { "id": "spelunkery:raw_gold_nugget" },
       "chance": 0.02
     }
   ]

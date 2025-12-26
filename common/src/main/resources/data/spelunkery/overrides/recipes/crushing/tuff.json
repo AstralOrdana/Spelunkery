@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -13,25 +21,25 @@
   ],
   "results": [
     {
-      "item": "minecraft:flint",
+      "item": { "id": "minecraft:flint" },
       "chance": 0.25
     },
     {
-      "item": "spelunkery:raw_gold_nugget",
+      "item": { "id": "spelunkery:raw_gold_nugget" },
       "chance": 0.1
     },
     {
-      "item": "spelunkery:raw_copper_nugget",
+      "item": { "id": "spelunkery:raw_copper_nugget" },
       "chance": 0.1
     },
     {
-      "item": "spelunkery:raw_zinc_nugget",
+      "item": { "id": "spelunkery:raw_zinc_nugget" },
       "chance": 0.1
     },
     {
-      "item": "spelunkery:raw_iron_nugget",
+      "item": { "id": "spelunkery:raw_iron_nugget" },
       "chance": 0.1
     }
   ],
-  "processingTime": 350
+  "processing_time": 350
 }

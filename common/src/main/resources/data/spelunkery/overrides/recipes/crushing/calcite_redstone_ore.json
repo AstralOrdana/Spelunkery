@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -13,21 +21,21 @@
   ],
   "results": [
     {
-      "item": "spelunkery:rough_cinnabar",
+      "item": { "id": "spelunkery:rough_cinnabar" },
       "count": 3
     },
     {
-      "item": "minecraft:redstone",
+      "item": { "id": "minecraft:redstone" },
       "chance": 0.5
     },
     {
-      "item": "create:experience_nugget",
+      "item": { "id": "create:experience_nugget" },
       "chance": 0.75
     },
     {
-      "item": "minecraft:calcite",
+      "item": { "id": "minecraft:calcite" },
       "chance": 0.125
     }
   ],
-  "processingTime": 350
+  "processing_time": 350
 }

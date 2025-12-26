@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -13,20 +21,20 @@
   ],
   "results": [
     {
-      "item": "spelunkery:rough_diamond"
+      "item": { "id": "spelunkery:rough_diamond" }
     },
     {
-      "item": "spelunkery:rough_diamond",
+      "item": { "id": "spelunkery:rough_diamond" },
       "chance": 0.5
     },
     {
-      "item": "create:experience_nugget",
+      "item": { "id": "create:experience_nugget" },
       "chance": 0.75
     },
     {
-      "item": "minecraft:granite",
+      "item": { "id": "minecraft:granite" },
       "chance": 0.125
     }
   ],
-  "processingTime": 350
+  "processing_time": 350
 }

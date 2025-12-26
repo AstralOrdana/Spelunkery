@@ -15,19 +15,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -45,19 +45,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -75,19 +75,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -105,19 +105,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -135,19 +135,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -165,19 +165,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:trail_ruins"
+                    "structures": "minecraft:trail_ruins"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_warm"
+                    "structures": "minecraft:ocean_ruin_warm"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:ocean_ruin_cold"
+                    "structures": "minecraft:ocean_ruin_cold"
                   }
                 }
               ]
@@ -195,7 +195,7 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:village_desert"
+                    "structures": "minecraft:village_desert"
                   }
                 }
               ]
@@ -224,13 +224,13 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:river"
+                    "biomes": "minecraft:river"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:frozen_river"
+                    "biomes": "minecraft:frozen_river"
                   }
                 }
               ]

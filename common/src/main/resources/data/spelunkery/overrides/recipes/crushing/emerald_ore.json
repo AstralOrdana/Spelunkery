@@ -1,14 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
     }
   ],
-  "conditions": [
+  "fabric:load_conditions": [
     {
-      "modid": "create",
-      "type": "forge:mod_loaded"
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -19,20 +21,20 @@
   ],
   "results": [
     {
-      "item": "spelunkery:rough_emerald"
+      "item": { "id": "spelunkery:rough_emerald" }
     },
     {
-      "item": "spelunkery:rough_emerald",
+      "item": { "id": "spelunkery:rough_emerald" },
       "chance": 0.75
     },
     {
-      "item": "create:experience_nugget",
+      "item": { "id": "create:experience_nugget" },
       "chance": 0.75
     },
     {
-      "item": "minecraft:cobblestone",
+      "item": { "id": "minecraft:cobblestone" },
       "chance": 0.125
     }
   ],
-  "processingTime": 350
+  "processing_time": 350
 }

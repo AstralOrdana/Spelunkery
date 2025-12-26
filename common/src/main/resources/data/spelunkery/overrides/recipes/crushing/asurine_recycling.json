@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:crushing",
@@ -13,13 +21,13 @@
   ],
   "results": [
     {
-      "item": "create:crushed_raw_zinc",
+      "item": { "id": "create:crushed_raw_zinc" },
       "chance": 0.3
     },
     {
-      "item": "spelunkery:raw_zinc_nugget",
+      "item": { "id": "spelunkery:raw_zinc_nugget" },
       "chance": 0.3
     }
   ],
-  "processingTime": 250
+  "processing_time": 250
 }

@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:splashing",
@@ -13,12 +21,12 @@
   ],
   "results": [
     {
-      "item": "spelunkery:raw_gold_nugget",
+      "item": { "id": "spelunkery:raw_gold_nugget" },
       "count": 3,
       "chance": 0.125
     },
     {
-      "item": "minecraft:dead_bush",
+      "item": { "id": "minecraft:dead_bush" },
       "chance": 0.05
     }
   ]

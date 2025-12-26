@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "spelunkery:diamond_ores"
+            "items": "#spelunkery:diamond_ores"
           }
         ]
       }
