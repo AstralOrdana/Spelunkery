@@ -475,11 +475,11 @@
   "block.spelunkery.cave_mushroom_stem": "Cave Mushroom Stem",
 
   "item.spelunkery.dust_bun": "Dust Bun",
-  "block.spelunkery.bunny_ears": "Bunny Ears",
+  "item.spelunkery.bunny_ears": "Bunny Ears",
   "item.spelunkery.dust_bunny_spawn_egg": "Dust Bunny Spawn Egg",
   "block.spelunkery.dust_block": "Block of Dust",
   "block.spelunkery.dust": "Dust",
-  "block.spelunkery.true_crown": "Crown of Fools",
+  "item.spelunkery.true_crown": "Crown of Fools",
 
   "block.spelunkery.sulfur": "Sulfur",
   "block.spelunkery.saltpeter": "Saltpeter",
