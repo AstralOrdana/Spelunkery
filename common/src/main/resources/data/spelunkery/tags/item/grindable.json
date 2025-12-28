@@ -30,6 +30,10 @@
     "spelunkery:rock_salt_block",
     "spelunkery:rock_salt_stairs",
     "spelunkery:rock_salt_slab",
-    "spelunkery:rock_salt_wall"
+    "spelunkery:rock_salt_wall",
+    {
+      "id": "create:rose_quartz",
+      "required": false
+    }
   ]
 }
