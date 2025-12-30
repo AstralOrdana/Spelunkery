@@ -21,11 +21,11 @@
   ],
   "results": [
     {
-      "item": { "id": "create:crushed_raw_copper" },
+      "id": "create:crushed_raw_copper",
       "chance": 0.8
     },
     {
-      "item": { "id": "spelunkery:raw_copper_nugget" },
+      "id": "spelunkery:raw_copper_nugget",
       "chance": 0.8
     }
   ],

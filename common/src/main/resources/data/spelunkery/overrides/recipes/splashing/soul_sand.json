@@ -21,12 +21,12 @@
   ],
   "results": [
     {
-      "item": { "id": "minecraft:quartz" },
+      "id": "minecraft:quartz",
       "count": 4,
       "chance": 0.125
     },
     {
-      "item": { "id": "spelunkery:raw_gold_nugget" },
+      "id": "spelunkery:raw_gold_nugget",
       "chance": 0.02
     }
   ]

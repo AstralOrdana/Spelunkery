@@ -21,23 +21,23 @@
   ],
   "results": [
     {
-      "item": { "id": "minecraft:flint" },
+      "id": "minecraft:flint",
       "chance": 0.25
     },
     {
-      "item": { "id": "spelunkery:raw_gold_nugget" },
+      "id": "spelunkery:raw_gold_nugget",
       "chance": 0.1
     },
     {
-      "item": { "id": "spelunkery:raw_copper_nugget" },
+      "id": "spelunkery:raw_copper_nugget",
       "chance": 0.1
     },
     {
-      "item": { "id": "spelunkery:raw_zinc_nugget" },
+      "id": "spelunkery:raw_zinc_nugget",
       "chance": 0.1
     },
     {
-      "item": { "id": "spelunkery:raw_iron_nugget" },
+      "id": "spelunkery:raw_iron_nugget",
       "chance": 0.1
     }
   ],

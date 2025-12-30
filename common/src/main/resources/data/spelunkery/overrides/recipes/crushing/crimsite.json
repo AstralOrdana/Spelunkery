@@ -21,11 +21,11 @@
   ],
   "results": [
     {
-      "item": { "id": "create:crushed_raw_iron" },
+      "id": "create:crushed_raw_iron",
       "chance": 0.4
     },
     {
-      "item": { "id": "spelunkery:raw_iron_nugget" },
+      "id": "spelunkery:raw_iron_nugget",
       "chance": 0.4
     }
   ],

@@ -21,19 +21,19 @@
   ],
   "results": [
     {
-      "item": { "id": "spelunkery:rough_diamond" },
+      "id": "spelunkery:rough_diamond",
       "count": 2
     },
     {
-      "item": { "id": "spelunkery:rough_diamond" },
+      "id": "spelunkery:rough_diamond",
       "chance": 0.75
     },
     {
-      "item": { "id": "create:experience_nugget" },
+      "id": "create:experience_nugget",
       "chance": 0.75
     },
     {
-      "item": { "id": "minecraft:tuff" },
+      "id": "minecraft:tuff",
       "chance": 0.125
     }
   ],

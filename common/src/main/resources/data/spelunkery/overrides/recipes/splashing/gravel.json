@@ -21,11 +21,11 @@
   ],
   "results": [
     {
-      "item": { "id": "minecraft:flint" },
+      "id": "minecraft:flint",
       "chance": 0.25
     },
     {
-      "item": { "id": "spelunkery:raw_iron_nugget" },
+      "id": "spelunkery:raw_iron_nugget",
       "chance": 0.125
     }
   ]

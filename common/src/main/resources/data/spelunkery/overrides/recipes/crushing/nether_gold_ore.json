@@ -23,15 +23,15 @@
   "results": [
     {
       "count": 18,
-      "item": { "id": "spelunkery:raw_gold_nugget" }
+      "id": "spelunkery:raw_gold_nugget"
     },
     {
       "chance": 0.75,
-      "item": { "id": "create:experience_nugget" }
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": { "id": "minecraft:netherrack" }
+      "id": "minecraft:netherrack"
     }
   ]
 }

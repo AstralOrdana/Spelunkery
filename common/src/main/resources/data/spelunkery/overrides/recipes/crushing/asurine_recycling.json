@@ -21,11 +21,11 @@
   ],
   "results": [
     {
-      "item": { "id": "create:crushed_raw_zinc" },
+      "id": "create:crushed_raw_zinc",
       "chance": 0.3
     },
     {
-      "item": { "id": "spelunkery:raw_zinc_nugget" },
+      "id": "spelunkery:raw_zinc_nugget",
       "chance": 0.3
     }
   ],

@@ -21,19 +21,19 @@
   ],
   "results": [
     {
-      "item": { "id": "spelunkery:rough_cinnabar" },
+      "id": "spelunkery:rough_cinnabar",
       "count": 3
     },
     {
-      "item": { "id": "minecraft:redstone" },
+      "id": "minecraft:redstone",
       "chance": 0.5
     },
     {
-      "item": { "id": "create:experience_nugget" },
+      "id": "create:experience_nugget",
       "chance": 0.75
     },
     {
-      "item": { "id": "minecraft:cobbled_deepslate" },
+      "id": "minecraft:cobbled_deepslate",
       "chance": 0.125
     }
   ],

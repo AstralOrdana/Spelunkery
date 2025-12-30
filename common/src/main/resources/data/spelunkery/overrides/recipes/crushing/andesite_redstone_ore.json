@@ -21,19 +21,19 @@
   ],
   "results": [
     {
-      "item": { "id": "spelunkery:rough_cinnabar" },
+      "id": "spelunkery:rough_cinnabar",
       "count": 2
     },
     {
-      "item": { "id": "spelunkery:rough_cinnabar" },
+      "id": "spelunkery:rough_cinnabar",
       "chance": 0.75
     },
     {
-      "item": { "id": "create:experience_nugget" },
+      "id": "create:experience_nugget",
       "chance": 0.75
     },
     {
-      "item": { "id": "minecraft:andesite" },
+      "id": "minecraft:andesite",
       "chance": 0.125
     }
   ],

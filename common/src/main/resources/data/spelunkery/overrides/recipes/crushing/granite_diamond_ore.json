@@ -21,18 +21,18 @@
   ],
   "results": [
     {
-      "item": { "id": "spelunkery:rough_diamond" }
+      "id": "spelunkery:rough_diamond"
     },
     {
-      "item": { "id": "spelunkery:rough_diamond" },
+      "id": "spelunkery:rough_diamond",
       "chance": 0.5
     },
     {
-      "item": { "id": "create:experience_nugget" },
+      "id": "create:experience_nugget",
       "chance": 0.75
     },
     {
-      "item": { "id": "minecraft:granite" },
+      "id": "minecraft:granite",
       "chance": 0.125
     }
   ],

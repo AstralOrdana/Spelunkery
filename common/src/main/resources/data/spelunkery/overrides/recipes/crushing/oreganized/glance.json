@@ -26,11 +26,11 @@
   ],
   "results": [
     {
-      "item": { "id": "create:crushed_raw_lead" },
+      "id": "create:crushed_raw_lead",
       "chance": 0.8
     },
     {
-      "item": { "id": "spelunkery:raw_lead_nugget" },
+      "id": "spelunkery:raw_lead_nugget",
       "chance": 0.8
     }
   ],

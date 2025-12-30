@@ -21,11 +21,11 @@
   ],
   "results": [
     {
-      "item": { "id": "minecraft:blue_dye" },
+      "id": "minecraft:blue_dye",
       "count": 6
     },
     {
-      "item": { "id": "spelunkery:raw_gold_nugget" },
+      "id": "spelunkery:raw_gold_nugget",
       "chance": 0.25
     }
   ],
