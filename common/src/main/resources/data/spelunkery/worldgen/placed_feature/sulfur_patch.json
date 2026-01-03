@@ -2,6 +2,9 @@
   "feature": "spelunkery:sulfur_patch",
   "placement": [
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:count_on_every_layer",
       "count": 2
     },
@@ -16,9 +19,6 @@
           "absolute": 35
         }
       }
-    },
-    {
-      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:biome"
