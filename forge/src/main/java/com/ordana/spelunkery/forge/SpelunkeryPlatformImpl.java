@@ -21,10 +21,6 @@ public class SpelunkeryPlatformImpl {
     public static void addCarverToBiome(GenerationStep.Carving step, TagKey<Biome> tagKey, ResourceKey<ConfiguredWorldCarver<?>> carver) {
     }
 
-    public static LiquidBlock doPortalFluid(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
-        return new PortalFluidBlock(flowingFluid, properties);
-    }
-
     public static LiquidBlock doSpringWater(Supplier<FlowingFluid> flowingFluid, BlockBehaviour.Properties properties) {
         return new SpringWaterBlock(flowingFluid, properties);
     }
