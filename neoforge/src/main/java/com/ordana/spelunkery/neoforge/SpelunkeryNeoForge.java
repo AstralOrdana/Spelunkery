@@ -4,6 +4,7 @@ import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
 import com.ordana.spelunkery.reg.ModSetup;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -15,6 +16,8 @@ public class SpelunkeryNeoForge {
     public static final String MOD_ID = Spelunkery.MOD_ID;
 
     public SpelunkeryNeoForge(IEventBus eventBus, ModContainer container) {
+        RegHelper.startRegisteringFor(eventBus);
+
         Spelunkery.commonInit();
         SpelunkeryPlatformImpl.GAME_EVENTS.register(eventBus);
 

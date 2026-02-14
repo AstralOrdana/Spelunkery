@@ -139,9 +139,9 @@ public class ModEvents {
             player.setItemInHand(hand, removeEnchants(stack, stack.getDamageValue(), depleted));
             return InteractionResult.SUCCESS;
         }
-        else if (stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
+        else if (stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && (state.is(Blocks.GRINDSTONE) || (state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0))) {
             if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-            level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, 0));
+            level.setBlockAndUpdate(pos, ModBlocks.DIAMOND_GRINDSTONE.get().withPropertiesOf(state).setValue(ModBlockProperties.DEPLETION, 0));
             if (!player.getAbilities().instabuild) stack.shrink(1);
             return InteractionResult.SUCCESS;
         }
@@ -155,8 +155,6 @@ public class ModEvents {
             player.openMenu(state.getMenuProvider(level, pos));
             return InteractionResult.SUCCESS;
         }
-
-
         var success = false;
         var depleted = true;
         if (diamondGrindstone) depleted = state.getValue(ModBlockProperties.DEPLETION) == 3;
@@ -212,7 +210,8 @@ public class ModEvents {
                     var chance = depl == 0 ? 0 : level.random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get());
                     if (chance > 0 && diamondGrindstone) {
                         if (chance == 1 && !depleted)
-                            level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+                            if (state.getValue(ModBlockProperties.DEPLETION) == 2) level.setBlockAndUpdate(pos, Blocks.GRINDSTONE.withPropertiesOf(state));
+                            else level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
                     }
                 }
             }

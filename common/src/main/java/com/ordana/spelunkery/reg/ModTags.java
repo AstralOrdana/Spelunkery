@@ -42,6 +42,7 @@ public class ModTags {
     public static final TagKey<Item> PARACHUE_REPAIR = registerItemTag("parachute_repair");
     public static final TagKey<Item> BLASTABLE_FOODS = registerItemTag("blastable_foods");
     public static final TagKey<Item> SMELTABLE_FOODS = registerItemTag("smeltable_foods");
+    public static final TagKey<Item> DIAMOND_SHARDS = registerItemTag("diamond_shards");
     public static final TagKey<Item> WIP_ITEMS = registerItemTag("wip_items");
 
     //biomes
@@ -60,10 +61,8 @@ public class ModTags {
 
     //entities
     public static final TagKey<EntityType<?>> HURT_BY_SALT = registerEntityTag("hurt_by_salt");
-    public static final TagKey<EntityType<?>> PORTAL_FLUID_IMMUNE = registerEntityTag("portal_fluid_immune");
 
     //fluids
-    public static final TagKey<Fluid> PORTAL_FLUID = registerFluidTag("portal_fluid");
     public static final TagKey<Fluid> SPRING_WATER = registerFluidTag("spring_water");
 
     //enchants

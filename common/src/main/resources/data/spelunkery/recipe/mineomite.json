@@ -1,22 +1,19 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "glowsticks",
-  "pattern": [
-    "#C#",
-    "XXX",
-    "#C#"
-  ],
-  "key": {
-    "#": {
-      "item": "minecraft:paper"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:string"
     },
-    "X": {
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "tag": "spelunkery:raw_nuggets"
+    },
+    {
       "item": "minecraft:gunpowder"
-    },
-    "C": {
-      "item": "minecraft:clay"
     }
-  },
+  ],
   "result": {
     "id": "spelunkery:mineomite",
     "count": 1

@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.events.ModEvents;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -152,8 +153,9 @@ public class DiamondGrindstoneBlock extends GrindstoneBlock {
         return true;
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        return ModEvents.useGrindstone(state, level, pos, player, hand, hit, true);
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        return ModEvents.useGrindstone(state, level, pos, player, player.getUsedItemHand(), hit, true);
     }
 
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {

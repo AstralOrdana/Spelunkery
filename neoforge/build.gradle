@@ -48,9 +48,10 @@ dependencies {
 
 processResources {
     inputs.property 'version', project.version
+    inputs.property "mod_id", rootProject.mod_id
 
     filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: inputs.properties.version
+        expand version: inputs.properties.version, "mod_id": rootProject.mod_id, "moonlight_version": rootProject.moonlight_version
     }
 }
 
@@ -62,4 +63,5 @@ shadowJar {
 remapJar {
     inputFile.set shadowJar.archiveFile
     atAccessWideners.add("spelunkery.accesswidener")
+    archiveClassifier = "neoforge"
 }
