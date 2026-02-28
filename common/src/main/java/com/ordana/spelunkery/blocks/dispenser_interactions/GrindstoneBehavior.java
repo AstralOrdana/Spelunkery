@@ -93,7 +93,8 @@ public class GrindstoneBehavior extends DispenserHelper.AdditionalDispenserBehav
                 var chance = depl == 0 ? 0 : level.random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get());
                 if (chance > 0 && diamondGrindstone) {
                     if (chance == 1 && !depleted)
-                        level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+                        if (state.getValue(ModBlockProperties.DEPLETION) == 2) level.setBlockAndUpdate(pos, Blocks.GRINDSTONE.withPropertiesOf(state));
+                        else level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
                 }
             }
         }
