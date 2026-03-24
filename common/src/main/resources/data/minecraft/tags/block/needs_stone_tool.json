@@ -57,22 +57,6 @@
       "required": false
     },
     {
-      "id": "spelunkery:andesite_coal_ore",
-      "required": false
-    },
-    {
-      "id": "spelunkery:diorite_coal_ore",
-      "required": false
-    },
-    {
-      "id": "spelunkery:granite_coal_ore",
-      "required": false
-    },
-    {
-      "id": "spelunkery:tuff_coal_ore",
-      "required": false
-    },
-    {
       "id": "spelunkery:granite_lead_ore",
       "required": false
     },
