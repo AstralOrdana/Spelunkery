@@ -6,7 +6,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -28,11 +28,13 @@ public class RoughCinnabarBlock extends Block {
         this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
     }
 
+    @Override
     public void attack(BlockState state, Level level, BlockPos pos, Player player) {
         interact(state, level, pos);
         super.attack(state, level, pos, player);
     }
 
+    @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if (!entity.isSteppingCarefully()) {
             interact(state, level, pos);
@@ -41,15 +43,15 @@ public class RoughCinnabarBlock extends Block {
         super.stepOn(level, pos, state, entity);
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide) {
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (level.isClientSide()) {
             spawnParticles(level, pos);
         } else {
             interact(state, level, pos);
         }
 
-        ItemStack itemStack = player.getItemInHand(hand);
-        return itemStack.getItem() instanceof BlockItem && (new BlockPlaceContext(player, hand, itemStack, hit)).canPlace() ? InteractionResult.PASS : InteractionResult.SUCCESS;
+        return stack.getItem() instanceof BlockItem && (new BlockPlaceContext(player, hand, stack, hitResult)).canPlace() ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION : ItemInteractionResult.SUCCESS;
     }
 
     private static void interact(BlockState state, Level level, BlockPos pos) {
@@ -60,16 +62,19 @@ public class RoughCinnabarBlock extends Block {
 
     }
 
+    @Override
     public boolean isRandomlyTicking(BlockState state) {
         return (Boolean) state.getValue(LIT);
     }
 
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(LIT)) {
             level.setBlock(pos, state.setValue(LIT, false), 3);
         }
     }
 
+    @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (state.getValue(LIT)) {
             spawnParticles(level, pos);
