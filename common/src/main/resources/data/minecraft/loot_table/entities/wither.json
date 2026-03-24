@@ -6,7 +6,15 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [],
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1
+              },
+              "conditions": []
+            }
+          ],
           "name": "spelunkery:true_crown"
         }
       ],

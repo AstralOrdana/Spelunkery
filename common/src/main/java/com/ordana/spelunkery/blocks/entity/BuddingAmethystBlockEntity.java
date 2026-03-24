@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.BlockPositionSource;
@@ -28,6 +29,12 @@ public class BuddingAmethystBlockEntity extends BlockEntity implements GameEvent
     public BuddingAmethystBlockEntity(BlockPos pos, BlockState state) {
         super(ModEntities.BUDDING_AMETHYST.get(), pos, state);
         this.listenerSource = new BlockPositionSource(this.worldPosition);
+    }
+
+    @Override
+    public boolean isValidBlockState(BlockState blockState) {
+        if (blockState.is(Blocks.BUDDING_AMETHYST)) return true;
+        else return super.isValidBlockState(blockState);
     }
 
     @Override

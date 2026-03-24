@@ -61,6 +61,7 @@ public abstract class WaterCauldronBlockMixin extends AbstractCauldronBlock {
                         }
                         item.remove(Entity.RemovalReason.DISCARDED);
                         slime.moveTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+                        slime.setPersistenceRequired();
                         serverLevel.addFreshEntity(slime);
                         serverLevel.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
                     }
