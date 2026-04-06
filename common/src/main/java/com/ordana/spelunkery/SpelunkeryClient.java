@@ -1,6 +1,7 @@
 package com.ordana.spelunkery;
 
 import com.ordana.spelunkery.blocks.rock_salt.RockSaltBlock;
+import com.ordana.spelunkery.client.EggPlitherRenderer;
 import com.ordana.spelunkery.entities.DustBunnyModel;
 import com.ordana.spelunkery.entities.DustBunnyRenderer;
 import com.ordana.spelunkery.items.AmethystTuningForkItem;
@@ -13,7 +14,10 @@ import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGener
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.util.math.colors.RGBColor;
+import net.minecraft.client.model.PolarBearModel;
+import net.minecraft.client.model.WitherBossModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -26,6 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class SpelunkeryClient {
 
     public static final ModelLayerLocation DUST_BUNNY = loc("dust_bunny");
+    public static final ModelLayerLocation EGG_PLITHER = new ModelLayerLocation(Spelunkery.res("plither/egg_plither"), "main");
     public static final ResourceLocation PARACHUTE_3D_MODEL = Spelunkery.res("entity/parachute");
 
     public static void init() {
@@ -34,6 +39,12 @@ public class SpelunkeryClient {
         ClientHelper.addEntityRenderersRegistration(SpelunkeryClient::registerEntityRenderers);
         ClientHelper.addSpecialModelRegistration(SpelunkeryClient::registerSpecialModels);
         ClientHelper.addParticleRegistration(SpelunkeryClient::registerParticles);
+        ClientHelper.addEntityRenderersRegistration((entityRendererEvent -> {
+            entityRendererEvent.register(ModEntityTypes.EGG_PLITHER.get(), EggPlitherRenderer::new);
+        }));
+        ClientHelper.addModelLayerRegistration((entityRendererEvent -> {
+            entityRendererEvent.register(EGG_PLITHER, EggPlitherRenderer::createBodyLayer);
+        }));
     }
 
     private static boolean finishedSetup = false;

@@ -1,9 +1,6 @@
 package com.ordana.spelunkery.mixins;
 
 import com.ordana.spelunkery.events.ModEvents;
-import com.ordana.spelunkery.reg.ModBlockProperties;
-import com.ordana.spelunkery.reg.ModBlocks;
-import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

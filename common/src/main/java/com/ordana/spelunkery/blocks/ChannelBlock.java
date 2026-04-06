@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
+import com.ordana.spelunkery.reg.ModItems;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -152,14 +153,15 @@ public class ChannelBlock extends Block {
         Item item = itemStack.getItem();
         var dir = hit.getDirection();
         boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
-        boolean tool = stone ? itemStack.is(ItemTags.PICKAXES) : itemStack.is(ItemTags.AXES);
+        boolean sluice = itemStack.is(ModItems.SLUICE_GRATE.get());
 
-        if (dir == Direction.UP || dir == Direction.DOWN || !tool) {
+        if (dir == Direction.UP || dir == Direction.DOWN) {
             return super.useItemOn(itemStack, state, level, pos, player, hand, hit);
         } else {
             var propDir = PROPERTY_BY_DIRECTION.get(dir);
             var check = state.getValue(propDir);
-            level.setBlock(pos, state.setValue(propDir, !check), 3);
+            if (sluice) state = stone ? ModBlocks.STONE_SLUICE.get().withPropertiesOf(state) : ModBlocks.WOODEN_SLUICE.get().withPropertiesOf(state);
+            level.setBlockAndUpdate(pos, state.setValue(propDir, !check));
             if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.playSound(null, pos, check ? (stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK) : (stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE), SoundSource.BLOCKS, 1.0F, 1.0F);
             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));

@@ -82,7 +82,7 @@ public class HammerAndChiselItem extends Item {
         return UseAnim.BOW;
     }
 
-    public int getUseDuration(ItemStack stack) {
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 72000;
     }
 

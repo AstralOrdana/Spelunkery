@@ -64,6 +64,7 @@ public class Spelunkery {
         ModItems.init();
         ModComponents.init();
         ModEntities.init();
+        ModEntityTypes.init();
         ModParticles.init();
         ModSoundEvents.init();
         ModCreativeTabs.init();

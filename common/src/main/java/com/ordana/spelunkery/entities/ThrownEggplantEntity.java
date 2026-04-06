@@ -88,7 +88,8 @@ public class ThrownEggplantEntity extends ImprovedProjectileEntity {
             villager.discard();
         }
         if (entity instanceof EnderDragonPart dragon) dragon.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
-        if (entity instanceof WitherBoss wither) wither.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
+        if (entity instanceof WitherBoss wither)
+            wither.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
     }
 
     @Override

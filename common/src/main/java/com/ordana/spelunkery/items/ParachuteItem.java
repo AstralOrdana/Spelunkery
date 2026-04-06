@@ -157,13 +157,13 @@ public class ParachuteItem extends Item implements IFirstPersonAnimationProvider
         }
     }
 
-    public int getUseDuration(ItemStack stack) {
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 72000;
     }
 
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if (livingEntity instanceof Player) {
-            int i = this.getUseDuration(stack) - timeCharged;
+            int i = this.getUseDuration(stack, livingEntity) - timeCharged;
             if (i >= 50) {
                 setUsed(stack, false);
             }

@@ -2,11 +2,9 @@ package com.ordana.spelunkery.blocks;
 
 import com.ordana.spelunkery.events.ModEvents;
 import com.ordana.spelunkery.reg.ModBlockProperties;
-import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;

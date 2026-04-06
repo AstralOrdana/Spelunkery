@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks;
 
 import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -11,16 +12,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -41,21 +40,21 @@ public class CompressionBlastMiner extends DirectionalBlock {
         return null;
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack itemStack = player.getItemInHand(hand);
-        if (itemStack.is(Items.TNT) && !state.getValue(PRIMED)) {
+        if (itemStack.is(ModItems.MINEOMITE.get()) && !state.getValue(PRIMED)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, true));
             level.playSound(null, pos, SoundEvents.GRASS_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
         if (player.isSecondaryUseActive() && state.getValue(PRIMED)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, false));
-            level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            Block.popResourceFromFace(level, pos, hit.getDirection(), Items.TNT.getDefaultInstance());
-            return InteractionResult.SUCCESS;
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            Block.popResourceFromFace(level, pos, hitResult.getDirection(), ModItems.MINEOMITE.get().getDefaultInstance());
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        else return itemStack.getItem() instanceof BlockItem && (new BlockPlaceContext(player, hand, itemStack, hit)).canPlace() ? InteractionResult.PASS : InteractionResult.SUCCESS;
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

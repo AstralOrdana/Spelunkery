@@ -132,10 +132,8 @@ public class ModItems {
             new ChannelItem(ModBlocks.WOODEN_CHANNEL.get(), new Item.Properties()));
     public static final Supplier<Item> STONE_CHANNEL = regItem("stone_channel", () ->
             new ChannelItem(ModBlocks.STONE_CHANNEL.get(), new Item.Properties()));
-    public static final Supplier<Item> WOODEN_SLUICE = regItem("wooden_sluice", () ->
-            new ChannelSluiceItem(ModBlocks.WOODEN_SLUICE.get(), new Item.Properties()));
-    public static final Supplier<Item> STONE_SLUICE = regItem("stone_sluice", () ->
-            new ChannelSluiceItem(ModBlocks.STONE_SLUICE.get(), new Item.Properties()));
+    public static final Supplier<Item> SLUICE_GRATE = regItem("sluice_grate", () ->
+            new Item(new Item.Properties()));
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
             new NephriteCharmItem(new Item.Properties().stacksTo(1)));

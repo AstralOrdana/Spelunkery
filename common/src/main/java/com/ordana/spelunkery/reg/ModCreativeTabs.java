@@ -199,9 +199,8 @@ public class ModCreativeTabs {
 
         after(e, Items.MAGMA_BLOCK, CreativeModeTabs.FUNCTIONAL_BLOCKS,
                 ModBlocks.WOODEN_CHANNEL,
-                ModBlocks.WOODEN_SLUICE,
                 ModBlocks.STONE_CHANNEL,
-                ModBlocks.STONE_SLUICE
+                ModItems.SLUICE_GRATE
         );
 
         after(e, Items.LADDER, CreativeModeTabs.FUNCTIONAL_BLOCKS,
