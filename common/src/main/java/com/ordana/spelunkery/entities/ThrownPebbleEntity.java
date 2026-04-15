@@ -11,11 +11,13 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -36,7 +38,6 @@ public class ThrownPebbleEntity extends ImprovedProjectileEntity {
         super(ModEntities.PEBBLE.get(), x, y, z, worldIn);
     }
 
-
     @Override
     protected Item getDefaultItem() {
         return ModItems.STONE_PEBBLE.get();
@@ -51,6 +52,22 @@ public class ThrownPebbleEntity extends ImprovedProjectileEntity {
         }
 
     }
+
+    protected float getWaterInertia() {
+        return 0.99F;
+    }
+
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.isInWater() && this.getDeltaMovement().y <= 0) {
+            if (Math.abs(this.getDeltaMovement().x) > 0.1 && Math.abs(this.getDeltaMovement().z) > 0.1)
+                setDeltaMovement(this.getDeltaMovement().x * 0.8, this.getDeltaMovement().y * -0.5, this.getDeltaMovement().z * 0.8);
+            if (this.getDeltaMovement().x == 0 || this.getDeltaMovement().z == 0) ++this.stuckTime;
+        }
+    }
+
 
     @Override
     protected void updateRotation() {

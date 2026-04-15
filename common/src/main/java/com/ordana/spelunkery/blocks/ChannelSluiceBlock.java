@@ -7,6 +7,7 @@ import com.ordana.spelunkery.blocks.entity.SluiceBlockEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
+import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -30,6 +31,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.BlockGetter;
@@ -42,6 +44,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -59,10 +62,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class ChannelSluiceBlock extends ModBaseEntityBlock {
-    public static final BooleanProperty NORTH;
-    public static final BooleanProperty SOUTH;
-    public static final BooleanProperty EAST;
-    public static final BooleanProperty WEST;
+    public static final BooleanProperty GRATE_NORTH;
+    public static final BooleanProperty GRATE_SOUTH;
+    public static final BooleanProperty GRATE_EAST;
+    public static final BooleanProperty GRATE_WEST;
 
     protected static final VoxelShape SHAPE_TALL_N;
     protected static final VoxelShape SHAPE_TALL_E;
@@ -83,19 +86,19 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     protected static final VoxelShape SHAPE_TALL_NESW;
     protected static final VoxelShape SHAPE_TALL_NONE;
 
-    public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION;
+    public static final Map<Direction, BooleanProperty> GRATE_PROPERTY_BY_DIRECTION;
 
     public ChannelSluiceBlock(Properties properties) {
         super(properties);
-        super.registerDefaultState((this.stateDefinition.any()).setValue(NORTH, false).setValue(SOUTH, false).setValue(EAST, false).setValue(WEST, false));
+        super.registerDefaultState((this.stateDefinition.any()).setValue(GRATE_NORTH, false).setValue(GRATE_SOUTH, false).setValue(GRATE_EAST, false).setValue(GRATE_WEST, false));
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST);
+        builder.add(SUPPORTED, NORTH, EAST, SOUTH, WEST, GRATE_NORTH, GRATE_EAST, GRATE_SOUTH, GRATE_WEST);
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(NORTH) || state.getValue(EAST) || state.getValue(WEST) || state.getValue(SOUTH);
+        return state.getValue(GRATE_NORTH) || state.getValue(GRATE_EAST) || state.getValue(GRATE_WEST) || state.getValue(GRATE_SOUTH);
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -139,7 +142,72 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     }
 
 
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!player.isSecondaryUseActive()) return InteractionResult.PASS;
+
+        Direction dir = hit.getDirection();
+        boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
+
+        BooleanProperty wallDir = PROPERTY_BY_DIRECTION.get(dir);
+        BooleanProperty grateDir = GRATE_PROPERTY_BY_DIRECTION.get(dir);
+        if (dir == Direction.UP || dir == Direction.DOWN) {
+            wallDir = PROPERTY_BY_DIRECTION.get(player.getDirection());
+            grateDir = GRATE_PROPERTY_BY_DIRECTION.get(player.getDirection());
+        }
+
+        boolean wallCheck = state.getValue(wallDir);
+        boolean grateCheck = state.getValue(grateDir);
+
+        if (grateCheck) {
+            boolean anyGrate = false;
+            for (Direction extraGrateDir : Direction.Plane.HORIZONTAL) {
+                if (extraGrateDir == dir || extraGrateDir == player.getDirection()) continue;
+                if (state.getValue(PROPERTY_BY_DIRECTION.get(extraGrateDir))) anyGrate = true;
+            }
+            if (!anyGrate) state = stone ? ModBlocks.STONE_CHANNEL.get().withPropertiesOf(state) : ModBlocks.WOODEN_CHANNEL.get().withPropertiesOf(state);
+            level.setBlockAndUpdate(pos, state.setValue(anyGrate ? grateDir : wallDir, false));
+            player.addItem(ModItems.SLUICE_GRATE.get().getDefaultInstance());
+        }
+        else level.setBlockAndUpdate(pos, state.setValue(wallDir, wallCheck));
+        level.playSound(null, pos, wallCheck ? (stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK) : (stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE), SoundSource.BLOCKS, 1.0F, 1.0F);
+
+        if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        Item item = itemStack.getItem();
+        boolean sluice = itemStack.is(ModItems.SLUICE_GRATE.get());
+        if (!sluice) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+
+        var dir = hit.getDirection();
+        boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
+
+        BooleanProperty propDir = PROPERTY_BY_DIRECTION.get(dir);
+        if (dir == Direction.UP || dir == Direction.DOWN) {
+            propDir = PROPERTY_BY_DIRECTION.get(player.getDirection());
+        }
+
+        BooleanProperty propDir2 = GRATE_PROPERTY_BY_DIRECTION.get(dir);
+
+        //state = stone ? ModBlocks.STONE_SLUICE.get().withPropertiesOf(state) : ModBlocks.WOODEN_SLUICE.get().withPropertiesOf(state);
+        level.setBlockAndUpdate(pos, state.setValue(propDir, false).setValue(propDir2, true));
+
+        level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+        if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+        if (!player.isCreative()) itemStack.shrink(1);
+
+        player.awardStat(Stats.ITEM_USED.get(item));
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+
+/*
         ItemStack stack = player.getItemInHand(hand);
         boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
         boolean tool = stone ? stack.is(ItemTags.PICKAXES) : stack.is(ItemTags.AXES);
@@ -147,19 +215,19 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
         if (tool  && (dir != Direction.DOWN && dir != Direction.UP)) {
             if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
+                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
                 if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
             }
-            else if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false), 3);
+            else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
+                level.setBlock(pos, state.setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), false), 3);
                 if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
             }
-            else if (!state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
+            else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
                 level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
                 level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
@@ -174,7 +242,9 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         else if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }
-        else {
+
+ */
+        {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof SluiceBlockEntity) {
                 player.openMenu((SluiceBlockEntity)blockEntity);
@@ -188,10 +258,10 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (context instanceof EntityCollisionContext c && c.getEntity() instanceof ItemEntity) {
-            var north = state.getValue(NORTH);
-            var south = state.getValue(SOUTH);
-            var east = state.getValue(EAST);
-            var west = state.getValue(WEST);
+            var north = state.getValue(NORTH) || state.getValue(GRATE_NORTH);
+            var south = state.getValue(SOUTH) || state.getValue(GRATE_SOUTH);
+            var east = state.getValue(EAST) || state.getValue(GRATE_EAST);
+            var west = state.getValue(WEST) || state.getValue(GRATE_WEST);
             var model = SHAPE_TALL_NONE;
 
             if (north && south && east && west) {
@@ -261,7 +331,7 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
         int flowCount = 0;
         for (var direction : Direction.Plane.HORIZONTAL) {
             BlockPos neighborPos = pos.relative(direction);
-            if (!level.getFluidState(neighborPos).is(Fluids.EMPTY) && state.getValue(PROPERTY_BY_DIRECTION.get(direction))) {
+            if (!level.getFluidState(neighborPos).is(Fluids.EMPTY) && state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(direction))) {
                 flowCount += 1;
             }
         }
@@ -338,15 +408,15 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     }
 
     static {
-        NORTH = ModBlockProperties.NORTH;
-        EAST = ModBlockProperties.EAST;
-        SOUTH = ModBlockProperties.SOUTH;
-        WEST = ModBlockProperties.WEST;
-        PROPERTY_BY_DIRECTION = ImmutableMap.copyOf((Map) Util.make(Maps.newEnumMap(Direction.class), (enumMap) -> {
-            enumMap.put(Direction.NORTH, NORTH);
-            enumMap.put(Direction.EAST, EAST);
-            enumMap.put(Direction.SOUTH, SOUTH);
-            enumMap.put(Direction.WEST, WEST);
+        GRATE_NORTH = ModBlockProperties.GRATE_NORTH;
+        GRATE_EAST = ModBlockProperties.GRATE_EAST;
+        GRATE_SOUTH = ModBlockProperties.GRATE_SOUTH;
+        GRATE_WEST = ModBlockProperties.GRATE_WEST;
+        GRATE_PROPERTY_BY_DIRECTION = ImmutableMap.copyOf((Map) Util.make(Maps.newEnumMap(Direction.class), (enumMap) -> {
+            enumMap.put(Direction.NORTH, GRATE_NORTH);
+            enumMap.put(Direction.EAST, GRATE_EAST);
+            enumMap.put(Direction.SOUTH, GRATE_SOUTH);
+            enumMap.put(Direction.WEST, GRATE_WEST);
         }));
 
 

@@ -2,6 +2,45 @@
   "multipart": [
     {
       "apply": {
+        "model": "spelunkery:block/wooden_channel_side_low"
+      },
+      "when": {
+        "north": "false",
+        "supported": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side_low",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "supported": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side_low",
+        "y": 180
+      },
+      "when": {
+        "south": "false",
+        "supported": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "spelunkery:block/wooden_channel_side_low",
+        "y": 270
+      },
+      "when": {
+        "west": "false",
+        "supported": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "spelunkery:block/wooden_channel_side"
       },
       "when": {
