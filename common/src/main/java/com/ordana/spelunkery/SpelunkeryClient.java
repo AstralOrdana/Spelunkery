@@ -14,10 +14,7 @@ import net.mehvahdjukaar.moonlight.api.client.renderer.FallingBlockRendererGener
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.util.math.colors.RGBColor;
-import net.minecraft.client.model.PolarBearModel;
-import net.minecraft.client.model.WitherBossModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;

@@ -6,16 +6,11 @@ import com.ordana.spelunkery.reg.ModItems;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -26,7 +21,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HopperBlock;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -151,9 +149,9 @@ public class ChannelBlock extends Block {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!player.isSecondaryUseActive()) return InteractionResult.PASS;
+        boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
 
         Direction dir = hit.getDirection();
-        boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
 
         BooleanProperty propDir = PROPERTY_BY_DIRECTION.get(dir);
 
@@ -175,27 +173,27 @@ public class ChannelBlock extends Block {
         Item item = itemStack.getItem();
         boolean sluice = itemStack.is(ModItems.SLUICE_GRATE.get());
         if (!sluice) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-
-        var dir = hit.getDirection();
         boolean stone = state.is(ModBlocks.STONE_CHANNEL.get());
 
+
+        var dir = hit.getDirection();
         if (dir == Direction.UP || dir == Direction.DOWN) {
-            return super.useItemOn(itemStack, state, level, pos, player, hand, hit);
-        } else {
-            BooleanProperty propDir = PROPERTY_BY_DIRECTION.get(dir);
-            BooleanProperty propDir2 = GRATE_PROPERTY_BY_DIRECTION.get(dir);
-
-            state = stone ? ModBlocks.STONE_SLUICE.get().withPropertiesOf(state) : ModBlocks.WOODEN_SLUICE.get().withPropertiesOf(state);
-            level.setBlockAndUpdate(pos, state.setValue(propDir, false).setValue(propDir2, true));
-
-            level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-
-            if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
-            if (!player.isCreative()) itemStack.shrink(1);
-
-            player.awardStat(Stats.ITEM_USED.get(item));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            dir = player.getDirection();
         }
+
+        BooleanProperty wallDirProperty = PROPERTY_BY_DIRECTION.get(dir);
+        BooleanProperty grateDirProperty = GRATE_PROPERTY_BY_DIRECTION.get(dir);
+
+        state = stone ? ModBlocks.STONE_SLUICE.get().withPropertiesOf(state) : ModBlocks.WOODEN_SLUICE.get().withPropertiesOf(state);
+        level.setBlockAndUpdate(pos, state.setValue(wallDirProperty, false).setValue(grateDirProperty, true));
+        if (!player.isCreative()) itemStack.shrink(1);
+        player.awardStat(Stats.ITEM_USED.get(item));
+
+        level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+
     }
 
     @Override
