@@ -1,6 +1,5 @@
 package com.ordana.spelunkery.items;
 
-import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModSoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -11,17 +10,17 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Equipable;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class TrueCrownItem extends BlockItem implements Equipable {
+public class TrueCrownItem extends Item implements Equipable {
 
     public TrueCrownItem(Properties properties) {
-        super(ModBlocks.TRUE_CROWN.get(), properties);
+        super(properties);
     }
 
     @Override
