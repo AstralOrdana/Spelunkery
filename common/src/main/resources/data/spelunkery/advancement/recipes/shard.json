@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "spelunkery:quartz_from_shard"
+      "spelunkery:rough_quartz_from_shard"
     ]
   },
   "criteria": {

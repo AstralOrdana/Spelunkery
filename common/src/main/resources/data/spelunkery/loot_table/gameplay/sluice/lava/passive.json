@@ -25,13 +25,13 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:nether_wastes"
+                    "biomes": "minecraft:nether_wastes"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:basalt_deltas"
+                    "biomes": "minecraft:basalt_deltas"
                   }
                 }
               ]
@@ -55,13 +55,13 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:nether_wastes"
+                    "biomes": "minecraft:nether_wastes"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:basalt_deltas"
+                    "biomes": "minecraft:basalt_deltas"
                   }
                 }
               ]
@@ -79,13 +79,13 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:nether_wastes"
+                    "biomes": "minecraft:nether_wastes"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:basalt_deltas"
+                    "biomes": "minecraft:basalt_deltas"
                   }
                 }
               ]
@@ -103,7 +103,7 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "structure": "minecraft:fortress"
+                    "structures": "minecraft:fortress"
                   }
                 }
               ]

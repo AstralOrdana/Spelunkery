@@ -21,13 +21,13 @@
   ],
   "results": [
     {
-      "item": "create:crushed_raw_gold",
+      "id": "create:crushed_raw_gold",
       "chance": 0.2
     },
     {
-      "item": "spelunkery:raw_gold_nugget",
+      "id": "spelunkery:raw_gold_nugget",
       "chance": 0.2
     }
   ],
-  "processingTime": 250
+  "processing_time": 250
 }
