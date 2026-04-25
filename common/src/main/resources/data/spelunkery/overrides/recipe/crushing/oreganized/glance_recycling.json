@@ -1,0 +1,42 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "oreganized",
+        "create"
+      ]
+    }
+  ],
+  "neoforge:conditions": [ {
+    "type": "neoforge:and",
+    "values": [
+      {
+        "type": "neoforge:mod_loaded",
+        "modid": "create"
+      },
+      {
+        "type": "neoforge:mod_loaded",
+        "modid": "oreganized"
+      }
+    ]
+  }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "oreganized:stone_types/glance"
+    }
+  ],
+  "results": [
+    {
+      "id": "create:crushed_raw_lead",
+      "chance": 0.8
+    },
+    {
+      "id": "spelunkery:raw_lead_nugget",
+      "chance": 0.8
+    }
+  ],
+  "processingTime": 250
+}

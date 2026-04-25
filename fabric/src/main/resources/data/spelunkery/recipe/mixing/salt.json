@@ -1,16 +1,18 @@
 {
-  "neoforge:conditions": [
+  "fabric:load_conditions": [
     {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "type": "create:mixing",
   "ingredients": [
     {
       "fluid": "minecraft:water",
-      "type": "neoforge:single",
-      "amount": 144
+      "nbt": {},
+      "amount": 27000
     },
     {
       "item": "minecraft:pointed_dripstone"
