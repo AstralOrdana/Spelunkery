@@ -40,7 +40,7 @@ dependencies {
 
     modLocalRuntime "dev.emi:emi-neoforge:${rootProject.emi_version}"
 
-    modImplementation("net.mehvahdjukaar:moonlight-neoforge:${moonlight_version}")
+    modImplementation("maven.modrinth:moonlight:${moonlight_version}-neoforge")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
