@@ -45,12 +45,12 @@ public class ModLootOverrides extends DynamicServerResourceProvider {
 
 
     public ResourceGenTask overrideDataFile(List<String> list, String targetNamespace, String targetPath, String sourcePath, ResType resType) {
-
+        boolean isGeneric = (resType == ResType.GENERIC);
         return new ResourceGenTask() {
             @Override
             public void accept(ResourceManager manager, ResourceSink sink) {
                 for(var recipe :list) {
-                    ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, targetPath + recipe);
+                    ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, isGeneric ? targetPath + recipe + ".json" : targetPath + recipe);
                     ResourceLocation source = Spelunkery.res((sourcePath + recipe + ".json"));
 
                     try (var bsStream = manager.getResource(source).orElseThrow().open()) {
