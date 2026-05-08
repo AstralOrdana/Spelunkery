@@ -65,7 +65,7 @@ public class HammerAndChiselItem extends Item {
                         .setStyle(Style.EMPTY.applyFormat(ChatFormatting.DARK_PURPLE)));
 
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
-                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1")
+                tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_1", Component.keybind("key.use"))
                         .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.hammer_and_chisel_2")
                         .setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
