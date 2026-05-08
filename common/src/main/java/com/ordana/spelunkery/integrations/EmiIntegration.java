@@ -29,7 +29,7 @@ public class EmiIntegration implements EmiPlugin {
 
         EmiIngredient grindstone = EmiStack.of(Blocks.GRINDSTONE);
         EmiIngredient diamondGrindstone = EmiStack.of(ModBlocks.DIAMOND_GRINDSTONE.get());
-        EmiIngredient sluice = EmiIngredient.of(ModTags.SLUICES);
+        EmiStack sluice = EmiStack.of(ModItems.SLUICE_GRATE.get());
         EmiStack water = EmiStack.of(Fluids.WATER);
         water.setRemainder(water);
         EmiStack lava = EmiStack.of(Fluids.LAVA);
