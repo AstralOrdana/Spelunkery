@@ -53,13 +53,13 @@ public class EmiIntegration implements EmiPlugin {
             }
         }
 
-        if (PlatHelper.isModLoaded("portal_fluid")) {
-            EmiStack portalFluid = EmiStack.of(BuiltInRegistries.FLUID.get(ResourceLocation.parse("portal_fluid:portal_fluid")));
+        if (PlatHelper.isModLoaded("dimensional_tears")) {
+            EmiStack portalFluid = EmiStack.of(BuiltInRegistries.FLUID.get(ResourceLocation.fromNamespaceAndPath("dimensional_tears", "dimensional_tears")));
             portalFluid.setRemainder(portalFluid);
 
             try {
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(ResourceLocation.fromNamespaceAndPath("spelunkery", "/portal_fluid_passive"))
+                        .id(Spelunkery.res("/dimensional_tears_passive"))
                         .rightInput(sluice, true)
                         .leftInput(portalFluid)
                         .output(EmiStack.of(ModItems.END_STONE_PEBBLE.get()).setChance(0.571f))
@@ -69,19 +69,19 @@ public class EmiIntegration implements EmiPlugin {
                         .build());
 
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(Spelunkery.res("/portal_fluid"))
+                        .id(Spelunkery.res("/dimensional_tears"))
                         .rightInput(EmiStack.of(Blocks.CRYING_OBSIDIAN), false)
                         .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
                         .output(EmiStack.of(Blocks.OBSIDIAN))
-                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("portal_fluid:portal_fluid_bottle"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("dimensional_tears:dimensional_tears_bottle"))))
                         .build());
 
 
                 registry.addRecipe(EmiWorldInteractionRecipe.builder()
-                        .id(Spelunkery.res("/portal_fluid_anchor"))
+                        .id(Spelunkery.res("/dimensional_tears_anchor"))
                         .rightInput(EmiStack.of(Blocks.RESPAWN_ANCHOR), true)
                         .leftInput(EmiStack.of(Items.GLASS_BOTTLE))
-                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("portal_fluid:portal_fluid_bottle"))))
+                        .output(EmiStack.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("dimensional_tears:dimensional_tears_bottle"))))
                         .build());
 
             } catch (Exception e) {
