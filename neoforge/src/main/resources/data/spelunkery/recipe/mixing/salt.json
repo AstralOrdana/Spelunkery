@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "fluid": "minecraft:water",
-      "nbt": {},
+      "type": "neoforge:single",
       "amount": 144
     },
     {

@@ -15,55 +15,55 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:frozen_ocean"
+                    "biomes": "minecraft:frozen_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:cold_ocean"
+                    "biomes": "minecraft:cold_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:ocean"
+                    "biomes": "minecraft:ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:lukewarm_ocean"
+                    "biomes": "minecraft:lukewarm_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:warm_ocean"
+                    "biomes": "minecraft:warm_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_frozen_ocean"
+                    "biomes": "minecraft:deep_frozen_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_cold_ocean"
+                    "biomes": "minecraft:deep_cold_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_ocean"
+                    "biomes": "minecraft:deep_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_lukewarm_ocean"
+                    "biomes": "minecraft:deep_lukewarm_ocean"
                   }
                 }
               ]
@@ -81,55 +81,55 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:frozen_ocean"
+                    "biomes": "minecraft:frozen_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:cold_ocean"
+                    "biomes": "minecraft:cold_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:ocean"
+                    "biomes": "minecraft:ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:lukewarm_ocean"
+                    "biomes": "minecraft:lukewarm_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:warm_ocean"
+                    "biomes": "minecraft:warm_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_frozen_ocean"
+                    "biomes": "minecraft:deep_frozen_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_cold_ocean"
+                    "biomes": "minecraft:deep_cold_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_ocean"
+                    "biomes": "minecraft:deep_ocean"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:deep_lukewarm_ocean"
+                    "biomes": "minecraft:deep_lukewarm_ocean"
                   }
                 }
               ]
@@ -149,19 +149,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:badlands"
+                    "biomes": "minecraft:badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:wooded_badlands"
+                    "biomes": "minecraft:wooded_badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:eroded_badlands"
+                    "biomes": "minecraft:eroded_badlands"
                   }
                 }
               ]
@@ -176,7 +176,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:desert"
+                "biomes": "minecraft:desert"
               }
             }
           ]
@@ -189,7 +189,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:desert"
+                "biomes": "minecraft:desert"
               }
             }
           ]
@@ -202,7 +202,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:desert"
+                "biomes": "minecraft:desert"
               }
             }
           ]
@@ -217,7 +217,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -230,7 +230,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -243,7 +243,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -256,7 +256,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -269,7 +269,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -282,7 +282,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -295,7 +295,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -308,7 +308,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:beach"
+                "biomes": "minecraft:beach"
               }
             }
           ]
@@ -323,7 +323,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -336,7 +336,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -349,7 +349,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -362,7 +362,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -375,7 +375,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -388,7 +388,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]
@@ -401,7 +401,7 @@
             {
               "condition": "minecraft:location_check",
               "predicate": {
-                "biome": "minecraft:warm_ocean"
+                "biomes": "minecraft:warm_ocean"
               }
             }
           ]

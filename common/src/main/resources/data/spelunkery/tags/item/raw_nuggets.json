@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "spelunkery:raw_zinc_nugget",
+      "required": false
+    },
+    {
+      "id": "spelunkery:raw_bismuth_nugget",
+      "required": false
+    },
+    "spelunkery:raw_gold_nugget",
+    "spelunkery:raw_iron_nugget",
+    "spelunkery:raw_copper_nugget"
+  ]
+}

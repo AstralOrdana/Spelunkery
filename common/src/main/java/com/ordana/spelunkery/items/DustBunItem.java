@@ -73,7 +73,7 @@ public class DustBunItem extends Item {
                     if (!player.getInventory().add(new ItemStack(bunStack.getItem()))) {
                         player.drop(new ItemStack(bunStack.getItem()), false);
                     }
-                    stack.shrink(1);
+                    if (!player.isCreative()) stack.shrink(1);
                 }
 
                 double d0 = level.random.nextGaussian() * 0.02D;

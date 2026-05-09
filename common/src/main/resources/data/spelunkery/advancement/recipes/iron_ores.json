@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "spelunkery:iron_ores"
+            "items": "#spelunkery:iron_ores"
           }
         ]
       }

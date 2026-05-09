@@ -1,0 +1,27 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "nbt": {},
+      "amount": 27000
+    },
+    {
+      "item": "minecraft:pointed_dripstone"
+    }
+  ],
+  "results": [
+    {
+      "id": "spelunkery:salt"
+    }
+  ],
+  "heat_requirement": "heated"
+}

@@ -1,8 +1,16 @@
 {
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
     }
   ],
   "config": {

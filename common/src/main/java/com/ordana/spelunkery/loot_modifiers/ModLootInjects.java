@@ -89,7 +89,6 @@ public class ModLootInjects {
 
     private static final List<String> lootChests = List.of(
             "abandoned_mineshaft",
-            "ruined_portal",
             "stronghold_library",
             "ancient_city"
     );

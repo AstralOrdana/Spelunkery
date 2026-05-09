@@ -36,7 +36,6 @@ public class ThrownPebbleEntity extends ImprovedProjectileEntity {
         super(ModEntities.PEBBLE.get(), x, y, z, worldIn);
     }
 
-
     @Override
     protected Item getDefaultItem() {
         return ModItems.STONE_PEBBLE.get();
@@ -51,6 +50,22 @@ public class ThrownPebbleEntity extends ImprovedProjectileEntity {
         }
 
     }
+
+    protected float getWaterInertia() {
+        return 0.99F;
+    }
+
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.isInWater() && this.getDeltaMovement().y <= 0) {
+            if (Math.abs(this.getDeltaMovement().x) > 0.1 && Math.abs(this.getDeltaMovement().z) > 0.1)
+                setDeltaMovement(this.getDeltaMovement().x * 0.8, this.getDeltaMovement().y * -0.5, this.getDeltaMovement().z * 0.8);
+            if (this.getDeltaMovement().x == 0 || this.getDeltaMovement().z == 0) ++this.stuckTime;
+        }
+    }
+
 
     @Override
     protected void updateRotation() {

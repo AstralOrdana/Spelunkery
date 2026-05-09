@@ -143,9 +143,9 @@ public class ModEvents {
             player.setItemInHand(hand, removeEnchants(stack, stack.getDamageValue(), depleted));
             return InteractionResult.SUCCESS;
         }
-        else if (stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0) {
+        else if (stack.is(ModTags.GRINDSTONE_REPAIR_ITEM) && (state.is(Blocks.GRINDSTONE) || (state.is(ModBlocks.DIAMOND_GRINDSTONE.get()) && state.getValue(ModBlockProperties.DEPLETION) > 0))) {
             if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
-            level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, 0));
+            level.setBlockAndUpdate(pos, ModBlocks.DIAMOND_GRINDSTONE.get().withPropertiesOf(state).setValue(ModBlockProperties.DEPLETION, 0));
             if (!player.getAbilities().instabuild) stack.shrink(1);
             return InteractionResult.SUCCESS;
         }
@@ -174,6 +174,9 @@ public class ModEvents {
                 .create(LootContextParamSets.BLOCK);
 
         // find loot table for held item
+        var success = false;
+        var depleted = true;
+        if (diamondGrindstone) depleted = state.getValue(ModBlockProperties.DEPLETION) == 3;
         var itemName = Utils.getID(itemStack.getItem()).getPath();
         ResourceLocation tablePath;
         LootTable lootTable;
@@ -209,8 +212,35 @@ public class ModEvents {
                 deplChance += 1;
                 continue;
             }
-            if (!player.getInventory().add(stack)) {
-                player.drop(stack, false);
+            var deplChance = 0;
+
+            //give loot items and xp
+            for (ItemStack stack : lootItem) {
+                if (stack.is(Items.EXPERIENCE_BOTTLE)) {
+                    ExperienceOrb.award((ServerLevel) level, Vec3.atCenterOf(pos), 1);
+                    continue;
+                }
+                if (stack.is(Items.BEDROCK)) {
+                    deplChance += 1;
+                    continue;
+                }
+                if (!player.getInventory().add(stack)) {
+                    player.drop(stack, false);
+                }
+            }
+            success = true;
+
+            //depletion
+            if (tablePath.getPath().contains("diamond")) {
+                var depl = CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get();
+                for (int i = 0; i < deplChance; ++i) {
+                    var chance = depl == 0 ? 0 : level.random.nextInt(CommonConfigs.DIAMOND_GRINDSTONE_DEPLETE_CHANCE.get());
+                    if (chance > 0 && diamondGrindstone) {
+                        if (chance == 1 && !depleted)
+                            if (state.getValue(ModBlockProperties.DEPLETION) == 2) level.setBlockAndUpdate(pos, Blocks.GRINDSTONE.withPropertiesOf(state));
+                            else level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.DEPLETION, state.getValue(ModBlockProperties.DEPLETION) + 1));
+                    }
+                }
             }
         }
 

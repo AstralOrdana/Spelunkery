@@ -29,7 +29,7 @@ public class ChannelItem extends BlockItem {
             if (InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), Minecraft.getInstance().options.keyShift.key.getValue())) {
                 tooltip.add(Component.translatable("tooltip.spelunkery.channel_1").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
                 tooltip.add(Component.translatable("tooltip.spelunkery.channel_2").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
-                tooltip.add(Component.translatable("tooltip.spelunkery.channel_3").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
+                tooltip.add(Component.translatable("tooltip.spelunkery.channel_3", Component.keybind("key.sneak"), Component.keybind("key.use")).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)));
             } else {
                 tooltip.add(TranslationUtils.CROUCH.component());
             }

@@ -5,10 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AmethystBlock;
-import net.minecraft.world.level.block.BuddingAmethystBlock;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEventListener;
@@ -25,8 +22,10 @@ public abstract class BuddingAmethystBlockMixin extends AmethystBlock implements
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new BuddingAmethystBlockEntity(pos, state);
+        if (state.is(Blocks.BUDDING_AMETHYST)) return new BuddingAmethystBlockEntity(pos, state);
+        else return null;
     }
+
 
     @Nullable
     @Override

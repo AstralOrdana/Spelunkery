@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "spelunkery:gold_ores"
+            "items": "#spelunkery:gold_ores"
           }
         ]
       }

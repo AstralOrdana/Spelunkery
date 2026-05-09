@@ -16,6 +16,12 @@
                     {
                       "condition": "minecraft:match_tool",
                       "predicate": {
+                        "items": "#minecraft:swords"
+                      }
+                    },
+                    {
+                      "condition": "minecraft:match_tool",
+                      "predicate": {
                         "items": "#c:tools/shear"
                       }
                     },

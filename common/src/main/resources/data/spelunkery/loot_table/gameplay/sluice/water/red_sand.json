@@ -30,19 +30,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:badlands"
+                    "biomes": "minecraft:badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:wooded_badlands"
+                    "biomes": "minecraft:wooded_badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:eroded_badlands"
+                    "biomes": "minecraft:eroded_badlands"
                   }
                 }
               ]
@@ -70,19 +70,19 @@
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:badlands"
+                    "biomes": "minecraft:badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:wooded_badlands"
+                    "biomes": "minecraft:wooded_badlands"
                   }
                 },
                 {
                   "condition": "minecraft:location_check",
                   "predicate": {
-                    "biome": "minecraft:eroded_badlands"
+                    "biomes": "minecraft:eroded_badlands"
                   }
                 }
               ]

@@ -330,10 +330,6 @@ public class ModBlocks {
         new DustBlockBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.WOOL).mapColor(MapColor.COLOR_GRAY)));
     public static final Supplier<Block> DUST = regWithItem("dust", () ->
         new DustBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.WOOL).mapColor(MapColor.COLOR_GRAY)));
-    public static final Supplier<Block> BUNNY_EARS = regBlock("bunny_ears", () ->
-        new BunnyEarsUtilBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.WOOL).mapColor(MapColor.COLOR_GRAY)));
-    public static final Supplier<Block> TRUE_CROWN = regBlock("true_crown", () ->
-            new BunnyEarsUtilBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.WOOL).mapColor(MapColor.COLOR_GRAY)));
     public static final Supplier<Block> SULFUR = regWithItem("sulfur", () ->
         new FallingLayerBlock(BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.SAND).mapColor(MapColor.TERRACOTTA_YELLOW)));
     public static final Supplier<Block> SALTPETER = regWithItem("saltpeter", () ->

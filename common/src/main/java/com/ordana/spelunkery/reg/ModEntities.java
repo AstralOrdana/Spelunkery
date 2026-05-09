@@ -12,11 +12,26 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public class ModEntities {
     public static <T extends Entity> Supplier<EntityType<T>> regEntity(String name, Supplier<EntityType.Builder<T>> builder) {
         return RegHelper.registerEntityType(Spelunkery.res(name), () -> builder.get().build(name));
     }
+    private static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, UnaryOperator<EntityType.Builder<T>> operation) {
+        EntityType.Builder<T> builder = EntityType.Builder.of(factory, category);
+        return RegHelper.registerEntityType(Spelunkery.res(name), operation.apply(builder));
+    }
+
+    Supplier<EntityType<EggPlither>> EGG_PLITHER = registerEntityType(
+            "egg_plither",
+            EggPlither::new,
+            MobCategory.MONSTER,
+            builder -> builder
+                    .fireImmune()
+                    .immuneTo(Blocks.WITHER_ROSE)
+                    .sized(0.9F, 3.5F)
+                    .clientTrackingRange(10));
 
     public static void init() {
     }
@@ -25,6 +40,7 @@ public class ModEntities {
     public static Supplier<EntityType<DustBunnyEntity>> DUST_BUNNY = RegHelper.registerEntityType(
             Spelunkery.res("dust_bunny"),
             DustBunnyEntity::new, MobCategory.CREATURE, 0.8F, 0.5F, 10, 20);
+
 
     //Tile Entities
     public static final Supplier<BlockEntityType<CarvedNephriteBlockEntity>> NEPHRITE_TILE = RegHelper.registerBlockEntityType(

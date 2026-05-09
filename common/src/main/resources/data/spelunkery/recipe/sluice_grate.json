@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HHH",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:chain"
+    },
+    "H": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "id": "spelunkery:sluice_grate",
+    "count": 1
+  }
+}

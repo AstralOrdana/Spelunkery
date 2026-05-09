@@ -1,0 +1,27 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "spelunkery:salt"
+    },
+    {
+      "fluid": "minecraft:water",
+      "nbt": {},
+      "amount": 27000
+    }
+  ],
+  "results": [
+    {
+      "id": "spelunkery:rock_salt"
+    }
+  ],
+  "heatRequirement": "heated"
+}

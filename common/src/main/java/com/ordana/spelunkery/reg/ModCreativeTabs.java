@@ -14,9 +14,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class ModCreativeTabs {
+
+    private static final Set<Item> ADDED_ITEMS = new HashSet<>();
 
     public static final RegSupplier<CreativeModeTab> MOD_TAB = !CommonConfigs.CREATIVE_TAB.get() ? null :
             RegHelper.registerCreativeModeTab(Spelunkery.res("spelunkery"),
@@ -30,11 +34,12 @@ public class ModCreativeTabs {
 
 
     public static void registerItemsToTabs(RegHelper.ItemToTabEvent e) {
+        ADDED_ITEMS.clear();
 
         if (CommonConfigs.ENABLE_MORES.get()) {
             if (PlatHelper.isModLoaded("create")) {
                 after(e, Items.DEEPSLATE_DIAMOND_ORE, CreativeModeTabs.NATURAL_BLOCKS,
-                        ModBlocks.ANDESITE_ZINC_ORE, ModBlocks.DIORITE_ZINC_ORE, ModBlocks.GRANITE_ZINC_ORE, ModBlocks.DIORITE_ZINC_ORE
+                        ModBlocks.ANDESITE_ZINC_ORE, ModBlocks.DIORITE_ZINC_ORE, ModBlocks.GRANITE_ZINC_ORE
                 );
 
                 after(e, Items.IRON_NUGGET, CreativeModeTabs.INGREDIENTS,
@@ -199,9 +204,8 @@ public class ModCreativeTabs {
 
         after(e, Items.MAGMA_BLOCK, CreativeModeTabs.FUNCTIONAL_BLOCKS,
                 ModBlocks.WOODEN_CHANNEL,
-                ModBlocks.WOODEN_SLUICE,
                 ModBlocks.STONE_CHANNEL,
-                ModBlocks.STONE_SLUICE
+                ModItems.SLUICE_GRATE
         );
 
         after(e, Items.LADDER, CreativeModeTabs.FUNCTIONAL_BLOCKS,
@@ -267,21 +271,34 @@ public class ModCreativeTabs {
     private static void after(RegHelper.ItemToTabEvent event, Item target,
                               ResourceKey<CreativeModeTab> tab, Supplier<?>... items) {
 
-        ItemLike[] entries = Arrays.stream(items).map((s -> (ItemLike) (s.get()))).toArray(ItemLike[]::new);
         if(CommonConfigs.CREATIVE_TAB.get()) {
             tab = MOD_TAB.getHolder().unwrapKey().get();
         }
-        event.addAfter(tab, i -> i.is(target), entries);
+
+        ItemLike[] entries = Arrays.stream(items)
+                .map(s -> (ItemLike) s.get())
+                .filter(item -> ADDED_ITEMS.add(item.asItem()))
+                .toArray(ItemLike[]::new);
+
+        if (entries.length > 0) {
+            event.addAfter(tab, i -> i.is(target), entries);
+        }
     }
 
     private static void before(RegHelper.ItemToTabEvent event, Item target,
                                ResourceKey<CreativeModeTab> tab, Supplier<?>... items) {
 
-        ItemLike[] entries = Arrays.stream(items).map(s -> (ItemLike) s.get()).toArray(ItemLike[]::new);
         if(CommonConfigs.CREATIVE_TAB.get()){
             tab = MOD_TAB.getHolder().unwrapKey().get();
         }
-        event.addBefore(tab, i -> i.is(target), entries);
-    }
 
+        ItemLike[] entries = Arrays.stream(items)
+                .map(s -> (ItemLike) s.get())
+                .filter(item -> ADDED_ITEMS.add(item.asItem()))
+                .toArray(ItemLike[]::new);
+
+        if (entries.length > 0) {
+            event.addBefore(tab, i -> i.is(target), entries);
+        }
+    }
 }

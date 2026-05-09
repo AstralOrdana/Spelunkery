@@ -57,13 +57,14 @@ public class Spelunkery {
 
         RegHelper.addAttributeRegistration(Spelunkery::registerEntityAttributes);
         ModGameEvents.init();
-        ModLootOverrides.INSTANCE.register();
+        ModLootOverrides.register();
         ModWorldgenFeatures.init();
         ModBlocks.init();
         ModFluids.init();
         ModItems.init();
         ModComponents.init();
         ModEntities.init();
+        ModEntityTypes.init();
         ModParticles.init();
         ModSoundEvents.init();
         ModCreativeTabs.init();

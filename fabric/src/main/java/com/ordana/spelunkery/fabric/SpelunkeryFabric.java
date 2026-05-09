@@ -2,11 +2,14 @@ package com.ordana.spelunkery.fabric;
 
 import com.ordana.spelunkery.Spelunkery;
 import com.ordana.spelunkery.SpelunkeryClient;
+import com.ordana.spelunkery.entities.EggPlither;
 import com.ordana.spelunkery.events.ModEvents;
+import com.ordana.spelunkery.reg.ModEntityTypes;
 import com.ordana.spelunkery.reg.ModSetup;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.minecraft.server.MinecraftServer;
@@ -40,6 +43,7 @@ public class SpelunkeryFabric implements ModInitializer {
 
     public static void onSetup(){
         ModSetup.setup();
+        FabricDefaultAttributeRegistry.register(ModEntityTypes.EGG_PLITHER.get(), EggPlither.createAttributes());
         FuelRegistry.INSTANCE.add(COAL_LUMP.get(), 200);
         FuelRegistry.INSTANCE.add(CHARCOAL_LUMP.get(), 200);
     }

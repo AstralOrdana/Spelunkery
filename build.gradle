@@ -8,6 +8,11 @@ architectury {
     minecraft = rootProject.minecraft_version
 }
 
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+}
+
+
 subprojects {
     apply plugin: "dev.architectury.loom"
     apply plugin: "com.github.johnrengelman.shadow"

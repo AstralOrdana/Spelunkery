@@ -412,11 +412,11 @@
   "block.spelunkery.cave_mushroom_stem": "Tallo de Hongo de Cueva",
 
   "item.spelunkery.dust_bun": "Bun de Polvo",
-  "block.spelunkery.bunny_ears": "Orejas de Conejo",
+  "item.spelunkery.bunny_ears": "Orejas de Conejo",
   "item.spelunkery.dust_bunny_spawn_egg": "Generar Conejo de Polvo",
   "block.spelunkery.dust_block": "Bloque de Polvo",
   "block.spelunkery.dust": "Polvo",
-  "block.spelunkery.true_crown": "Corona de Tontos",
+  "item.spelunkery.true_crown": "Corona de Tontos",
 
   "block.spelunkery.sulfur": "Azufre",
   "block.spelunkery.saltpeter": "Salitre",

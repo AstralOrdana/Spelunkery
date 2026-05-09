@@ -6,7 +6,6 @@ import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -20,8 +19,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -204,7 +202,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         return false;
     }
 
-    public static List getItemsAtAndAbove(BlockPos pos, Level level) {
+    public static List<Entity> getItemsAtAndAbove(BlockPos pos, Level level) {
         var aABB = new AABB(pos.above());
         return new ArrayList<>(level.getEntitiesOfClass(ItemEntity.class, aABB,
                 EntitySelector.ENTITY_STILL_ALIVE));
@@ -212,7 +210,7 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
 
     public static boolean createFilteredItems(BlockPos pos, Level level, SluiceBlockEntity entity) {
 
-        Iterator itemList = getItemsAtAndAbove(pos, level).iterator();
+        Iterator<Entity> itemList = getItemsAtAndAbove(pos, level).iterator();
 
         if (!itemList.hasNext()) {
             return false;
@@ -237,7 +235,8 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
 
             var lootList = lootTable.getRandomItems(builder.create(LootContextParamSets.BLOCK));
             if (lootList.isEmpty()) return false;
-            var lootItem = lootList.iterator().next();
+            var lootItem = lootList.getFirst();
+            if (lootItem.isEmpty()) return false;
 
             if (lootItem.getItem() instanceof SpawnEggItem egg) {
 
@@ -249,19 +248,27 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
                     return true;
                 }
             }
+            spawnParticlesOnServer((ServerLevel) level,lootItem,pos);
 
             suckInItems(entity, lootItem);
-            var random = level.random;
-            ParticleUtils.spawnParticlesOnBlockFace(level, pos, new ItemParticleOption(ParticleTypes.ITEM, lootItem),
-                    UniformInt.of(3, 5), Direction.UP,
-                    (() -> new Vec3(Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D))),
-                    0.55D);
-
             itemEntity.getItem().shrink(1);
             return true;
         }
         return false;
 
+    }
+
+    private static void spawnParticlesOnServer(ServerLevel level, ItemStack item, BlockPos pos){
+        int count = BiasedToBottomInt.of(0,4).sample(level.random);
+        Vec3 vec3 = Vec3.atCenterOf(pos);
+
+        for (int i = 0; i < count; i++) {
+            level.sendParticles( new ItemParticleOption(ParticleTypes.ITEM, item),
+                    vec3.x,vec3.y + 0.8D, vec3.z,1,
+                    Mth.nextDouble(level.random, -0.3D, 0.3D),Mth.nextDouble(level.random, 0.0D, 0.15D),Mth.nextDouble(level.random, -0.3D, 0.3D),
+                    Mth.nextDouble(level.random, 0.0D, 0.1D)
+            );
+        }
     }
 
     public static boolean suckInItems(Container container, ItemStack itemStack) {
@@ -270,10 +277,9 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     public static ItemStack addItem(Container destination, ItemStack stack) {
-        int i;
-        int j = destination.getContainerSize();
+        int containerSize = destination.getContainerSize();
 
-        for(i = 0; i < j && !stack.isEmpty(); ++i) {
+        for(int i = 0; i < containerSize && !stack.isEmpty(); ++i) {
             stack = tryMoveInItem(destination, stack, i);
         }
 
@@ -298,10 +304,9 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
             }
 
             if (bl) {
-                if (bl2 && destination instanceof SluiceBlockEntity) {
-                    SluiceBlockEntity hopperBlockEntity = (SluiceBlockEntity)destination;
+                if (bl2 && destination instanceof SluiceBlockEntity sluiceBlockEntity) {
                     int j = 0;
-                    hopperBlockEntity.setCooldown(8 - j);
+                    sluiceBlockEntity.setCooldown(8 - j);
                 }
 
                 destination.setChanged();
@@ -315,17 +320,11 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
         if (!container.canPlaceItem(slot, stack)) {
             return false;
         } else {
-            boolean var10000;
-            if (container instanceof WorldlyContainer) {
-                WorldlyContainer worldlyContainer = (WorldlyContainer)container;
-                if (!worldlyContainer.canPlaceItemThroughFace(slot, stack, null)) {
-                    var10000 = false;
-                    return var10000;
-                }
+            if (container instanceof WorldlyContainer worldlyContainer) {
+                return worldlyContainer.canPlaceItemThroughFace(slot, stack, null);
             }
 
-            var10000 = true;
-            return var10000;
+            return true;
         }
     }
 

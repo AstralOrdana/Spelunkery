@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "minecraft:gravel"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:flint",
+      "chance": 0.25
+    },
+    {
+      "id": "spelunkery:raw_iron_nugget",
+      "chance": 0.125
+    }
+  ]
+}

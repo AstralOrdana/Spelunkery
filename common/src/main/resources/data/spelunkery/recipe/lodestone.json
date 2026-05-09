@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#C#",
-    "CXC",
-    "#C#"
+    "###",
+    "#X#",
+    "###"
   ],
   "key": {
     "#": {
@@ -11,9 +11,6 @@
     },
     "X": {
       "item": "spelunkery:raw_magnetite"
-    },
-    "C": {
-      "item": "spelunkery:cinnabar"
     }
   },
   "result": {

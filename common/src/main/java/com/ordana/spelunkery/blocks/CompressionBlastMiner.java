@@ -2,6 +2,7 @@ package com.ordana.spelunkery.blocks;
 
 import com.mojang.serialization.MapCodec;
 import com.ordana.spelunkery.reg.ModBlockProperties;
+import com.ordana.spelunkery.reg.ModItems;
 import com.ordana.spelunkery.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -11,10 +12,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -41,31 +41,39 @@ public class CompressionBlastMiner extends DirectionalBlock {
         return null;
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (itemStack.is(Items.TNT) && !state.getValue(PRIMED)) {
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (player.isSecondaryUseActive() && state.getValue(PRIMED)) {
+            level.setBlockAndUpdate(pos, state.setValue(PRIMED, false));
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            Block.popResourceFromFace(level, pos, hitResult.getDirection(), ModItems.MINEOMITE.get().getDefaultInstance());
+            return ItemInteractionResult.sidedSuccess(level.isClientSide).result();
+        }
+        return super.useWithoutItem(state, level, pos, player, hitResult);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (itemStack.is(ModItems.MINEOMITE.get()) && !state.getValue(PRIMED)) {
             level.setBlockAndUpdate(pos, state.setValue(PRIMED, true));
             level.playSound(null, pos, SoundEvents.GRASS_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        if (player.isSecondaryUseActive() && state.getValue(PRIMED)) {
-            level.setBlockAndUpdate(pos, state.setValue(PRIMED, false));
-            level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            Block.popResourceFromFace(level, pos, hit.getDirection(), Items.TNT.getDefaultInstance());
-            return InteractionResult.SUCCESS;
-        }
-        else return itemStack.getItem() instanceof BlockItem && (new BlockPlaceContext(player, hand, itemStack, hit)).canPlace() ? InteractionResult.PASS : InteractionResult.SUCCESS;
+        return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED, PRIMED);
     }
 
+    @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
+    @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
@@ -79,7 +87,7 @@ public class CompressionBlastMiner extends DirectionalBlock {
         }
     }
 
-
+    @Override
     public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
         boolean bl = level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.above());
         boolean bl2 = state.getValue(POWERED);
@@ -92,10 +100,12 @@ public class CompressionBlastMiner extends DirectionalBlock {
 
     }
 
+    @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         this.blast(state, level, pos);
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getNearestLookingDirection().getOpposite().getOpposite()).setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
     }

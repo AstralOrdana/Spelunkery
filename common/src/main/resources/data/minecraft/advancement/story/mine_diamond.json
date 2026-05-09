@@ -8,11 +8,7 @@
     },
     "description": {
       "translate": "advancements.story.mine_diamond.description"
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
+    }
   },
   "parent": "spelunkery:spelunkery/diamond_grindstone",
   "criteria": {
@@ -21,9 +17,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:diamond"
-            ]
+            "items": "minecraft:diamond"
           }
         ]
       }

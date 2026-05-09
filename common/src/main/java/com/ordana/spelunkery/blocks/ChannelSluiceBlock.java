@@ -7,29 +7,26 @@ import com.ordana.spelunkery.blocks.entity.SluiceBlockEntity;
 import com.ordana.spelunkery.reg.ModBlockProperties;
 import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
+import com.ordana.spelunkery.reg.ModItems;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.BlockGetter;
@@ -139,49 +136,90 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
     }
 
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack stack = player.getItemInHand(hand);
-        boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
-        boolean tool = stone ? stack.is(ItemTags.PICKAXES) : stack.is(ItemTags.AXES);
-        var dir = hit.getDirection();
-
-        if (tool  && (dir != Direction.DOWN && dir != Direction.UP)) {
-            if (state.getValue(PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), false).setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.playSound(null, pos, stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
-            }
-            else if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(GRATE_PROPERTY_BY_DIRECTION.get(dir), false), 3);
-                if (!stone) level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, this.defaultBlockState()), UniformInt.of(3, 5));
-            }
-            else if (!state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(dir))) {
-                level.setBlock(pos, state.setValue(PROPERTY_BY_DIRECTION.get(dir), true), 3);
-                level.playSound(null, pos, stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
-            }
-            if (!player.isCreative()) {
-                stack.hurtAndBreak(1, player, Player.getSlotForHand(hand));
-            }
-
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        else if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        }
-        else {
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!player.isSecondaryUseActive()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof SluiceBlockEntity) {
                 player.openMenu((SluiceBlockEntity)blockEntity);
             }
-
-            return InteractionResult.CONSUME;
+            return InteractionResult.SUCCESS;
         }
+        boolean stone = state.is(ModBlocks.STONE_SLUICE.get());
+
+        Direction dir = hit.getDirection();
+        if (dir == Direction.UP || dir == Direction.DOWN) {
+            dir = player.getDirection();
+        }
+
+        BooleanProperty wallDir = PROPERTY_BY_DIRECTION.get(dir);
+        BooleanProperty grateDir = GRATE_PROPERTY_BY_DIRECTION.get(dir);
+
+        boolean isClickedFaceWall = state.getValue(wallDir);
+        boolean isClickedFaceGrate = state.getValue(grateDir);
+
+
+        if (isClickedFaceGrate) {
+            boolean anyGrate = false;
+            for (Direction extraGrateDir : Direction.Plane.HORIZONTAL) {
+                if (extraGrateDir == dir) continue;
+                if (state.getValue(GRATE_PROPERTY_BY_DIRECTION.get(extraGrateDir))) anyGrate = true;
+            }
+            if (!anyGrate) {
+                state = stone ? ModBlocks.STONE_CHANNEL.get().withPropertiesOf(state) : ModBlocks.WOODEN_CHANNEL.get().withPropertiesOf(state);
+                level.setBlockAndUpdate(pos, state.setValue(wallDir, false));
+            } else level.setBlockAndUpdate(pos, state.setValue(grateDir, false).setValue(wallDir, false));
+            if (!player.isCreative()) player.addItem(ModItems.SLUICE_GRATE.get().getDefaultInstance());
+            level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        } else {
+            level.setBlockAndUpdate(pos, state.setValue(wallDir, !isClickedFaceWall));
+            level.playSound(null, pos, isClickedFaceWall ? (stone ? SoundEvents.STONE_BREAK : SoundEvents.WOOD_BREAK) : (stone ? SoundEvents.STONE_PLACE : SoundEvents.WOOD_PLACE), SoundSource.BLOCKS, 1.0F, 1.0F);
+        }
+        if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY))
+            level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (player.isSecondaryUseActive()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        Item item = itemStack.getItem();
+        boolean sluice = itemStack.is(ModItems.SLUICE_GRATE.get());
+        if (!sluice) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof SluiceBlockEntity) {
+                player.openMenu((SluiceBlockEntity)blockEntity);
+            }
+            return ItemInteractionResult.SUCCESS;
+        }
+        var dir = hit.getDirection();
+        if (dir == Direction.UP || dir == Direction.DOWN) {
+            dir = player.getDirection();
+        }
+
+        BooleanProperty wallDir = PROPERTY_BY_DIRECTION.get(dir);
+        BooleanProperty grateDir = GRATE_PROPERTY_BY_DIRECTION.get(dir);
+
+        if (state.getValue(grateDir)) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof SluiceBlockEntity) {
+                player.openMenu((SluiceBlockEntity)blockEntity);
+            }
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+
+        //state = stone ? ModBlocks.STONE_SLUICE.get().withPropertiesOf(state) : ModBlocks.WOODEN_SLUICE.get().withPropertiesOf(state);
+        level.setBlockAndUpdate(pos, state.setValue(wallDir, false).setValue(grateDir, true));
+
+        level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+        if (!level.getFluidState(pos.relative(dir).above()).is(Fluids.EMPTY)) level.setBlock(pos.relative(dir).above(), Blocks.AIR.defaultBlockState(), 3);
+        if (!player.isCreative()) itemStack.shrink(1);
+
+        player.awardStat(Stats.ITEM_USED.get(item));
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
 

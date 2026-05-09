@@ -12,7 +12,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "spelunkery:redstone_ores"
+            "items": "#spelunkery:redstone_ores"
           }
         ]
       }

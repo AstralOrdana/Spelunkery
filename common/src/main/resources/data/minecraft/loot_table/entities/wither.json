@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "minecraft:binding_curse": 1
+              },
+              "conditions": []
+            }
+          ],
+          "name": "spelunkery:true_crown"
+        }
+      ],
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "direct_entity": {
+              "type": "spelunkery:eggplant"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:entities/wither"
+}

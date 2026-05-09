@@ -15,6 +15,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.boss.EnderDragonPart;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.DyeColor;
@@ -87,6 +88,8 @@ public class ThrownEggplantEntity extends ImprovedProjectileEntity {
             villager.discard();
         }
         if (entity instanceof EnderDragonPart dragon) dragon.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
+        if (entity instanceof WitherBoss wither)
+            wither.hurt(this.damageSources().thrown(this, this.getOwner()), 6969);
     }
 
     @Override
