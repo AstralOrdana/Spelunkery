@@ -10,63 +10,10 @@
           "name": "minecraft:kelp",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:lukewarm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:warm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_lukewarm_ocean"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_ocean"
+              }
             }
           ]
         },
@@ -76,95 +23,23 @@
           "name": "minecraft:seagrass",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:lukewarm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:warm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_lukewarm_ocean"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_ocean"
+              }
             }
           ]
         },
-
-
         {
           "type": "minecraft:item",
           "weight": 5,
           "name": "spelunkery:raw_gold_nugget",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:badlands"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:wooded_badlands"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:eroded_badlands"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_badlands"
+              }
             }
           ]
         },

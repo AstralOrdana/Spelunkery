@@ -40,63 +40,10 @@
           "name": "minecraft:prismarine_shard",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:lukewarm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:warm_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_frozen_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_cold_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_ocean"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:deep_lukewarm_ocean"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_ocean"
+              }
             }
           ]
         },
@@ -106,21 +53,10 @@
           "name": "spelunkery:nephrite_chunk",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:river"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:frozen_river"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_river"
+              }
             }
           ]
         },

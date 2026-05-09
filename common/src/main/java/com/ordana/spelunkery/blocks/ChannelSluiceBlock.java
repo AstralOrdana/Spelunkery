@@ -31,6 +31,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
@@ -50,6 +51,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -93,6 +95,10 @@ public class ChannelSluiceBlock extends ModBaseEntityBlock {
 
     public boolean isRandomlyTicking(BlockState state) {
         return state.getValue(GRATE_NORTH) || state.getValue(GRATE_EAST) || state.getValue(GRATE_WEST) || state.getValue(GRATE_SOUTH);
+    }
+
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        return new ItemStack(state.is(ModBlocks.STONE_SLUICE.get()) ? ModBlocks.STONE_CHANNEL.get() : ModBlocks.WOODEN_CHANNEL.get());
     }
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {

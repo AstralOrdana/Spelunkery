@@ -6,6 +6,19 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "weight": 50,
+          "name": "minecraft:mud",
+          "conditions": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "minecraft:mangrove_swamp"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:mangrove_roots",
           "conditions": [
@@ -37,22 +50,22 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 5,
+          "weight": 1,
           "name": "minecraft:skeleton_skull"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 1,
           "name": "minecraft:leather_boots"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 1,
           "name": "minecraft:glass_bottle"
         },
         {
           "type": "minecraft:item",
-          "weight": 1,
+          "weight": 5,
           "name": "minecraft:clay_ball"
         }
       ]

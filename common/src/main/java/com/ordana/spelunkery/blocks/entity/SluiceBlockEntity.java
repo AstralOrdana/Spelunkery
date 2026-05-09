@@ -6,6 +6,7 @@ import com.ordana.spelunkery.reg.ModBlocks;
 import com.ordana.spelunkery.reg.ModEntities;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -19,7 +20,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -248,10 +251,15 @@ public class SluiceBlockEntity extends RandomizableContainerBlockEntity {
                     return true;
                 }
             }
-            spawnParticlesOnServer((ServerLevel) level,lootItem,pos);
 
             suckInItems(entity, lootItem);
+            var random = level.random;
             itemEntity.getItem().shrink(1);
+            if (lootItem.isEmpty()) return false;
+            ParticleUtils.spawnParticlesOnBlockFace(level, pos, new ItemParticleOption(ParticleTypes.ITEM, lootItem),
+                    UniformInt.of(3, 5), Direction.UP,
+                    (() -> new Vec3(Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D), Mth.nextDouble(random, -0.5D, 0.5D))),
+                    0.55D);
             return true;
         }
         return false;

@@ -133,7 +133,7 @@ public class ModItems {
     public static final Supplier<Item> STONE_CHANNEL = regItem("stone_channel", () ->
             new ChannelItem(ModBlocks.STONE_CHANNEL.get(), new Item.Properties()));
     public static final Supplier<Item> SLUICE_GRATE = regItem("sluice_grate", () ->
-            new Item(new Item.Properties()));
+            new SluiceGrateItem(new Item.Properties()));
 
     public static final Supplier<Item> NEPHRITE_CHARM = regItem("nephrite_charm", () ->
             new NephriteCharmItem(new Item.Properties().stacksTo(1)));

@@ -202,7 +202,6 @@
             }
           ]
         },
-
         {
           "type": "minecraft:item",
           "weight": 10,
@@ -219,21 +218,10 @@
           "name": "spelunkery:nephrite_chunk",
           "conditions": [
             {
-              "condition": "minecraft:any_of",
-              "terms": [
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:river"
-                  }
-                },
-                {
-                  "condition": "minecraft:location_check",
-                  "predicate": {
-                    "biomes": "minecraft:frozen_river"
-                  }
-                }
-              ]
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "#c:is_river"
+              }
             }
           ]
         },
