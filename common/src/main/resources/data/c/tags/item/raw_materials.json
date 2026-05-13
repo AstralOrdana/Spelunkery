@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:rough_cinnabar",
+    "spelunkery:rough_lazurite",
+    "spelunkery:rough_emerald",
+    "spelunkery:rough_diamond",
+    "spelunkery:raw_magnetite"
+  ]
+}
