@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:rock_salt_slab",
+    "spelunkery:polished_rock_salt_slab",
+    "spelunkery:rock_salt_brick_slab",
+    "spelunkery:nephrite_slab",
+    "spelunkery:polished_nephrite_slab",
+    "spelunkery:polished_nephrite_brick_slab"
+  ]
+}
