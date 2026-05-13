@@ -504,11 +504,11 @@ public class EggPlither extends WitherBoss implements PowerableMob, RangedAttack
     }
 
     static {
-        DATA_TARGET_A = SynchedEntityData.defineId(WitherBoss.class, EntityDataSerializers.INT);
-        DATA_TARGET_B = SynchedEntityData.defineId(WitherBoss.class, EntityDataSerializers.INT);
-        DATA_TARGET_C = SynchedEntityData.defineId(WitherBoss.class, EntityDataSerializers.INT);
+        DATA_TARGET_A = SynchedEntityData.defineId(EggPlither.class, EntityDataSerializers.INT);
+        DATA_TARGET_B = SynchedEntityData.defineId(EggPlither.class, EntityDataSerializers.INT);
+        DATA_TARGET_C = SynchedEntityData.defineId(EggPlither.class, EntityDataSerializers.INT);
         DATA_TARGETS = ImmutableList.of(DATA_TARGET_A, DATA_TARGET_B, DATA_TARGET_C);
-        DATA_ID_INV = SynchedEntityData.defineId(WitherBoss.class, EntityDataSerializers.INT);
+        DATA_ID_INV = SynchedEntityData.defineId(EggPlither.class, EntityDataSerializers.INT);
         LIVING_ENTITY_SELECTOR = (livingEntity) -> false;
         TARGETING_CONDITIONS = TargetingConditions.forCombat().range(20.0).selector(LIVING_ENTITY_SELECTOR);
     }
