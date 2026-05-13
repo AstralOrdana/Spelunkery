@@ -45,7 +45,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:stone",
+              "name": "oreganized:raw_silver",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",

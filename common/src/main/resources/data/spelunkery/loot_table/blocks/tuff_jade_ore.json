@@ -16,13 +16,14 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
               "type": "minecraft:item",
+              "name": "spelunkery:tuff_jade_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -39,18 +40,18 @@
                     }
                   }
                 }
-              ],
-              "name": "spelunkery:tuff_jade_ore"
+              ]
             },
             {
               "type": "minecraft:item",
+              "name": "sullysmod:rough_jade",
               "functions": [
                 {
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 5,
-                    "min": 2
+                    "max": 5.0,
+                    "min": 2.0
                   },
                   "function": "minecraft:set_count"
                 },
@@ -62,13 +63,12 @@
                 {
                   "function": "minecraft:explosion_decay"
                 }
-              ],
-              "name": "minecraft:stone"
+              ]
             }
           ]
         }
       ],
-      "rolls": 1
+      "rolls": 1.0
     }
   ]
 }

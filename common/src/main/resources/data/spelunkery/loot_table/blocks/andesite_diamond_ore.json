@@ -31,7 +31,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:diamond",
+              "name": "spelunkery:rough_diamond",
               "functions": [
                 {
                   "function": "minecraft:apply_bonus",
