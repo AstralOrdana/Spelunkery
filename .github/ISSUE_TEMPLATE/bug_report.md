@@ -11,7 +11,7 @@ A clear and concise description of what the bug is. Include as much information 
 Minecraft version:
 Spelunkery version:
 Moonlight Lib version:
-Fabric API / QSL / Forge version:
+Fabric API / NeoForge version:
 
 **Other mods:**
 List all mods that you're using; could be in the form of a list of the filenames, a crash report list, a screenshot of
