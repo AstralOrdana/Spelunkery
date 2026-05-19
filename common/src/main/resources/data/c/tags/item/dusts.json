@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "spelunkery:dust",
+    "spelunkery:salt",
+    "spelunkery:sulfur",
+    "spelunkery:saltpeter"
+  ]
+}
