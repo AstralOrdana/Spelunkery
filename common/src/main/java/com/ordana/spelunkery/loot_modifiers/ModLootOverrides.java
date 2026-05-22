@@ -49,20 +49,17 @@ public class ModLootOverrides extends DynamicServerResourceProvider {
 
     public ResourceGenTask overrideDataFile(List<String> list, String targetNamespace, String targetPath, String sourcePath, ResType resType) {
         boolean isGeneric = (resType == ResType.GENERIC);
-        return new ResourceGenTask() {
-            @Override
-            public void accept(ResourceManager manager, ResourceSink sink) {
-                for(var recipe :list) {
-                    ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, isGeneric ? targetPath + recipe + ".json" : targetPath + recipe);
-                    ResourceLocation source = Spelunkery.res((sourcePath + recipe + ".json"));
+        return (manager, sink) -> {
+            for(var recipe : list) {
+                ResourceLocation target = ResourceLocation.fromNamespaceAndPath(targetNamespace, isGeneric ? targetPath + recipe + ".json" : targetPath + recipe);
+                ResourceLocation source = Spelunkery.res((sourcePath + recipe + ".json"));
 
-                    try (var bsStream = manager.getResource(source).orElseThrow().open()) {
-                        JsonElement bsElement = RPUtils.deserializeJson(bsStream);
-                        sink.addJson(target, bsElement, resType);
+                try (var bsStream = manager.getResource(source).orElseThrow().open()) {
+                    JsonElement bsElement = RPUtils.deserializeJson(bsStream);
+                    sink.addJson(target, bsElement, resType);
 
-                    } catch (Exception e) {
-                        Spelunkery.LOGGER.warn("Faliure adding generated resources from {} to {}:\n{}", source, target, e);
-                    }
+                } catch (Exception e) {
+                    Spelunkery.LOGGER.warn("Failure adding generated resources from {} to {}:\n{}", source, target, e);
                 }
             }
         };

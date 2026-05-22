@@ -75,20 +75,20 @@ public class ChannelBlock extends Block {
     }
 
     //@Override
-    @PlatformOnly(PlatformOnly.FORGE)
+//    @PlatformOnly(PlatformOnly.NEOFORGE)
     public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         return state.is(ModBlocks.WOODEN_CHANNEL.get());
     }
 
 
     //@Override
-    @PlatformOnly(PlatformOnly.FORGE)
+//    @PlatformOnly(PlatformOnly.NEOFORGE)
     public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         return state.is(ModBlocks.WOODEN_CHANNEL.get()) ? 20 : 0;
     }
 
     //@Override
-    @PlatformOnly(PlatformOnly.FORGE)
+//    @PlatformOnly(PlatformOnly.NEOFORGE)
     public int getFireSpread(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         return state.is(ModBlocks.WOODEN_CHANNEL.get()) ? 5 : 0;
     }

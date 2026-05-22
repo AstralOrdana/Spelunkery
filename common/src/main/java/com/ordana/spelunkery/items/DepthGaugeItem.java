@@ -40,7 +40,7 @@ public class DepthGaugeItem extends Item {
     }
 
     //Override
-    @PlatformOnly(PlatformOnly.FORGE)
+//    @PlatformOnly(PlatformOnly.NEOFORGE)
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return false;
     }
