@@ -289,7 +289,7 @@ public class ModCreativeTabs {
                                ResourceKey<CreativeModeTab> tab, Supplier<?>... items) {
 
         if(CommonConfigs.CREATIVE_TAB.get()){
-            tab = MOD_TAB.getHolder().unwrapKey().get();
+            tab = MOD_TAB.unwrapKey().get();
         }
 
         ItemLike[] entries = Arrays.stream(items)

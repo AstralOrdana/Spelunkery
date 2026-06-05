@@ -2,6 +2,9 @@
   "feature": "spelunkery:sulfur_patch",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -19,9 +22,6 @@
           "absolute": 35
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }
