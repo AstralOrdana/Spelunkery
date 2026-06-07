@@ -2,6 +2,9 @@
   "feature": "spelunkery:large_lapis_vein",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -30,9 +33,6 @@
           "absolute": 64
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

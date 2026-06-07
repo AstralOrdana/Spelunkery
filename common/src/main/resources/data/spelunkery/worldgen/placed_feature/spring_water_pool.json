@@ -2,6 +2,9 @@
   "feature": "spelunkery:spring_water_pool",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:rarity_filter",
       "chance": 4
     },
@@ -49,9 +52,6 @@
       "type": "minecraft:surface_relative_threshold_filter",
       "heightmap": "OCEAN_FLOOR_WG",
       "max_inclusive": -5
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

@@ -2,6 +2,9 @@
   "feature": "spelunkery:magnetite_geode",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:rarity_filter",
       "chance": 16
     },
@@ -21,9 +24,6 @@
           "absolute": 50
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

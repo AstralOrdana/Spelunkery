@@ -2,6 +2,9 @@
   "feature": "spelunkery:nephrite_geode",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:rarity_filter",
       "chance": 4
     },
@@ -21,9 +24,6 @@
           "absolute": 30
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

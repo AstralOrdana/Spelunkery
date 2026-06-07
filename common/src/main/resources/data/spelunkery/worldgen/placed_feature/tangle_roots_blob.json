@@ -2,6 +2,9 @@
   "feature": "spelunkery:tangle_roots_blob",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:environment_scan",
       "direction_of_search": "down",
       "max_steps": 1,
@@ -33,9 +36,6 @@
           "absolute": 15
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

@@ -2,6 +2,9 @@
   "feature": "spelunkery:large_emerald_vein",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:random_offset",
       "xz_spread": 7,
       "y_spread": 0
@@ -32,9 +35,6 @@
           "absolute": 256
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

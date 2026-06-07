@@ -2,6 +2,9 @@
   "feature": "spelunkery:deep_dark_fossil",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:rarity_filter",
       "chance": 4
     },
@@ -19,9 +22,6 @@
           "absolute": 0
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }
