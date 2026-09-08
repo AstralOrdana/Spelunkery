@@ -45,5 +45,10 @@
     "fabric-api": "*",
     "minecraft": "1.21.1",
     "moonlight": ">=1.20-2.12.21"
+  },
+  "custom": {
+    "lithium:options": {
+      "mixin.block.fluid.flow": false
+    }
   }
 }

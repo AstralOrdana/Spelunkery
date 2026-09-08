@@ -148,8 +148,7 @@ public class ModEvents {
         return InteractionResult.PASS;
     }
 
-    public static InteractionResult useGrindstone(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, boolean diamondGrindstone) {
-        var itemStack = player.getItemInHand(hand);
+    public static InteractionResult useGrindstone(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, boolean diamondGrindstone) {
 
         if (itemStack.getItem() == Items.AIR) {
             player.openMenu(state.getMenuProvider(level, pos));

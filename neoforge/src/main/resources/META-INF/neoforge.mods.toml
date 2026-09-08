@@ -53,3 +53,6 @@ An overhaul of everything underground
 
 [[mixins]]
 config = "spelunkery-common.mixins.json"
+
+["lithium:options"]
+"mixin.block.fluid.flow" = false
