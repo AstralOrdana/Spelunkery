@@ -1,0 +1,45 @@
+{
+  "tooltip.spelunkery.hammer_and_chisel_4": "  %1$s and use to convert Brick blocks to Chiselled form",
+  "advancements.spelunkery.carved_nephrite.description": "Craft some Carved Pounamu",
+  "advancements.spelunkery.nephrite_charm.description": "Obtain a Pounamu Charm",
+  "advancements.spelunkery.nephrite_chunk.description": "Mine Pounamu and collect a Pounamu Chunk",
+
+  "tooltip.spelunkery.carved_nephrite_3": "  Use with a Pounamu Siphon, Fountain, and Diode",
+  "tooltip.spelunkery.nephrite_fountain_1": "  Drains Charge from Carved Pounamu, converts to XP orbs",
+  "tooltip.spelunkery.nephrite_fountain_2": "  Will only drain Charge from the Pounamu it is placed on",
+  "tooltip.spelunkery.nephrite_siphon_2": "  Converts to Charge split among adjacent Carved Pounamu",
+  "tooltip.spelunkery.nephrite_diode_1": "  Transfers Charge from Carved Pounamu it's facing to the opposite side",
+
+  "material.spelunkery.nephrite": "Pounamu Material",
+
+  "item.spelunkery.nephrite_chunk": "Pounamu Chunk",
+  "block.spelunkery.raw_nephrite": "Raw Pounamu",
+  "block.spelunkery.nephrite": "Pounamu",
+  "block.spelunkery.nephrite_slab": "Pounamu Slab",
+  "block.spelunkery.nephrite_stairs": "Pounamu Stairs",
+  "block.spelunkery.nephrite_wall": "Pounamu Wall",
+
+  "block.spelunkery.polished_nephrite": "Polished Pounamu",
+  "block.spelunkery.polished_nephrite_slab": "Polished Pounamu Slab",
+  "block.spelunkery.polished_nephrite_stairs": "Polished Pounamu Stairs",
+  "block.spelunkery.polished_nephrite_wall": "Polished Pounamu Wall",
+
+  "block.spelunkery.polished_nephrite_bricks": "Polished Pounamu Bricks",
+  "block.spelunkery.polished_nephrite_brick_slab": "Polished Pounamu Brick Slab",
+  "block.spelunkery.polished_nephrite_brick_stairs": "Polished Pounamu Brick Stairs",
+  "block.spelunkery.polished_nephrite_brick_wall": "Polished Pounamu Brick Wall",
+
+  "block.spelunkery.carved_nephrite": "Carved Pounamu",
+  "block.spelunkery.nephrite_siphon": "Pounamu Siphon",
+  "block.spelunkery.nephrite_fountain": "Pounamu Fountain",
+  "block.spelunkery.nephrite_diode": "Pounamu Diode",
+  "item.spelunkery.nephrite_charm": "Pounamu Charm",
+
+  "block.spelunkery.sulfur": "Sulphur",
+  "block.spelunkery.saltpeter": "Saltpetre",
+  "block.spelunkery.sulfur_block": "Block of Sulphur",
+  "block.spelunkery.saltpeter_block": "Block of Saltpetre",
+
+  "block.spelunkery.gray_glowstick": "Grey Glowstick",
+  "block.spelunkery.light_gray_glowstick": "Light Grey Glowstick"
+}
