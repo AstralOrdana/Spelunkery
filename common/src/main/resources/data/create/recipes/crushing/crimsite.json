@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "create:crimsite"
+    }
+  ],
+  "results": [
+    {
+      "id": "create:crushed_raw_iron",
+      "chance": 0.4
+    },
+    {
+      "id": "spelunkery:raw_iron_nugget",
+      "chance": 0.4
+    }
+  ],
+  "processing_time": 250
+}

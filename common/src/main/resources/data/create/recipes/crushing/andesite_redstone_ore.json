@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "spelunkery:andesite_redstone_ore"
+    }
+  ],
+  "results": [
+    {
+      "id": "spelunkery:rough_cinnabar",
+      "count": 2
+    },
+    {
+      "id": "spelunkery:rough_cinnabar",
+      "chance": 0.75
+    },
+    {
+      "id": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "id": "minecraft:andesite",
+      "chance": 0.125
+    }
+  ],
+  "processing_time": 250
+}

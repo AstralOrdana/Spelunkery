@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:crushing",
+  "processing_time": 350,
+  "ingredients": [
+    {
+      "item": "minecraft:nether_gold_ore"
+    }
+  ],
+  "results": [
+    {
+      "count": 18,
+      "id": "spelunkery:raw_gold_nugget"
+    },
+    {
+      "chance": 0.75,
+      "id": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "id": "minecraft:netherrack"
+    }
+  ]
+}
